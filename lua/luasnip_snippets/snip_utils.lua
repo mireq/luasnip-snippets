@@ -20,7 +20,7 @@ if filetype_mapping_fp ~= nil then
 		end
 		filetype = nil
 		aliases = {}
-		for word in line:gmatch("%w+") do
+		for word in line:gmatch("[^%s]+") do
 			if filetype == nil then
 				filetype = word
 			else
@@ -78,22 +78,7 @@ end
 local new_line = function() return t{"", ""} end
 
 local function ft_func(num)
-	local filetypes = vim.split(vim.bo.filetype, ".", true)
-	local visited_filetypes = {}
-	for _, filetype in ipairs(filetypes) do
-		visited_filetypes[filetype] = true
-	end
-	for _, filetype in ipairs(filetypes) do
-		if filetype_includes[filetype] ~= nil then
-			for _, included_filetype in ipairs(filetype_includes[filetype]) do
-				if visited_filetypes[included_filetype] == nil then
-					visited_filetypes[included_filetype] = true
-					table.insert(filetypes, included_filetype)
-				end
-			end
-		end
-	end
-	return filetypes
+	return vim.split(vim.bo.filetype, ".", true)
 end
 
 local function vis()
@@ -218,7 +203,12 @@ local function trig_engine(opts)
 	return engine
 end
 
-local load_ft_func = require("luasnip.extras.filetype_functions").extend_load_ft(filetype_includes)
+local load_ft_func_base = require("luasnip.extras.filetype_functions").extend_load_ft(filetype_includes)
+local function load_ft_func(bufnr)
+	local res = load_ft_func_base(bufnr)
+	vim.list_extend(res, filetype_includes['all'])
+	return res
+end
 
 local function load_python_helper()
 	if not python_helper_loaded then
@@ -269,11 +259,15 @@ end
 
 
 local function setup()
+	local ls = require('luasnip')
 	local module_path = script_path()
 	require("luasnip.loaders.from_lua").lazy_load({
 		paths = { module_path }
 	})
-	--call_python('hello')
+
+	for filetype, extends in pairs(filetype_includes) do
+		ls.filetype_extend(filetype, extends)
+	end
 end
 
 return {
