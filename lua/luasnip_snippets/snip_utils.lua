@@ -2,6 +2,7 @@ local io = require("io")
 
 local ls = require("luasnip")
 local util = require("luasnip.util.util")
+local events = require("luasnip.util.events")
 local f = ls.function_node
 local t = ls.text_node
 local k = require("luasnip.nodes.key_indexer").new_key
@@ -72,6 +73,27 @@ local function join_text(args, indent)
 	end
 
 	return lines
+end
+
+
+-- Transform node
+local function transform(num, search, replace)
+	local jsregexp_ok, jsregexp = pcall(require, "luasnip-jsregexp")
+	if jsregexp_ok then
+		search = jsregexp.compile(search)
+	else
+		search = nil
+	end
+
+	local function transform_helper(args)
+		if search then
+			return join_text({search:replace(table.concat(args[1]), replace)})
+		else
+			return args[1]
+		end
+	end
+
+	return f(transform_helper, k('i' .. num))
 end
 
 -- New line
@@ -147,6 +169,9 @@ local function is_keyword_char(char)
 end
 
 
+local regex_matchers = {}
+
+
 local function trig_engine(opts)
 	local function engine(trigger)
 		local function matcher(line_to_cursor, trigger)
@@ -156,7 +181,26 @@ local function trig_engine(opts)
 			local first_char = 0
 			local last_char = 0
 
-			if opts:find('w') ~= nil then
+			if opts:find('r') ~= nil then
+				local rx = regex_matchers[trigger]
+				if rx == nil then
+					local jsregexp_ok, jsregexp = pcall(require, "luasnip-jsregexp")
+					if jsregexp_ok then
+						rx = jsregexp.compile(trigger)
+						regex_matchers[trigger] = rx
+					end
+				end
+				if rx ~= nil then
+					local matches = rx(line_to_cursor)
+					for i, match in ipairs(matches) do
+						if match.end_ind == #line_to_cursor then
+							matched = match.groups[1]
+							first_char = match.begin_ind
+							last_char = match.end_ind
+						end
+					end
+				end
+			elseif opts:find('w') ~= nil then
 				local words_len = #trigger
 				local words_prefix = string.sub(words, 1, -words_len - 1)
 				local words_suffix = string.sub(words, -words_len)
@@ -188,7 +232,7 @@ local function trig_engine(opts)
 
 			-- only on beginning of line or only whitespace before trigger
 			if matched ~= nil and opts:find('b') ~= nil then
-				local content_before_trigger = line_to_cursor:sub(1, first_char)
+				local content_before_trigger = line_to_cursor:gsub("%s*$", ""):sub(1, -string.len(matched) - 1)
 				if content_before_trigger:gsub("[%s\t]+", "") ~= '' then
 					return nil
 				end
@@ -225,8 +269,8 @@ local function call_python(python_function_name, opts)
 	return result
 end
 
-local function code_python(id, node_code, global_code, args, snip, indent)
-	return call_python("execute_code", {node_id=id, node_code=node_code, global_code=global_code, tabstops=args, env=snip.env, indent=indent})
+local function code_python(id, node_code, global_code, args, snip, indent, tabstop_mapping)
+	return call_python("execute_code", {node_id=id, node_code=node_code, global_code=global_code or {}, tabstops=args, env=snip.env, indent=indent, tabstop_mapping=tabstop_mapping})
 end
 
 local function code_viml(code)
@@ -270,8 +314,58 @@ local function setup()
 	end
 end
 
+
+local action_node_context = {}
+
+
+local function make_actions(actions, max_placeholder)
+	-- actions: pre_expand, post_expand, jump
+	local callbacks = {}
+	callbacks[-1] = {
+		[events.pre_expand] = function(snippet, event_args)
+			action_node_context[snippet.id] = { index = 0 }
+		end
+	}
+
+	local function on_enter(index)
+		return function(snippet, event_args)
+			local main = snippet
+			while main.id == nil and main.parent do
+				main = main.parent
+			end
+			local previous_index = action_node_context[main.id].index
+			print(previous_index, index)
+			action_node_context[main.id].index = index
+		end
+	end
+
+	for i = 1, max_placeholder do
+		callbacks[i] = {
+			[events.enter] = on_enter(i)
+		}
+	end
+	return {callbacks=callbacks}
+end
+
+
+local function args_expand(args)
+	local result = {}
+	if type(args) == 'table' then
+		for __, tabstop in ipairs(args) do
+			table.insert(result, k('i' .. tostring(tabstop[2])))
+		end
+	else
+		for i = 1, args do
+			table.insert(result, k('i' .. tostring(i)))
+		end
+	end
+	return result
+end
+
+
 return {
 	copy = copy,
+	transform = transform,
 	join_text = join_text,
 	new_line = new_line,
 	trig_engine = trig_engine,
@@ -282,4 +376,6 @@ return {
 	code_python = code_python,
 	code_viml = code_viml,
 	code_shell = code_shell,
+	make_actions = make_actions,
+	args_expand = args_expand,
 }
