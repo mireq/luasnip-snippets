@@ -29,13 +29,39 @@ local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 local su = require("luasnip_snippets.snip_utils")
 local cp = su.copy
+local tr = su.transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
+local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
+local make_actions = su.make_actions
 
+
+local am = { -- argument mapping: token index to placeholder number
+	0,
+	2,
+	2,
+	2,
+	1,
+	1,
+	1,
+	1,
+	2,
+	2,
+	3,
+	2,
+	1,
+	2,
+	{{1, 1}, {2, 2}, {3, 4}},
+	1,
+	0,
+	2,
+	3,
+	4,
+}
 ls.add_snippets("actionscript", {
 	s({trig = "main", descr = "(main)", priority = -1000, trigEngine = te("w")}, {
 		t"package {", nl(),

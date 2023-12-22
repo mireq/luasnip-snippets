@@ -275,21 +275,23 @@ class _Tabs:
 
 	"""Allows access to tabstop content via t[] inside of python code."""
 
-	def __init__(self, tabs):
+	def __init__(self, tabs, mapping=None):
 		self._tabs = tabs
+		self._mapping = mapping or {}
 
 	def __getitem__(self, no):
-		tab_idx = int(no) - 1
+		no = self._mapping.get(int(no), int(no))
+		tab_idx = no - 1
 		current_text = ''
 		if tab_idx >= 0 and tab_idx < len(self._tabs):
 			current_text = self._tabs[tab_idx]
 		return current_text
 
 	def __setitem__(self, no, value):
-		tab_idx = int(no) - 1
+		no = self._mapping.get(int(no), int(no))
+		tab_idx = no - 1
 		if tab_idx >= 0 and tab_idx < len(self._tabs):
 			self._tabs[tab_idx] = value
-		return current_text
 
 
 @functools.cache
@@ -305,7 +307,7 @@ def get_node_locals(node_id):
 	return node_locals[node_id]
 
 
-def execute_code(node_id, node_code, global_code, tabstops, env, indent):
+def execute_code(node_id, node_code, global_code, tabstops, env, indent, tabstop_mapping):
 	global_code = 'import re, os, vim, string, random\n' + '\n'.join(global_code or [])
 	codes = (
 		global_code,
@@ -323,9 +325,14 @@ def execute_code(node_id, node_code, global_code, tabstops, env, indent):
 	snip = SnippetUtil(indent, vim.eval("visualmode()"), text, context, start, end)
 	path = vim.eval('expand("%")') or ""
 
+	if isinstance(tabstop_mapping, list):
+		tabstop_mapping = {val: key for key, val in tabstop_mapping}
+	else:
+		tabstop_mapping = None
+
 	node_locals = get_node_locals(tuple(node_id))
 	node_locals.update({
-		't': _Tabs(['\n'.join(tab) for tab in tabstops]),
+		't': _Tabs(['\n'.join(tab) for tab in tabstops], tabstop_mapping),
 		'fn': os.path.basename(path),
 		'cur': '',
 		'res': '',
