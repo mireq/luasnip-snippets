@@ -1,12 +1,13 @@
 #!/usr/bin/env -S nvim --headless -n -c "pyfile %" -c "q!"
 # -*- coding: utf-8 -*-
+
+# snippet listing: find snippets UltiSnips -maxdepth 1 -mindepth 1 -exec basename {} .snippets \;|sort -u
+
 from collections import namedtuple, defaultdict
 from dataclasses import dataclass
-from datetime import datetime
-from functools import cached_property
 from io import StringIO
 from pathlib import Path
-from typing import List, Tuple, Optional
+from typing import List, Tuple, Optional, Iterable
 import argparse
 import logging.config
 import operator
@@ -17,16 +18,16 @@ import vim
 vim.command('Lazy load ultisnips')
 vim.command('Lazy load vim-snippets')
 
-from UltiSnips import UltiSnips_Manager
-from UltiSnips.snippet.parsing.base import tokenize_snippet_text
-from UltiSnips.snippet.parsing.lexer import tokenize, Position, MirrorToken, EndOfTextToken, TabStopToken, VisualToken, PythonCodeToken, VimLCodeToken, ShellCodeToken, EscapeCharToken
-from UltiSnips.snippet.parsing import ulti_snips as ulti_snips_parsing
-from UltiSnips.snippet.parsing import snipmate as snipmate_parsing
-from UltiSnips.snippet.definition.ulti_snips import UltiSnipsSnippetDefinition
+from UltiSnips.snippet.definition.base import SnippetDefinition
 from UltiSnips.snippet.definition.snipmate import SnipMateSnippetDefinition
+from UltiSnips.snippet.definition.ulti_snips import UltiSnipsSnippetDefinition
+from UltiSnips.snippet.parsing import snipmate as snipmate_parsing
+from UltiSnips.snippet.parsing import ulti_snips as ulti_snips_parsing
+from UltiSnips.snippet.parsing.lexer import tokenize, Position, MirrorToken, EndOfTextToken, TabStopToken, VisualToken, PythonCodeToken, VimLCodeToken, ShellCodeToken, EscapeCharToken, TransformationToken
+from UltiSnips.snippet_manager import SnippetManager
 
 
-SUPPORTED_OPTS = {'w', 'b'}
+SUPPORTED_OPTS = {'w', 'b', 'i', 'r', '!'}
 
 LOG_CONFIG = {
 	'version': 1,
@@ -73,12 +74,15 @@ local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 local su = require("luasnip_snippets.snip_utils")
 local cp = su.copy
+local tr = su.transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
+local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
+local make_actions = su.make_actions
 
 """
 
@@ -148,11 +152,12 @@ class LSTextNode(LSNode):
 
 
 class LSInsertNode(LSNode):
-	__slots__ = ['number', 'children']
+	__slots__ = ['number', 'children', 'original_number']
 
-	def __init__(self, number, children=[]):
+	def __init__(self, number, children=[], original_number=None):
 		self.number = number
 		self.children = children
+		self.original_number = self.number if original_number is None else original_number
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.number!r}, {self.children!r})'
@@ -166,10 +171,11 @@ class LSInsertNode(LSNode):
 
 
 class LSCopyNode(LSNode):
-	__slots__ = ['number']
+	__slots__ = ['number', 'original_number']
 
-	def __init__(self, number):
+	def __init__(self, number, original_number=None):
 		self.number = number
+		self.original_number = self.number if original_number is None else original_number
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.number})'
@@ -211,7 +217,7 @@ class LSPythonCodeNode(LSCodeNode):
 
 	def get_lua_code(self, snippet: 'ParsedSnippet') -> str:
 		code = self.code.replace("\\`", "`")
-		return f'c_py({{{escape_lua_string(snippet.filetype)}, {escape_lua_string(snippet.snippet.trigger)}}}, {escape_lua_string(code)}, python_globals, args, snip, {escape_lua_string(self.indent)})'
+		return f'c_py({{{escape_lua_string(snippet.filetype)}, {snippet.index}}}, {escape_lua_string(code)}, python_globals, args, snip, {escape_lua_string(self.indent)}, am[{snippet.index}])'
 
 
 class LSVimLCodeNode(LSCodeNode):
@@ -242,26 +248,57 @@ class LSShellCodeNode(LSCodeNode):
 		return f'c_shell({escape_lua_string(code)})'
 
 
+class LSTransformationNode(LSNode):
+	__slots__ = ['number', 'search', 'replace', 'original_number']
+
+	def __init__(self, number: int, search: str, replace: str, original_number: Optional[int] = None):
+		self.number = number
+		self.search = search
+		self.replace = replace
+		self.original_number = self.number if original_number is None else original_number
+
+	def __repr__(self):
+		return f'{self.__class__.__name__}({self.number}, {self.search!r}, {self.replace!r}, {self.original_number})'
+
+
+def iter_all_tokens(tokens: list[LSNode]) -> Iterable[LSNode]:
+	for token in tokens:
+		yield token
+		if isinstance(token, LSInsertNode) and token.children:
+			yield from iter_all_tokens(token.children)
+
+
 @dataclass
 class ParsedSnippet:
+	index: int
 	attributes: str
 	filetype: str
 	tokens: list[LSNode]
 	snippet: UltiSnipsSnippetDefinition
+	actions: dict[str, str]
+	token_number_to_index: dict[int, int]
 
 	def get_code(self, indent: int, replace_zero_placeholders: bool = False) -> str:
 		tokens = self.tokens
 		tokens = self.__replace_zero_placeholders(tokens, replace_zero_placeholders)
 		return self.render_tokens(tokens, indent)
 
-	@cached_property
-	def max_placeholder(self):
-		tokens = self.tokens
-		max_placeholder = 0
-		for token in tokens:
-			if isinstance(token, (LSInsertNode, LSCopyNode)):
-				max_placeholder = max(max_placeholder, token.number)
-		return max_placeholder
+	def get_actions_code(self) -> str:
+		actions = []
+		for key, value in self.actions.items():
+			actions.append(f'[{escape_lua_string(key)}] = {escape_lua_string(value)}')
+		return ', '.join(actions)
+
+	def iter_all_tokens(self) -> Iterable[LSNode]:
+		yield from iter_all_tokens(self.tokens)
+
+	@property
+	def max_placeholder(self) -> int:
+		return max(self.token_number_to_index.values(), default=0)
+
+	@property
+	def max_token(self) -> int:
+		return max(self.token_number_to_index.keys(), default=0)
 
 	def __replace_zero_placeholders(self, tokens: list[LSNode], force: bool):
 		def replace_token(token):
@@ -269,8 +306,10 @@ class ParsedSnippet:
 				shouldd_replace = force
 				if not shouldd_replace and len(token.children) > 1 or (len(token.children) == 1 and not isinstance(token.children[0], LSTextNode)):
 					shouldd_replace = True
-				if shouldd_replace:
-					return LSInsertNode(token.number or self.max_placeholder + 1, token.children)
+				if shouldd_replace and token.number == 0:
+					token = LSInsertNode(self.max_placeholder + 1, token.children, self.max_token + 1)
+					self.token_number_to_index[token.original_number] = token.number
+					return token
 				else:
 					return token
 			else:
@@ -282,6 +321,13 @@ class ParsedSnippet:
 		snippet_body = StringIO()
 		num_tokens = len(tokens)
 		accumulated_text = ['\n']
+
+		def write_comma():
+			if not last_token:
+				snippet_body.write(',')
+				if not at_line_start:
+					snippet_body.write(' ')
+
 		for i, token in enumerate(tokens):
 			last_token = i == num_tokens - 1
 			if at_line_start:
@@ -300,7 +346,7 @@ class ParsedSnippet:
 						if token.is_nested: # nested nodes are not supported, unwrapping
 							dynamic_node_content = self.render_tokens(token.children, at_line_start=False)
 							snippet_body.write(dynamic_node_content)
-							snippet_body.write(", ")
+							write_comma()
 							continue
 						#print(dynamic_node_content)
 						#snippet_body.write(f'd({token.number}, function(args) return sn(nil, {{{dynamic_node_content}}}) end)')
@@ -325,20 +371,22 @@ class ParsedSnippet:
 							related_nodes_code = ''
 							if related_nodes:
 								related_nodes_code = f', k{{{", ".join(escape_lua_string("i" + str(v)) for v in related_nodes.keys())}}}'
-							snippet_body.write(f'd({token.number}, function(args, snip) return sn(nil, {{ i(1, jt({{{dynamic_node_content}}}, {escape_lua_string(node_indent)}), {{key = "i{token.number}"}}) }}) end{related_nodes_code})')
+							snippet_body.write(f'd({token.number}, function(args, snip) return sn(nil, {{ i(1, jt({{{dynamic_node_content}}}, {escape_lua_string(node_indent)}), {{key = "i{token.original_number}"}}) }}) end{related_nodes_code})')
 					else:
-						snippet_body.write(f'i({token.number}, "", {{key = "i{token.number}"}})')
+						snippet_body.write(f'i({token.number}, "", {{key = "i{token.original_number}"}})')
 				case LSCopyNode():
-					snippet_body.write(f'cp({token.number})')
+					snippet_body.write(f'cp({token.original_number})')
+				case LSPythonCodeNode():
+					snippet_body.write(f'f(function(args, snip) return {token.get_lua_code(self)} end, ae(am[{self.index}]))')
 				case LSCodeNode():
-					related_nodes_code = f'{", ".join(str(i) for i in range(1, self.max_placeholder + 1))}'
-					snippet_body.write(f'f(function(args, snip) return {token.get_lua_code(self)} end, {{{related_nodes_code}}})')
+					snippet_body.write(f'f(function(args, snip) return {token.get_lua_code(self)} end, {{}})')
+				case LSVisualNode():
+					snippet_body.write(f'f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {{}} end)')
+				case LSTransformationNode():
+					snippet_body.write(f'tr({token.original_number}, {escape_lua_string(token.search)}, {escape_lua_string(token.replace)})')
 				case _:
 					raise RuntimeError("Unknown token: %s" % token)
-			if not last_token:
-				snippet_body.write(',')
-				if not at_line_start:
-					snippet_body.write(' ')
+			write_comma()
 
 		return snippet_body.getvalue()
 
@@ -359,6 +407,13 @@ class ParsedSnippet:
 				return token.get_lua_code(self)
 			case _:
 				raise RuntimeError("Token not allowed: %s" % token)
+
+	@property
+	def has_remapped_tokens(self) -> bool:
+		for key, value in self.token_number_to_index.items():
+			if key != value:
+				return True
+		return False
 
 
 def get_text_nodes_between(content: List[str], start: Tuple[int, int], end: Optional[Tuple[int, int]]):
@@ -401,7 +456,7 @@ def do_tokenize(parent, text, allowed_tokens_in_text, allowed_tokens_in_tabstops
 	return tokens
 
 
-def transform_tokens(tokens, lines, insert_nodes = None):
+def transform_tokens(tokens, lines, insert_nodes=None):
 	token_list = []
 	insert_nodes = insert_nodes or {}
 
@@ -433,14 +488,47 @@ def transform_tokens(tokens, lines, insert_nodes = None):
 				token_list.append(LSShellCodeNode(token.code))
 			case EscapeCharToken():
 				token_list.append(LSTextNode(token.initial_text))
+			case TransformationToken():
+				token_list.append(LSTransformationNode(token.number, token.search, token.replace))
 			case _:
 				snippet_text = '\n'.join(lines)
 				raise RuntimeError(f"Unknown token {token} in snippet: \n{snippet_text}")
 		previous_token_end = token.end
 	token_list.extend(get_text_nodes_between(lines, previous_token_end, None))
 
+	def merge_adjacent_text_tokens(tokens: list[LSNode]) -> list[LSNode]:
+		new_tokens: list[LSNode] = []
+		last_token: LSNode | None = None
+		for token in tokens:
+			if isinstance(last_token, LSTextNode) and isinstance(token, LSTextNode) and last_token.text != '\n' and token.text != '\n':
+				last_token.text = last_token.text + token.text
+				continue
+			new_tokens.append(token)
+			last_token = token
+		return new_tokens
+
+	return merge_adjacent_text_tokens(token_list)
+
+
+def parse_snippet(snippet) -> tuple[list[LSNode], dict[int, int]]:
+	snippet_text = snippet._value
+	lines = snippet_text.splitlines(keepends=True)
+	#snippet.launch('', VisualContent('', 'v'), None, None, None)
+
+	if isinstance(snippet, SnipMateSnippetDefinition):
+		tokens = do_tokenize(None, snippet._value, snipmate_parsing.__ALLOWED_TOKENS, snipmate_parsing.__ALLOWED_TOKENS_IN_TABSTOPS, {ShellCodeToken: VimLCodeToken})
+	else:
+		tokens = do_tokenize(None, snippet._value, ulti_snips_parsing.__ALLOWED_TOKENS, ulti_snips_parsing.__ALLOWED_TOKENS, {})
+
+	token_list = transform_tokens(tokens, lines)
+
+	insert_nodes = {}
 	remove_nodes = set()
 	node_numbers = set()
+
+	for token in iter_all_tokens(token_list):
+		if isinstance(token, LSInsertNode):
+			insert_nodes.setdefault(token.number, token)
 
 	insert_tokens = set(token.number for token in insert_nodes.values())
 	def finalize_token(token):
@@ -465,50 +553,77 @@ def transform_tokens(tokens, lines, insert_nodes = None):
 	# replace zero tokens and copy or insert tokens
 	token_list = [finalize_token(token) for token in token_list]
 
+	# try to correctly remap node numbers
+	node_numbers.discard(0)
+	node_numbers = sorted(node_numbers - remove_nodes)
+	remap = {node_numbers[new_number]: new_number + 1 for new_number in range(len(node_numbers))}
 
-	def merge_adjacent_text_tokens(tokens: list[LSNode]) -> list[LSNode]:
-		new_tokens: list[LSNode] = []
-		last_token: LSNode | None = None
-		for token in tokens:
-			if isinstance(last_token, LSTextNode) and isinstance(token, LSTextNode) and last_token.text != '\n' and token.text != '\n':
-				last_token.text = last_token.text + token.text
-				continue
-			new_tokens.append(token)
-			last_token = token
-		return new_tokens
+	def remap_numbers(token):
+		if isinstance(token, LSInsertNode):
+			children = [remap_numbers(child) for child in token.children]
+			token = LSInsertNode(remap.get(token.number, token.number), children, token.number)
+		elif isinstance(token, LSCopyNode):
+			token = LSCopyNode(remap.get(token.number, token.number), token.number)
+		elif isinstance(token, LSTransformationNode):
+			token = LSTransformationNode(remap.get(token.number, token.number), token.search, token.replace, token.number)
+		return token
 
-	token_list = merge_adjacent_text_tokens(token_list)
+	token_list = [remap_numbers(token) for token in token_list]
 
-	if remove_nodes:
-		node_numbers.discard(0)
-		node_numbers = sorted(node_numbers - remove_nodes)
-		remap = {node_numbers[new_number]: new_number + 1 for new_number in range(len(node_numbers))}
-
-		def remap_numbers(token):
-			if isinstance(token, LSInsertNode):
-				children = [remap_numbers(child) for child in token.children]
-				token = LSInsertNode(remap.get(token.number, token.number), children)
-			elif isinstance(token, LSCopyNode):
-				token = LSCopyNode(remap.get(token.number, token.number))
-			return token
-
-		token_list = [remap_numbers(token) for token in token_list]
-
-	return token_list
+	return token_list, remap
 
 
-def parse_snippet(snippet):
-	snippet_text = snippet._value
-	lines = snippet_text.splitlines(keepends=True)
-	snippet.launch('', VisualContent('', 'v'), None, None, None)
+class ExtendedSnippetManager(SnippetManager):
+	def __init__(self, filetype: str):
+		self.filetype = filetype
+		super().__init__('', '', '')
 
-	if isinstance(snippet, SnipMateSnippetDefinition):
-		tokens = do_tokenize(None, snippet._value, snipmate_parsing.__ALLOWED_TOKENS, snipmate_parsing.__ALLOWED_TOKENS_IN_TABSTOPS, {ShellCodeToken: VimLCodeToken})
-	else:
-		tokens = do_tokenize(None, snippet._value, ulti_snips_parsing.__ALLOWED_TOKENS, ulti_snips_parsing.__ALLOWED_TOKENS, {})
+	def get_all_snippets(self) -> list[SnippetDefinition]:
+		possible_snippets: list[SnippetDefinition] = []
+		matching_snippets = defaultdict(list)
+		filetypes = [self.filetype]
 
-	return transform_tokens(tokens, lines)
+		clear_priority = None
+		cleared = {}
 
+		for _, source in self._snippet_sources:
+			source.ensure(filetypes)
+			possible_snippets.extend(list(source._snippets[self.filetype]))
+
+		for _, source in self._snippet_sources:
+			sclear_priority = source.get_clear_priority(filetypes)
+			if sclear_priority is not None and (
+				clear_priority is None or sclear_priority > clear_priority
+			):
+				clear_priority = sclear_priority
+			for key, value in source.get_cleared(filetypes).items():
+				if key not in cleared or value > cleared[key]:
+					cleared[key] = value
+
+		for snippet in possible_snippets:
+			if (clear_priority is None or snippet.priority > clear_priority) and (
+				snippet.trigger not in cleared
+				or snippet.priority > cleared[snippet.trigger]
+			):
+				matching_snippets[snippet.trigger].append(snippet)
+
+		snippets: list[SnippetDefinition] = []
+		for snippets_with_trigger in matching_snippets.values():
+			highest_priority = max(s.priority for s in snippets_with_trigger)
+			snippets.extend(
+				s for s in snippets_with_trigger if s.priority == highest_priority
+			)
+
+		return snippets
+
+	def get_extends(self) -> set[str]:
+		filetypes = [self.filetype]
+		extends: set[str] = set()
+		for _, source in self._snippet_sources:
+			source.ensure(filetypes)
+			extends = extends.union(source.get_deep_extends(filetypes))
+		extends.discard(self.filetype)
+		return extends
 
 
 def main():
@@ -518,9 +633,12 @@ def main():
 	parser.add_argument('filetype')
 	args = parser.parse_args(args)
 
-	UltiSnips_Manager.get_buffer_filetypes = lambda: [args.filetype]
-	snippets = UltiSnips_Manager._snips("", True)
+	manager = ExtendedSnippetManager(args.filetype)
+	included_filetypes = manager.get_extends()
+	snippets = manager.get_all_snippets()
+
 	snippet_code = defaultdict(list)
+	snippet_code_list = []
 
 	filetype_mapping = {}
 	try:
@@ -534,11 +652,9 @@ def main():
 	except FileNotFoundError:
 		pass
 
-	included_filetypes = set()
-
 	global_definitions = defaultdict(OrderedSet)
 
-	for snippet in snippets:
+	for index, snippet in enumerate(snippets, 1):
 		for global_type, global_codes in snippet._globals.items():
 			for global_code in global_codes:
 				if global_type in KNOWN_LANGUAGES:
@@ -549,12 +665,6 @@ def main():
 				else:
 					logger.error("Unknown code block %s", global_type)
 
-		filetype = snippet.location.rsplit(':', 1)[0].split('/')[-1].rsplit('.', 1)[0]
-
-		if filetype != args.filetype:
-			included_filetypes.add(filetype)
-			continue
-
 		opts = set(snippet._opts)
 		unsupported_opts = opts - SUPPORTED_OPTS
 		if unsupported_opts:
@@ -563,7 +673,7 @@ def main():
 			continue
 
 		try:
-			tokens = parse_snippet(snippet)
+			tokens, token_number_to_index = parse_snippet(snippet)
 		except Exception:
 			logger.exception("Parsing error of snippet: %s", snippet.trigger)
 			continue
@@ -574,12 +684,20 @@ def main():
 			snippet_attrs.append(f'descr = {escape_lua_string(snippet.description)}')
 		snippet_attrs.append(f'priority = {snippet.priority}')
 		snippet_attrs.append(f'trigEngine = te({escape_lua_string(snippet._opts)})')
-		snippet_code[snippet.trigger].append(ParsedSnippet(
+		parsed_snippet = ParsedSnippet(
+			index=index,
 			attributes=", ".join(snippet_attrs),
 			filetype=args.filetype,
 			tokens=tokens,
-			snippet=snippet
-		))
+			snippet=snippet,
+			actions=snippet._actions,
+			token_number_to_index=token_number_to_index,
+		)
+		if '!' in opts:
+			snippet_code[snippet.trigger] = [parsed_snippet]
+		else:
+			snippet_code[snippet.trigger].append(parsed_snippet)
+		snippet_code_list.append(parsed_snippet)
 		#snippet_code[snippet.trigger].append(f'\ts({{{", ".join(snippet_attrs)}}}, {{{snippet_body}\n\t}}),\n')
 
 	code_globals = {}
@@ -589,6 +707,15 @@ def main():
 	with open(f'{args.filetype}.lua', 'w') as fp:
 		fp.write(f'-- Generated using ultisnips_to_luasnip.py\n\n')
 		fp.write(FILE_HEADER)
+		fp.write('\n')
+		fp.write('local am = { -- argument mapping: token index to placeholder number\n')
+		for snippet in snippet_code_list:
+			if snippet.has_remapped_tokens:
+				token_mapping = ', '.join([f'{"{"}{index}, {number}{"}"}' for number, index in snippet.token_number_to_index.items()])
+				fp.write(f'\t{{{token_mapping}}},\n')
+			else:
+				fp.write(f'\t{snippet.max_placeholder},\n')
+		fp.write('}\n')
 		if code_globals:
 			fp.write('\n')
 			fp.write(''.join(f'local {language}_globals = {{\n{global_list}}}\n' for language, global_list in code_globals.items()))
@@ -596,9 +723,15 @@ def main():
 		fp.write(f'ls.add_snippets({escape_lua_string(args.filetype)}, {{\n')
 		for snippet_list in snippet_code.values():
 			parsed_snippet = snippet_list[0]
+			if parsed_snippet.get_actions_code():
+				sys.stdout.write(f"Unsupported actions: {parsed_snippet.get_actions_code()}\n")
+				continue
 			if len(snippet_list) == 1:
+				actions_code = parsed_snippet.get_actions_code()
+				if actions_code:
+					actions_code = f', make_actions({{{actions_code}}}, {parsed_snippet.max_placeholder})'
 				try:
-					fp.write(f'\ts({{{parsed_snippet.attributes}}}, {{{parsed_snippet.get_code(indent=2)}\n\t}}),\n')
+					fp.write(f'\ts({{{parsed_snippet.attributes}}}, {{{parsed_snippet.get_code(indent=2)}\n\t}}{actions_code}),\n')
 				except Exception:
 					logger.exception("Error in snippet '%s':\n%s", parsed_snippet.snippet.trigger, parsed_snippet.snippet._value)
 					continue
