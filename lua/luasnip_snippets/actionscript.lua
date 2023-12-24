@@ -30,6 +30,7 @@ local k = require("luasnip.nodes.key_indexer").new_key
 local su = require("luasnip_snippets.snip_utils")
 local cp = su.copy
 local tr = su.transform
+local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine

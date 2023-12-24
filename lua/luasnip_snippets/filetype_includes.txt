@@ -1,1 +1,29 @@
 all _
+bash sh
+blade html
+coffee-jasmine coffee
+coffee-react coffee
+cpp c
+cuda c cpp
+eelixir html
+eruby html
+freemarker html
+heex html eelixir
+htmldjango html
+htmljinja html jinja2
+jinja html
+lhaskell haskell
+octave matlab
+pandoc markdown
+rmd markdown
+rnoweb r tex
+scss css
+smarty javascript html css
+soy html
+svelte javascript html css
+systemverilog verilog
+typescript javascript javascript_react
+typescript_react javascript javascript_react typescript
+typescriptreact javascript typescript
+vue javascript html css
+xhtml html

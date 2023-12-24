@@ -421,6 +421,8 @@ class ParsedSnippet:
 
 
 def get_text_nodes_between(content: List[str], start: Tuple[int, int], end: Optional[Tuple[int, int]]):
+	if not content:
+		return []
 	if end is None:
 		end = (len(content) - 1, len(content[-1]) - 1)
 	text_nodes = []
