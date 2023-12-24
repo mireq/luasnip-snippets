@@ -96,6 +96,21 @@ local function transform(num, search, replace)
 	return f(transform_helper, k('i' .. num))
 end
 
+local function regex_transform(text, search, replace)
+	local jsregexp_ok, jsregexp = pcall(require, "luasnip-jsregexp")
+	if jsregexp_ok then
+		search = jsregexp.compile(search)
+	else
+		search = nil
+	end
+
+	if search then
+		return join_text({search:replace(table.concat(text), replace)})
+	else
+		return text
+	end
+end
+
 -- New line
 local new_line = function() return t{"", ""} end
 
@@ -366,6 +381,7 @@ end
 return {
 	copy = copy,
 	transform = transform,
+	regex_transform = regex_transform,
 	join_text = join_text,
 	new_line = new_line,
 	trig_engine = trig_engine,

@@ -76,6 +76,7 @@ local k = require("luasnip.nodes.key_indexer").new_key
 local su = require("luasnip_snippets.snip_utils")
 local cp = su.copy
 local tr = su.transform
+local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
@@ -365,7 +366,7 @@ class ParsedSnippet:
 						else:
 							related_nodes = {}
 							for child in token.children:
-								if isinstance(child, LSCopyNode) or isinstance(child, LSInsertNode):
+								if isinstance(child, LSCopyNode) or isinstance(child, LSInsertNode) or isinstance(child, LSTransformationNode):
 									if not child.number in related_nodes:
 										related_nodes[child.number] = len(related_nodes) + 1
 							dynamic_node_content = ', '.join(self.token_to_dynamic_text(child, related_nodes) for child in token.children)
@@ -406,6 +407,8 @@ class ParsedSnippet:
 				return 'snip.env.LS_SELECT_DEDENT or {}'
 			case LSCodeNode():
 				return token.get_lua_code(self)
+			case LSTransformationNode():
+				return f'rx_tr(args[{related_nodes[token.number]}], {escape_lua_string(token.search)}, {escape_lua_string(token.replace)})'
 			case _:
 				raise RuntimeError("Token not allowed: %s" % token)
 
