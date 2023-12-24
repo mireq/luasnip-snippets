@@ -11,6 +11,7 @@ from typing import List, Tuple, Optional, Iterable
 import argparse
 import logging.config
 import operator
+import os
 import re
 import sys
 
@@ -631,7 +632,11 @@ def main():
 
 	parser = argparse.ArgumentParser("Convert UltiSnips to luasnip snippets")
 	parser.add_argument('filetype')
+	parser.add_argument('output_dir', default=str(os.getcwd()))
 	args = parser.parse_args(args)
+
+	output_dir = Path(args.output_dir)
+	output_dir.mkdir(parents=True, exist_ok=True)
 
 	manager = ExtendedSnippetManager(args.filetype)
 	included_filetypes = manager.get_extends()
@@ -642,7 +647,7 @@ def main():
 
 	filetype_mapping = {}
 	try:
-		with open('filetype_includes.txt', 'r') as fp:
+		with output_dir.joinpath('filetype_includes.txt').open('r') as fp:
 			for line in fp:
 				line = line.strip()
 				if not line:
@@ -704,7 +709,7 @@ def main():
 	for language, global_list in global_definitions.items():
 		code_globals[language] = ', '.join(f'\t{escape_multiline_lua_sting(code_block)}\n' for code_block in global_list)
 
-	with open(f'{args.filetype}.lua', 'w') as fp:
+	with output_dir.joinpath(f'{args.filetype}.lua').open('w') as fp:
 		fp.write(f'-- Generated using ultisnips_to_luasnip.py\n\n')
 		fp.write(FILE_HEADER)
 		fp.write('\n')
@@ -749,7 +754,7 @@ def main():
 
 	filetype_mapping.setdefault(args.filetype, [])
 	filetype_mapping[args.filetype] = list(set(filetype_mapping[args.filetype]).union(included_filetypes))
-	with open('filetype_includes.txt', 'w') as fp:
+	with output_dir.joinpath('filetype_includes.txt').open('w') as fp:
 		for filetype, included_filetypes in filetype_mapping.items():
 			if not included_filetypes:
 				continue
