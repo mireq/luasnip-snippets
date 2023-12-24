@@ -28,7 +28,7 @@ from UltiSnips.snippet.parsing.lexer import tokenize, Position, MirrorToken, End
 from UltiSnips.snippet_manager import SnippetManager
 
 
-SUPPORTED_OPTS = {'w', 'b', 'i', 'r', '!'}
+SUPPORTED_OPTS = {'w', 'b', 'i', 'r', '!', 'A'}
 
 LOG_CONFIG = {
 	'version': 1,
@@ -690,6 +690,8 @@ def main():
 		snippet_attrs = [f'trig = {escape_lua_string(snippet.trigger)}']
 		if snippet.description:
 			snippet_attrs.append(f'descr = {escape_lua_string(snippet.description)}')
+		if 'A' in opts:
+			snippet_attrs.append('snippetType = "autosnippet"')
 		snippet_attrs.append(f'priority = {snippet.priority}')
 		snippet_attrs.append(f'trigEngine = te({escape_lua_string(snippet._opts)})')
 		parsed_snippet = ParsedSnippet(
