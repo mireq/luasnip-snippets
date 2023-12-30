@@ -89,7 +89,6 @@ local am = { -- argument mapping: token index to placeholder number
 	1,
 	3,
 	2,
-	1,
 	0,
 	0,
 	0,
@@ -815,9 +814,6 @@ ls.add_snippets("python", {
 		t"def ", i(1, "__init__", {key = "i1"}), t"(self, ", i(2, "*args, **kwargs", {key = "i2"}), t"):", nl(),
 		t"\treturn super().", cp(1), t"(", cp(2), t")", nl(),
 		i(0, "", {key = "i0"})
-	}),
-	s({trig = "(cs|callsuper)", descr = "((cs|callsuper)) \"Call super method\"", priority = 0, trigEngine = te("ir")}, {
-		t"super().", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("Ultisnips_get_current_python_method()")}, ""), {key = "i1"}) }) end), t"(", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "pr", descr = "(pr) \"Print\"", priority = 0, trigEngine = te("i")}, {
 		t"print(", i(0, "", {key = "i0"}), t")"

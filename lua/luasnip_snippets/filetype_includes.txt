@@ -8,7 +8,7 @@ cuda cpp c
 eelixir html
 eruby html
 freemarker html
-heex eelixir html
+heex html eelixir
 htmldjango html
 htmljinja html jinja2
 jinja html
@@ -16,14 +16,15 @@ lhaskell haskell
 octave matlab
 pandoc markdown
 rmd markdown
-rnoweb tex r
+rnoweb r tex
 scss css
-smarty javascript css html
+smarty html css javascript
 soy html
-svelte javascript css html
+svelte html css javascript
 systemverilog verilog
-typescript javascript javascript_react
-typescript_react javascript typescript javascript_react
-typescriptreact javascript typescript
-vue javascript css html
+typescript javascript_react javascript
+typescript_react typescript javascript_react javascript
+typescriptreact typescript javascript
+vue html css javascript
 xhtml html
+python python_extra

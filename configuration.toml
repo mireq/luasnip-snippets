@@ -1,0 +1,3 @@
+[python]
+excluded_snippets = ["(cs|callsuper)"]
+additional_extends = ["python_extra"]
