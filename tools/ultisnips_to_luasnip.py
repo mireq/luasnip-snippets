@@ -15,6 +15,7 @@ import operator
 import os
 import re
 import sys
+import tomllib
 
 import vim
 vim.command('Lazy load ultisnips')
@@ -90,52 +91,11 @@ local make_actions = su.make_actions
 """
 
 
-class IMPORTS(StrEnum):
-	SN = 'local sn = ls.snippet_node'
-	ISN = 'local isn = ls.indent_snippet_node'
-	T = 'local t = ls.text_node'
-	I = 'local i = ls.insert_node'
-	F = 'local f = ls.function_node'
-	C = 'local c = ls.choice_node'
-	D = 'local d = ls.dynamic_node'
-	R = 'local r = ls.restore_node'
-	EVENTS = 'local events = require("luasnip.util.events")'
-	AI = 'local ai = require("luasnip.nodes.absolute_indexer")'
-	EXTRAS = 'local extras = require("luasnip.extras")'
-	L = 'local l = extras.lambda'
-	REP = 'local rep = extras.rep'
-	P = 'local p = extras.partial'
-	M = 'local m = extras.match'
-	N = 'local n = extras.nonempty'
-	DL = 'local dl = extras.dynamic_lambda'
-	FMT = 'local fmt = require("luasnip.extras.fmt").fmt'
-	FMTA = 'local fmta = require("luasnip.extras.fmt").fmta'
-	CONDS = 'local conds = require("luasnip.extras.expand_conditions")'
-	POSTFIX = 'local postfix = require("luasnip.extras.postfix").postfix'
-	TYPES = 'local types = require("luasnip.util.types")'
-	PARSE = 'local parse = require("luasnip.util.parser").parse_snippet'
-	MS = 'local ms = ls.multi_snippet'
-	K = 'local k = require("luasnip.nodes.key_indexer").new_key'
-	SU = 'local su = require("luasnip_snippets.common.snip_utils")'
-	CP = 'local cp = su.copy'
-	TR = 'local tr = su.transform'
-	RX_TR = 'local rx_tr = su.regex_transform'
-	JT = 'local jt = su.join_text'
-	NL = 'local nl = su.new_line'
-	TE = 'local te = su.trig_engine'
-	AE = 'local ae = su.args_expand'
-	C_PY = 'local c_py = su.code_python'
-	C_VIML = 'local c_viml = su.code_viml'
-	C_SHELL = 'local c_shell = su.code_shell'
-	MAKE_ACTIONS = 'local make_actions = su.make_actions'
-
-
 logging.config.dictConfig(LOG_CONFIG)
 logger = logging.getLogger(__name__)
 
 
 sys.path.append(str(Path.home().joinpath('.local/share/nvim/lazy/ultisnips/pythonx')))
-VisualContent = namedtuple('VisualContent', ['text', 'mode'])
 LUA_SPECIAL_CHAR_RX = re.compile(r'("|\'|\t|\n|\\)')
 INDENT_RE = re.compile(r'^([\t ]*)')
 KNOWN_LANGUAGES = {
@@ -168,6 +128,22 @@ def escape_multiline_lua_sting(text: str) -> str:
 			break
 		equal_signs += 1
 	return f'{start_delimiter}{text}{end_delimiter}'
+
+
+class Configuration:
+	def __init__(self, filetype: str):
+		config = {}
+		try:
+			with open('configuration.toml', 'rb') as fp:
+				config = tomllib.load(fp)
+		except FileNotFoundError:
+			pass
+
+		self.excluded_snippets: set[str] = set(config.get(filetype, {}).get('excluded_snippets', []))
+		self.additional_extends: list[str] = list(config.get(filetype, {}).get('additional_extends', []))
+
+	def __str__(self):
+		return f'additional_extends: {self.additional_extends!r}, exclude: {self.excluded_snippets!r}'
 
 
 class OrderedSet(dict):
@@ -561,7 +537,6 @@ def transform_tokens(tokens, lines, insert_nodes=None):
 def parse_snippet(snippet) -> tuple[list[LSNode], dict[int, int]]:
 	snippet_text = snippet._value
 	lines = snippet_text.splitlines(keepends=True)
-	#snippet.launch('', VisualContent('', 'v'), None, None, None)
 
 	if isinstance(snippet, SnipMateSnippetDefinition):
 		tokens = do_tokenize(None, snippet._value, snipmate_parsing.__ALLOWED_TOKENS, snipmate_parsing.__ALLOWED_TOKENS_IN_TABSTOPS, {ShellCodeToken: VimLCodeToken})
@@ -622,8 +597,9 @@ def parse_snippet(snippet) -> tuple[list[LSNode], dict[int, int]]:
 
 
 class ExtendedSnippetManager(SnippetManager):
-	def __init__(self, filetype: str):
+	def __init__(self, filetype: str, configuration: Configuration):
 		self.filetype = filetype
+		self.configuration = configuration
 		super().__init__('', '', '')
 
 	def get_all_snippets(self) -> list[SnippetDefinition]:
@@ -637,6 +613,7 @@ class ExtendedSnippetManager(SnippetManager):
 		for _, source in self._snippet_sources:
 			source.ensure(filetypes)
 			possible_snippets.extend(list(source._snippets[self.filetype]))
+		possible_snippets = [s for s in possible_snippets if not s.trigger in self.configuration.excluded_snippets]
 
 		for _, source in self._snippet_sources:
 			sclear_priority = source.get_clear_priority(filetypes)
@@ -664,14 +641,15 @@ class ExtendedSnippetManager(SnippetManager):
 
 		return snippets
 
-	def get_extends(self) -> set[str]:
+	def get_extends(self) -> list[str]:
 		filetypes = [self.filetype]
 		extends: set[str] = set()
 		for _, source in self._snippet_sources:
 			source.ensure(filetypes)
 			extends = extends.union(source.get_deep_extends(filetypes))
 		extends.discard(self.filetype)
-		return extends
+		extends = extends.union(set((self.configuration.additional_extends)))
+		return list(sorted(extends))
 
 
 def main():
@@ -685,7 +663,9 @@ def main():
 	output_dir = Path(args.output_dir)
 	output_dir.mkdir(parents=True, exist_ok=True)
 
-	manager = ExtendedSnippetManager(args.filetype)
+	configuration = Configuration(args.filetype)
+
+	manager = ExtendedSnippetManager(args.filetype, configuration)
 	included_filetypes = manager.get_extends()
 	snippets = manager.get_all_snippets()
 
