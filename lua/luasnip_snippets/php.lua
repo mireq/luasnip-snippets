@@ -27,7 +27,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -227,7 +227,7 @@ ls.add_snippets("php", {
 		t" * @param ", i(2, "string", {key = "i2"}), t" $", cp(1), nl(),
 		t" * @return ", d(3, function(args, snip) return sn(nil, { i(1, jt({c_py({"php", 2}, "snip.rv=snip.basename", python_globals, args, snip, "", am[2])}, " "), {key = "i3"}) }) end), nl(),
 		t" */", nl(),
-		t"public function set", tr(1, "\\w+\\s*", "\\u$0"), t"(", d(4, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "(void|string|int|integer|double|float|object|boolear|null|mixed|number|resource)|(.*)", "(?1::$2 )")}, ""), {key = "i4"}) }) end, k{"i2"}), t"$", cp(1), t")", nl(),
+		t"public function set", tr(1, "\\w+\\s*", "\\u$0"), t"(", d(4, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "(void|string|int|integer|double|float|object|boolear|null|mixed|number|resource)|(.*)", "(?1::$2 )")}, ""), {key = "i4"}) }) end, {k"i2"}), t"$", cp(1), t")", nl(),
 		t"{", nl(),
 		t"    $this->", cp(1), t" = $", cp(1), t";", nl(),
 		nl(),
@@ -251,7 +251,7 @@ ls.add_snippets("php", {
 		t" * @param ", cp(2), t" $", cp(1), nl(),
 		t" * @return ", d(3, function(args, snip) return sn(nil, { i(1, jt({c_py({"php", 3}, "snip.rv=snip.basename", python_globals, args, snip, "", am[3])}, " "), {key = "i3"}) }) end), nl(),
 		t" */", nl(),
-		t"public function set", tr(1, "\\w+\\s*", "\\u$0"), t"(", d(4, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "(void|string|int|integer|double|float|object|boolear|null|mixed|number|resource)|(.*)", "(?1::$2 )")}, ""), {key = "i4"}) }) end, k{"i2"}), t"$", cp(1), t")", nl(),
+		t"public function set", tr(1, "\\w+\\s*", "\\u$0"), t"(", d(4, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "(void|string|int|integer|double|float|object|boolear|null|mixed|number|resource)|(.*)", "(?1::$2 )")}, ""), {key = "i4"}) }) end, {k"i2"}), t"$", cp(1), t")", nl(),
 		t"{", nl(),
 		t"    $this->", cp(1), t" = $", cp(1), t";", nl(),
 		nl(),
@@ -338,7 +338,7 @@ ls.add_snippets("php", {
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "new", descr = "(new) \"New class instance\"", priority = -50, trigEngine = te("b")}, {
-		t"$", i(1, "variableName", {key = "i1"}), t" = new ", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "\\w+\\s*", "\\u$0")}, ""), {key = "i2"}) }) end, k{"i1"}), t"(", i(3, "", {key = "i3"}), t");", nl(),
+		t"$", i(1, "variableName", {key = "i1"}), t" = new ", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "\\w+\\s*", "\\u$0")}, ""), {key = "i2"}) }) end, {k"i1"}), t"(", i(3, "", {key = "i3"}), t");", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "ns", descr = "(ns) \"namespace declaration\"", priority = -50, trigEngine = te("b")}, {

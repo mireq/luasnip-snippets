@@ -5,6 +5,7 @@
 
 from collections import namedtuple, defaultdict
 from dataclasses import dataclass
+from enum import StrEnum
 from io import StringIO
 from pathlib import Path
 from typing import List, Tuple, Optional, Iterable
@@ -73,7 +74,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -87,6 +88,47 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 """
+
+
+class IMPORTS(StrEnum):
+	SN = 'local sn = ls.snippet_node'
+	ISN = 'local isn = ls.indent_snippet_node'
+	T = 'local t = ls.text_node'
+	I = 'local i = ls.insert_node'
+	F = 'local f = ls.function_node'
+	C = 'local c = ls.choice_node'
+	D = 'local d = ls.dynamic_node'
+	R = 'local r = ls.restore_node'
+	EVENTS = 'local events = require("luasnip.util.events")'
+	AI = 'local ai = require("luasnip.nodes.absolute_indexer")'
+	EXTRAS = 'local extras = require("luasnip.extras")'
+	L = 'local l = extras.lambda'
+	REP = 'local rep = extras.rep'
+	P = 'local p = extras.partial'
+	M = 'local m = extras.match'
+	N = 'local n = extras.nonempty'
+	DL = 'local dl = extras.dynamic_lambda'
+	FMT = 'local fmt = require("luasnip.extras.fmt").fmt'
+	FMTA = 'local fmta = require("luasnip.extras.fmt").fmta'
+	CONDS = 'local conds = require("luasnip.extras.expand_conditions")'
+	POSTFIX = 'local postfix = require("luasnip.extras.postfix").postfix'
+	TYPES = 'local types = require("luasnip.util.types")'
+	PARSE = 'local parse = require("luasnip.util.parser").parse_snippet'
+	MS = 'local ms = ls.multi_snippet'
+	K = 'local k = require("luasnip.nodes.key_indexer").new_key'
+	SU = 'local su = require("luasnip_snippets.common.snip_utils")'
+	CP = 'local cp = su.copy'
+	TR = 'local tr = su.transform'
+	RX_TR = 'local rx_tr = su.regex_transform'
+	JT = 'local jt = su.join_text'
+	NL = 'local nl = su.new_line'
+	TE = 'local te = su.trig_engine'
+	AE = 'local ae = su.args_expand'
+	C_PY = 'local c_py = su.code_python'
+	C_VIML = 'local c_viml = su.code_viml'
+	C_SHELL = 'local c_shell = su.code_shell'
+	MAKE_ACTIONS = 'local make_actions = su.make_actions'
+
 
 logging.config.dictConfig(LOG_CONFIG)
 logger = logging.getLogger(__name__)
@@ -372,7 +414,7 @@ class ParsedSnippet:
 							dynamic_node_content = ', '.join(self.token_to_dynamic_text(child, related_nodes) for child in token.children)
 							related_nodes_code = ''
 							if related_nodes:
-								related_nodes_code = f', k{{{", ".join(escape_lua_string("i" + str(v)) for v in related_nodes.keys())}}}'
+								related_nodes_code = f', {{{", ".join("k" + escape_lua_string("i" + str(v)) for v in related_nodes.keys())}}}'
 							snippet_body.write(f'd({token.number}, function(args, snip) return sn(nil, {{ i(1, jt({{{dynamic_node_content}}}, {escape_lua_string(node_indent)}), {{key = "i{token.original_number}"}}) }}) end{related_nodes_code})')
 					else:
 						snippet_body.write(f'i({token.number}, "", {{key = "i{token.original_number}"}})')

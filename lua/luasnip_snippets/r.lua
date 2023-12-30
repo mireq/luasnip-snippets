@@ -27,7 +27,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -131,9 +131,9 @@ ls.add_snippets("r", {
 		t"is.", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"r", 4}, "snip.rv = complete(t[1], FIELD_TYPES)", python_globals, args, snip, "", am[4]) end, ae(am[4])), t"(", i(2, "", {key = "i2"}), f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t")"
 	}),
 	s({trig = "dl", descr = "(dl) \"Download and install a package\"", priority = -20, trigEngine = te("b")}, {
-		t"download.file(\"", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"\", destfile = \"", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], ".*\\/(\\S*)$", "(?1:$1)")}, ""), {key = "i2"}) }) end, k{"i1"}), t"\")", nl(),
+		t"download.file(\"", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"\", destfile = \"", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], ".*\\/(\\S*)$", "(?1:$1)")}, ""), {key = "i2"}) }) end, {k"i1"}), t"\")", nl(),
 		t"install.packages(\"", cp(2), t"\", type = \"source\", repos = NULL)", nl(),
-		t"library(\"", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^(\\w+)_.*$", "(?1:$1)")}, ""), {key = "i3"}) }) end, k{"i2"}), t"\")"
+		t"library(\"", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^(\\w+)_.*$", "(?1:$1)")}, ""), {key = "i3"}) }) end, {k"i2"}), t"\")"
 	}),
 	s({trig = "lib", descr = "(lib) \"Import a library\"", priority = -20, trigEngine = te("")}, {
 		t"library(\'", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"\')"

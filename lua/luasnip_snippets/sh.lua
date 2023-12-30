@@ -27,7 +27,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -105,7 +105,7 @@ ls.add_snippets("sh", {
 	}),
 	s({trig = "temp", descr = "(temp) \"Tempfile\"", priority = -50, trigEngine = te("b")}, {
 		i(1, "TMPFILE", {key = "i1"}), t"=\"$(mktemp -t ", t"--suffix=", i(3, ".SUFFIX", {key = "i3"}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"sh", 3}, "\nsnip.rv = re.sub(r\'[^a-zA-Z]\', \'_\', snip.fn) or \"untitled\"\n", python_globals, args, snip, "", am[3])}, ""), {key = "i2"}) }) end), t".XXXXXX)\"", nl(),
-		tr(6, "(.+)", "trap \""), d(4, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'"}, ""), {key = "i6"}) }) end, k{"i1"}), tr(6, "(.+)", "\" 0               # EXIT\\n"), tr(7, "(.+)", "trap \""), d(5, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i7"}) }) end, k{"i1"}), tr(7, "(.+)", "\" 2       # INT\\n"), tr(8, "(.+)", "trap \""), d(6, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i8"}) }) end, k{"i1"}), tr(8, "(.+)", "\" 1 15    # HUP TERM\\n"), nl()
+		tr(6, "(.+)", "trap \""), d(4, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'"}, ""), {key = "i6"}) }) end, {k"i1"}), tr(6, "(.+)", "\" 0               # EXIT\\n"), tr(7, "(.+)", "trap \""), d(5, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i7"}) }) end, {k"i1"}), tr(7, "(.+)", "\" 2       # INT\\n"), tr(8, "(.+)", "trap \""), d(6, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i8"}) }) end, {k"i1"}), tr(8, "(.+)", "\" 1 15    # HUP TERM\\n"), nl()
 	}),
 	s({trig = "case|sw(itch)?", descr = "(case|sw(itch)?) \"case .. esac (case)\"", priority = -50, trigEngine = te("rb")}, {
 		t"case ", i(1, "word", {key = "i1"}), t" in", nl(),

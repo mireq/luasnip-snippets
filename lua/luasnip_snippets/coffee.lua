@@ -27,7 +27,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -62,15 +62,15 @@ local am = { -- argument mapping: token index to placeholder number
 	{{1, 2}},
 	2,
 	2,
-	3,
-	2,
-	2,
 	4,
 	4,
 	1,
 	0,
 	0,
 	0,
+	2,
+	3,
+	2,
 	4,
 	2,
 	3,
@@ -383,18 +383,6 @@ t"\t", i(4, "# body...", {key = "i4"}), nl(),
 	s({trig = "kv", descr = "(kv) \"Key:value for object\"", priority = -50, trigEngine = te("b")}, {
 		i(1, "key", {key = "i1"}), t":", i(2, "value", {key = "i2"})
 	}),
-	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
-		t"define [\"", i(1, "#dependencies1", {key = "i1"}), t"\"], (", i(2, "#dependencies2", {key = "i2"}), t") ->", nl(),
-		t"\t", i(0, "TARGET", {key = "i0"}), nl()
-	}),
-	s({trig = "defn", descr = "(defn)", priority = -1000, trigEngine = te("w")}, {
-		t"define \"", i(1, "#name", {key = "i1"}), t"\", [\"", i(2, "#dependencies1", {key = "i2"}), t"\"], (", i(3, "#dependencies2", {key = "i3"}), t") ->", nl(),
-		t"\t", i(0, "TARGET", {key = "i0"}), nl()
-	}),
-	s({trig = "reqjs", descr = "(reqjs)", priority = -1000, trigEngine = te("w")}, {
-		t"require [\"", i(1, "#dependencies1", {key = "i1"}), t"\"], (", i(2, "#dependencies2", {key = "i2"}), t") ->", nl(),
-		t"\t", i(0, "TARGET", {key = "i0"})
-	}),
 	s({trig = "forindo", descr = "(forindo)", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(1, "name", {key = "i1"}), t" in ", i(2, "array", {key = "i2"}), nl(),
 		t"\tdo (", cp(1), t") ->", nl(),
@@ -420,6 +408,18 @@ t"\t", i(4, "# body...", {key = "i4"}), nl(),
 	}),
 	s({trig = "jsons", descr = "(jsons)", priority = -1000, trigEngine = te("w")}, {
 		t"JSON.stringify ", i(0, "object", {key = "i0"})
+	}),
+	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
+		t"define [\"", i(1, "#dependencies1", {key = "i1"}), t"\"], (", i(2, "#dependencies2", {key = "i2"}), t") ->", nl(),
+		t"\t", i(0, "TARGET", {key = "i0"}), nl()
+	}),
+	s({trig = "defn", descr = "(defn)", priority = -1000, trigEngine = te("w")}, {
+		t"define \"", i(1, "#name", {key = "i1"}), t"\", [\"", i(2, "#dependencies1", {key = "i2"}), t"\"], (", i(3, "#dependencies2", {key = "i3"}), t") ->", nl(),
+		t"\t", i(0, "TARGET", {key = "i0"}), nl()
+	}),
+	s({trig = "reqjs", descr = "(reqjs)", priority = -1000, trigEngine = te("w")}, {
+		t"require [\"", i(1, "#dependencies1", {key = "i1"}), t"\"], (", i(2, "#dependencies2", {key = "i2"}), t") ->", nl(),
+		t"\t", i(0, "TARGET", {key = "i0"})
 	}),
 	s({trig = "ngc", descr = "(ngc)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "controllerName", {key = "i1"}), t" = (", i(2, "scope", {key = "i2"}), t", ", i(3, "injectables", {key = "i3"}), t") ->", nl(),

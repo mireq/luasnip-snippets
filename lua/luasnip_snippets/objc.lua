@@ -27,7 +27,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -196,13 +196,13 @@ ls.add_snippets("objc", {
 	}),
 	s({trig = "delegate", descr = "(delegate) \"Delegate Responds to Selector\"", priority = -50, trigEngine = te("")}, {
 		t"if([", i(1, "[self delegate]", {key = "i1"}), t" respondsToSelector:@selector(", i(2, "selfDidSomething:", {key = "i2"}), t")])", nl(),
-		t"\t[", cp(1), t" ", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "((^\\s*([A-Za-z0-9_]*:)\\s*)|(:\\s*$)|(:\\s*))", "(?2:$2self :\\:<>)(?4::)(?5: :)")}, "\t"), {key = "i3"}) }) end, k{"i2"}), t"];", nl()
+		t"\t[", cp(1), t" ", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "((^\\s*([A-Za-z0-9_]*:)\\s*)|(:\\s*$)|(:\\s*))", "(?2:$2self :\\:<>)(?4::)(?5: :)")}, "\t"), {key = "i3"}) }) end, {k"i2"}), t"];", nl()
 	}),
 	s({trig = "thread", descr = "(thread) \"Detach New NSThread\"", priority = -50, trigEngine = te("")}, {
 		t"[NSThread detachNewThreadSelector:@selector(", i(1, "method", {key = "i1"}), t":) toTarget:", i(2, "aTarget", {key = "i2"}), t" withObject:", i(3, "anArgument", {key = "i3"}), t"]"
 	}),
 	s({trig = "ibo", descr = "(ibo) \"IBOutlet (ibo)\"", priority = -50, trigEngine = te("")}, {
-		t"IBOutlet ", i(1, "NSSomeClass", {key = "i1"}), t" *", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^[A-Z](?:[A-Z]+|[a-z]+)([A-Z]\\w*)", "\\l$1")}, ""), {key = "i2"}) }) end, k{"i1"}), t";"
+		t"IBOutlet ", i(1, "NSSomeClass", {key = "i1"}), t" *", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^[A-Z](?:[A-Z]+|[a-z]+)([A-Z]\\w*)", "\\l$1")}, ""), {key = "i2"}) }) end, {k"i1"}), t";"
 	}),
 	s({trig = "I", descr = "(I) \"Initialize Implementation (I)\"", priority = -50, trigEngine = te("")}, {
 		t"+ (void)initialize", nl(),
@@ -219,7 +219,7 @@ ls.add_snippets("objc", {
 		{
 			t"- (void)addObjectTo", i(1, "Things", {key = "i1"}), t":(", i(2, "id", {key = "i2"}), t")anObject", nl(),
 			t"{", nl(),
-			t"\t[", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], ".", "\\l$0")}, "\t"), {key = "i3"}) }) end, k{"i1"}), t" addObject:anObject];", nl(),
+			t"\t[", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], ".", "\\l$0")}, "\t"), {key = "i3"}) }) end, {k"i1"}), t" addObject:anObject];", nl(),
 			t"}", nl(),
 			nl(),
 			t"- (void)insertObject:(", cp(2), t")anObject in", cp(1), t"AtIndex:(unsigned int)i", nl(),
@@ -296,18 +296,18 @@ ls.add_snippets("objc", {
 		t"[NSString stringWithFormat:@\"", i(1, "", {key = "i1"}), t"\", ", i(2, "", {key = "i2"}), t"]", i(0, "", {key = "i0"})
 	}),
 	s({trig = "prop", descr = "(prop) \"Property\"", priority = -50, trigEngine = te("")}, {
-		t"@property (", tr(1, "^(e)$|.*", "(?1:r)"), i(1, "r", {key = "i1"}), tr(1, "^(?:(r)|(e)|(c)|(a))$|.*", "(?1:etain)(?2:adonly)(?3:opy)(?4:ssign)"), t") ", i(2, "NSSomeClass", {key = "i2"}), t"$ *", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^[A-Z](?:[A-Z]+|[a-z]+)([A-Z]\\w*)", "\\l$1")}, ""), {key = "i3"}) }) end, k{"i2"}), t";"
+		t"@property (", tr(1, "^(e)$|.*", "(?1:r)"), i(1, "r", {key = "i1"}), tr(1, "^(?:(r)|(e)|(c)|(a))$|.*", "(?1:etain)(?2:adonly)(?3:opy)(?4:ssign)"), t") ", i(2, "NSSomeClass", {key = "i2"}), t"$ *", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^[A-Z](?:[A-Z]+|[a-z]+)([A-Z]\\w*)", "\\l$1")}, ""), {key = "i3"}) }) end, {k"i2"}), t";"
 	}),
 	s({trig = "getprefs", descr = "(getprefs) \"Read from defaults (getprefs)\"", priority = -50, trigEngine = te("")}, {
 		t"[[NSUserDefaults standardUserDefaults] objectForKey:", i(1, "key", {key = "i1"}), t"];"
 	}),
 	s({trig = "obs", descr = "(obs) \"Register for Notification\"", priority = -50, trigEngine = te("")}, {
-		t"[[NSNotificationCenter defaultCenter] addObserver:", i(1, "self", {key = "i1"}), t" selector:@selector(", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^([A-Z]{2})?(.+?)(Notification)?$", "\\l$2")}, ""), {key = "i3"}) }) end, k{"i2"}), t":) name:", i(2, "NSWindowDidBecomeMainNotification", {key = "i2"}), t" object:", i(4, "nil", {key = "i4"}), t"];"
+		t"[[NSNotificationCenter defaultCenter] addObserver:", i(1, "self", {key = "i1"}), t" selector:@selector(", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^([A-Z]{2})?(.+?)(Notification)?$", "\\l$2")}, ""), {key = "i3"}) }) end, {k"i2"}), t":) name:", i(2, "NSWindowDidBecomeMainNotification", {key = "i2"}), t" object:", i(4, "nil", {key = "i4"}), t"];"
 	}),
 	s({trig = "responds", descr = "(responds) \"Responds to Selector\"", priority = -50, trigEngine = te("")}, {
 		t"if ([", i(1, "self", {key = "i1"}), t" respondsToSelector:@selector(", i(2, "someSelector:", {key = "i2"}), t")])", nl(),
 		t"{", nl(),
-		t"\t\t[", cp(1), t" ", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "((:\\s*$)|(:\\s*))", ":<>(?3: )")}, "\t\t"), {key = "i3"}) }) end, k{"i2"}), t"];", nl(),
+		t"\t\t[", cp(1), t" ", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "((:\\s*$)|(:\\s*))", ":<>(?3: )")}, "\t\t"), {key = "i3"}) }) end, {k"i2"}), t"];", nl(),
 		t"}"
 	}),
 	s({trig = "gsave", descr = "(gsave) \"Save and Restore Graphics Context (gsave)\"", priority = -50, trigEngine = te("")}, {
@@ -338,7 +338,7 @@ ls.add_snippets("objc", {
 		t"\treturn ", cp(1), t";", nl(),
 		t"}", nl(),
 		nl(),
-		t"- (void)set", tr(1, ".*", "\\u$0"), t":(NSString *)/})", d(2, function(args, snip) return sn(nil, { i(1, jt({"a", rx_tr(args[1], ".*", "\\u$0")}, ""), {key = "i3"}) }) end, k{"i1"}), nl(),
+		t"- (void)set", tr(1, ".*", "\\u$0"), t":(NSString *)/})", d(2, function(args, snip) return sn(nil, { i(1, jt({"a", rx_tr(args[1], ".*", "\\u$0")}, ""), {key = "i3"}) }) end, {k"i1"}), nl(),
 		t"{", nl(),
 		t"\t", cp(3), t" = [", cp(3), t" copy];", nl(),
 		t"\t[", cp(2), t" release];", nl(),

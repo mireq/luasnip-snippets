@@ -27,7 +27,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -580,14 +580,14 @@ t"en"
 		t"before_validation_on_update"
 	}),
 	s({trig = "bt", descr = "(bt) \"belongs_to (bt)\"", priority = -50, trigEngine = te("")}, {
-		t"belongs_to :", i(1, "object", {key = "i1"}), t", class_name: \"", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}, ""), {key = "i3"}) }) end, k{"i1"}), t"\", foreign_key: \"", cp(1), t"_id", t"\""
+		t"belongs_to :", i(1, "object", {key = "i1"}), t", class_name: \"", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}, ""), {key = "i3"}) }) end, {k"i1"}), t"\", foreign_key: \"", cp(1), t"_id", t"\""
 	}),
 	s({trig = "crw", descr = "(crw) \"cattr_accessor\"", priority = -50, trigEngine = te("")}, {
 		t"cattr_accessor :", i(0, "attr_names", {key = "i0"})
 	}),
 	s({trig = "defcreate", descr = "(defcreate) \"def create - resource\"", priority = -50, trigEngine = te("")}, {
 		t"def create", nl(),
-		t"\t@", i(1, "model", {key = "i1"}), t" = ", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}, "\t"), {key = "i2"}) }) end, k{"i1"}), t".new(params[:", cp(1), t"])", nl(),
+		t"\t@", i(1, "model", {key = "i1"}), t" = ", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}, "\t"), {key = "i2"}) }) end, {k"i1"}), t".new(params[:", cp(1), t"])", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"\trespond_to do |wants|", nl(),
 		t"\t\tif @", cp(1), t".save", nl(),
@@ -654,7 +654,7 @@ t"en"
 		t"has_many :", i(1, "object", {key = "i1"}), t"s", t", class_name: \"", cp(1), t"\", foreign_key: \"", i(2, "reference", {key = "i2"}), t"_id\"", t", dependent: :destroy", i(0, "", {key = "i0"})
 	}),
 	s({trig = "ho", descr = "(ho) \"has_one (ho)\"", priority = -50, trigEngine = te("")}, {
-		t"has_one :", i(1, "object", {key = "i1"}), t", class_name: \"", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}, ""), {key = "i3"}) }) end, k{"i1"}), t"\", foreign_key: \"", cp(1), t"_id", t"\""
+		t"has_one :", i(1, "object", {key = "i1"}), t", class_name: \"", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}, ""), {key = "i3"}) }) end, {k"i1"}), t"\", foreign_key: \"", cp(1), t"_id", t"\""
 	}),
 	s({trig = "logd", descr = "(logd) \"logger.debug\"", priority = -50, trigEngine = te("")}, {
 		i(1, "Rails.", {key = "i1"}), t"logger.debug { \"", i(1, "message", {key = "i1"}), t"\" }", i(0, "", {key = "i0"})
@@ -1002,7 +1002,7 @@ t"en"
 		t"end"
 	}),
 	s({trig = "trans", descr = "(trans) \"Translation snippet\"", priority = -50, trigEngine = te("")}, {
-		t"I18n.t(\'", f(function(args, snip) return c_viml("substitute(substitute(substitute(@%, substitute(getcwd() . \"/\", \"\\/\", \"\\\\\\\\/\", \"g\"), \"\", \"\"), \"\\\\(\\\\.\\\\(html\\\\|js\\\\)\\\\.\\\\(haml\\\\|erb\\\\)\\\\|\\\\(_controller\\\\)\\\\?\\\\.rb\\\\)$\", \"\", \"\"), \"/\", \".\", \"g\")") end, {}), t".", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[^\\w]", "_")}, ""), {key = "i2"}) }) end, k{"i1"}), i(3, "", {key = "i3"}), t"\', default: \"", i(1, "some_text", {key = "i1"}), t"\"", i(4, "", {key = "i4"}), t")", i(0, "", {key = "i0"})
+		t"I18n.t(\'", f(function(args, snip) return c_viml("substitute(substitute(substitute(@%, substitute(getcwd() . \"/\", \"\\/\", \"\\\\\\\\/\", \"g\"), \"\", \"\"), \"\\\\(\\\\.\\\\(html\\\\|js\\\\)\\\\.\\\\(haml\\\\|erb\\\\)\\\\|\\\\(_controller\\\\)\\\\?\\\\.rb\\\\)$\", \"\", \"\"), \"/\", \".\", \"g\")") end, {}), t".", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[^\\w]", "_")}, ""), {key = "i2"}) }) end, {k"i1"}), i(3, "", {key = "i3"}), t"\', default: \"", i(1, "some_text", {key = "i1"}), t"\"", i(4, "", {key = "i4"}), t")", i(0, "", {key = "i0"})
 	}),
 	s({trig = "route_spec", descr = "(route_spec)", priority = -50, trigEngine = te("")}, {
 		t"it \'routes to #", i(1, "action", {key = "i1"}), t"\' do", nl(),

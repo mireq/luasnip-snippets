@@ -27,7 +27,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -42,13 +42,6 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	2,
-	1,
-	{{1, 1}, {2, 3}, {3, 7}, {4, 8}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 7}},
-	{{1, 2}, {2, 3}, {3, 7}},
-	{{1, 2}, {2, 4}, {3, 5}},
-	{{1, 1}, {2, 3}},
 	0,
 	0,
 	0,
@@ -103,6 +96,9 @@ local am = { -- argument mapping: token index to placeholder number
 	1,
 	2,
 	1,
+	2,
+	{{1, 1}, {2, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 7}},
 	3,
 	1,
 	1,
@@ -143,6 +139,7 @@ local am = { -- argument mapping: token index to placeholder number
 	1,
 	0,
 	2,
+	{{1, 2}, {2, 4}, {3, 5}},
 	1,
 	0,
 	1,
@@ -153,6 +150,9 @@ local am = { -- argument mapping: token index to placeholder number
 	1,
 	0,
 	1,
+	1,
+	{{1, 1}, {2, 3}, {3, 7}, {4, 8}},
+	{{1, 2}, {2, 3}, {3, 7}},
 	0,
 	0,
 	0,
@@ -366,28 +366,6 @@ local python_globals = {
 
 
 ls.add_snippets("html", {
-	s({trig = "id", descr = "(id)", priority = -49, trigEngine = te("")}, {
-		t"id=\"", i(1, "", {key = "i1"}), t"\"", i(2, "", {key = "i2"})
-	}),
-	s({trig = "idn", descr = "(idn)", priority = -49, trigEngine = te("")}, {
-		t"id=\"", i(1, "", {key = "i1"}), t"\" name=\"", cp(1), t"\""
-	}),
-	s({trig = "label_and_input", descr = "(label_and_input)", priority = -49, trigEngine = te("")}, {
-		t"<label for=\"", i(1, "", {key = "i1"}), t"\">", cp(1), t"</label>", nl(),
-		t"<input type=\"", i(2, "text", {key = "i2"}), t"\" name=\"", cp(2), t"\"", t" id=\"", cp(2), t"\"", t" value=\"", i(3, "", {key = "i7"}), t"\" />", i(4, "", {key = "i8"})
-	}),
-	s({trig = "input", descr = "(input)", priority = -49, trigEngine = te("")}, {
-		t"<input type=\"", i(1, "text", {key = "i1"}), t"\" value=\"", i(2, "", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\"", t" id=\"", cp(3), t"\"", t"/>", i(4, "", {key = "i7"})
-	}),
-	s({trig = "submit", descr = "(submit)", priority = -49, trigEngine = te("")}, {
-		t"<input type=\"submit\" value=\"", i(1, "", {key = "i2"}), t"\" ", i(2, "", {key = "i3"}), t"/>", i(3, "", {key = "i7"})
-	}),
-	s({trig = "textarea", descr = "(textarea)", priority = -49, trigEngine = te("")}, {
-		t"<textarea name=\"", i(1, "", {key = "i2"}), t"\"", t" id=\"", i(2, "", {key = "i4"}), t"\"", t">", i(3, "", {key = "i5"}), t"</textarea>"
-	}),
-	s({trig = "img", descr = "(img)", priority = -49, trigEngine = te("")}, {
-		t"<img src=\"", i(1, "", {key = "i1"}), t"\"", t" alt=\"", i(2, "", {key = "i3"}), t"\"", t"/>"
-	}),
 	s({trig = "doctype", descr = "(doctype) \"HTML - 5.0 (doctype)\"", priority = -50, trigEngine = te("b")}, {
 		t"<!DOCTYPE html>", nl()
 	}),
@@ -444,7 +422,7 @@ ls.add_snippets("html", {
 		t"<b>", i(1, "", {key = "i1"}), t"</b>"
 	}),
 	s({trig = "base", descr = "(base) \"HTML <base>\"", priority = -50, trigEngine = te("w")}, {
-		t"<base href=\"", i(1, "", {key = "i1"}), t"\"", t" target=\"", i(2, "", {key = "i3"}), t"\"", f(function(args, snip) return c_py({"html", 25}, "x(snip)", python_globals, args, snip, "", am[25]) end, ae(am[25])), t">"
+		t"<base href=\"", i(1, "", {key = "i1"}), t"\"", t" target=\"", i(2, "", {key = "i3"}), t"\"", f(function(args, snip) return c_py({"html", 18}, "x(snip)", python_globals, args, snip, "", am[18]) end, ae(am[18])), t">"
 	}),
 	s({trig = "blockquote", descr = "(blockquote) \"<blockquote>\"", priority = -50, trigEngine = te("")}, {
 		t"<blockquote>", i(1, "", {key = "i1"}), t"</blockquote>"
@@ -495,12 +473,12 @@ ls.add_snippets("html", {
 		t"</div>"
 	}),
 	s({trig = "div#", descr = "(div#) \"<div> with ID & class\"", priority = -50, trigEngine = te("w")}, {
-		t"<div", f(function(args, snip) return c_py({"html", 40}, "snip.rv=\' id=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[40]) end, ae(am[40])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 40}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[40]) end, ae(am[40])), f(function(args, snip) return c_py({"html", 40}, "snip.rv=\' class=\"\' if t[2] else \"\"", python_globals, args, snip, "", am[40]) end, ae(am[40])), i(2, "name", {key = "i2"}), f(function(args, snip) return c_py({"html", 40}, "snip.rv = \'\"\' if t[2] else \"\"", python_globals, args, snip, "", am[40]) end, ae(am[40])), t">", nl(),
+		t"<div", f(function(args, snip) return c_py({"html", 33}, "snip.rv=\' id=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[33]) end, ae(am[33])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 33}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[33]) end, ae(am[33])), f(function(args, snip) return c_py({"html", 33}, "snip.rv=\' class=\"\' if t[2] else \"\"", python_globals, args, snip, "", am[33]) end, ae(am[33])), i(2, "name", {key = "i2"}), f(function(args, snip) return c_py({"html", 33}, "snip.rv = \'\"\' if t[2] else \"\"", python_globals, args, snip, "", am[33]) end, ae(am[33])), t">", nl(),
 		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
 		t"</div>"
 	}),
 	s({trig = "div.", descr = "(div.) \"<div> with class\"", priority = -50, trigEngine = te("w")}, {
-		t"<div", f(function(args, snip) return c_py({"html", 41}, "snip.rv=\' class=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[41]) end, ae(am[41])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 41}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[41]) end, ae(am[41])), t">", nl(),
+		t"<div", f(function(args, snip) return c_py({"html", 34}, "snip.rv=\' class=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[34]) end, ae(am[34])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 34}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[34]) end, ae(am[34])), t">", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
 		t"</div>"
 	}),
@@ -536,7 +514,7 @@ ls.add_snippets("html", {
 		t"</footer>"
 	}),
 	s({trig = "form", descr = "(form) \"HTML <form>\"", priority = -50, trigEngine = te("w")}, {
-		t"<form action=\"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 49}, "\nsnip.rv = (snip.basename or \'unnamed\') + \'_submit\'\n", python_globals, args, snip, "", am[49])}, ""), {key = "i1"}) }) end), t"\" method=\"", i(2, "get", {key = "i2"}), t"\" accept-charset=\"utf-8\">", nl(),
+		t"<form action=\"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 42}, "\nsnip.rv = (snip.basename or \'unnamed\') + \'_submit\'\n", python_globals, args, snip, "", am[42])}, ""), {key = "i1"}) }) end), t"\" method=\"", i(2, "get", {key = "i2"}), t"\" accept-charset=\"utf-8\">", nl(),
 		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
 		t"</form>"
 	}),
@@ -561,7 +539,7 @@ ls.add_snippets("html", {
 	s({trig = "head", descr = "(head) \"HTML <head>\"", priority = -50, trigEngine = te("")}, {
 		t"<head>", nl(),
 		t"\t<meta charset=\"utf-8\">", nl(),
-		t"\t<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 56}, "snip.rv = snip.basename or \"Page Title\"", python_globals, args, snip, "", am[56])}, "\t"), {key = "i1"}) }) end), t"</title>", nl(),
+		t"\t<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 49}, "snip.rv = snip.basename or \"Page Title\"", python_globals, args, snip, "", am[49])}, "\t"), {key = "i1"}) }) end), t"</title>", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
 		t"</head>"
 	}),
@@ -579,7 +557,7 @@ ls.add_snippets("html", {
 		t"\t<head>", nl(),
 		t"\t\t<meta charset=\"UTF-8\" />", nl(),
 		t"\t\t<meta name=\"viewport\" content=\"width=device-width\" />", nl(),
-		t"\t\t<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 59}, "snip.rv = snip.basename.replace(\'-\', \' \').capitalize()", python_globals, args, snip, "", am[59])}, "\t\t"), {key = "i1"}) }) end), t"</title>", nl(),
+		t"\t\t<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 52}, "snip.rv = snip.basename.replace(\'-\', \' \').capitalize()", python_globals, args, snip, "", am[52])}, "\t\t"), {key = "i1"}) }) end), t"</title>", nl(),
 		t"\t</head>", nl(),
 		t"\t<body>", nl(),
 		t"\t\t", i(0, "body", {key = "i0"}), nl(),
@@ -592,7 +570,7 @@ ls.add_snippets("html", {
 		t"\t<head>", nl(),
 		t"\t\t<meta charset=\"UTF-8\" />", nl(),
 		t"\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />", nl(),
-		t"\t\t<title>", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 60}, "snip.rv = snip.basename.replace(\'-\', \' \').capitalize()", python_globals, args, snip, "", am[60])}, "\t\t"), {key = "i2"}) }) end), t"</title>", nl(),
+		t"\t\t<title>", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 53}, "snip.rv = snip.basename.replace(\'-\', \' \').capitalize()", python_globals, args, snip, "", am[53])}, "\t\t"), {key = "i2"}) }) end), t"</title>", nl(),
 		t"\t</head>", nl(),
 		t"\t<body>", nl(),
 		t"\t\t", i(0, "body", {key = "i0"}), nl(),
@@ -601,6 +579,15 @@ ls.add_snippets("html", {
 	}),
 	s({trig = "i", descr = "(i) \"<i>\"", priority = -50, trigEngine = te("w")}, {
 		t"<i>", i(1, "", {key = "i1"}), t"</i>"
+	}),
+	s({trig = "id", descr = "(id)", priority = -49, trigEngine = te("")}, {
+		t"id=\"", i(1, "", {key = "i1"}), t"\"", i(2, "", {key = "i2"})
+	}),
+	s({trig = "img", descr = "(img)", priority = -49, trigEngine = te("")}, {
+		t"<img src=\"", i(1, "", {key = "i1"}), t"\"", t" alt=\"", i(2, "", {key = "i3"}), t"\"", t"/>"
+	}),
+	s({trig = "input", descr = "(input)", priority = -49, trigEngine = te("")}, {
+		t"<input type=\"", i(1, "text", {key = "i1"}), t"\" value=\"", i(2, "", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\"", t" id=\"", cp(3), t"\"", t"/>", i(4, "", {key = "i7"})
 	}),
 	s({trig = "ins", descr = "(ins) \"<ins>\"", priority = -50, trigEngine = te("w")}, {
 		t"<ins cite=\"", i(2, "", {key = "i2"}), t"\" datetime=\"", d(3, function(args, snip) return sn(nil, { i(1, jt({c_shell("date \'+%Y-%m-%dT%H:%M:%S%:z\'")}, ""), {key = "i3"}) }) end), t"\">", i(1, "", {key = "i1"}), t"</ins>"
@@ -618,7 +605,7 @@ ls.add_snippets("html", {
 		t"<li>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</li>"
 	}),
 	s({trig = "link", descr = "(link) \"HTML <link>\"", priority = -50, trigEngine = te("w")}, {
-		t"<link rel=\"", i(1, "stylesheet", {key = "i1"}), t"\" href=\"", i(2, "/css/master.css", {key = "i2"}), t"\" type=\"text/css\" media=\"", i(3, "screen", {key = "i3"}), t"\" title=\"", i(4, "no title", {key = "i4"}), t"\" charset=\"", i(5, "utf-8", {key = "i5"}), t"\"", f(function(args, snip) return c_py({"html", 67}, "x(snip)", python_globals, args, snip, "", am[67]) end, ae(am[67])), t">"
+		t"<link rel=\"", i(1, "stylesheet", {key = "i1"}), t"\" href=\"", i(2, "/css/master.css", {key = "i2"}), t"\" type=\"text/css\" media=\"", i(3, "screen", {key = "i3"}), t"\" title=\"", i(4, "no title", {key = "i4"}), t"\" charset=\"", i(5, "utf-8", {key = "i5"}), t"\"", f(function(args, snip) return c_py({"html", 63}, "x(snip)", python_globals, args, snip, "", am[63]) end, ae(am[63])), t">"
 	}),
 	s({trig = "mailto", descr = "(mailto) \"HTML <a mailto: >\"", priority = -50, trigEngine = te("w")}, {
 		t"<a href=\"mailto:", i(1, "joe@example.com", {key = "i1"}), t"?subject=", i(2, "feedback", {key = "i2"}), t"\">", i(3, "email me", {key = "i3"}), t"</a>"
@@ -635,7 +622,7 @@ ls.add_snippets("html", {
 		t"<mark>", i(1, "", {key = "i1"}), t"</mark>"
 	}),
 	s({trig = "meta", descr = "(meta) \"HTML <meta>\"", priority = -50, trigEngine = te("w")}, {
-		t"<meta name=\"", i(1, "name", {key = "i1"}), t"\" content=\"", i(2, "content", {key = "i2"}), t"\"", f(function(args, snip) return c_py({"html", 72}, "x(snip)", python_globals, args, snip, "", am[72]) end, ae(am[72])), t">"
+		t"<meta name=\"", i(1, "name", {key = "i1"}), t"\" content=\"", i(2, "content", {key = "i2"}), t"\"", f(function(args, snip) return c_py({"html", 68}, "x(snip)", python_globals, args, snip, "", am[68]) end, ae(am[68])), t">"
 	}),
 	s({trig = "meter", descr = "(meter) \"<meter>\"", priority = -50, trigEngine = te("")}, {
 		t"<meter>", i(1, "", {key = "i1"}), t"</meter>"
@@ -707,10 +694,10 @@ ls.add_snippets("html", {
 		t"<span>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</span>"
 	}),
 	s({trig = "span#", descr = "(span#) \"<span> with ID & class\"", priority = -50, trigEngine = te("w")}, {
-		t"<span", f(function(args, snip) return c_py({"html", 92}, "snip.rv=\' id=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[92]) end, ae(am[92])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 92}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[92]) end, ae(am[92])), f(function(args, snip) return c_py({"html", 92}, "snip.rv=\' class=\"\' if t[2] else \"\"", python_globals, args, snip, "", am[92]) end, ae(am[92])), i(2, "name", {key = "i2"}), f(function(args, snip) return c_py({"html", 92}, "snip.rv = \'\"\' if t[2] else \"\"", python_globals, args, snip, "", am[92]) end, ae(am[92])), t">", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end), t"</span>"
+		t"<span", f(function(args, snip) return c_py({"html", 88}, "snip.rv=\' id=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[88]) end, ae(am[88])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 88}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[88]) end, ae(am[88])), f(function(args, snip) return c_py({"html", 88}, "snip.rv=\' class=\"\' if t[2] else \"\"", python_globals, args, snip, "", am[88]) end, ae(am[88])), i(2, "name", {key = "i2"}), f(function(args, snip) return c_py({"html", 88}, "snip.rv = \'\"\' if t[2] else \"\"", python_globals, args, snip, "", am[88]) end, ae(am[88])), t">", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end), t"</span>"
 	}),
 	s({trig = "span.", descr = "(span.) \"<span> with class\"", priority = -50, trigEngine = te("w")}, {
-		t"<span", f(function(args, snip) return c_py({"html", 93}, "snip.rv=\' class=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[93]) end, ae(am[93])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 93}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[93]) end, ae(am[93])), t">", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), t"</span>"
+		t"<span", f(function(args, snip) return c_py({"html", 89}, "snip.rv=\' class=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[89]) end, ae(am[89])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 89}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[89]) end, ae(am[89])), t">", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), t"</span>"
 	}),
 	s({trig = "strong", descr = "(strong) \"<strong>\"", priority = -50, trigEngine = te("w")}, {
 		t"<strong>", i(1, "", {key = "i1"}), t"</strong>"
@@ -742,6 +729,9 @@ ls.add_snippets("html", {
 		i(2, "", {key = "i2"}), nl(),
 		t"</template>"
 	}),
+	s({trig = "textarea", descr = "(textarea)", priority = -49, trigEngine = te("")}, {
+		t"<textarea name=\"", i(1, "", {key = "i2"}), t"\"", t" id=\"", i(2, "", {key = "i4"}), t"\"", t">", i(3, "", {key = "i5"}), t"</textarea>"
+	}),
 	s({trig = "tfoot", descr = "(tfoot) \"<tfoot>\"", priority = -50, trigEngine = te("")}, {
 		t"<tfoot>", i(1, "", {key = "i1"}), t"</tfoot>"
 	}),
@@ -755,7 +745,7 @@ ls.add_snippets("html", {
 		t"<time datetime=\"", i(2, "", {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</time>"
 	}),
 	s({trig = "title", descr = "(title) \"HTML <title>\"", priority = -50, trigEngine = te("w")}, {
-		t"<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 106}, "snip.rv = snip.basename or \"Page Title\"", python_globals, args, snip, "", am[106])}, ""), {key = "i1"}) }) end), t"</title>"
+		t"<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 103}, "snip.rv = snip.basename or \"Page Title\"", python_globals, args, snip, "", am[103])}, ""), {key = "i1"}) }) end), t"</title>"
 	}),
 	s({trig = "tr", descr = "(tr) \"table row\"", priority = -50, trigEngine = te("w")}, {
 		t"<tr>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</tr>"
@@ -773,6 +763,16 @@ ls.add_snippets("html", {
 	}),
 	s({trig = "wbr", descr = "(wbr) \"<wbr>\"", priority = -50, trigEngine = te("w")}, {
 		t"<wbr>", i(1, "", {key = "i1"}), t"</wbr>"
+	}),
+	s({trig = "idn", descr = "(idn)", priority = -49, trigEngine = te("")}, {
+		t"id=\"", i(1, "", {key = "i1"}), t"\" name=\"", cp(1), t"\""
+	}),
+	s({trig = "label_and_input", descr = "(label_and_input)", priority = -49, trigEngine = te("")}, {
+		t"<label for=\"", i(1, "", {key = "i1"}), t"\">", cp(1), t"</label>", nl(),
+		t"<input type=\"", i(2, "text", {key = "i2"}), t"\" name=\"", cp(2), t"\"", t" id=\"", cp(2), t"\"", t" value=\"", i(3, "", {key = "i7"}), t"\" />", i(4, "", {key = "i8"})
+	}),
+	s({trig = "submit", descr = "(submit)", priority = -49, trigEngine = te("")}, {
+		t"<input type=\"submit\" value=\"", i(1, "", {key = "i2"}), t"\" ", i(2, "", {key = "i3"}), t"/>", i(3, "", {key = "i7"})
 	}),
 	s({trig = "nbs", descr = "(nbs)", priority = -1000, trigEngine = te("w")}, {
 		t"&nbsp;"

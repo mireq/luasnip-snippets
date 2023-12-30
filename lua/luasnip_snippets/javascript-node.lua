@@ -27,7 +27,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -61,7 +61,7 @@ ls.add_snippets("javascript-node", {
 		t"#!/usr/bin/env node"
 	}),
 	s({trig = "vreq", descr = "(vreq) \"assign a CommonJS-style module to a var\"", priority = -50, trigEngine = te("")}, {
-		t"var ", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "(.+\\/)*(\\w+)(-|\\b|$)(\\..+$)?", "\\u$2")}, ""), {key = "i2"}) }) end, k{"i1"}), t" = require(\'", i(1, "", {key = "i1"}), t"\');"
+		t"var ", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "(.+\\/)*(\\w+)(-|\\b|$)(\\..+$)?", "\\u$2")}, ""), {key = "i2"}) }) end, {k"i1"}), t" = require(\'", i(1, "", {key = "i1"}), t"\');"
 	}),
 	s({trig = "ex", descr = "(ex) \"module.exports\"", priority = -50, trigEngine = te("")}, {
 		t"module.exports = ", i(1, "", {key = "i1"}), t";"

@@ -27,7 +27,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -92,9 +92,6 @@ local am = { -- argument mapping: token index to placeholder number
 	1,
 	{{1, 2}},
 	0,
-	2,
-	3,
-	2,
 	1,
 	0,
 	0,
@@ -132,6 +129,15 @@ local am = { -- argument mapping: token index to placeholder number
 	2,
 	3,
 	2,
+	2,
+	3,
+	2,
+	0,
+	3,
+	3,
+	2,
+	1,
+	2,
 	0,
 	1,
 	2,
@@ -406,12 +412,6 @@ local am = { -- argument mapping: token index to placeholder number
 	1,
 	2,
 	2,
-	2,
-	0,
-	3,
-	3,
-	2,
-	1,
 	2,
 }
 
@@ -639,21 +639,6 @@ i(2, "", {key = "i3"}), t"\t${3}", nl(), t", [", i(3, "", {key = "i4"}), t"])"
 	s({trig = "clstr", descr = "(clstr) \"console.log stringified\"", priority = -50, trigEngine = te("")}, {
 		t"console.log(JSON.stringify(", i(0, "", {key = "i0"}), t", null, 2))", f(function(args, snip) return c_py({"javascript", 50}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[50]) end, ae(am[50]))
 	}),
-	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
-		t"define([\"", i(1, "#dependencies1", {key = "i1"}), t"\"], function (", i(2, "#dependencies2", {key = "i2"}), t") {", nl(),
-		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
-		t"});", nl()
-	}),
-	s({trig = "defn", descr = "(defn)", priority = -1000, trigEngine = te("w")}, {
-		t"define(\"", i(1, "#name", {key = "i1"}), t"\", [\"", i(2, "#dependencies1", {key = "i2"}), t"\"], function (", i(3, "#dependencies2", {key = "i3"}), t") {", nl(),
-		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
-		t"});", nl()
-	}),
-	s({trig = "reqjs", descr = "(reqjs)", priority = -1000, trigEngine = te("w")}, {
-		t"require([\"", i(1, "#dependencies1", {key = "i1"}), t"\"], function (", i(2, "#dependencies2", {key = "i2"}), t") {", nl(),
-		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
-		t"});"
-	}),
 	s({trig = "irh", descr = "(irh) import React hooks", priority = -1000, trigEngine = te("w")}, {
 		t"import { use", i(1, "", {key = "i1"}), t" } from \'react\';", nl()
 	}),
@@ -831,6 +816,64 @@ i(2, "", {key = "i3"}), t"\t${3}", nl(), t", [", i(3, "", {key = "i4"}), t"])"
 	}),
 	s({trig = "rdcp", descr = "(rdcp) ReactDOM.createPortal", priority = -1000, trigEngine = te("w")}, {
 		t"ReactDOM.createPortal(", i(1, "child", {key = "i1"}), t", ", i(2, "container", {key = "i2"}), t");"
+	}),
+	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
+		t"define([\"", i(1, "#dependencies1", {key = "i1"}), t"\"], function (", i(2, "#dependencies2", {key = "i2"}), t") {", nl(),
+		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
+		t"});", nl()
+	}),
+	s({trig = "defn", descr = "(defn)", priority = -1000, trigEngine = te("w")}, {
+		t"define(\"", i(1, "#name", {key = "i1"}), t"\", [\"", i(2, "#dependencies1", {key = "i2"}), t"\"], function (", i(3, "#dependencies2", {key = "i3"}), t") {", nl(),
+		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
+		t"});", nl()
+	}),
+	s({trig = "reqjs", descr = "(reqjs)", priority = -1000, trigEngine = te("w")}, {
+		t"require([\"", i(1, "#dependencies1", {key = "i1"}), t"\"], function (", i(2, "#dependencies2", {key = "i2"}), t") {", nl(),
+		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
+		t"});"
+	}),
+	s({trig = "ist", descr = "(ist)", priority = -1000, trigEngine = te("w")}, {
+		t"import { createStore } from \'redux\';"
+	}),
+	s({trig = "con", descr = "(con)", priority = -1000, trigEngine = te("w")}, {
+		t"connect(", i(1, "mapStateToProps", {key = "i1"}), t", ", i(2, "mapDispatchToProps", {key = "i2"}), t")(<", i(3, "VISUAL", {key = "i3"}), t"/>);"
+	}),
+	s({trig = "act", descr = "(act)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "actionName", {key = "i1"}), t" = (", i(2, "arg", {key = "i2"}), t") => {", nl(),
+		t"\treturn {", nl(),
+		t"\t\ttype: ", i(3, "VISUAL", {key = "i3"}), t",", nl(),
+		t"\t\t", cp(2), nl(),
+		t"\t};", nl(),
+		t"};"
+	}),
+	s({trig = "rdc", descr = "(rdc)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "reducerName", {key = "i1"}), t" = (state={}, action) => {", nl(),
+		t"\tswitch(action.type) {", nl(),
+		t"\t\tcase ", i(1, "action", {key = "i1"}), t":", nl(),
+		t"\t\t\treturn {", nl(),
+		t"\t\t\t\t...state,", nl(),
+		t"\t\t\t\t", i(2, "", {key = "i2"}), nl(),
+		t"\t\t\t};", nl(),
+		t"\t\tdefault:", nl(),
+		t"\t\t\treturn state;", nl(),
+		t"\t};", nl(),
+		t"};"
+	}),
+	s({trig = "mstp", descr = "(mstp)", priority = -1000, trigEngine = te("w")}, {
+		t"const mapStateToProps = (state) => {", nl(),
+		t"\treturn {", nl(),
+		t"\t\t", i(1, "propName", {key = "i1"}), t": state.", cp(1), t",", nl(),
+		t"\t};", nl(),
+		t"};"
+	}),
+	s({trig = "mdtp", descr = "(mdtp)", priority = -1000, trigEngine = te("w")}, {
+		t"const mapDispatchToProps = (dispatch) => {", nl(),
+		t"\treturn {", nl(),
+		t"\t\t", i(1, "propName", {key = "i1"}), t": () => {", nl(),
+		t"\t\t\tdispatch(", i(2, "actionName", {key = "i2"}), t"());", nl(),
+		t"\t\t},", nl(),
+		t"\t};", nl(),
+		t"};"
 	}),
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
 		t"#!/usr/bin/env node"
@@ -1961,48 +2004,5 @@ i(2, "", {key = "i3"}), t"\t${3}", nl(), t", [", i(3, "", {key = "i4"}), t"])"
 	}),
 	s({trig = "wrap", descr = "(wrap)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "obj", {key = "i1"}), t".wrap(\'", i(2, "&lt;div class=\"extra-wrapper\"&gt;&lt;/div&gt;", {key = "i2"}), t"\')"
-	}),
-	s({trig = "ist", descr = "(ist)", priority = -1000, trigEngine = te("w")}, {
-		t"import { createStore } from \'redux\';"
-	}),
-	s({trig = "con", descr = "(con)", priority = -1000, trigEngine = te("w")}, {
-		t"connect(", i(1, "mapStateToProps", {key = "i1"}), t", ", i(2, "mapDispatchToProps", {key = "i2"}), t")(<", i(3, "VISUAL", {key = "i3"}), t"/>);"
-	}),
-	s({trig = "act", descr = "(act)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "actionName", {key = "i1"}), t" = (", i(2, "arg", {key = "i2"}), t") => {", nl(),
-		t"\treturn {", nl(),
-		t"\t\ttype: ", i(3, "VISUAL", {key = "i3"}), t",", nl(),
-		t"\t\t", cp(2), nl(),
-		t"\t};", nl(),
-		t"};"
-	}),
-	s({trig = "rdc", descr = "(rdc)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "reducerName", {key = "i1"}), t" = (state={}, action) => {", nl(),
-		t"\tswitch(action.type) {", nl(),
-		t"\t\tcase ", i(1, "action", {key = "i1"}), t":", nl(),
-		t"\t\t\treturn {", nl(),
-		t"\t\t\t\t...state,", nl(),
-		t"\t\t\t\t", i(2, "", {key = "i2"}), nl(),
-		t"\t\t\t};", nl(),
-		t"\t\tdefault:", nl(),
-		t"\t\t\treturn state;", nl(),
-		t"\t};", nl(),
-		t"};"
-	}),
-	s({trig = "mstp", descr = "(mstp)", priority = -1000, trigEngine = te("w")}, {
-		t"const mapStateToProps = (state) => {", nl(),
-		t"\treturn {", nl(),
-		t"\t\t", i(1, "propName", {key = "i1"}), t": state.", cp(1), t",", nl(),
-		t"\t};", nl(),
-		t"};"
-	}),
-	s({trig = "mdtp", descr = "(mdtp)", priority = -1000, trigEngine = te("w")}, {
-		t"const mapDispatchToProps = (dispatch) => {", nl(),
-		t"\treturn {", nl(),
-		t"\t\t", i(1, "propName", {key = "i1"}), t": () => {", nl(),
-		t"\t\t\tdispatch(", i(2, "actionName", {key = "i2"}), t"());", nl(),
-		t"\t\t},", nl(),
-		t"\t};", nl(),
-		t"};"
 	}),
 })

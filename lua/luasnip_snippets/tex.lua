@@ -27,7 +27,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -316,7 +316,7 @@ ls.add_snippets("tex", {
 		t"\t\\centering", nl(),
 		t"\t", t"\\includegraphics[width=0.8\\textwidth]{", i(2, "", {key = "i3"}), t"}", nl(),
 		t"\t\\caption{", cp(3), t"}", nl(),
-		t"\t\\label{fig:", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "\\W+", "-")}, "\t"), {key = "i5"}) }) end, k{"i2"}), t"}", nl(),
+		t"\t\\label{fig:", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "\\W+", "-")}, "\t"), {key = "i5"}) }) end, {k"i2"}), t"}", nl(),
 		t"\\end{figure}"
 	}),
 	s({trig = "abs", descr = "(abs) \"abstract environment\"", priority = 0, trigEngine = te("b")}, {

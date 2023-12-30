@@ -27,7 +27,7 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
-local su = require("luasnip_snippets.snip_utils")
+local su = require("luasnip_snippets.common.snip_utils")
 local cp = su.copy
 local tr = su.transform
 local rx_tr = su.regex_transform
@@ -42,10 +42,10 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
+	4,
 	1,
 	1,
 	3,
-	4,
 	3,
 	3,
 	3,
@@ -64,6 +64,13 @@ local am = { -- argument mapping: token index to placeholder number
 	6,
 }
 ls.add_snippets("typescript", {
+	s({trig = "rfc", descr = "(rfc) \"react functional component\"", priority = -49, trigEngine = te("")}, {
+		t"import React, { FC } from \"react\"", nl(),
+		nl(),
+		t"interface ", i(1, "function_name", {key = "i1"}), t"Props {", i(4, "props_types", {key = "i4"}), t"}", nl(),
+		nl(),
+		t"export const ", i(1, "function_name", {key = "i1"}), t": FC<", i(1, "function_name", {key = "i1"}), t"Props> = (", i(2, "props", {key = "i2"}), t") => ", i(3, "function_body", {key = "i3"})
+	}),
 	s({trig = "int", descr = "(int) \"interface\"", priority = -50, trigEngine = te("")}, {
 		t"interface ", i(1, "", {key = "i1"}), t" {", nl(),
 		t"}"
@@ -76,13 +83,6 @@ ls.add_snippets("typescript", {
 		t"function ", i(1, "function_name", {key = "i1"}), t" (", i(2, "argument", {key = "i2"}), t": ", i(3, "argument_type", {key = "i3"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}"
-	}),
-	s({trig = "rfc", descr = "(rfc) \"react functional component\"", priority = -49, trigEngine = te("")}, {
-		t"import React, { FC } from \"react\"", nl(),
-		nl(),
-		t"interface ", i(1, "function_name", {key = "i1"}), t"Props {", i(4, "props_types", {key = "i4"}), t"}", nl(),
-		nl(),
-		t"export const ", i(1, "function_name", {key = "i1"}), t": FC<", i(1, "function_name", {key = "i1"}), t"Props> = (", i(2, "props", {key = "i2"}), t") => ", i(3, "function_body", {key = "i3"})
 	}),
 	s({trig = "tconst", descr = "(tconst) \"ts const\"", priority = -1000, trigEngine = te("w")}, {
 		t"const ", i(1, "", {key = "i1"}), t": ", i(2, "any", {key = "i2"}), t" = ", i(3, "", {key = "i3"}), t";", nl(),
