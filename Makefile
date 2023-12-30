@@ -10,5 +10,9 @@ all: $(TARGETS)
 lua/luasnip_snippets/%.lua:
 	./tools/ultisnips_to_luasnip.py `basename $@ .lua` lua/luasnip_snippets
 
+# Clean target to remove generated files
+clean:
+	rm -f $(TARGETS)
+
 # Phony target to avoid conflicts with actual files
-.PHONY: all
+.PHONY: all clean
