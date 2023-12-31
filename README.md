@@ -3,6 +3,11 @@ Native luasnip snippets
 
 This repository contains luasnip snippets ported from [vim-snippets](https://github.com/honza/vim-snippets) repository
 
+Screenshots
+-----------
+
+![Screenshot](https://raw.github.com/wiki/mireq/luasnip-snippets/snippets.gif)
+
 Installation
 ------------
 
