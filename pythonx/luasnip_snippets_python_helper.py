@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 import functools
 import os
+import re
 from collections import namedtuple
 
 import vim
+
+
+_Placeholder = namedtuple("_FrozenPlaceholder", ["current_text", "start", "end"])
 
 
 class VimBuffer:
@@ -221,8 +225,6 @@ class SnippetUtil:
 
 	@property
 	def p(self):
-		if self._parent.current_placeholder:
-			return self._parent.current_placeholder
 		return _Placeholder("", 0, 0)
 
 	@property
@@ -281,17 +283,18 @@ class _Tabs:
 
 	def __getitem__(self, no):
 		no = self._mapping.get(int(no), int(no))
-		tab_idx = no - 1
 		current_text = ''
-		if tab_idx >= 0 and tab_idx < len(self._tabs):
-			current_text = self._tabs[tab_idx]
+		if no >= 0 and no < len(self._tabs):
+			current_text = self._tabs[no]
 		return current_text
 
 	def __setitem__(self, no, value):
 		no = self._mapping.get(int(no), int(no))
-		tab_idx = no - 1
-		if tab_idx >= 0 and tab_idx < len(self._tabs):
-			self._tabs[tab_idx] = value
+		if no >= 0 and no < len(self._tabs):
+			self._tabs[no] = value
+
+	def __repr__(self):
+		return f'{self.__class__.__name__}({self._tabs!r}, {self._mapping!r})'
 
 
 @functools.cache
@@ -305,6 +308,9 @@ node_locals = {}
 def get_node_locals(node_id):
 	node_locals.setdefault(node_id, {})
 	return node_locals[node_id]
+
+
+INDENT_RE = re.compile(r'^[ \t]*')
 
 
 def execute_code(node_id, node_code, global_code, tabstops, env, indent, tabstop_mapping):
@@ -322,17 +328,20 @@ def execute_code(node_id, node_code, global_code, tabstops, env, indent, tabstop
 	context = None
 	start = (int(env['TM_LINE_NUMBER']), int(env['LS_CAPTURE_1']))
 	end = (int(env['TM_LINE_NUMBER']), int(env['LS_CAPTURE_2']))
+	indent = INDENT_RE.match(env['TM_CURRENT_LINE']).group(0)
 	snip = SnippetUtil(indent, vim.eval("visualmode()"), text, context, start, end)
 	path = vim.eval('expand("%")') or ""
 
 	if isinstance(tabstop_mapping, list):
-		tabstop_mapping = {val: key for key, val in tabstop_mapping}
+		source_map = {}
+		for i, val in enumerate(tabstop_mapping):
+			source_map[val[1]] = i
 	else:
-		tabstop_mapping = None
+		source_map = None
 
 	node_locals = get_node_locals(tuple(node_id))
 	node_locals.update({
-		't': _Tabs(['\n'.join(tab) for tab in tabstops], tabstop_mapping),
+		't': _Tabs(['\n'.join(tab) for tab in tabstops], source_map),
 		'fn': os.path.basename(path),
 		'cur': '',
 		'res': '',
@@ -347,4 +356,5 @@ def execute_code(node_id, node_code, global_code, tabstops, env, indent, tabstop
 			raise
 
 	rv = str(snip.rv if snip._rv_changed else node_locals["res"])
-	return rv.splitlines()
+	lines = rv.splitlines()
+	return [line[line.startswith(indent) and len(indent):] for line in lines]
