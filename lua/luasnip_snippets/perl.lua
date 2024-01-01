@@ -42,69 +42,85 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	3,
-	5,
-	2,
-	2,
-	2,
-	2,
-	2,
-	3,
-	{{1, 1}, {2, 3}},
-	3,
-	3,
-	{{1, 2}, {2, 3}, {3, 4}},
-	2,
-	2,
-	2,
-	2,
-	2,
-	0,
-	0,
-	1,
-	1,
-	1,
-	3,
-	1,
-	1,
-	2,
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	1,
-	0,
-	0,
-	2,
-	1,
-	1,
-	1,
-	3,
-	1,
-	1,
-	1,
-	2,
-	4,
-	2,
-	0,
-	0,
-	0,
-	1,
-	3,
-	2,
-	2,
-	0,
-	1,
-	1,
-	2,
+	{},
+	{},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}},
+	{},
+	{{0, 0}},
+	{},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{},
+	{},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
 }
 ls.add_snippets("perl", {
+	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
+		t"#!/usr/bin/env perl", nl()
+	}),
+	s({trig = ".", descr = "(.)", priority = -1000, trigEngine = te("w")}, {
+		t" =>"
+	}),
+	s({trig = "sub", descr = "(sub) \"Function (sub)\"", priority = -50, trigEngine = te("")}, {
+		t"sub ", i(1, "function_name", {key = "i1"}), t" {", nl(),
+		t"\t", i(2, "# body...", {key = "i2"}), nl(),
+		t"}", nl()
+	}),
+	s({trig = "if", descr = "(if) \"if\"", priority = -50, trigEngine = te("")}, {
+		t"if (", i(1, "", {key = "i1"}), t") {", nl(),
+		t"\t", i(2, "# body...", {key = "i2"}), nl(),
+		t"}", nl()
+	}),
 	s({trig = "ife", descr = "(ife) \"Conditional if..else (ife)\"", priority = -50, trigEngine = te("")}, {
 		t"if (", i(1, "", {key = "i1"}), t") {", nl(),
 		t"\t", i(2, "# body...", {key = "i2"}), nl(),
@@ -124,43 +140,21 @@ ls.add_snippets("perl", {
 		t"\t", i(5, "# else...", {key = "i5"}), nl(),
 		t"}", nl()
 	}),
-	s({trig = "xunless", descr = "(xunless) \"Conditional one-line (unless)\"", priority = -50, trigEngine = te("")}, {
-		i(1, "expression", {key = "i1"}), t" unless ", i(2, "condition", {key = "i2"}), t";", nl()
+	s({trig = "eif", descr = "(eif)", priority = -1000, trigEngine = te("w")}, {
+		t"elsif (", i(1, "", {key = "i1"}), t") {", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}"
 	}),
 	s({trig = "xif", descr = "(xif) \"Conditional one-line (xif)\"", priority = -50, trigEngine = te("")}, {
 		i(1, "expression", {key = "i1"}), t" if ", i(2, "condition", {key = "i2"}), t";", nl()
 	}),
-	s({trig = "sub", descr = "(sub) \"Function (sub)\"", priority = -50, trigEngine = te("")}, {
-		t"sub ", i(1, "function_name", {key = "i1"}), t" {", nl(),
+	s({trig = "unless", descr = "(unless) \"unless\"", priority = -50, trigEngine = te("")}, {
+		t"unless (", i(1, "", {key = "i1"}), t") {", nl(),
 		t"\t", i(2, "# body...", {key = "i2"}), nl(),
 		t"}", nl()
 	}),
-	s({trig = "xfore", descr = "(xfore) \"Loop one-line (xforeach)\"", priority = -50, trigEngine = te("")}, {
-		i(1, "expression", {key = "i1"}), t" foreach @", i(2, "array", {key = "i2"}), t";", nl()
-	}),
-	s({trig = "xwhile", descr = "(xwhile) \"Loop one-line (xwhile)\"", priority = -50, trigEngine = te("")}, {
-		i(1, "expression", {key = "i1"}), t" while ", i(2, "condition", {key = "i2"}), t";", nl()
-	}),
-	s({trig = "test", descr = "(test) \"Test\"", priority = -50, trigEngine = te("")}, {
-		t"#!/usr/bin/env perl -w", nl(),
-		nl(),
-		t"use strict;", nl(),
-		t"use Test::More tests => ", i(1, "1", {key = "i1"}), t";", nl(),
-		t"use ", i(2, "ModuleName", {key = "i2"}), t";", nl(),
-		nl(),
-		t"ok(", i(3, "assertion", {key = "i3"}), t");", nl()
-	}),
-	s({trig = "class", descr = "(class) \"class\"", priority = -50, trigEngine = te("")}, {
-		t"package ", i(1, "ClassName", {key = "i1"}), t";", nl(),
-		nl(),
-		t"use parent qw(", i(2, "ParentClass", {key = "i2"}), t");", tr(2, ".+", "\\n\\n"), t"sub new {", nl(),
-		t"\tmy $class = shift;", nl(),
-		t"\t$class = ref $class if ref $class;", nl(),
-		t"\tmy $self = bless {}, $class;", nl(),
-		t"\t$self;", nl(),
-		t"}", nl(),
-		nl(),
-		t"1;", nl()
+	s({trig = "xunless", descr = "(xunless) \"Conditional one-line (unless)\"", priority = -50, trigEngine = te("")}, {
+		i(1, "expression", {key = "i1"}), t" unless ", i(2, "condition", {key = "i2"}), t";", nl()
 	}),
 	s({trig = "eval", descr = "(eval) \"eval\"", priority = -50, trigEngine = te("")}, {
 		t"local $@;", nl(),
@@ -170,50 +164,6 @@ ls.add_snippets("perl", {
 		t"if (my $", i(2, "exception", {key = "i2"}), t" = $@) {", nl(),
 		t"\t", i(3, "# handle failure...", {key = "i3"}), nl(),
 		t"}", nl()
-	}),
-	s({trig = "for", descr = "(for) \"for\"", priority = -50, trigEngine = te("")}, {
-		t"for (my $", i(1, "var", {key = "i1"}), t" = 0; $", cp(1), t" < ", i(2, "expression", {key = "i2"}), t"; $", cp(1), t"++) {", nl(),
-		t"\t", i(3, "# body...", {key = "i3"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "fore", descr = "(fore) \"foreach\"", priority = -50, trigEngine = te("")}, {
-		t"foreach ", t"my $", i(1, "x", {key = "i1"}), t" (@", i(2, "array", {key = "i2"}), t") {", nl(),
-		t"\t", i(3, "# body...", {key = "i3"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "if", descr = "(if) \"if\"", priority = -50, trigEngine = te("")}, {
-		t"if (", i(1, "", {key = "i1"}), t") {", nl(),
-		t"\t", i(2, "# body...", {key = "i2"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "slurp", descr = "(slurp) \"slurp\"", priority = -50, trigEngine = te("")}, {
-		t"my $", i(1, "var", {key = "i1"}), t" = do { local $/ = undef; open my $fh, \'<\', ", i(2, "$file", {key = "i2"}), t"; <$fh> };", nl()
-	}),
-	s({trig = "unless", descr = "(unless) \"unless\"", priority = -50, trigEngine = te("")}, {
-		t"unless (", i(1, "", {key = "i1"}), t") {", nl(),
-		t"\t", i(2, "# body...", {key = "i2"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "while", descr = "(while) \"while\"", priority = -50, trigEngine = te("")}, {
-		t"while (", i(1, "", {key = "i1"}), t") {", nl(),
-		t"\t", i(2, "# body...", {key = "i2"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "until", descr = "(until) \"until\"", priority = -50, trigEngine = te("")}, {
-		t"until (", i(1, "", {key = "i1"}), t") {", nl(),
-		t"\t", i(2, "# body...", {key = "i2"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
-		t"#!/usr/bin/env perl", nl()
-	}),
-	s({trig = ".", descr = "(.)", priority = -1000, trigEngine = te("w")}, {
-		t" =>"
-	}),
-	s({trig = "eif", descr = "(eif)", priority = -1000, trigEngine = te("w")}, {
-		t"elsif (", i(1, "", {key = "i1"}), t") {", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}"
 	}),
 	s({trig = "wh", descr = "(wh)", priority = -1000, trigEngine = te("w")}, {
 		t"while (", i(1, "", {key = "i1"}), t") {", nl(),
@@ -230,6 +180,16 @@ ls.add_snippets("perl", {
 	}),
 	s({trig = "xfor", descr = "(xfor)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "", {key = "i1"}), t" for @", i(0, "", {key = "i0"}), t";"
+	}),
+	s({trig = "for", descr = "(for) \"for\"", priority = -50, trigEngine = te("")}, {
+		t"for (my $", i(1, "var", {key = "i1"}), t" = 0; $", cp(1), t" < ", i(2, "expression", {key = "i2"}), t"; $", cp(1), t"++) {", nl(),
+		t"\t", i(3, "# body...", {key = "i3"}), nl(),
+		t"}", nl()
+	}),
+	s({trig = "fore", descr = "(fore) \"foreach\"", priority = -50, trigEngine = te("")}, {
+		t"foreach ", d(1, function(args) return sn(nil, {t"my $", i(2, "x", {key = "i2"})}) end, {}, {key = "i1"}), t" (@", i(3, "array", {key = "i3"}), t") {", nl(),
+		t"\t", i(4, "# body...", {key = "i4"}), nl(),
+		t"}", nl()
 	}),
 	s({trig = "package", descr = "(package)", priority = -1000, trigEngine = te("w")}, {
 		t"package ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("expand(\'%:p:s?.*lib/??:r:gs?/?::?\')")}, ""), {key = "i1"}) }) end), t";", nl(),
@@ -262,6 +222,9 @@ ls.add_snippets("perl", {
 	}),
 	s({trig = "parent", descr = "(parent)", priority = -1000, trigEngine = te("w")}, {
 		t"use parent qw(", i(0, "Parent Class", {key = "i0"}), t");"
+	}),
+	s({trig = "slurp", descr = "(slurp) \"slurp\"", priority = -50, trigEngine = te("")}, {
+		t"my $", i(1, "var", {key = "i1"}), t" = do { local $/ = undef; open my $fh, \'<\', ", i(2, "$file", {key = "i2"}), t"; <$fh> };", nl()
 	}),
 	s({trig = "strwar", descr = "(strwar)", priority = -1000, trigEngine = te("w")}, {
 		t"use strict;", nl(),
@@ -484,5 +447,42 @@ ls.add_snippets("perl", {
 		t"subtest \'", i(1, " test_name", {key = "i1"}), t"\' => sub {", nl(),
 		t"\t", i(2, "", {key = "i2"}), nl(),
 		t"};"
+	}),
+	s({trig = "xfore", descr = "(xfore) \"Loop one-line (xforeach)\"", priority = -50, trigEngine = te("")}, {
+		i(1, "expression", {key = "i1"}), t" foreach @", i(2, "array", {key = "i2"}), t";", nl()
+	}),
+	s({trig = "xwhile", descr = "(xwhile) \"Loop one-line (xwhile)\"", priority = -50, trigEngine = te("")}, {
+		i(1, "expression", {key = "i1"}), t" while ", i(2, "condition", {key = "i2"}), t";", nl()
+	}),
+	s({trig = "test", descr = "(test) \"Test\"", priority = -50, trigEngine = te("")}, {
+		t"#!/usr/bin/env perl -w", nl(),
+		nl(),
+		t"use strict;", nl(),
+		t"use Test::More tests => ", i(1, "1", {key = "i1"}), t";", nl(),
+		t"use ", i(2, "ModuleName", {key = "i2"}), t";", nl(),
+		nl(),
+		t"ok(", i(3, "assertion", {key = "i3"}), t");", nl()
+	}),
+	s({trig = "class", descr = "(class) \"class\"", priority = -50, trigEngine = te("")}, {
+		t"package ", i(1, "ClassName", {key = "i1"}), t";", nl(),
+		nl(),
+		d(2, function(args) return sn(nil, {t"use parent qw(", i(3, "ParentClass", {key = "i3"}), t");"}) end, {}, {key = "i2"}), tr(2, ".+", "\\n\\n"), t"sub new {", nl(),
+		t"\tmy $class = shift;", nl(),
+		t"\t$class = ref $class if ref $class;", nl(),
+		t"\tmy $self = bless {}, $class;", nl(),
+		t"\t$self;", nl(),
+		t"}", nl(),
+		nl(),
+		t"1;", nl()
+	}),
+	s({trig = "while", descr = "(while) \"while\"", priority = -50, trigEngine = te("")}, {
+		t"while (", i(1, "", {key = "i1"}), t") {", nl(),
+		t"\t", i(2, "# body...", {key = "i2"}), nl(),
+		t"}", nl()
+	}),
+	s({trig = "until", descr = "(until) \"until\"", priority = -50, trigEngine = te("")}, {
+		t"until (", i(1, "", {key = "i1"}), t") {", nl(),
+		t"\t", i(2, "# body...", {key = "i2"}), nl(),
+		t"}", nl()
 	}),
 })

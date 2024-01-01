@@ -42,12 +42,12 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	0,
-	1,
-	1,
-	1,
-	1,
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
 }
 ls.add_snippets("bash", {
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
@@ -59,21 +59,21 @@ ls.add_snippets("bash", {
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"if [[ ", i(1, "", {key = "i1"}), t" ]]; then", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"fi"
 	}),
 	s({trig = "elif", descr = "(elif)", priority = -1000, trigEngine = te("w")}, {
 		t"elif [[ ", i(1, "", {key = "i1"}), t" ]]; then", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end)
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end)
 	}),
 	s({trig = "wh", descr = "(wh)", priority = -1000, trigEngine = te("w")}, {
 		t"while [[ ", i(1, "", {key = "i1"}), t" ]]; do", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"done"
 	}),
 	s({trig = "until", descr = "(until)", priority = -1000, trigEngine = te("w")}, {
 		t"until [[ ", i(1, "", {key = "i1"}), t" ]]; do", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"done"
 	}),
 })

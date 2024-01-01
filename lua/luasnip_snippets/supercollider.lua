@@ -42,23 +42,13 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	3,
-	{{1, 1}, {2, 3}},
-	0,
-	1,
-	2,
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
 }
 ls.add_snippets("supercollider", {
-	s({trig = "for", descr = "(for)", priority = 0, trigEngine = te("")}, {
-		t"for (", i(1, "1", {key = "i1"}), t", ", i(2, "10", {key = "i2"}), t") {", i(3, " |i", {key = "i3"}), t"|}", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "sdef", descr = "(sdef)", priority = 0, trigEngine = te("")}, {
-		t"SynthDef(\\", i(1, "synthName", {key = "i1"}), t", {", t" |", i(2, "x", {key = "i2"}), t"|", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}).add;"
-	}),
 	s({trig = "b", descr = "(b)", priority = -1000, trigEngine = te("w")}, {
 		t"(", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
@@ -75,5 +65,15 @@ ls.add_snippets("supercollider", {
 		t"} {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
+	}),
+	s({trig = "for", descr = "(for)", priority = 0, trigEngine = te("")}, {
+		t"for (", i(1, "1", {key = "i1"}), t", ", i(2, "10", {key = "i2"}), t") {", i(3, " |i", {key = "i3"}), t"|}", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "sdef", descr = "(sdef)", priority = 0, trigEngine = te("")}, {
+		t"SynthDef(\\", i(1, "synthName", {key = "i1"}), t", {", d(2, function(args) return sn(nil, {t" |", i(3, "x", {key = "i3"}), t"|"}) end, {}, {key = "i2"}), nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}).add;"
 	}),
 })

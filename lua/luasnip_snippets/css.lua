@@ -42,1110 +42,731 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	0,
-	{{1, 2}, {2, 3}, {3, 4}, {4, 5}},
-	{{1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}},
-	3,
-	4,
-	3,
-	4,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	1,
-	1,
-	3,
-	0,
-	0,
-	1,
-	1,
-	1,
-	5,
-	1,
-	1,
-	3,
-	3,
-	1,
-	1,
-	1,
-	1,
-	3,
-	1,
-	1,
-	1,
-	3,
-	1,
-	1,
-	1,
-	1,
-	3,
-	1,
-	3,
-	1,
-	1,
-	1,
-	3,
-	1,
-	1,
-	1,
-	0,
-	1,
-	0,
-	1,
-	1,
-	2,
-	1,
-	1,
-	1,
-	1,
-	6,
-	3,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	3,
-	1,
-	1,
-	1,
-	1,
-	1,
-	4,
-	2,
-	0,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	4,
-	2,
-	1,
-	1,
-	1,
-	{{1, 1}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}, {7, 8}, {8, 9}},
-	3,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	2,
-	7,
-	1,
-	1,
-	4,
-	1,
-	7,
-	1,
-	1,
-	4,
-	1,
-	2,
-	1,
-	2,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	5,
-	1,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	1,
-	0,
-	1,
-	0,
-	0,
-	0,
-	1,
-	1,
-	2,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	1,
-	0,
-	3,
-	3,
-	1,
-	1,
-	0,
-	1,
-	0,
-	0,
-	1,
-	1,
-	0,
-	0,
-	1,
-	1,
-	0,
-	1,
-	1,
-	0,
-	1,
-	0,
-	1,
-	0,
-	0,
-	1,
-	1,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	7,
-	0,
-	3,
-	1,
-	1,
-	0,
-	1,
-	0,
-	1,
-	1,
-	0,
-	1,
-	0,
-	1,
-	3,
-	1,
-	1,
-	0,
-	1,
-	0,
-	1,
-	1,
-	0,
-	1,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	3,
-	1,
-	1,
-	0,
-	1,
-	0,
-	0,
-	1,
-	1,
-	0,
-	0,
-	1,
-	1,
-	0,
-	1,
-	1,
-	0,
-	1,
-	0,
-	1,
-	0,
-	4,
-	0,
-	1,
-	0,
-	0,
-	1,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	4,
-	1,
-	1,
-	1,
-	0,
-	1,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	1,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	3,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	1,
-	1,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	1,
-	1,
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	1,
-	2,
-	1,
-	1,
-	1,
-	1,
-	2,
-	0,
-	1,
-	0,
-	1,
-	0,
-	2,
-	1,
-	1,
-	2,
-	1,
-	1,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	1,
-	1,
-	1,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	1,
-	0,
-	1,
-	0,
-	1,
-	0,
-	1,
-	0,
-	4,
-	3,
-	2,
-	0,
-	0,
-	1,
-	0,
-	1,
-	0,
-	1,
-	1,
-	1,
-	1,
-	0,
-	1,
-	0,
-	3,
-	1,
-	0,
-	1,
-	1,
-	1,
-	1,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	1,
-	1,
-	1,
-	4,
-	3,
-	2,
-	0,
-	1,
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	1,
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	2,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	1,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	3,
-	1,
-	0,
-	1,
-	0,
-	4,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	2,
-	2,
+	{{0, 0}, {1, 1}, {2, 2}},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{},
+	{{0, 0}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{1, 1}},
+	{},
+	{},
+	{},
+	{{1, 1}},
+	{},
+	{},
+	{},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{},
+	{{1, 1}},
+	{},
+	{{1, 1}},
+	{},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}},
+	{{0, 0}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
 }
 ls.add_snippets("css", {
-	s({trig = "p", descr = "(p) \"padding\"", priority = -50, trigEngine = te("")}, {
-		t"padding: ", i(1, "0", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "m", descr = "(m) \"margin\"", priority = -50, trigEngine = te("")}, {
-		t"margin: ", i(1, "0", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "bd", descr = "(bd) \"border\"", priority = -50, trigEngine = te("")}, {
-		t"border: ", i(1, "0", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "d", descr = "(d) \"display\"", priority = -50, trigEngine = te("")}, {
-		t"display: ", i(1, "none", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "bg", descr = "(bg) \"background\"", priority = -50, trigEngine = te("")}, {
-		t"background: ", i(1, "none", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "ff", descr = "(ff) \"font-family\"", priority = -50, trigEngine = te("")}, {
-		t"font-family: ", i(1, "\"Helvetica Neue\", Helvetica, Arial, sans-serif", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "h", descr = "(h) \"height\"", priority = -50, trigEngine = te("")}, {
-		t"height: ", i(1, "auto", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "w", descr = "(w) \"width\"", priority = -50, trigEngine = te("")}, {
-		t"width: ", i(1, "auto", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "pos", descr = "(pos) \"position\"", priority = -50, trigEngine = te("")}, {
-		t"position: ", i(1, "relative", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "tt", descr = "(tt) \"text-transform\"", priority = -50, trigEngine = te("")}, {
-		t"text-transform: ", i(1, "none", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "!", descr = "(!) \"!important CSS (!)\"", priority = -50, trigEngine = te("")}, {
-		t"!important"
-	}),
-	s({trig = "tsh", descr = "(tsh) \"text-shadow: color-hex x y blur (text)\"", priority = -50, trigEngine = te("")}, {
-		t"text-shadow: ", i(1, "offset-x", {key = "i1"}), t" ", i(2, "offset-y", {key = "i2"}), t" ", i(3, "blur", {key = "i3"}), t" ", i(4, "color", {key = "i4"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "bxsh", descr = "(bxsh) \"box-shadow: color-hex x y blur (text)\"", priority = -50, trigEngine = te("")}, {
-		t"box-shadow: ", i(1, "offset-x", {key = "i1"}), t" ", i(2, "offset-y", {key = "i2"}), t" ", i(3, "blur", {key = "i3"}), t" ", i(4, "spread", {key = "i4"}), t" ", i(5, "color", {key = "i5"}), t" ", i(6, "inset", {key = "i6"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "rgb", descr = "(rgb) \"color rgb\"", priority = -50, trigEngine = te("")}, {
-		t"rgb(", i(1, "255", {key = "i1"}), t", ", i(2, "255", {key = "i2"}), t", ", i(3, "255", {key = "i3"}), t")", i(0, "", {key = "i0"})
-	}),
-	s({trig = "rgba", descr = "(rgba) \"color rgba\"", priority = -50, trigEngine = te("")}, {
-		t"rgba(", i(1, "255", {key = "i1"}), t", ", i(2, "255", {key = "i2"}), t", ", i(3, "255", {key = "i3"}), t", ", i(4, "0.5", {key = "i4"}), t")", i(0, "", {key = "i0"})
-	}),
-	s({trig = "hsl", descr = "(hsl) \"color hsl\"", priority = -50, trigEngine = te("")}, {
-		t"hsl(", i(1, "360", {key = "i1"}), t", ", i(2, "100", {key = "i2"}), t"%, ", i(3, "100", {key = "i3"}), t"%)", i(0, "", {key = "i0"})
-	}),
-	s({trig = "hsla", descr = "(hsla) \"color hsla\"", priority = -50, trigEngine = te("")}, {
-		t"hsla(", i(1, "360", {key = "i1"}), t", ", i(2, "100", {key = "i2"}), t"%, ", i(3, "100", {key = "i3"}), t"%, ", i(4, "0.5", {key = "i4"}), t")", i(0, "", {key = "i0"})
-	}),
-	s({trig = ":fc", descr = "(:fc)", priority = -50, trigEngine = te("")}, {
-		t":first-child"
-	}),
-	s({trig = ":lc", descr = "(:lc)", priority = -50, trigEngine = te("")}, {
-		t":last-child"
-	}),
-	s({trig = ":nc", descr = "(:nc)", priority = -50, trigEngine = te("")}, {
-		t":nth-child(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = ":nlc", descr = "(:nlc)", priority = -50, trigEngine = te("")}, {
-		t":nth-last-child(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = ":oc", descr = "(:oc)", priority = -50, trigEngine = te("")}, {
-		t":only-child"
-	}),
-	s({trig = ":a", descr = "(:a)", priority = -50, trigEngine = te("")}, {
-		t":after"
-	}),
-	s({trig = ":b", descr = "(:b)", priority = -50, trigEngine = te("")}, {
-		t":before"
-	}),
-	s({trig = "::a", descr = "(::a)", priority = -50, trigEngine = te("")}, {
-		t"::after"
-	}),
-	s({trig = "::b", descr = "(::b)", priority = -50, trigEngine = te("")}, {
-		t"::before"
-	}),
-	s({trig = "background", descr = "(background) \"background:  color image repeat attachment position (background)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"background-attachment: ", i(1, "scroll/fixed", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"background-color: #", i(1, "DDD", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"background-color: ", i(1, "red", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"background-color: rgb(", i(1, "255", {key = "i1"}), t",", i(2, "255", {key = "i2"}), t",", i(3, "255", {key = "i3"}), t");", i(4, "", {key = "i4"})
-		},
-		{
-			t"background-color: transparent;", i(1, "", {key = "i1"})
-		},
-		{
-			t"background-image: none;", i(1, "", {key = "i1"})
-		},
-		{
-			t"background-image: url(", i(1, "", {key = "i1"}), t");", i(2, "", {key = "i2"})
-		},
-		{
-			t"background-position: ", i(1, "top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"background-repeat: ", i(1, "repeat/repeat-x/repeat-y/no-repeat", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"background:", t" #", i(1, "DDD", {key = "i1"}), t" url(", i(2, "", {key = "i2"}), t") ", i(3, "repeat/repeat-x/repeat-y/no-repeat", {key = "i3"}), t" ", i(4, "scroll/fixed", {key = "i4"}), t" ", i(5, "top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos", {key = "i5"}), t";", i(6, "", {key = "i6"})
-		},
-	})),
-	s({trig = "border", descr = "(border) \"border:   size style color (border)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"border-bottom-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"border-bottom-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"border-bottom-width: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i4"})
-		},
-		{
-			t"border-bottom: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i4"})
-		},
-		{
-			t"border-color: ", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"border-right-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"border-left-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"border-left-width: ", i(1, "1", {key = "i1"}), t"px"
-		},
-		{
-			t"border-left: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i4"})
-		},
-		{
-			t"border-right-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"border-right-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"border-right-width: ", i(1, "1", {key = "i1"}), t"px"
-		},
-		{
-			t"border-right: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i4"})
-		},
-		{
-			t"border-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"border-top-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"border-top-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"border-top-width: ", i(1, "1", {key = "i1"}), t"px"
-		},
-		{
-			t"border-top: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i4"})
-		},
-		{
-			t"border-width: ", i(1, "1px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"border: ", i(1, "1px", {key = "i1"}), t" ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i4"})
-		},
-	})),
-	s({trig = "clear", descr = "(clear) \"clear: value (clear)\"", priority = -50, trigEngine = te("")}, {
-		t"clear: ", i(1, "left/right/both/none", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "color", descr = "(color) \"color:  color-rgb (color)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"color: #", i(1, "DDD", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"color: ", i(1, "red", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"color: rgb(", i(1, "255", {key = "i1"}), t",", i(2, "255", {key = "i2"}), t",", i(3, "255", {key = "i3"}), t");", i(4, "", {key = "i4"})
-		},
-	})),
-	s({trig = "cursor", descr = "(cursor) \"cursor: url (cursor)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"cursor: ", i(1, "default/auto/crosshair/pointer/move/*-resize/text/wait/help", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"cursor: url(", i(1, "", {key = "i1"}), t");", i(2, "", {key = "i2"})
-		},
-	})),
-	s({trig = "direction", descr = "(direction) \"direction: ltr|rtl (direction)\"", priority = -50, trigEngine = te("")}, {
-		t"direction: ", i(1, "ltr|rtl", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "display", descr = "(display) \"display: table-types (display)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"display: block;", i(1, "", {key = "i1"})
-		},
-		{
-			t"display: ", i(1, "none/inline/block/list-item/run-in/compact/marker", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"display: inline;", i(1, "", {key = "i1"})
-		},
-		{
-			t"display: ", i(1, "table/inline-table/table-row-group/table-header-group/table-footer-group/table-row/table-column-group/table-column/table-cell/table-caption", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-	})),
-	s({trig = "float", descr = "(float) \"float: left:right:none (float)\"", priority = -50, trigEngine = te("")}, {
-		t"float: ", i(1, "left/right/none", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "font", descr = "(font) \"font: size font (font)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"font-family: ", i(1, "Arial, \"MS Trebuchet\"", {key = "i1"}), t", ", i(2, "sans-", {key = "i2"}), t"serif;", i(3, "", {key = "i3"})
-		},
-		{
-			t"font-size: ", i(1, "100%", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"font-style: ", i(1, "normal/italic/oblique", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"font-variant: ", i(1, "normal/small-caps", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"font-weight: ", i(1, "normal/bold", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"font: ", i(1, "normal/italic/oblique", {key = "i1"}), t" ", i(2, "normal/small-caps", {key = "i2"}), t" ", i(3, "normal/bold", {key = "i3"}), t" ", i(4, "1em/1.5em", {key = "i4"}), t" ", i(5, "Arial", {key = "i5"}), t", ", i(6, "sans-", {key = "i6"}), t"serif;", i(7, "", {key = "i7"})
-		},
-		{
-			t"font: ", i(1, "75%", {key = "i1"}), t" ", i(2, "\"Lucida Grande\", \"Trebuchet MS\", Verdana,", {key = "i2"}), t" ", i(3, "sans-", {key = "i3"}), t"serif;", i(4, "", {key = "i4"})
-		},
-	})),
-	s({trig = "letter", descr = "(letter) \"letter-spacing:   length-px (letter)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"letter-spacing: ", i(1, "", {key = "i1"}), t"em;", i(2, "", {key = "i2"})
-		},
-		{
-			t"letter-spacing: ", i(1, "", {key = "i1"}), t"px;", i(2, "", {key = "i2"})
-		},
-	})),
-	s({trig = "list", descr = "(list) \"list-style: type position image (list)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"list-style-image: url(", i(1, "", {key = "i1"}), t");", i(2, "", {key = "i2"})
-		},
-		{
-			t"list-style-position: ", i(1, "inside/outside", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"list-style-type: ", i(1, "cjk-ideographic/hiragana/katakana/hiragana-iroha/katakana-iroha", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"list-style-type: ", i(1, "none/disc/circle/square", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"list-style-type: ", i(1, "decimal/decimal-leading-zero/zero", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"list-style-type: ", i(1, "hebrew/armenian/georgian", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"list-style-type: ", i(1, "lower-roman/upper-roman/lower-alpha/upper-alpha/lower-greek/lower-latin/upper-latin", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"list-style: ", i(1, "none/disc/circle/square/decimal/zero", {key = "i1"}), t" ", i(2, "inside/outside", {key = "i2"}), t" url(", i(3, "", {key = "i3"}), t");", i(4, "", {key = "i4"})
-		},
-	})),
-	s({trig = "margin", descr = "(margin) \"margin: V H (margin)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"margin-bottom: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"margin-left: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"margin-right: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"margin-top: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"margin: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"margin: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t" ", i(3, "40px", {key = "i3"}), t" ", i(4, "0px", {key = "i4"}), t";", i(5, "", {key = "i5"})
-		},
-		{
-			t"margin: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t";", i(3, "", {key = "i3"})
-		},
-	})),
-	s({trig = "marker", descr = "(marker) \"marker-offset: length (marker)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"marker-offset: auto;", i(1, "", {key = "i1"})
-		},
-		{
-			t"marker-offset: ", i(1, "10px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-	})),
-	s({trig = "overflow", descr = "(overflow) \"overflow: type (overflow)\"", priority = -50, trigEngine = te("")}, {
-		t"overflow: ", i(1, "visible/hidden/scroll/auto", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "padding", descr = "(padding) \"padding:   all (padding)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"padding-bottom: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"padding-left: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"padding-right: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"padding-top: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"padding: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t" ", i(3, "40px", {key = "i3"}), t" ", i(4, "0px", {key = "i4"}), t";", i(5, "", {key = "i5"})
-		},
-		{
-			t"padding: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t";", i(3, "", {key = "i3"})
-		},
-		{
-			t"padding: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-	})),
-	s({trig = "position", descr = "(position) \"position: type (position)\"", priority = -50, trigEngine = te("")}, {
-		t"position: ", i(1, "static/relative/absolute/fixed", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "{", descr = "({) \"properties { } ( } )\"", priority = -50, trigEngine = te("")}, {
-		t"{", nl(),
-		t"\t/* ", i(1, "", {key = "i1"}), t" */", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
-	}),
-	s({trig = "scrollbar", descr = "(scrollbar) \"scrollbar\"", priority = -50, trigEngine = te("")}, {
-		t"scrollbar-base-color:       ", i(1, "#CCCCCC", {key = "i1"}), t";", nl(),
-t"scrollbar-arrow-color:      $", i(2, "#000000", {key = "i2"}), nl(),
-t"scrollbar-track-color:      $", i(3, "#999999", {key = "i3"}), nl(),
-t"scrollbar-3dlight-color:    $", i(4, "#EEEEEE", {key = "i4"}), nl(),
-t"scrollbar-highlight-color:  $", i(5, "#FFFFFF", {key = "i5"}), nl(),
-t"scrollbar-face-color:       $", i(6, "#CCCCCC", {key = "i6"}), nl(),
-t"scrollbar-shadow-color:     $", i(8, "#999999", {key = "i8"}), nl(),
-t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-darkshadow-color: ${8:#666666}"
-	}),
-	s({trig = "selection", descr = "(selection) \"selection\"", priority = -50, trigEngine = te("")}, {
-		i(1, "", {key = "i1"}), t"::-moz-selection,", nl(),
-		cp(1), t"::selection {", nl(),
-		t"\tcolor: ", i(2, "inherit", {key = "i2"}), t";", nl(),
-		t"\tbackground: ", i(3, "inherit", {key = "i3"}), t";", nl(),
-		t"}"
-	}),
-	s({trig = "text", descr = "(text) \"text-transform: capitalize:upper:lower (text)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"text-align: ", i(1, "left/right/center/justify", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"text-decoration: ", i(1, "none/underline/overline/line-through/blink", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-		{
-			t"text-indent: ", i(1, "10", {key = "i1"}), t"px;", i(2, "", {key = "i2"})
-		},
-		{
-			t"text-transform: ", i(1, "capitalize/uppercase/lowercase", {key = "i1"}), t";", i(2, "", {key = "i2"})
-		},
-	})),
-	s({trig = "vertical", descr = "(vertical) \"vertical-align: type (vertical)\"", priority = -50, trigEngine = te("")}, {
-		t"vertical-align: ", i(1, "baseline/sub/super/top/text-top/middle/bottom/text-bottom/length/%", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "visibility", descr = "(visibility) \"visibility: type (visibility)\"", priority = -50, trigEngine = te("")}, {
-		t"visibility: ", i(1, "visible/hidden/collapse", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "white", descr = "(white) \"white-space:  normal:pre:nowrap (white)\"", priority = -50, trigEngine = te("")}, {
-		t"white-space: ", i(1, "normal/pre/nowrap", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "word", descr = "(word) \"word-spacing:  length (word)\"", priority = -50, trigEngine = te("")}, {
-		t"word-spacing: ", i(1, "10px", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
-	s({trig = "z", descr = "(z) \"z-index: index (z)\"", priority = -50, trigEngine = te("")}, {
-		t"z-index: ", i(1, "", {key = "i1"}), t";", i(0, "", {key = "i0"})
-	}),
 	s({trig = ".", descr = "(.) \"selector { }\"", priority = -1000, trigEngine = te("w")}, {
 		i(1, "", {key = "i1"}), t" {", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
 		t"}", i(0, "", {key = "i0"})
+	}),
+	s({trig = "!", descr = "(!) \"!important CSS (!)\"", priority = -50, trigEngine = te("")}, {
+		t"!important"
 	}),
 	s({trig = "bdi:m+", descr = "(bdi:m+)", priority = -1000, trigEngine = te("w")}, {
 		t"-moz-border-image: url(", i(1, "", {key = "i1"}), t") ", i(2, "0", {key = "i2"}), t" ", i(3, "0", {key = "i3"}), t" ", i(4, "0", {key = "i4"}), t" ", i(5, "0", {key = "i5"}), t" ", i(6, "stretch", {key = "i6"}), t" ", i(7, "stretch", {key = "i7"}), t";", i(0, "", {key = "i0"})
@@ -1388,6 +1009,9 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	}),
 	s({trig = "bgz:cv", descr = "(bgz:cv)", priority = -1000, trigEngine = te("w")}, {
 		t"background-size: cover;"
+	}),
+	s({trig = "bg", descr = "(bg) \"background\"", priority = -50, trigEngine = te("")}, {
+		t"background: ", i(1, "none", {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "bg:ie", descr = "(bg:ie)", priority = -1000, trigEngine = te("w")}, {
 		t"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=\'", i(1, "", {key = "i1"}), t"\',sizingMethod=\'", i(0, "crop", {key = "i0"}), t"\');"
@@ -1668,6 +1292,9 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	s({trig = "bdw", descr = "(bdw)", priority = -1000, trigEngine = te("w")}, {
 		t"border-width: ", i(1, "", {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
+	s({trig = "bd", descr = "(bd) \"border\"", priority = -50, trigEngine = te("")}, {
+		t"border: ", i(1, "0", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
 	s({trig = "bd:n", descr = "(bd:n)", priority = -1000, trigEngine = te("w")}, {
 		t"border: none;"
 	}),
@@ -1679,6 +1306,9 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	}),
 	s({trig = "bxsh+", descr = "(bxsh+)", priority = -1000, trigEngine = te("w")}, {
 		t"box-shadow: ", i(1, "0", {key = "i1"}), t" ", i(2, "0", {key = "i2"}), t" ", i(3, "0", {key = "i3"}), t" #", i(4, "000", {key = "i4"}), t";", i(0, "", {key = "i0"})
+	}),
+	s({trig = "bxsh", descr = "(bxsh) \"box-shadow: color-hex x y blur (text)\"", priority = -50, trigEngine = te("")}, {
+		t"box-shadow: ", d(1, function(args) return sn(nil, {i(2, "offset-x", {key = "i2"}), t" ", i(3, "offset-y", {key = "i3"}), t" ", i(4, "blur", {key = "i4"}), t" ", i(5, "spread", {key = "i5"}), t" ", i(6, "color", {key = "i6"}), t" ", i(7, "inset", {key = "i7"})}) end, {}, {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "bxsh:n", descr = "(bxsh:n)", priority = -1000, trigEngine = te("w")}, {
 		t"box-shadow: none;"
@@ -1787,6 +1417,9 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	}),
 	s({trig = "cur:t", descr = "(cur:t)", priority = -1000, trigEngine = te("w")}, {
 		t"cursor: text;"
+	}),
+	s({trig = "d", descr = "(d) \"display\"", priority = -50, trigEngine = te("")}, {
+		t"display: ", i(1, "none", {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "d:mib", descr = "(d:mib)", priority = -1000, trigEngine = te("w")}, {
 		t"display: -moz-inline-box;"
@@ -1967,6 +1600,9 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	}),
 	s({trig = "fem", descr = "(fem)", priority = -1000, trigEngine = te("w")}, {
 		t"font-emphasize: ", i(1, "", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
+	s({trig = "ff", descr = "(ff) \"font-family\"", priority = -50, trigEngine = te("")}, {
+		t"font-family: ", i(1, "\"Helvetica Neue\", Helvetica, Arial, sans-serif", {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "ff:c", descr = "(ff:c)", priority = -1000, trigEngine = te("w")}, {
 		t"font-family: ", i(0, "\'Monotype Corsiva\',\'Comic Sans MS\'", {key = "i0"}), t",cursive;"
@@ -2175,6 +1811,9 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	s({trig = "gce", descr = "(gce)", priority = -1000, trigEngine = te("w")}, {
 		t"grid-column-end: ", i(1, "", {key = "i1"}), t";"
 	}),
+	s({trig = "h", descr = "(h) \"height\"", priority = -50, trigEngine = te("")}, {
+		t"height: ", i(1, "auto", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
 	s({trig = "h:a", descr = "(h:a)", priority = -1000, trigEngine = te("w")}, {
 		t"height: auto;"
 	}),
@@ -2271,6 +1910,32 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	s({trig = "lisp:o", descr = "(lisp:o)", priority = -1000, trigEngine = te("w")}, {
 		t"list-style-position: outside;"
 	}),
+	s({trig = "list", descr = "(list) \"list-style: type position image (list)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"list-style-image: url(", i(1, "", {key = "i1"}), t");", i(2, "", {key = "i0"})
+		},
+		{
+			t"list-style-position: ", i(1, "inside/outside", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"list-style-type: ", i(1, "cjk-ideographic/hiragana/katakana/hiragana-iroha/katakana-iroha", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"list-style-type: ", i(1, "none/disc/circle/square", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"list-style-type: ", i(1, "decimal/decimal-leading-zero/zero", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"list-style-type: ", i(1, "hebrew/armenian/georgian", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"list-style-type: ", i(1, "lower-roman/upper-roman/lower-alpha/upper-alpha/lower-greek/lower-latin/upper-latin", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"list-style: ", i(1, "none/disc/circle/square/decimal/zero", {key = "i1"}), t" ", i(2, "inside/outside", {key = "i2"}), t" url(", i(3, "", {key = "i3"}), t");", i(4, "", {key = "i0"})
+		},
+	})),
 	s({trig = "list:c", descr = "(list:c)", priority = -1000, trigEngine = te("w")}, {
 		t"list-style-type: circle;"
 	}),
@@ -2324,6 +1989,9 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	}),
 	s({trig = "mt:a", descr = "(mt:a)", priority = -1000, trigEngine = te("w")}, {
 		t"margin-top: auto;"
+	}),
+	s({trig = "m", descr = "(m) \"margin\"", priority = -50, trigEngine = te("")}, {
+		t"margin: ", i(1, "0", {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "m:4", descr = "(m:4)", priority = -1000, trigEngine = te("w")}, {
 		t"margin: ", i(1, "0", {key = "i1"}), t" ", i(2, "0", {key = "i2"}), t" ", i(3, "0", {key = "i3"}), t" ", i(4, "0", {key = "i4"}), t";", i(0, "", {key = "i0"})
@@ -2472,6 +2140,9 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	s({trig = "pt", descr = "(pt)", priority = -1000, trigEngine = te("w")}, {
 		t"padding-top: ", i(1, "", {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
+	s({trig = "p", descr = "(p) \"padding\"", priority = -50, trigEngine = te("")}, {
+		t"padding: ", i(1, "0", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
 	s({trig = "p:4", descr = "(p:4)", priority = -1000, trigEngine = te("w")}, {
 		t"padding: ", i(1, "0", {key = "i1"}), t" ", i(2, "0", {key = "i2"}), t" ", i(3, "0", {key = "i3"}), t" ", i(4, "0", {key = "i4"}), t";", i(0, "", {key = "i0"})
 	}),
@@ -2573,6 +2244,9 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	}),
 	s({trig = "pi:st", descr = "(pi:st)", priority = -1000, trigEngine = te("w")}, {
 		t"place-items: stretch;"
+	}),
+	s({trig = "pos", descr = "(pos) \"position\"", priority = -50, trigEngine = te("")}, {
+		t"position: ", i(1, "relative", {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "pos:a", descr = "(pos:a)", priority = -1000, trigEngine = te("w")}, {
 		t"position: absolute;"
@@ -2775,8 +2449,14 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	s({trig = "tsh+", descr = "(tsh+)", priority = -1000, trigEngine = te("w")}, {
 		t"text-shadow: ", i(1, "0", {key = "i1"}), t" ", i(2, "0", {key = "i2"}), t" ", i(3, "0", {key = "i3"}), t" #", i(4, "000", {key = "i4"}), t";", i(0, "", {key = "i0"})
 	}),
+	s({trig = "tsh", descr = "(tsh) \"text-shadow: color-hex x y blur (text)\"", priority = -50, trigEngine = te("")}, {
+		t"text-shadow: ", d(1, function(args) return sn(nil, {i(2, "offset-x", {key = "i2"}), t" ", i(3, "offset-y", {key = "i3"}), t" ", i(4, "blur", {key = "i4"}), t" ", i(5, "color", {key = "i5"})}) end, {}, {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
 	s({trig = "tsh:n", descr = "(tsh:n)", priority = -1000, trigEngine = te("w")}, {
 		t"text-shadow: none;"
+	}),
+	s({trig = "tt", descr = "(tt) \"text-transform\"", priority = -50, trigEngine = te("")}, {
+		t"text-transform: ", i(1, "none", {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "tt:c", descr = "(tt:c)", priority = -1000, trigEngine = te("w")}, {
 		t"text-transform: capitalize;"
@@ -2889,6 +2569,9 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	s({trig = "wid", descr = "(wid)", priority = -1000, trigEngine = te("w")}, {
 		t"widows: ", i(1, "", {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
+	s({trig = "w", descr = "(w) \"width\"", priority = -50, trigEngine = te("")}, {
+		t"width: ", i(1, "auto", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
 	s({trig = "w:a", descr = "(w:a)", priority = -1000, trigEngine = te("w")}, {
 		t"width: auto;"
 	}),
@@ -2928,6 +2611,9 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	s({trig = "wow:u", descr = "(wow:u)", priority = -1000, trigEngine = te("w")}, {
 		t"word-wrap: unrestricted;"
 	}),
+	s({trig = "z", descr = "(z) \"z-index: index (z)\"", priority = -50, trigEngine = te("")}, {
+		t"z-index: ", i(1, "", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
 	s({trig = "z:a", descr = "(z:a)", priority = -1000, trigEngine = te("w")}, {
 		t"z-index: auto;"
 	}),
@@ -2937,8 +2623,35 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 	s({trig = ":h", descr = "(:h)", priority = -1000, trigEngine = te("w")}, {
 		t":hover"
 	}),
+	s({trig = ":fc", descr = "(:fc)", priority = -50, trigEngine = te("")}, {
+		t":first-child"
+	}),
+	s({trig = ":lc", descr = "(:lc)", priority = -50, trigEngine = te("")}, {
+		t":last-child"
+	}),
+	s({trig = ":nc", descr = "(:nc)", priority = -50, trigEngine = te("")}, {
+		t":nth-child(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = ":nlc", descr = "(:nlc)", priority = -50, trigEngine = te("")}, {
+		t":nth-last-child(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = ":oc", descr = "(:oc)", priority = -50, trigEngine = te("")}, {
+		t":only-child"
+	}),
+	s({trig = ":a", descr = "(:a)", priority = -50, trigEngine = te("")}, {
+		t":after"
+	}),
+	s({trig = ":b", descr = "(:b)", priority = -50, trigEngine = te("")}, {
+		t":before"
+	}),
+	s({trig = "::a", descr = "(::a)", priority = -50, trigEngine = te("")}, {
+		t"::after"
+	}),
+	s({trig = "::b", descr = "(::b)", priority = -50, trigEngine = te("")}, {
+		t"::before"
+	}),
 	s({trig = "var", descr = "(var)", priority = -1000, trigEngine = te("w")}, {
-		t"var(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t");"
+		t"var(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t");"
 	}),
 	s({trig = "vard", descr = "(vard)", priority = -1000, trigEngine = te("w")}, {
 		t"var(", i(0, "", {key = "i0"}), t", ${1:${VISUAL});"
@@ -2957,5 +2670,292 @@ t"scrollbar-darkshadow-color: ", i(7, "#666666", {key = "i7"}), t"scrollbar-dark
 		t"::part(", i(1, "", {key = "i1"}), t")", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
 		t"}"
+	}),
+	s({trig = "rgb", descr = "(rgb) \"color rgb\"", priority = -50, trigEngine = te("")}, {
+		t"rgb(", i(1, "255", {key = "i1"}), t", ", i(2, "255", {key = "i2"}), t", ", i(3, "255", {key = "i3"}), t")", i(0, "", {key = "i0"})
+	}),
+	s({trig = "rgba", descr = "(rgba) \"color rgba\"", priority = -50, trigEngine = te("")}, {
+		t"rgba(", i(1, "255", {key = "i1"}), t", ", i(2, "255", {key = "i2"}), t", ", i(3, "255", {key = "i3"}), t", ", i(4, "0.5", {key = "i4"}), t")", i(0, "", {key = "i0"})
+	}),
+	s({trig = "hsl", descr = "(hsl) \"color hsl\"", priority = -50, trigEngine = te("")}, {
+		t"hsl(", i(1, "360", {key = "i1"}), t", ", i(2, "100", {key = "i2"}), t"%, ", i(3, "100", {key = "i3"}), t"%)", i(0, "", {key = "i0"})
+	}),
+	s({trig = "hsla", descr = "(hsla) \"color hsla\"", priority = -50, trigEngine = te("")}, {
+		t"hsla(", i(1, "360", {key = "i1"}), t", ", i(2, "100", {key = "i2"}), t"%, ", i(3, "100", {key = "i3"}), t"%, ", i(4, "0.5", {key = "i4"}), t")", i(0, "", {key = "i0"})
+	}),
+	s({trig = "background", descr = "(background) \"background:  color image repeat attachment position (background)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"background-attachment: ", i(1, "scroll/fixed", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"background-color: #", i(1, "DDD", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"background-color: ", i(1, "red", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"background-color: rgb(", i(1, "255", {key = "i1"}), t",", i(2, "255", {key = "i2"}), t",", i(3, "255", {key = "i3"}), t");", i(4, "", {key = "i0"})
+		},
+		{
+			t"background-color: transparent;", i(1, "", {key = "i0"})
+		},
+		{
+			t"background-image: none;", i(1, "", {key = "i0"})
+		},
+		{
+			t"background-image: url(", i(1, "", {key = "i1"}), t");", i(2, "", {key = "i0"})
+		},
+		{
+			t"background-position: ", i(1, "top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"background-repeat: ", i(1, "repeat/repeat-x/repeat-y/no-repeat", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"background:", d(6, function(args) return sn(nil, {t" #", i(1, "DDD", {key = "i1"})}) end, {}, {key = "i6"}), t" url(", i(2, "", {key = "i2"}), t") ", i(3, "repeat/repeat-x/repeat-y/no-repeat", {key = "i3"}), t" ", i(4, "scroll/fixed", {key = "i4"}), t" ", i(5, "top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos", {key = "i5"}), t";", i(7, "", {key = "i0"})
+		},
+	})),
+	s({trig = "border", descr = "(border) \"border:   size style color (border)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"border-bottom-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"border-bottom-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"border-bottom-width: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+		},
+		{
+			t"border-bottom: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+		},
+		{
+			t"border-color: ", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"border-right-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"border-left-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"border-left-width: ", i(1, "1", {key = "i1"}), t"px"
+		},
+		{
+			t"border-left: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+		},
+		{
+			t"border-right-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"border-right-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"border-right-width: ", i(1, "1", {key = "i1"}), t"px"
+		},
+		{
+			t"border-right: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+		},
+		{
+			t"border-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"border-top-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"border-top-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"border-top-width: ", i(1, "1", {key = "i1"}), t"px"
+		},
+		{
+			t"border-top: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+		},
+		{
+			t"border-width: ", i(1, "1px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"border: ", i(1, "1px", {key = "i1"}), t" ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+		},
+	})),
+	s({trig = "clear", descr = "(clear) \"clear: value (clear)\"", priority = -50, trigEngine = te("")}, {
+		t"clear: ", i(1, "left/right/both/none", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
+	s({trig = "color", descr = "(color) \"color:  color-rgb (color)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"color: #", i(1, "DDD", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"color: ", i(1, "red", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"color: rgb(", i(1, "255", {key = "i1"}), t",", i(2, "255", {key = "i2"}), t",", i(3, "255", {key = "i3"}), t");", i(4, "", {key = "i0"})
+		},
+	})),
+	s({trig = "cursor", descr = "(cursor) \"cursor: url (cursor)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"cursor: ", i(1, "default/auto/crosshair/pointer/move/*-resize/text/wait/help", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"cursor: url(", i(1, "", {key = "i1"}), t");", i(2, "", {key = "i0"})
+		},
+	})),
+	s({trig = "direction", descr = "(direction) \"direction: ltr|rtl (direction)\"", priority = -50, trigEngine = te("")}, {
+		t"direction: ", i(1, "ltr|rtl", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
+	s({trig = "display", descr = "(display) \"display: table-types (display)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"display: block;", i(1, "", {key = "i0"})
+		},
+		{
+			t"display: ", i(1, "none/inline/block/list-item/run-in/compact/marker", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"display: inline;", i(1, "", {key = "i0"})
+		},
+		{
+			t"display: ", i(1, "table/inline-table/table-row-group/table-header-group/table-footer-group/table-row/table-column-group/table-column/table-cell/table-caption", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+	})),
+	s({trig = "float", descr = "(float) \"float: left:right:none (float)\"", priority = -50, trigEngine = te("")}, {
+		t"float: ", i(1, "left/right/none", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
+	s({trig = "font", descr = "(font) \"font: size font (font)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"font-family: ", i(1, "Arial, \"MS Trebuchet\"", {key = "i1"}), t", ", i(2, "sans-", {key = "i2"}), t"serif;", i(3, "", {key = "i0"})
+		},
+		{
+			t"font-size: ", i(1, "100%", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"font-style: ", i(1, "normal/italic/oblique", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"font-variant: ", i(1, "normal/small-caps", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"font-weight: ", i(1, "normal/bold", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"font: ", i(1, "normal/italic/oblique", {key = "i1"}), t" ", i(2, "normal/small-caps", {key = "i2"}), t" ", i(3, "normal/bold", {key = "i3"}), t" ", i(4, "1em/1.5em", {key = "i4"}), t" ", i(5, "Arial", {key = "i5"}), t", ", i(6, "sans-", {key = "i6"}), t"serif;", i(7, "", {key = "i0"})
+		},
+		{
+			t"font: ", i(1, "75%", {key = "i1"}), t" ", i(2, "\"Lucida Grande\", \"Trebuchet MS\", Verdana,", {key = "i2"}), t" ", i(3, "sans-", {key = "i3"}), t"serif;", i(4, "", {key = "i0"})
+		},
+	})),
+	s({trig = "letter", descr = "(letter) \"letter-spacing:   length-px (letter)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"letter-spacing: ", i(1, "", {key = "i1"}), t"em;", i(2, "", {key = "i0"})
+		},
+		{
+			t"letter-spacing: ", i(1, "", {key = "i1"}), t"px;", i(2, "", {key = "i0"})
+		},
+	})),
+	s({trig = "margin", descr = "(margin) \"margin: V H (margin)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"margin-bottom: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"margin-left: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"margin-right: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"margin-top: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"margin: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"margin: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t" ", i(3, "40px", {key = "i3"}), t" ", i(4, "0px", {key = "i4"}), t";", i(5, "", {key = "i0"})
+		},
+		{
+			t"margin: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t";", i(3, "", {key = "i0"})
+		},
+	})),
+	s({trig = "marker", descr = "(marker) \"marker-offset: length (marker)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"marker-offset: auto;", i(1, "", {key = "i0"})
+		},
+		{
+			t"marker-offset: ", i(1, "10px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+	})),
+	s({trig = "overflow", descr = "(overflow) \"overflow: type (overflow)\"", priority = -50, trigEngine = te("")}, {
+		t"overflow: ", i(1, "visible/hidden/scroll/auto", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
+	s({trig = "padding", descr = "(padding) \"padding:   all (padding)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"padding-bottom: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"padding-left: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"padding-right: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"padding-top: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"padding: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t" ", i(3, "40px", {key = "i3"}), t" ", i(4, "0px", {key = "i4"}), t";", i(5, "", {key = "i0"})
+		},
+		{
+			t"padding: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t";", i(3, "", {key = "i0"})
+		},
+		{
+			t"padding: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+	})),
+	s({trig = "position", descr = "(position) \"position: type (position)\"", priority = -50, trigEngine = te("")}, {
+		t"position: ", i(1, "static/relative/absolute/fixed", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
+	s({trig = "{", descr = "({) \"properties { } ( } )\"", priority = -50, trigEngine = te("")}, {
+		t"{", nl(),
+		t"\t/* ", i(1, "", {key = "i1"}), t" */", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl()
+	}),
+	s({trig = "scrollbar", descr = "(scrollbar) \"scrollbar\"", priority = -50, trigEngine = te("")}, {
+		t"scrollbar-base-color:       ", i(1, "#CCCCCC", {key = "i1"}), t";", d(2, function(args) return sn(nil, {nl(),
+t"scrollbar-arrow-color:      $", i(3, "#000000", {key = "i3"}), nl(),
+t"scrollbar-track-color:      $", i(4, "#999999", {key = "i4"}), nl(),
+t"scrollbar-3dlight-color:    $", i(5, "#EEEEEE", {key = "i5"}), nl(),
+t"scrollbar-highlight-color:  $", i(6, "#FFFFFF", {key = "i6"}), nl(),
+t"scrollbar-face-color:       $", i(7, "#CCCCCC", {key = "i7"}), nl(),
+t"scrollbar-shadow-color:     $", i(9, "#999999", {key = "i9"}), nl(),
+t"scrollbar-darkshadow-color: ", i(8, "#666666", {key = "i8"}), t"scrollbar-darkshadow-color: ${8:#666666}"}) end, {}, {key = "i2"})
+	}),
+	s({trig = "selection", descr = "(selection) \"selection\"", priority = -50, trigEngine = te("")}, {
+		i(1, "", {key = "i1"}), t"::-moz-selection,", nl(),
+		cp(1), t"::selection {", nl(),
+		t"\tcolor: ", i(2, "inherit", {key = "i2"}), t";", nl(),
+		t"\tbackground: ", i(3, "inherit", {key = "i3"}), t";", nl(),
+		t"}"
+	}),
+	s({trig = "text", descr = "(text) \"text-transform: capitalize:upper:lower (text)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"text-align: ", i(1, "left/right/center/justify", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"text-decoration: ", i(1, "none/underline/overline/line-through/blink", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+		{
+			t"text-indent: ", i(1, "10", {key = "i1"}), t"px;", i(2, "", {key = "i0"})
+		},
+		{
+			t"text-transform: ", i(1, "capitalize/uppercase/lowercase", {key = "i1"}), t";", i(2, "", {key = "i0"})
+		},
+	})),
+	s({trig = "vertical", descr = "(vertical) \"vertical-align: type (vertical)\"", priority = -50, trigEngine = te("")}, {
+		t"vertical-align: ", i(1, "baseline/sub/super/top/text-top/middle/bottom/text-bottom/length/%", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
+	s({trig = "visibility", descr = "(visibility) \"visibility: type (visibility)\"", priority = -50, trigEngine = te("")}, {
+		t"visibility: ", i(1, "visible/hidden/collapse", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
+	s({trig = "white", descr = "(white) \"white-space:  normal:pre:nowrap (white)\"", priority = -50, trigEngine = te("")}, {
+		t"white-space: ", i(1, "normal/pre/nowrap", {key = "i1"}), t";", i(0, "", {key = "i0"})
+	}),
+	s({trig = "word", descr = "(word) \"word-spacing:  length (word)\"", priority = -50, trigEngine = te("")}, {
+		t"word-spacing: ", i(1, "10px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 })

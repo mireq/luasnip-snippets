@@ -42,318 +42,318 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	{{1, 2}, {2, 3}, {3, 4}},
-	2,
-	1,
-	1,
-	1,
-	1,
-	1,
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}},
+	{{0, 0}},
+	{{1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 7}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}},
+	{{0, 0}},
+	{},
+	{},
+	{{1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
 	{{1, 1}, {2, 3}},
-	1,
-	0,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	2,
-	3,
-	1,
-	3,
-	1,
-	0,
-	2,
-	1,
-	1,
-	1,
-	1,
-	{{1, 1}, {2, 3}},
-	2,
-	1,
-	1,
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	1,
-	0,
-	1,
-	2,
-	1,
-	2,
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 7}},
-	3,
-	1,
-	1,
-	1,
-	0,
-	5,
-	3,
-	2,
-	1,
-	1,
-	2,
-	1,
-	1,
-	1,
-	1,
-	2,
-	3,
-	{{1, 2}},
-	0,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	0,
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 4}, {3, 6}},
-	1,
-	0,
-	2,
-	1,
-	1,
-	0,
-	1,
-	1,
-	0,
-	1,
-	0,
-	2,
-	{{1, 2}, {2, 4}, {3, 5}},
-	1,
-	0,
-	1,
-	2,
-	1,
-	0,
-	0,
-	1,
-	0,
-	1,
-	1,
-	{{1, 1}, {2, 3}, {3, 7}, {4, 8}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}},
+	{{1, 1}},
+	{{0, 0}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 2}, {2, 3}, {3, 4}, {4, 5}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{1, 1}},
+	{},
+	{},
+	{},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}},
 	{{1, 2}, {2, 3}, {3, 7}},
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	2,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	2,
-	2,
-	1,
-	2,
-	0,
-	3,
-	4,
-	2,
-	2,
-	2,
-	2,
-	1,
-	1,
-	1,
-	1,
-	1,
-	0,
-	1,
-	0,
-	0,
-	2,
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	1,
-	2,
-	0,
-	0,
-	1,
-	1,
-	0,
-	0,
-	1,
-	1,
-	2,
-	1,
-	1,
-	2,
-	1,
-	1,
-	1,
-	2,
-	0,
-	1,
-	1,
-	1,
-	1,
-	3,
-	3,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	0,
-	1,
-	0,
-	1,
-	3,
-	1,
-	2,
-	2,
-	3,
-	3,
-	{{1, 1}, {2, 2}, {3, 3}, {4, 5}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}, {3, 4}},
-	1,
-	1,
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}, {3, 6}},
-	{{1, 1}, {2, 5}},
-	0,
-	1,
-	1,
-	1,
-	2,
-	1,
-	1,
-	2,
-	1,
-	1,
-	1,
-	1,
-	2,
-	1,
-	6,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	1,
-	1,
-	3,
-	5,
-	1,
-	1,
-	1,
-	1,
-	1,
-	0,
-	1,
-	1,
-	2,
-	0,
-	0,
-	0,
-	0,
-	2,
-	0,
-	1,
-	1,
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	2,
-	0,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	5,
-	1,
-	1,
-	1,
-	6,
-	7,
 }
 
 local python_globals = {
@@ -366,425 +366,44 @@ local python_globals = {
 
 
 ls.add_snippets("html", {
-	s({trig = "doctype", descr = "(doctype) \"HTML - 5.0 (doctype)\"", priority = -50, trigEngine = te("b")}, {
-		t"<!DOCTYPE html>", nl()
-	}),
-	s({trig = "down", descr = "(down) \"Down (down)\"", priority = -50, trigEngine = te("")}, {
-		t"&#x2193;"
-	}),
-	s({trig = "enter", descr = "(enter) \"Enter (enter)\"", priority = -50, trigEngine = te("")}, {
-		t"&#x2305;"
-	}),
-	s({trig = "escape", descr = "(escape) \"Escape (escape)\"", priority = -50, trigEngine = te("")}, {
-		t"&#x238B;"
+	s({trig = "nbs", descr = "(nbs)", priority = -1000, trigEngine = te("w")}, {
+		t"&nbsp;"
 	}),
 	s({trig = "left", descr = "(left) \"Left (left)\"", priority = -50, trigEngine = te("")}, {
 		t"&#x2190;"
 	}),
-	s({trig = "return", descr = "(return) \"Return (return)\"", priority = -50, trigEngine = te("")}, {
-		t"&#x21A9;"
-	}),
 	s({trig = "right", descr = "(right) \"Right (right)\"", priority = -50, trigEngine = te("")}, {
 		t"&#x2192;"
-	}),
-	s({trig = "shift", descr = "(shift) \"Shift (shift)\"", priority = -50, trigEngine = te("")}, {
-		t"&#x21E7;"
-	}),
-	s({trig = "tab", descr = "(tab) \"Tab (tab)\"", priority = -50, trigEngine = te("")}, {
-		t"&#x21E5;"
 	}),
 	s({trig = "up", descr = "(up) \"Up (up)\"", priority = -50, trigEngine = te("")}, {
 		t"&#x2191;"
 	}),
-	s({trig = "a", descr = "(a) \"Link\"", priority = -50, trigEngine = te("w")}, {
-		t"<a href=\"", t"http://www.", i(1, "url.com", {key = "i1"}), t"\"", i(2, " target=\"_blank\"", {key = "i2"}), t">", i(3, "Anchor Text", {key = "i3"}), t"</a>"
-	}),
-	s({trig = "abbr", descr = "(abbr) \"<abbr>\"", priority = -50, trigEngine = te("w")}, {
-		t"<abbr title=\"", i(2, "", {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</abbr>"
-	}),
-	s({trig = "access", descr = "(access) \"accesskey global attribute\"", priority = -50, trigEngine = te("")}, {
-		t"accesskey=\"", i(1, "", {key = "i1"}), t"\""
-	}),
-	s({trig = "address", descr = "(address) \"<address>\"", priority = -50, trigEngine = te("w")}, {
-		t"<address>", i(1, "", {key = "i1"}), t"</address>"
-	}),
-	s({trig = "article", descr = "(article) \"<article>\"", priority = -50, trigEngine = te("")}, {
-		t"<article>", nl(),
-		t"\t", i(1, "article content", {key = "i1"}), nl(),
-		t"</article>"
-	}),
-	s({trig = "aside", descr = "(aside) \"<aside>\"", priority = -50, trigEngine = te("")}, {
-		t"<aside>", nl(),
-		t"\t", i(1, "aside content", {key = "i1"}), nl(),
-		t"</aside>"
-	}),
-	s({trig = "b", descr = "(b) \"<b>\"", priority = -50, trigEngine = te("w")}, {
-		t"<b>", i(1, "", {key = "i1"}), t"</b>"
-	}),
-	s({trig = "base", descr = "(base) \"HTML <base>\"", priority = -50, trigEngine = te("w")}, {
-		t"<base href=\"", i(1, "", {key = "i1"}), t"\"", t" target=\"", i(2, "", {key = "i3"}), t"\"", f(function(args, snip) return c_py({"html", 18}, "x(snip)", python_globals, args, snip, "", am[18]) end, ae(am[18])), t">"
-	}),
-	s({trig = "blockquote", descr = "(blockquote) \"<blockquote>\"", priority = -50, trigEngine = te("")}, {
-		t"<blockquote>", i(1, "", {key = "i1"}), t"</blockquote>"
-	}),
-	s({trig = "body", descr = "(body) \"<body>\"", priority = -50, trigEngine = te("")}, {
-		t"<body>", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"</body>"
-	}),
-	s({trig = "br", descr = "(br) \"<br>\"", priority = -50, trigEngine = te("w")}, {
-		t"<br>", i(1, "", {key = "i1"}), t"</br>"
-	}),
-	s({trig = "button", descr = "(button) \"<button>\"", priority = -50, trigEngine = te("")}, {
-		t"<button>", i(1, "", {key = "i1"}), t"</button>"
-	}),
-	s({trig = "caption", descr = "(caption) \"<caption>\"", priority = -50, trigEngine = te("")}, {
-		t"<caption>", i(1, "", {key = "i1"}), t"</caption>"
-	}),
-	s({trig = "cite", descr = "(cite) \"<cite>\"", priority = -50, trigEngine = te("w")}, {
-		t"<cite>", i(1, "", {key = "i1"}), t"</cite>"
-	}),
-	s({trig = "class", descr = "(class) \"class global attribute\"", priority = -50, trigEngine = te("")}, {
-		t"class=\"", i(1, "", {key = "i1"}), t"\""
-	}),
-	s({trig = "code", descr = "(code) \"<code>\"", priority = -50, trigEngine = te("w")}, {
-		t"<code>", i(1, "", {key = "i1"}), t"</code>"
-	}),
-	s({trig = "data", descr = "(data) \"<data>\"", priority = -50, trigEngine = te("")}, {
-		t"<data value=\"", i(2, "", {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</data>"
-	}),
-	s({trig = "datalist", descr = "(datalist) \"<datalist>\"", priority = -50, trigEngine = te("")}, {
-		t"<datalist id=\"", i(1, "", {key = "i1"}), t"\" name=\"", i(2, "", {key = "i2"}), t"\">", nl(),
-		t"\topt", i(3, "", {key = "i3"}), nl(),
-		t"</datalist>"
-	}),
-	s({trig = "dd", descr = "(dd) \"<dd>\"", priority = -50, trigEngine = te("")}, {
-		t"<dd>", i(1, "", {key = "i1"}), t"</dd>"
-	}),
-	s({trig = "del", descr = "(del) \"<del>\"", priority = -50, trigEngine = te("w")}, {
-		t"<del cite=\"", i(2, "", {key = "i2"}), t"\" datetime=\"", d(3, function(args, snip) return sn(nil, { i(1, jt({c_shell("date \'+%Y-%m-%dT%H:%M:%S%:z\'")}, ""), {key = "i3"}) }) end), t"\">", i(1, "", {key = "i1"}), t"</del>"
-	}),
-	s({trig = "dfn", descr = "(dfn) \"<dfn>\"", priority = -50, trigEngine = te("w")}, {
-		t"<dfn>", i(1, "", {key = "i1"}), t"</dfn>"
-	}),
-	s({trig = "div", descr = "(div) \"<div>\"", priority = -50, trigEngine = te("w")}, {
-		t"<div>", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"</div>"
-	}),
-	s({trig = "div#", descr = "(div#) \"<div> with ID & class\"", priority = -50, trigEngine = te("w")}, {
-		t"<div", f(function(args, snip) return c_py({"html", 33}, "snip.rv=\' id=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[33]) end, ae(am[33])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 33}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[33]) end, ae(am[33])), f(function(args, snip) return c_py({"html", 33}, "snip.rv=\' class=\"\' if t[2] else \"\"", python_globals, args, snip, "", am[33]) end, ae(am[33])), i(2, "name", {key = "i2"}), f(function(args, snip) return c_py({"html", 33}, "snip.rv = \'\"\' if t[2] else \"\"", python_globals, args, snip, "", am[33]) end, ae(am[33])), t">", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
-		t"</div>"
-	}),
-	s({trig = "div.", descr = "(div.) \"<div> with class\"", priority = -50, trigEngine = te("w")}, {
-		t"<div", f(function(args, snip) return c_py({"html", 34}, "snip.rv=\' class=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[34]) end, ae(am[34])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 34}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[34]) end, ae(am[34])), t">", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
-		t"</div>"
-	}),
-	s({trig = "dl", descr = "(dl) \"<dl>\"", priority = -50, trigEngine = te("")}, {
-		t"<dl>", nl(),
-		t"\t", i(1, "Definition list", {key = "i1"}), nl(),
-		t"</dl>"
-	}),
-	s({trig = "dt", descr = "(dt) \"<dt>\"", priority = -50, trigEngine = te("")}, {
-		t"<dt>", i(1, "", {key = "i1"}), t"</dt>"
-	}),
-	s({trig = "em", descr = "(em) \"<em>\"", priority = -50, trigEngine = te("w")}, {
-		t"<em>", i(1, "", {key = "i1"}), t"</em>"
-	}),
-	s({trig = "fieldset", descr = "(fieldset) \"Fieldset\"", priority = -50, trigEngine = te("w")}, {
-		t"<fieldset id=\"", tr(1, "[\\w\\d]+|( )", "(?1:_:\\L$0\\E)"), t"\" ", t"class=\"", i(2, "", {key = "i3"}), t"\"", t">", nl(),
-		t"\t<legend>", i(1, "", {key = "i1"}), t"</legend>", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i4"}) }) end), nl(),
-		t"</fieldset>"
-	}),
-	s({trig = "fig", descr = "(fig) \"<figure>\"", priority = -50, trigEngine = te("")}, {
-		t"<figure>", nl(),
-		i(1, "", {key = "i1"}), nl(),
-		t"<figcaption>", i(2, "", {key = "i2"}), t"</figcaption>", nl(),
-		t"</figure>"
-	}),
-	s({trig = "figcaption", descr = "(figcaption) \"<figcaption>\"", priority = -50, trigEngine = te("")}, {
-		t"<figcaption>", i(1, "", {key = "i1"}), t"</figcaption>"
-	}),
-	s({trig = "footer", descr = "(footer) \"<footer>\"", priority = -50, trigEngine = te("")}, {
-		t"<footer>", nl(),
-		t"\t", i(1, "footer content", {key = "i1"}), nl(),
-		t"</footer>"
-	}),
-	s({trig = "form", descr = "(form) \"HTML <form>\"", priority = -50, trigEngine = te("w")}, {
-		t"<form action=\"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 42}, "\nsnip.rv = (snip.basename or \'unnamed\') + \'_submit\'\n", python_globals, args, snip, "", am[42])}, ""), {key = "i1"}) }) end), t"\" method=\"", i(2, "get", {key = "i2"}), t"\" accept-charset=\"utf-8\">", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
-		t"</form>"
-	}),
-	s({trig = "h1", descr = "(h1) \"HTML <h1>\"", priority = -50, trigEngine = te("w")}, {
-		t"<h1>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</h1>"
-	}),
-	s({trig = "h2", descr = "(h2) \"HTML <h2>\"", priority = -50, trigEngine = te("w")}, {
-		t"<h2>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</h2>"
-	}),
-	s({trig = "h3", descr = "(h3) \"HTML <h3>\"", priority = -50, trigEngine = te("w")}, {
-		t"<h3>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</h3>"
-	}),
-	s({trig = "h4", descr = "(h4) \"HTML <h4>\"", priority = -50, trigEngine = te("w")}, {
-		t"<h4>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</h4>"
-	}),
-	s({trig = "h5", descr = "(h5) \"HTML <h5>\"", priority = -50, trigEngine = te("w")}, {
-		t"<h5>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</h5>"
-	}),
-	s({trig = "h6", descr = "(h6) \"HTML <h6>\"", priority = -50, trigEngine = te("w")}, {
-		t"<h6>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</h6>"
-	}),
-	s({trig = "head", descr = "(head) \"HTML <head>\"", priority = -50, trigEngine = te("")}, {
-		t"<head>", nl(),
-		t"\t<meta charset=\"utf-8\">", nl(),
-		t"\t<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 49}, "snip.rv = snip.basename or \"Page Title\"", python_globals, args, snip, "", am[49])}, "\t"), {key = "i1"}) }) end), t"</title>", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
-		t"</head>"
-	}),
-	s({trig = "header", descr = "(header) \"<header>\"", priority = -50, trigEngine = te("")}, {
-		t"<header>", nl(),
-		t"\t", i(1, "header content", {key = "i1"}), nl(),
-		t"</header>"
-	}),
-	s({trig = "hr", descr = "(hr) \"<hr>\"", priority = -50, trigEngine = te("")}, {
-		t"<hr>"
-	}),
-	s({trig = "html", descr = "(html) \"HTML basic structure\"", priority = -50, trigEngine = te("b")}, {
-		t"<!DOCTYPE html>", nl(),
-		t"<html>", nl(),
-		t"\t<head>", nl(),
-		t"\t\t<meta charset=\"UTF-8\" />", nl(),
-		t"\t\t<meta name=\"viewport\" content=\"width=device-width\" />", nl(),
-		t"\t\t<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 52}, "snip.rv = snip.basename.replace(\'-\', \' \').capitalize()", python_globals, args, snip, "", am[52])}, "\t\t"), {key = "i1"}) }) end), t"</title>", nl(),
-		t"\t</head>", nl(),
-		t"\t<body>", nl(),
-		t"\t\t", i(0, "body", {key = "i0"}), nl(),
-		t"\t</body>", nl(),
-		t"</html>"
-	}),
-	s({trig = "htmll", descr = "(htmll) \"HTML basic structure with the lang attribute\"", priority = -50, trigEngine = te("b")}, {
-		t"<!DOCTYPE html>", nl(),
-		t"<html lang=\"", i(1, "es", {key = "i1"}), t"\">", nl(),
-		t"\t<head>", nl(),
-		t"\t\t<meta charset=\"UTF-8\" />", nl(),
-		t"\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />", nl(),
-		t"\t\t<title>", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 53}, "snip.rv = snip.basename.replace(\'-\', \' \').capitalize()", python_globals, args, snip, "", am[53])}, "\t\t"), {key = "i2"}) }) end), t"</title>", nl(),
-		t"\t</head>", nl(),
-		t"\t<body>", nl(),
-		t"\t\t", i(0, "body", {key = "i0"}), nl(),
-		t"\t</body>", nl(),
-		t"</html>"
-	}),
-	s({trig = "i", descr = "(i) \"<i>\"", priority = -50, trigEngine = te("w")}, {
-		t"<i>", i(1, "", {key = "i1"}), t"</i>"
-	}),
-	s({trig = "id", descr = "(id)", priority = -49, trigEngine = te("")}, {
-		t"id=\"", i(1, "", {key = "i1"}), t"\"", i(2, "", {key = "i2"})
-	}),
-	s({trig = "img", descr = "(img)", priority = -49, trigEngine = te("")}, {
-		t"<img src=\"", i(1, "", {key = "i1"}), t"\"", t" alt=\"", i(2, "", {key = "i3"}), t"\"", t"/>"
-	}),
-	s({trig = "input", descr = "(input)", priority = -49, trigEngine = te("")}, {
-		t"<input type=\"", i(1, "text", {key = "i1"}), t"\" value=\"", i(2, "", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\"", t" id=\"", cp(3), t"\"", t"/>", i(4, "", {key = "i7"})
-	}),
-	s({trig = "ins", descr = "(ins) \"<ins>\"", priority = -50, trigEngine = te("w")}, {
-		t"<ins cite=\"", i(2, "", {key = "i2"}), t"\" datetime=\"", d(3, function(args, snip) return sn(nil, { i(1, jt({c_shell("date \'+%Y-%m-%dT%H:%M:%S%:z\'")}, ""), {key = "i3"}) }) end), t"\">", i(1, "", {key = "i1"}), t"</ins>"
-	}),
-	s({trig = "kbd", descr = "(kbd) \"<kbd>\"", priority = -50, trigEngine = te("w")}, {
-		t"<kbd>", i(1, "", {key = "i1"}), t"</kbd>"
-	}),
-	s({trig = "label", descr = "(label) \"<label>\"", priority = -50, trigEngine = te("")}, {
-		t"<label>", i(1, "", {key = "i1"}), t"</label>"
-	}),
-	s({trig = "legend", descr = "(legend) \"<legend>\"", priority = -50, trigEngine = te("")}, {
-		t"<legend>", i(1, "", {key = "i1"}), t"</legend>"
-	}),
-	s({trig = "li", descr = "(li) \"list item\"", priority = -50, trigEngine = te("w")}, {
-		t"<li>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</li>"
-	}),
-	s({trig = "link", descr = "(link) \"HTML <link>\"", priority = -50, trigEngine = te("w")}, {
-		t"<link rel=\"", i(1, "stylesheet", {key = "i1"}), t"\" href=\"", i(2, "/css/master.css", {key = "i2"}), t"\" type=\"text/css\" media=\"", i(3, "screen", {key = "i3"}), t"\" title=\"", i(4, "no title", {key = "i4"}), t"\" charset=\"", i(5, "utf-8", {key = "i5"}), t"\"", f(function(args, snip) return c_py({"html", 63}, "x(snip)", python_globals, args, snip, "", am[63]) end, ae(am[63])), t">"
-	}),
-	s({trig = "mailto", descr = "(mailto) \"HTML <a mailto: >\"", priority = -50, trigEngine = te("w")}, {
-		t"<a href=\"mailto:", i(1, "joe@example.com", {key = "i1"}), t"?subject=", i(2, "feedback", {key = "i2"}), t"\">", i(3, "email me", {key = "i3"}), t"</a>"
-	}),
-	s({trig = "tel", descr = "(tel) \"HTML <a tel: >\"", priority = -50, trigEngine = te("w")}, {
-		t"<a href=\"tel:+", i(1, "XX1234567890", {key = "i1"}), t"\">", i(2, "call me", {key = "i2"}), t"</a>"
-	}),
-	s({trig = "main", descr = "(main) \"<main>\"", priority = -50, trigEngine = te("")}, {
-		t"<main>", nl(),
-		t"\t", i(1, "main content", {key = "i1"}), nl(),
-		t"</main>"
-	}),
-	s({trig = "mark", descr = "(mark) \"<mark>\"", priority = -50, trigEngine = te("")}, {
-		t"<mark>", i(1, "", {key = "i1"}), t"</mark>"
-	}),
-	s({trig = "meta", descr = "(meta) \"HTML <meta>\"", priority = -50, trigEngine = te("w")}, {
-		t"<meta name=\"", i(1, "name", {key = "i1"}), t"\" content=\"", i(2, "content", {key = "i2"}), t"\"", f(function(args, snip) return c_py({"html", 68}, "x(snip)", python_globals, args, snip, "", am[68]) end, ae(am[68])), t">"
-	}),
-	s({trig = "meter", descr = "(meter) \"<meter>\"", priority = -50, trigEngine = te("")}, {
-		t"<meter>", i(1, "", {key = "i1"}), t"</meter>"
-	}),
-	s({trig = "nav", descr = "(nav) \"<nav>\"", priority = -50, trigEngine = te("")}, {
-		t"<nav>", nl(),
-		t"\t", i(1, "navigation links", {key = "i1"}), nl(),
-		t"</nav>"
-	}),
-	s({trig = "noscript", descr = "(noscript) \"<noscript>\"", priority = -50, trigEngine = te("")}, {
-		t"<noscript>", i(1, "", {key = "i1"}), t"</noscript>"
-	}),
-	s({trig = "ol", descr = "(ol) \"<ol>\"", priority = -50, trigEngine = te("")}, {
-		t"<ol>", nl(),
-		t"\t<li>", i(1, "", {key = "i1"}), t"</li>", nl(),
-		t"</ol>"
-	}),
-	s({trig = "optgroup", descr = "(optgroup) \"<optgroup>\"", priority = -50, trigEngine = te("")}, {
-		t"<optgroup label=\"", i(1, "", {key = "i1"}), t"\">", nl(),
-		t"\topt", i(2, "", {key = "i2"}), nl(),
-		t"</optgroup>"
-	}),
-	s({trig = "output", descr = "(output) \"<output>\"", priority = -50, trigEngine = te("")}, {
-		t"<output for=\"", i(1, "", {key = "i1"}), t"\" name=\"", i(2, "", {key = "i2"}), t"\">", i(3, "", {key = "i3"}), t"</output>"
-	}),
-	s({trig = "option", descr = "(option) \"Option\"", priority = -50, trigEngine = te("w")}, {
-		t"<option", t" value=\"", i(1, "option", {key = "i1"}), t"\"", t">", cp(2), t"</option>"
-	}),
-	s({trig = "p", descr = "(p) \"paragraph\"", priority = -50, trigEngine = te("w")}, {
-		t"<p>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</p>"
-	}),
-	s({trig = "picture", descr = "(picture) \"<picture>\"", priority = -50, trigEngine = te("")}, {
-		t"<picture>", nl(),
-		t"\t", i(1, "image sources", {key = "i1"}), nl(),
-		t"</picture>"
-	}),
-	s({trig = "pre", descr = "(pre) \"<pre>\"", priority = -50, trigEngine = te("")}, {
-		t"<pre>", i(1, "", {key = "i1"}), t"</pre>"
-	}),
-	s({trig = "progress", descr = "(progress) \"<progress>\"", priority = -50, trigEngine = te("")}, {
-		t"<progress>", i(1, "", {key = "i1"}), t"</progress>"
-	}),
-	s({trig = "q", descr = "(q) \"<q>\"", priority = -50, trigEngine = te("w")}, {
-		t"<q>", i(1, "", {key = "i1"}), t"</q>"
-	}),
-	s({trig = "s", descr = "(s) \"<s>\"", priority = -50, trigEngine = te("w")}, {
-		t"<s>", i(1, "", {key = "i1"}), t"</s>"
-	}),
-	s({trig = "samp", descr = "(samp) \"<samp>\"", priority = -50, trigEngine = te("w")}, {
-		t"<samp>", i(1, "", {key = "i1"}), t"</samp>"
-	}),
-	s({trig = "script", descr = "(script) \"HTML <script>\"", priority = -50, trigEngine = te("w")}, {
-		t"<script charset=\"utf-8\">", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"</script>"
-	}),
-	s({trig = "scriptsrc", descr = "(scriptsrc) \"HTML <script src...>\"", priority = -50, trigEngine = te("w")}, {
-		t"<script src=\"", i(1, "", {key = "i1"}), t"\" charset=\"", i(2, "utf-8", {key = "i2"}), t"\"></script>"
-	}),
-	s({trig = "select", descr = "(select) \"Select Box\"", priority = -50, trigEngine = te("w")}, {
-		t"<select name=\"", i(1, "some_name", {key = "i1"}), t"\" id=\"", cp(1), t"\"", i(2, " multiple", {key = "i2"}), t" size=\"", i(3, "1", {key = "i3"}), t"\"", t">", nl(),
-		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i7"}) }) end), nl(),
-		t"</select>"
-	}),
-	s({trig = "small", descr = "(small) \"<small>\"", priority = -50, trigEngine = te("w")}, {
-		t"<small>", i(1, "", {key = "i1"}), t"</small>"
-	}),
-	s({trig = "span", descr = "(span) \"<span>\"", priority = -50, trigEngine = te("w")}, {
-		t"<span>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</span>"
-	}),
-	s({trig = "span#", descr = "(span#) \"<span> with ID & class\"", priority = -50, trigEngine = te("w")}, {
-		t"<span", f(function(args, snip) return c_py({"html", 88}, "snip.rv=\' id=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[88]) end, ae(am[88])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 88}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[88]) end, ae(am[88])), f(function(args, snip) return c_py({"html", 88}, "snip.rv=\' class=\"\' if t[2] else \"\"", python_globals, args, snip, "", am[88]) end, ae(am[88])), i(2, "name", {key = "i2"}), f(function(args, snip) return c_py({"html", 88}, "snip.rv = \'\"\' if t[2] else \"\"", python_globals, args, snip, "", am[88]) end, ae(am[88])), t">", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end), t"</span>"
-	}),
-	s({trig = "span.", descr = "(span.) \"<span> with class\"", priority = -50, trigEngine = te("w")}, {
-		t"<span", f(function(args, snip) return c_py({"html", 89}, "snip.rv=\' class=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[89]) end, ae(am[89])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 89}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[89]) end, ae(am[89])), t">", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), t"</span>"
-	}),
-	s({trig = "strong", descr = "(strong) \"<strong>\"", priority = -50, trigEngine = te("w")}, {
-		t"<strong>", i(1, "", {key = "i1"}), t"</strong>"
-	}),
-	s({trig = "style", descr = "(style) \"HTML <style>\"", priority = -50, trigEngine = te("w")}, {
-		t"<style type=\"text/css\" media=\"screen\">", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"</style>"
-	}),
-	s({trig = "sub", descr = "(sub) \"<sub>\"", priority = -50, trigEngine = te("w")}, {
-		t"<sub>", i(1, "", {key = "i1"}), t"</sub>"
-	}),
-	s({trig = "sup", descr = "(sup) \"<sup>\"", priority = -50, trigEngine = te("w")}, {
-		t"<sup>", i(1, "", {key = "i1"}), t"</sup>"
-	}),
-	s({trig = "table", descr = "(table) \"HTML <table>\"", priority = -50, trigEngine = te("w")}, {
-		t"<table>", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"</table>"
-	}),
-	s({trig = "tbody", descr = "(tbody) \"<tbody>\"", priority = -50, trigEngine = te("")}, {
-		t"<tbody>", i(1, "", {key = "i1"}), t"</tbody>"
-	}),
-	s({trig = "td", descr = "(td) \"table cell\"", priority = -50, trigEngine = te("w")}, {
-		t"<td>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</td>"
-	}),
-	s({trig = "template", descr = "(template) \"<template>\"", priority = -50, trigEngine = te("")}, {
-		t"<template id=\"", i(1, "", {key = "i1"}), t"\">", nl(),
-		i(2, "", {key = "i2"}), nl(),
-		t"</template>"
-	}),
-	s({trig = "textarea", descr = "(textarea)", priority = -49, trigEngine = te("")}, {
-		t"<textarea name=\"", i(1, "", {key = "i2"}), t"\"", t" id=\"", i(2, "", {key = "i4"}), t"\"", t">", i(3, "", {key = "i5"}), t"</textarea>"
-	}),
-	s({trig = "tfoot", descr = "(tfoot) \"<tfoot>\"", priority = -50, trigEngine = te("")}, {
-		t"<tfoot>", i(1, "", {key = "i1"}), t"</tfoot>"
-	}),
-	s({trig = "th", descr = "(th) \"table header\"", priority = -50, trigEngine = te("w")}, {
-		t"<th>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</th>"
-	}),
-	s({trig = "thead", descr = "(thead) \"<thead>\"", priority = -50, trigEngine = te("")}, {
-		t"<thead>", i(1, "", {key = "i1"}), t"</thead>"
-	}),
-	s({trig = "time", descr = "(time) \"<time>\"", priority = -50, trigEngine = te("w")}, {
-		t"<time datetime=\"", i(2, "", {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</time>"
-	}),
-	s({trig = "title", descr = "(title) \"HTML <title>\"", priority = -50, trigEngine = te("w")}, {
-		t"<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 103}, "snip.rv = snip.basename or \"Page Title\"", python_globals, args, snip, "", am[103])}, ""), {key = "i1"}) }) end), t"</title>"
-	}),
-	s({trig = "tr", descr = "(tr) \"table row\"", priority = -50, trigEngine = te("w")}, {
-		t"<tr>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"</tr>"
-	}),
-	s({trig = "ul", descr = "(ul) \"unordered list\"", priority = -50, trigEngine = te("w")}, {
-		t"<ul>", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"</ul>"
-	}),
-	s({trig = "var", descr = "(var) \"<var>\"", priority = -50, trigEngine = te("w")}, {
-		t"<var>", i(1, "", {key = "i1"}), t"</var>"
-	}),
-	s({trig = "viewport", descr = "(viewport) \"Responsive viewport meta\"", priority = -50, trigEngine = te("w")}, {
-		t"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
-	}),
-	s({trig = "wbr", descr = "(wbr) \"<wbr>\"", priority = -50, trigEngine = te("w")}, {
-		t"<wbr>", i(1, "", {key = "i1"}), t"</wbr>"
-	}),
-	s({trig = "idn", descr = "(idn)", priority = -49, trigEngine = te("")}, {
-		t"id=\"", i(1, "", {key = "i1"}), t"\" name=\"", cp(1), t"\""
-	}),
-	s({trig = "label_and_input", descr = "(label_and_input)", priority = -49, trigEngine = te("")}, {
-		t"<label for=\"", i(1, "", {key = "i1"}), t"\">", cp(1), t"</label>", nl(),
-		t"<input type=\"", i(2, "text", {key = "i2"}), t"\" name=\"", cp(2), t"\"", t" id=\"", cp(2), t"\"", t" value=\"", i(3, "", {key = "i7"}), t"\" />", i(4, "", {key = "i8"})
-	}),
-	s({trig = "submit", descr = "(submit)", priority = -49, trigEngine = te("")}, {
-		t"<input type=\"submit\" value=\"", i(1, "", {key = "i2"}), t"\" ", i(2, "", {key = "i3"}), t"/>", i(3, "", {key = "i7"})
-	}),
-	s({trig = "nbs", descr = "(nbs)", priority = -1000, trigEngine = te("w")}, {
-		t"&nbsp;"
+	s({trig = "down", descr = "(down) \"Down (down)\"", priority = -50, trigEngine = te("")}, {
+		t"&#x2193;"
+	}),
+	s({trig = "return", descr = "(return) \"Return (return)\"", priority = -50, trigEngine = te("")}, {
+		t"&#x21A9;"
 	}),
 	s({trig = "backtab", descr = "(backtab)", priority = -1000, trigEngine = te("w")}, {
 		t"&#x21E4;"
 	}),
+	s({trig = "tab", descr = "(tab) \"Tab (tab)\"", priority = -50, trigEngine = te("")}, {
+		t"&#x21E5;"
+	}),
+	s({trig = "shift", descr = "(shift) \"Shift (shift)\"", priority = -50, trigEngine = te("")}, {
+		t"&#x21E7;"
+	}),
 	s({trig = "ctrl", descr = "(ctrl)", priority = -1000, trigEngine = te("w")}, {
 		t"&#x2303;"
 	}),
+	s({trig = "enter", descr = "(enter) \"Enter (enter)\"", priority = -50, trigEngine = te("")}, {
+		t"&#x2305;"
+	}),
 	s({trig = "cmd", descr = "(cmd)", priority = -1000, trigEngine = te("w")}, {
 		t"&#x2318;"
+	}),
+	s({trig = "option", descr = "(option) \"Option\"", priority = -50, trigEngine = te("w")}, {
+		t"<option", d(1, function(args) return sn(nil, {t" value=\"", i(2, "option", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t">", d(3, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i3"}), t"</option>"
 	}),
 	s({trig = "delete", descr = "(delete)", priority = -1000, trigEngine = te("w")}, {
 		t"&#x2326;"
@@ -843,6 +462,9 @@ ls.add_snippets("html", {
 	s({trig = "charset", descr = "(charset)", priority = -1000, trigEngine = te("w")}, {
 		t"charset=\"", i(1, "utf-8", {key = "i1"}), t"\""
 	}),
+	s({trig = "data", descr = "(data) \"<data>\"", priority = -50, trigEngine = te("")}, {
+		t"<data value=\"", i(2, "", {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</data>"
+	}),
 	s({trig = "for", descr = "(for)", priority = -1000, trigEngine = te("w")}, {
 		t"for=\"", i(1, "", {key = "i1"}), t"\""
 	}),
@@ -882,20 +504,29 @@ ls.add_snippets("html", {
 	s({trig = "width", descr = "(width)", priority = -1000, trigEngine = te("w")}, {
 		t"width=\"", i(1, "", {key = "i1"}), t"\""
 	}),
+	s({trig = "a", descr = "(a) \"Link\"", priority = -50, trigEngine = te("w")}, {
+		t"<a href=\"", d(1, function(args) return sn(nil, {t"http://www.", i(2, "url.com", {key = "i2"})}) end, {}, {key = "i1"}), t"\"", i(3, " target=\"_blank\"", {key = "i3"}), t">", i(4, "Anchor Text", {key = "i4"}), t"</a>"
+	}),
 	s({trig = "a.", descr = "(a.)", priority = -1000, trigEngine = te("w")}, {
-		t"<a class=\"", i(1, "", {key = "i1"}), t"\" href=\"", i(2, "#", {key = "i2"}), t"\">", cp(1), t"</a>"
+		t"<a class=\"", i(1, "", {key = "i1"}), t"\" href=\"", i(2, "#", {key = "i2"}), t"\">", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), t"</a>"
 	}),
 	s({trig = "a#", descr = "(a#)", priority = -1000, trigEngine = te("w")}, {
-		t"<a id=\"", i(1, "", {key = "i1"}), t"\" href=\"", i(2, "#", {key = "i2"}), t"\">", cp(1), t"</a>"
+		t"<a id=\"", i(1, "", {key = "i1"}), t"\" href=\"", i(2, "#", {key = "i2"}), t"\">", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), t"</a>"
 	}),
 	s({trig = "a:ext", descr = "(a:ext)", priority = -1000, trigEngine = te("w")}, {
-		t"<a href=\"http://", i(1, "example.com", {key = "i1"}), t"\">", cp(1), t"</a>"
+		t"<a href=\"http://", i(1, "example.com", {key = "i1"}), t"\">", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), t"</a>"
 	}),
 	s({trig = "a:mail", descr = "(a:mail)", priority = -1000, trigEngine = te("w")}, {
 		t"<a href=\"mailto:", i(1, "joe@example.com", {key = "i1"}), t"?subject=", i(2, "feedback", {key = "i2"}), t"\">", i(0, "email me", {key = "i0"}), t"</a>"
 	}),
 	s({trig = "ac", descr = "(ac)", priority = -1000, trigEngine = te("w")}, {
-		t"<a href=\"", f(function(args, snip) return c_viml("@+") end, {}), t"\">", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i1"}) }) end), t"</a>"
+		t"<a href=\"", f(function(args, snip) return c_viml("@+") end, {}), t"\">", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i0"}) }) end), t"</a>"
+	}),
+	s({trig = "abbr", descr = "(abbr) \"<abbr>\"", priority = -50, trigEngine = te("w")}, {
+		t"<abbr title=\"", i(2, "", {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</abbr>"
+	}),
+	s({trig = "address", descr = "(address) \"<address>\"", priority = -50, trigEngine = te("w")}, {
+		t"<address>", i(1, "", {key = "i1"}), t"</address>"
 	}),
 	s({trig = "area", descr = "(area)", priority = -1000, trigEngine = te("w")}, {
 		t"<area shape=\"", i(1, "rect", {key = "i1"}), t"\" coords=\"", i(2, "", {key = "i2"}), t"\" href=\"", i(3, "", {key = "i3"}), t"\" alt=\"", i(0, "", {key = "i0"}), t"\">"
@@ -916,6 +547,11 @@ ls.add_snippets("html", {
 	s({trig = "area:r", descr = "(area:r)", priority = -1000, trigEngine = te("w")}, {
 		t"<area shape=\"rect\" coords=\"", i(1, "", {key = "i1"}), t"\" href=\"", i(2, "", {key = "i2"}), t"\" alt=\"", i(0, "", {key = "i0"}), t"\">"
 	}),
+	s({trig = "article", descr = "(article) \"<article>\"", priority = -50, trigEngine = te("")}, {
+		t"<article>", nl(),
+		t"\t", i(1, "article content", {key = "i1"}), nl(),
+		t"</article>"
+	}),
 	s({trig = "article.", descr = "(article.)", priority = -1000, trigEngine = te("w")}, {
 		t"<article class=\"", i(1, "", {key = "i1"}), t"\">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
@@ -925,6 +561,11 @@ ls.add_snippets("html", {
 		t"<article id=\"", i(1, "", {key = "i1"}), t"\">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</article>"
+	}),
+	s({trig = "aside", descr = "(aside) \"<aside>\"", priority = -50, trigEngine = te("")}, {
+		t"<aside>", nl(),
+		t"\t", i(1, "aside content", {key = "i1"}), nl(),
+		t"</aside>"
 	}),
 	s({trig = "aside.", descr = "(aside.)", priority = -1000, trigEngine = te("w")}, {
 		t"<aside class=\"", i(1, "", {key = "i1"}), t"\">", nl(),
@@ -939,6 +580,12 @@ ls.add_snippets("html", {
 	s({trig = "audio", descr = "(audio)", priority = -1000, trigEngine = te("w")}, {
 		t"<audio src=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</audio>"
 	}),
+	s({trig = "b", descr = "(b) \"<b>\"", priority = -50, trigEngine = te("w")}, {
+		t"<b>", i(1, "", {key = "i1"}), t"</b>"
+	}),
+	s({trig = "base", descr = "(base) \"HTML <base>\"", priority = -50, trigEngine = te("w")}, {
+		t"<base href=\"", i(1, "", {key = "i1"}), t"\"", d(2, function(args) return sn(nil, {t" target=\"", i(3, "", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), f(function(args, snip) return c_py({"html", 67}, "x(snip)", python_globals, args, snip, "", am[67]) end, ae(am[67])), t">"
+	}),
 	s({trig = "bdi", descr = "(bdi)", priority = -1000, trigEngine = te("w")}, {
 		t"<bdi>", i(0, "", {key = "i0"}), t"</bdo>"
 	}),
@@ -950,6 +597,20 @@ ls.add_snippets("html", {
 	}),
 	s({trig = "bdo:r", descr = "(bdo:r)", priority = -1000, trigEngine = te("w")}, {
 		t"<bdo dir=\"rtl\">", i(0, "", {key = "i0"}), t"</bdo>"
+	}),
+	s({trig = "blockquote", descr = "(blockquote) \"<blockquote>\"", priority = -50, trigEngine = te("")}, {
+		t"<blockquote>", i(1, "", {key = "i1"}), t"</blockquote>"
+	}),
+	s({trig = "body", descr = "(body) \"<body>\"", priority = -50, trigEngine = te("")}, {
+		t"<body>", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</body>"
+	}),
+	s({trig = "br", descr = "(br) \"<br>\"", priority = -50, trigEngine = te("w")}, {
+		t"<br>", i(1, "", {key = "i1"}), t"</br>"
+	}),
+	s({trig = "button", descr = "(button) \"<button>\"", priority = -50, trigEngine = te("")}, {
+		t"<button>", i(1, "", {key = "i1"}), t"</button>"
 	}),
 	s({trig = "button.", descr = "(button.)", priority = -1000, trigEngine = te("w")}, {
 		t"<button class=\"", i(1, "button", {key = "i1"}), t"\" type=\"", i(2, "submit", {key = "i2"}), t"\">", i(0, "", {key = "i0"}), t"</button>"
@@ -967,6 +628,15 @@ ls.add_snippets("html", {
 		t"<canvas>", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</canvas>"
+	}),
+	s({trig = "caption", descr = "(caption) \"<caption>\"", priority = -50, trigEngine = te("")}, {
+		t"<caption>", i(1, "", {key = "i1"}), t"</caption>"
+	}),
+	s({trig = "cite", descr = "(cite) \"<cite>\"", priority = -50, trigEngine = te("w")}, {
+		t"<cite>", i(1, "", {key = "i1"}), t"</cite>"
+	}),
+	s({trig = "code", descr = "(code) \"<code>\"", priority = -50, trigEngine = te("w")}, {
+		t"<code>", i(1, "", {key = "i1"}), t"</code>"
 	}),
 	s({trig = "col", descr = "(col)", priority = -1000, trigEngine = te("w")}, {
 		t"<col>"
@@ -996,10 +666,18 @@ ls.add_snippets("html", {
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</datagrid>"
 	}),
+	s({trig = "datalist", descr = "(datalist) \"<datalist>\"", priority = -50, trigEngine = te("")}, {
+		t"<datalist id=\"", i(1, "", {key = "i1"}), t"\" name=\"", i(2, "", {key = "i2"}), t"\">", nl(),
+		t"\topt", i(3, "", {key = "i3"}), nl(),
+		t"</datalist>"
+	}),
 	s({trig = "datatemplate", descr = "(datatemplate)", priority = -1000, trigEngine = te("w")}, {
 		t"<datatemplate>", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</datatemplate>"
+	}),
+	s({trig = "dd", descr = "(dd) \"<dd>\"", priority = -50, trigEngine = te("")}, {
+		t"<dd>", i(1, "", {key = "i1"}), t"</dd>"
 	}),
 	s({trig = "dd.", descr = "(dd.)", priority = -1000, trigEngine = te("w")}, {
 		t"<dd class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</dd>"
@@ -1007,13 +685,39 @@ ls.add_snippets("html", {
 	s({trig = "dd#", descr = "(dd#)", priority = -1000, trigEngine = te("w")}, {
 		t"<dd id=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</dd>"
 	}),
+	s({trig = "del", descr = "(del) \"<del>\"", priority = -50, trigEngine = te("w")}, {
+		t"<del cite=\"", i(2, "", {key = "i2"}), t"\" datetime=\"", d(3, function(args, snip) return sn(nil, { i(1, jt({c_shell("date \'+%Y-%m-%dT%H:%M:%S%:z\'")}, ""), {key = "i3"}) }) end), t"\">", i(1, "", {key = "i1"}), t"</del>"
+	}),
 	s({trig = "details", descr = "(details)", priority = -1000, trigEngine = te("w")}, {
 		t"<details>", i(0, "", {key = "i0"}), t"</details>"
+	}),
+	s({trig = "dfn", descr = "(dfn) \"<dfn>\"", priority = -50, trigEngine = te("w")}, {
+		t"<dfn>", i(1, "", {key = "i1"}), t"</dfn>"
 	}),
 	s({trig = "dialog", descr = "(dialog)", priority = -1000, trigEngine = te("w")}, {
 		t"<dialog>", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</dialog>"
+	}),
+	s({trig = "div", descr = "(div) \"<div>\"", priority = -50, trigEngine = te("w")}, {
+		t"<div>", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</div>"
+	}),
+	s({trig = "div.", descr = "(div.) \"<div> with class\"", priority = -50, trigEngine = te("w")}, {
+		t"<div", f(function(args, snip) return c_py({"html", 101}, "snip.rv=\' class=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[101]) end, ae(am[101])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 101}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[101]) end, ae(am[101])), t">", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</div>"
+	}),
+	s({trig = "div#", descr = "(div#) \"<div> with ID & class\"", priority = -50, trigEngine = te("w")}, {
+		t"<div", f(function(args, snip) return c_py({"html", 102}, "snip.rv=\' id=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[102]) end, ae(am[102])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 102}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[102]) end, ae(am[102])), f(function(args, snip) return c_py({"html", 102}, "snip.rv=\' class=\"\' if t[2] else \"\"", python_globals, args, snip, "", am[102]) end, ae(am[102])), i(2, "name", {key = "i2"}), f(function(args, snip) return c_py({"html", 102}, "snip.rv = \'\"\' if t[2] else \"\"", python_globals, args, snip, "", am[102]) end, ae(am[102])), t">", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</div>"
+	}),
+	s({trig = "dl", descr = "(dl) \"<dl>\"", priority = -50, trigEngine = te("")}, {
+		t"<dl>", nl(),
+		t"\t", i(1, "Definition list", {key = "i1"}), nl(),
+		t"</dl>"
 	}),
 	s({trig = "dl.", descr = "(dl.)", priority = -1000, trigEngine = te("w")}, {
 		t"<dl class=\"", i(1, "", {key = "i1"}), t"\">", nl(),
@@ -1032,6 +736,9 @@ ls.add_snippets("html", {
 		t"\tdt+", i(0, "", {key = "i0"}), nl(),
 		t"</dl>"
 	}),
+	s({trig = "dt", descr = "(dt) \"<dt>\"", priority = -50, trigEngine = te("")}, {
+		t"<dt>", i(1, "", {key = "i1"}), t"</dt>"
+	}),
 	s({trig = "dt.", descr = "(dt.)", priority = -1000, trigEngine = te("w")}, {
 		t"<dt class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</dt>"
 	}),
@@ -1043,8 +750,17 @@ ls.add_snippets("html", {
 		t"<dd>", i(2, "", {key = "i2"}), t"</dd>", nl(),
 		t"dt+", i(0, "", {key = "i0"})
 	}),
+	s({trig = "em", descr = "(em) \"<em>\"", priority = -50, trigEngine = te("w")}, {
+		t"<em>", i(1, "", {key = "i1"}), t"</em>"
+	}),
 	s({trig = "embed", descr = "(embed)", priority = -1000, trigEngine = te("w")}, {
 		t"<embed src=\"", i(1, "", {key = "i1"}), t"\" type=\"", i(0, "", {key = "i0"}), t"\">"
+	}),
+	s({trig = "fieldset", descr = "(fieldset) \"Fieldset\"", priority = -50, trigEngine = te("w")}, {
+		t"<fieldset id=\"", tr(1, "[\\w\\d]+|( )", "(?1:_:\\L$0\\E)"), t"\" ", d(2, function(args) return sn(nil, {t"class=\"", i(3, "", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), t">", nl(),
+		t"\t<legend>", i(1, "", {key = "i1"}), t"</legend>", nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</fieldset>"
 	}),
 	s({trig = "fieldset.", descr = "(fieldset.)", priority = -1000, trigEngine = te("w")}, {
 		t"<fieldset class=\"", i(1, "", {key = "i1"}), t"\">", nl(),
@@ -1063,6 +779,9 @@ ls.add_snippets("html", {
 		t"</fieldset>", nl(),
 		t"fieldset+", i(0, "", {key = "i0"})
 	}),
+	s({trig = "figcaption", descr = "(figcaption) \"<figcaption>\"", priority = -50, trigEngine = te("")}, {
+		t"<figcaption>", i(1, "", {key = "i1"}), t"</figcaption>"
+	}),
 	s({trig = "figure", descr = "(figure)", priority = -1000, trigEngine = te("w")}, {
 		t"<figure>", i(0, "", {key = "i0"}), t"</figure>"
 	}),
@@ -1076,6 +795,11 @@ ls.add_snippets("html", {
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</figure>"
 	}),
+	s({trig = "footer", descr = "(footer) \"<footer>\"", priority = -50, trigEngine = te("")}, {
+		t"<footer>", nl(),
+		t"\t", i(1, "footer content", {key = "i1"}), nl(),
+		t"</footer>"
+	}),
 	s({trig = "footer.", descr = "(footer.)", priority = -1000, trigEngine = te("w")}, {
 		t"<footer class=\"", i(1, "", {key = "i1"}), t"\">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
@@ -1085,6 +809,11 @@ ls.add_snippets("html", {
 		t"<footer id=\"", i(1, "", {key = "i1"}), t"\">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</footer>"
+	}),
+	s({trig = "form", descr = "(form) \"HTML <form>\"", priority = -50, trigEngine = te("w")}, {
+		t"<form action=\"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 124}, "\nsnip.rv = (snip.basename or \'unnamed\') + \'_submit\'\n", python_globals, args, snip, "", am[124])}, ""), {key = "i1"}) }) end), t"\" method=\"", i(2, "get", {key = "i2"}), t"\" accept-charset=\"utf-8\">", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</form>"
 	}),
 	s({trig = "form.", descr = "(form.)", priority = -1000, trigEngine = te("w")}, {
 		t"<form class=\"", i(1, "", {key = "i1"}), t"\" action=\"", i(2, "", {key = "i2"}), t"\" method=\"", i(3, "post", {key = "i3"}), t"\">", nl(),
@@ -1096,11 +825,17 @@ ls.add_snippets("html", {
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</form>"
 	}),
+	s({trig = "h1", descr = "(h1) \"HTML <h1>\"", priority = -50, trigEngine = te("w")}, {
+		t"<h1>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</h1>"
+	}),
 	s({trig = "h1.", descr = "(h1.)", priority = -1000, trigEngine = te("w")}, {
 		t"<h1 class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h1>"
 	}),
 	s({trig = "h1#", descr = "(h1#)", priority = -1000, trigEngine = te("w")}, {
 		t"<h1 id=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h1>"
+	}),
+	s({trig = "h2", descr = "(h2) \"HTML <h2>\"", priority = -50, trigEngine = te("w")}, {
+		t"<h2>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</h2>"
 	}),
 	s({trig = "h2.", descr = "(h2.)", priority = -1000, trigEngine = te("w")}, {
 		t"<h2 class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h2>"
@@ -1108,11 +843,17 @@ ls.add_snippets("html", {
 	s({trig = "h2#", descr = "(h2#)", priority = -1000, trigEngine = te("w")}, {
 		t"<h2 id=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h2>"
 	}),
+	s({trig = "h3", descr = "(h3) \"HTML <h3>\"", priority = -50, trigEngine = te("w")}, {
+		t"<h3>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</h3>"
+	}),
 	s({trig = "h3.", descr = "(h3.)", priority = -1000, trigEngine = te("w")}, {
 		t"<h3 class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h3>"
 	}),
 	s({trig = "h3#", descr = "(h3#)", priority = -1000, trigEngine = te("w")}, {
 		t"<h3 id=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h3>"
+	}),
+	s({trig = "h4", descr = "(h4) \"HTML <h4>\"", priority = -50, trigEngine = te("w")}, {
+		t"<h4>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</h4>"
 	}),
 	s({trig = "h4.", descr = "(h4.)", priority = -1000, trigEngine = te("w")}, {
 		t"<h4 class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h4>"
@@ -1120,17 +861,35 @@ ls.add_snippets("html", {
 	s({trig = "h4#", descr = "(h4#)", priority = -1000, trigEngine = te("w")}, {
 		t"<h4 id=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h4>"
 	}),
+	s({trig = "h5", descr = "(h5) \"HTML <h5>\"", priority = -50, trigEngine = te("w")}, {
+		t"<h5>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</h5>"
+	}),
 	s({trig = "h5.", descr = "(h5.)", priority = -1000, trigEngine = te("w")}, {
 		t"<h5 class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h5>"
 	}),
 	s({trig = "h5#", descr = "(h5#)", priority = -1000, trigEngine = te("w")}, {
 		t"<h5 id=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h5>"
 	}),
+	s({trig = "h6", descr = "(h6) \"HTML <h6>\"", priority = -50, trigEngine = te("w")}, {
+		t"<h6>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</h6>"
+	}),
 	s({trig = "h6.", descr = "(h6.)", priority = -1000, trigEngine = te("w")}, {
 		t"<h6 class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h6>"
 	}),
 	s({trig = "h6#", descr = "(h6#)", priority = -1000, trigEngine = te("w")}, {
 		t"<h6 id=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</h6>"
+	}),
+	s({trig = "head", descr = "(head) \"HTML <head>\"", priority = -50, trigEngine = te("")}, {
+		t"<head>", nl(),
+		t"\t<meta charset=\"utf-8\">", nl(),
+		t"\t<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 145}, "snip.rv = snip.basename or \"Page Title\"", python_globals, args, snip, "", am[145])}, "\t"), {key = "i1"}) }) end), t"</title>", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</head>"
+	}),
+	s({trig = "header", descr = "(header) \"<header>\"", priority = -50, trigEngine = te("")}, {
+		t"<header>", nl(),
+		t"\t", i(1, "header content", {key = "i1"}), nl(),
+		t"</header>"
 	}),
 	s({trig = "header.", descr = "(header.)", priority = -1000, trigEngine = te("w")}, {
 		t"<header class=\"", i(1, "", {key = "i1"}), t"\">", nl(),
@@ -1151,6 +910,22 @@ ls.add_snippets("html", {
 		t"<hgroup class=\"", i(1, "", {key = "i1"}), t">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</hgroup>"
+	}),
+	s({trig = "hr", descr = "(hr) \"<hr>\"", priority = -50, trigEngine = te("")}, {
+		t"<hr>"
+	}),
+	s({trig = "html", descr = "(html) \"HTML basic structure\"", priority = -50, trigEngine = te("b")}, {
+		t"<!DOCTYPE html>", nl(),
+		t"<html>", nl(),
+		t"\t<head>", nl(),
+		t"\t\t<meta charset=\"UTF-8\" />", nl(),
+		t"\t\t<meta name=\"viewport\" content=\"width=device-width\" />", nl(),
+		t"\t\t<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 152}, "snip.rv = snip.basename.replace(\'-\', \' \').capitalize()", python_globals, args, snip, "", am[152])}, "\t\t"), {key = "i1"}) }) end), t"</title>", nl(),
+		t"\t</head>", nl(),
+		t"\t<body>", nl(),
+		t"\t\t", i(0, "body", {key = "i0"}), nl(),
+		t"\t</body>", nl(),
+		t"</html>"
 	}),
 	s({trig = "xhtml", descr = "(xhtml)", priority = -1000, trigEngine = te("w")}, {
 		t"<html xmlns=\"http://www.w3.org/1999/xhtml\">", nl(),
@@ -1184,6 +959,9 @@ ls.add_snippets("html", {
 		t"\t</body>", nl(),
 		t"</html>"
 	}),
+	s({trig = "i", descr = "(i) \"<i>\"", priority = -50, trigEngine = te("w")}, {
+		t"<i>", i(1, "", {key = "i1"}), t"</i>"
+	}),
 	s({trig = "iframe", descr = "(iframe)", priority = -1000, trigEngine = te("w")}, {
 		t"<iframe src=\"", i(1, "", {key = "i1"}), t"\" frameborder=\"0\"></iframe>"
 	}),
@@ -1193,93 +971,114 @@ ls.add_snippets("html", {
 	s({trig = "iframe#", descr = "(iframe#)", priority = -1000, trigEngine = te("w")}, {
 		t"<iframe id=\"", i(1, "", {key = "i1"}), t"\" src=\"", i(2, "", {key = "i2"}), t"\" frameborder=\"0\"></iframe>"
 	}),
+	s({trig = "img", descr = "(img)", priority = -49, trigEngine = te("")}, {
+		t"<img src=\"", i(1, "", {key = "i1"}), t"\"", d(2, function(args) return sn(nil, {t" alt=\"", i(3, "", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), t"/>"
+	}),
 	s({trig = "img.", descr = "(img.)", priority = -1000, trigEngine = te("w")}, {
 		t"<img class=\"", i(1, "", {key = "i1"}), t"\" src=\"", i(2, "", {key = "i2"}), t"\" alt=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "img#", descr = "(img#)", priority = -1000, trigEngine = te("w")}, {
 		t"<img id=\"", i(1, "", {key = "i1"}), t"\" src=\"", i(2, "", {key = "i2"}), t"\" alt=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
+	s({trig = "input", descr = "(input)", priority = -49, trigEngine = te("")}, {
+		t"<input type=\"", i(1, "text", {key = "i1"}), t"\" value=\"", i(2, "", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\"", d(4, function(args) return sn(nil, {t" id=\"", d(1, function(args) return sn(nil, {cp(3)}) end, {}, {key = "i5"}), t"\""}) end, {}, {key = "i4"}), t"/>", i(6, "", {key = "i7"})
+	}),
 	s({trig = "input.", descr = "(input.)", priority = -1000, trigEngine = te("w")}, {
-		t"<input class=\"", i(1, "", {key = "i1"}), t"\" type=\"", i(2, "text/submit/hidden/button/image", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\" id=\"", cp(3), t"\" value=\"", i(4, "", {key = "i5"}), t"\">"
+		t"<input class=\"", i(1, "", {key = "i1"}), t"\" type=\"", i(2, "text/submit/hidden/button/image", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\" id=\"", d(4, function(args) return sn(nil, {cp(3)}) end, {}, {key = "i4"}), t"\" value=\"", i(5, "", {key = "i5"}), t"\">"
 	}),
 	s({trig = "input:text", descr = "(input:text)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"text\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"text\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:submit", descr = "(input:submit)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"submit\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"submit\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:hidden", descr = "(input:hidden)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"hidden\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"hidden\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:button", descr = "(input:button)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"button\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"button\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:image", descr = "(input:image)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"image\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" src=\"", i(2, "", {key = "i3"}), t"\" alt=\"", i(3, "", {key = "i4"}), t"\">"
+		t"<input type=\"image\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" src=\"", i(3, "", {key = "i3"}), t"\" alt=\"", i(4, "", {key = "i4"}), t"\">"
 	}),
 	s({trig = "input:checkbox", descr = "(input:checkbox)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"checkbox\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\">"
+		t"<input type=\"checkbox\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\">"
 	}),
 	s({trig = "input:radio", descr = "(input:radio)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"radio\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\">"
+		t"<input type=\"radio\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\">"
 	}),
 	s({trig = "input:color", descr = "(input:color)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"color\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"color\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:date", descr = "(input:date)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"date\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"date\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:datetime", descr = "(input:datetime)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"datetime\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"datetime\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:datetime-local", descr = "(input:datetime-local)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"datetime-local\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"datetime-local\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:email", descr = "(input:email)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"email\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"email\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:file", descr = "(input:file)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"file\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"file\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:month", descr = "(input:month)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"month\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"month\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:number", descr = "(input:number)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"number\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"number\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:password", descr = "(input:password)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"password\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"password\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:range", descr = "(input:range)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"range\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"range\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:reset", descr = "(input:reset)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"reset\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"reset\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:search", descr = "(input:search)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"search\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"search\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:time", descr = "(input:time)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"time\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"time\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:url", descr = "(input:url)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"url\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"url\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:week", descr = "(input:week)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"week\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" value=\"", i(2, "", {key = "i3"}), t"\">"
+		t"<input type=\"week\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+	}),
+	s({trig = "ins", descr = "(ins) \"<ins>\"", priority = -50, trigEngine = te("w")}, {
+		t"<ins cite=\"", i(2, "", {key = "i2"}), t"\" datetime=\"", d(3, function(args, snip) return sn(nil, { i(1, jt({c_shell("date \'+%Y-%m-%dT%H:%M:%S%:z\'")}, ""), {key = "i3"}) }) end), t"\">", i(1, "", {key = "i1"}), t"</ins>"
+	}),
+	s({trig = "kbd", descr = "(kbd) \"<kbd>\"", priority = -50, trigEngine = te("w")}, {
+		t"<kbd>", i(1, "", {key = "i1"}), t"</kbd>"
+	}),
+	s({trig = "label", descr = "(label) \"<label>\"", priority = -50, trigEngine = te("")}, {
+		t"<label>", i(1, "", {key = "i1"}), t"</label>"
 	}),
 	s({trig = "label:i", descr = "(label:i)", priority = -1000, trigEngine = te("w")}, {
-		t"<label for=\"", cp(1), t"\">", i(1, "", {key = "i1"}), t"</label>", nl(),
-		t"<input type=\"", i(2, "text/submit/hidden/button", {key = "i2"}), t"\" name=\"", cp(2), t"\" id=\"", cp(2), t"\" value=\"", i(3, "", {key = "i6"}), t"\" />"
+		t"<label for=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</label>", nl(),
+		t"<input type=\"", i(3, "text/submit/hidden/button", {key = "i3"}), t"\" name=\"", d(4, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i4"}), t"\" id=\"", d(5, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i5"}), t"\" value=\"", i(6, "", {key = "i6"}), t"\" />"
 	}),
 	s({trig = "label:s", descr = "(label:s)", priority = -1000, trigEngine = te("w")}, {
-		t"<label for=\"", cp(1), t"\">", i(1, "", {key = "i1"}), t"</label>", nl(),
-		t"<select name=\"", cp(2), t"\" id=\"", cp(2), t"\">", nl(),
-		t"\t<option value=\"", i(2, "", {key = "i5"}), t"\">", cp(5), t"</option>", nl(),
+		t"<label for=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</label>", nl(),
+		t"<select name=\"", d(3, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i3"}), t"\" id=\"", d(4, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i4"}), t"\">", nl(),
+		t"\t<option value=\"", i(5, "", {key = "i5"}), t"\">", d(6, function(args) return sn(nil, {cp(5)}) end, {}, {key = "i0"}), t"</option>", nl(),
 		t"</select>"
+	}),
+	s({trig = "legend", descr = "(legend) \"<legend>\"", priority = -50, trigEngine = te("")}, {
+		t"<legend>", i(1, "", {key = "i1"}), t"</legend>"
 	}),
 	s({trig = "legend+", descr = "(legend+)", priority = -1000, trigEngine = te("w")}, {
 		t"<legend><span>", i(0, "", {key = "i0"}), t"</span></legend>"
+	}),
+	s({trig = "li", descr = "(li) \"list item\"", priority = -50, trigEngine = te("w")}, {
+		t"<li>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</li>"
 	}),
 	s({trig = "li.", descr = "(li.)", priority = -1000, trigEngine = te("w")}, {
 		t"<li class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</li>"
@@ -1294,6 +1093,9 @@ ls.add_snippets("html", {
 	s({trig = "lia+", descr = "(lia+)", priority = -1000, trigEngine = te("w")}, {
 		t"<li><a href=\"", i(2, "#", {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</a></li>", nl(),
 		t"lia+"
+	}),
+	s({trig = "link", descr = "(link) \"HTML <link>\"", priority = -50, trigEngine = te("w")}, {
+		t"<link rel=\"", i(1, "stylesheet", {key = "i1"}), t"\" href=\"", i(2, "/css/master.css", {key = "i2"}), t"\" type=\"text/css\" media=\"", i(3, "screen", {key = "i3"}), t"\" title=\"", i(4, "no title", {key = "i4"}), t"\" charset=\"", i(5, "utf-8", {key = "i5"}), t"\"", f(function(args, snip) return c_py({"html", 199}, "x(snip)", python_globals, args, snip, "", am[199]) end, ae(am[199])), t">"
 	}),
 	s({trig = "link:atom", descr = "(link:atom)", priority = -1000, trigEngine = te("w")}, {
 		t"<link rel=\"alternate\" href=\"", i(1, "atom.xml", {key = "i1"}), t"\" title=\"Atom\" type=\"application/atom+xml\">"
@@ -1313,6 +1115,11 @@ ls.add_snippets("html", {
 	s({trig = "link:touch", descr = "(link:touch)", priority = -1000, trigEngine = te("w")}, {
 		t"<link rel=\"apple-touch-icon\" href=\"", i(1, "favicon.png", {key = "i1"}), t"\">"
 	}),
+	s({trig = "main", descr = "(main) \"<main>\"", priority = -50, trigEngine = te("")}, {
+		t"<main>", nl(),
+		t"\t", i(1, "main content", {key = "i1"}), nl(),
+		t"</main>"
+	}),
 	s({trig = "map", descr = "(map)", priority = -1000, trigEngine = te("w")}, {
 		t"<map name=\"", i(1, "", {key = "i1"}), t"\">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
@@ -1324,7 +1131,7 @@ ls.add_snippets("html", {
 		t"</map>"
 	}),
 	s({trig = "map#", descr = "(map#)", priority = -1000, trigEngine = te("w")}, {
-		t"<map name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t">", nl(),
+		t"<map name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</map>"
 	}),
@@ -1332,6 +1139,9 @@ ls.add_snippets("html", {
 		t"<map name=\"", i(1, "", {key = "i1"}), t"\">", nl(),
 		t"\t<area shape=\"", i(2, "", {key = "i2"}), t"\" coords=\"", i(3, "", {key = "i3"}), t"\" href=\"", i(4, "", {key = "i4"}), t"\" alt=\"", i(5, "", {key = "i5"}), t"\" />", i(6, "", {key = "i6"}), nl(),
 		t"</map>"
+	}),
+	s({trig = "mark", descr = "(mark) \"<mark>\"", priority = -50, trigEngine = te("")}, {
+		t"<mark>", i(1, "", {key = "i1"}), t"</mark>"
 	}),
 	s({trig = "menu", descr = "(menu)", priority = -1000, trigEngine = te("w")}, {
 		t"<menu>", nl(),
@@ -1347,6 +1157,9 @@ ls.add_snippets("html", {
 		t"<menu type=\"toolbar\">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</menu>"
+	}),
+	s({trig = "meta", descr = "(meta) \"HTML <meta>\"", priority = -50, trigEngine = te("w")}, {
+		t"<meta name=\"", i(1, "name", {key = "i1"}), t"\" content=\"", i(2, "content", {key = "i2"}), t"\"", f(function(args, snip) return c_py({"html", 215}, "x(snip)", python_globals, args, snip, "", am[215]) end, ae(am[215])), t">"
 	}),
 	s({trig = "meta:s", descr = "(meta:s)", priority = -1000, trigEngine = te("w")}, {
 		t"<meta ", i(0, "", {key = "i0"}), t">"
@@ -1366,6 +1179,14 @@ ls.add_snippets("html", {
 	s({trig = "meta:utf", descr = "(meta:utf)", priority = -1000, trigEngine = te("w")}, {
 		t"<meta http-equiv=\"content-type\" content=\"text/html;charset=UTF-8\">"
 	}),
+	s({trig = "meter", descr = "(meter) \"<meter>\"", priority = -50, trigEngine = te("")}, {
+		t"<meter>", i(1, "", {key = "i1"}), t"</meter>"
+	}),
+	s({trig = "nav", descr = "(nav) \"<nav>\"", priority = -50, trigEngine = te("")}, {
+		t"<nav>", nl(),
+		t"\t", i(1, "navigation links", {key = "i1"}), nl(),
+		t"</nav>"
+	}),
 	s({trig = "nav.", descr = "(nav.)", priority = -1000, trigEngine = te("w")}, {
 		t"<nav class=\"", i(1, "", {key = "i1"}), t"\">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
@@ -1375,6 +1196,9 @@ ls.add_snippets("html", {
 		t"<nav id=\"", i(1, "", {key = "i1"}), t"\">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</nav>"
+	}),
+	s({trig = "noscript", descr = "(noscript) \"<noscript>\"", priority = -50, trigEngine = te("")}, {
+		t"<noscript>", i(1, "", {key = "i1"}), t"</noscript>"
 	}),
 	s({trig = "object", descr = "(object)", priority = -1000, trigEngine = te("w")}, {
 		t"<object data=\"", i(1, "", {key = "i1"}), t"\" type=\"", i(2, "", {key = "i2"}), t"\">", nl(),
@@ -1394,6 +1218,11 @@ ls.add_snippets("html", {
 		t"\t\tpluginspage=\"http://www.apple.com/quicktime/download/\">", nl(),
 		t"</object>"
 	}),
+	s({trig = "ol", descr = "(ol) \"<ol>\"", priority = -50, trigEngine = te("")}, {
+		t"<ol>", nl(),
+		t"\t<li>", i(1, "", {key = "i1"}), t"</li>", nl(),
+		t"</ol>"
+	}),
 	s({trig = "ol.", descr = "(ol.)", priority = -1000, trigEngine = te("w")}, {
 		t"<ol class=\"", i(1, "", {key = "i1"}), t"\">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
@@ -1411,14 +1240,25 @@ ls.add_snippets("html", {
 		t"</ol>"
 	}),
 	s({trig = "opt", descr = "(opt)", priority = -1000, trigEngine = te("w")}, {
-		t"<option value=\"", i(1, "", {key = "i1"}), t"\">", cp(1), t"</option>"
+		t"<option value=\"", i(1, "", {key = "i1"}), t"\">", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), t"</option>"
 	}),
 	s({trig = "opt+", descr = "(opt+)", priority = -1000, trigEngine = te("w")}, {
-		t"<option value=\"", i(1, "", {key = "i1"}), t"\">", cp(1), t"</option>", nl(),
+		t"<option value=\"", i(1, "", {key = "i1"}), t"\">", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"</option>", nl(),
 		t"opt+", i(0, "", {key = "i0"})
 	}),
 	s({trig = "optt", descr = "(optt)", priority = -1000, trigEngine = te("w")}, {
 		t"<option>", i(0, "", {key = "i0"}), t"</option>"
+	}),
+	s({trig = "optgroup", descr = "(optgroup) \"<optgroup>\"", priority = -50, trigEngine = te("")}, {
+		t"<optgroup label=\"", i(1, "", {key = "i1"}), t"\">", nl(),
+		t"\topt", i(2, "", {key = "i2"}), nl(),
+		t"</optgroup>"
+	}),
+	s({trig = "output", descr = "(output) \"<output>\"", priority = -50, trigEngine = te("")}, {
+		t"<output for=\"", i(1, "", {key = "i1"}), t"\" name=\"", i(2, "", {key = "i2"}), t"\">", i(3, "", {key = "i3"}), t"</output>"
+	}),
+	s({trig = "p", descr = "(p) \"paragraph\"", priority = -50, trigEngine = te("w")}, {
+		t"<p>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</p>"
 	}),
 	s({trig = "p.", descr = "(p.)", priority = -1000, trigEngine = te("w")}, {
 		t"<p class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</p>"
@@ -1428,6 +1268,15 @@ ls.add_snippets("html", {
 	}),
 	s({trig = "param", descr = "(param)", priority = -1000, trigEngine = te("w")}, {
 		t"<param name=\"", i(1, "", {key = "i1"}), t"\" value=\"", i(2, "", {key = "i2"}), t"\">"
+	}),
+	s({trig = "pre", descr = "(pre) \"<pre>\"", priority = -50, trigEngine = te("")}, {
+		t"<pre>", i(1, "", {key = "i1"}), t"</pre>"
+	}),
+	s({trig = "progress", descr = "(progress) \"<progress>\"", priority = -50, trigEngine = te("")}, {
+		t"<progress>", i(1, "", {key = "i1"}), t"</progress>"
+	}),
+	s({trig = "q", descr = "(q) \"<q>\"", priority = -50, trigEngine = te("w")}, {
+		t"<q>", i(1, "", {key = "i1"}), t"</q>"
 	}),
 	s({trig = "rp", descr = "(rp)", priority = -1000, trigEngine = te("w")}, {
 		t"<rp>", i(0, "", {key = "i0"}), t"</rp>"
@@ -1440,6 +1289,17 @@ ls.add_snippets("html", {
 		t"\t<rp><rt>", i(0, "", {key = "i0"}), t"</rt></rp>", nl(),
 		t"</ruby>"
 	}),
+	s({trig = "s", descr = "(s) \"<s>\"", priority = -50, trigEngine = te("w")}, {
+		t"<s>", i(1, "", {key = "i1"}), t"</s>"
+	}),
+	s({trig = "samp", descr = "(samp) \"<samp>\"", priority = -50, trigEngine = te("w")}, {
+		t"<samp>", i(1, "", {key = "i1"}), t"</samp>"
+	}),
+	s({trig = "script", descr = "(script) \"HTML <script>\"", priority = -50, trigEngine = te("w")}, {
+		t"<script charset=\"utf-8\">", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</script>"
+	}),
 	s({trig = "scripts", descr = "(scripts)", priority = -1000, trigEngine = te("w")}, {
 		t"<script src=\"", i(0, "", {key = "i0"}), t".js\"></script>"
 	}),
@@ -1447,6 +1307,9 @@ ls.add_snippets("html", {
 		t"<script type=\"", i(1, "", {key = "i1"}), t"\" id=\"", i(2, "", {key = "i2"}), t"\">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</script>"
+	}),
+	s({trig = "scriptsrc", descr = "(scriptsrc) \"HTML <script src...>\"", priority = -50, trigEngine = te("w")}, {
+		t"<script src=\"", i(1, "", {key = "i1"}), t"\" charset=\"", i(2, "utf-8", {key = "i3"}), t"\"></script>"
 	}),
 	s({trig = "section", descr = "(section)", priority = -1000, trigEngine = te("w")}, {
 		t"<section>", nl(),
@@ -1463,24 +1326,60 @@ ls.add_snippets("html", {
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</section>"
 	}),
+	s({trig = "select", descr = "(select) \"Select Box\"", priority = -50, trigEngine = te("w")}, {
+		t"<select name=\"", i(1, "some_name", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\"", d(3, function(args) return sn(nil, {i(4, " multiple", {key = "i4"}), d(2, function(args) return sn(nil, {t" size=\"", i(6, "1", {key = "i6"}), t"\""}) end, {}, {key = "i5"})}) end, {}, {key = "i3"}), t">", nl(),
+		t"\t", d(7, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</select>"
+	}),
 	s({trig = "select.", descr = "(select.)", priority = -1000, trigEngine = te("w")}, {
-		t"<select name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\" class=\"", i(2, "", {key = "i3"}), t">", nl(),
+		t"<select name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" class=\"", i(3, "", {key = "i3"}), t">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</select>"
 	}),
 	s({trig = "select+", descr = "(select+)", priority = -1000, trigEngine = te("w")}, {
-		t"<select name=\"", i(1, "", {key = "i1"}), t"\" id=\"", cp(1), t"\">", nl(),
-		t"\t<option value=\"", i(2, "", {key = "i3"}), t"\">", cp(3), t"</option>", nl(),
+		t"<select name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\">", nl(),
+		t"\t<option value=\"", i(3, "", {key = "i3"}), t"\">", d(4, function(args) return sn(nil, {cp(3)}) end, {}, {key = "i4"}), t"</option>", nl(),
 		t"\topt+", i(0, "", {key = "i0"}), nl(),
 		t"</select>"
 	}),
+	s({trig = "small", descr = "(small) \"<small>\"", priority = -50, trigEngine = te("w")}, {
+		t"<small>", i(1, "", {key = "i1"}), t"</small>"
+	}),
 	s({trig = "source", descr = "(source)", priority = -1000, trigEngine = te("w")}, {
 		t"<source src=\"", i(1, "", {key = "i1"}), t"\" type=\"", i(2, "", {key = "i2"}), t"\" media=\"", i(0, "", {key = "i0"}), t"\">"
+	}),
+	s({trig = "span", descr = "(span) \"<span>\"", priority = -50, trigEngine = te("w")}, {
+		t"<span>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</span>"
+	}),
+	s({trig = "span.", descr = "(span.) \"<span> with class\"", priority = -50, trigEngine = te("w")}, {
+		t"<span", f(function(args, snip) return c_py({"html", 263}, "snip.rv=\' class=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[263]) end, ae(am[263])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 263}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[263]) end, ae(am[263])), t">", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</span>"
+	}),
+	s({trig = "span#", descr = "(span#) \"<span> with ID & class\"", priority = -50, trigEngine = te("w")}, {
+		t"<span", f(function(args, snip) return c_py({"html", 264}, "snip.rv=\' id=\"\' if t[1] else \"\"", python_globals, args, snip, "", am[264]) end, ae(am[264])), i(1, "name", {key = "i1"}), f(function(args, snip) return c_py({"html", 264}, "snip.rv = \'\"\' if t[1] else \"\"", python_globals, args, snip, "", am[264]) end, ae(am[264])), f(function(args, snip) return c_py({"html", 264}, "snip.rv=\' class=\"\' if t[2] else \"\"", python_globals, args, snip, "", am[264]) end, ae(am[264])), i(2, "name", {key = "i2"}), f(function(args, snip) return c_py({"html", 264}, "snip.rv = \'\"\' if t[2] else \"\"", python_globals, args, snip, "", am[264]) end, ae(am[264])), t">", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</span>"
+	}),
+	s({trig = "strong", descr = "(strong) \"<strong>\"", priority = -50, trigEngine = te("w")}, {
+		t"<strong>", i(1, "", {key = "i1"}), t"</strong>"
+	}),
+	s({trig = "style", descr = "(style) \"HTML <style>\"", priority = -50, trigEngine = te("w")}, {
+		t"<style type=\"text/css\" media=\"screen\">", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</style>"
+	}),
+	s({trig = "sub", descr = "(sub) \"<sub>\"", priority = -50, trigEngine = te("w")}, {
+		t"<sub>", i(1, "", {key = "i1"}), t"</sub>"
 	}),
 	s({trig = "summary", descr = "(summary)", priority = -1000, trigEngine = te("w")}, {
 		t"<summary>", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</summary>"
+	}),
+	s({trig = "sup", descr = "(sup) \"<sup>\"", priority = -50, trigEngine = te("w")}, {
+		t"<sup>", i(1, "", {key = "i1"}), t"</sup>"
+	}),
+	s({trig = "table", descr = "(table) \"HTML <table>\"", priority = -50, trigEngine = te("w")}, {
+		t"<table>", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</table>"
 	}),
 	s({trig = "table.", descr = "(table.)", priority = -1000, trigEngine = te("w")}, {
 		t"<table class=\"", i(1, "", {key = "i1"}), t"\">", nl(),
@@ -1492,6 +1391,12 @@ ls.add_snippets("html", {
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</table>"
 	}),
+	s({trig = "tbody", descr = "(tbody) \"<tbody>\"", priority = -50, trigEngine = te("")}, {
+		t"<tbody>", i(1, "", {key = "i1"}), t"</tbody>"
+	}),
+	s({trig = "td", descr = "(td) \"table cell\"", priority = -50, trigEngine = te("w")}, {
+		t"<td>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</td>"
+	}),
 	s({trig = "td.", descr = "(td.)", priority = -1000, trigEngine = te("w")}, {
 		t"<td class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</td>"
 	}),
@@ -1501,6 +1406,15 @@ ls.add_snippets("html", {
 	s({trig = "td+", descr = "(td+)", priority = -1000, trigEngine = te("w")}, {
 		t"<td>", i(1, "", {key = "i1"}), t"</td>", nl(),
 		t"td+", i(0, "", {key = "i0"})
+	}),
+	s({trig = "textarea", descr = "(textarea)", priority = -49, trigEngine = te("")}, {
+		t"<textarea name=\"", i(1, "", {key = "i2"}), t"\"", d(2, function(args) return sn(nil, {t" id=\"", i(3, "", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), t">", i(4, "", {key = "i5"}), t"</textarea>"
+	}),
+	s({trig = "tfoot", descr = "(tfoot) \"<tfoot>\"", priority = -50, trigEngine = te("")}, {
+		t"<tfoot>", i(1, "", {key = "i1"}), t"</tfoot>"
+	}),
+	s({trig = "th", descr = "(th) \"table header\"", priority = -50, trigEngine = te("w")}, {
+		t"<th>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</th>"
 	}),
 	s({trig = "th.", descr = "(th.)", priority = -1000, trigEngine = te("w")}, {
 		t"<th class=\"", i(1, "", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</th>"
@@ -1512,6 +1426,18 @@ ls.add_snippets("html", {
 		t"<th>", i(1, "", {key = "i1"}), t"</th>", nl(),
 		t"th+", i(0, "", {key = "i0"})
 	}),
+	s({trig = "thead", descr = "(thead) \"<thead>\"", priority = -50, trigEngine = te("")}, {
+		t"<thead>", i(1, "", {key = "i1"}), t"</thead>"
+	}),
+	s({trig = "time", descr = "(time) \"<time>\"", priority = -50, trigEngine = te("w")}, {
+		t"<time datetime=\"", i(2, "", {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</time>"
+	}),
+	s({trig = "title", descr = "(title) \"HTML <title>\"", priority = -50, trigEngine = te("w")}, {
+		t"<title>", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 286}, "snip.rv = snip.basename or \"Page Title\"", python_globals, args, snip, "", am[286])}, ""), {key = "i1"}) }) end), t"</title>"
+	}),
+	s({trig = "tr", descr = "(tr) \"table row\"", priority = -50, trigEngine = te("w")}, {
+		t"<tr>", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"</tr>"
+	}),
 	s({trig = "tr+", descr = "(tr+)", priority = -1000, trigEngine = te("w")}, {
 		t"<tr>", nl(),
 		t"\t<td>", i(1, "", {key = "i1"}), t"</td>", nl(),
@@ -1520,6 +1446,11 @@ ls.add_snippets("html", {
 	}),
 	s({trig = "track", descr = "(track)", priority = -1000, trigEngine = te("w")}, {
 		t"<track src=\"", i(1, "", {key = "i1"}), t"\" srclang=\"", i(2, "", {key = "i2"}), t"\" label=\"", i(3, "", {key = "i3"}), t"\" default=\"", i(4, "default", {key = "i4"}), t">", i(5, "", {key = "i5"})
+	}),
+	s({trig = "ul", descr = "(ul) \"unordered list\"", priority = -50, trigEngine = te("w")}, {
+		t"<ul>", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"</ul>"
 	}),
 	s({trig = "ul.", descr = "(ul.)", priority = -1000, trigEngine = te("w")}, {
 		t"<ul class=\"", i(1, "", {key = "i1"}), t"\">", nl(),
@@ -1537,10 +1468,79 @@ ls.add_snippets("html", {
 		t"\tli+", i(0, "", {key = "i0"}), nl(),
 		t"</ul>"
 	}),
+	s({trig = "var", descr = "(var) \"<var>\"", priority = -50, trigEngine = te("w")}, {
+		t"<var>", i(1, "", {key = "i1"}), t"</var>"
+	}),
 	s({trig = "video", descr = "(video)", priority = -1000, trigEngine = te("w")}, {
 		t"<video src=\"", i(1, "", {key = "i1"}), t"\" height=\"", i(2, "", {key = "i2"}), t"\" width=\"", i(3, "", {key = "i3"}), t"\" preload=\"", i(4, "none", {key = "i4"}), t"\" autoplay=\"", i(5, "autoplay", {key = "i5"}), t"\">", i(6, "", {key = "i6"}), t"</video>"
 	}),
 	s({trig = "video.", descr = "(video.)", priority = -1000, trigEngine = te("w")}, {
 		t"<video class=\"", i(1, "", {key = "i1"}), t"\" src=\"", i(2, "", {key = "i2"}), t"\" height=\"", i(3, "", {key = "i3"}), t"\" width=\"", i(4, "", {key = "i4"}), t"\" preload=\"", i(5, "none", {key = "i5"}), t"\" autoplay=\"", i(6, "autoplay", {key = "i6"}), t"\">", i(7, "", {key = "i7"}), t"</video>"
+	}),
+	s({trig = "wbr", descr = "(wbr) \"<wbr>\"", priority = -50, trigEngine = te("w")}, {
+		t"<wbr>", i(1, "", {key = "i1"}), t"</wbr>"
+	}),
+	s({trig = "viewport", descr = "(viewport) \"Responsive viewport meta\"", priority = -50, trigEngine = te("w")}, {
+		t"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+	}),
+	s({trig = "doctype", descr = "(doctype) \"HTML - 5.0 (doctype)\"", priority = -50, trigEngine = te("b")}, {
+		t"<!DOCTYPE html>", nl()
+	}),
+	s({trig = "escape", descr = "(escape) \"Escape (escape)\"", priority = -50, trigEngine = te("")}, {
+		t"&#x238B;"
+	}),
+	s({trig = "access", descr = "(access) \"accesskey global attribute\"", priority = -50, trigEngine = te("")}, {
+		t"accesskey=\"", i(1, "", {key = "i1"}), t"\""
+	}),
+	s({trig = "class", descr = "(class) \"class global attribute\"", priority = -50, trigEngine = te("")}, {
+		t"class=\"", i(1, "", {key = "i1"}), t"\""
+	}),
+	s({trig = "fig", descr = "(fig) \"<figure>\"", priority = -50, trigEngine = te("")}, {
+		t"<figure>", nl(),
+		i(1, "", {key = "i1"}), nl(),
+		t"<figcaption>", i(2, "", {key = "i2"}), t"</figcaption>", nl(),
+		t"</figure>"
+	}),
+	s({trig = "htmll", descr = "(htmll) \"HTML basic structure with the lang attribute\"", priority = -50, trigEngine = te("b")}, {
+		t"<!DOCTYPE html>", nl(),
+		t"<html lang=\"", i(1, "es", {key = "i1"}), t"\">", nl(),
+		t"\t<head>", nl(),
+		t"\t\t<meta charset=\"UTF-8\" />", nl(),
+		t"\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />", nl(),
+		t"\t\t<title>", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"html", 304}, "snip.rv = snip.basename.replace(\'-\', \' \').capitalize()", python_globals, args, snip, "", am[304])}, "\t\t"), {key = "i2"}) }) end), t"</title>", nl(),
+		t"\t</head>", nl(),
+		t"\t<body>", nl(),
+		t"\t\t", i(0, "body", {key = "i0"}), nl(),
+		t"\t</body>", nl(),
+		t"</html>"
+	}),
+	s({trig = "id", descr = "(id)", priority = -49, trigEngine = te("")}, {
+		t"id=\"", i(1, "", {key = "i1"}), t"\"", i(2, "", {key = "i2"})
+	}),
+	s({trig = "mailto", descr = "(mailto) \"HTML <a mailto: >\"", priority = -50, trigEngine = te("w")}, {
+		t"<a href=\"mailto:", i(1, "joe@example.com", {key = "i1"}), t"?subject=", i(2, "feedback", {key = "i2"}), t"\">", i(3, "email me", {key = "i3"}), t"</a>"
+	}),
+	s({trig = "tel", descr = "(tel) \"HTML <a tel: >\"", priority = -50, trigEngine = te("w")}, {
+		t"<a href=\"tel:+", i(1, "XX1234567890", {key = "i1"}), t"\">", i(2, "call me", {key = "i2"}), t"</a>"
+	}),
+	s({trig = "picture", descr = "(picture) \"<picture>\"", priority = -50, trigEngine = te("")}, {
+		t"<picture>", nl(),
+		t"\t", i(1, "image sources", {key = "i1"}), nl(),
+		t"</picture>"
+	}),
+	s({trig = "template", descr = "(template) \"<template>\"", priority = -50, trigEngine = te("")}, {
+		t"<template id=\"", i(1, "", {key = "i1"}), t"\">", nl(),
+		i(2, "", {key = "i2"}), nl(),
+		t"</template>"
+	}),
+	s({trig = "idn", descr = "(idn)", priority = -49, trigEngine = te("")}, {
+		t"id=\"", i(1, "", {key = "i1"}), t"\" name=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\""
+	}),
+	s({trig = "label_and_input", descr = "(label_and_input)", priority = -49, trigEngine = te("")}, {
+		t"<label for=\"", d(2, function(args) return sn(nil, {i(1, "", {key = "i1"})}) end, {}, {key = "i2"}), t"\">", cp(1), t"</label>", nl(),
+		t"<input type=\"", i(3, "text", {key = "i3"}), t"\" name=\"", d(4, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i4"}), t"\"", d(5, function(args) return sn(nil, {t" id=\"", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i6"}), t"\""}) end, {}, {key = "i5"}), t" value=\"", i(7, "", {key = "i7"}), t"\" />", i(8, "", {key = "i8"})
+	}),
+	s({trig = "submit", descr = "(submit)", priority = -49, trigEngine = te("")}, {
+		t"<input type=\"submit\" value=\"", i(1, "", {key = "i2"}), t"\" ", i(2, "", {key = "i3"}), t"/>", i(3, "", {key = "i7"})
 	}),
 })

@@ -42,12 +42,12 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	1,
-	1,
-	1,
-	1,
-	4,
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
 }
 ls.add_snippets("apache", {
 	s({trig = "dir", descr = "(dir)", priority = -1000, trigEngine = te("w")}, {
@@ -59,22 +59,22 @@ ls.add_snippets("apache", {
 	}),
 	s({trig = "filesmatch", descr = "(filesmatch)", priority = -1000, trigEngine = te("w")}, {
 		t"<FilesMatch \"", i(1, "regex", {key = "i1"}), t"\">", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"</FilesMatch>"
 	}),
 	s({trig = "ifmodule", descr = "(ifmodule)", priority = -1000, trigEngine = te("w")}, {
 		t"<IfModule ", i(1, "mod_example.c", {key = "i1"}), t">", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"</IfModule>"
 	}),
 	s({trig = "limitexcept", descr = "(limitexcept)", priority = -1000, trigEngine = te("w")}, {
 		t"<LimitExcept ", i(1, "POST GET", {key = "i1"}), t">", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"</LimitExcept>"
 	}),
 	s({trig = "proxy", descr = "(proxy)", priority = -1000, trigEngine = te("w")}, {
 		t"<Proxy ", i(1, "*", {key = "i1"}), t">", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"</Proxy>"
 	}),
 	s({trig = "virtualhost", descr = "(virtualhost)", priority = -1000, trigEngine = te("w")}, {

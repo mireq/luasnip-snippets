@@ -42,16 +42,16 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	4,
-	4,
-	0,
-	0,
-	3,
-	1,
-	0,
-	1,
-	1,
-	2,
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
 }
 ls.add_snippets("kotlin", {
 	s({trig = "fun", descr = "(fun)", priority = -1000, trigEngine = te("w")}, {
@@ -80,22 +80,22 @@ ls.add_snippets("kotlin", {
 	}),
 	s({trig = "cla", descr = "(cla)", priority = -1000, trigEngine = te("w")}, {
 		t"class ", i(1, "", {key = "i1"}), t" {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "cobj", descr = "(cobj)", priority = -1000, trigEngine = te("w")}, {
 		t"companion object {", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "obj", descr = "(obj)", priority = -1000, trigEngine = te("w")}, {
 		t"object ", i(1, "", {key = "i1"}), t" {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"if (", i(1, "", {key = "i1"}), t") {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "ife", descr = "(ife)", priority = -1000, trigEngine = te("w")}, {

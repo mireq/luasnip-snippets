@@ -42,40 +42,41 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}, {2, 3}},
-	3,
-	3,
-	3,
-	2,
-	2,
-	3,
-	1,
-	1,
-	2,
-	3,
-	1,
-	0,
-	0,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	2,
-	2,
-	2,
-	2,
-	1,
-	0,
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{},
+	{{1, 1}, {2, 2}, {3, 3}},
 }
 ls.add_snippets("vim", {
-	s({trig = "gvar", descr = "(gvar) \"Global / configuration variable\"", priority = -50, trigEngine = te("b")}, {
-		t"if !exists(\"g:", i(1, "MyUltraImportantVar", {key = "i1"}), t"\")", nl(),
-		t"\tlet g:", cp(1), t" = ", t"\"", i(2, "<tab>", {key = "i2"}), t"\"", nl(),
-		t"endif"
+	s({trig = "header", descr = "(header) standard Vim script file header", priority = -1000, trigEngine = te("w")}, {
+		t"\" File: ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("expand(\'%:t\')")}, ""), {key = "i1"}) }) end), nl(),
+		t"\" Author: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"\" Description: ", i(3, "", {key = "i3"}), nl(),
+		d(4, function(args, snip) return sn(nil, { i(1, jt({"\" Last Modified: ", c_viml("strftime(\"%B %d, %Y\")")}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "guard", descr = "(guard) \"script reload guard\"", priority = -50, trigEngine = te("b")}, {
 		t"if exists(\'", d(1, function(args, snip) return sn(nil, { i(1, jt({"did_", c_py({"vim", 2}, "snip.rv = snip.fn.replace(\'.\',\'_\')", python_globals, args, snip, "", am[2])}, ""), {key = "i1"}) }) end), t"\') || &cp", i(2, " || version < 700", {key = "i2"}), nl(),
@@ -88,12 +89,6 @@ ls.add_snippets("vim", {
 		t"\t", i(3, "\" code", {key = "i3"}), nl(),
 		t"endf"
 	}),
-	s({trig = "header", descr = "(header) standard Vim script file header", priority = -1000, trigEngine = te("w")}, {
-		t"\" File: ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("expand(\'%:t\')")}, ""), {key = "i1"}) }) end), nl(),
-		t"\" Author: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
-		t"\" Description: ", i(3, "", {key = "i3"}), nl(),
-		d(4, function(args, snip) return sn(nil, { i(1, jt({"\" Last Modified: ", c_viml("strftime(\"%B %d, %Y\")")}, ""), {key = "i4"}) }) end)
-	}),
 	s({trig = "t", descr = "(t) try ... catch statement", priority = -1000, trigEngine = te("w")}, {
 		t"try", nl(),
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
@@ -103,7 +98,7 @@ ls.add_snippets("vim", {
 	}),
 	s({trig = "for", descr = "(for) for ... in loop", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(1, "", {key = "i1"}), t" in ", i(2, "", {key = "i2"}), nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"endfor"
 	}),
 	s({trig = "forkv", descr = "(forkv) for [key, value] in loop", priority = -1000, trigEngine = te("w")}, {
@@ -114,12 +109,12 @@ ls.add_snippets("vim", {
 	}),
 	s({trig = "wh", descr = "(wh) while loop", priority = -1000, trigEngine = te("w")}, {
 		t"while ", i(1, "", {key = "i1"}), nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"endw"
 	}),
 	s({trig = "if", descr = "(if) if statement", priority = -1000, trigEngine = te("w")}, {
 		t"if ", i(1, "", {key = "i1"}), nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"endif"
 	}),
 	s({trig = "ife", descr = "(ife) if ... else statement", priority = -1000, trigEngine = te("w")}, {
@@ -138,7 +133,7 @@ ls.add_snippets("vim", {
 	s({trig = "auv", descr = "(auv) augroupvisual ... autocmd block with visual placeholder", priority = -1000, trigEngine = te("w")}, {
 		t"augroup ", i(1, "AU_NAME", {key = "i1"}), nl(),
 		t"\tautocmd!", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"augroup END"
 	}),
 	s({trig = "bun", descr = "(bun) Vundle.vim Plugin definition", priority = -1000, trigEngine = te("w")}, {
@@ -188,5 +183,10 @@ ls.add_snippets("vim", {
 	}),
 	s({trig = "filename", descr = "(filename)", priority = -1000, trigEngine = te("w")}, {
 		f(function(args, snip) return c_viml("Filename()") end, {})
+	}),
+	s({trig = "gvar", descr = "(gvar) \"Global / configuration variable\"", priority = -50, trigEngine = te("b")}, {
+		t"if !exists(\"g:", i(1, "MyUltraImportantVar", {key = "i1"}), t"\")", nl(),
+		t"\tlet g:", cp(1), t" = ", d(2, function(args) return sn(nil, {t"\"", i(3, "<tab>", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), nl(),
+		t"endif"
 	}),
 })

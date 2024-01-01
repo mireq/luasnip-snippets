@@ -42,13 +42,13 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	0,
-	0,
-	4,
-	2,
-	2,
-	4,
+	{{0, 0}},
+	{},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
 }
 ls.add_snippets("openfoam", {
 	s({trig = "fv", descr = "(fv)", priority = -1000, trigEngine = te("w")}, {
@@ -103,7 +103,7 @@ ls.add_snippets("openfoam", {
 		t"\tnCorrectors     \t", i(2, "inner", {key = "i2"}), t";", nl(),
 		t"\tnNonOrthogonalCorrectors ", i(3, "nonOrtho", {key = "i3"}), t";", nl(),
 		t"\tpRefCell        \t", i(4, "cell", {key = "i4"}), t";", nl(),
-		t"\tpRefValue       \t", t"value for ", cp(4), t";", nl(),
+		t"\tpRefValue       \t", d(5, function(args) return sn(nil, {t"value for ", cp(4)}) end, {}, {key = "i0"}), t";", nl(),
 		t"}"
 	}),
 })

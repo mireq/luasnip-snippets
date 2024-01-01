@@ -42,13 +42,13 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	3,
-	6,
-	5,
-	7,
-	4,
-	{{1, 1}, {2, 3}, {3, 5}, {4, 6}, {5, 7}},
-	6,
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
 	{{1, 1}, {2, 2}, {3, 4}, {4, 5}},
 }
 ls.add_snippets("laravel", {
@@ -237,14 +237,14 @@ ls.add_snippets("laravel", {
 		t"* \\class       ", cp(3), nl(),
 		t"* \\implements  ", cp(4), nl(),
 		t"*", nl(),
-		t"* \\author      ", d(3, function(args, snip) return sn(nil, { i(1, jt({c_viml("!v g:snips_author")}, ""), {key = "i5"}) }) end), nl(),
+		t"* \\author      ", d(4, function(args, snip) return sn(nil, { i(1, jt({c_viml("!v g:snips_author")}, ""), {key = "i5"}) }) end), nl(),
 		t"* \\date        ", f(function(args, snip) return c_viml("!v strftime(\'%d-%m-%y\')") end, {}), nl(),
 		t"*/", nl(),
 		nl(),
 		t"namespace ", i(1, "Repositories\\${2}", {key = "i1"}), t";", nl(),
 		nl(),
-		t"class ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("!v expand(\'%:t:r\')")}, ""), {key = "i3"}) }) end), t" extends \\", i(4, "", {key = "i6"}), t" implements ", cp(3), t"RepositoryInterface", t" {", nl(),
-		t"\t", i(5, "", {key = "i7"}), nl(),
+		t"class ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("!v expand(\'%:t:r\')")}, ""), {key = "i3"}) }) end), t" extends \\", i(5, "", {key = "i6"}), t" implements ", d(3, function(args) return sn(nil, {cp(3), t"RepositoryInterface"}) end, {}, {key = "i4"}), t" {", nl(),
+		t"\t", i(6, "", {key = "i7"}), nl(),
 		t"}"
 	}),
 	s({trig = "l_s", descr = "(l_s)", priority = -1000, trigEngine = te("w")}, {
@@ -290,7 +290,7 @@ ls.add_snippets("laravel", {
 		t"\t*", nl(),
 		t"\t* \\return      string", nl(),
 		t"\t*/", nl(),
-		t"\tprotected static function getFacadeAccessor() { return \'", i(3, "${3}Service", {key = "i3"}), t"\'; }", nl(),
+		t"\tprotected static function getFacadeAccessor() { return \'", i(3, "${3}Service", {key = "i4"}), t"\'; }", nl(),
 		t"}"
 	}),
 })

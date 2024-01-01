@@ -42,133 +42,133 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	0,
-	0,
-	0,
-	1,
-	3,
-	3,
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{1, 1}},
+	{{1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{1, 1}, {2, 2}},
+	{},
+	{},
+	{},
+	{{1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}, {10, 10}, {11, 11}, {12, 12}, {13, 13}, {14, 14}, {15, 15}, {16, 16}, {17, 17}, {18, 18}, {19, 19}, {20, 20}, {21, 21}, {22, 22}, {23, 23}, {24, 24}, {25, 25}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
 	{{1, 1}, {2, 2}, {3, 4}, {4, 5}},
 	{{1, 1}, {2, 2}, {3, 4}, {4, 5}},
-	{{1, 1}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}, {7, 8}},
-	7,
-	2,
-	3,
-	3,
-	7,
-	3,
-	25,
-	2,
-	2,
-	{{1, 1}, {2, 2}, {3, 5}},
-	{{1, 1}, {2, 2}, {3, 5}},
-	0,
-	2,
-	1,
-	1,
-	2,
-	3,
-	5,
-	4,
-	3,
-	3,
-	{{1, 1}, {2, 2}, {3, 3}, {4, 5}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 5}},
-	{{1, 1}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}},
-	2,
-	1,
-	1,
-	2,
-	3,
-	1,
-	1,
-	7,
-	1,
-	1,
-	1,
-	3,
-	2,
-	0,
-	0,
-	0,
-	3,
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	1,
-	1,
-	1,
-	2,
-	{{1, 1}, {2, 2}, {3, 4}},
-	1,
-	3,
-	2,
-	2,
-	1,
-	2,
-	2,
-	3,
-	0,
-	1,
-	0,
-	0,
-	0,
-	2,
-	0,
-	0,
-	1,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	2,
-	0,
-	0,
-	0,
-	1,
-	1,
-	2,
-	3,
-	0,
-	3,
-	0,
-	1,
-	3,
-	3,
-	4,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	6,
-	1,
-	2,
-	2,
-	1,
-	1,
-	1,
-	3,
-	4,
-	3,
-	0,
-	0,
-	1,
-	1,
-	1,
+	{},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
 }
 
 local python_globals = {
@@ -428,51 +428,368 @@ ls.add_snippets("python", {
 		t"#!/usr/bin/env python3", nl(),
 		i(0, "", {key = "i0"})
 	}),
-	s({trig = "^# ?[uU][tT][fF]-?8", descr = "(^# ?[uU][tT][fF]-?8) \"# encoding: UTF-8\"", priority = -50, trigEngine = te("r")}, {
-		t"# -*- coding: utf-8 -*-", nl(),
-		i(0, "", {key = "i0"})
+	s({trig = "imp", descr = "(imp)", priority = -1000, trigEngine = te("w")}, {
+		t"import ", i(0, "module", {key = "i0"})
 	}),
-	s({trig = "ifmain", descr = "(ifmain) \"ifmain\"", priority = -50, trigEngine = te("b")}, {
-		t"if __name__ == ", f(function(args, snip) return c_py({"python", 5}, "snip.rv = get_quoting_style(snip)", python_globals, args, snip, "", am[5]) end, ae(am[5])), t"__main__", f(function(args, snip) return c_py({"python", 5}, "snip.rv = get_quoting_style(snip)", python_globals, args, snip, "", am[5]) end, ae(am[5])), t":", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end)
+	s({trig = "uni", descr = "(uni)", priority = -1000, trigEngine = te("w")}, {
+		t"def __unicode__(self):", nl(),
+		t"\t", i(0, "representation", {key = "i0"})
+	}),
+	s({trig = "from", descr = "(from) \"from module import name\"", priority = -50, trigEngine = te("b")}, {
+		t"from ", i(1, "module", {key = "i1"}), t" import ", i(2, "Stuff", {key = "i2"})
+	}),
+	s({trig = "docs", descr = "(docs)", priority = -1000, trigEngine = te("w")}, {
+		t"\"\"\"", nl(),
+		t"File: ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1.py\', \'foo.py\')")}, ""), {key = "i1"}) }) end), nl(),
+		t"Author: ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
+		t"Email: ", f(function(args, snip) return c_viml("g:snips_email") end, {}), nl(),
+		t"Github: ", f(function(args, snip) return c_viml("g:snips_github") end, {}), nl(),
+		t"Description: ", i(0, "", {key = "i0"}), nl(),
+		t"\"\"\"", nl()
+	}),
+	s({trig = "sk", descr = "(sk) \"skip unittests\" b", priority = -1000, trigEngine = te("w")}, {
+		t"@unittest.skip(", i(1, "skip_reason", {key = "i1"}), t")", nl()
+	}),
+	s({trig = "wh", descr = "(wh)", priority = -1000, trigEngine = te("w")}, {
+		t"while ", i(1, "", {key = "i1"}), t":", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl()
+	}),
+	s({trig = "dowh", descr = "(dowh)", priority = -1000, trigEngine = te("w")}, {
+		t"while True:", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"\tif ", i(0, "", {key = "i0"}), t":", nl(),
+		t"\t\tbreak", nl()
 	}),
 	s({trig = "with", descr = "(with) \"with\"", priority = -50, trigEngine = te("b")}, {
-		t"with ", i(1, "expr", {key = "i1"}), f(function(args, snip) return c_py({"python", 6}, "snip.rv = \" as \" if t[2] else \"\"", python_globals, args, snip, "", am[6]) end, ae(am[6])), i(2, "var", {key = "i2"}), t":", nl(),
+		t"with ", i(1, "expr", {key = "i1"}), f(function(args, snip) return c_py({"python", 11}, "snip.rv = \" as \" if t[2] else \"\"", python_globals, args, snip, "", am[11]) end, ae(am[11])), i(2, "var", {key = "i2"}), t":", nl(),
 		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
 		i(0, "", {key = "i0"})
+	}),
+	s({trig = "awith", descr = "(awith)", priority = -1000, trigEngine = te("w")}, {
+		t"async with ", i(1, "expr", {key = "i1"}), t" as ", i(2, "var", {key = "i2"}), t":", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl()
+	}),
+	s({trig = "cl", descr = "(cl)", priority = -1000, trigEngine = te("w")}, {
+		t"class ", i(1, "ClassName", {key = "i1"}), t"(", i(2, "object", {key = "i2"}), t"):", nl(),
+		t"\t\"\"\"", d(3, function(args) return sn(nil, {t"docstring for ", cp(1)}) end, {}, {key = "i3"}), t"\"\"\"", nl(),
+		t"\tdef __init__(self, ", i(4, "arg", {key = "i4"}), t"):", nl(),
+		t"\t\t", d(5, function(args) return sn(nil, {t"super(", cp(1), t", self).__init__()"}) end, {}, {key = "i5"}), nl(),
+		t"\t\tself.", cp(4), t" = ", cp(4), nl(),
+		t"\t\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "cla", descr = "(cla)", priority = -1000, trigEngine = te("w")}, {
+		t"class ", i(1, "class_name", {key = "i1"}), t":", nl(),
+		t"\t\"\"\"", i(0, "description", {key = "i0"}), t"\"\"\"", nl()
+	}),
+	s({trig = "clai", descr = "(clai)", priority = -1000, trigEngine = te("w")}, {
+		t"class ", i(1, "class_name", {key = "i1"}), t":", nl(),
+		t"\t\"\"\"", i(2, "description", {key = "i2"}), t"\"\"\"", nl(),
+		t"\tdef __init__(self, ", i(3, "args", {key = "i3"}), t"):", nl(),
+		t"\t\t", i(0, "", {key = "i0"}), nl()
+	}),
+	s({trig = "dcl", descr = "(dcl) \"dataclass\"", priority = -50, trigEngine = te("b")}, {
+		t"@dataclass", nl(),
+		t"class ", i(1, "MyClass", {key = "i1"}), t":", nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 16}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[16]) end, ae(am[16])), d(2, function(args) return sn(nil, {t"Docstring for ", cp(1), t". "}) end, {}, {key = "i2"}), f(function(args, snip) return c_py({"python", 16}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[16]) end, ae(am[16])), nl(),
+		t"\t", i(3, "var_1", {key = "i3"}), t": ", i(4, "int", {key = "i4"}), nl(),
+		t"\t", i(5, "var_2", {key = "i5"}), t": ", i(6, "float", {key = "i6"}), t" = ", i(7, "0", {key = "i7"}), nl(),
+		nl(),
+		t"\tdef ", i(8, "total", {key = "i8"}), t"(self): -> ", cp(6), t":", nl(),
+		t"\t\treturn ", d(9, function(args) return sn(nil, {t"self.", cp(3), t" * self.", cp(5)}) end, {}, {key = "i0"})
+	}),
+	s({trig = "def", descr = "(def) \"function with docstrings\"", priority = 0, trigEngine = te("b")}, {
+		t"def ", i(1, "function", {key = "i1"}), t"(", f(function(args, snip) return c_py({"python", 17}, "\nif snip.indent:\n\tsnip.rv = \'self\' + (\", \" if len(t[2]) else \"\")", python_globals, args, snip, "", am[17]) end, ae(am[17])), i(2, "arg1", {key = "i2"}), t"):", nl(),
+		t"\t", i(0, "pass", {key = "i0"})
+	}),
+	s({trig = "deff", descr = "(deff) \"function or class method\"", priority = -50, trigEngine = te("")}, {
+		t"def ", i(1, "fname", {key = "i1"}), t"(", f(function(args, snip) return c_py({"python", 18}, "snip.rv = \"self, \" if snip.indent else \"\"", python_globals, args, snip, "", am[18]) end, ae(am[18])), i(2, "", {key = "i2"}), t"):", nl(),
+		t"\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "adef", descr = "(adef)", priority = -1000, trigEngine = te("w")}, {
+		t"async def ", i(1, "fname", {key = "i1"}), t"(", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("indent(\'.\') ? \'self\' : \'\'")}, ""), {key = "i2"}) }) end), t"):", nl(),
+		t"\t\"\"\"", d(3, function(args) return sn(nil, {t"docstring for ", cp(1)}) end, {}, {key = "i3"}), t"\"\"\"", nl(),
+		t"\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "adeff", descr = "(adeff)", priority = -1000, trigEngine = te("w")}, {
+		t"async def ", i(1, "fname", {key = "i1"}), t"(", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("indent(\'.\') ? \'self\' : \'\'")}, ""), {key = "i2"}) }) end), t"):", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl()
+	}),
+	s({trig = "defi", descr = "(defi)", priority = -1000, trigEngine = te("w")}, {
+		t"def __init__(self, ", i(1, "args", {key = "i1"}), t"):", nl(),
+		t"\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "defm", descr = "(defm)", priority = -1000, trigEngine = te("w")}, {
+		t"def ", i(1, "mname", {key = "i1"}), t"(self, ", i(2, "arg", {key = "i2"}), t"):", nl(),
+		t"\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "adefm", descr = "(adefm)", priority = -1000, trigEngine = te("w")}, {
+		t"async def ", i(1, "mname", {key = "i1"}), t"(self, ", i(2, "arg", {key = "i2"}), t"):", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl()
+	}),
+	s({trig = "property", descr = "(property)", priority = -1000, trigEngine = te("w")}, {
+		t"@property", nl(),
+		t"def ", i(1, "foo", {key = "i1"}), t"(self) -> ", i(2, "type", {key = "i2"}), t":", nl(),
+		t"\t\"\"\"", i(3, "doc", {key = "i3"}), t"\"\"\"", nl(),
+		t"\treturn self._", cp(1), nl(),
+		nl(),
+		t"@", cp(1), t".setter", nl(),
+		t"def ", cp(1), t"(self, value: ", cp(2), t"):", nl(),
+		t"\tself._", cp(1), t" = value", nl()
+	}),
+	s({trig = "if", descr = "(if) \"If\"", priority = -50, trigEngine = te("b")}, {
+		t"if ", i(1, "condition", {key = "i1"}), t":", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end)
+	}),
+	s({trig = "el", descr = "(el)", priority = -1000, trigEngine = te("w")}, {
+		t"else:", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end)
+	}),
+	s({trig = "ei", descr = "(ei)", priority = -1000, trigEngine = te("w")}, {
+		t"elif ", i(1, "", {key = "i1"}), t":", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl()
+	}),
+	s({trig = "match", descr = "(match) \"Structural pattern matching\"", priority = -50, trigEngine = te("b")}, {
+		t"match ", i(1, "expression", {key = "i1"}), t":", nl(),
+		t"\tcase ", i(2, "pattern_1", {key = "i2"}), t":", nl(),
+		t"\t\t", i(3, "pass", {key = "i3"}), nl(),
+		t"\tcase ", i(4, "pattern_2", {key = "i4"}), t":", nl(),
+		t"\t\t", i(0, "pass", {key = "i0"})
+	}),
+	s({trig = "matchw", descr = "(matchw) \"Pattern matching with wildcard\"", priority = -50, trigEngine = te("b")}, {
+		t"match ", i(1, "expression", {key = "i1"}), t":", nl(),
+		t"\tcase ", i(2, "pattern_1", {key = "i2"}), t":", nl(),
+		t"\t\t", i(3, "pass", {key = "i3"}), nl(),
+		t"\tcase _:", nl(),
+		t"\t\t", i(0, "pass", {key = "i0"})
 	}),
 	s({trig = "for", descr = "(for) \"for loop\"", priority = -50, trigEngine = te("b")}, {
 		t"for ", i(1, "item", {key = "i1"}), t" in ", i(2, "iterable", {key = "i2"}), t":", nl(),
 		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end)
 	}),
-	s({trig = "class", descr = "(class) \"class with docstrings\"", priority = -50, trigEngine = te("b")}, {
-		t"class ", i(1, "MyClass", {key = "i1"}), t"(", i(2, "object", {key = "i2"}), t"):", nl(),
-		nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 8}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[8]) end, ae(am[8])), t"Docstring for ", cp(1), t". ", f(function(args, snip) return c_py({"python", 8}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[8]) end, ae(am[8])), nl(),
-		nl(),
-		t"\tdef __init__(self", i(3, "", {key = "i4"}), t"):", nl(),
-		t"\t\t", f(function(args, snip) return c_py({"python", 8}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[8]) end, ae(am[8])), i(4, "TODO: to be defined.", {key = "i4"}), f(function(args, snip) return c_py({"python", 8}, "\nsnip.rv = \"\"\nsnip >> 2\n\nargs = get_args(t[4])\n\nwrite_docstring_args(args, snip)\nif args:\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += \'{0}\'.format(triple_quotes(snip))\n\nwrite_init_body(args, t[2], snip)\n", python_globals, args, snip, "", am[8]) end, ae(am[8])), nl(),
-		t"\t\t", i(0, "", {key = "i0"})
+	s({trig = "cutf8", descr = "(cutf8)", priority = -1000, trigEngine = te("w")}, {
+		t"# -*- coding: utf-8 -*-"
 	}),
-	s({trig = "slotclass", descr = "(slotclass) \"class with slots and docstrings\"", priority = -50, trigEngine = te("b")}, {
-		t"class ", i(1, "MyClass", {key = "i1"}), t"(", i(2, "object", {key = "i2"}), t"):", nl(),
-		nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 9}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[9]) end, ae(am[9])), t"Docstring for ", cp(1), t". ", f(function(args, snip) return c_py({"python", 9}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[9]) end, ae(am[9])), nl(),
-		f(function(args, snip) return c_py({"python", 9}, "\nsnip >> 1\nargs = get_args(t[4])\nwrite_slots_args(args, snip)\n", python_globals, args, snip, "", am[9]) end, ae(am[9])), nl(),
-		nl(),
-		t"\tdef __init__(self", i(3, "", {key = "i4"}), t"):", nl(),
-		t"\t\t", f(function(args, snip) return c_py({"python", 9}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[9]) end, ae(am[9])), i(4, "TODO: to be defined.", {key = "i4"}), f(function(args, snip) return c_py({"python", 9}, "\nsnip.rv = \"\"\nsnip >> 2\n\nargs = get_args(t[4])\n\nwrite_docstring_args(args, snip)\nif args:\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += triple_quotes(snip)\n\nwrite_init_body(args, t[2], snip)\n", python_globals, args, snip, "", am[9]) end, ae(am[9])), nl(),
-		t"\t\t", i(0, "", {key = "i0"})
+	s({trig = "clatin1", descr = "(clatin1)", priority = -1000, trigEngine = te("w")}, {
+		t"# -*- coding: latin-1 -*-"
 	}),
-	s({trig = "dcl", descr = "(dcl) \"dataclass\"", priority = -50, trigEngine = te("b")}, {
-		t"@dataclass", nl(),
-		t"class ", i(1, "MyClass", {key = "i1"}), t":", nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 10}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[10]) end, ae(am[10])), t"Docstring for ", cp(1), t". ", f(function(args, snip) return c_py({"python", 10}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[10]) end, ae(am[10])), nl(),
-		t"\t", i(2, "var_1", {key = "i2"}), t": ", i(3, "int", {key = "i3"}), nl(),
-		t"\t", i(4, "var_2", {key = "i4"}), t": ", i(5, "float", {key = "i5"}), t" = ", i(6, "0", {key = "i6"}), nl(),
+	s({trig = "cascii", descr = "(cascii)", priority = -1000, trigEngine = te("w")}, {
+		t"# -*- coding: ascii -*-", nl()
+	}),
+	s({trig = "ld", descr = "(ld)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "var", {key = "i1"}), t" = lambda ", i(2, "vars", {key = "i2"}), t" : ", i(0, "action", {key = "i0"}), nl()
+	}),
+	s({trig = "ret", descr = "(ret)", priority = -1000, trigEngine = te("w")}, {
+		t"return ", i(0, "", {key = "i0"})
+	}),
+	s({trig = ".", descr = "(.)", priority = -1000, trigEngine = te("w")}, {
+		t"self."
+	}),
+	s({trig = "sa", descr = "(sa) self.attribute = attribute", priority = -1000, trigEngine = te("w")}, {
+		t"self.", i(1, "attribute", {key = "i1"}), t" = ", cp(1), nl()
+	}),
+	s({trig = "try", descr = "(try) \"Try / Except\"", priority = -50, trigEngine = te("b")}, {
+		t"try:", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"except ", i(2, "Exception", {key = "i2"}), t" as ", i(3, "e", {key = "i3"}), t":", nl(),
+		t"\t", d(4, function(args) return sn(nil, {t"raise ", cp(3)}) end, {}, {key = "i4"})
+	}),
+	s({trig = "trye", descr = "(trye) \"Try / Except / Else\"", priority = -50, trigEngine = te("b")}, {
+		t"try:", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"except ", i(2, "Exception", {key = "i2"}), t" as ", i(3, "e", {key = "i3"}), t":", nl(),
+		t"\t", d(4, function(args) return sn(nil, {t"raise ", cp(3)}) end, {}, {key = "i4"}), nl(),
+		t"else:", nl(),
+		t"\t", i(5, "pass", {key = "i5"})
+	}),
+	s({trig = "tryf", descr = "(tryf) \"Try / Except / Finally\"", priority = -50, trigEngine = te("b")}, {
+		t"try:", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"except ", i(2, "Exception", {key = "i2"}), t" as ", i(3, "e", {key = "i3"}), t":", nl(),
+		t"\t", d(4, function(args) return sn(nil, {t"raise ", cp(3)}) end, {}, {key = "i4"}), nl(),
+		t"finally:", nl(),
+		t"\t", i(5, "pass", {key = "i5"})
+	}),
+	s({trig = "tryef", descr = "(tryef) \"Try / Except / Else / Finally\"", priority = -50, trigEngine = te("b")}, {
+		t"try:", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"except", d(2, function(args) return sn(nil, {t" ", i(3, "Exception", {key = "i3"}), t" as ", i(4, "e", {key = "i4"})}) end, {}, {key = "i2"}), t":", nl(),
+		t"\t", i(5, "raise", {key = "i5"}), nl(),
+		t"else:", nl(),
+		t"\t", i(6, "pass", {key = "i6"}), nl(),
+		t"finally:", nl(),
+		t"\t", i(7, "pass", {key = "i7"})
+	}),
+	s({trig = "ifmain", descr = "(ifmain) \"ifmain\"", priority = -50, trigEngine = te("b")}, {
+		t"if __name__ == ", f(function(args, snip) return c_py({"python", 42}, "snip.rv = get_quoting_style(snip)", python_globals, args, snip, "", am[42]) end, ae(am[42])), t"__main__", f(function(args, snip) return c_py({"python", 42}, "snip.rv = get_quoting_style(snip)", python_globals, args, snip, "", am[42]) end, ae(am[42])), t":", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end)
+	}),
+	s({trig = "_", descr = "(_)", priority = -1000, trigEngine = te("w")}, {
+		t"__", i(1, "init", {key = "i1"}), t"__", nl()
+	}),
+	s({trig = "br", descr = "(br)", priority = -1000, trigEngine = te("w")}, {
+		t"breakpoint()"
+	}),
+	s({trig = "pdb", descr = "(pdb)", priority = -1000, trigEngine = te("w")}, {
+		t"__import__(\'pdb\').set_trace()"
+	}),
+	s({trig = "bpdb", descr = "(bpdb)", priority = -1000, trigEngine = te("w")}, {
+		t"__import__(\'bpdb\').set_trace()"
+	}),
+	s({trig = "ipdb", descr = "(ipdb)", priority = -1000, trigEngine = te("w")}, {
+		t"__import__(\'ipdb\').set_trace()"
+	}),
+	s({trig = "iem", descr = "(iem)", priority = -1000, trigEngine = te("w")}, {
+		t"__import__(\'IPython\').embed()"
+	}),
+	s({trig = "rpdb", descr = "(rpdb)", priority = -1000, trigEngine = te("w")}, {
+		t"__import__(\'rpdb\').set_trace()"
+	}),
+	s({trig = "wdb", descr = "(wdb)", priority = -1000, trigEngine = te("w")}, {
+		t"__import__(\'wdb\').set_trace()"
+	}),
+	s({trig = "ptpython", descr = "(ptpython)", priority = -1000, trigEngine = te("w")}, {
+		t"__import__(\'ptpython.repl\', fromlist=(\'repl\')).embed(globals(), locals(), vi_mode=", i(1, "False", {key = "i1"}), t", history_filename=", i(2, "None", {key = "i2"}), t")"
+	}),
+	s({trig = "pudb", descr = "(pudb)", priority = -1000, trigEngine = te("w")}, {
+		t"__import__(\'pudb\').set_trace()"
+	}),
+	s({trig = "pudbr", descr = "(pudbr)", priority = -1000, trigEngine = te("w")}, {
+		t"from pudb.remote import set_trace", nl(),
+		t"set_trace()"
+	}),
+	s({trig = "nosetrace", descr = "(nosetrace)", priority = -1000, trigEngine = te("w")}, {
+		t"__import__(\'nose\').tools.set_trace()"
+	}),
+	s({trig = "pprint", descr = "(pprint)", priority = -1000, trigEngine = te("w")}, {
+		t"__import__(\'pprint\').pprint(", i(1, "", {key = "i1"}), t")", nl()
+	}),
+	s({trig = "\"", descr = "(\") \"triple quoted string (double quotes)\"", priority = 0, trigEngine = te("b")}, {
+		t"\"\"\"", nl(),
+		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
+		t"\"\"\""
+	}),
+	s({trig = "a=", descr = "(a=)", priority = -1000, trigEngine = te("w")}, {
+		t"self.assertEqual(", i(0, "", {key = "i0"}), t", ", i(1, "", {key = "i1"}), t")"
+	}),
+	s({trig = "test", descr = "(test)", priority = -1000, trigEngine = te("w")}, {
+		t"def test_", i(1, "description", {key = "i1"}), t"(", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("indent(\'.\') ? \'self\' : \'\'")}, ""), {key = "i2"}) }) end), t"):", nl(),
+		t"\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "testcase", descr = "(testcase) \"pyunit testcase\"", priority = -50, trigEngine = te("b")}, {
+		t"class Test", i(1, "Class", {key = "i1"}), t"(", i(2, "unittest.TestCase", {key = "i2"}), t"):", nl(),
 		nl(),
-		t"\tdef ", i(7, "total", {key = "i7"}), t"(self): -> ", cp(6), t":", nl(),
-		t"\t\treturn ", t"self.", cp(3), t" * self.", cp(5)
+		t"\t", f(function(args, snip) return c_py({"python", 59}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[59]) end, ae(am[59])), i(3, "Test case docstring.", {key = "i3"}), f(function(args, snip) return c_py({"python", 59}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[59]) end, ae(am[59])), nl(),
+		nl(),
+		t"\tdef setUp(self):", nl(),
+		t"\t\t", i(4, "pass", {key = "i4"}), nl(),
+		nl(),
+		t"\tdef tearDown(self):", nl(),
+		t"\t\t", i(5, "pass", {key = "i5"}), nl(),
+		nl(),
+		t"\tdef test_", i(6, "name", {key = "i6"}), t"(self):", nl(),
+		t"\t\t", d(7, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i7"}) }) end)
+	}),
+	s({trig = "tgwt", descr = "(tgwt)", priority = -1000, trigEngine = te("w")}, {
+		t"# given: ", i(1, "", {key = "i1"}), nl(),
+		t"# when: ", i(2, "", {key = "i2"}), nl(),
+		t"# then: ", i(3, "", {key = "i3"})
+	}),
+	s({trig = "fut", descr = "(fut)", priority = -1000, trigEngine = te("w")}, {
+		t"from __future__ import ", i(0, "", {key = "i0"}), nl()
+	}),
+	s({trig = "getopt", descr = "(getopt)", priority = -1000, trigEngine = te("w")}, {
+		t"try:", nl(),
+		t"\t# Short option syntax: \"hv:\"", nl(),
+		t"\t# Long option syntax: \"help\" or \"verbose=\"", nl(),
+		t"\topts, args = getopt.getopt(sys.argv[1:], \"", i(1, "short_options", {key = "i1"}), t"\", [", i(2, "long_options", {key = "i2"}), t"])", nl(),
+		nl(),
+		t"except getopt.GetoptError, err:", nl(),
+		t"\t# Print debug info", nl(),
+		t"\tprint str(err)", nl(),
+		t"\t", i(3, "error_action", {key = "i3"}), nl(),
+		nl(),
+		t"for option, argument in opts:", nl(),
+		t"\tif option in (\"-h\", \"--help\"):", nl(),
+		t"\t\t", i(0, "", {key = "i0"}), nl(),
+		t"\telif option in (\"-v\", \"--verbose\"):", nl(),
+		t"\t\tverbose = argument", nl()
+	}),
+	s({trig = "addp", descr = "(addp)", priority = -1000, trigEngine = te("w")}, {
+		t"parser = ", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"ArgumentParser()"
+	}),
+	s({trig = "addsp", descr = "(addsp)", priority = -1000, trigEngine = te("w")}, {
+		i(0, "sub_parser", {key = "i0"}), t" = parser.add_subparsers().add_parser(\"", i(1, "name", {key = "i1"}), t"\")"
+	}),
+	s({trig = "addarg", descr = "(addarg)", priority = -1000, trigEngine = te("w")}, {
+		t"parser.add_argument(\"", i(0, "short_arg", {key = "i0"}), t"\", \"", i(1, "long_arg", {key = "i1"}), t"\", default=", i(2, "None", {key = "i2"}), t", help=\"", i(3, "Help text", {key = "i3"}), t"\")"
+	}),
+	s({trig = "addnarg", descr = "(addnarg)", priority = -1000, trigEngine = te("w")}, {
+		t"parser.add_argument(\"", i(0, "arg", {key = "i0"}), t"\", nargs=\"", i(1, "*", {key = "i1"}), t"\", default=", i(2, "None", {key = "i2"}), t", help=\"", i(3, "Help text", {key = "i3"}), t"\")"
+	}),
+	s({trig = "addaarg", descr = "(addaarg)", priority = -1000, trigEngine = te("w")}, {
+		t"parser.add_argument(\"", i(0, "arg", {key = "i0"}), t"\", \"", i(1, "long_arg", {key = "i1"}), t"\", action=\"", i(2, "store_true", {key = "i2"}), t"\", default=", i(3, "False", {key = "i3"}), t", help=\"", i(4, "Help text", {key = "i4"}), t"\")"
+	}),
+	s({trig = "pargs", descr = "(pargs)", priority = -1000, trigEngine = te("w")}, {
+		t"\"", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"\"parser.parse_args()", nl()
+	}),
+	s({trig = "glog", descr = "(glog)", priority = -1000, trigEngine = te("w")}, {
+		t"import logging", nl(),
+		t"LOGGER = logging.getLogger(", i(0, "__name__", {key = "i0"}), t")"
+	}),
+	s({trig = "le", descr = "(le)", priority = -1000, trigEngine = te("w")}, {
+		t"LOGGER.error(", i(0, "msg", {key = "i0"}), t")"
+	}),
+	s({trig = "lg", descr = "(lg)", priority = -1000, trigEngine = te("w")}, {
+		t"LOGGER.debug(", i(0, "msg", {key = "i0"}), t")"
+	}),
+	s({trig = "lw", descr = "(lw)", priority = -1000, trigEngine = te("w")}, {
+		t"LOGGER.warning(", i(0, "msg", {key = "i0"}), t")"
+	}),
+	s({trig = "lc", descr = "(lc)", priority = -1000, trigEngine = te("w")}, {
+		t"LOGGER.critical(", i(0, "msg", {key = "i0"}), t")"
+	}),
+	s({trig = "li", descr = "(li)", priority = -1000, trigEngine = te("w")}, {
+		t"LOGGER.info(", i(0, "msg", {key = "i0"}), t")"
+	}),
+	s({trig = "epydoc", descr = "(epydoc)", priority = -1000, trigEngine = te("w")}, {
+		t"\"\"\"", i(1, "Description", {key = "i1"}), nl(),
+		nl(),
+		t"@param ", i(2, "param", {key = "i2"}), t": ", i(3, " Description", {key = "i3"}), nl(),
+		t"@type  ", cp(2), t": ", i(4, " Type", {key = "i4"}), nl(),
+		nl(),
+		t"@return: ", i(5, " Description", {key = "i5"}), nl(),
+		t"@rtype : ", i(6, " Type", {key = "i6"}), nl(),
+		nl(),
+		t"@raise e: ", i(0, " Description", {key = "i0"}), nl(),
+		t"\"\"\""
+	}),
+	s({trig = "dol", descr = "(dol)", priority = -1000, trigEngine = te("w")}, {
+		t"def ", i(1, "__init__", {key = "i1"}), t"(self, *args, **kwargs):", nl(),
+		t"\tsuper(", i(0, "ClassName", {key = "i0"}), t", self).", cp(1), t"(*args, **kwargs)"
+	}),
+	s({trig = "kwg", descr = "(kwg)", priority = -1000, trigEngine = te("w")}, {
+		t"self.", i(1, "var_name", {key = "i1"}), t" = kwargs.get(\'", cp(1), t"\', ", i(2, "None", {key = "i2"}), t")"
+	}),
+	s({trig = "lkwg", descr = "(lkwg)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "var_name", {key = "i1"}), t" = kwargs.get(\'", cp(1), t"\', ", i(2, "None", {key = "i2"}), t")"
+	}),
+	s({trig = "args", descr = "(args)", priority = -1000, trigEngine = te("w")}, {
+		t"*args", i(1, ",", {key = "i1"}), i(0, "", {key = "i0"})
+	}),
+	s({trig = "kwargs", descr = "(kwargs)", priority = -1000, trigEngine = te("w")}, {
+		t"**kwargs", i(1, ",", {key = "i1"}), i(0, "", {key = "i0"})
+	}),
+	s({trig = "akw", descr = "(akw)", priority = -1000, trigEngine = te("w")}, {
+		t"*args, **kwargs", i(1, ",", {key = "i1"}), i(0, "", {key = "i0"}), nl()
+	}),
+	s({trig = "lcp", descr = "(lcp) list comprehension", priority = -1000, trigEngine = te("w")}, {
+		t"[", i(1, "", {key = "i1"}), t" for ", i(2, "", {key = "i2"}), t" in ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end), t"]", i(0, "", {key = "i0"}), nl()
+	}),
+	s({trig = "dcp", descr = "(dcp) dict comprehension", priority = -1000, trigEngine = te("w")}, {
+		t"{", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), t" for ", i(3, "", {key = "i3"}), t" in ", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i4"}) }) end), t"}", i(0, "", {key = "i0"}), nl()
+	}),
+	s({trig = "scp", descr = "(scp) set comprehension", priority = -1000, trigEngine = te("w")}, {
+		t"{", i(1, "", {key = "i1"}), t" for ", i(2, "", {key = "i2"}), t" in ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end), t"}", i(0, "", {key = "i0"}), nl()
 	}),
 	s({trig = "contain", descr = "(contain) \"methods for emulating a container type\"", priority = -50, trigEngine = te("b")}, {
 		t"def __len__(self):", nl(),
@@ -640,183 +957,28 @@ ls.add_snippets("python", {
 		t"def __coerce__(self, other):", nl(),
 		t"\t", i(25, "pass", {key = "i25"})
 	}),
-	s({trig = "deff", descr = "(deff) \"function or class method\"", priority = -50, trigEngine = te("")}, {
-		t"def ", i(1, "fname", {key = "i1"}), t"(", f(function(args, snip) return c_py({"python", 18}, "snip.rv = \"self, \" if snip.indent else \"\"", python_globals, args, snip, "", am[18]) end, ae(am[18])), i(2, "", {key = "i2"}), t"):", nl(),
-		t"\t", i(0, "", {key = "i0"})
+	s({trig = "pr", descr = "(pr) \"Print\"", priority = 0, trigEngine = te("i")}, {
+		t"print(", i(0, "", {key = "i0"}), t")"
 	}),
-	s({trig = "def", descr = "(def) \"function with docstrings\"", priority = 0, trigEngine = te("b")}, {
-		t"def ", i(1, "function", {key = "i1"}), t"(", f(function(args, snip) return c_py({"python", 19}, "\nif snip.indent:\n\tsnip.rv = \'self\' + (\", \" if len(t[2]) else \"\")", python_globals, args, snip, "", am[19]) end, ae(am[19])), i(2, "arg1", {key = "i2"}), t"):", nl(),
-		t"\t", i(0, "pass", {key = "i0"})
+	s({trig = "prs", descr = "(prs)", priority = -1000, trigEngine = te("w")}, {
+		t"print(\"", i(0, "", {key = "i0"}), t"\")"
 	}),
-	s({trig = "defc", descr = "(defc) \"class method with docstrings\"", priority = -50, trigEngine = te("b")}, {
-		t"@classmethod", nl(),
-		t"def ", i(1, "function", {key = "i1"}), t"(", f(function(args, snip) return c_py({"python", 20}, "\nif snip.indent:\n\tsnip.rv = \'cls\' + (\", \" if len(t[2]) else \"\")", python_globals, args, snip, "", am[20]) end, ae(am[20])), i(2, "arg1", {key = "i2"}), t"):", nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 20}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[20]) end, ae(am[20])), t"TODO: Docstring for ", cp(1), t".", f(function(args, snip) return c_py({"python", 20}, "\nwrite_function_docstring(t, snip) ", python_globals, args, snip, "", am[20]) end, ae(am[20])), nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i5"}) }) end)
+	s({trig = "prf", descr = "(prf)", priority = -1000, trigEngine = te("w")}, {
+		t"print(f\"", i(0, "", {key = "i0"}), t"\")"
 	}),
-	s({trig = "defs", descr = "(defs) \"static method with docstrings\"", priority = -50, trigEngine = te("b")}, {
-		t"@staticmethod", nl(),
-		t"def ", i(1, "function", {key = "i1"}), t"(", i(2, "arg1", {key = "i2"}), t"):", nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 21}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[21]) end, ae(am[21])), t"TODO: Docstring for ", cp(1), t".", f(function(args, snip) return c_py({"python", 21}, "\nwrite_function_docstring(t, snip) ", python_globals, args, snip, "", am[21]) end, ae(am[21])), nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i5"}) }) end)
+	s({trig = "fpr", descr = "(fpr)", priority = -1000, trigEngine = te("w")}, {
+		t"print(", i(0, "", {key = "i0"}), t", file=", i(1, "sys.stderr", {key = "i1"}), t")"
 	}),
-	s({trig = "(^|(?<=\\W))\\.", descr = "((^|(?<=\\W))\\.) \"self.\"", priority = -50, trigEngine = te("r")}, {
-		t"self."
+	s({trig = "fprs", descr = "(fprs)", priority = -1000, trigEngine = te("w")}, {
+		t"print(\"", i(0, "", {key = "i0"}), t"\", file=", i(1, "sys.stderr", {key = "i1"}), t")"
 	}),
-	s({trig = "from", descr = "(from) \"from module import name\"", priority = -50, trigEngine = te("b")}, {
-		t"from ", i(1, "module", {key = "i1"}), t" import ", i(2, "Stuff", {key = "i2"})
-	}),
-	s({trig = "roprop", descr = "(roprop) \"Read Only Property\"", priority = -50, trigEngine = te("b")}, {
-		t"@property", nl(),
-		t"def ", i(1, "name", {key = "i1"}), t"(self):", nl(),
-		t"\t", t"return self._", cp(1), i(0, "", {key = "i0"})
-	}),
-	s({trig = "rwprop", descr = "(rwprop) \"Read write property\"", priority = -50, trigEngine = te("b")}, {
-		t"def ", i(1, "name", {key = "i1"}), t"():", nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 25}, "snip.rv = triple_quotes(snip) if t[2] else \'\'\n", python_globals, args, snip, "", am[25]) end, ae(am[25])), t"TODO: Docstring for ", cp(1), t".", f(function(args, snip) return c_py({"python", 25}, "\nif t[2]:\n\tsnip >> 1\n\n\tstyle = get_style(snip)\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += format_return(style)\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += triple_quotes(snip)\nelse:\n\tsnip.rv = \"\"", python_globals, args, snip, "", am[25]) end, ae(am[25])), nl(),
-		t"\tdef fget(self):", nl(),
-		t"\t\treturn self._", cp(1), i(0, "", {key = "i0"}), nl(),
-		nl(),
-		t"\tdef fset(self, value):", nl(),
-		t"\t\tself._", cp(1), t" = value", nl(),
-		t"\treturn locals()", nl(),
-		nl(),
-		cp(1), t" = property(**", cp(1), t"(), doc=", cp(1), t".__doc__)"
-	}),
-	s({trig = "if", descr = "(if) \"If\"", priority = -50, trigEngine = te("b")}, {
-		t"if ", i(1, "condition", {key = "i1"}), t":", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end)
-	}),
-	s({trig = "ife", descr = "(ife) \"If / Else\"", priority = -50, trigEngine = te("b")}, {
-		t"if ", i(1, "condition", {key = "i1"}), t":", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
-		t"else:", nl(),
-		t"\t", i(3, "pass", {key = "i3"})
-	}),
-	s({trig = "ifee", descr = "(ifee) \"If / Elif / Else\"", priority = -50, trigEngine = te("b")}, {
-		t"if ", i(1, "condition", {key = "i1"}), t":", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
-		t"elif ", i(3, "condition", {key = "i3"}), t":", nl(),
-		t"\t", i(4, "pass", {key = "i4"}), nl(),
-		t"else:", nl(),
-		t"\t", i(5, "pass", {key = "i5"})
-	}),
-	s({trig = "match", descr = "(match) \"Structural pattern matching\"", priority = -50, trigEngine = te("b")}, {
-		t"match ", i(1, "expression", {key = "i1"}), t":", nl(),
-		t"\tcase ", i(2, "pattern_1", {key = "i2"}), t":", nl(),
-		t"\t\t", i(3, "pass", {key = "i3"}), nl(),
-		t"\tcase ", i(4, "pattern_2", {key = "i4"}), t":", nl(),
-		t"\t\t", i(0, "pass", {key = "i0"})
-	}),
-	s({trig = "matchw", descr = "(matchw) \"Pattern matching with wildcard\"", priority = -50, trigEngine = te("b")}, {
-		t"match ", i(1, "expression", {key = "i1"}), t":", nl(),
-		t"\tcase ", i(2, "pattern_1", {key = "i2"}), t":", nl(),
-		t"\t\t", i(3, "pass", {key = "i3"}), nl(),
-		t"\tcase _:", nl(),
-		t"\t\t", i(0, "pass", {key = "i0"})
-	}),
-	s({trig = "try", descr = "(try) \"Try / Except\"", priority = -50, trigEngine = te("b")}, {
-		t"try:", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"except ", i(2, "Exception", {key = "i2"}), t" as ", i(3, "e", {key = "i3"}), t":", nl(),
-		t"\t", t"raise ", cp(3)
-	}),
-	s({trig = "trye", descr = "(trye) \"Try / Except / Else\"", priority = -50, trigEngine = te("b")}, {
-		t"try:", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"except ", i(2, "Exception", {key = "i2"}), t" as ", i(3, "e", {key = "i3"}), t":", nl(),
-		t"\t", t"raise ", cp(3), nl(),
-		t"else:", nl(),
-		t"\t", i(4, "pass", {key = "i4"})
-	}),
-	s({trig = "tryf", descr = "(tryf) \"Try / Except / Finally\"", priority = -50, trigEngine = te("b")}, {
-		t"try:", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"except ", i(2, "Exception", {key = "i2"}), t" as ", i(3, "e", {key = "i3"}), t":", nl(),
-		t"\t", t"raise ", cp(3), nl(),
-		t"finally:", nl(),
-		t"\t", i(4, "pass", {key = "i4"})
-	}),
-	s({trig = "tryef", descr = "(tryef) \"Try / Except / Else / Finally\"", priority = -50, trigEngine = te("b")}, {
-		t"try:", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"except", t" ", i(2, "Exception", {key = "i2"}), t" as ", i(3, "e", {key = "i3"}), t":", nl(),
-		t"\t", i(4, "raise", {key = "i4"}), nl(),
-		t"else:", nl(),
-		t"\t", i(5, "pass", {key = "i5"}), nl(),
-		t"finally:", nl(),
-		t"\t", i(6, "pass", {key = "i6"})
-	}),
-	s({trig = "ae", descr = "(ae) \"Assert equal\"", priority = -50, trigEngine = te("b")}, {
-		t"self.assertEqual(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t", ", i(2, "second", {key = "i2"}), t")"
-	}),
-	s({trig = "at", descr = "(at) \"Assert True\"", priority = -50, trigEngine = te("b")}, {
-		t"self.assertTrue(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t")"
-	}),
-	s({trig = "af", descr = "(af) \"Assert False\"", priority = -50, trigEngine = te("b")}, {
-		t"self.assertFalse(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t")"
-	}),
-	s({trig = "aae", descr = "(aae) \"Assert almost equal\"", priority = -50, trigEngine = te("b")}, {
-		t"self.assertAlmostEqual(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t", ", i(2, "second", {key = "i2"}), t")"
-	}),
-	s({trig = "ar", descr = "(ar) \"Assert raises\"", priority = -50, trigEngine = te("b")}, {
-		t"self.assertRaises(", i(1, "exception", {key = "i1"}), t", ", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), tr(3, ".+", ", "), i(3, "arguments", {key = "i3"}), t")"
-	}),
-	s({trig = "an", descr = "(an) \"Assert is None\"", priority = -50, trigEngine = te("b")}, {
-		t"self.assertIsNone(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t")"
-	}),
-	s({trig = "ann", descr = "(ann) \"Assert is not None\"", priority = -50, trigEngine = te("b")}, {
-		t"self.assertIsNotNone(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t")"
-	}),
-	s({trig = "testcase", descr = "(testcase) \"pyunit testcase\"", priority = -50, trigEngine = te("b")}, {
-		t"class Test", i(1, "Class", {key = "i1"}), t"(", i(2, "unittest.TestCase", {key = "i2"}), t"):", nl(),
-		nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 42}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[42]) end, ae(am[42])), i(3, "Test case docstring.", {key = "i3"}), f(function(args, snip) return c_py({"python", 42}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[42]) end, ae(am[42])), nl(),
-		nl(),
-		t"\tdef setUp(self):", nl(),
-		t"\t\t", i(4, "pass", {key = "i4"}), nl(),
-		nl(),
-		t"\tdef tearDown(self):", nl(),
-		t"\t\t", i(5, "pass", {key = "i5"}), nl(),
-		nl(),
-		t"\tdef test_", i(6, "name", {key = "i6"}), t"(self):", nl(),
-		t"\t\t", d(7, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i7"}) }) end)
-	}),
-	s({trig = "\"", descr = "(\") \"triple quoted string (double quotes)\"", priority = 0, trigEngine = te("b")}, {
-		t"\"\"\"", nl(),
-		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
-		t"\"\"\""
-	}),
-	s({trig = "\'", descr = "(\') \"triple quoted string (single quotes)\"", priority = -50, trigEngine = te("b")}, {
-		t"\'\'\'", nl(),
-		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
-		f(function(args, snip) return c_py({"python", 44}, "triple_quotes_handle_trailing(snip, \"\'\")", python_globals, args, snip, "", am[44]) end, ae(am[44]))
-	}),
-	s({trig = "doc", descr = "(doc) \"doc block (triple quotes)\"", priority = -50, trigEngine = te("")}, {
-		f(function(args, snip) return c_py({"python", 45}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[45]) end, ae(am[45])), nl(),
-		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
-		f(function(args, snip) return c_py({"python", 45}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[45]) end, ae(am[45]))
-	}),
-	s({trig = "pmdoc", descr = "(pmdoc) \"pocoo style module doc string\"", priority = -50, trigEngine = te("b")}, {
-		t"# -*- coding: utf-8 -*-", nl(),
-		t"\"\"\"", nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 46}, "snip.rv = get_dir_and_file_name(snip)", python_globals, args, snip, "", am[46]) end, ae(am[46])), nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 46}, "snip.rv = \'~\' * len(get_dir_and_file_name(snip))", python_globals, args, snip, "", am[46]) end, ae(am[46])), nl(),
-		nl(),
-		t"\t", i(1, "DESCRIPTION", {key = "i1"}), nl(),
-		nl(),
-		t"\t:copyright: (c) ", f(function(args, snip) return c_shell("date +%Y") end, {}), t" by ", i(2, "YOUR_NAME", {key = "i2"}), t".", nl(),
-		t"\t:license: ", i(3, "LICENSE_NAME", {key = "i3"}), t", see LICENSE for more details.", nl(),
-		t"\"\"\"", nl(),
-		i(0, "", {key = "i0"})
+	s({trig = "fprf", descr = "(fprf)", priority = -1000, trigEngine = te("w")}, {
+		t"print(f\"", i(0, "", {key = "i0"}), t"\", file=", i(1, "sys.stderr", {key = "i1"}), t")"
 	}),
 	s({trig = "s(uper)?", descr = "(s(uper)?) \"Super method\"", priority = 0, trigEngine = te("br")}, {
 		t"def ", i(1, "__init__", {key = "i1"}), t"(self, ", i(2, "*args, **kwargs", {key = "i2"}), t"):", nl(),
 		t"\treturn super().", cp(1), t"(", cp(2), t")", nl(),
 		i(0, "", {key = "i0"})
-	}),
-	s({trig = "pr", descr = "(pr) \"Print\"", priority = 0, trigEngine = te("i")}, {
-		t"print(", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "pp", descr = "(pp) \"Pretty print\"", priority = 0, trigEngine = te("i")}, {
 		t"pprint(", i(0, "", {key = "i0"}), t")"
@@ -876,279 +1038,117 @@ ls.add_snippets("python", {
 		t"\t}", nl(),
 		t"}"
 	}),
-	s({trig = "imp", descr = "(imp)", priority = -1000, trigEngine = te("w")}, {
-		t"import ", i(0, "module", {key = "i0"})
+	s({trig = "^# ?[uU][tT][fF]-?8", descr = "(^# ?[uU][tT][fF]-?8) \"# encoding: UTF-8\"", priority = -50, trigEngine = te("r")}, {
+		t"# -*- coding: utf-8 -*-", nl(),
+		i(0, "", {key = "i0"})
 	}),
-	s({trig = "uni", descr = "(uni)", priority = -1000, trigEngine = te("w")}, {
-		t"def __unicode__(self):", nl(),
-		t"\t", i(0, "representation", {key = "i0"})
-	}),
-	s({trig = "docs", descr = "(docs)", priority = -1000, trigEngine = te("w")}, {
-		t"\"\"\"", nl(),
-		t"File: ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1.py\', \'foo.py\')")}, ""), {key = "i1"}) }) end), nl(),
-		t"Author: ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
-		t"Email: ", f(function(args, snip) return c_viml("g:snips_email") end, {}), nl(),
-		t"Github: ", f(function(args, snip) return c_viml("g:snips_github") end, {}), nl(),
-		t"Description: ", i(0, "", {key = "i0"}), nl(),
-		t"\"\"\"", nl()
-	}),
-	s({trig = "sk", descr = "(sk) \"skip unittests\" b", priority = -1000, trigEngine = te("w")}, {
-		t"@unittest.skip(", i(1, "skip_reason", {key = "i1"}), t")", nl()
-	}),
-	s({trig = "wh", descr = "(wh)", priority = -1000, trigEngine = te("w")}, {
-		t"while ", i(1, "", {key = "i1"}), t":", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl()
-	}),
-	s({trig = "dowh", descr = "(dowh)", priority = -1000, trigEngine = te("w")}, {
-		t"while True:", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"\tif ", i(0, "", {key = "i0"}), t":", nl(),
-		t"\t\tbreak", nl()
-	}),
-	s({trig = "awith", descr = "(awith)", priority = -1000, trigEngine = te("w")}, {
-		t"async with ", i(1, "expr", {key = "i1"}), t" as ", i(2, "var", {key = "i2"}), t":", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl()
-	}),
-	s({trig = "cl", descr = "(cl)", priority = -1000, trigEngine = te("w")}, {
-		t"class ", i(1, "ClassName", {key = "i1"}), t"(", i(2, "object", {key = "i2"}), t"):", nl(),
-		t"\t\"\"\"", t"docstring for ", cp(1), t"\"\"\"", nl(),
-		t"\tdef __init__(self, ", i(3, "arg", {key = "i3"}), t"):", nl(),
-		t"\t\t", t"super(", cp(1), t", self).__init__()", nl(),
-		t"\t\tself.", cp(4), t" = ", cp(4), nl(),
+	s({trig = "class", descr = "(class) \"class with docstrings\"", priority = -50, trigEngine = te("b")}, {
+		t"class ", i(1, "MyClass", {key = "i1"}), t"(", i(2, "object", {key = "i2"}), t"):", nl(),
+		nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 109}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[109]) end, ae(am[109])), d(3, function(args) return sn(nil, {t"Docstring for ", cp(1), t". "}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"python", 109}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[109]) end, ae(am[109])), nl(),
+		nl(),
+		t"\tdef __init__(self", i(4, "", {key = "i4"}), t"):", nl(),
+		t"\t\t", f(function(args, snip) return c_py({"python", 109}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[109]) end, ae(am[109])), i(5, "TODO: to be defined.", {key = "i5"}), f(function(args, snip) return c_py({"python", 109}, "\nsnip.rv = \"\"\nsnip >> 2\n\nargs = get_args(t[4])\n\nwrite_docstring_args(args, snip)\nif args:\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += \'{0}\'.format(triple_quotes(snip))\n\nwrite_init_body(args, t[2], snip)\n", python_globals, args, snip, "", am[109]) end, ae(am[109])), nl(),
 		t"\t\t", i(0, "", {key = "i0"})
 	}),
-	s({trig = "cla", descr = "(cla)", priority = -1000, trigEngine = te("w")}, {
-		t"class ", i(1, "class_name", {key = "i1"}), t":", nl(),
-		t"\t\"\"\"", i(0, "description", {key = "i0"}), t"\"\"\"", nl()
-	}),
-	s({trig = "clai", descr = "(clai)", priority = -1000, trigEngine = te("w")}, {
-		t"class ", i(1, "class_name", {key = "i1"}), t":", nl(),
-		t"\t\"\"\"", i(2, "description", {key = "i2"}), t"\"\"\"", nl(),
-		t"\tdef __init__(self, ", i(3, "args", {key = "i3"}), t"):", nl(),
-		t"\t\t", i(0, "", {key = "i0"}), nl()
-	}),
-	s({trig = "adef", descr = "(adef)", priority = -1000, trigEngine = te("w")}, {
-		t"async def ", i(1, "fname", {key = "i1"}), t"(", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("indent(\'.\') ? \'self\' : \'\'")}, ""), {key = "i2"}) }) end), t"):", nl(),
-		t"\t\"\"\"", t"docstring for ", cp(1), t"\"\"\"", nl(),
-		t"\t", i(0, "", {key = "i0"})
-	}),
-	s({trig = "adeff", descr = "(adeff)", priority = -1000, trigEngine = te("w")}, {
-		t"async def ", i(1, "fname", {key = "i1"}), t"(", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("indent(\'.\') ? \'self\' : \'\'")}, ""), {key = "i2"}) }) end), t"):", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
-	}),
-	s({trig = "defi", descr = "(defi)", priority = -1000, trigEngine = te("w")}, {
-		t"def __init__(self, ", i(1, "args", {key = "i1"}), t"):", nl(),
-		t"\t", i(0, "", {key = "i0"})
-	}),
-	s({trig = "defm", descr = "(defm)", priority = -1000, trigEngine = te("w")}, {
-		t"def ", i(1, "mname", {key = "i1"}), t"(self, ", i(2, "arg", {key = "i2"}), t"):", nl(),
-		t"\t", i(0, "", {key = "i0"})
-	}),
-	s({trig = "adefm", descr = "(adefm)", priority = -1000, trigEngine = te("w")}, {
-		t"async def ", i(1, "mname", {key = "i1"}), t"(self, ", i(2, "arg", {key = "i2"}), t"):", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
-	}),
-	s({trig = "property", descr = "(property)", priority = -1000, trigEngine = te("w")}, {
-		t"@property", nl(),
-		t"def ", i(1, "foo", {key = "i1"}), t"(self) -> ", i(2, "type", {key = "i2"}), t":", nl(),
-		t"\t\"\"\"", i(3, "doc", {key = "i3"}), t"\"\"\"", nl(),
-		t"\treturn self._", cp(1), nl(),
+	s({trig = "slotclass", descr = "(slotclass) \"class with slots and docstrings\"", priority = -50, trigEngine = te("b")}, {
+		t"class ", i(1, "MyClass", {key = "i1"}), t"(", i(2, "object", {key = "i2"}), t"):", nl(),
 		nl(),
-		t"@", cp(1), t".setter", nl(),
-		t"def ", cp(1), t"(self, value: ", cp(2), t"):", nl(),
-		t"\tself._", cp(1), t" = value", nl()
+		t"\t", f(function(args, snip) return c_py({"python", 110}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[110]) end, ae(am[110])), d(3, function(args) return sn(nil, {t"Docstring for ", cp(1), t". "}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"python", 110}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[110]) end, ae(am[110])), nl(),
+		f(function(args, snip) return c_py({"python", 110}, "\nsnip >> 1\nargs = get_args(t[4])\nwrite_slots_args(args, snip)\n", python_globals, args, snip, "", am[110]) end, ae(am[110])), nl(),
+		nl(),
+		t"\tdef __init__(self", i(4, "", {key = "i4"}), t"):", nl(),
+		t"\t\t", f(function(args, snip) return c_py({"python", 110}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[110]) end, ae(am[110])), i(5, "TODO: to be defined.", {key = "i5"}), f(function(args, snip) return c_py({"python", 110}, "\nsnip.rv = \"\"\nsnip >> 2\n\nargs = get_args(t[4])\n\nwrite_docstring_args(args, snip)\nif args:\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += triple_quotes(snip)\n\nwrite_init_body(args, t[2], snip)\n", python_globals, args, snip, "", am[110]) end, ae(am[110])), nl(),
+		t"\t\t", i(0, "", {key = "i0"})
 	}),
-	s({trig = "el", descr = "(el)", priority = -1000, trigEngine = te("w")}, {
-		t"else:", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end)
+	s({trig = "defc", descr = "(defc) \"class method with docstrings\"", priority = -50, trigEngine = te("b")}, {
+		t"@classmethod", nl(),
+		t"def ", i(1, "function", {key = "i1"}), t"(", f(function(args, snip) return c_py({"python", 111}, "\nif snip.indent:\n\tsnip.rv = \'cls\' + (\", \" if len(t[2]) else \"\")", python_globals, args, snip, "", am[111]) end, ae(am[111])), i(2, "arg1", {key = "i2"}), t"):", nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 111}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[111]) end, ae(am[111])), d(3, function(args) return sn(nil, {t"TODO: Docstring for ", cp(1), t"."}) end, {}, {key = "i4"}), f(function(args, snip) return c_py({"python", 111}, "\nwrite_function_docstring(t, snip) ", python_globals, args, snip, "", am[111]) end, ae(am[111])), nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i5"}) }) end)
 	}),
-	s({trig = "ei", descr = "(ei)", priority = -1000, trigEngine = te("w")}, {
-		t"elif ", i(1, "", {key = "i1"}), t":", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl()
+	s({trig = "defs", descr = "(defs) \"static method with docstrings\"", priority = -50, trigEngine = te("b")}, {
+		t"@staticmethod", nl(),
+		t"def ", i(1, "function", {key = "i1"}), t"(", i(2, "arg1", {key = "i2"}), t"):", nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 112}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[112]) end, ae(am[112])), d(3, function(args) return sn(nil, {t"TODO: Docstring for ", cp(1), t"."}) end, {}, {key = "i4"}), f(function(args, snip) return c_py({"python", 112}, "\nwrite_function_docstring(t, snip) ", python_globals, args, snip, "", am[112]) end, ae(am[112])), nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i5"}) }) end)
 	}),
-	s({trig = "cutf8", descr = "(cutf8)", priority = -1000, trigEngine = te("w")}, {
-		t"# -*- coding: utf-8 -*-"
-	}),
-	s({trig = "clatin1", descr = "(clatin1)", priority = -1000, trigEngine = te("w")}, {
-		t"# -*- coding: latin-1 -*-"
-	}),
-	s({trig = "cascii", descr = "(cascii)", priority = -1000, trigEngine = te("w")}, {
-		t"# -*- coding: ascii -*-", nl()
-	}),
-	s({trig = "ld", descr = "(ld)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "var", {key = "i1"}), t" = lambda ", i(2, "vars", {key = "i2"}), t" : ", i(0, "action", {key = "i0"}), nl()
-	}),
-	s({trig = "ret", descr = "(ret)", priority = -1000, trigEngine = te("w")}, {
-		t"return ", i(0, "", {key = "i0"})
-	}),
-	s({trig = ".", descr = "(.)", priority = -1000, trigEngine = te("w")}, {
+	s({trig = "(^|(?<=\\W))\\.", descr = "((^|(?<=\\W))\\.) \"self.\"", priority = -50, trigEngine = te("r")}, {
 		t"self."
 	}),
-	s({trig = "sa", descr = "(sa) self.attribute = attribute", priority = -1000, trigEngine = te("w")}, {
-		t"self.", i(1, "attribute", {key = "i1"}), t" = ", cp(1), nl()
+	s({trig = "roprop", descr = "(roprop) \"Read Only Property\"", priority = -50, trigEngine = te("b")}, {
+		t"@property", nl(),
+		t"def ", i(1, "name", {key = "i1"}), t"(self):", nl(),
+		t"\t", d(2, function(args) return sn(nil, {t"return self._", cp(1)}) end, {}, {key = "i2"}), i(0, "", {key = "i0"})
 	}),
-	s({trig = "_", descr = "(_)", priority = -1000, trigEngine = te("w")}, {
-		t"__", i(1, "init", {key = "i1"}), t"__", nl()
-	}),
-	s({trig = "br", descr = "(br)", priority = -1000, trigEngine = te("w")}, {
-		t"breakpoint()"
-	}),
-	s({trig = "pdb", descr = "(pdb)", priority = -1000, trigEngine = te("w")}, {
-		t"__import__(\'pdb\').set_trace()"
-	}),
-	s({trig = "bpdb", descr = "(bpdb)", priority = -1000, trigEngine = te("w")}, {
-		t"__import__(\'bpdb\').set_trace()"
-	}),
-	s({trig = "ipdb", descr = "(ipdb)", priority = -1000, trigEngine = te("w")}, {
-		t"__import__(\'ipdb\').set_trace()"
-	}),
-	s({trig = "iem", descr = "(iem)", priority = -1000, trigEngine = te("w")}, {
-		t"__import__(\'IPython\').embed()"
-	}),
-	s({trig = "rpdb", descr = "(rpdb)", priority = -1000, trigEngine = te("w")}, {
-		t"__import__(\'rpdb\').set_trace()"
-	}),
-	s({trig = "wdb", descr = "(wdb)", priority = -1000, trigEngine = te("w")}, {
-		t"__import__(\'wdb\').set_trace()"
-	}),
-	s({trig = "ptpython", descr = "(ptpython)", priority = -1000, trigEngine = te("w")}, {
-		t"__import__(\'ptpython.repl\', fromlist=(\'repl\')).embed(globals(), locals(), vi_mode=", i(1, "False", {key = "i1"}), t", history_filename=", i(2, "None", {key = "i2"}), t")"
-	}),
-	s({trig = "pudb", descr = "(pudb)", priority = -1000, trigEngine = te("w")}, {
-		t"__import__(\'pudb\').set_trace()"
-	}),
-	s({trig = "pudbr", descr = "(pudbr)", priority = -1000, trigEngine = te("w")}, {
-		t"from pudb.remote import set_trace", nl(),
-		t"set_trace()"
-	}),
-	s({trig = "nosetrace", descr = "(nosetrace)", priority = -1000, trigEngine = te("w")}, {
-		t"__import__(\'nose\').tools.set_trace()"
-	}),
-	s({trig = "pprint", descr = "(pprint)", priority = -1000, trigEngine = te("w")}, {
-		t"__import__(\'pprint\').pprint(", i(1, "", {key = "i1"}), t")", nl()
-	}),
-	s({trig = "a=", descr = "(a=)", priority = -1000, trigEngine = te("w")}, {
-		t"self.assertEqual(", i(0, "", {key = "i0"}), t", ", i(1, "", {key = "i1"}), t")"
-	}),
-	s({trig = "test", descr = "(test)", priority = -1000, trigEngine = te("w")}, {
-		t"def test_", i(1, "description", {key = "i1"}), t"(", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("indent(\'.\') ? \'self\' : \'\'")}, ""), {key = "i2"}) }) end), t"):", nl(),
-		t"\t", i(0, "", {key = "i0"})
-	}),
-	s({trig = "tgwt", descr = "(tgwt)", priority = -1000, trigEngine = te("w")}, {
-		t"# given: ", i(1, "", {key = "i1"}), nl(),
-		t"# when: ", i(2, "", {key = "i2"}), nl(),
-		t"# then: ", i(3, "", {key = "i3"})
-	}),
-	s({trig = "fut", descr = "(fut)", priority = -1000, trigEngine = te("w")}, {
-		t"from __future__ import ", i(0, "", {key = "i0"}), nl()
-	}),
-	s({trig = "getopt", descr = "(getopt)", priority = -1000, trigEngine = te("w")}, {
-		t"try:", nl(),
-		t"\t# Short option syntax: \"hv:\"", nl(),
-		t"\t# Long option syntax: \"help\" or \"verbose=\"", nl(),
-		t"\topts, args = getopt.getopt(sys.argv[1:], \"", i(1, "short_options", {key = "i1"}), t"\", [", i(2, "long_options", {key = "i2"}), t"])", nl(),
+	s({trig = "rwprop", descr = "(rwprop) \"Read write property\"", priority = -50, trigEngine = te("b")}, {
+		t"def ", i(1, "name", {key = "i1"}), t"():", nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 115}, "snip.rv = triple_quotes(snip) if t[2] else \'\'\n", python_globals, args, snip, "", am[115]) end, ae(am[115])), d(2, function(args) return sn(nil, {t"TODO: Docstring for ", cp(1), t"."}) end, {}, {key = "i2"}), f(function(args, snip) return c_py({"python", 115}, "\nif t[2]:\n\tsnip >> 1\n\n\tstyle = get_style(snip)\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += format_return(style)\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += triple_quotes(snip)\nelse:\n\tsnip.rv = \"\"", python_globals, args, snip, "", am[115]) end, ae(am[115])), nl(),
+		t"\tdef fget(self):", nl(),
+		t"\t\treturn self._", cp(1), i(0, "", {key = "i0"}), nl(),
 		nl(),
-		t"except getopt.GetoptError, err:", nl(),
-		t"\t# Print debug info", nl(),
-		t"\tprint str(err)", nl(),
-		t"\t", i(3, "error_action", {key = "i3"}), nl(),
+		t"\tdef fset(self, value):", nl(),
+		t"\t\tself._", cp(1), t" = value", nl(),
+		t"\treturn locals()", nl(),
 		nl(),
-		t"for option, argument in opts:", nl(),
-		t"\tif option in (\"-h\", \"--help\"):", nl(),
-		t"\t\t", i(0, "", {key = "i0"}), nl(),
-		t"\telif option in (\"-v\", \"--verbose\"):", nl(),
-		t"\t\tverbose = argument", nl()
+		cp(1), t" = property(**", cp(1), t"(), doc=", cp(1), t".__doc__)"
 	}),
-	s({trig = "addp", descr = "(addp)", priority = -1000, trigEngine = te("w")}, {
-		t"parser = ", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"ArgumentParser()"
+	s({trig = "ife", descr = "(ife) \"If / Else\"", priority = -50, trigEngine = te("b")}, {
+		t"if ", i(1, "condition", {key = "i1"}), t":", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"else:", nl(),
+		t"\t", i(3, "pass", {key = "i3"})
 	}),
-	s({trig = "addsp", descr = "(addsp)", priority = -1000, trigEngine = te("w")}, {
-		i(0, "sub_parser", {key = "i0"}), t" = parser.add_subparsers().add_parser(\"", i(1, "name", {key = "i1"}), t"\")"
+	s({trig = "ifee", descr = "(ifee) \"If / Elif / Else\"", priority = -50, trigEngine = te("b")}, {
+		t"if ", i(1, "condition", {key = "i1"}), t":", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"elif ", i(3, "condition", {key = "i3"}), t":", nl(),
+		t"\t", i(4, "pass", {key = "i4"}), nl(),
+		t"else:", nl(),
+		t"\t", i(5, "pass", {key = "i5"})
 	}),
-	s({trig = "addarg", descr = "(addarg)", priority = -1000, trigEngine = te("w")}, {
-		t"parser.add_argument(\"", i(0, "short_arg", {key = "i0"}), t"\", \"", i(1, "long_arg", {key = "i1"}), t"\", default=", i(2, "None", {key = "i2"}), t", help=\"", i(3, "Help text", {key = "i3"}), t"\")"
+	s({trig = "ae", descr = "(ae) \"Assert equal\"", priority = -50, trigEngine = te("b")}, {
+		t"self.assertEqual(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t", ", i(2, "second", {key = "i2"}), t")"
 	}),
-	s({trig = "addnarg", descr = "(addnarg)", priority = -1000, trigEngine = te("w")}, {
-		t"parser.add_argument(\"", i(0, "arg", {key = "i0"}), t"\", nargs=\"", i(1, "*", {key = "i1"}), t"\", default=", i(2, "None", {key = "i2"}), t", help=\"", i(3, "Help text", {key = "i3"}), t"\")"
+	s({trig = "at", descr = "(at) \"Assert True\"", priority = -50, trigEngine = te("b")}, {
+		t"self.assertTrue(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t")"
 	}),
-	s({trig = "addaarg", descr = "(addaarg)", priority = -1000, trigEngine = te("w")}, {
-		t"parser.add_argument(\"", i(0, "arg", {key = "i0"}), t"\", \"", i(1, "long_arg", {key = "i1"}), t"\", action=\"", i(2, "store_true", {key = "i2"}), t"\", default=", i(3, "False", {key = "i3"}), t", help=\"", i(4, "Help text", {key = "i4"}), t"\")"
+	s({trig = "af", descr = "(af) \"Assert False\"", priority = -50, trigEngine = te("b")}, {
+		t"self.assertFalse(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t")"
 	}),
-	s({trig = "pargs", descr = "(pargs)", priority = -1000, trigEngine = te("w")}, {
-		t"\"", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"\"parser.parse_args()", nl()
+	s({trig = "aae", descr = "(aae) \"Assert almost equal\"", priority = -50, trigEngine = te("b")}, {
+		t"self.assertAlmostEqual(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t", ", i(2, "second", {key = "i2"}), t")"
 	}),
-	s({trig = "glog", descr = "(glog)", priority = -1000, trigEngine = te("w")}, {
-		t"import logging", nl(),
-		t"LOGGER = logging.getLogger(", i(0, "__name__", {key = "i0"}), t")"
+	s({trig = "ar", descr = "(ar) \"Assert raises\"", priority = -50, trigEngine = te("b")}, {
+		t"self.assertRaises(", i(1, "exception", {key = "i1"}), t", ", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), tr(3, ".+", ", "), i(3, "arguments", {key = "i3"}), t")"
 	}),
-	s({trig = "le", descr = "(le)", priority = -1000, trigEngine = te("w")}, {
-		t"LOGGER.error(", i(0, "msg", {key = "i0"}), t")"
+	s({trig = "an", descr = "(an) \"Assert is None\"", priority = -50, trigEngine = te("b")}, {
+		t"self.assertIsNone(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t")"
 	}),
-	s({trig = "lg", descr = "(lg)", priority = -1000, trigEngine = te("w")}, {
-		t"LOGGER.debug(", i(0, "msg", {key = "i0"}), t")"
+	s({trig = "ann", descr = "(ann) \"Assert is not None\"", priority = -50, trigEngine = te("b")}, {
+		t"self.assertIsNotNone(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t")"
 	}),
-	s({trig = "lw", descr = "(lw)", priority = -1000, trigEngine = te("w")}, {
-		t"LOGGER.warning(", i(0, "msg", {key = "i0"}), t")"
+	s({trig = "\'", descr = "(\') \"triple quoted string (single quotes)\"", priority = -50, trigEngine = te("b")}, {
+		t"\'\'\'", nl(),
+		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
+		f(function(args, snip) return c_py({"python", 125}, "triple_quotes_handle_trailing(snip, \"\'\")", python_globals, args, snip, "", am[125]) end, ae(am[125]))
 	}),
-	s({trig = "lc", descr = "(lc)", priority = -1000, trigEngine = te("w")}, {
-		t"LOGGER.critical(", i(0, "msg", {key = "i0"}), t")"
+	s({trig = "doc", descr = "(doc) \"doc block (triple quotes)\"", priority = -50, trigEngine = te("")}, {
+		f(function(args, snip) return c_py({"python", 126}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[126]) end, ae(am[126])), nl(),
+		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
+		f(function(args, snip) return c_py({"python", 126}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[126]) end, ae(am[126]))
 	}),
-	s({trig = "li", descr = "(li)", priority = -1000, trigEngine = te("w")}, {
-		t"LOGGER.info(", i(0, "msg", {key = "i0"}), t")"
-	}),
-	s({trig = "epydoc", descr = "(epydoc)", priority = -1000, trigEngine = te("w")}, {
-		t"\"\"\"", i(1, "Description", {key = "i1"}), nl(),
+	s({trig = "pmdoc", descr = "(pmdoc) \"pocoo style module doc string\"", priority = -50, trigEngine = te("b")}, {
+		t"# -*- coding: utf-8 -*-", nl(),
+		t"\"\"\"", nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 127}, "snip.rv = get_dir_and_file_name(snip)", python_globals, args, snip, "", am[127]) end, ae(am[127])), nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 127}, "snip.rv = \'~\' * len(get_dir_and_file_name(snip))", python_globals, args, snip, "", am[127]) end, ae(am[127])), nl(),
 		nl(),
-		t"@param ", i(2, "param", {key = "i2"}), t": ", i(3, " Description", {key = "i3"}), nl(),
-		t"@type  ", cp(2), t": ", i(4, " Type", {key = "i4"}), nl(),
+		t"\t", i(1, "DESCRIPTION", {key = "i1"}), nl(),
 		nl(),
-		t"@return: ", i(5, " Description", {key = "i5"}), nl(),
-		t"@rtype : ", i(6, " Type", {key = "i6"}), nl(),
-		nl(),
-		t"@raise e: ", i(0, " Description", {key = "i0"}), nl(),
-		t"\"\"\""
-	}),
-	s({trig = "dol", descr = "(dol)", priority = -1000, trigEngine = te("w")}, {
-		t"def ", i(1, "__init__", {key = "i1"}), t"(self, *args, **kwargs):", nl(),
-		t"\tsuper(", i(0, "ClassName", {key = "i0"}), t", self).", cp(1), t"(*args, **kwargs)"
-	}),
-	s({trig = "kwg", descr = "(kwg)", priority = -1000, trigEngine = te("w")}, {
-		t"self.", i(1, "var_name", {key = "i1"}), t" = kwargs.get(\'", cp(1), t"\', ", i(2, "None", {key = "i2"}), t")"
-	}),
-	s({trig = "lkwg", descr = "(lkwg)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "var_name", {key = "i1"}), t" = kwargs.get(\'", cp(1), t"\', ", i(2, "None", {key = "i2"}), t")"
-	}),
-	s({trig = "args", descr = "(args)", priority = -1000, trigEngine = te("w")}, {
-		t"*args", i(1, ",", {key = "i1"}), i(0, "", {key = "i0"})
-	}),
-	s({trig = "kwargs", descr = "(kwargs)", priority = -1000, trigEngine = te("w")}, {
-		t"**kwargs", i(1, ",", {key = "i1"}), i(0, "", {key = "i0"})
-	}),
-	s({trig = "akw", descr = "(akw)", priority = -1000, trigEngine = te("w")}, {
-		t"*args, **kwargs", i(1, ",", {key = "i1"}), i(0, "", {key = "i0"}), nl()
-	}),
-	s({trig = "lcp", descr = "(lcp) list comprehension", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(1, "", {key = "i1"}), t" for ", i(2, "", {key = "i2"}), t" in ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end), t"]", i(0, "", {key = "i0"}), nl()
-	}),
-	s({trig = "dcp", descr = "(dcp) dict comprehension", priority = -1000, trigEngine = te("w")}, {
-		t"{", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), t" for ", i(3, "", {key = "i3"}), t" in ", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i4"}) }) end), t"}", i(0, "", {key = "i0"}), nl()
-	}),
-	s({trig = "scp", descr = "(scp) set comprehension", priority = -1000, trigEngine = te("w")}, {
-		t"{", i(1, "", {key = "i1"}), t" for ", i(2, "", {key = "i2"}), t" in ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end), t"}", i(0, "", {key = "i0"}), nl()
-	}),
-	s({trig = "prs", descr = "(prs)", priority = -1000, trigEngine = te("w")}, {
-		t"print(\"", i(0, "", {key = "i0"}), t"\")"
-	}),
-	s({trig = "prf", descr = "(prf)", priority = -1000, trigEngine = te("w")}, {
-		t"print(f\"", i(0, "", {key = "i0"}), t"\")"
-	}),
-	s({trig = "fpr", descr = "(fpr)", priority = -1000, trigEngine = te("w")}, {
-		t"print(", i(0, "", {key = "i0"}), t", file=", i(1, "sys.stderr", {key = "i1"}), t")"
-	}),
-	s({trig = "fprs", descr = "(fprs)", priority = -1000, trigEngine = te("w")}, {
-		t"print(\"", i(0, "", {key = "i0"}), t"\", file=", i(1, "sys.stderr", {key = "i1"}), t")"
-	}),
-	s({trig = "fprf", descr = "(fprf)", priority = -1000, trigEngine = te("w")}, {
-		t"print(f\"", i(0, "", {key = "i0"}), t"\", file=", i(1, "sys.stderr", {key = "i1"}), t")"
+		t"\t:copyright: (c) ", f(function(args, snip) return c_shell("date +%Y") end, {}), t" by ", i(2, "YOUR_NAME", {key = "i2"}), t".", nl(),
+		t"\t:license: ", i(3, "LICENSE_NAME", {key = "i3"}), t", see LICENSE for more details.", nl(),
+		t"\"\"\"", nl(),
+		i(0, "", {key = "i0"})
 	}),
 })

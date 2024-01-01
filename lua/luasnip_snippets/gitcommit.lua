@@ -42,21 +42,21 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	8,
-	1,
-	9,
-	2,
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}},
 }
 
 local python_globals = {
@@ -70,58 +70,61 @@ local python_globals = {
 
 
 ls.add_snippets("gitcommit", {
+	s({trig = "co", descr = "(co)", priority = -1000, trigEngine = te("w")}, {
+		t"Co-authored-by: ", i(1, "", {key = "i1"}), t" <", i(2, "", {key = "i2"}), t">"
+	}),
 	s({trig = "status", descr = "(status) \"Status\"", snippetType = "autosnippet", priority = 0, trigEngine = te("bA")}, {
-		t"status ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"gitcommit", 1}, "snip.rv = complete(t[1], [\'build\', \'ci\', \'test\', \'refactor\', \'perf\', \'improvement\', \'docs\', \'chore\', \'feat\', \'fix\'])", python_globals, args, snip, "", am[1]) end, ae(am[1]))
+		t"status ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"gitcommit", 2}, "snip.rv = complete(t[1], [\'build\', \'ci\', \'test\', \'refactor\', \'perf\', \'improvement\', \'docs\', \'chore\', \'feat\', \'fix\'])", python_globals, args, snip, "", am[2]) end, ae(am[2]))
 	}),
 	s({trig = "fix", descr = "(fix) \"fix conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"fix(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
 		nl(),
-		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end)
+		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "feat", descr = "(feat) \"feat conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"feat(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
 		nl(),
-		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end)
+		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "chore", descr = "(chore) \"chore conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"chore(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
 		nl(),
-		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end)
+		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "docs", descr = "(docs) \"docs conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"docs(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
 		nl(),
-		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end)
+		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "improvement", descr = "(improvement) \"improvement conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"improvement(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
 		nl(),
-		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end)
+		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "perf", descr = "(perf) \"perf conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"perf(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
 		nl(),
-		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end)
+		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "refactor", descr = "(refactor) \"refactor conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"refactor(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
 		nl(),
-		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end)
+		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "test", descr = "(test) \"test conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"test(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
 		nl(),
-		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end)
+		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "ci", descr = "(ci) \"ci conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"ci(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
 		nl(),
-		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end)
+		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "build", descr = "(build) \"build conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"build(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
 		nl(),
-		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end)
+		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "sign", descr = "(sign) \"Signature\"", priority = 0, trigEngine = te("")}, {
 		t"-------------------------------------------------------------------------------", nl(),
@@ -161,8 +164,5 @@ ls.add_snippets("gitcommit", {
 		i(8, {"Resolves: #123", "See also: #456, #789"}, {key = "i8"}), nl(),
 		nl(),
 		i(9, "Signature", {key = "i9"})
-	}),
-	s({trig = "co", descr = "(co)", priority = -1000, trigEngine = te("w")}, {
-		t"Co-authored-by: ", i(1, "", {key = "i1"}), t" <", i(2, "", {key = "i2"}), t">"
 	}),
 })

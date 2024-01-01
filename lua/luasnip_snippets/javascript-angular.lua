@@ -42,17 +42,17 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	2,
-	1,
-	1,
-	2,
-	2,
-	3,
-	3,
-	2,
-	2,
-	2,
-	2,
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
 }
 ls.add_snippets("javascript-angular", {
 	s({trig = "iti", descr = "(iti) \"it (js, inject)\"", priority = -50, trigEngine = te("b")}, {

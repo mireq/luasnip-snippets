@@ -42,18 +42,18 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	2,
-	5,
-	3,
-	1,
-	3,
-	1,
-	5,
-	2,
-	1,
-	{{1, 1}, {2, 2}, {3, 3}, {4, 5}, {5, 6}, {6, 7}},
-	6,
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
 }
 ls.add_snippets("ps1", {
 	s({trig = "class", descr = "(class)", priority = -1000, trigEngine = te("w")}, {
@@ -128,13 +128,13 @@ ls.add_snippets("ps1", {
 		t".DESCRIPTION", nl(),
 		t"\t", i(2, "Full Description", {key = "i2"}), nl(),
 		t".PARAMETER ", i(3, "Param1", {key = "i3"}), nl(),
-		t"\t", t" ", cp(3), t" usage", nl(),
+		t"\t", d(4, function(args) return sn(nil, {t" ", cp(3), t" usage"}) end, {}, {key = "i4"}), nl(),
 		t".EXAMPLE", nl(),
-		t"\t", i(4, "Example", {key = "i4"}), nl(),
+		t"\t", i(5, "Example", {key = "i5"}), nl(),
 		t".NOTES", nl(),
-		t"\t", i(5, "notes", {key = "i5"}), nl(),
+		t"\t", i(6, "notes", {key = "i6"}), nl(),
 		t".LINK", nl(),
-		t"\t", i(6, "online help", {key = "i6"}), nl(),
+		t"\t", i(7, "online help", {key = "i7"}), nl(),
 		t"#>", nl()
 	}),
 	s({trig = "switch", descr = "(switch)", priority = -1000, trigEngine = te("w")}, {

@@ -42,8 +42,8 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	2,
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
 }
 
 local python_globals = {
@@ -58,7 +58,7 @@ local python_globals = {
 ls.add_snippets("bindzone", {
 	s({trig = "zone", descr = "(zone) \"Bootstrap a new Bind zonefile\"", priority = -50, trigEngine = te("b")}, {
 		t"$TTL 86400", nl(),
-		t"@\t  IN SOA   ", i(1, "example.net", {key = "i1"}), t".\t ", t"hostmaster.", cp(1), t".(", nl(),
+		t"@\t  IN SOA   ", i(1, "example.net", {key = "i1"}), t".\t ", d(2, function(args) return sn(nil, {t"hostmaster.", cp(1)}) end, {}, {key = "i2"}), t".(", nl(),
 		t"\t\t\t\t\t\t", f(function(args, snip) return c_py({"bindzone", 1}, "snip.rv = newsoa()", python_globals, args, snip, "", am[1]) end, ae(am[1])), t";\t serial", nl(),
 		t"\t\t\t\t\t\t21600;\t\t\trefresh every 6 hours", nl(),
 		t"\t\t\t\t\t\t3600;\t\t\tretry after one hour", nl(),

@@ -42,11 +42,11 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	2,
-	4,
-	4,
-	4,
-	2,
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}},
 }
 
 local python_globals = {

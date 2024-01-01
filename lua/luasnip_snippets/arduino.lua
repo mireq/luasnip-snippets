@@ -42,34 +42,34 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	2,
-	0,
-	1,
-	1,
-	1,
-	1,
-	2,
-	2,
-	6,
-	3,
-	4,
-	{{1, 1}, {2, 2}, {3, 4}, {4, 5}},
-	2,
-	2,
-	4,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	0,
-	0,
-	1,
-	1,
-	1,
-	0,
+	{{1, 1}, {2, 2}},
+	{{0, 0}},
+	{{1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{},
+	{},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{},
 }
 ls.add_snippets("arduino", {
 	s({trig = "setup", descr = "(setup)", priority = -1000, trigEngine = te("w")}, {
@@ -93,7 +93,7 @@ ls.add_snippets("arduino", {
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"if (", i(1, "", {key = "i1"}), t") {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "el", descr = "(el)", priority = -1000, trigEngine = te("w")}, {
@@ -129,8 +129,8 @@ ls.add_snippets("arduino", {
 		t"}"
 	}),
 	s({trig = "forr", descr = "(forr)", priority = -1000, trigEngine = te("w")}, {
-		t"for (int ", i(1, "i", {key = "i1"}), t" = ", i(2, "0", {key = "i2"}), t"; ", cp(1), t" < 10", t"; ", cp(1), i(3, "++", {key = "i3"}), t") {", nl(),
-		t"\t", i(4, "", {key = "i5"}), nl(),
+		t"for (int ", i(1, "i", {key = "i1"}), t" = ", i(2, "0", {key = "i2"}), t"; ", d(3, function(args) return sn(nil, {cp(1), t" < 10"}) end, {}, {key = "i3"}), t"; ", cp(1), i(4, "++", {key = "i4"}), t") {", nl(),
+		t"\t", i(5, "", {key = "i5"}), nl(),
 		t"}"
 	}),
 	s({trig = "wh", descr = "(wh)", priority = -1000, trigEngine = te("w")}, {

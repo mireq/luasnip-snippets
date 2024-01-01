@@ -42,41 +42,21 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}, {2, 2}, {3, 3}, {4, 5}},
-	4,
-	1,
-	2,
-	0,
-	1,
-	1,
-	2,
-	2,
-	3,
-	2,
-	1,
-	2,
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
 }
 ls.add_snippets("matlab", {
-	s({trig = "switch", descr = "(switch) \"switch ... otherwise\"", priority = -50, trigEngine = te("")}, {
-		t"switch ", i(1, "n", {key = "i1"}), nl(),
-		t"\tcase ", i(2, "0", {key = "i2"}), nl(),
-		t"\t\t", i(3, "", {key = "i3"}), nl(),
-t"\totherwise", nl(),
-t"\t\t", i(4, "", {key = "i5"}), t"\t\t${5", nl(),
-		t"end"
-	}),
-	s({trig = "clc", descr = "(clc) \"class with constructor\"", priority = -50, trigEngine = te("b")}, {
-		t"classdef ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"matlab", 2}, "\nsnip.rv = snip.basename or \"class_name\"", python_globals, args, snip, "", am[2]), "ss_name\""}, ""), {key = "i1"}) }) end), t" ", nl(),
-		t"\tproperties", nl(),
-		t"\t\t", i(2, "", {key = "i2"}), nl(),
-		t"\tend", nl(),
-		t"\tmethods", nl(),
-		t"\t\tfunction obj = ", cp(1), t"(", i(3, "", {key = "i3"}), t")", nl(),
-		t"\t\t\t", i(4, "", {key = "i4"}), nl(),
-		t"\t\tend", i(0, "", {key = "i0"}), nl(),
-		t"\tend", nl(),
-		t"end"
-	}),
 	s({trig = "if", descr = "(if) if", priority = -1000, trigEngine = te("w")}, {
 		t"if ", i(1, "", {key = "i1"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
@@ -123,6 +103,14 @@ t"\t\t", i(4, "", {key = "i5"}), t"\t\t${5", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end", nl()
 	}),
+	s({trig = "switch", descr = "(switch) \"switch ... otherwise\"", priority = -50, trigEngine = te("")}, {
+		t"switch ", i(1, "n", {key = "i1"}), nl(),
+		t"\tcase ", i(2, "0", {key = "i2"}), nl(),
+		t"\t\t", i(3, "", {key = "i3"}), d(4, function(args) return sn(nil, {nl(),
+t"\totherwise", nl(),
+t"\t\t", i(5, "", {key = "i5"}), t"\t\t${5"}) end, {}, {key = "i4"}), nl(),
+		t"end"
+	}),
 	s({trig = "@", descr = "(@) anonymous function", priority = -1000, trigEngine = te("w")}, {
 		t"@(", i(1, "x", {key = "i1"}), t") ", i(0, "x*x", {key = "i0"}), nl()
 	}),
@@ -134,6 +122,18 @@ t"\t\t", i(4, "", {key = "i5"}), t"\t\t${5", nl(),
 		t"   methods", nl(),
 		t"\t  ", i(0, "", {key = "i0"}), nl(),
 		t"   end", nl(),
+		t"end"
+	}),
+	s({trig = "clc", descr = "(clc) \"class with constructor\"", priority = -50, trigEngine = te("b")}, {
+		t"classdef ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"matlab", 13}, "\nsnip.rv = snip.basename or \"class_name\"", python_globals, args, snip, "", am[13]), "ss_name\""}, ""), {key = "i1"}) }) end), t" ", nl(),
+		t"\tproperties", nl(),
+		t"\t\t", i(2, "", {key = "i2"}), nl(),
+		t"\tend", nl(),
+		t"\tmethods", nl(),
+		t"\t\tfunction obj = ", cp(1), t"(", i(3, "", {key = "i3"}), t")", nl(),
+		t"\t\t\t", i(4, "", {key = "i4"}), nl(),
+		t"\t\tend", i(0, "", {key = "i0"}), nl(),
+		t"\tend", nl(),
 		t"end"
 	}),
 })

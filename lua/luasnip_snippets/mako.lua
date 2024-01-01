@@ -42,23 +42,23 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	2,
-	2,
-	1,
-	1,
-	3,
-	2,
-	3,
-	3,
-	2,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	2,
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
 }
 ls.add_snippets("mako", {
 	s({trig = "def", descr = "(def) \"definition\"", priority = -50, trigEngine = te("b")}, {
@@ -100,6 +100,13 @@ ls.add_snippets("mako", {
 			t"% endif"
 		},
 	})),
+	s({trig = "ife", descr = "(ife) if/else", priority = -1000, trigEngine = te("w")}, {
+		t"% if ", i(1, "", {key = "i1"}), t":", nl(),
+		t"\t", i(2, "", {key = "i2"}), nl(),
+		t"% else:", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"% endif"
+	}),
 	s({trig = "try", descr = "(try) \"try\"", priority = -50, trigEngine = te("b")}, {
 		t"% try:", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
@@ -132,12 +139,5 @@ ls.add_snippets("mako", {
 	}),
 	s({trig = "page", descr = "(page) \"page\"", priority = -50, trigEngine = te("b")}, {
 		t"<%page args=\"", i(1, "", {key = "i1"}), t"\" />"
-	}),
-	s({trig = "ife", descr = "(ife) if/else", priority = -1000, trigEngine = te("w")}, {
-		t"% if ", i(1, "", {key = "i1"}), t":", nl(),
-		t"\t", i(2, "", {key = "i2"}), nl(),
-		t"% else:", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"% endif"
 	}),
 })

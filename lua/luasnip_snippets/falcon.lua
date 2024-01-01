@@ -42,18 +42,18 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	0,
-	{{1, 2}, {2, 3}},
-	2,
-	1,
-	1,
-	1,
-	2,
-	2,
-	2,
-	2,
-	1,
+	{},
+	{{0, 0}},
+	{{0, 0}, {1, 2}, {2, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
 }
 ls.add_snippets("falcon", {
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
@@ -63,7 +63,7 @@ ls.add_snippets("falcon", {
 		t"import ", i(0, "module", {key = "i0"}), nl()
 	}),
 	s({trig = "fun", descr = "(fun)", priority = -1000, trigEngine = te("w")}, {
-		t"function ", i(1, "function_name", {key = "i1"}), t"(", i(2, "", {key = "i3"}), t")", nl(),
+		t"function ", i(1, "function_name", {key = "i2"}), t"(", i(2, "", {key = "i3"}), t")", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end", nl()
 	}),

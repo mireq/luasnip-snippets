@@ -42,174 +42,98 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	1,
-	2,
-	2,
-	2,
-	1,
-	1,
-	1,
-	1,
-	0,
-	5,
-	3,
-	3,
-	2,
-	1,
-	2,
-	2,
-	1,
-	1,
-	2,
-	1,
-	1,
-	0,
-	0,
-	0,
-	0,
-	1,
-	1,
-	0,
-	0,
-	0,
-	1,
-	0,
-	2,
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	3,
-	2,
-	4,
-	6,
-	5,
-	2,
-	1,
-	1,
-	1,
-	1,
-	0,
-	1,
-	0,
-	2,
-	1,
-	0,
-	0,
-	0,
-	3,
-	0,
-	2,
-	5,
-	2,
-	0,
-	1,
-	3,
-	1,
-	2,
-	2,
-	3,
-	4,
-	4,
-	1,
-	2,
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}},
+	{},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{1, 1}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}},
 }
 ls.add_snippets("go", {
-	s({trig = "^import", descr = "(^import) \"Import declaration\"", priority = -50, trigEngine = te("r")}, {
-		t"import (", nl(),
-		t"\t\"", i(1, "package", {key = "i1"}), t"\"", nl(),
-		t")"
-	}),
-	s({trig = "^package", descr = "(^package) \"Package declaration\"", priority = -50, trigEngine = te("r")}, {
-		t"// Package ", cp(1), t" provides ...", nl(),
-		t"package ", i(1, "main", {key = "i1"})
-	}),
-	s({trig = "^cons", descr = "(^cons) \"Constants declaration\"", priority = -50, trigEngine = te("r")}, {
-		t"const (", nl(),
-		t"\t", i(1, "constant", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), t" = ", i(0, "value", {key = "i0"}), nl(),
-		t")"
-	}),
-	s({trig = "^con", descr = "(^con) \"Constant declaration\"", priority = -50, trigEngine = te("r")}, {
-		t"const ", i(1, "name", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), t" = ", i(0, "value", {key = "i0"})
-	}),
-	s({trig = "iota", descr = "(iota) \"Iota constant generator\"", priority = -50, trigEngine = te("b")}, {
-		t"const (", nl(),
-		t"\t", i(1, "constant", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), t" = iota", nl(),
-		t")"
-	}),
-	s({trig = "struct", descr = "(struct) \"Struct declaration\"", priority = -50, trigEngine = te("b")}, {
-		t"type ", i(1, "Struct", {key = "i1"}), t" struct {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "interface", descr = "(interface) \"Interface declaration\"", priority = -50, trigEngine = te("b")}, {
-		t"type ", i(1, "Interface", {key = "i1"}), t" interface {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "if", descr = "(if) \"If statement\"", priority = -50, trigEngine = te("b")}, {
-		t"if ", i(1, "condition", {key = "i1"}), tr(1, "(.+)", " "), t"{", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "switch", descr = "(switch) \"Switch statement\"", priority = -50, trigEngine = te("b")}, {
-		t"switch ", i(1, "expression", {key = "i1"}), tr(1, "(.+)", " "), t"{", nl(),
-		t"case", i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "^main", descr = "(^main) \"Main function\"", priority = -50, trigEngine = te("r")}, {
-		t"func main() {", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "^meth", descr = "(^meth) \"Method\"", priority = -50, trigEngine = te("r")}, {
-		t"func (", i(1, "receiver", {key = "i1"}), t" ", i(2, "type", {key = "i2"}), t") ", i(3, "name", {key = "i3"}), t"(", i(4, "params", {key = "i4"}), t")", tr(5, "(.+)", " "), i(5, "type", {key = "i5"}), t" {", nl(),
-		t"\t", d(6, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i6"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "func", descr = "(func) \"Function\"", priority = -50, trigEngine = te("b")}, {
-		t"func ", i(1, "name", {key = "i1"}), t"(", i(2, "params", {key = "i2"}), t")", tr(3, "(.+)", " "), i(3, "type", {key = "i3"}), t" {", nl(),
-		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i4"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "funch", descr = "(funch) \"HTTP handler\"", priority = -50, trigEngine = te("b")}, {
-		t"func ", i(1, "handler", {key = "i1"}), t"(", i(2, "w", {key = "i2"}), t" http.ResponseWriter, ", i(3, "r", {key = "i3"}), t" *http.Request) {", nl(),
-		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i4"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "map", descr = "(map) \"Map type\"", priority = -50, trigEngine = te("b")}, {
-		t"map[", i(1, "keytype", {key = "i1"}), t"]", i(2, "valtype", {key = "i2"})
-	}),
-	s({trig = ":", descr = "(:) \"Variable declaration :=\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "name", {key = "i1"}), t" := ", i(0, "value", {key = "i0"})
-	}),
-	s({trig = "var", descr = "(var) \"Variable declaration\"", priority = -50, trigEngine = te("b")}, {
-		t"var ", i(1, "name", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), t" = ", i(0, "value", {key = "i0"})
-	}),
-	s({trig = "vars", descr = "(vars) \"Variables declaration\"", priority = -50, trigEngine = te("b")}, {
-		t"var (", nl(),
-		t"\t", i(1, "name", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), t" = ", i(0, "value", {key = "i0"}), t" ", nl(),
-		t")"
-	}),
-	s({trig = "json", descr = "(json) \"JSON field\"", priority = -50, trigEngine = te("")}, {
-		t"`json:\"", i(1, "displayName", {key = "i1"}), t"\"`"
-	}),
-	s({trig = "err", descr = "(err) \"Basic error handling\"", priority = -50, trigEngine = te("b")}, {
-		t"if err != nil {", nl(),
-		t"\tlog.", i(1, "Fatal", {key = "i1"}), t"(err)", nl(),
-		t"}"
-	}),
 	s({trig = "v", descr = "(v) \"shorthand variable declaration\"", priority = -1000, trigEngine = te("w")}, {
 		i(1, "", {key = "i1"}), t" := ", i(2, "", {key = "i2"}), nl()
 	}),
 	s({trig = "vr", descr = "(vr) \"variable initialization\"", priority = -1000, trigEngine = te("w")}, {
 		t"var ", i(1, "t", {key = "i1"}), t" ", i(0, "string", {key = "i0"}), nl()
+	}),
+	s({trig = "var", descr = "(var) \"Variable declaration\"", priority = -50, trigEngine = te("b")}, {
+		t"var ", i(1, "name", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), d(3, function(args) return sn(nil, {t" = ", i(0, "value", {key = "i0"})}) end, {}, {key = "i3"})
+	}),
+	s({trig = "vars", descr = "(vars) \"Variables declaration\"", priority = -50, trigEngine = te("b")}, {
+		t"var (", nl(),
+		t"\t", i(1, "name", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), d(3, function(args) return sn(nil, {t" = ", i(0, "value", {key = "i0"}), t" "}) end, {}, {key = "i3"}), nl(),
+		t")"
 	}),
 	s({trig = "ap", descr = "(ap) \"append\"", priority = -1000, trigEngine = te("w")}, {
 		t"append(", i(1, "slice", {key = "i1"}), t", ", i(0, "value", {key = "i0"}), t")", nl()
@@ -228,7 +152,7 @@ ls.add_snippets("go", {
 	}),
 	s({trig = "cs", descr = "(cs) \"case\"", priority = -1000, trigEngine = te("w")}, {
 		t"case ", i(1, "value", {key = "i1"}), t":", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl()
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl()
 	}),
 	s({trig = "co", descr = "(co) \"constants with iota\"", priority = -1000, trigEngine = te("w")}, {
 		t"const (", nl(),
@@ -245,7 +169,7 @@ ls.add_snippets("go", {
 	s({trig = "dfr", descr = "(dfr) \"defer recover\"", priority = -1000, trigEngine = te("w")}, {
 		t"defer func() {", nl(),
 		t"\tif err := recover(); err != nil {", nl(),
-		t"\t\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i1"}) }) end), nl(),
+		t"\t\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i0"}) }) end), nl(),
 		t"\t}", nl(),
 		t"}()", nl()
 	}),
@@ -262,6 +186,11 @@ ls.add_snippets("go", {
 		t"\t", i(2, "/* methods */", {key = "i2"}), nl(),
 		t"}", nl()
 	}),
+	s({trig = "if", descr = "(if) \"If statement\"", priority = -50, trigEngine = te("b")}, {
+		t"if ", i(1, "condition", {key = "i1"}), tr(1, "(.+)", " "), t"{", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
 	s({trig = "ife", descr = "(ife) \"if else condition\"", priority = -1000, trigEngine = te("w")}, {
 		t"if ", i(1, "", {key = "i1"}), t" {", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
@@ -271,7 +200,7 @@ ls.add_snippets("go", {
 	}),
 	s({trig = "el", descr = "(el) \"else\"", priority = -1000, trigEngine = te("w")}, {
 		t"else {", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}", nl()
 	}),
 	s({trig = "ir", descr = "(ir) \"if error not nil, return err\"", priority = -1000, trigEngine = te("w")}, {
@@ -297,17 +226,17 @@ ls.add_snippets("go", {
 	}),
 	s({trig = "for", descr = "(for) \"for loop\"", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(1, "", {key = "i1"}), t"{", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}", nl()
 	}),
 	s({trig = "fori", descr = "(fori) \"for int loop\"", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(2, "i", {key = "i2"}), t" := 0; ", cp(2), t" < ", i(1, "count", {key = "i1"}), t"; ", cp(2), i(3, "++", {key = "i3"}), t" {", nl(),
-		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i4"}) }) end), nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}", nl()
 	}),
 	s({trig = "forr", descr = "(forr) \"for range loop\"", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(1, "e", {key = "i1"}), t" := range ", i(2, "collection", {key = "i2"}), t" {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}", nl()
 	}),
 	s({trig = "fun", descr = "(fun) \"function\"", priority = -1000, trigEngine = te("w")}, {
@@ -324,7 +253,7 @@ ls.add_snippets("go", {
 	}),
 	s({trig = "fumh", descr = "(fumh) \"http handler function on receiver\"", priority = -1000, trigEngine = te("w")}, {
 		t"func (", i(1, "receiver", {key = "i1"}), t" ", i(2, "type", {key = "i2"}), t") ", i(3, "funcName", {key = "i3"}), t"(", i(4, "w", {key = "i4"}), t" http.ResponseWriter, ", i(5, "r", {key = "i5"}), t" *http.Request) {", nl(),
-		t"\t", d(6, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i6"}) }) end), nl(),
+		t"\t", d(6, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}", nl()
 	}),
 	s({trig = "lf", descr = "(lf) \"log printf\"", priority = -1000, trigEngine = te("w")}, {
@@ -412,7 +341,7 @@ ls.add_snippets("go", {
 	}),
 	s({trig = "test", descr = "(test) \"test function\"", priority = -1000, trigEngine = te("w")}, {
 		t"func Test", i(1, "name", {key = "i1"}), t"(t *testing.T) {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}", nl()
 	}),
 	s({trig = "testt", descr = "(testt) \"table test function\"", priority = -1000, trigEngine = te("w")}, {
@@ -427,7 +356,7 @@ ls.add_snippets("go", {
 		nl(),
 		t"\tfor _, test := range tests {", nl(),
 		t"\t\tt.Run(test.name, func(t *testing.T) {", nl(),
-		t"\t\t\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t\t"), {key = "i3"}) }) end), nl(),
+		t"\t\t\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t\t"), {key = "i0"}) }) end), nl(),
 		t"\t\t})", nl(),
 		t"\t}", nl(),
 		t"}", nl()
@@ -470,6 +399,77 @@ ls.add_snippets("go", {
 	s({trig = "errwr", descr = "(errwr) \"Error handling with fmt.Errorf\"", priority = -1000, trigEngine = te("w")}, {
 		t"if ", i(1, "", {key = "i1"}), t"err != nil {", nl(),
 		t"\treturn fmt.Errorf(\"", i(2, "", {key = "i2"}), t" %w\", err)", nl(),
+		t"}"
+	}),
+	s({trig = "^import", descr = "(^import) \"Import declaration\"", priority = -50, trigEngine = te("r")}, {
+		t"import (", nl(),
+		t"\t\"", i(1, "package", {key = "i1"}), t"\"", nl(),
+		t")"
+	}),
+	s({trig = "^package", descr = "(^package) \"Package declaration\"", priority = -50, trigEngine = te("r")}, {
+		t"// Package ", cp(1), t" provides ...", nl(),
+		t"package ", i(1, "main", {key = "i1"})
+	}),
+	s({trig = "^cons", descr = "(^cons) \"Constants declaration\"", priority = -50, trigEngine = te("r")}, {
+		t"const (", nl(),
+		t"\t", i(1, "constant", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), t" = ", i(0, "value", {key = "i0"}), nl(),
+		t")"
+	}),
+	s({trig = "^con", descr = "(^con) \"Constant declaration\"", priority = -50, trigEngine = te("r")}, {
+		t"const ", i(1, "name", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), t" = ", i(0, "value", {key = "i0"})
+	}),
+	s({trig = "iota", descr = "(iota) \"Iota constant generator\"", priority = -50, trigEngine = te("b")}, {
+		t"const (", nl(),
+		t"\t", i(1, "constant", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), t" = iota", nl(),
+		t")"
+	}),
+	s({trig = "struct", descr = "(struct) \"Struct declaration\"", priority = -50, trigEngine = te("b")}, {
+		t"type ", i(1, "Struct", {key = "i1"}), t" struct {", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "interface", descr = "(interface) \"Interface declaration\"", priority = -50, trigEngine = te("b")}, {
+		t"type ", i(1, "Interface", {key = "i1"}), t" interface {", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "switch", descr = "(switch) \"Switch statement\"", priority = -50, trigEngine = te("b")}, {
+		t"switch ", i(1, "expression", {key = "i1"}), tr(1, "(.+)", " "), t"{", nl(),
+		t"case", i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "^main", descr = "(^main) \"Main function\"", priority = -50, trigEngine = te("r")}, {
+		t"func main() {", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "^meth", descr = "(^meth) \"Method\"", priority = -50, trigEngine = te("r")}, {
+		t"func (", i(1, "receiver", {key = "i1"}), t" ", i(2, "type", {key = "i2"}), t") ", i(3, "name", {key = "i3"}), t"(", i(4, "params", {key = "i4"}), t")", tr(5, "(.+)", " "), i(5, "type", {key = "i5"}), t" {", nl(),
+		t"\t", d(6, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "func", descr = "(func) \"Function\"", priority = -50, trigEngine = te("b")}, {
+		t"func ", i(1, "name", {key = "i1"}), t"(", i(2, "params", {key = "i2"}), t")", tr(3, "(.+)", " "), i(3, "type", {key = "i3"}), t" {", nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "funch", descr = "(funch) \"HTTP handler\"", priority = -50, trigEngine = te("b")}, {
+		t"func ", i(1, "handler", {key = "i1"}), t"(", i(2, "w", {key = "i2"}), t" http.ResponseWriter, ", i(3, "r", {key = "i3"}), t" *http.Request) {", nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "map", descr = "(map) \"Map type\"", priority = -50, trigEngine = te("b")}, {
+		t"map[", i(1, "keytype", {key = "i1"}), t"]", i(2, "valtype", {key = "i2"})
+	}),
+	s({trig = ":", descr = "(:) \"Variable declaration :=\"", priority = -50, trigEngine = te("b")}, {
+		i(1, "name", {key = "i1"}), t" := ", i(0, "value", {key = "i0"})
+	}),
+	s({trig = "json", descr = "(json) \"JSON field\"", priority = -50, trigEngine = te("")}, {
+		t"`json:\"", i(1, "displayName", {key = "i1"}), t"\"`"
+	}),
+	s({trig = "err", descr = "(err) \"Basic error handling\"", priority = -50, trigEngine = te("b")}, {
+		t"if err != nil {", nl(),
+		t"\tlog.", i(1, "Fatal", {key = "i1"}), t"(err)", nl(),
 		t"}"
 	}),
 })

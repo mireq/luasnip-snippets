@@ -42,219 +42,219 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	3,
-	1,
-	4,
-	3,
-	5,
-	4,
-	2,
-	5,
-	4,
-	3,
-	1,
-	1,
-	1,
-	1,
-	4,
-	2,
-	2,
-	1,
-	2,
-	1,
-	2,
-	2,
-	5,
-	1,
-	2,
-	3,
-	0,
-	1,
-	4,
-	0,
-	0,
-	0,
-	2,
-	1,
-	2,
-	0,
-	0,
-	1,
-	1,
-	2,
-	2,
-	3,
-	2,
-	3,
-	3,
-	2,
-	0,
-	0,
-	0,
-	0,
-	2,
-	1,
-	1,
-	2,
-	2,
-	4,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	7,
-	11,
-	0,
-	4,
-	0,
-	7,
-	11,
-	0,
-	4,
-	4,
-	5,
-	6,
-	5,
-	8,
-	1,
-	2,
-	4,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	1,
-	1,
-	0,
-	0,
-	0,
-	4,
-	6,
-	0,
-	0,
-	0,
-	1,
-	1,
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	2,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	3,
-	0,
-	3,
-	0,
-	0,
-	{{1, 1}, {2, 2}, {3, 4}, {4, 5}},
-	2,
-	2,
-	3,
-	{{1, 1}, {2, 2}, {3, 4}},
-	5,
-	4,
-	2,
-	0,
-	0,
-	4,
-	2,
-	2,
-	5,
-	5,
-	2,
-	2,
-	2,
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}, {10, 10}, {11, 11}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}, {10, 10}, {11, 11}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 4}, {4, 5}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
 	{{1, 1}, {2, 2}, {3, 3}, {4, 7}},
-	10,
-	8,
-	5,
-	3,
-	5,
-	1,
-	3,
-	0,
-	3,
-	4,
-	0,
-	2,
-	0,
-	0,
-	0,
-	4,
-	0,
-	5,
-	3,
-	5,
-	5,
-	3,
-	7,
-	3,
-	3,
-	2,
-	0,
-	0,
-	2,
-	2,
-	2,
-	0,
-	1,
-	1,
-	1,
-	0,
-	2,
-	2,
-	2,
-	3,
-	0,
-	1,
-	0,
-	{{1, 2}, {2, 3}, {3, 4}},
-	{{1, 2}, {2, 3}, {3, 4}},
-	{{1, 2}, {2, 3}, {3, 4}},
-	2,
-	0,
-	0,
-	0,
-	2,
-	0,
-	6,
-	9,
-	4,
-	3,
-	1,
-	4,
-	0,
-	0,
-	0,
-	0,
-	0,
-	2,
-	1,
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}, {10, 10}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 2}, {2, 3}, {3, 4}},
+	{{0, 0}, {1, 2}, {2, 3}, {3, 4}},
+	{{0, 0}, {1, 2}, {2, 3}, {3, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
 }
 ls.add_snippets("processing", {
 	s({trig = "doc", descr = "(doc)", priority = -1000, trigEngine = te("w")}, {
@@ -318,7 +318,7 @@ ls.add_snippets("processing", {
 	}),
 	s({trig = "for", descr = "(for)", priority = -1000, trigEngine = te("w")}, {
 		t"for (int ", i(2, "i", {key = "i2"}), t" = 0; ", cp(2), t" < ", i(1, "Things", {key = "i1"}), t".length; ", cp(2), i(3, "++", {key = "i3"}), t") {", nl(),
-		t"\t", cp(1), t"[", cp(2), t"]", nl(),
+		t"\t", d(4, function(args) return sn(nil, {cp(1), t"[", cp(2), t"]"}) end, {}, {key = "i0"}), nl(),
 		t"};"
 	}),
 	s({trig = "wh", descr = "(wh)", priority = -1000, trigEngine = te("w")}, {
@@ -351,13 +351,13 @@ ls.add_snippets("processing", {
 	}),
 	s({trig = "try", descr = "(try)", priority = -1000, trigEngine = te("w")}, {
 		t"try {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"} catch(", i(1, "Exception", {key = "i1"}), t" ", i(2, "e", {key = "i2"}), t") {", nl(),
 		t"}"
 	}),
 	s({trig = "tryf", descr = "(tryf)", priority = -1000, trigEngine = te("w")}, {
 		t"try {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"} catch(", i(1, "Exception", {key = "i1"}), t" ", i(2, "e", {key = "i2"}), t") {", nl(),
 		t"} finally {", nl(),
 		t"}"
@@ -379,21 +379,21 @@ ls.add_snippets("processing", {
 	s({trig = "get", descr = "(get) pixel", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
 			t"public ", i(1, "String", {key = "i1"}), t" get", i(2, "", {key = "i2"}), t"() {", nl(),
-			t"\treturn ", i(3, "fieldName", {key = "i3"}), t";", nl(),
+			t"\treturn ", i(3, "fieldName", {key = "i0"}), t";", nl(),
 			t"}"
 		},
 		{
-			t"get(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), i(3, ", ", {key = "i3"}), i(4, "width", {key = "i4"}), i(5, ", ", {key = "i5"}), i(6, "height", {key = "i6"}), t");", nl()
+			t"get(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), i(3, ", ", {key = "i3"}), i(4, "width", {key = "i4"}), i(5, ", ", {key = "i5"}), i(6, "height", {key = "i0"}), t");", nl()
 		},
 	})),
 	s({trig = "set", descr = "(set) pixel", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"public void set", i(1, "", {key = "i1"}), t"(", i(2, "String", {key = "i2"}), t" new", cp(1), t") {", nl(),
+			t"public void set", i(1, "", {key = "i1"}), t"(", i(2, "String", {key = "i0"}), t" new", cp(1), t") {", nl(),
 			t"\t", i(1, "fieldName", {key = "i1"}), t" = new", cp(1), t";", nl(),
 			t"}"
 		},
 		{
-			t"set(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), t", ", i(3, "color/image", {key = "i3"}), t");"
+			t"set(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), t", ", i(3, "color/image", {key = "i0"}), t");"
 		},
 	})),
 	s({trig = "println", descr = "(println)", priority = -1000, trigEngine = te("w")}, {
@@ -470,16 +470,16 @@ ls.add_snippets("processing", {
 	s({trig = "gl", descr = "(gl) gl clear", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
 			t"pgl.beginGL();", nl(),
-			t"\t", i(1, "", {key = "i1"}), nl(),
+			t"\t", i(1, "", {key = "i0"}), nl(),
 			t"pgl.endGL();"
 		},
 		{
 			t"// specify the minimum swap interval for buffer swaps.", nl(),
-			t"gl.setSwapInterval(", i(1, "interval", {key = "i1"}), t");"
+			t"gl.setSwapInterval(", i(1, "interval", {key = "i0"}), t");"
 		},
 		{
 			t"// execute a display list", nl(),
-			t"gl.glCallList(", i(1, "list", {key = "i1"}), t");"
+			t"gl.glCallList(", i(1, "list", {key = "i0"}), t");"
 		},
 		{
 			t"// import java.nio.IntBuffer;", nl(),
@@ -491,7 +491,7 @@ ls.add_snippets("processing", {
 			t"gl.glGenBuffers(", cp(1), t", bufferObjects);", nl(),
 			nl(),
 			t"int vertexCount = ", i(2, "3", {key = "i2"}), t";", nl(),
-			t"int numCoordinates = ", i(3, "3", {key = "i3"}), t";", nl(),
+			t"int numCoordinates = ", i(3, "3", {key = "i0"}), t";", nl(),
 			t"// vertexCount * numCoordinates", nl(),
 			t"FloatBuffer vertices = BufferUtil.newFloatBuffer(vertexCount * numCoordinates);", nl(),
 			t"float[] v = {0.0f, 0.0f, 0.0f,", nl(),
@@ -504,16 +504,16 @@ ls.add_snippets("processing", {
 			t"gl.glBufferData(GL.GL_ARRAY_BUFFER, vertexCount * numCoordinates * BufferUtil.SIZEOF_FLOAT, vertices, GL.GL_STATIC_DRAW);"
 		},
 		{
-			i(2, "// A buffer ID of zero unbinds a buffer object", {key = "i2"}), nl(),
+			i(2, "// A buffer ID of zero unbinds a buffer object", {key = "i0"}), nl(),
 			t"gl.glBindBuffer(GL.GL_ARRAY_BUFFER, ", i(1, "0", {key = "i1"}), t");"
 		},
 		{
-			i(3, "// Parameters are the same for glGenBuffers", {key = "i3"}), nl(),
+			i(3, "// Parameters are the same for glGenBuffers", {key = "i0"}), nl(),
 			t"gl.glDeleteBuffers(", i(1, "4", {key = "i1"}), t", ", i(2, "bufferObjects", {key = "i2"}), t");"
 		},
 		{
 			t"// enable or disable writing into the depth buffer", nl(),
-			t"gl.glDepthMask(", i(1, "flag", {key = "i1"}), t");"
+			t"gl.glDepthMask(", i(1, "flag", {key = "i0"}), t");"
 		},
 		{
 			t"// replaces the top of the active matrix stack with the identity matrix", nl(),
@@ -521,54 +521,54 @@ ls.add_snippets("processing", {
 		},
 		{
 			t"// set the current texture coordinates - 2 floats", nl(),
-			t"gl.glTexCoord2f(", i(1, "0.0f", {key = "i1"}), t", ", i(2, "0.0f", {key = "i2"}), t");"
+			t"gl.glTexCoord2f(", i(1, "0.0f", {key = "i1"}), t", ", i(2, "0.0f", {key = "i0"}), t");"
 		},
 		{
-			t"gl.glVertex2f(", i(1, "0.0f", {key = "i1"}), t", ", i(2, "0.0f", {key = "i2"}), t");"
+			t"gl.glVertex2f(", i(1, "0.0f", {key = "i1"}), t", ", i(2, "0.0f", {key = "i0"}), t");"
 		},
 		{
-			t"gl.glVertex3f(", i(1, "0.0f", {key = "i1"}), t", ", i(2, "0.0f", {key = "i2"}), t", ", i(3, "0.0f", {key = "i3"}), t");"
+			t"gl.glVertex3f(", i(1, "0.0f", {key = "i1"}), t", ", i(2, "0.0f", {key = "i2"}), t", ", i(3, "0.0f", {key = "i0"}), t");"
 		},
 		{
 			t"// multiply the current matrix by a translation matrix", nl(),
-			t"gl.glTranslatef(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), t", ", i(3, "z", {key = "i3"}), t");"
+			t"gl.glTranslatef(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), t", ", i(3, "z", {key = "i0"}), t");"
 		},
 		{
 			t"// rotate, x-axis, y-axis, z-axiz", nl(),
-			t"gl.glRotatef(", i(1, "angle", {key = "i1"}), t", ", i(2, "x", {key = "i2"}), t", ", i(3, "y", {key = "i3"}), t", ", i(4, "z", {key = "i4"}), t");"
+			t"gl.glRotatef(", i(1, "angle", {key = "i1"}), t", ", i(2, "x", {key = "i2"}), t", ", i(3, "y", {key = "i3"}), t", ", i(4, "z", {key = "i0"}), t");"
 		},
 		{
 			t"// multiply the current matrix by a general scaling matrix", nl(),
-			t"gl.glScalef(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), t", ", i(3, "z", {key = "i3"}), t");"
+			t"gl.glScalef(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), t", ", i(3, "z", {key = "i0"}), t");"
 		},
 		{
-			t"gl.glColor4f(", i(1, "red", {key = "i1"}), t", ", i(2, "green", {key = "i2"}), t", ", i(3, "blue", {key = "i3"}), t", ", i(4, "alpha", {key = "i4"}), t");"
+			t"gl.glColor4f(", i(1, "red", {key = "i1"}), t", ", i(2, "green", {key = "i2"}), t", ", i(3, "blue", {key = "i3"}), t", ", i(4, "alpha", {key = "i0"}), t");"
 		},
 		{
-			t"gl.glClearColor(", i(1, "red", {key = "i1"}), t", ", i(2, "green", {key = "i2"}), t", ", i(3, "blue", {key = "i3"}), t", ", i(4, "alpha", {key = "i4"}), t");"
+			t"gl.glClearColor(", i(1, "red", {key = "i1"}), t", ", i(2, "green", {key = "i2"}), t", ", i(3, "blue", {key = "i3"}), t", ", i(4, "alpha", {key = "i0"}), t");"
 		},
 		{
-			t"gl.glColor3f(", i(1, "red", {key = "i1"}), t", ", i(2, "green", {key = "i2"}), t", ", i(3, "blue", {key = "i3"}), t");"
+			t"gl.glColor3f(", i(1, "red", {key = "i1"}), t", ", i(2, "green", {key = "i2"}), t", ", i(3, "blue", {key = "i0"}), t");"
 		},
 		{
 			t"// spush and pop the current matrix stack", nl(),
 			t"gl.glPushMatrix();", nl(),
-			i(1, "", {key = "i1"}), nl(),
+			i(1, "", {key = "i0"}), nl(),
 			t"gl.glPopMatrix();"
 		},
 		{
-			t"gl.glGenLists(", i(1, "1", {key = "i1"}), t")"
+			t"gl.glGenLists(", i(1, "1", {key = "i0"}), t")"
 		},
 		{
 			t"// Empties buffers. Call this when all previous issues commands completed", nl(),
 			t"gl.glFlush();", nl(),
-			i(1, "", {key = "i1"})
+			i(1, "", {key = "i0"})
 		},
 		{
 			t"println(gl.glGetError());"
 		},
 		{
-			t"gl.glClear(", i(1, "GL.GL_COLOR_BUFFER_BIT", {key = "i1"}), i(2, " | ", {key = "i2"}), i(3, "GL.GL_DEPTH_BUFFER_BIT", {key = "i3"}), t");", nl()
+			t"gl.glClear(", i(1, "GL.GL_COLOR_BUFFER_BIT", {key = "i1"}), i(2, " | ", {key = "i2"}), i(3, "GL.GL_DEPTH_BUFFER_BIT", {key = "i0"}), t");", nl()
 		},
 	})),
 	s({trig = "frameRate", descr = "(frameRate)", priority = -1000, trigEngine = te("w")}, {
@@ -580,10 +580,10 @@ ls.add_snippets("processing", {
 	}),
 	s({trig = "size", descr = "(size) opengl", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"size(", i(1, "200", {key = "i1"}), t", ", i(2, "200", {key = "i2"}), i(3, ", P3D", {key = "i3"}), t");"
+			t"size(", i(1, "200", {key = "i1"}), t", ", i(2, "200", {key = "i2"}), i(3, ", P3D", {key = "i0"}), t");"
 		},
 		{
-			t"size(", i(1, "200", {key = "i1"}), t", ", i(2, "200", {key = "i2"}), i(3, ", OPENGL", {key = "i3"}), t");", nl()
+			t"size(", i(1, "200", {key = "i1"}), t", ", i(2, "200", {key = "i2"}), i(3, ", OPENGL", {key = "i0"}), t");", nl()
 		},
 	})),
 	s({trig = "color", descr = "(color)", priority = -1000, trigEngine = te("w")}, {
@@ -608,17 +608,17 @@ ls.add_snippets("processing", {
 		t"String ", i(1, "str", {key = "i1"}), i(2, " = \"", {key = "i2"}), i(0, "CCCP\"", {key = "i0"}), t";"
 	}),
 	s({trig = "array", descr = "(array)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "int", {key = "i1"}), t"[] ", i(2, "numbers", {key = "i2"}), t" = new ", cp(1), t"[", i(0, "length", {key = "i0"}), t"];"
+		i(1, "int", {key = "i1"}), t"[] ", i(2, "numbers", {key = "i2"}), d(3, function(args) return sn(nil, {t" = new ", cp(1)}) end, {}, {key = "i3"}), t"[", i(0, "length", {key = "i0"}), t"];"
 	}),
 	s({trig = "object", descr = "(object)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "Object", {key = "i1"}), t" ", i(2, "o", {key = "i2"}), t" = new ", cp(1), t"(", i(0, "", {key = "i0"}), t");", nl()
+		i(1, "Object", {key = "i1"}), t" ", i(2, "o", {key = "i2"}), d(3, function(args) return sn(nil, {t" = new ", cp(1)}) end, {}, {key = "i3"}), t"(", i(0, "", {key = "i0"}), t");", nl()
 	}),
 	s({trig = "curve", descr = "(curve) 3D", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"curve(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "x2", {key = "i3"}), t", ", i(4, "y2", {key = "i4"}), t", ", i(5, "x3", {key = "i5"}), t", ", i(6, "y3", {key = "i6"}), t", ", i(7, "x4", {key = "i7"}), t", ", i(8, "y4", {key = "i8"}), t");"
+			t"curve(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "x2", {key = "i3"}), t", ", i(4, "y2", {key = "i4"}), t", ", i(5, "x3", {key = "i5"}), t", ", i(6, "y3", {key = "i6"}), t", ", i(7, "x4", {key = "i7"}), t", ", i(8, "y4", {key = "i0"}), t");"
 		},
 		{
-			t"curve(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "z1", {key = "i3"}), t", ", i(4, "x2", {key = "i4"}), t", ", i(5, "y2", {key = "i5"}), t", ", i(6, "z2", {key = "i6"}), t", ", i(7, "x3", {key = "i7"}), t", ", i(8, "y3", {key = "i8"}), t", ", i(9, "z3", {key = "i9"}), t", ", i(10, "x4", {key = "i10"}), t", ", i(11, "y4", {key = "i11"}), t", ", i(12, "z4", {key = "i12"}), t");"
+			t"curve(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "z1", {key = "i3"}), t", ", i(4, "x2", {key = "i4"}), t", ", i(5, "y2", {key = "i5"}), t", ", i(6, "z2", {key = "i6"}), t", ", i(7, "x3", {key = "i7"}), t", ", i(8, "y3", {key = "i8"}), t", ", i(9, "z3", {key = "i9"}), t", ", i(10, "x4", {key = "i10"}), t", ", i(11, "y4", {key = "i11"}), t", ", i(12, "z4", {key = "i0"}), t");"
 		},
 	})),
 	s({trig = "curveDetail", descr = "(curveDetail)", priority = -1000, trigEngine = te("w")}, {
@@ -632,10 +632,10 @@ ls.add_snippets("processing", {
 	}),
 	s({trig = "bezier", descr = "(bezier) 3D", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"bezier(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "cx1", {key = "i3"}), t", ", i(4, "cy1", {key = "i4"}), t", ", i(5, "cx2", {key = "i5"}), t", ", i(6, "cy2", {key = "i6"}), t", ", i(7, "x2", {key = "i7"}), t", ", i(8, "y2", {key = "i8"}), t");"
+			t"bezier(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "cx1", {key = "i3"}), t", ", i(4, "cy1", {key = "i4"}), t", ", i(5, "cx2", {key = "i5"}), t", ", i(6, "cy2", {key = "i6"}), t", ", i(7, "x2", {key = "i7"}), t", ", i(8, "y2", {key = "i0"}), t");"
 		},
 		{
-			t"bezier(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "z1", {key = "i3"}), t", ", i(4, "cx1", {key = "i4"}), t", ", i(5, "cy1", {key = "i5"}), t", ", i(6, "cz1", {key = "i6"}), t", ", i(7, "cx2", {key = "i7"}), t", ", i(8, "cy2", {key = "i8"}), t", ", i(9, "cz2", {key = "i9"}), t", ", i(10, "x2", {key = "i10"}), t", ", i(11, "y2", {key = "i11"}), t", ", i(12, "z2", {key = "i12"}), t");"
+			t"bezier(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "z1", {key = "i3"}), t", ", i(4, "cx1", {key = "i4"}), t", ", i(5, "cy1", {key = "i5"}), t", ", i(6, "cz1", {key = "i6"}), t", ", i(7, "cx2", {key = "i7"}), t", ", i(8, "cy2", {key = "i8"}), t", ", i(9, "cz2", {key = "i9"}), t", ", i(10, "x2", {key = "i10"}), t", ", i(11, "y2", {key = "i11"}), t", ", i(12, "z2", {key = "i0"}), t");"
 		},
 	})),
 	s({trig = "bezierDetail", descr = "(bezierDetail)", priority = -1000, trigEngine = te("w")}, {
@@ -649,26 +649,26 @@ ls.add_snippets("processing", {
 	}),
 	s({trig = "vertex", descr = "(vertex) 3D", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"vertex(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), i(3, ", ", {key = "i3"}), i(4, "u", {key = "i4"}), i(5, ", ", {key = "i5"}), i(6, "v", {key = "i6"}), t");"
+			t"vertex(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), i(3, ", ", {key = "i3"}), i(4, "u", {key = "i4"}), i(5, ", ", {key = "i5"}), i(6, "v", {key = "i0"}), t");"
 		},
 		{
-			t"vertex(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), t", ", i(3, "z", {key = "i3"}), i(4, ", ", {key = "i4"}), i(5, "u", {key = "i5"}), i(6, ", ", {key = "i6"}), i(7, "v", {key = "i7"}), t");"
+			t"vertex(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), t", ", i(3, "z", {key = "i3"}), i(4, ", ", {key = "i4"}), i(5, "u", {key = "i5"}), i(6, ", ", {key = "i6"}), i(7, "v", {key = "i0"}), t");"
 		},
 	})),
 	s({trig = "bezierVertex", descr = "(bezierVertex) 3D", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"bezierVertex(", i(1, "cx1", {key = "i1"}), t", ", i(2, "cy1", {key = "i2"}), t", ", i(3, "cx2", {key = "i3"}), t", ", i(4, "cy2", {key = "i4"}), t", ", i(5, "x", {key = "i5"}), t", ", i(6, "y", {key = "i6"}), t");"
+			t"bezierVertex(", i(1, "cx1", {key = "i1"}), t", ", i(2, "cy1", {key = "i2"}), t", ", i(3, "cx2", {key = "i3"}), t", ", i(4, "cy2", {key = "i4"}), t", ", i(5, "x", {key = "i5"}), t", ", i(6, "y", {key = "i0"}), t");"
 		},
 		{
-			t"bezierVertex(", i(1, "cx1", {key = "i1"}), t", ", i(2, "cy1", {key = "i2"}), t", ", i(3, "cz1", {key = "i3"}), t", ", i(4, "cx2", {key = "i4"}), t", ", i(5, "cy2", {key = "i5"}), t", ", i(6, "cz2", {key = "i6"}), t", ", i(7, "x", {key = "i7"}), t", ", i(8, "y", {key = "i8"}), t", ", i(9, "z", {key = "i9"}), t");"
+			t"bezierVertex(", i(1, "cx1", {key = "i1"}), t", ", i(2, "cy1", {key = "i2"}), t", ", i(3, "cz1", {key = "i3"}), t", ", i(4, "cx2", {key = "i4"}), t", ", i(5, "cy2", {key = "i5"}), t", ", i(6, "cz2", {key = "i6"}), t", ", i(7, "x", {key = "i7"}), t", ", i(8, "y", {key = "i8"}), t", ", i(9, "z", {key = "i0"}), t");"
 		},
 	})),
 	s({trig = "curveVertex", descr = "(curveVertex) 3D", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"curveVertex(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), t");"
+			t"curveVertex(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i0"}), t");"
 		},
 		{
-			t"curveVertex(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), t", ", i(3, "z", {key = "i3"}), t");", nl()
+			t"curveVertex(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), t", ", i(3, "z", {key = "i0"}), t");", nl()
 		},
 	})),
 	s({trig = "stroke", descr = "(stroke)", priority = -1000, trigEngine = te("w")}, {
@@ -741,10 +741,10 @@ ls.add_snippets("processing", {
 	}),
 	s({trig = "text", descr = "(text) stringdata", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"text(", i(1, "data", {key = "i1"}), t", ", i(2, "x", {key = "i2"}), t", ", i(3, "y", {key = "i3"}), i(4, ", ", {key = "i4"}), i(5, "z", {key = "i5"}), t");"
+			t"text(", i(1, "data", {key = "i1"}), t", ", i(2, "x", {key = "i2"}), t", ", i(3, "y", {key = "i3"}), i(4, ", ", {key = "i4"}), i(5, "z", {key = "i0"}), t");"
 		},
 		{
-			t"text(", i(1, "stringdata", {key = "i1"}), t", ", i(2, "x", {key = "i2"}), t", ", i(3, "y", {key = "i3"}), t", ", i(4, "width", {key = "i4"}), t", ", i(5, "height", {key = "i5"}), i(6, ", ", {key = "i6"}), i(7, "z", {key = "i7"}), t");"
+			t"text(", i(1, "stringdata", {key = "i1"}), t", ", i(2, "x", {key = "i2"}), t", ", i(3, "y", {key = "i3"}), t", ", i(4, "width", {key = "i4"}), t", ", i(5, "height", {key = "i5"}), i(6, ", ", {key = "i6"}), i(7, "z", {key = "i0"}), t");"
 		},
 	})),
 	s({trig = "textSize", descr = "(textSize)", priority = -1000, trigEngine = te("w")}, {
@@ -825,25 +825,25 @@ ls.add_snippets("processing", {
 	}),
 	s({trig = "min", descr = "(min) array", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"min(", i(1, "value1", {key = "i1"}), t", ", i(2, "value2", {key = "i2"}), i(3, ", ", {key = "i3"}), i(4, "value3", {key = "i4"}), t");"
+			t"min(", i(1, "value1", {key = "i1"}), t", ", i(2, "value2", {key = "i2"}), i(3, ", ", {key = "i3"}), i(4, "value3", {key = "i0"}), t");"
 		},
 		{
-			t"min(", i(1, "array", {key = "i1"}), t");"
+			t"min(", i(1, "array", {key = "i0"}), t");"
 		},
 	})),
 	s({trig = "max", descr = "(max) array", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"max(", i(1, "value1", {key = "i1"}), t", ", i(2, "value2", {key = "i2"}), i(3, ", ", {key = "i3"}), i(4, "value3", {key = "i4"}), t");"
+			t"max(", i(1, "value1", {key = "i1"}), t", ", i(2, "value2", {key = "i2"}), i(3, ", ", {key = "i3"}), i(4, "value3", {key = "i0"}), t");"
 		},
 		{
-			t"max(", i(1, "array", {key = "i1"}), t");"
+			t"max(", i(1, "array", {key = "i0"}), t");"
 		},
 	})),
 	s({trig = "log", descr = "(log)", priority = -1000, trigEngine = te("w")}, {
 		t"log(", i(0, "value", {key = "i0"}), t");"
 	}),
 	s({trig = "map", descr = "(map)", priority = -1000, trigEngine = te("w")}, {
-		t"map(", i(1, "value", {key = "i1"}), t", ", i(2, "low1", {key = "i2"}), t", ", i(3, "high1", {key = "i3"}), t", ", i(4, "low2", {key = "i4"}), t", ", i(0, "high2", {key = "i0"}), t");"
+		t"map(", i(1, "value", {key = "i1"}), t", ", i(2, "low1", {key = "i2"}), t", ", i(3, "high1", {key = "i4"}), t", ", i(4, "low2", {key = "i5"}), t", ", i(0, "high2", {key = "i0"}), t");"
 	}),
 	s({trig = "norm", descr = "(norm)", priority = -1000, trigEngine = te("w")}, {
 		t"norm(", i(1, "value", {key = "i1"}), t", ", i(2, "low", {key = "i2"}), t", ", i(0, "high", {key = "i0"}), t");"
@@ -856,10 +856,10 @@ ls.add_snippets("processing", {
 	}),
 	s({trig = "dist", descr = "(dist) 3D", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"dist(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "x2", {key = "i3"}), t", ", i(4, "y2", {key = "i4"}), t");"
+			t"dist(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "x2", {key = "i4"}), t", ", i(4, "y2", {key = "i0"}), t");"
 		},
 		{
-			t"dist(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "z1", {key = "i3"}), t", ", i(4, "x2", {key = "i4"}), t", ", i(5, "y2", {key = "i5"}), t", ", i(6, "z2", {key = "i6"}), t");", nl()
+			t"dist(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "z1", {key = "i3"}), t", ", i(4, "x2", {key = "i4"}), t", ", i(5, "y2", {key = "i5"}), t", ", i(6, "z2", {key = "i0"}), t");", nl()
 		},
 	})),
 	s({trig = "noise", descr = "(noise)", priority = -1000, trigEngine = te("w")}, {
@@ -899,7 +899,7 @@ ls.add_snippets("processing", {
 		t"lightSpecular(", i(1, "v1", {key = "i1"}), t", ", i(2, "v2", {key = "i2"}), t", ", i(0, "v3", {key = "i0"}), t");"
 	}),
 	s({trig = "ambientLight", descr = "(ambientLight)", priority = -1000, trigEngine = te("w")}, {
-		t"ambientLight(", i(1, "v1", {key = "i1"}), t", ", i(2, "v2", {key = "i2"}), t", ", i(3, "v3", {key = "i3"}), i(4, ", ${4:x}, ${5:y}, ${0:z}", {key = "i4"}), t");"
+		t"ambientLight(", i(1, "v1", {key = "i1"}), t", ", i(2, "v2", {key = "i2"}), t", ", i(3, "v3", {key = "i3"}), i(4, ", ${4:x}, ${5:y}, ${0:z}", {key = "i7"}), t");"
 	}),
 	s({trig = "spotLight", descr = "(spotLight)", priority = -1000, trigEngine = te("w")}, {
 		t"spotLight(", i(1, "v1", {key = "i1"}), t", ", i(2, "v2", {key = "i2"}), t", ", i(3, "v3", {key = "i3"}), t", ", i(4, "x", {key = "i4"}), t", ", i(5, "y", {key = "i5"}), t", ", i(6, "z", {key = "i6"}), t", ", i(7, "nx", {key = "i7"}), t", ", i(8, "ny", {key = "i8"}), t", ", i(9, "nz", {key = "i9"}), t", ", i(10, "angle", {key = "i10"}), t", ", i(0, "concentration", {key = "i0"}), t");", nl()
@@ -924,10 +924,10 @@ ls.add_snippets("processing", {
 	}),
 	s({trig = "scale", descr = "(scale)", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"scale(", i(1, "size", {key = "i1"}), t");"
+			t"scale(", i(1, "size", {key = "i0"}), t");"
 		},
 		{
-			t"scale(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), i(3, ", ", {key = "i3"}), i(4, "z", {key = "i4"}), t");", nl()
+			t"scale(", i(1, "x", {key = "i1"}), t", ", i(2, "y", {key = "i2"}), i(3, ", ", {key = "i3"}), i(4, "z", {key = "i0"}), t");", nl()
 		},
 	})),
 	s({trig = "coord", descr = "(coord)", priority = -1000, trigEngine = te("w")}, {
@@ -959,10 +959,10 @@ ls.add_snippets("processing", {
 	}),
 	s({trig = "line", descr = "(line) 3D", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"line(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "x2", {key = "i3"}), t", ", i(4, "y2", {key = "i4"}), t");"
+			t"line(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "x2", {key = "i3"}), t", ", i(4, "y2", {key = "i0"}), t");"
 		},
 		{
-			t"line(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "z1", {key = "i3"}), t", ", i(4, "x2", {key = "i4"}), t", ", i(5, "y2", {key = "i5"}), t", ", i(6, "z2", {key = "i6"}), t");"
+			t"line(", i(1, "x1", {key = "i1"}), t", ", i(2, "y1", {key = "i2"}), t", ", i(3, "z1", {key = "i3"}), t", ", i(4, "x2", {key = "i4"}), t", ", i(5, "y2", {key = "i5"}), t", ", i(6, "z2", {key = "i0"}), t");"
 		},
 	})),
 	s({trig = "arc", descr = "(arc)", priority = -1000, trigEngine = te("w")}, {
@@ -1035,13 +1035,13 @@ ls.add_snippets("processing", {
 		t"trim(", i(0, "str", {key = "i0"}), t");"
 	}),
 	s({trig = "nf", descr = "(nf)", priority = -1000, trigEngine = te("w")}, {
-		t"nf(", i(1, "value", {key = "i1"}), t", ", i(2, "left", {key = "i2"}), i(3, ", ", {key = "i3"}), i(0, "right", {key = "i0"}), t");"
+		t"nf(", i(1, "value", {key = "i2"}), t", ", i(2, "left", {key = "i3"}), i(3, ", ", {key = "i4"}), i(0, "right", {key = "i0"}), t");"
 	}),
 	s({trig = "nfs", descr = "(nfs)", priority = -1000, trigEngine = te("w")}, {
-		t"nfs(", i(1, "value", {key = "i1"}), t", ", i(2, "left", {key = "i2"}), i(3, ", ", {key = "i3"}), i(0, "right", {key = "i0"}), t");"
+		t"nfs(", i(1, "value", {key = "i2"}), t", ", i(2, "left", {key = "i3"}), i(3, ", ", {key = "i4"}), i(0, "right", {key = "i0"}), t");"
 	}),
 	s({trig = "nfp", descr = "(nfp)", priority = -1000, trigEngine = te("w")}, {
-		t"nfp(", i(1, "value", {key = "i1"}), t", ", i(2, "left", {key = "i2"}), i(3, ", ", {key = "i3"}), i(0, "right", {key = "i0"}), t");"
+		t"nfp(", i(1, "value", {key = "i2"}), t", ", i(2, "left", {key = "i3"}), i(3, ", ", {key = "i4"}), i(0, "right", {key = "i0"}), t");"
 	}),
 	s({trig = "nfc", descr = "(nfc)", priority = -1000, trigEngine = te("w")}, {
 		t"nfc(", i(1, "value", {key = "i1"}), i(2, ", ", {key = "i2"}), i(0, "right", {key = "i0"}), t");", nl()

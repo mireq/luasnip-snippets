@@ -42,26 +42,26 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	1,
-	1,
-	2,
+	{},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
 	{{1, 1}, {2, 3}, {3, 4}, {4, 5}, {5, 6}},
-	2,
-	3,
-	3,
-	3,
-	3,
-	0,
-	0,
-	0,
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{},
+	{},
+	{},
 }
 ls.add_snippets("javascript-node", {
 	s({trig = "#!", descr = "(#!) \"#!/usr/bin/env node\"", priority = -50, trigEngine = te("b")}, {
 		t"#!/usr/bin/env node"
 	}),
 	s({trig = "vreq", descr = "(vreq) \"assign a CommonJS-style module to a var\"", priority = -50, trigEngine = te("")}, {
-		t"var ", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "(.+\\/)*(\\w+)(-|\\b|$)(\\..+$)?", "\\u$2")}, ""), {key = "i2"}) }) end, {k"i1"}), t" = require(\'", i(1, "", {key = "i1"}), t"\');"
+		t"var ", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "(.+\\/)*(\\w+)(-|\\b|$)(\\..+$)?", "\\u$2")}, ""), {key = "i0"}) }) end, {k"i1"}), t" = require(\'", i(1, "", {key = "i1"}), t"\');"
 	}),
 	s({trig = "ex", descr = "(ex) \"module.exports\"", priority = -50, trigEngine = te("")}, {
 		t"module.exports = ", i(1, "", {key = "i1"}), t";"
@@ -71,13 +71,13 @@ ls.add_snippets("javascript-node", {
 	}),
 	s({trig = "ncs", descr = "(ncs) \"net.createServer\"", priority = -50, trigEngine = te("")}, {
 		t"net.createServer(function(", i(1, "socket", {key = "i1"}), t"){", nl(),
-		t"\t", cp(1), t".on(\'data\', function(", i(2, "data", {key = "i2"}), t"){", nl(),
+		t"\t", cp(1), t".on(\'data\', function(", i(2, "data", {key = "i3"}), t"){", nl(),
 		t"\t\t", i(3, "", {key = "i4"}), nl(),
 		t"\t});", nl(),
 		t"\t", cp(1), t".on(\'end\', function(){", nl(),
 		t"\t\t", i(4, "", {key = "i5"}), nl(),
 		t"\t});", nl(),
-		t"}).listen(", i(5, "8124", {key = "i5"}), t");"
+		t"}).listen(", i(5, "8124", {key = "i6"}), t");"
 	}),
 	s({trig = "pipe", descr = "(pipe) \"pipe\"", priority = -50, trigEngine = te("")}, {
 		t"pipe(", i(1, "stream", {key = "i1"}), t")", i(2, "", {key = "i2"})

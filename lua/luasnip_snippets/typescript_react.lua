@@ -42,7 +42,7 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	4,
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
 }
 ls.add_snippets("typescript_react", {
 	s({trig = "rfc", descr = "(rfc) \"react functional component\"", priority = -49, trigEngine = te("")}, {

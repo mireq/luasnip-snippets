@@ -42,48 +42,53 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	2,
-	2,
-	3,
-	3,
-	4,
-	0,
-	1,
-	1,
-	1,
-	2,
-	3,
-	4,
-	{{1, 1}, {2, 2}, {3, 4}},
-	1,
-	1,
-	1,
-	2,
-	1,
-	1,
-	0,
-	1,
-	0,
-	0,
-	1,
-	0,
-	0,
-	1,
-	1,
-	1,
-	2,
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}},
 }
 ls.add_snippets("lua", {
 	s({trig = "#!", descr = "(#!) \"#!/usr/bin/env lua\"", priority = -50, trigEngine = te("b")}, {
 		t"#!/usr/bin/env lua", nl(),
 		i(0, "", {key = "i0"})
 	}),
-	s({trig = "assert", descr = "(assert) \"Assertion\"", priority = -50, trigEngine = te("b")}, {
-		t"assert(", i(1, "condition", {key = "i1"}), f(function(args, snip) return c_py({"lua", 2}, "\nif t[2]:\n\tsnip.rv = \", \"\nelse:\n\tsnip.rv = \"\"\n", python_globals, args, snip, "", am[2]) end, ae(am[2])), i(2, "msg", {key = "i2"}), t")"
+	s({trig = "local", descr = "(local) \"local x = 1\"", priority = -50, trigEngine = te("")}, {
+		t"local ", i(1, "x", {key = "i1"}), t" = ", i(0, "1", {key = "i0"})
 	}),
-	s({trig = "fun(ction)?", descr = "(fun(ction)?) \"New function\"", priority = -50, trigEngine = te("br")}, {
-		t"function ", i(1, "new_function", {key = "i1"}), t"(", i(2, "args", {key = "i2"}), t")", nl(),
+	s({trig = "fun", descr = "(fun)", priority = -1000, trigEngine = te("w")}, {
+		t"function ", i(1, "fname", {key = "i1"}), t"(", i(2, "...", {key = "i2"}), t")", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"end"
+	}),
+	s({trig = "for", descr = "(for) \"numeric for loop\"", priority = -50, trigEngine = te("b")}, {
+		t"for ", i(1, "i", {key = "i1"}), t"=", i(2, "first", {key = "i2"}), t",", i(3, "last", {key = "i3"}), tr(4, "^..*", "(?0:,:)"), i(4, "step", {key = "i4"}), t" do", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
@@ -94,26 +99,6 @@ ls.add_snippets("lua", {
 	}),
 	s({trig = "fori", descr = "(fori) \"ipair for foop\"", priority = -50, trigEngine = te("b")}, {
 		t"for ", i(1, "idx", {key = "i1"}), t",", i(2, "val", {key = "i2"}), t" in ipairs(", i(3, "table_name", {key = "i3"}), t") do", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end"
-	}),
-	s({trig = "for", descr = "(for) \"numeric for loop\"", priority = -50, trigEngine = te("b")}, {
-		t"for ", i(1, "i", {key = "i1"}), t"=", i(2, "first", {key = "i2"}), t",", i(3, "last", {key = "i3"}), tr(4, "^..*", "(?0:,:)"), i(4, "step", {key = "i4"}), t" do", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end"
-	}),
-	s({trig = "do", descr = "(do) \"do block\"", priority = -50, trigEngine = te("")}, {
-		t"do", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end"
-	}),
-	s({trig = "repeat", descr = "(repeat) \"repeat loop\"", priority = -50, trigEngine = te("b")}, {
-		t"repeat", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"until ", i(0, "", {key = "i0"})
-	}),
-	s({trig = "while", descr = "(while) \"while loop\"", priority = -50, trigEngine = te("b")}, {
-		t"while ", i(1, "", {key = "i1"}), t" do", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
@@ -129,46 +114,19 @@ ls.add_snippets("lua", {
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
-	s({trig = "eif", descr = "(eif) \"if/elseif statement\"", priority = -50, trigEngine = te("b")}, {
-		t"if ", i(1, "", {key = "i1"}), t" then", nl(),
-		t"\t", i(2, "", {key = "i2"}), nl(),
-		t"elseif ", i(3, "", {key = "i3"}), t" then", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end"
-	}),
-	s({trig = "eife", descr = "(eife) \"if/elseif/else statement\"", priority = -50, trigEngine = te("b")}, {
-		t"if ", i(1, "", {key = "i1"}), t" then", nl(),
-		t"\t", i(2, "", {key = "i2"}), nl(),
-		t"elseif ", i(3, "", {key = "i3"}), t" then", nl(),
-		t"\t", i(4, "", {key = "i4"}), nl(),
-		t"else", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end"
-	}),
-	s({trig = "pcall", descr = "(pcall) \"pcall statement\"", priority = -50, trigEngine = te("b")}, {
-		t"local ok, err = pcall(", i(1, "your_function", {key = "i1"}), t")", nl(),
-		t"if not ok then", nl(),
-		t"\thandler(", i(2, "ok, err", {key = "i2"}), t")", nl(),
-		t"else", nl(),
-t"\tsuccess(", i(3, "ok, err", {key = "i3"}), t")", nl(), t"end"
-	}),
-	s({trig = "local", descr = "(local) \"local x = 1\"", priority = -50, trigEngine = te("")}, {
-		t"local ", i(1, "x", {key = "i1"}), t" = ", i(0, "1", {key = "i0"})
-	}),
-	s({trig = "use", descr = "(use) \"Use\"", priority = -50, trigEngine = te("b")}, {
-		t"use { \'", i(1, "", {key = "i1"}), t"\' }"
-	}),
-	s({trig = "req", descr = "(req) \"Require\"", priority = -50, trigEngine = te("b")}, {
-		t"require(\'", i(1, "", {key = "i1"}), t"\')"
-	}),
-	s({trig = "fun", descr = "(fun)", priority = -1000, trigEngine = te("w")}, {
-		t"function ", i(1, "fname", {key = "i1"}), t"(", i(2, "...", {key = "i2"}), t")", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end"
-	}),
 	s({trig = "elif", descr = "(elif)", priority = -1000, trigEngine = te("w")}, {
 		t"elseif ", i(1, "", {key = "i1"}), t" then", nl(),
 		t"\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "repeat", descr = "(repeat) \"repeat loop\"", priority = -50, trigEngine = te("b")}, {
+		t"repeat", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"until ", i(0, "", {key = "i0"})
+	}),
+	s({trig = "while", descr = "(while) \"while loop\"", priority = -50, trigEngine = te("b")}, {
+		t"while ", i(1, "", {key = "i1"}), t" do", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"end"
 	}),
 	s({trig = "wh", descr = "(wh)", priority = -1000, trigEngine = te("w")}, {
 		t"while ", i(1, "true", {key = "i1"}), t" do", nl(),
@@ -209,5 +167,47 @@ t"\tsuccess(", i(3, "ok, err", {key = "i3"}), t")", nl(), t"end"
 	}),
 	s({trig = "fwrf", descr = "(fwrf)", priority = -1000, trigEngine = te("w")}, {
 		t"io.", i(1, "stderr", {key = "i1"}), t":write(string.format(\"", i(2, "%s", {key = "i2"}), t"\"", i(0, "", {key = "i0"}), t"))"
+	}),
+	s({trig = "req", descr = "(req) \"Require\"", priority = -50, trigEngine = te("b")}, {
+		t"require(\'", i(1, "", {key = "i1"}), t"\')"
+	}),
+	s({trig = "assert", descr = "(assert) \"Assertion\"", priority = -50, trigEngine = te("b")}, {
+		t"assert(", i(1, "condition", {key = "i1"}), f(function(args, snip) return c_py({"lua", 25}, "\nif t[2]:\n\tsnip.rv = \", \"\nelse:\n\tsnip.rv = \"\"\n", python_globals, args, snip, "", am[25]) end, ae(am[25])), i(2, "msg", {key = "i2"}), t")"
+	}),
+	s({trig = "fun(ction)?", descr = "(fun(ction)?) \"New function\"", priority = -50, trigEngine = te("br")}, {
+		t"function ", i(1, "new_function", {key = "i1"}), t"(", i(2, "args", {key = "i2"}), t")", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"end"
+	}),
+	s({trig = "do", descr = "(do) \"do block\"", priority = -50, trigEngine = te("")}, {
+		t"do", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"end"
+	}),
+	s({trig = "eif", descr = "(eif) \"if/elseif statement\"", priority = -50, trigEngine = te("b")}, {
+		t"if ", i(1, "", {key = "i1"}), t" then", nl(),
+		t"\t", i(2, "", {key = "i2"}), nl(),
+		t"elseif ", i(3, "", {key = "i3"}), t" then", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"end"
+	}),
+	s({trig = "eife", descr = "(eife) \"if/elseif/else statement\"", priority = -50, trigEngine = te("b")}, {
+		t"if ", i(1, "", {key = "i1"}), t" then", nl(),
+		t"\t", i(2, "", {key = "i2"}), nl(),
+		t"elseif ", i(3, "", {key = "i3"}), t" then", nl(),
+		t"\t", i(4, "", {key = "i4"}), nl(),
+		t"else", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"end"
+	}),
+	s({trig = "pcall", descr = "(pcall) \"pcall statement\"", priority = -50, trigEngine = te("b")}, {
+		t"local ok, err = pcall(", i(1, "your_function", {key = "i1"}), t")", nl(),
+		t"if not ok then", nl(),
+		t"\thandler(", i(2, "ok, err", {key = "i2"}), t")", nl(),
+		d(3, function(args) return sn(nil, {t"else", nl(),
+t"\tsuccess(", i(4, "ok, err", {key = "i4"}), t")", nl()}) end, {}, {key = "i3"}), t"end"
+	}),
+	s({trig = "use", descr = "(use) \"Use\"", priority = -50, trigEngine = te("b")}, {
+		t"use { \'", i(1, "", {key = "i1"}), t"\' }"
 	}),
 })

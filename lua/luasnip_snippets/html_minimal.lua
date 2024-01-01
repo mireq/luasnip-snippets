@@ -42,35 +42,35 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	2,
-	1,
-	{{1, 1}, {2, 3}, {3, 7}, {4, 8}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 7}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 7}},
 	{{1, 2}, {2, 3}, {3, 7}},
-	{{1, 2}, {2, 4}, {3, 5}},
-	{{1, 1}, {2, 3}},
+	{{1, 2}, {2, 3}, {3, 4}, {4, 5}},
+	{{1, 1}, {2, 2}, {3, 3}},
 }
 ls.add_snippets("html_minimal", {
 	s({trig = "id", descr = "(id)", priority = -49, trigEngine = te("")}, {
 		t"id=\"", i(1, "", {key = "i1"}), t"\"", i(2, "", {key = "i2"})
 	}),
 	s({trig = "idn", descr = "(idn)", priority = -49, trigEngine = te("")}, {
-		t"id=\"", i(1, "", {key = "i1"}), t"\" name=\"", cp(1), t"\""
+		t"id=\"", i(1, "", {key = "i1"}), t"\" name=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\""
 	}),
 	s({trig = "label_and_input", descr = "(label_and_input)", priority = -49, trigEngine = te("")}, {
-		t"<label for=\"", i(1, "", {key = "i1"}), t"\">", cp(1), t"</label>", nl(),
-		t"<input type=\"", i(2, "text", {key = "i2"}), t"\" name=\"", cp(2), t"\"", t" id=\"", cp(2), t"\"", t" value=\"", i(3, "", {key = "i7"}), t"\" />", i(4, "", {key = "i8"})
+		t"<label for=\"", d(2, function(args) return sn(nil, {i(1, "", {key = "i1"})}) end, {}, {key = "i2"}), t"\">", cp(1), t"</label>", nl(),
+		t"<input type=\"", i(3, "text", {key = "i3"}), t"\" name=\"", d(4, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i4"}), t"\"", d(5, function(args) return sn(nil, {t" id=\"", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i6"}), t"\""}) end, {}, {key = "i5"}), t" value=\"", i(7, "", {key = "i7"}), t"\" />", i(8, "", {key = "i8"})
 	}),
 	s({trig = "input", descr = "(input)", priority = -49, trigEngine = te("")}, {
-		t"<input type=\"", i(1, "text", {key = "i1"}), t"\" value=\"", i(2, "", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\"", t" id=\"", cp(3), t"\"", t"/>", i(4, "", {key = "i7"})
+		t"<input type=\"", i(1, "text", {key = "i1"}), t"\" value=\"", i(2, "", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\"", d(4, function(args) return sn(nil, {t" id=\"", d(1, function(args) return sn(nil, {cp(3)}) end, {}, {key = "i5"}), t"\""}) end, {}, {key = "i4"}), t"/>", i(6, "", {key = "i7"})
 	}),
 	s({trig = "submit", descr = "(submit)", priority = -49, trigEngine = te("")}, {
 		t"<input type=\"submit\" value=\"", i(1, "", {key = "i2"}), t"\" ", i(2, "", {key = "i3"}), t"/>", i(3, "", {key = "i7"})
 	}),
 	s({trig = "textarea", descr = "(textarea)", priority = -49, trigEngine = te("")}, {
-		t"<textarea name=\"", i(1, "", {key = "i2"}), t"\"", t" id=\"", i(2, "", {key = "i4"}), t"\"", t">", i(3, "", {key = "i5"}), t"</textarea>"
+		t"<textarea name=\"", i(1, "", {key = "i2"}), t"\"", d(2, function(args) return sn(nil, {t" id=\"", i(3, "", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), t">", i(4, "", {key = "i5"}), t"</textarea>"
 	}),
 	s({trig = "img", descr = "(img)", priority = -49, trigEngine = te("")}, {
-		t"<img src=\"", i(1, "", {key = "i1"}), t"\"", t" alt=\"", i(2, "", {key = "i3"}), t"\"", t"/>"
+		t"<img src=\"", i(1, "", {key = "i1"}), t"\"", d(2, function(args) return sn(nil, {t" alt=\"", i(3, "", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), t"/>"
 	}),
 })

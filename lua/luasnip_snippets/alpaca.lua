@@ -42,25 +42,25 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	0,
-	0,
-	0,
-	0,
-	5,
-	2,
-	1,
-	2,
-	1,
-	1,
-	1,
-	0,
-	0,
-	0,
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
 }
 ls.add_snippets("alpaca", {
 	s({trig = "mod", descr = "(mod)", priority = -1000, trigEngine = te("w")}, {
-		t"module ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("expand(\'%:t:r\')")}, ""), {key = "i1"}) }) end)
+		t"module ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("expand(\'%:t:r\')")}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "imp", descr = "(imp)", priority = -1000, trigEngine = te("w")}, {
 		t"import ", i(0, "http", {key = "i0"})
@@ -77,7 +77,7 @@ ls.add_snippets("alpaca", {
 	s({trig = "fn", descr = "(fn)", priority = -1000, trigEngine = te("w")}, {
 		t"val ", i(1, "fn", {key = "i1"}), t" ", i(2, "", {key = "i2"}), t": fn ", i(3, "\'a", {key = "i3"}), t" -> ", i(4, "\'a", {key = "i4"}), nl(),
 		t"let ", cp(1), t" ", i(5, "", {key = "i5"}), t" =", nl(),
-		t"\t", d(6, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i6"}) }) end)
+		t"\t", d(6, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end)
 	}),
 	s({trig = "mat", descr = "(mat)", priority = -1000, trigEngine = te("w")}, {
 		t"match ", i(1, "", {key = "i1"}), t" with", nl(),
@@ -92,7 +92,7 @@ ls.add_snippets("alpaca", {
 	}),
 	s({trig = "letf", descr = "(letf)", priority = -1000, trigEngine = te("w")}, {
 		t"let ", i(1, "", {key = "i1"}), t" =", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end)
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end)
 	}),
 	s({trig = "ty", descr = "(ty)", priority = -1000, trigEngine = te("w")}, {
 		t"type ", i(1, "msg", {key = "i1"}), nl(),
@@ -100,7 +100,7 @@ ls.add_snippets("alpaca", {
 	}),
 	s({trig = "test", descr = "(test)", priority = -1000, trigEngine = te("w")}, {
 		t"test \"", i(1, "", {key = "i1"}), t"\" =", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end)
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end)
 	}),
 	s({trig = "doc", descr = "(doc)", priority = -1000, trigEngine = te("w")}, {
 		t"{-| ", i(0, "", {key = "i0"}), nl(),

@@ -42,65 +42,55 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}, {2, 3}, {3, 4}},
-	1,
-	4,
-	3,
-	1,
-	0,
-	1,
-	2,
-	1,
-	1,
-	2,
-	1,
-	1,
-	1,
-	1,
-	1,
-	2,
-	2,
-	2,
-	0,
-	3,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	2,
-	0,
-	0,
-	0,
-	1,
-	0,
-	1,
-	1,
-	0,
-	0,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	2,
-	0,
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}},
+	{},
+	{{0, 0}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}},
 }
 ls.add_snippets("erlang", {
-	s({trig = "pat", descr = "(pat) \"Case:Receive:Try Clause\"", priority = -50, trigEngine = te("")}, {
-		i(1, "pattern", {key = "i1"}), t" when ", i(2, "guard", {key = "i2"}), t" ->", nl(),
-		t"\t", i(3, "body", {key = "i3"})
-	}),
 	s({trig = "mod", descr = "(mod) \"Module Directive\"", priority = -50, trigEngine = te("b")}, {
-		t"-module(", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"erlang", 2}, "snip.rv = snip.basename or \"module\"", python_globals, args, snip, "", am[2])}, ""), {key = "i1"}) }) end), t")."
-	}),
-	s({trig = "||", descr = "(||) \"List Comprehension\"", priority = -50, trigEngine = te("")}, {
-		t"[", i(1, "X", {key = "i1"}), t" || ", i(2, "X", {key = "i2"}), t" <- ", i(3, "List", {key = "i3"}), i(4, ", gen", {key = "i4"}), t"]"
-	}),
-	s({trig = "gen", descr = "(gen) \"Generator Expression\"", priority = -50, trigEngine = te("")}, {
-		i(1, "X", {key = "i1"}), t" <- ", i(2, "List", {key = "i2"}), i(3, ", gen", {key = "i3"})
+		t"-module(", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"erlang", 1}, "snip.rv = snip.basename or \"module\"", python_globals, args, snip, "", am[1])}, ""), {key = "i1"}) }) end), t")."
 	}),
 	s({trig = "modall", descr = "(modall)", priority = -1000, trigEngine = te("w")}, {
 		t"-module(", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename()")}, ""), {key = "i1"}) }) end), t").", nl(),
@@ -237,7 +227,7 @@ ls.add_snippets("erlang", {
 		t"\t{ok, {RestartStrategy, Children}}."
 	}),
 	s({trig = "gen_server", descr = "(gen_server)", priority = -1000, trigEngine = te("w")}, {
-		t"-module(", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename()")}, ""), {key = "i1"}) }) end), t").", nl(),
+		t"-module(", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename()")}, ""), {key = "i0"}) }) end), t").", nl(),
 		nl(),
 		t"-behaviour(gen_server).", nl(),
 		nl(),
@@ -286,7 +276,7 @@ ls.add_snippets("erlang", {
 		t"%%%==================================================================="
 	}),
 	s({trig = "gen_fsm", descr = "(gen_fsm)", priority = -1000, trigEngine = te("w")}, {
-		t"-module(", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename()")}, ""), {key = "i1"}) }) end), t").", nl(),
+		t"-module(", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename()")}, ""), {key = "i0"}) }) end), t").", nl(),
 		nl(),
 		t"-behaviour(gen_fsm).", nl(),
 		nl(),
@@ -458,7 +448,7 @@ ls.add_snippets("erlang", {
 		t"%%%==================================================================="
 	}),
 	s({trig = "gen_event", descr = "(gen_event)", priority = -1000, trigEngine = te("w")}, {
-		t"-module(", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename()")}, ""), {key = "i1"}) }) end), t").", nl(),
+		t"-module(", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename()")}, ""), {key = "i0"}) }) end), t").", nl(),
 		nl(),
 		t"-behaviour(gen_event).", nl(),
 		nl(),
@@ -647,7 +637,7 @@ ls.add_snippets("erlang", {
 		t"?assertException(", i(1, "Class", {key = "i1"}), t", ", i(2, "Pattern", {key = "i2"}), t", ", i(0, "Expression", {key = "i0"}), t")"
 	}),
 	s({trig = "testsuite", descr = "(testsuite)", priority = -1000, trigEngine = te("w")}, {
-		t"-module(", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename()")}, ""), {key = "i1"}) }) end), t").", nl(),
+		t"-module(", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename()")}, ""), {key = "i0"}) }) end), t").", nl(),
 		nl(),
 		t"-include_lib(\"common_test/include/ct.hrl\").", nl(),
 		nl(),
@@ -835,5 +825,15 @@ ls.add_snippets("erlang", {
 		t"%%              the all/0 list or in a test case group for the test case", nl(),
 		t"%%              to be executed).", nl(),
 		t"%%--------------------------------------------------------------------", nl()
+	}),
+	s({trig = "pat", descr = "(pat) \"Case:Receive:Try Clause\"", priority = -50, trigEngine = te("")}, {
+		i(1, "pattern", {key = "i1"}), d(2, function(args) return sn(nil, {t" when ", i(3, "guard", {key = "i3"})}) end, {}, {key = "i2"}), t" ->", nl(),
+		t"\t", i(4, "body", {key = "i4"})
+	}),
+	s({trig = "||", descr = "(||) \"List Comprehension\"", priority = -50, trigEngine = te("")}, {
+		t"[", i(1, "X", {key = "i1"}), t" || ", i(2, "X", {key = "i2"}), t" <- ", i(3, "List", {key = "i3"}), i(4, ", gen", {key = "i4"}), t"]"
+	}),
+	s({trig = "gen", descr = "(gen) \"Generator Expression\"", priority = -50, trigEngine = te("")}, {
+		i(1, "X", {key = "i1"}), t" <- ", i(2, "List", {key = "i2"}), i(3, ", gen", {key = "i3"})
 	}),
 })

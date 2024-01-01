@@ -42,75 +42,39 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}, {2, 3}, {3, 4}, {4, 5}, {5, 7}, {6, 8}, {7, 9}, {8, 10}},
-	{{1, 1}, {2, 3}, {3, 4}, {4, 5}, {5, 10}},
-	2,
-	2,
-	0,
-	0,
-	0,
-	2,
-	0,
-	1,
-	1,
-	0,
-	1,
-	2,
-	2,
-	4,
-	3,
-	1,
-	0,
-	1,
-	2,
-	3,
-	2,
-	0,
-	1,
-	1,
-	1,
-	1,
-	1,
-	2,
-	2,
+	{},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}, {10, 10}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 10}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{},
+	{},
 }
 ls.add_snippets("julia", {
-	s({trig = "docf", descr = "(docf) \"function documentation\"", priority = 0, trigEngine = te("b")}, {
-		t"#\' @description", nl(),
-		t"#\'", nl(),
-		t"#\' ", i(1, "function description", {key = "i1"}), nl(),
-		t"#\'", nl(),
-		t"#\' ", t"@param ", i(2, "name", {key = "i2"}), t"::", i(3, "Type", {key = "i3"}), t" ", i(4, "Description", {key = "i4"}), nl(),
-		t"#\'", nl(),
-		t"#\' ", t"@returns ", i(5, "name", {key = "i5"}), t"::", i(6, "Type", {key = "i6"}), t" ", i(7, "Description", {key = "i7"}), nl(),
-		t"#\'", nl(),
-		t"#\' @examples", nl(),
-		t"#\'", nl(),
-		t"#\' ", i(8, " function call examples", {key = "i8"})
-	}),
-	s({trig = "doct", descr = "(doct) \"type definition\"", priority = 0, trigEngine = te("b")}, {
-		t"#\' @description", nl(),
-		t"#\'", nl(),
-		t"#\' ", i(1, "type description", {key = "i1"}), nl(),
-		t"#\'", nl(),
-		t"#\' ", t"@field ", i(2, "name", {key = "i2"}), t"::", i(3, "Type", {key = "i3"}), t" ", i(4, "Description", {key = "i4"}), nl(),
-		t"#\'", nl(),
-		t"#\' @examples", nl(),
-		t"#\'", nl(),
-		t"#\' ", i(5, " constructor examples", {key = "i5"})
-	}),
-	s({trig = "par", descr = "(par) \"function parameter documentation\"", priority = 0, trigEngine = te("b")}, {
-		t"#\' @param ", i(1, "name", {key = "i1"}), t"::", i(2, "Type", {key = "i2"}), t" ", i(0, "Description", {key = "i0"})
-	}),
-	s({trig = "fld", descr = "(fld) \"type field documentation\"", priority = 0, trigEngine = te("b")}, {
-		t"#\' @field ", i(1, "name", {key = "i1"}), t"::", i(2, "Type", {key = "i2"}), t" ", i(0, "Description", {key = "i0"})
-	}),
-	s({trig = "deb", descr = "(deb) \"Debugger breakpoint\"", priority = 0, trigEngine = te("b")}, {
-		t"Main.@bp"
-	}),
-	s({trig = "inf", descr = "(inf) \"Infiltrator breakpoint\"", priority = 0, trigEngine = te("b")}, {
-		t"Main.@infiltrate"
-	}),
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
 		t"#!/usr/bin/env julia", nl()
 	}),
@@ -218,5 +182,41 @@ ls.add_snippets("julia", {
 		t"\t", i(2, "", {key = "i2"}), nl(),
 		t"\t@test_throws ", i(0, "", {key = "i0"}), nl(),
 		t"end"
+	}),
+	s({trig = "docf", descr = "(docf) \"function documentation\"", priority = 0, trigEngine = te("b")}, {
+		t"#\' @description", nl(),
+		t"#\'", nl(),
+		t"#\' ", i(1, "function description", {key = "i1"}), nl(),
+		t"#\'", nl(),
+		t"#\' ", d(2, function(args) return sn(nil, {t"@param ", i(3, "name", {key = "i3"}), t"::", i(4, "Type", {key = "i4"}), t" ", i(5, "Description", {key = "i5"})}) end, {}, {key = "i2"}), nl(),
+		t"#\'", nl(),
+		t"#\' ", d(6, function(args) return sn(nil, {t"@returns ", i(7, "name", {key = "i7"}), t"::", i(8, "Type", {key = "i8"}), t" ", i(9, "Description", {key = "i9"})}) end, {}, {key = "i6"}), nl(),
+		t"#\'", nl(),
+		t"#\' @examples", nl(),
+		t"#\'", nl(),
+		t"#\' ", i(10, " function call examples", {key = "i10"})
+	}),
+	s({trig = "doct", descr = "(doct) \"type definition\"", priority = 0, trigEngine = te("b")}, {
+		t"#\' @description", nl(),
+		t"#\'", nl(),
+		t"#\' ", i(1, "type description", {key = "i1"}), nl(),
+		t"#\'", nl(),
+		t"#\' ", d(2, function(args) return sn(nil, {t"@field ", i(3, "name", {key = "i3"}), t"::", i(4, "Type", {key = "i4"}), t" ", i(5, "Description", {key = "i5"})}) end, {}, {key = "i2"}), nl(),
+		t"#\'", nl(),
+		t"#\' @examples", nl(),
+		t"#\'", nl(),
+		t"#\' ", i(6, " constructor examples", {key = "i10"})
+	}),
+	s({trig = "par", descr = "(par) \"function parameter documentation\"", priority = 0, trigEngine = te("b")}, {
+		t"#\' @param ", i(1, "name", {key = "i1"}), t"::", i(2, "Type", {key = "i2"}), t" ", i(0, "Description", {key = "i0"})
+	}),
+	s({trig = "fld", descr = "(fld) \"type field documentation\"", priority = 0, trigEngine = te("b")}, {
+		t"#\' @field ", i(1, "name", {key = "i1"}), t"::", i(2, "Type", {key = "i2"}), t" ", i(0, "Description", {key = "i0"})
+	}),
+	s({trig = "deb", descr = "(deb) \"Debugger breakpoint\"", priority = 0, trigEngine = te("b")}, {
+		t"Main.@bp"
+	}),
+	s({trig = "inf", descr = "(inf) \"Infiltrator breakpoint\"", priority = 0, trigEngine = te("b")}, {
+		t"Main.@infiltrate"
 	}),
 })

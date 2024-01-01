@@ -42,79 +42,79 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	2,
-	1,
-	2,
-	2,
-	1,
-	1,
-	{{1, 1}, {2, 2}, {3, 4}},
-	0,
-	1,
-	2,
-	1,
-	3,
-	1,
-	2,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	3,
-	3,
-	1,
-	1,
-	1,
-	3,
-	1,
-	1,
-	1,
-	2,
-	3,
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	0,
-	0,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	0,
-	2,
-	1,
-	0,
-	1,
-	1,
-	1,
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{{1, 1}},
+	{},
+	{},
+	{{1, 1}},
 }
 ls.add_snippets("htmldjango", {
 	s({trig = "%", descr = "(%) \"Statement\"", priority = 0, trigEngine = te("!i")}, {
@@ -147,7 +147,7 @@ ls.add_snippets("htmldjango", {
 		t"{% endcomment %}"
 	}),
 	s({trig = "cycle", descr = "(cycle) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% cycle ", i(1, "val1", {key = "i1"}), t" ", i(2, "val2", {key = "i2"}), t" ", t"as ", i(3, "", {key = "i4"}), t" %}"
+		t"{% cycle ", i(1, "val1", {key = "i1"}), t" ", i(2, "val2", {key = "i2"}), t" ", d(3, function(args) return sn(nil, {t"as ", i(4, "", {key = "i4"})}) end, {}, {key = "i3"}), t" %}"
 	}),
 	s({trig = "debug", descr = "(debug) \"\"", priority = -50, trigEngine = te("bi")}, {
 		t"{% debug %}"
@@ -177,22 +177,13 @@ ls.add_snippets("htmldjango", {
 		t"\t", i(2, "", {key = "i2"}), nl(),
 		t"{% endif %}"
 	}),
-	s({trig = "iif", descr = "(iif) \"Inline if\"", priority = 0, trigEngine = te("!i")}, {
-		t"{% if ", i(1, "", {key = "i1"}), t" %}", i(0, "", {key = "i0"}), t"{% endif %}"
-	}),
-	s({trig = "ielse", descr = "(ielse) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% else %}", i(1, "", {key = "i1"})
-	}),
-	s({trig = "else", descr = "(else) \"\"", priority = -50, trigEngine = te("bi")}, {
+	s({trig = "el", descr = "(el)", priority = -1000, trigEngine = te("w")}, {
 		t"{% else %}", nl(),
 		t"\t", i(1, "", {key = "i1"})
 	}),
-	s({trig = "ielif", descr = "(ielif) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% elif %}", i(1, "", {key = "i1"})
-	}),
-	s({trig = "elif", descr = "(elif) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% elif %}", nl(),
-		t"\t", i(1, "", {key = "i1"})
+	s({trig = "eif", descr = "(eif)", priority = -1000, trigEngine = te("w")}, {
+		t"{% elif ", i(1, "", {key = "i1"}), t" %}", nl(),
+		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "ifchanged", descr = "(ifchanged) \"\"", priority = -50, trigEngine = te("bi")}, {
 		t"{% ifchanged %}", i(1, "", {key = "i1"}), t"{% endifchanged %}"
@@ -238,37 +229,6 @@ ls.add_snippets("htmldjango", {
 		t"{% with ", i(1, "", {key = "i1"}), t" as ", i(2, "", {key = "i2"}), t" %}", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
 		t"{% endwith %}"
-	}),
-	s({trig = "verbatim", descr = "(verbatim) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% verbatim %}", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
-		t"{% endverbatim %}"
-	}),
-	s({trig = "super", descr = "(super) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{{ block.super }}"
-	}),
-	s({trig = "staticu", descr = "(staticu) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{{ STATIC_URL }}"
-	}),
-	s({trig = "static", descr = "(static) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% static \"", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"\" %}"
-	}),
-	s({trig = "mediau", descr = "(mediau) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{{ MEDIA_URL }}"
-	}),
-	s({trig = "iblock", descr = "(iblock) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% block ", i(1, "blockname", {key = "i1"}), t" %}", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"{% endblock ", cp(1), t" %}"
-	}),
-	s({trig = "csrf", descr = "(csrf) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% csrf_token %}"
-	}),
-	s({trig = "blocktrans", descr = "(blocktrans) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% blocktrans %}", nl(),
-		t"    ", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
-		t"{% endblocktrans %}"
-	}),
-	s({trig = "lorem", descr = "(lorem) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% lorem ", i(1, "", {key = "i1"}), t" %}"
 	}),
 	s({trig = "add", descr = "(add) \"\"", priority = -50, trigEngine = te("bi")}, {
 		t"add:\"", i(1, "", {key = "i1"}), t"\""
@@ -411,12 +371,52 @@ ls.add_snippets("htmldjango", {
 	s({trig = "inc", descr = "(inc) \"\"", priority = 0, trigEngine = te("bi")}, {
 		t"{% include \"", i(1, "", {key = "i1"}), t"\" %}"
 	}),
-	s({trig = "el", descr = "(el)", priority = -1000, trigEngine = te("w")}, {
+	s({trig = "iif", descr = "(iif) \"Inline if\"", priority = 0, trigEngine = te("!i")}, {
+		t"{% if ", i(1, "", {key = "i1"}), t" %}", i(0, "", {key = "i0"}), t"{% endif %}"
+	}),
+	s({trig = "ielse", descr = "(ielse) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% else %}", i(1, "", {key = "i1"})
+	}),
+	s({trig = "else", descr = "(else) \"\"", priority = -50, trigEngine = te("bi")}, {
 		t"{% else %}", nl(),
 		t"\t", i(1, "", {key = "i1"})
 	}),
-	s({trig = "eif", descr = "(eif)", priority = -1000, trigEngine = te("w")}, {
-		t"{% elif ", i(1, "", {key = "i1"}), t" %}", nl(),
-		t"\t", i(0, "", {key = "i0"})
+	s({trig = "ielif", descr = "(ielif) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% elif %}", i(1, "", {key = "i1"})
+	}),
+	s({trig = "elif", descr = "(elif) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% elif %}", nl(),
+		t"\t", i(1, "", {key = "i1"})
+	}),
+	s({trig = "verbatim", descr = "(verbatim) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% verbatim %}", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
+		t"{% endverbatim %}"
+	}),
+	s({trig = "super", descr = "(super) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{{ block.super }}"
+	}),
+	s({trig = "staticu", descr = "(staticu) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{{ STATIC_URL }}"
+	}),
+	s({trig = "static", descr = "(static) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% static \"", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"\" %}"
+	}),
+	s({trig = "mediau", descr = "(mediau) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{{ MEDIA_URL }}"
+	}),
+	s({trig = "iblock", descr = "(iblock) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% block ", i(1, "blockname", {key = "i1"}), t" %}", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"{% endblock ", cp(1), t" %}"
+	}),
+	s({trig = "csrf", descr = "(csrf) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% csrf_token %}"
+	}),
+	s({trig = "blocktrans", descr = "(blocktrans) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% blocktrans %}", nl(),
+		t"    ", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
+		t"{% endblocktrans %}"
+	}),
+	s({trig = "lorem", descr = "(lorem) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% lorem ", i(1, "", {key = "i1"}), t" %}"
 	}),
 })

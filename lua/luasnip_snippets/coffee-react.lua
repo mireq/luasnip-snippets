@@ -42,19 +42,19 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	2,
-	3,
-	4,
-	3,
-	3,
-	3,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
 }
 ls.add_snippets("coffee-react", {
 	s({trig = "createClass", descr = "(createClass) \"React define Class\"", priority = -49, trigEngine = te("b")}, {

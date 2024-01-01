@@ -42,19 +42,19 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	2,
-	3,
-	0,
-	{{1, 1}, {2, 3}},
-	0,
-	{{1, 1}, {2, 3}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{},
+	{{0, 0}, {1, 1}, {2, 3}},
+	{},
+	{{0, 0}, {1, 1}, {2, 3}},
 }
 ls.add_snippets("javascript-ember", {
 	s({trig = "eapp", descr = "(eapp) \"App.Name = Ember.Application.create({});\"", priority = -50, trigEngine = te("")}, {
@@ -116,7 +116,7 @@ ls.add_snippets("javascript-ember", {
 		t"import { computed } from \'@ember/object\';"
 	}),
 	s({trig = "cpro", descr = "(cpro) \"property_name: computed(\'...\', function() {...}),\"", priority = -50, trigEngine = te("")}, {
-		i(1, "property_name", {key = "i1"}), t": computed(\'", i(2, "argument", {key = "i2"}), t"\', function() {", nl(),
+		i(1, "property_name", {key = "i1"}), t": computed(\'", i(2, "argument", {key = "i3"}), t"\', function() {", nl(),
 		t"\t", i(0, "//body...", {key = "i0"}), nl(),
 		t"}),"
 	}),
@@ -124,7 +124,7 @@ ls.add_snippets("javascript-ember", {
 		t"import { observer } from \'@ember/object\';"
 	}),
 	s({trig = "proo", descr = "(proo) \"property_name: observer(\'...\', function() {...}),\"", priority = -50, trigEngine = te("")}, {
-		i(1, "property_name", {key = "i1"}), t": observer(\'", i(2, "argument", {key = "i2"}), t"\', function() {", nl(),
+		i(1, "property_name", {key = "i1"}), t": observer(\'", i(2, "argument", {key = "i3"}), t"\', function() {", nl(),
 		t"\t", i(0, "//body...", {key = "i0"}), nl(),
 		t"}),"
 	}),

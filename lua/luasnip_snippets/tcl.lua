@@ -42,67 +42,33 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	4,
-	3,
-	2,
-	3,
-	5,
-	2,
-	0,
-	2,
-	2,
-	2,
-	1,
-	4,
-	2,
-	2,
-	1,
-	2,
-	1,
-	0,
-	0,
-	0,
-	0,
-	3,
-	2,
-	1,
-	0,
+	{},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}},
 }
 ls.add_snippets("tcl", {
-	s({trig = "for", descr = "(for) \"for... (for)\"", priority = -50, trigEngine = te("b")}, {
-		t"for {", i(1, "set i 0", {key = "i1"}), t"} {", i(2, "$i < $n", {key = "i2"}), t"} {", i(3, "incr i", {key = "i3"}), t"} {", nl(),
-		t"\t", i(4, "", {key = "i4"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "foreach", descr = "(foreach) \"foreach... (foreach)\"", priority = -50, trigEngine = te("")}, {
-		t"foreach ", i(1, "var", {key = "i1"}), t" ", i(2, "$list", {key = "i2"}), t" {", nl(),
-		t"\t", i(3, "", {key = "i3"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "if", descr = "(if) \"if... (if)\"", priority = -50, trigEngine = te("b")}, {
-		t"if {", i(1, "condition", {key = "i1"}), t"} {", nl(),
-		t"\t", i(2, "", {key = "i2"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "proc", descr = "(proc) \"proc... (proc)\"", priority = -50, trigEngine = te("b")}, {
-		t"proc ", i(1, "name", {key = "i1"}), t" {", i(2, "args", {key = "i2"}), t"} \\", nl(),
-		t"{", nl(),
-		t"\t", i(3, "", {key = "i3"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "switch", descr = "(switch) \"switch... (switch)\"", priority = -50, trigEngine = te("b")}, {
-		t"switch ", i(1, "-exact", {key = "i1"}), t" -- ", i(2, "$var", {key = "i2"}), t" {", nl(),
-		t"\t", i(3, "match", {key = "i3"}), t" {", nl(),
-		t"\t\t", i(4, "", {key = "i4"}), nl(),
-		t"\t}", nl(),
-		t"\tdefault {", i(5, "", {key = "i5"}), t"}", nl(),
-		t"}", nl()
-	}),
-	s({trig = "while", descr = "(while) \"while... (while)\"", priority = -50, trigEngine = te("b")}, {
-		t"while {", i(1, "condition", {key = "i1"}), t"} {", nl(),
-		t"\t", i(2, "", {key = "i2"}), nl(),
-		t"}", nl()
-	}),
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
 		t"#!/usr/bin/env tclsh", nl()
 	}),
@@ -113,6 +79,11 @@ ls.add_snippets("tcl", {
 	}),
 	s({trig = "xif", descr = "(xif)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "expr", {key = "i1"}), t"? ", i(2, "true", {key = "i2"}), t" : ", i(0, "false", {key = "i0"})
+	}),
+	s({trig = "if", descr = "(if) \"if... (if)\"", priority = -50, trigEngine = te("b")}, {
+		t"if {", i(1, "condition", {key = "i1"}), t"} {", nl(),
+		t"\t", i(2, "", {key = "i2"}), nl(),
+		t"}", nl()
 	}),
 	s({trig = "ife", descr = "(ife)", priority = -1000, trigEngine = te("w")}, {
 		t"if {", i(1, "", {key = "i1"}), t"} {", nl(),
@@ -147,6 +118,11 @@ ls.add_snippets("tcl", {
 		t"while {", i(1, "", {key = "i1"}), t"} {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
+	}),
+	s({trig = "for", descr = "(for) \"for... (for)\"", priority = -50, trigEngine = te("b")}, {
+		t"for {", i(1, "set i 0", {key = "i1"}), t"} {", i(2, "$i < $n", {key = "i2"}), t"} {", i(3, "incr i", {key = "i3"}), t"} {", nl(),
+		t"\t", i(4, "", {key = "i4"}), nl(),
+		t"}", nl()
 	}),
 	s({trig = "fore", descr = "(fore)", priority = -1000, trigEngine = te("w")}, {
 		t"foreach ", i(1, "x", {key = "i1"}), t" {", i(2, "#list", {key = "i2"}), t"} {", nl(),
@@ -188,5 +164,29 @@ ls.add_snippets("tcl", {
 	}),
 	s({trig = "nsc", descr = "(nsc)", priority = -1000, trigEngine = te("w")}, {
 		t"namespace current"
+	}),
+	s({trig = "foreach", descr = "(foreach) \"foreach... (foreach)\"", priority = -50, trigEngine = te("")}, {
+		t"foreach ", i(1, "var", {key = "i1"}), t" ", i(2, "$list", {key = "i2"}), t" {", nl(),
+		t"\t", i(3, "", {key = "i3"}), nl(),
+		t"}", nl()
+	}),
+	s({trig = "proc", descr = "(proc) \"proc... (proc)\"", priority = -50, trigEngine = te("b")}, {
+		t"proc ", i(1, "name", {key = "i1"}), t" {", i(2, "args", {key = "i2"}), t"} \\", nl(),
+		t"{", nl(),
+		t"\t", i(3, "", {key = "i3"}), nl(),
+		t"}", nl()
+	}),
+	s({trig = "switch", descr = "(switch) \"switch... (switch)\"", priority = -50, trigEngine = te("b")}, {
+		t"switch ", i(1, "-exact", {key = "i1"}), t" -- ", i(2, "$var", {key = "i2"}), t" {", nl(),
+		t"\t", i(3, "match", {key = "i3"}), t" {", nl(),
+		t"\t\t", i(4, "", {key = "i4"}), nl(),
+		t"\t}", nl(),
+		t"\tdefault {", i(5, "", {key = "i5"}), t"}", nl(),
+		t"}", nl()
+	}),
+	s({trig = "while", descr = "(while) \"while... (while)\"", priority = -50, trigEngine = te("b")}, {
+		t"while {", i(1, "condition", {key = "i1"}), t"} {", nl(),
+		t"\t", i(2, "", {key = "i2"}), nl(),
+		t"}", nl()
 	}),
 })

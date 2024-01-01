@@ -42,7 +42,7 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	3,
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
 }
 ls.add_snippets("pandoc", {
 	s({trig = "title", descr = "(title) \"Title Header\"", priority = -49, trigEngine = te("b")}, {

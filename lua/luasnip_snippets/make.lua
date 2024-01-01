@@ -42,14 +42,14 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	1,
-	0,
-	2,
-	3,
-	0,
-	1,
-	0,
+	{{1, 1}},
+	{{1, 1}},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{1, 1}},
+	{{0, 0}},
 }
 ls.add_snippets("make", {
 	s({trig = "base", descr = "(base)", priority = -1000, trigEngine = te("w")}, {
@@ -80,7 +80,7 @@ ls.add_snippets("make", {
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"ifeq (", i(1, "cond0", {key = "i1"}), t", ", i(2, "cond1", {key = "i2"}), t")", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"endif"
 	}),
 	s({trig = "ife", descr = "(ife)", priority = -1000, trigEngine = te("w")}, {
@@ -92,7 +92,7 @@ ls.add_snippets("make", {
 	}),
 	s({trig = "el", descr = "(el)", priority = -1000, trigEngine = te("w")}, {
 		t"else", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end)
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end)
 	}),
 	s({trig = "default", descr = "(default)", priority = -1000, trigEngine = te("w")}, {
 		t".DEFAULT_GOAL := ", i(1, "", {key = "i1"})

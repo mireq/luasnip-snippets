@@ -42,38 +42,22 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	1,
-	1,
-	0,
-	2,
-	2,
-	0,
-	2,
-	1,
-	2,
-	1,
-	3,
-	2,
-	3,
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}},
+	{{1, 1}},
 }
 ls.add_snippets("scss", {
-	s({trig = "ain", descr = "(ain) \"ainline\"", priority = 0, trigEngine = te("")}, {
-		t"&:after {", nl(),
-		t"\tcontent: \"\";", nl(),
-		t"\tdisplay: inline-block;", nl(),
-		t"\tvertical-align: middle;", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"}"
-	}),
-	s({trig = "bin", descr = "(bin) \"binline\"", priority = 0, trigEngine = te("")}, {
-		t"&:before {", nl(),
-		t"\tcontent: \"\";", nl(),
-		t"\tdisplay: inline-block;", nl(),
-		t"\tvertical-align: middle;", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"}"
-	}),
 	s({trig = "$", descr = "($)", priority = -1000, trigEngine = te("w")}, {
 		t"$", i(1, "variable", {key = "i1"}), t": ", i(0, "value", {key = "i0"}), t";"
 	}),
@@ -126,6 +110,22 @@ ls.add_snippets("scss", {
 	s({trig = "while", descr = "(while)", priority = -1000, trigEngine = te("w")}, {
 		t"@while ", i(1, "$i", {key = "i1"}), t" ", i(2, ">", {key = "i2"}), t" ", i(3, "0", {key = "i3"}), t" {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "ain", descr = "(ain) \"ainline\"", priority = 0, trigEngine = te("")}, {
+		t"&:after {", nl(),
+		t"\tcontent: \"\";", nl(),
+		t"\tdisplay: inline-block;", nl(),
+		t"\tvertical-align: middle;", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"}"
+	}),
+	s({trig = "bin", descr = "(bin) \"binline\"", priority = 0, trigEngine = te("")}, {
+		t"&:before {", nl(),
+		t"\tcontent: \"\";", nl(),
+		t"\tdisplay: inline-block;", nl(),
+		t"\tvertical-align: middle;", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
 		t"}"
 	}),
 })

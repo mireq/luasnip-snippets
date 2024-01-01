@@ -42,18 +42,18 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	3,
-	3,
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	2,
-	2,
-	1,
-	2,
-	2,
-	3,
-	0,
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 3}},
+	{{0, 0}, {1, 1}, {2, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
 }
 ls.add_snippets("sql", {
 	s({trig = "tbl", descr = "(tbl)", priority = -1000, trigEngine = te("w")}, {
@@ -68,13 +68,13 @@ ls.add_snippets("sql", {
 		i(1, "name", {key = "i1"}), t"\tvarchar2(", i(2, "size", {key = "i2"}), t")\t", i(3, "default \'\'", {key = "i3"}), t"\t", i(0, "not null", {key = "i0"})
 	}),
 	s({trig = "ncol", descr = "(ncol)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "name", {key = "i1"}), t"\tnumber\t", i(2, "default 0", {key = "i2"}), t"\t", i(0, "not null", {key = "i0"})
+		i(1, "name", {key = "i1"}), t"\tnumber\t", i(2, "default 0", {key = "i3"}), t"\t", i(0, "not null", {key = "i0"})
 	}),
 	s({trig = "dcol", descr = "(dcol)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "name", {key = "i1"}), t"\tdate\t", i(2, "default sysdate", {key = "i2"}), t"\t", i(0, "not null", {key = "i0"})
+		i(1, "name", {key = "i1"}), t"\tdate\t", i(2, "default sysdate", {key = "i3"}), t"\t", i(0, "not null", {key = "i0"})
 	}),
 	s({trig = "ind", descr = "(ind)", priority = -1000, trigEngine = te("w")}, {
-		t"create index ", cp(1), t"_", cp(2), t" on ", i(1, "table", {key = "i1"}), t"(", i(2, "column", {key = "i2"}), t");"
+		t"create index ", d(3, function(args) return sn(nil, {cp(1), t"_", cp(2)}) end, {}, {key = "i0"}), t" on ", i(1, "table", {key = "i1"}), t"(", i(2, "column", {key = "i2"}), t");"
 	}),
 	s({trig = "uind", descr = "(uind)", priority = -1000, trigEngine = te("w")}, {
 		t"create unique index ", i(1, "name", {key = "i1"}), t" on ", i(2, "table", {key = "i2"}), t"(", i(0, "column", {key = "i0"}), t");"

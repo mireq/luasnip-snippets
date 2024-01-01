@@ -42,39 +42,39 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	0,
-	0,
-	2,
-	2,
-	3,
-	3,
-	2,
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
 }
 ls.add_snippets("texmath", {
 	s({trig = "eqnn", descr = "(eqnn) \"Equation without a number\"", priority = -50, trigEngine = te("b")}, {
 		t"\\begin{equation*}", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"\\end{equation*}"
 	}),
 	s({trig = "al", descr = "(al) \"Align\"", priority = -50, trigEngine = te("b")}, {
 		t"\\begin{align}", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"\\end{align}"
 	}),
 	s({trig = "alnn", descr = "(alnn) \"Align without a number\"", priority = -50, trigEngine = te("b")}, {
 		t"\\begin{align*}", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"\\end{align*}"
 	}),
 	s({trig = "eqa", descr = "(eqa) \"Equation array\"", priority = -50, trigEngine = te("b")}, {
 		t"\\begin{eqnarray}", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), t" & ", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t "), {key = "i2"}) }) end), t" & ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t "), {key = "i3"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), t" & ", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t "), {key = "i2"}) }) end), t" & ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t "), {key = "i0"}) }) end), nl(),
 		t"\\end{eqnarray}"
 	}),
 	s({trig = "eqann", descr = "(eqann) \"Equation array without a number\"", priority = -50, trigEngine = te("b")}, {
 		t"\\begin{eqnarray*}", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), t" & ", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t "), {key = "i2"}) }) end), t" & ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t "), {key = "i3"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), t" & ", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t "), {key = "i2"}) }) end), t" & ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t "), {key = "i0"}) }) end), nl(),
 		t"\\end{eqnarray*}"
 	}),
 	s({trig = "dv", descr = "(dv) \"Derivative\"", priority = -50, trigEngine = te("w")}, {

@@ -42,91 +42,322 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	1,
-	2,
-	1,
-	1,
-	3,
-	2,
-	2,
-	1,
-	2,
-	3,
-	3,
-	2,
-	0,
-	4,
-	3,
-	2,
-	0,
-	0,
-	2,
-	4,
-	2,
-	3,
-	1,
-	4,
-	3,
-	0,
-	2,
-	2,
-	{{1, 1}, {2, 3}},
-	1,
-	2,
-	1,
-	{{1, 1}, {2, 2}, {3, 4}},
-	2,
-	3,
-	3,
-	1,
-	1,
-	2,
-	2,
-	0,
-	0,
-	1,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	0,
-	2,
-	2,
-	{{1, 1}, {2, 3}},
-	2,
-	3,
-	2,
-	1,
-	0,
-	2,
-	2,
-	1,
-	0,
-	0,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{},
+	{},
+	{{1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
 }
 ls.add_snippets("objc", {
-	s({trig = "imp", descr = "(imp) \"#import (imp)\"", priority = -50, trigEngine = te("b")}, {
-		t"#import \"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"objc", 1}, "snip.rv = re.sub(r\'\\..*$\', \'.h\', fn)", python_globals, args, snip, "", am[1])}, ""), {key = "i1"}) }) end), t"\""
-	}),
 	s({trig = "Imp", descr = "(Imp) \"#import <> (Imp)\"", priority = -50, trigEngine = te("")}, {
 		t"#import <", i(1, "Cocoa/Cocoa.h", {key = "i1"}), t">"
 	}),
+	s({trig = "imp", descr = "(imp) \"#import (imp)\"", priority = -50, trigEngine = te("b")}, {
+		t"#import \"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"objc", 2}, "snip.rv = re.sub(r\'\\..*$\', \'.h\', fn)", python_globals, args, snip, "", am[2])}, ""), {key = "i1"}) }) end), t"\""
+	}),
+	s({trig = "sel", descr = "(sel) \"@selector\"", priority = -50, trigEngine = te("")}, {
+		t"@selector(", i(1, "method", {key = "i1"}), t":)"
+	}),
+	s({trig = "s", descr = "(s)", priority = -1000, trigEngine = te("w")}, {
+		t"@\"", i(1, "", {key = "i1"}), t"\""
+	}),
+	s({trig = "o", descr = "(o)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "NSObject", {key = "i1"}), t" *", i(2, "foo", {key = "i2"}), t" = [", d(3, function(args) return sn(nil, {cp(1), t" alloc"}) end, {}, {key = "i3"}), t"]", i(4, "", {key = "i4"}), t";"
+	}),
+	s({trig = "log", descr = "(log) \"NSLog (log) 2\"", priority = -50, trigEngine = te("")}, {
+		t"NSLog(@\"", i(1, "", {key = "i1"}), t"\"", tr(1, "[^%]*(%)?.*", "(?1:, :\\);)"), i(2, "", {key = "i2"}), tr(1, "[^%]*(%)?.*", "(?1:\\);)")
+	}),
+	s({trig = "objc", descr = "(objc)", priority = -1000, trigEngine = te("w")}, {
+		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'\', \'someClass\')")}, ""), {key = "i1"}) }) end), t" : ", i(2, "NSObject", {key = "i2"}), nl(),
+		t"{", nl(),
+		t"}", nl(),
+		t"@end", nl(),
+		nl(),
+		t"@implementation ", cp(1), nl(),
+		i(0, "", {key = "i0"}), nl(),
+		t"@end"
+	}),
+	s({trig = "int", descr = "(int)", priority = -1000, trigEngine = te("w")}, {
+		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'\', \'someClass\')")}, ""), {key = "i1"}) }) end), t" : ", i(2, "NSObject", {key = "i2"}), nl(),
+		t"{", i(3, "", {key = "i3"}), nl(),
+		t"}", nl(),
+		i(0, "", {key = "i0"}), nl(),
+		t"@end"
+	}),
+	s({trig = "@interface", descr = "(@interface)", priority = -1000, trigEngine = te("w")}, {
+		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'\', \'someClass\')")}, ""), {key = "i1"}) }) end), t" : ", i(2, "NSObject", {key = "i2"}), nl(),
+		t"{", i(3, "", {key = "i3"}), nl(),
+		t"}", nl(),
+		i(0, "", {key = "i0"}), nl(),
+		t"@end"
+	}),
+	s({trig = "impl", descr = "(impl)", priority = -1000, trigEngine = te("w")}, {
+		t"@implementation ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'\', \'someClass\')")}, ""), {key = "i1"}) }) end), nl(),
+		i(0, "", {key = "i0"}), nl(),
+		t"@end"
+	}),
+	s({trig = "@implementation", descr = "(@implementation)", priority = -1000, trigEngine = te("w")}, {
+		t"@implementation ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'\', \'someClass\')")}, ""), {key = "i1"}) }) end), nl(),
+		i(0, "", {key = "i0"}), nl(),
+		t"@end"
+	}),
+	s({trig = "pro", descr = "(pro)", priority = -1000, trigEngine = te("w")}, {
+		t"@protocol ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1Delegate\', \'MyProtocol\')")}, ""), {key = "i1"}) }) end), t" ", i(2, "<NSObject>", {key = "i2"}), nl(),
+		i(0, "", {key = "i0"}), nl(),
+		t"@end"
+	}),
+	s({trig = "@protocol", descr = "(@protocol)", priority = -1000, trigEngine = te("w")}, {
+		t"@protocol ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1Delegate\', \'MyProtocol\')")}, ""), {key = "i1"}) }) end), t" ", i(2, "<NSObject>", {key = "i2"}), nl(),
+		i(0, "", {key = "i0"}), nl(),
+		t"@end"
+	}),
+	s({trig = "init", descr = "(init)", priority = -1000, trigEngine = te("w")}, {
+		t"- (id)init", nl(),
+		t"{", nl(),
+		t"\tif (self = [super init]) {", nl(),
+		t"\t\t", i(0, "", {key = "i0"}), nl(),
+		t"\t}", nl(),
+		t"\treturn self;", nl(),
+		t"}"
+	}),
+	s({trig = "dealloc", descr = "(dealloc)", priority = -1000, trigEngine = te("w")}, {
+		t"- (void) dealloc", nl(),
+		t"{", nl(),
+		t"\t", i(0, "deallocations", {key = "i0"}), nl(),
+		t"\t[super dealloc];", nl(),
+		t"}"
+	}),
+	s({trig = "su", descr = "(su)", priority = -1000, trigEngine = te("w")}, {
+		t"[super ", i(1, "init", {key = "i1"}), t"]"
+	}),
+	s({trig = "ibo", descr = "(ibo) \"IBOutlet (ibo)\"", priority = -50, trigEngine = te("")}, {
+		t"IBOutlet ", i(1, "NSSomeClass", {key = "i1"}), t" *", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^[A-Z](?:[A-Z]+|[a-z]+)([A-Z]\\w*)", "\\l$1")}, ""), {key = "i2"}) }) end, {k"i1"}), t";"
+	}),
+	s({trig = "cat", descr = "(cat)", priority = -1000, trigEngine = te("w")}, {
+		t"@interface ", i(1, "NSObject", {key = "i1"}), t" (", i(2, "MyCategory", {key = "i2"}), t")", nl(),
+		t"@end", nl(),
+		nl(),
+		t"@implementation ", cp(1), t" (", cp(2), t")", nl(),
+		i(0, "", {key = "i0"}), nl(),
+		t"@end"
+	}),
+	s({trig = "cath", descr = "(cath)", priority = -1000, trigEngine = te("w")}, {
+		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1\', \'NSObject\')")}, ""), {key = "i1"}) }) end), t" (", i(2, "MyCategory", {key = "i2"}), t")", nl(),
+		i(0, "", {key = "i0"}), nl(),
+		t"@end"
+	}),
+	s({trig = "m", descr = "(m)", priority = -1000, trigEngine = te("w")}, {
+		t"- (", i(1, "id", {key = "i1"}), t")", i(2, "method", {key = "i2"}), nl(),
+		t"{", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "md", descr = "(md)", priority = -1000, trigEngine = te("w")}, {
+		t"- (", i(1, "id", {key = "i1"}), t")", i(2, "method", {key = "i2"}), t";"
+	}),
+	s({trig = "ibad", descr = "(ibad)", priority = -1000, trigEngine = te("w")}, {
+		t"- (IBAction)", i(1, "method", {key = "i1"}), t":(", i(2, "id", {key = "i2"}), t")sender;"
+	}),
+	s({trig = "iba", descr = "(iba)", priority = -1000, trigEngine = te("w")}, {
+		t"- (IBAction)", i(1, "method", {key = "i1"}), t":(", i(2, "id", {key = "i2"}), t")sender", nl(),
+		t"{", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "wake", descr = "(wake)", priority = -1000, trigEngine = te("w")}, {
+		t"- (void)awakeFromNib", nl(),
+		t"{", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "M", descr = "(M)", priority = -1000, trigEngine = te("w")}, {
+		t"+ (", i(1, "id", {key = "i1"}), t")", i(2, "method", {key = "i2"}), nl(),
+		t"{", nl(),
+		t"\t", i(0, "return nil;", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "sm", descr = "(sm)", priority = -1000, trigEngine = te("w")}, {
+		t"- (", i(1, "id", {key = "i1"}), t")", i(2, "method", {key = "i2"}), nl(),
+		t"{", nl(),
+		t"\t[super ", cp(2), t"];", i(0, "", {key = "i0"}), nl(),
+		t"\treturn self;", nl(),
+		t"}"
+	}),
+	s({trig = "objacc", descr = "(objacc) \"Object Accessors Interface (objacc)\"", priority = -50, trigEngine = te("")}, c(1, {
+		{
+			t"- (", i(1, "id", {key = "i1"}), t")", i(2, "thing", {key = "i2"}), nl(),
+			t"{", nl(),
+			t"\treturn ", cp(2), t";", nl(),
+			t"}", nl(),
+			nl(),
+			t"- (void)set", tr(2, ".", "\\u$0"), t":(", cp(1), t")aValue", nl(),
+			t"{", nl(),
+			t"\t", i(3, "", {key = "i0"}), tr(1, "( \\*)?$", "(?1:$1: )"), t"old", tr(2, ".", "\\u$0"), t" = ", cp(2), t";", nl(),
+			t"\t", cp(2), t" = [aValue retain];", nl(),
+			t"\t[old", tr(2, ".", "\\u$0"), t" release];", nl(),
+			t"}"
+		},
+		{
+			t"- (", i(1, "id", {key = "i1"}), t")", i(2, "thing", {key = "i2"}), t";", nl(),
+			t"- (void)set", tr(2, ".", "\\u$0"), t":(", cp(1), t")aValue;"
+		},
+	})),
+	s({trig = "forin", descr = "(forin)", priority = -1000, trigEngine = te("w")}, {
+		t"for (", i(1, "Class", {key = "i1"}), t" *", d(2, function(args) return sn(nil, {t"some", cp(1)}) end, {}, {key = "i2"}), t" in ", i(3, "array", {key = "i3"}), t") {", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "fore", descr = "(fore)", priority = -1000, trigEngine = te("w")}, {
+		t"for (", i(1, "object", {key = "i1"}), t" in ", i(2, "array", {key = "i2"}), t") {", nl(),
+		t"\t", i(0, "statements", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "forarray", descr = "(forarray) \"for NSArray loop (forarray)\"", priority = -50, trigEngine = te("")}, {
+		t"unsigned int\t", i(1, "object", {key = "i1"}), t"Count = [", i(2, "array", {key = "i2"}), t" count];", nl(),
+		nl(),
+		t"for(unsigned int index = 0; index < ", cp(1), t"Count; index += 1)", nl(),
+		t"{", nl(),
+		t"\t", i(3, "id", {key = "i3"}), t"\t", cp(1), t" = [", cp(2), t" objectAtIndex:index];", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "fora", descr = "(fora)", priority = -1000, trigEngine = te("w")}, {
+		t"unsigned int ", i(1, "object", {key = "i1"}), t"Count = [", i(2, "array", {key = "i2"}), t" count];", nl(),
+		nl(),
+		t"for (unsigned int index = 0; index < ", cp(1), t"Count; index++) {", nl(),
+		t"\t", i(3, "id", {key = "i3"}), t" ", cp(1), t" = [", cp(2), t" ", cp(1), t"AtIndex:index];", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "@try", descr = "(@try)", priority = -1000, trigEngine = te("w")}, {
+		t"@try {", nl(),
+		t"\t", i(1, "statements", {key = "i1"}), nl(),
+		t"}", nl(),
+		t"@catch (NSException * e) {", nl(),
+		t"\t", i(2, "handler", {key = "i2"}), nl(),
+		t"}", nl(),
+		t"@finally {", nl(),
+		t"\t", i(0, "statements", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "@catch", descr = "(@catch)", priority = -1000, trigEngine = te("w")}, {
+		t"@catch (", i(1, "exception", {key = "i1"}), t") {", nl(),
+		t"\t", i(0, "handler", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "@finally", descr = "(@finally)", priority = -1000, trigEngine = te("w")}, {
+		t"@finally {", nl(),
+		t"\t", i(0, "statements", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "prop", descr = "(prop) \"Property\"", priority = -50, trigEngine = te("")}, {
+		t"@property (", tr(1, "^(e)$|.*", "(?1:r)"), i(1, "r", {key = "i1"}), tr(1, "^(?:(r)|(e)|(c)|(a))$|.*", "(?1:etain)(?2:adonly)(?3:opy)(?4:ssign)"), t") ", i(2, "NSSomeClass", {key = "i2"}), t"$ *", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^[A-Z](?:[A-Z]+|[a-z]+)([A-Z]\\w*)", "\\l$1")}, ""), {key = "i3"}) }) end, {k"i2"}), t";"
+	}),
+	s({trig = "syn", descr = "(syn) \"Synthesize\"", priority = -50, trigEngine = te("")}, {
+		t"@synthesize ", i(1, "property", {key = "i1"}), t";"
+	}),
+	s({trig = "alloc", descr = "(alloc)", priority = -1000, trigEngine = te("w")}, {
+		t"[[", i(1, "foo", {key = "i1"}), t" alloc] init", i(2, "", {key = "i2"}), t"];"
+	}),
+	s({trig = "a", descr = "(a)", priority = -1000, trigEngine = te("w")}, {
+		t"[[", i(1, "foo", {key = "i1"}), t" alloc] init", i(2, "", {key = "i2"}), t"];"
+	}),
+	s({trig = "ret", descr = "(ret)", priority = -1000, trigEngine = te("w")}, {
+		t"[", i(1, "foo", {key = "i1"}), t" retain];"
+	}),
+	s({trig = "rel", descr = "(rel)", priority = -1000, trigEngine = te("w")}, {
+		t"[", i(0, "foo", {key = "i0"}), t" release];"
+	}),
+	s({trig = "arel", descr = "(arel)", priority = -1000, trigEngine = te("w")}, {
+		t"[", i(0, "foo", {key = "i0"}), t" autorelease];"
+	}),
+	s({trig = "pool", descr = "(pool) \"NSAutoreleasePool (pool)\"", priority = -50, trigEngine = te("")}, {
+		t"NSAutoreleasePool *pool = [NSAutoreleasePool new];", nl(),
+		i(0, "", {key = "i0"}), nl(),
+		t"[pool drain];"
+	}),
+	s({trig = "except", descr = "(except)", priority = -1000, trigEngine = te("w")}, {
+		t"NSException *", i(1, "badness", {key = "i1"}), t";", nl(),
+		cp(1), t" = [NSException exceptionWithName:@\"", d(2, function(args) return sn(nil, {cp(1), t"Name"}) end, {}, {key = "i2"}), t"\"", nl(),
+		t"                             reason:@\"", i(0, "", {key = "i0"}), t"\"", nl(),
+		t"                           userInfo:nil];", nl(),
+		t"[", cp(1), t" raise];"
+	}),
+	s({trig = "prag", descr = "(prag)", priority = -1000, trigEngine = te("w")}, {
+		t"#pragma mark ", i(0, "-", {key = "i0"})
+	}),
 	s({trig = "cl", descr = "(cl) \"020 Class (objc)\"", priority = -50, trigEngine = te("")}, {
-		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"objc", 3}, "\nif len(fn):\n\t\tsnip.rv = re.sub(r\'\\..*$\', \'\', fn)\nelse:\n\t\tsnip.rv = \"object\"\n", python_globals, args, snip, "", am[3])}, ""), {key = "i1"}) }) end), t" : ", i(2, "NSObject", {key = "i2"}), nl(),
+		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"objc", 46}, "\nif len(fn):\n\t\tsnip.rv = re.sub(r\'\\..*$\', \'\', fn)\nelse:\n\t\tsnip.rv = \"object\"\n", python_globals, args, snip, "", am[46])}, ""), {key = "i1"}) }) end), t" : ", i(2, "NSObject", {key = "i2"}), nl(),
 		t"{", nl(),
 		t"}", nl(),
 		t"@end", nl(),
@@ -141,42 +372,38 @@ ls.add_snippets("objc", {
 		t"}", nl(),
 		t"@end"
 	}),
+	s({trig = "color", descr = "(color)", priority = -1000, trigEngine = te("w")}, {
+		t"[[NSColor ", i(0, "blackColor", {key = "i0"}), t"] set];"
+	}),
 	s({trig = "array", descr = "(array) \"NSArray (array)\"", priority = -50, trigEngine = te("")}, {
 		t"NSMutableArray *", i(1, "array", {key = "i1"}), t" = [NSMutableArray array];"
+	}),
+	s({trig = "nsa", descr = "(nsa)", priority = -1000, trigEngine = te("w")}, {
+		t"NSArray ", i(0, "", {key = "i0"})
+	}),
+	s({trig = "nsma", descr = "(nsma)", priority = -1000, trigEngine = te("w")}, {
+		t"NSMutableArray ", i(0, "", {key = "i0"})
+	}),
+	s({trig = "aa", descr = "(aa)", priority = -1000, trigEngine = te("w")}, {
+		t"NSArray * array;"
+	}),
+	s({trig = "ma", descr = "(ma)", priority = -1000, trigEngine = te("w")}, {
+		t"NSMutableArray * array;"
 	}),
 	s({trig = "dict", descr = "(dict) \"NSDictionary (dict)\"", priority = -50, trigEngine = te("")}, {
 		t"NSMutableDictionary *", i(1, "dict", {key = "i1"}), t" = [NSMutableDictionary dictionary];"
 	}),
-	s({trig = "forarray", descr = "(forarray) \"for NSArray loop (forarray)\"", priority = -50, trigEngine = te("")}, {
-		t"unsigned int\t", i(1, "object", {key = "i1"}), t"Count = [", i(2, "array", {key = "i2"}), t" count];", nl(),
-		nl(),
-		t"for(unsigned int index = 0; index < ", cp(1), t"Count; index += 1)", nl(),
-		t"{", nl(),
-		t"\t", i(3, "id", {key = "i3"}), t"\t", cp(1), t" = [", cp(2), t" objectAtIndex:index];", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}"
+	s({trig = "nsd", descr = "(nsd)", priority = -1000, trigEngine = te("w")}, {
+		t"NSDictionary ", i(0, "", {key = "i0"})
 	}),
-	s({trig = "objacc", descr = "(objacc) \"Object Accessors Interface (objacc)\"", priority = -50, trigEngine = te("")}, c(1, {
-		{
-			t"- (", i(1, "id", {key = "i1"}), t")", i(2, "thing", {key = "i2"}), nl(),
-			t"{", nl(),
-			t"\treturn ", cp(2), t";", nl(),
-			t"}", nl(),
-			nl(),
-			t"- (void)set", tr(2, ".", "\\u$0"), t":(", cp(1), t")aValue", nl(),
-			t"{", nl(),
-			t"\t", i(3, "", {key = "i3"}), tr(1, "( \\*)?$", "(?1:$1: )"), t"old", tr(2, ".", "\\u$0"), t" = ", cp(2), t";", nl(),
-			t"\t", cp(2), t" = [aValue retain];", nl(),
-			t"\t[old", tr(2, ".", "\\u$0"), t" release];", nl(),
-			t"}"
-		},
-		{
-			t"- (", i(1, "id", {key = "i1"}), t")", i(2, "thing", {key = "i2"}), t";", nl(),
-			t"- (void)set", tr(2, ".", "\\u$0"), t":(", cp(1), t")aValue;"
-		},
-	})),
-	s({trig = "sel", descr = "(sel) \"@selector\"", priority = -50, trigEngine = te("")}, {
-		t"@selector(", i(1, "method", {key = "i1"}), t":)"
+	s({trig = "nsmd", descr = "(nsmd)", priority = -1000, trigEngine = te("w")}, {
+		t"NSMutableDictionary ", i(0, "", {key = "i0"})
+	}),
+	s({trig = "nss", descr = "(nss)", priority = -1000, trigEngine = te("w")}, {
+		t"NSString ", i(0, "", {key = "i0"})
+	}),
+	s({trig = "nsms", descr = "(nsms)", priority = -1000, trigEngine = te("w")}, {
+		t"NSMutableString ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "cdacc", descr = "(cdacc) \"CoreData Accessors Implementation\"", priority = -50, trigEngine = te("")}, {
 		t"- (", i(1, "id", {key = "i1"}), t")", i(2, "attribute", {key = "i2"}), nl(),
@@ -200,9 +427,6 @@ ls.add_snippets("objc", {
 	}),
 	s({trig = "thread", descr = "(thread) \"Detach New NSThread\"", priority = -50, trigEngine = te("")}, {
 		t"[NSThread detachNewThreadSelector:@selector(", i(1, "method", {key = "i1"}), t":) toTarget:", i(2, "aTarget", {key = "i2"}), t" withObject:", i(3, "anArgument", {key = "i3"}), t"]"
-	}),
-	s({trig = "ibo", descr = "(ibo) \"IBOutlet (ibo)\"", priority = -50, trigEngine = te("")}, {
-		t"IBOutlet ", i(1, "NSSomeClass", {key = "i1"}), t" *", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^[A-Z](?:[A-Z]+|[a-z]+)([A-Z]\\w*)", "\\l$1")}, ""), {key = "i2"}) }) end, {k"i1"}), t";"
 	}),
 	s({trig = "I", descr = "(I) \"Initialize Implementation (I)\"", priority = -50, trigEngine = te("")}, {
 		t"+ (void)initialize", nl(),
@@ -273,14 +497,6 @@ ls.add_snippets("objc", {
 		i(0, "", {key = "i0"}), nl(),
 		t"[self unlockFocus];"
 	}),
-	s({trig = "pool", descr = "(pool) \"NSAutoreleasePool (pool)\"", priority = -50, trigEngine = te("")}, {
-		t"NSAutoreleasePool *pool = [NSAutoreleasePool new];", nl(),
-		i(0, "", {key = "i0"}), nl(),
-		t"[pool drain];"
-	}),
-	s({trig = "log", descr = "(log) \"NSLog (log) 2\"", priority = -50, trigEngine = te("")}, {
-		t"NSLog(@\"", i(1, "", {key = "i1"}), t"\"", tr(1, "[^%]*(%)?.*", "(?1:, :\\);)"), i(2, "", {key = "i2"}), tr(1, "[^%]*(%)?.*", "(?1:\\);)")
-	}),
 	s({trig = "alert", descr = "(alert) \"NSRunAlertPanel (alert)\"", priority = -50, trigEngine = te("")}, {
 		t"int choice = NSRunAlertPanel(@\"", i(1, "Something important!", {key = "i1"}), t"\", @\"", i(2, "Something important just happend, and now I need to ask you, do you want to continue?", {key = "i2"}), t"\", @\"", i(3, "Continue", {key = "i3"}), t"\", @\"", i(4, "Cancel", {key = "i4"}), t"\", nil);", nl(),
 		t"if(choice == NSAlertDefaultReturn) // \"", cp(3), t"\"", nl(),
@@ -294,9 +510,6 @@ ls.add_snippets("objc", {
 	}),
 	s({trig = "format", descr = "(format) \"NSString stringWithFormat (format)\"", priority = -50, trigEngine = te("")}, {
 		t"[NSString stringWithFormat:@\"", i(1, "", {key = "i1"}), t"\", ", i(2, "", {key = "i2"}), t"]", i(0, "", {key = "i0"})
-	}),
-	s({trig = "prop", descr = "(prop) \"Property\"", priority = -50, trigEngine = te("")}, {
-		t"@property (", tr(1, "^(e)$|.*", "(?1:r)"), i(1, "r", {key = "i1"}), tr(1, "^(?:(r)|(e)|(c)|(a))$|.*", "(?1:etain)(?2:adonly)(?3:opy)(?4:ssign)"), t") ", i(2, "NSSomeClass", {key = "i2"}), t"$ *", d(3, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^[A-Z](?:[A-Z]+|[a-z]+)([A-Z]\\w*)", "\\l$1")}, ""), {key = "i3"}) }) end, {k"i2"}), t";"
 	}),
 	s({trig = "getprefs", descr = "(getprefs) \"Read from defaults (getprefs)\"", priority = -50, trigEngine = te("")}, {
 		t"[[NSUserDefaults standardUserDefaults] objectForKey:", i(1, "key", {key = "i1"}), t"];"
@@ -319,7 +532,7 @@ ls.add_snippets("objc", {
 		{
 			t"- (", i(1, "unsigned int", {key = "i1"}), t")", i(2, "thing", {key = "i2"}), nl(),
 			t"{", nl(),
-			t"\treturn ", cp(2), t";", nl(),
+			t"\treturn ", d(3, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i3"}), t";", nl(),
 			t"}", nl(),
 			nl(),
 			t"- (void)set", tr(2, ".", "\\u$0"), t":(", i(1, "unsigned int", {key = "i1"}), t")new", tr(2, ".", "\\u$0"), nl(),
@@ -335,230 +548,17 @@ ls.add_snippets("objc", {
 	s({trig = "stracc", descr = "(stracc) \"String Accessors (stracc)\"", priority = -50, trigEngine = te("")}, {
 		t"- (NSString *)", i(1, "thing", {key = "i1"}), nl(),
 		t"{", nl(),
-		t"\treturn ", cp(1), t";", nl(),
+		t"\treturn ", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t";", nl(),
 		t"}", nl(),
 		nl(),
-		t"- (void)set", tr(1, ".*", "\\u$0"), t":(NSString *)/})", d(2, function(args, snip) return sn(nil, { i(1, jt({"a", rx_tr(args[1], ".*", "\\u$0")}, ""), {key = "i3"}) }) end, {k"i1"}), nl(),
+		t"- (void)set", tr(1, ".*", "\\u$0"), t":(NSString *)/})", d(3, function(args, snip) return sn(nil, { i(1, jt({"a", rx_tr(args[1], ".*", "\\u$0")}, ""), {key = "i3"}) }) end, {k"i1"}), nl(),
 		t"{", nl(),
 		t"\t", cp(3), t" = [", cp(3), t" copy];", nl(),
 		t"\t[", cp(2), t" release];", nl(),
 		t"\t", cp(2), t" = ", cp(3), t";", nl(),
 		t"}"
 	}),
-	s({trig = "syn", descr = "(syn) \"Synthesize\"", priority = -50, trigEngine = te("")}, {
-		t"@synthesize ", i(1, "property", {key = "i1"}), t";"
-	}),
 	s({trig = "setprefs", descr = "(setprefs) \"Write to defaults (setprefs)\"", priority = -50, trigEngine = te("")}, {
 		t"[[NSUserDefaults standardUserDefaults] setObject:", i(1, "object", {key = "i1"}), t" forKey:", i(2, "key", {key = "i2"}), t"];"
-	}),
-	s({trig = "s", descr = "(s)", priority = -1000, trigEngine = te("w")}, {
-		t"@\"", i(1, "", {key = "i1"}), t"\""
-	}),
-	s({trig = "o", descr = "(o)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "NSObject", {key = "i1"}), t" *", i(2, "foo", {key = "i2"}), t" = [", cp(1), t" alloc", t"]", i(3, "", {key = "i4"}), t";"
-	}),
-	s({trig = "objc", descr = "(objc)", priority = -1000, trigEngine = te("w")}, {
-		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'\', \'someClass\')")}, ""), {key = "i1"}) }) end), t" : ", i(2, "NSObject", {key = "i2"}), nl(),
-		t"{", nl(),
-		t"}", nl(),
-		t"@end", nl(),
-		nl(),
-		t"@implementation ", cp(1), nl(),
-		i(0, "", {key = "i0"}), nl(),
-		t"@end"
-	}),
-	s({trig = "int", descr = "(int)", priority = -1000, trigEngine = te("w")}, {
-		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'\', \'someClass\')")}, ""), {key = "i1"}) }) end), t" : ", i(2, "NSObject", {key = "i2"}), nl(),
-		t"{", i(3, "", {key = "i3"}), nl(),
-		t"}", nl(),
-		i(0, "", {key = "i0"}), nl(),
-		t"@end"
-	}),
-	s({trig = "@interface", descr = "(@interface)", priority = -1000, trigEngine = te("w")}, {
-		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'\', \'someClass\')")}, ""), {key = "i1"}) }) end), t" : ", i(2, "NSObject", {key = "i2"}), nl(),
-		t"{", i(3, "", {key = "i3"}), nl(),
-		t"}", nl(),
-		i(0, "", {key = "i0"}), nl(),
-		t"@end"
-	}),
-	s({trig = "impl", descr = "(impl)", priority = -1000, trigEngine = te("w")}, {
-		t"@implementation ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'\', \'someClass\')")}, ""), {key = "i1"}) }) end), nl(),
-		i(0, "", {key = "i0"}), nl(),
-		t"@end"
-	}),
-	s({trig = "@implementation", descr = "(@implementation)", priority = -1000, trigEngine = te("w")}, {
-		t"@implementation ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'\', \'someClass\')")}, ""), {key = "i1"}) }) end), nl(),
-		i(0, "", {key = "i0"}), nl(),
-		t"@end"
-	}),
-	s({trig = "pro", descr = "(pro)", priority = -1000, trigEngine = te("w")}, {
-		t"@protocol ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1Delegate\', \'MyProtocol\')")}, ""), {key = "i1"}) }) end), t" ", i(2, "<NSObject>", {key = "i2"}), nl(),
-		i(0, "", {key = "i0"}), nl(),
-		t"@end"
-	}),
-	s({trig = "@protocol", descr = "(@protocol)", priority = -1000, trigEngine = te("w")}, {
-		t"@protocol ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1Delegate\', \'MyProtocol\')")}, ""), {key = "i1"}) }) end), t" ", i(2, "<NSObject>", {key = "i2"}), nl(),
-		i(0, "", {key = "i0"}), nl(),
-		t"@end"
-	}),
-	s({trig = "init", descr = "(init)", priority = -1000, trigEngine = te("w")}, {
-		t"- (id)init", nl(),
-		t"{", nl(),
-		t"\tif (self = [super init]) {", nl(),
-		t"\t\t", i(0, "", {key = "i0"}), nl(),
-		t"\t}", nl(),
-		t"\treturn self;", nl(),
-		t"}"
-	}),
-	s({trig = "dealloc", descr = "(dealloc)", priority = -1000, trigEngine = te("w")}, {
-		t"- (void) dealloc", nl(),
-		t"{", nl(),
-		t"\t", i(0, "deallocations", {key = "i0"}), nl(),
-		t"\t[super dealloc];", nl(),
-		t"}"
-	}),
-	s({trig = "su", descr = "(su)", priority = -1000, trigEngine = te("w")}, {
-		t"[super ", i(1, "init", {key = "i1"}), t"]"
-	}),
-	s({trig = "cat", descr = "(cat)", priority = -1000, trigEngine = te("w")}, {
-		t"@interface ", i(1, "NSObject", {key = "i1"}), t" (", i(2, "MyCategory", {key = "i2"}), t")", nl(),
-		t"@end", nl(),
-		nl(),
-		t"@implementation ", cp(1), t" (", cp(2), t")", nl(),
-		i(0, "", {key = "i0"}), nl(),
-		t"@end"
-	}),
-	s({trig = "cath", descr = "(cath)", priority = -1000, trigEngine = te("w")}, {
-		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1\', \'NSObject\')")}, ""), {key = "i1"}) }) end), t" (", i(2, "MyCategory", {key = "i2"}), t")", nl(),
-		i(0, "", {key = "i0"}), nl(),
-		t"@end"
-	}),
-	s({trig = "m", descr = "(m)", priority = -1000, trigEngine = te("w")}, {
-		t"- (", i(1, "id", {key = "i1"}), t")", i(2, "method", {key = "i2"}), nl(),
-		t"{", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "md", descr = "(md)", priority = -1000, trigEngine = te("w")}, {
-		t"- (", i(1, "id", {key = "i1"}), t")", i(2, "method", {key = "i2"}), t";"
-	}),
-	s({trig = "ibad", descr = "(ibad)", priority = -1000, trigEngine = te("w")}, {
-		t"- (IBAction)", i(1, "method", {key = "i1"}), t":(", i(2, "id", {key = "i2"}), t")sender;"
-	}),
-	s({trig = "iba", descr = "(iba)", priority = -1000, trigEngine = te("w")}, {
-		t"- (IBAction)", i(1, "method", {key = "i1"}), t":(", i(2, "id", {key = "i2"}), t")sender", nl(),
-		t"{", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "wake", descr = "(wake)", priority = -1000, trigEngine = te("w")}, {
-		t"- (void)awakeFromNib", nl(),
-		t"{", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "M", descr = "(M)", priority = -1000, trigEngine = te("w")}, {
-		t"+ (", i(1, "id", {key = "i1"}), t")", i(2, "method", {key = "i2"}), nl(),
-		t"{", nl(),
-		t"\t", i(0, "return nil;", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "sm", descr = "(sm)", priority = -1000, trigEngine = te("w")}, {
-		t"- (", i(1, "id", {key = "i1"}), t")", i(2, "method", {key = "i2"}), nl(),
-		t"{", nl(),
-		t"\t[super ", cp(2), t"];", i(0, "", {key = "i0"}), nl(),
-		t"\treturn self;", nl(),
-		t"}"
-	}),
-	s({trig = "forin", descr = "(forin)", priority = -1000, trigEngine = te("w")}, {
-		t"for (", i(1, "Class", {key = "i1"}), t" *", t"some", cp(1), t" in ", i(2, "array", {key = "i2"}), t") {", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "fore", descr = "(fore)", priority = -1000, trigEngine = te("w")}, {
-		t"for (", i(1, "object", {key = "i1"}), t" in ", i(2, "array", {key = "i2"}), t") {", nl(),
-		t"\t", i(0, "statements", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "fora", descr = "(fora)", priority = -1000, trigEngine = te("w")}, {
-		t"unsigned int ", i(1, "object", {key = "i1"}), t"Count = [", i(2, "array", {key = "i2"}), t" count];", nl(),
-		nl(),
-		t"for (unsigned int index = 0; index < ", cp(1), t"Count; index++) {", nl(),
-		t"\t", i(3, "id", {key = "i3"}), t" ", cp(1), t" = [", cp(2), t" ", cp(1), t"AtIndex:index];", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "@try", descr = "(@try)", priority = -1000, trigEngine = te("w")}, {
-		t"@try {", nl(),
-		t"\t", i(1, "statements", {key = "i1"}), nl(),
-		t"}", nl(),
-		t"@catch (NSException * e) {", nl(),
-		t"\t", i(2, "handler", {key = "i2"}), nl(),
-		t"}", nl(),
-		t"@finally {", nl(),
-		t"\t", i(0, "statements", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "@catch", descr = "(@catch)", priority = -1000, trigEngine = te("w")}, {
-		t"@catch (", i(1, "exception", {key = "i1"}), t") {", nl(),
-		t"\t", i(0, "handler", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "@finally", descr = "(@finally)", priority = -1000, trigEngine = te("w")}, {
-		t"@finally {", nl(),
-		t"\t", i(0, "statements", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "alloc", descr = "(alloc)", priority = -1000, trigEngine = te("w")}, {
-		t"[[", i(1, "foo", {key = "i1"}), t" alloc] init", i(2, "", {key = "i2"}), t"];"
-	}),
-	s({trig = "a", descr = "(a)", priority = -1000, trigEngine = te("w")}, {
-		t"[[", i(1, "foo", {key = "i1"}), t" alloc] init", i(2, "", {key = "i2"}), t"];"
-	}),
-	s({trig = "ret", descr = "(ret)", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(1, "foo", {key = "i1"}), t" retain];"
-	}),
-	s({trig = "rel", descr = "(rel)", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(0, "foo", {key = "i0"}), t" release];"
-	}),
-	s({trig = "arel", descr = "(arel)", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(0, "foo", {key = "i0"}), t" autorelease];"
-	}),
-	s({trig = "except", descr = "(except)", priority = -1000, trigEngine = te("w")}, {
-		t"NSException *", i(1, "badness", {key = "i1"}), t";", nl(),
-		cp(1), t" = [NSException exceptionWithName:@\"", cp(1), t"Name", t"\"", nl(),
-		t"                             reason:@\"", i(0, "", {key = "i0"}), t"\"", nl(),
-		t"                           userInfo:nil];", nl(),
-		t"[", cp(1), t" raise];"
-	}),
-	s({trig = "prag", descr = "(prag)", priority = -1000, trigEngine = te("w")}, {
-		t"#pragma mark ", i(0, "-", {key = "i0"})
-	}),
-	s({trig = "color", descr = "(color)", priority = -1000, trigEngine = te("w")}, {
-		t"[[NSColor ", i(0, "blackColor", {key = "i0"}), t"] set];"
-	}),
-	s({trig = "nsa", descr = "(nsa)", priority = -1000, trigEngine = te("w")}, {
-		t"NSArray ", i(0, "", {key = "i0"})
-	}),
-	s({trig = "nsma", descr = "(nsma)", priority = -1000, trigEngine = te("w")}, {
-		t"NSMutableArray ", i(0, "", {key = "i0"})
-	}),
-	s({trig = "aa", descr = "(aa)", priority = -1000, trigEngine = te("w")}, {
-		t"NSArray * array;"
-	}),
-	s({trig = "ma", descr = "(ma)", priority = -1000, trigEngine = te("w")}, {
-		t"NSMutableArray * array;"
-	}),
-	s({trig = "nsd", descr = "(nsd)", priority = -1000, trigEngine = te("w")}, {
-		t"NSDictionary ", i(0, "", {key = "i0"})
-	}),
-	s({trig = "nsmd", descr = "(nsmd)", priority = -1000, trigEngine = te("w")}, {
-		t"NSMutableDictionary ", i(0, "", {key = "i0"})
-	}),
-	s({trig = "nss", descr = "(nss)", priority = -1000, trigEngine = te("w")}, {
-		t"NSString ", i(0, "", {key = "i0"})
-	}),
-	s({trig = "nsms", descr = "(nsms)", priority = -1000, trigEngine = te("w")}, {
-		t"NSMutableString ", i(0, "", {key = "i0"})
 	}),
 })

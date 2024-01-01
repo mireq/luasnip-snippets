@@ -42,18 +42,18 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	0,
-	0,
-	1,
-	1,
-	1,
-	2,
-	2,
-	4,
-	2,
-	1,
-	1,
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
 }
 ls.add_snippets("haml", {
 	s({trig = "t", descr = "(t)", priority = -1000, trigEngine = te("w")}, {
@@ -75,13 +75,13 @@ ls.add_snippets("haml", {
 		t"= render :partial => \"", i(0, "item", {key = "i0"}), t"\""
 	}),
 	s({trig = "rpc", descr = "(rpc)", priority = -1000, trigEngine = te("w")}, {
-		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :collection => ", t"@", cp(1), t"s"
+		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :collection => ", d(2, function(args) return sn(nil, {t"@", cp(1), t"s"}) end, {}, {key = "i0"})
 	}),
 	s({trig = "rpl", descr = "(rpl)", priority = -1000, trigEngine = te("w")}, {
-		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :locals => { :", cp(1), t" => ", t"@", cp(1), t" }"
+		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :locals => { :", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t" => ", d(3, function(args) return sn(nil, {t"@", cp(1)}) end, {}, {key = "i0"}), t" }"
 	}),
 	s({trig = "rpo", descr = "(rpo)", priority = -1000, trigEngine = te("w")}, {
-		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :object => ", t"@", cp(1)
+		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :object => ", d(2, function(args) return sn(nil, {t"@", cp(1)}) end, {}, {key = "i0"})
 	}),
 	s({trig = "lt", descr = "(lt)", priority = -1000, trigEngine = te("w")}, {
 		t"= link_to ", i(1, "name", {key = "i1"}), t", ", i(2, "dest", {key = "i2"})
@@ -100,7 +100,7 @@ ls.add_snippets("haml", {
 	}),
 	s({trig = "ifp", descr = "(ifp)", priority = -1000, trigEngine = te("w")}, {
 		t"- if ", i(1, "", {key = "i1"}), t".presence?", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end)
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end)
 	}),
 	s({trig = "ntc", descr = "(ntc)", priority = -1000, trigEngine = te("w")}, {
 		t"= number_to_currency(", i(1, "", {key = "i1"}), t")"

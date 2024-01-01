@@ -42,42 +42,42 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	1,
-	2,
-	0,
-	2,
-	1,
-	1,
-	1,
-	2,
-	0,
-	1,
-	1,
-	2,
-	6,
-	5,
-	3,
-	0,
-	4,
-	4,
-	{{1, 1}, {2, 2}, {3, 4}, {4, 5}},
-	1,
-	1,
-	4,
-	3,
-	5,
-	7,
-	9,
-	3,
-	2,
-	3,
-	1,
-	1,
-	2,
-	1,
-	1,
-	1,
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
 }
 ls.add_snippets("lpc", {
 	s({trig = "inc", descr = "(inc)", priority = -1000, trigEngine = te("w")}, {
@@ -101,7 +101,7 @@ ls.add_snippets("lpc", {
 	}),
 	s({trig = "#if", descr = "(#if)", priority = -1000, trigEngine = te("w")}, {
 		t"#if ", i(1, "FOO", {key = "i1"}), nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"#endif"
 	}),
 	s({trig = "once", descr = "(once)", priority = -1000, trigEngine = te("w")}, {
@@ -116,7 +116,7 @@ ls.add_snippets("lpc", {
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"if(", i(1, "true", {key = "i1"}), t")", nl(),
 		t"{", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "ife", descr = "(ife)", priority = -1000, trigEngine = te("w")}, {
@@ -132,13 +132,13 @@ ls.add_snippets("lpc", {
 	s({trig = "el", descr = "(el)", priority = -1000, trigEngine = te("w")}, {
 		t"else", nl(),
 		t"{", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "elif", descr = "(elif)", priority = -1000, trigEngine = te("w")}, {
 		t"else if(", i(1, "true", {key = "i1"}), t")", nl(),
 		t"{", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "ifi", descr = "(ifi)", priority = -1000, trigEngine = te("w")}, {
@@ -186,20 +186,20 @@ ls.add_snippets("lpc", {
 		t"}"
 	}),
 	s({trig = "forr", descr = "(forr)", priority = -1000, trigEngine = te("w")}, {
-		t"for(int ", i(1, "i", {key = "i1"}), t" = ", i(2, "0", {key = "i2"}), t"; ", cp(1), t" < 10", t"; ", cp(1), i(3, "++", {key = "i3"}), t")", nl(),
+		t"for(int ", i(1, "i", {key = "i1"}), t" = ", i(2, "0", {key = "i2"}), t"; ", d(3, function(args) return sn(nil, {cp(1), t" < 10"}) end, {}, {key = "i3"}), t"; ", cp(1), i(4, "++", {key = "i4"}), t")", nl(),
 		t"{", nl(),
-		t"\t", i(4, "", {key = "i5"}), nl(),
+		t"\t", i(5, "", {key = "i5"}), nl(),
 		t"}"
 	}),
 	s({trig = "wh", descr = "(wh)", priority = -1000, trigEngine = te("w")}, {
 		t"while(", i(1, "", {key = "i1"}), t")", nl(),
 		t"{", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "do", descr = "(do)", priority = -1000, trigEngine = te("w")}, {
 		t"do{", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}while (", i(1, "", {key = "i1"}), t");"
 	}),
 	s({trig = "fnc", descr = "(fnc)", priority = -1000, trigEngine = te("w")}, {

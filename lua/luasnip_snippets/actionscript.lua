@@ -42,26 +42,26 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	2,
-	2,
-	2,
-	1,
-	1,
-	1,
-	1,
-	2,
-	2,
-	3,
-	2,
-	1,
-	2,
-	{{1, 1}, {2, 2}, {3, 4}},
-	1,
-	0,
-	2,
-	3,
-	4,
+	{},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
 }
 ls.add_snippets("actionscript", {
 	s({trig = "main", descr = "(main)", priority = -1000, trigEngine = te("w")}, {
@@ -152,17 +152,17 @@ ls.add_snippets("actionscript", {
 	s({trig = "for", descr = "(for) for (..) {..}", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
 			t"for (", i(1, "var", {key = "i1"}), t" in ", i(2, "object", {key = "i2"}), t"){", nl(),
-			t"\t", i(3, "", {key = "i3"}), nl(),
+			t"\t", i(3, "", {key = "i0"}), nl(),
 			t"}"
 		},
 		{
 			t"for each (", i(1, "var", {key = "i1"}), t" in ", i(2, "object", {key = "i2"}), t"){", nl(),
-			t"\t", i(3, "", {key = "i3"}), nl(),
+			t"\t", i(3, "", {key = "i0"}), nl(),
 			t"}"
 		},
 		{
 			t"for (", i(2, "i", {key = "i2"}), t" = 0; ", cp(2), t" < ", i(1, "count", {key = "i1"}), t"; ", cp(2), i(3, "++", {key = "i3"}), t") {", nl(),
-			t"\t", i(4, "", {key = "i4"}), nl(),
+			t"\t", i(4, "", {key = "i0"}), nl(),
 			t"}"
 		},
 	})),
@@ -189,18 +189,18 @@ ls.add_snippets("actionscript", {
 		t"}"
 	}),
 	s({trig = "forr", descr = "(forr)", priority = -1000, trigEngine = te("w")}, {
-		t"for (", i(1, "i", {key = "i1"}), t" = ", i(2, "0", {key = "i2"}), t"; ", cp(1), t" < 10", t"; ", cp(1), i(3, "++", {key = "i3"}), t") {", nl(),
+		t"for (", i(1, "i", {key = "i1"}), t" = ", i(2, "0", {key = "i2"}), t"; ", d(3, function(args) return sn(nil, {cp(1), t" < 10"}) end, {}, {key = "i3"}), t"; ", cp(1), i(4, "++", {key = "i4"}), t") {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"if (", i(1, "", {key = "i1"}), t") {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "el", descr = "(el)", priority = -1000, trigEngine = te("w")}, {
 		t"else {", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "t", descr = "(t) Ternary: `condition ? true : false`", priority = -1000, trigEngine = te("w")}, {

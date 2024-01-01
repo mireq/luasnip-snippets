@@ -42,33 +42,33 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	2,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	2,
-	0,
-	2,
-	0,
-	1,
-	3,
-	3,
-	4,
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
 	{{1, 1}, {2, 2}, {3, 4}},
-	2,
-	{{1, 1}, {2, 3}, {3, 4}},
-	2,
-	0,
-	0,
-	1,
-	1,
-	0,
-	1,
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{0, 0}},
+	{{1, 1}},
 }
 ls.add_snippets("org", {
 	s({trig = "begin", descr = "(begin)", priority = -1000, trigEngine = te("w")}, {
@@ -161,13 +161,13 @@ ls.add_snippets("org", {
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "inl", descr = "(inl)", priority = -1000, trigEngine = te("w")}, {
-		t"src_", i(1, "language", {key = "i1"}), i(2, "[${3::exports code}]", {key = "i2"}), t"{", i(3, "code", {key = "i3"}), t"}"
+		t"src_", i(1, "language", {key = "i1"}), i(2, "[${3::exports code}]", {key = "i2"}), t"{", i(3, "code", {key = "i4"}), t"}"
 	}),
 	s({trig = "srci", descr = "(srci)", priority = -1000, trigEngine = te("w")}, {
 		t"src_", i(1, "language", {key = "i1"}), t"[", i(2, "header", {key = "i2"}), t"]{", i(0, "body", {key = "i0"}), t"}"
 	}),
 	s({trig = "jupyter", descr = "(jupyter)", priority = -1000, trigEngine = te("w")}, {
-		t"#+begin_src jupyter-", i(1, "$$(yas-choose-value \'(\"python\" \"julia\" \"R\"))", {key = "i1"}), t" :session ", i(2, "", {key = "i3"}), i(3, " :async yes", {key = "i3"}), nl(),
+		t"#+begin_src jupyter-", i(1, "$$(yas-choose-value \'(\"python\" \"julia\" \"R\"))", {key = "i1"}), d(2, function(args) return sn(nil, {t" :session ", i(3, "", {key = "i3"})}) end, {}, {key = "i2"}), i(4, " :async yes", {key = "i4"}), nl(),
 		i(0, "", {key = "i0"}), nl(),
 		t"#+end_src"
 	}),

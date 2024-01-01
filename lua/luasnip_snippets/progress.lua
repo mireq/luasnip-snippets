@@ -42,26 +42,26 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	1,
-	1,
-	1,
-	2,
-	3,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{{0, 0}},
+	{},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{},
+	{},
+	{},
+	{},
+	{},
 }
 ls.add_snippets("progress", {
 	s({trig = "defbuf", descr = "(defbuf)", priority = -1000, trigEngine = te("w")}, {
@@ -90,7 +90,7 @@ ls.add_snippets("progress", {
 	}),
 	s({trig = "ff", descr = "(ff)", priority = -1000, trigEngine = te("w")}, {
 		t"FIND FIRST ", i(1, "BufferName", {key = "i1"}), nl(),
-		t"WHERE ", cp(1), t".${3}", t" ", i(0, "", {key = "i0"})
+		d(2, function(args) return sn(nil, {t"WHERE ", cp(1), t".${3}"}) end, {}, {key = "i2"}), t" ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "input", descr = "(input)", priority = -1000, trigEngine = te("w")}, {
 		t"DEFINE INPUT PARAMETER ", i(1, "ParamName", {key = "i1"}), t" AS ", i(0, "", {key = "i0"}), t"."

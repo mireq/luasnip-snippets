@@ -42,28 +42,28 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	0,
-	0,
-	{{1, 1}, {2, 3}},
-	{{1, 2}, {2, 3}},
-	{{1, 2}, {2, 4}, {3, 5}},
-	{{1, 2}},
-	0,
-	0,
-	1,
-	2,
-	2,
-	1,
-	4,
-	1,
-	3,
-	2,
-	2,
-	3,
-	2,
-	2,
-	0,
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{},
+	{{0, 0}},
 }
 ls.add_snippets("eelixir", {
 	s({trig = "%", descr = "(%) \"<% %>\"", priority = -50, trigEngine = te("w")}, {
@@ -72,38 +72,20 @@ ls.add_snippets("eelixir", {
 	s({trig = "=", descr = "(=) \"<%= %>\"", priority = -50, trigEngine = te("w")}, {
 		t"<%= ", i(0, "", {key = "i0"}), t" %>"
 	}),
+	s({trig = "#", descr = "(#) <%# %>", priority = -1000, trigEngine = te("w")}, {
+		t"<%# ", i(0, "", {key = "i0"}), t" %>"
+	}),
 	s({trig = "end", descr = "(end) \"<% end %>\"", priority = -50, trigEngine = te("w")}, {
 		t"<% end %>"
 	}),
 	s({trig = "for", descr = "(for)", priority = -50, trigEngine = te("")}, {
-		t"<%= for ", i(1, "item", {key = "i1"}), t" <- ", cp(1), t"s", t" ", i(2, "@conn", {key = "i2"}), t" do %>", nl(),
+		t"<%= for ", i(1, "item", {key = "i1"}), t" <- ", d(2, function(args) return sn(nil, {cp(1), t"s"}) end, {}, {key = "i2"}), t" ", i(3, "@conn", {key = "i3"}), t" do %>", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"<% end %>"
-	}),
-	s({trig = "ft", descr = "(ft) \"form_tag\"", priority = -50, trigEngine = te("w")}, {
-		t"<%= form_tag(", t"\"", i(1, "/users", {key = "i1"}), t"\"", t", method: ", i(2, ":post", {key = "i2"}), t") %>", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"</form>"
-	}),
-	s({trig = "lin", descr = "(lin) \"link\"", priority = -50, trigEngine = te("w")}, {
-		t"<%= link ", t"\"", i(1, "Submit", {key = "i1"}), t"\"", t", to: ", t"\"", i(2, "/users", {key = "i2"}), t"\"", t", method: ", i(3, ":delete", {key = "i3"}), t" %>"
-	}),
-	s({trig = "ff", descr = "(ff) \"form_for\"", priority = -50, trigEngine = te("w")}, {
-		t"<%= form_for @changeset, ", t"\"", i(1, "/users", {key = "i1"}), t"\"", t", fn f -> %>", nl(),
-		t"\t\t", i(0, "", {key = "i0"}), nl(),
-		nl(),
-		t"\t<%= submit \"Submit\" %>", nl(),
-		t"<% end %>"
-	}),
-	s({trig = "gt", descr = "(gt) \"gettext\"", priority = -50, trigEngine = te("w")}, {
-		t"<%= gettext(\"", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"\") %>"
-	}),
-	s({trig = "#", descr = "(#) <%# %>", priority = -1000, trigEngine = te("w")}, {
-		t"<%# ", i(0, "", {key = "i0"}), t" %>"
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"<%= if ", i(1, "", {key = "i1"}), t" do %>", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"<% end %>"
 	}),
 	s({trig = "ife", descr = "(ife)", priority = -1000, trigEngine = te("w")}, {
@@ -124,8 +106,13 @@ ls.add_snippets("eelixir", {
 	}),
 	s({trig = "unless", descr = "(unless)", priority = -1000, trigEngine = te("w")}, {
 		t"<%= unless ", i(1, "", {key = "i1"}), t" do %>", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"<% end %>"
+	}),
+	s({trig = "ft", descr = "(ft) \"form_tag\"", priority = -50, trigEngine = te("w")}, {
+		t"<%= form_tag(", d(1, function(args) return sn(nil, {t"\"", i(2, "/users", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", method: ", i(3, ":post", {key = "i3"}), t") %>", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"</form>"
 	}),
 	s({trig = "sl", descr = "(sl) select", priority = -1000, trigEngine = te("w")}, {
 		t"<%= select ", i(1, "f", {key = "i1"}), t", :", i(2, "field", {key = "i2"}), t", ", i(3, "[{\"key\", \"value\"}]", {key = "i3"}), t", prompt: ", i(4, "\"Prompt\"", {key = "i4"}), t" %>", nl()
@@ -152,7 +139,20 @@ ls.add_snippets("eelixir", {
 	s({trig = "render", descr = "(render)", priority = -1000, trigEngine = te("w")}, {
 		t"<%= render \"", i(1, "index", {key = "i1"}), t".html\", ", i(2, "var: @var", {key = "i2"}), t" %>"
 	}),
+	s({trig = "lin", descr = "(lin) \"link\"", priority = -50, trigEngine = te("w")}, {
+		t"<%= link ", d(1, function(args) return sn(nil, {t"\"", i(2, "Submit", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", to: ", d(3, function(args) return sn(nil, {t"\"", i(4, "/users", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), t", method: ", i(5, ":delete", {key = "i5"}), t" %>"
+	}),
+	s({trig = "ff", descr = "(ff) \"form_for\"", priority = -50, trigEngine = te("w")}, {
+		t"<%= form_for @changeset, ", d(1, function(args) return sn(nil, {t"\"", i(2, "/users", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", fn f -> %>", nl(),
+		t"\t\t", i(0, "", {key = "i0"}), nl(),
+		nl(),
+		t"\t<%= submit \"Submit\" %>", nl(),
+		t"<% end %>"
+	}),
 	s({trig = "pry", descr = "(pry)", priority = -1000, trigEngine = te("w")}, {
 		t"<% require IEx; IEx.pry %>"
+	}),
+	s({trig = "gt", descr = "(gt) \"gettext\"", priority = -50, trigEngine = te("w")}, {
+		t"<%= gettext(\"", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t"\") %>"
 	}),
 })

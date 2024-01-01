@@ -42,68 +42,68 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	2,
-	3,
-	1,
-	2,
-	3,
-	2,
-	{{1, 2}, {2, 3}},
-	0,
-	2,
-	2,
-	2,
-	3,
-	3,
-	3,
-	2,
-	2,
-	2,
-	3,
-	3,
-	3,
-	2,
-	2,
-	2,
-	3,
-	3,
-	3,
-	2,
-	2,
-	3,
-	3,
-	3,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	2,
-	3,
-	1,
-	2,
-	0,
-	4,
-	1,
-	0,
-	0,
-	4,
-	2,
-	1,
-	1,
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}},
+	{},
+	{},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{},
 }
 
 local python_globals = {
@@ -160,68 +160,6 @@ def create_table(snip):
 
 
 ls.add_snippets("markdown", {
-	s({trig = "sec", descr = "(sec) \"Section\"", priority = -50, trigEngine = te("b")}, {
-		t"# ", i(1, "Section Name", {key = "i1"}), t" #", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "ssec", descr = "(ssec) \"Sub Section\"", priority = -50, trigEngine = te("b")}, {
-		t"## ", i(1, "Section Name", {key = "i1"}), t" ##", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "sssec", descr = "(sssec) \"SubSub Section\"", priority = -50, trigEngine = te("b")}, {
-		t"### ", i(1, "Section Name", {key = "i1"}), t" ###", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "par", descr = "(par) \"Paragraph\"", priority = -50, trigEngine = te("b")}, {
-		t"#### ", i(1, "Paragraph Name", {key = "i1"}), t" ####", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "spar", descr = "(spar) \"Paragraph\"", priority = -50, trigEngine = te("b")}, {
-		t"##### ", i(1, "Paragraph Name", {key = "i1"}), t" #####", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "*", descr = "(*) \"italics\"", priority = -50, trigEngine = te("")}, {
-		t"*", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"*", i(0, "", {key = "i0"})
-	}),
-	s({trig = "**", descr = "(**) \"bold\"", priority = -50, trigEngine = te("")}, {
-		t"**", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"**", i(0, "", {key = "i0"})
-	}),
-	s({trig = "***", descr = "(***) \"bold italics\"", priority = -50, trigEngine = te("")}, {
-		t"***", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"***", i(0, "", {key = "i0"})
-	}),
-	s({trig = "/*", descr = "(/*) \"Comment\"", priority = -50, trigEngine = te("")}, {
-		t"<!-- ", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t" -->", i(0, "", {key = "i0"})
-	}),
-	s({trig = "link", descr = "(link) \"Link to something\"", priority = -50, trigEngine = te("")}, {
-		t"[", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"](", t"https://", i(2, "www.url.com", {key = "i2"}), t")", i(0, "", {key = "i0"})
-	}),
-	s({trig = "img", descr = "(img) \"Image\"", priority = -50, trigEngine = te("")}, {
-		t"![", i(1, "pic alt", {key = "i1"}), t"](", i(2, "path", {key = "i2"}), tr(3, ".+", " \""), i(3, "opt title", {key = "i3"}), tr(3, ".+", "\""), t")", i(0, "", {key = "i0"})
-	}),
-	s({trig = "ilc", descr = "(ilc) \"Inline Code\"", priority = -50, trigEngine = te("i")}, {
-		t"`", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"`", i(0, "", {key = "i0"})
-	}),
-	s({trig = "cbl", descr = "(cbl) \"Codeblock\"", priority = -50, trigEngine = te("b")}, {
-		t"```", i(1, "", {key = "i1"}), nl(),
-		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), nl(),
-		t"```", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "refl", descr = "(refl) \"Reference Link\"", priority = -50, trigEngine = te("")}, {
-		t"[", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"][", i(2, "id", {key = "i2"}), t"]", i(0, "", {key = "i0"}), nl(),
-		nl(),
-		t"[", cp(2), t"]:", t"https://", i(3, "www.url.com", {key = "i3"}), t" \"", cp(4), t"\""
-	}),
-	s({trig = "fnt", descr = "(fnt) \"Footnote\"", priority = -50, trigEngine = te("")}, {
-		t"[^", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"]", i(0, "", {key = "i0"}), nl(),
-		nl(),
-		t"[^", cp(1), t"]:", i(2, "Text", {key = "i2"})
-	}),
-	s({trig = "detail", descr = "(detail) \"Disclosure\"", priority = -50, trigEngine = te("")}, {
-		t"<details", i(2, " open=\"\"", {key = "i2"}), t">", nl(),
-		t"  ", t"<summary>", i(1, "", {key = "i2"}), t"</summary>", i(0, "", {key = "i0"}), nl(),
-		t"</details>"
-	}),
 	s({trig = "[", descr = "([)", priority = -1000, trigEngine = te("w")}, {
 		t"[", i(1, "text", {key = "i1"}), t"](https://", i(2, "address", {key = "i2"}), t")"
 	}),
@@ -300,6 +238,9 @@ ls.add_snippets("markdown", {
 	s({trig = "<c", descr = "(<c)", priority = -1000, trigEngine = te("w")}, {
 		t"<", f(function(args, snip) return c_viml("@+") end, {}), t">"
 	}),
+	s({trig = "**", descr = "(**) \"bold\"", priority = -50, trigEngine = te("")}, {
+		t"**", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"**", i(0, "", {key = "i0"})
+	}),
 	s({trig = "__", descr = "(__) Bold", priority = -1000, trigEngine = te("w")}, {
 		t"__", i(0, "", {key = "i0"}), t"__"
 	}),
@@ -338,7 +279,7 @@ ls.add_snippets("markdown", {
 	}),
 	s({trig = "```", descr = "(```)", priority = -1000, trigEngine = te("w")}, {
 		t"```", i(1, "", {key = "i1"}), nl(),
-		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), nl(),
+		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
 		t"```", nl()
 	}),
 	s({trig = "```l", descr = "(```l)", priority = -1000, trigEngine = te("w")}, {
@@ -362,6 +303,9 @@ ls.add_snippets("markdown", {
 	s({trig = "gist-short", descr = "(gist-short)", priority = -1000, trigEngine = te("w")}, {
 		t"{% gist ", i(0, "gist_id", {key = "i0"}), t" %}", nl()
 	}),
+	s({trig = "img", descr = "(img) \"Image\"", priority = -50, trigEngine = te("")}, {
+		t"![", i(1, "pic alt", {key = "i1"}), t"](", i(2, "path", {key = "i2"}), tr(3, ".+", " \""), i(3, "opt title", {key = "i3"}), tr(3, ".+", "\""), t")", i(0, "", {key = "i0"})
+	}),
 	s({trig = "youtube", descr = "(youtube)", priority = -1000, trigEngine = te("w")}, {
 		t"{% youtube ", i(0, "video_id", {key = "i0"}), t" %}", nl()
 	}),
@@ -383,5 +327,61 @@ ls.add_snippets("markdown", {
 	s({trig = "::", descr = "(::) Alternate definition list", priority = -1000, trigEngine = te("w")}, {
 		i(1, "", {key = "i1"}), nl(),
 		t"  - ", i(0, "", {key = "i0"})
+	}),
+	s({trig = "sec", descr = "(sec) \"Section\"", priority = -50, trigEngine = te("b")}, {
+		t"# ", i(1, "Section Name", {key = "i1"}), t" #", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "ssec", descr = "(ssec) \"Sub Section\"", priority = -50, trigEngine = te("b")}, {
+		t"## ", i(1, "Section Name", {key = "i1"}), t" ##", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "sssec", descr = "(sssec) \"SubSub Section\"", priority = -50, trigEngine = te("b")}, {
+		t"### ", i(1, "Section Name", {key = "i1"}), t" ###", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "par", descr = "(par) \"Paragraph\"", priority = -50, trigEngine = te("b")}, {
+		t"#### ", i(1, "Paragraph Name", {key = "i1"}), t" ####", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "spar", descr = "(spar) \"Paragraph\"", priority = -50, trigEngine = te("b")}, {
+		t"##### ", i(1, "Paragraph Name", {key = "i1"}), t" #####", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "*", descr = "(*) \"italics\"", priority = -50, trigEngine = te("")}, {
+		t"*", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"*", i(0, "", {key = "i0"})
+	}),
+	s({trig = "***", descr = "(***) \"bold italics\"", priority = -50, trigEngine = te("")}, {
+		t"***", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"***", i(0, "", {key = "i0"})
+	}),
+	s({trig = "/*", descr = "(/*) \"Comment\"", priority = -50, trigEngine = te("")}, {
+		t"<!-- ", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t" -->", i(0, "", {key = "i0"})
+	}),
+	s({trig = "link", descr = "(link) \"Link to something\"", priority = -50, trigEngine = te("")}, {
+		t"[", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"](", d(3, function(args) return sn(nil, {t"https://", i(2, "www.url.com", {key = "i2"})}) end, {}, {key = "i3"}), t")", i(0, "", {key = "i0"})
+	}),
+	s({trig = "ilc", descr = "(ilc) \"Inline Code\"", priority = -50, trigEngine = te("i")}, {
+		t"`", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"`", i(0, "", {key = "i0"})
+	}),
+	s({trig = "cbl", descr = "(cbl) \"Codeblock\"", priority = -50, trigEngine = te("b")}, {
+		t"```", i(1, "", {key = "i1"}), nl(),
+		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), nl(),
+		t"```", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "refl", descr = "(refl) \"Reference Link\"", priority = -50, trigEngine = te("")}, {
+		t"[", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"][", i(2, "id", {key = "i2"}), t"]", i(0, "", {key = "i0"}), nl(),
+		nl(),
+		t"[", cp(2), t"]:", d(4, function(args) return sn(nil, {t"https://", i(3, "www.url.com", {key = "i3"})}) end, {}, {key = "i4"}), t" \"", d(5, function(args) return sn(nil, {cp(4)}) end, {}, {key = "i5"}), t"\""
+	}),
+	s({trig = "fnt", descr = "(fnt) \"Footnote\"", priority = -50, trigEngine = te("")}, {
+		t"[^", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"]", i(0, "", {key = "i0"}), nl(),
+		nl(),
+		t"[^", cp(1), t"]:", i(2, "Text", {key = "i2"})
+	}),
+	s({trig = "detail", descr = "(detail) \"Disclosure\"", priority = -50, trigEngine = te("")}, {
+		t"<details", i(3, " open=\"\"", {key = "i3"}), t">", nl(),
+		t"  ", d(1, function(args) return sn(nil, {t"<summary>", i(2, "", {key = "i2"}), t"</summary>"}) end, {}, {key = "i1"}), i(0, "", {key = "i0"}), nl(),
+		t"</details>"
 	}),
 })

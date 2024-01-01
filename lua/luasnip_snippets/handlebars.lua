@@ -42,19 +42,19 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	1,
-	1,
-	3,
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
 }
 ls.add_snippets("handlebars", {
 	s({trig = "if", descr = "(if) # {{#if value}} ... {{/if}}", priority = -1000, trigEngine = te("w")}, {
 		t"{{#if ", i(1, "value", {key = "i1"}), t"}}", nl(),
-		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), nl(),
+		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
 		t"{{/if}}"
 	}),
 	s({trig = "ifn", descr = "(ifn) # {{#unless value}} ... {{/unless}}", priority = -1000, trigEngine = te("w")}, {
 		t"{{#unless ", i(1, "value", {key = "i1"}), t"}}", nl(),
-		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), nl(),
+		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
 		t"{{/unless}}"
 	}),
 	s({trig = "ife", descr = "(ife) # {{#if value}} ... {{else}} .. {{/if}}", priority = -1000, trigEngine = te("w")}, {

@@ -42,17 +42,17 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	1,
-	2,
-	1,
-	1,
-	1,
-	1,
-	2,
-	1,
-	0,
-	2,
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}, {2, 2}},
 }
 ls.add_snippets("reason", {
 	s({trig = "doc", descr = "(doc)", priority = -1000, trigEngine = te("w")}, {

@@ -4,7 +4,7 @@ blade html
 coffee-jasmine coffee
 coffee-react coffee
 cpp c
-cuda cpp c
+cuda c cpp
 eelixir html
 eruby html
 freemarker html
@@ -16,15 +16,15 @@ lhaskell haskell
 octave matlab
 pandoc markdown
 rmd markdown
-rnoweb r tex
+rnoweb tex r
 scss css
-smarty html css javascript
+smarty css javascript html
 soy html
-svelte html css javascript
+svelte css javascript html
 systemverilog verilog
-typescript javascript_react javascript
-typescript_react typescript javascript_react javascript
-typescriptreact typescript javascript
-vue html css javascript
+typescript javascript javascript_react
+typescript_react javascript javascript_react typescript
+typescriptreact javascript typescript
+vue css javascript html
 xhtml html
 python python_extra

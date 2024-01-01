@@ -42,109 +42,237 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	2,
-	1,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	1,
-	3,
-	2,
-	2,
-	2,
-	3,
-	2,
-	2,
-	2,
-	3,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	7,
-	2,
-	2,
-	2,
-	2,
-	{{1, 1}, {2, 3}, {3, 4}, {4, 5}, {5, 6}},
-	{{1, 1}, {2, 3}, {3, 4}, {4, 5}, {5, 6}},
-	2,
-	2,
-	1,
-	2,
-	1,
-	1,
-	1,
-	1,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	2,
-	5,
-	1,
-	3,
-	1,
-	1,
-	1,
-	1,
-	1,
-	2,
-	1,
-	1,
-	2,
-	3,
-	2,
-	1,
-	2,
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
 }
 ls.add_snippets("django", {
+	s({trig = "auto", descr = "(auto)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.AutoField(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "bigint", descr = "(bigint)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.BigIntegerField(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "binary", descr = "(binary)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.BinaryField(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "bool", descr = "(bool)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.BooleanField(", i(0, "default=True", {key = "i0"}), t")"
+	}),
+	s({trig = "char", descr = "(char)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.CharField(max_length=", i(2, "", {key = "i2"}), i(0, ", blank=True", {key = "i0"}), t")"
+	}),
+	s({trig = "comma", descr = "(comma)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.CommaSeparatedIntegerField(max_length=", i(2, "", {key = "i2"}), i(0, ", blank=True", {key = "i0"}), t")"
+	}),
+	s({trig = "date", descr = "(date)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.DateField(", i(2, "auto_now_add=True, auto_now=True", {key = "i2"}), i(0, ", blank=True, null=True", {key = "i0"}), t")"
+	}),
+	s({trig = "datetime", descr = "(datetime)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.DateTimeField(", i(2, "auto_now_add=True, auto_now=True", {key = "i2"}), i(0, ", blank=True, null=True", {key = "i0"}), t")"
+	}),
+	s({trig = "decimal", descr = "(decimal)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.DecimalField(max_digits=", i(2, "", {key = "i2"}), t", decimal_places=", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "email", descr = "(email)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.EmailField(max_length=", i(2, "75", {key = "i2"}), i(0, ", blank=True", {key = "i0"}), t")"
+	}),
+	s({trig = "file", descr = "(file)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.FileField(upload_to=", i(2, "path/for/upload", {key = "i2"}), i(0, ", max_length=100", {key = "i0"}), t")"
+	}),
+	s({trig = "filepath", descr = "(filepath)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.FilePathField(path=", i(2, "\"/abs/path/to/dir\"", {key = "i2"}), i(3, ", max_length=100", {key = "i3"}), i(4, ", match=\"*.ext\"", {key = "i4"}), i(5, ", recursive=True", {key = "i5"}), i(0, ", blank=True, ", {key = "i0"}), t")"
+	}),
+	s({trig = "float", descr = "(float)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.FloatField(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "image", descr = "(image)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.ImageField(upload_to=", i(2, "path/for/upload", {key = "i2"}), i(3, ", height_field=height, width_field=width", {key = "i3"}), i(0, ", max_length=100", {key = "i0"}), t")"
+	}),
+	s({trig = "int", descr = "(int)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.IntegerField(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "ip", descr = "(ip)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.IPAddressField(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "nullbool", descr = "(nullbool)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.NullBooleanField(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "posint", descr = "(posint)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.PositiveIntegerField(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "possmallint", descr = "(possmallint)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.PositiveSmallIntegerField(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "slug", descr = "(slug)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.SlugField(max_length=", i(2, "50", {key = "i2"}), i(0, ", blank=True", {key = "i0"}), t")"
+	}),
+	s({trig = "smallint", descr = "(smallint)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.SmallIntegerField(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "text", descr = "(text)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.TextField(", i(0, "blank=True", {key = "i0"}), t")"
+	}),
+	s({trig = "time", descr = "(time)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.TimeField(", i(2, "auto_now_add=True, auto_now=True", {key = "i2"}), i(0, ", blank=True, null=True", {key = "i0"}), t")"
+	}),
+	s({trig = "url", descr = "(url)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.URLField(", i(2, "verify_exists=False", {key = "i2"}), i(3, ", max_length=200", {key = "i3"}), i(0, ", blank=True", {key = "i0"}), t")"
+	}),
+	s({trig = "xml", descr = "(xml)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.XMLField(schema_path=", i(2, "None", {key = "i2"}), i(0, ", blank=True", {key = "i0"}), t")"
+	}),
+	s({trig = "fk", descr = "(fk) \"ForeignKey\"", priority = -50, trigEngine = te("b")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.ForeignKey(", i(2, "", {key = "i2"}), t")"
+	}),
+	s({trig = "m2m", descr = "(m2m) \"ManyToManyField\"", priority = -50, trigEngine = te("b")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.ManyToManyField(", i(2, "", {key = "i2"}), t")"
+	}),
+	s({trig = "o2o", descr = "(o2o) \"OneToOneField\"", priority = -50, trigEngine = te("b")}, {
+		i(1, "FIELDNAME", {key = "i1"}), t" = models.OneToOneField(", i(2, "", {key = "i2"}), t")"
+	}),
 	s({trig = "form", descr = "(form) \"Form\"", priority = -50, trigEngine = te("b")}, {
 		t"class ", i(1, "FORMNAME", {key = "i1"}), t"(forms.Form):", nl(),
 		nl(),
 		t"\t", i(2, "# TODO: Define form fields here", {key = "i2"})
+	}),
+	s({trig = "model", descr = "(model) \"Model\"", priority = -50, trigEngine = te("b")}, {
+		t"class ", i(1, "MODELNAME", {key = "i1"}), t"(models.Model):", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"\tclass Meta:", nl(),
+		t"\t\tverbose_name = \"", cp(1), t"\"", nl(),
+		t"\t\tverbose_name_plural = \"", cp(1), t"s\"", nl(),
+		nl(),
+		t"\tdef __str__(self):", nl(),
+		t"\t\treturn super(", cp(1), t", self).__str__()", nl()
+	}),
+	s({trig = "modeladmin", descr = "(modeladmin)", priority = -1000, trigEngine = te("w")}, {
+		t"class ", i(1, "ModelName", {key = "i1"}), t"Admin(admin.ModelAdmin):", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		nl(),
+		t"admin.site.register(", cp(1), t", ", cp(1), t"Admin)", nl()
+	}),
+	s({trig = "tabularinline", descr = "(tabularinline) \"Tabular Inline\"", priority = -50, trigEngine = te("b")}, {
+		t"class ", i(1, "", {key = "i1"}), t"Inline(admin.TabularInline):", nl(),
+		t"\t\'\'\'", nl(),
+		t"\tTabular Inline View for ", cp(1), nl(),
+		t"\t\'\'\'", nl(),
+		t"\tmodel = ", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), nl(),
+		t"\tmin_num = ", i(3, "3", {key = "i3"}), nl(),
+		t"\tmax_num = ", i(4, "20", {key = "i4"}), nl(),
+		t"\textra = ", i(5, "1", {key = "i5"}), nl(),
+		t"\traw_id_fields = (", i(6, "", {key = "i6"}), t",)"
+	}),
+	s({trig = "stackedinline", descr = "(stackedinline) \"Stacked Inline\"", priority = -50, trigEngine = te("b")}, {
+		t"class ", i(1, "", {key = "i1"}), t"Inline(admin.StackedInline):", nl(),
+		t"\t\'\'\'", nl(),
+		t"\tStacked Inline View for ", cp(1), nl(),
+		t"\t\'\'\'", nl(),
+		t"\tmodel = ", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), nl(),
+		t"\tmin_num = ", i(3, "3", {key = "i3"}), nl(),
+		t"\tmax_num = ", i(4, "20", {key = "i4"}), nl(),
+		t"\textra = ", i(5, "1", {key = "i5"}), nl(),
+		t"\traw_id_fields = (", i(6, "", {key = "i6"}), t",)"
+	}),
+	s({trig = "r2r", descr = "(r2r)", priority = -1000, trigEngine = te("w")}, {
+		t"return render_to_response(\'", i(1, "template.html", {key = "i1"}), t"\', {", nl(),
+		t"\t\t", i(2, "", {key = "i2"}), nl(),
+		t"\t}", i(0, ", context_instance=RequestContext(request)", {key = "i0"}), nl(),
+		t")"
 	}),
 	s({trig = "modelform", descr = "(modelform) \"ModelForm\"", priority = -50, trigEngine = te("b")}, {
 		t"class ", i(1, "MODELNAME", {key = "i1"}), t"Form(forms.ModelForm):", nl(),
@@ -230,16 +358,6 @@ ls.add_snippets("django", {
 	s({trig = "furl", descr = "(furl) \"URLField\"", priority = -50, trigEngine = te("b")}, {
 		i(1, "FIELDNAME", {key = "i1"}), t" = forms.URLField(", i(2, "", {key = "i2"}), t")"
 	}),
-	s({trig = "model", descr = "(model) \"Model\"", priority = -50, trigEngine = te("b")}, {
-		t"class ", i(1, "MODELNAME", {key = "i1"}), t"(models.Model):", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"\tclass Meta:", nl(),
-		t"\t\tverbose_name = \"", cp(1), t"\"", nl(),
-		t"\t\tverbose_name_plural = \"", cp(1), t"s\"", nl(),
-		nl(),
-		t"\tdef __str__(self):", nl(),
-		t"\t\treturn super(", cp(1), t", self).__str__()", nl()
-	}),
 	s({trig = "modelfull", descr = "(modelfull) \"Model\"", priority = -50, trigEngine = te("b")}, {
 		t"class ", i(1, "MODELNAME", {key = "i1"}), t"(models.Model):", nl(),
 		t"\t", i(2, "# TODO: Define fields here", {key = "i2"}), nl(),
@@ -295,9 +413,6 @@ ls.add_snippets("django", {
 	s({trig = "mfloat", descr = "(mfloat) \"FloatField\"", priority = -50, trigEngine = te("b")}, {
 		i(1, "FIELDNAME", {key = "i1"}), t" = models.FloatField(", i(2, "", {key = "i2"}), t")"
 	}),
-	s({trig = "fk", descr = "(fk) \"ForeignKey\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.ForeignKey(", i(2, "", {key = "i2"}), t")"
-	}),
 	s({trig = "mip", descr = "(mip) \"IPAddressField\"", priority = -50, trigEngine = te("b")}, {
 		i(1, "FIELDNAME", {key = "i1"}), t" = models.IPAddressField(", i(2, "", {key = "i2"}), t")"
 	}),
@@ -307,14 +422,8 @@ ls.add_snippets("django", {
 	s({trig = "mint", descr = "(mint) \"IntegerField\"", priority = -50, trigEngine = te("b")}, {
 		i(1, "FIELDNAME", {key = "i1"}), t" = models.IntegerField(", i(2, "", {key = "i2"}), t")"
 	}),
-	s({trig = "m2m", descr = "(m2m) \"ManyToManyField\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.ManyToManyField(", i(2, "", {key = "i2"}), t")"
-	}),
 	s({trig = "mnullbool", descr = "(mnullbool) \"NullBooleanField\"", priority = -50, trigEngine = te("b")}, {
 		i(1, "FIELDNAME", {key = "i1"}), t" = models.NullBooleanField(", i(2, "", {key = "i2"}), t")"
-	}),
-	s({trig = "o2o", descr = "(o2o) \"OneToOneField\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.OneToOneField(", i(2, "", {key = "i2"}), t")"
 	}),
 	s({trig = "mphone", descr = "(mphone) \"PhoneNumberField\"", priority = -50, trigEngine = te("b")}, {
 		i(1, "FIELDNAME", {key = "i1"}), t" = models.PhoneNumberField(", i(2, "", {key = "i2"}), t")"
@@ -381,28 +490,6 @@ ls.add_snippets("django", {
 		t"\tmodel = ", cp(1), nl(),
 		t"\ttemplate_name = \"", i(2, "TEMPLATE_NAME", {key = "i2"}), t"\""
 	}),
-	s({trig = "stackedinline", descr = "(stackedinline) \"Stacked Inline\"", priority = -50, trigEngine = te("b")}, {
-		t"class ", i(1, "", {key = "i1"}), t"Inline(admin.StackedInline):", nl(),
-		t"\t\'\'\'", nl(),
-		t"\tStacked Inline View for ", cp(1), nl(),
-		t"\t\'\'\'", nl(),
-		t"\tmodel = ", cp(1), nl(),
-		t"\tmin_num = ", i(2, "3", {key = "i2"}), nl(),
-		t"\tmax_num = ", i(3, "20", {key = "i3"}), nl(),
-		t"\textra = ", i(4, "1", {key = "i4"}), nl(),
-		t"\traw_id_fields = (", i(5, "", {key = "i6"}), t",)"
-	}),
-	s({trig = "tabularinline", descr = "(tabularinline) \"Tabular Inline\"", priority = -50, trigEngine = te("b")}, {
-		t"class ", i(1, "", {key = "i1"}), t"Inline(admin.TabularInline):", nl(),
-		t"\t\'\'\'", nl(),
-		t"\tTabular Inline View for ", cp(1), nl(),
-		t"\t\'\'\'", nl(),
-		t"\tmodel = ", cp(1), nl(),
-		t"\tmin_num = ", i(2, "3", {key = "i2"}), nl(),
-		t"\tmax_num = ", i(3, "20", {key = "i3"}), nl(),
-		t"\textra = ", i(4, "1", {key = "i4"}), nl(),
-		t"\traw_id_fields = (", i(5, "", {key = "i6"}), t",)"
-	}),
 	s({trig = "templateview", descr = "(templateview) \"Generic Template View\"", priority = -50, trigEngine = te("b")}, {
 		t"class ", i(1, "CLASS_NAME", {key = "i1"}), t"(TemplateView):", nl(),
 		t"\ttemplate_name = \"", i(2, "TEMPLATE_NAME", {key = "i2"}), t"\""
@@ -420,92 +507,5 @@ ls.add_snippets("django", {
 		t"def get_context_data(self, **kwargs):", nl(),
 		t"\tkwargs[\'extra_context\'] = ", i(1, "\'New Value\'", {key = "i1"}), nl(),
 		t"\treturn super(", i(2, "CLASS_NAME", {key = "i2"}), t", self).get_context_data(**kwargs)"
-	}),
-	s({trig = "auto", descr = "(auto)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.AutoField(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "bigint", descr = "(bigint)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.BigIntegerField(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "binary", descr = "(binary)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.BinaryField(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "bool", descr = "(bool)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.BooleanField(", i(0, "default=True", {key = "i0"}), t")"
-	}),
-	s({trig = "char", descr = "(char)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.CharField(max_length=", i(2, "", {key = "i2"}), i(0, ", blank=True", {key = "i0"}), t")"
-	}),
-	s({trig = "comma", descr = "(comma)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.CommaSeparatedIntegerField(max_length=", i(2, "", {key = "i2"}), i(0, ", blank=True", {key = "i0"}), t")"
-	}),
-	s({trig = "date", descr = "(date)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.DateField(", i(2, "auto_now_add=True, auto_now=True", {key = "i2"}), i(0, ", blank=True, null=True", {key = "i0"}), t")"
-	}),
-	s({trig = "datetime", descr = "(datetime)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.DateTimeField(", i(2, "auto_now_add=True, auto_now=True", {key = "i2"}), i(0, ", blank=True, null=True", {key = "i0"}), t")"
-	}),
-	s({trig = "decimal", descr = "(decimal)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.DecimalField(max_digits=", i(2, "", {key = "i2"}), t", decimal_places=", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "email", descr = "(email)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.EmailField(max_length=", i(2, "75", {key = "i2"}), i(0, ", blank=True", {key = "i0"}), t")"
-	}),
-	s({trig = "file", descr = "(file)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.FileField(upload_to=", i(2, "path/for/upload", {key = "i2"}), i(0, ", max_length=100", {key = "i0"}), t")"
-	}),
-	s({trig = "filepath", descr = "(filepath)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.FilePathField(path=", i(2, "\"/abs/path/to/dir\"", {key = "i2"}), i(3, ", max_length=100", {key = "i3"}), i(4, ", match=\"*.ext\"", {key = "i4"}), i(5, ", recursive=True", {key = "i5"}), i(0, ", blank=True, ", {key = "i0"}), t")"
-	}),
-	s({trig = "float", descr = "(float)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.FloatField(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "image", descr = "(image)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.ImageField(upload_to=", i(2, "path/for/upload", {key = "i2"}), i(3, ", height_field=height, width_field=width", {key = "i3"}), i(0, ", max_length=100", {key = "i0"}), t")"
-	}),
-	s({trig = "int", descr = "(int)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.IntegerField(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "ip", descr = "(ip)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.IPAddressField(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "nullbool", descr = "(nullbool)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.NullBooleanField(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "posint", descr = "(posint)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.PositiveIntegerField(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "possmallint", descr = "(possmallint)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.PositiveSmallIntegerField(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "slug", descr = "(slug)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.SlugField(max_length=", i(2, "50", {key = "i2"}), i(0, ", blank=True", {key = "i0"}), t")"
-	}),
-	s({trig = "smallint", descr = "(smallint)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.SmallIntegerField(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "text", descr = "(text)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.TextField(", i(0, "blank=True", {key = "i0"}), t")"
-	}),
-	s({trig = "time", descr = "(time)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.TimeField(", i(2, "auto_now_add=True, auto_now=True", {key = "i2"}), i(0, ", blank=True, null=True", {key = "i0"}), t")"
-	}),
-	s({trig = "url", descr = "(url)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.URLField(", i(2, "verify_exists=False", {key = "i2"}), i(3, ", max_length=200", {key = "i3"}), i(0, ", blank=True", {key = "i0"}), t")"
-	}),
-	s({trig = "xml", descr = "(xml)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "FIELDNAME", {key = "i1"}), t" = models.XMLField(schema_path=", i(2, "None", {key = "i2"}), i(0, ", blank=True", {key = "i0"}), t")"
-	}),
-	s({trig = "modeladmin", descr = "(modeladmin)", priority = -1000, trigEngine = te("w")}, {
-		t"class ", i(1, "ModelName", {key = "i1"}), t"Admin(admin.ModelAdmin):", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		nl(),
-		t"admin.site.register(", cp(1), t", ", cp(1), t"Admin)", nl()
-	}),
-	s({trig = "r2r", descr = "(r2r)", priority = -1000, trigEngine = te("w")}, {
-		t"return render_to_response(\'", i(1, "template.html", {key = "i1"}), t"\', {", nl(),
-		t"\t\t", i(2, "", {key = "i2"}), nl(),
-		t"\t}", i(0, ", context_instance=RequestContext(request)", {key = "i0"}), nl(),
-		t")"
 	}),
 })

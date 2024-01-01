@@ -42,22 +42,22 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	2,
-	3,
-	3,
-	0,
-	0,
-	0,
-	0,
-	2,
-	1,
-	1,
-	1,
-	2,
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
 	{{1, 1}, {2, 3}},
 	{{1, 2}, {2, 3}},
-	3,
-	3,
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
 }
 ls.add_snippets("cuda", {
 	s({trig = "kern", descr = "(kern) \"Kernel definition\"", priority = -1000, trigEngine = te("w")}, {
@@ -104,11 +104,11 @@ ls.add_snippets("cuda", {
 	}),
 	s({trig = "ixz", descr = "(ixz) \"Get current X,Z index (2D)\"", priority = -1000, trigEngine = te("w")}, {
 		t"int ", i(1, "x", {key = "i1"}), t" = threadIdx.x + blockIdx.x * blockDim.x;", nl(),
-		t"int ", i(2, "z", {key = "i2"}), t" = threadIdx.z + blockIdx.z * blockDim.z;", nl()
+		t"int ", i(2, "z", {key = "i3"}), t" = threadIdx.z + blockIdx.z * blockDim.z;", nl()
 	}),
 	s({trig = "iyz", descr = "(iyz) \"Get current Y,Z index (2D)\"", priority = -1000, trigEngine = te("w")}, {
-		t"int ", i(1, "y", {key = "i1"}), t" = threadIdx.y + blockIdx.y * blockDim.y;", nl(),
-		t"int ", i(2, "z", {key = "i2"}), t" = threadIdx.z + blockIdx.z * blockDim.z;", nl()
+		t"int ", i(1, "y", {key = "i2"}), t" = threadIdx.y + blockIdx.y * blockDim.y;", nl(),
+		t"int ", i(2, "z", {key = "i3"}), t" = threadIdx.z + blockIdx.z * blockDim.z;", nl()
 	}),
 	s({trig = "ixyz", descr = "(ixyz) \"Get current X,Y,Z index (3D)\"", priority = -1000, trigEngine = te("w")}, {
 		t"int ", i(1, "x", {key = "i1"}), t" = threadIdx.x + blockIdx.x * blockDim.x;", nl(),

@@ -42,77 +42,77 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	3,
-	3,
-	3,
-	3,
-	2,
-	2,
-	2,
-	0,
-	{{1, 1}, {2, 3}, {3, 5}},
-	1,
-	3,
-	0,
-	2,
-	3,
-	2,
-	3,
-	3,
-	3,
-	0,
-	1,
-	1,
-	0,
-	1,
-	1,
-	2,
-	1,
-	1,
-	0,
-	1,
-	1,
-	1,
-	1,
-	1,
-	5,
-	1,
-	2,
-	1,
-	2,
-	{{1, 2}, {2, 3}},
-	0,
-	1,
-	3,
-	2,
-	0,
-	0,
-	1,
-	{{1, 2}, {2, 3}},
-	2,
-	0,
-	0,
-	1,
-	{{1, 1}, {2, 2}, {3, 4}, {4, 5}},
-	2,
-	2,
-	2,
-	1,
-	1,
-	1,
-	2,
-	1,
-	4,
-	2,
-	2,
-	2,
-	3,
-	3,
-	3,
-	0,
-	0,
-	0,
-	{{1, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{},
+	{{0, 0}, {1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{1, 1}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 4}, {4, 5}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}},
+	{{0, 0}},
+	{},
+	{{1, 1}, {2, 2}},
+	{{0, 0}},
 }
 ls.add_snippets("rust", {
 	s({trig = "fn", descr = "(fn) \"fn name(?) -> ? {}\"", priority = -50, trigEngine = te("")}, {
@@ -133,23 +133,6 @@ ls.add_snippets("rust", {
 	s({trig = "pafn", descr = "(pafn) \"pub async fn name(?) -> ? {}\"", priority = -50, trigEngine = te("")}, {
 		t"pub async fn ", i(1, "function_name", {key = "i1"}), t"(", i(2, "", {key = "i2"}), t")", tr(3, "..*", " -> "), i(3, "", {key = "i3"}), t" {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "pri", descr = "(pri) \"print!(..)\"", priority = -50, trigEngine = te("b")}, {
-		t"print!(\"", i(1, "", {key = "i1"}), t"\"", tr(2, "..*", ", "), i(2, "", {key = "i2"}), t");"
-	}),
-	s({trig = "pln", descr = "(pln) \"println!(..)\"", priority = -50, trigEngine = te("b")}, {
-		t"println!(\"", i(1, "", {key = "i1"}), t"\"", tr(2, "..*", ", "), i(2, "", {key = "i2"}), t");"
-	}),
-	s({trig = "fmt", descr = "(fmt) \"format!(..)\"", priority = -50, trigEngine = te("")}, {
-		t"format!(\"", i(1, "", {key = "i1"}), t"\"", tr(2, "..*", ", "), i(2, "", {key = "i2"}), t");"
-	}),
-	s({trig = ".it", descr = "(.it) \".iter()\"", priority = -50, trigEngine = te("i")}, {
-		t".iter()", i(0, "", {key = "i0"})
-	}),
-	s({trig = "impl", descr = "(impl) \"Struct/Trait implementation\"", priority = -50, trigEngine = te("b")}, {
-		t"impl", cp(4), t" ", i(1, "Type/Trait", {key = "i1"}), t" for ", i(2, "Type", {key = "i2"}), t"<", i(3, "T", {key = "i3"}), t">", t" {", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
 	s({trig = "bench", descr = "(bench) \"Bench function\" b", priority = -1000, trigEngine = te("w")}, {
@@ -182,14 +165,23 @@ ls.add_snippets("rust", {
 	s({trig = "lettm", descr = "(lettm) \"let mut variable declaration with explicit type annotation\"", priority = -1000, trigEngine = te("w")}, {
 		t"let mut ", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), t" = ", i(3, "", {key = "i3"}), t";"
 	}),
+	s({trig = "pri", descr = "(pri) \"print!(..)\"", priority = -50, trigEngine = te("b")}, {
+		t"print!(\"", i(1, "", {key = "i1"}), t"\"", tr(2, "..*", ", "), i(2, "", {key = "i2"}), t");"
+	}),
 	s({trig = "pri,", descr = "(pri,) \"print! with format param\"", priority = -1000, trigEngine = te("w")}, {
 		t"print!(\"", i(1, "", {key = "i1"}), t"{", i(2, "", {key = "i2"}), t"}\", ", i(3, "", {key = "i3"}), t");"
+	}),
+	s({trig = "pln", descr = "(pln) \"println!(..)\"", priority = -50, trigEngine = te("b")}, {
+		t"println!(\"", i(1, "", {key = "i1"}), t"\"", tr(2, "..*", ", "), i(2, "", {key = "i2"}), t");"
 	}),
 	s({trig = "pln,", descr = "(pln,) \"println! with format param\"", priority = -1000, trigEngine = te("w")}, {
 		t"println!(\"", i(1, "", {key = "i1"}), t"{", i(2, "", {key = "i2"}), t"}\", ", i(3, "", {key = "i3"}), t");"
 	}),
+	s({trig = "fmt", descr = "(fmt) \"format!(..)\"", priority = -50, trigEngine = te("")}, {
+		t"format!(\"", i(1, "", {key = "i1"}), t"\"", tr(2, "..*", ", "), i(2, "", {key = "i2"}), t");"
+	}),
 	s({trig = "d", descr = "(d) \"dbg! debugging macro\"", priority = -1000, trigEngine = te("w")}, {
-		t"dbg!(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t")"
+		t"dbg!(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t")"
 	}),
 	s({trig = "d;", descr = "(d;) \"dbg! debugging macro statement\"", priority = -1000, trigEngine = te("w")}, {
 		t"dbg!(&", i(1, "", {key = "i1"}), t");", nl(),
@@ -263,7 +255,7 @@ ls.add_snippets("rust", {
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"if ", i(1, "", {key = "i1"}), t" {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "ife", descr = "(ife) \"if / else\"", priority = -1000, trigEngine = te("w")}, {
@@ -274,18 +266,18 @@ ls.add_snippets("rust", {
 		t"}"
 	}),
 	s({trig = "ifl", descr = "(ifl) \"if let (...)\"", priority = -1000, trigEngine = te("w")}, {
-		t"if let ", t"Some(", i(1, "", {key = "i2"}), t")", t" = ", i(2, "", {key = "i3"}), t" {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i4"}) }) end), nl(),
+		t"if let ", d(1, function(args) return sn(nil, {t"Some(", i(2, "", {key = "i2"}), t")"}) end, {}, {key = "i1"}), t" = ", i(3, "", {key = "i3"}), t" {", nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "el", descr = "(el) \"else\"", priority = -1000, trigEngine = te("w")}, {
 		t"else {", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "eli", descr = "(eli) \"else if\"", priority = -1000, trigEngine = te("w")}, {
 		t"else if ", i(1, "", {key = "i1"}), t" {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "mat", descr = "(mat) \"match pattern\"", priority = -1000, trigEngine = te("w")}, {
@@ -301,17 +293,17 @@ ls.add_snippets("rust", {
 	}),
 	s({trig = "loop", descr = "(loop) \"loop {}\" b", priority = -1000, trigEngine = te("w")}, {
 		t"loop {", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "wh", descr = "(wh) \"while loop\"", priority = -1000, trigEngine = te("w")}, {
 		t"while ", i(1, "", {key = "i1"}), t" {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "whl", descr = "(whl) \"while let (...)\"", priority = -1000, trigEngine = te("w")}, {
-		t"while let ", t"Some(", i(1, "", {key = "i2"}), t")", t" = ", i(2, "", {key = "i3"}), t" {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i4"}) }) end), nl(),
+		t"while let ", d(1, function(args) return sn(nil, {t"Some(", i(2, "", {key = "i2"}), t")"}) end, {}, {key = "i1"}), t" = ", i(3, "", {key = "i3"}), t" {", nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
 	s({trig = "for", descr = "(for) \"for ... in ... loop\"", priority = -1000, trigEngine = te("w")}, {
@@ -327,6 +319,11 @@ ls.add_snippets("rust", {
 	}),
 	s({trig = "st", descr = "(st) \"Struct definition\"", priority = -1000, trigEngine = te("w")}, {
 		t"struct ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("substitute(vim_snippets#Filename(), \'\\(_\\|^\\)\\(.\\)\', \'\\u\\2\', \'g\')")}, ""), {key = "i1"}) }) end), t" {", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "impl", descr = "(impl) \"Struct/Trait implementation\"", priority = -50, trigEngine = te("b")}, {
+		t"impl", cp(4), t" ", i(1, "Type/Trait", {key = "i1"}), d(2, function(args) return sn(nil, {t" for ", i(3, "Type", {key = "i3"})}) end, {}, {key = "i2"}), d(4, function(args) return sn(nil, {t"<", i(5, "T", {key = "i5"}), t">"}) end, {}, {key = "i4"}), t" {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -382,14 +379,14 @@ ls.add_snippets("rust", {
 	}),
 	s({trig = "asref", descr = "(asref) \"AsRef trait implementation\"", priority = -1000, trigEngine = te("w")}, {
 		t"impl AsRef<", i(1, "Ref", {key = "i1"}), t"> for ", i(2, "Type", {key = "i2"}), t" {", nl(),
-		t"\tfn as_ref(&self) -> &", cp(1), t" {", nl(),
+		t"\tfn as_ref(&self) -> &", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i3"}), t" {", nl(),
 		t"\t\t&self.", i(0, "field", {key = "i0"}), nl(),
 		t"\t}", nl(),
 		t"}"
 	}),
 	s({trig = "asmut", descr = "(asmut) \"AsMut trait implementation\"", priority = -1000, trigEngine = te("w")}, {
 		t"impl AsMut<", i(1, "Ref", {key = "i1"}), t"> for ", i(2, "Type", {key = "i2"}), t" {", nl(),
-		t"\tfn as_mut(&mut self) -> &mut ", cp(1), t" {", nl(),
+		t"\tfn as_mut(&mut self) -> &mut ", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i3"}), t" {", nl(),
 		t"\t\t&mut self.", i(0, "field", {key = "i0"}), nl(),
 		t"\t}", nl(),
 		t"}"
@@ -413,15 +410,18 @@ ls.add_snippets("rust", {
 		t"}"
 	}),
 	s({trig = "boxp", descr = "(boxp) \"Box::new()\"", priority = -1000, trigEngine = te("w")}, {
-		t"Box::new(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t")"
+		t"Box::new(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t")"
 	}),
 	s({trig = "rc", descr = "(rc) \"Rc::new()\"", priority = -1000, trigEngine = te("w")}, {
-		t"Rc::new(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t")"
+		t"Rc::new(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), t")"
 	}),
 	s({trig = "unim", descr = "(unim) \"unimplemented!()\"", priority = -1000, trigEngine = te("w")}, {
 		t"unimplemented!()"
 	}),
 	s({trig = "use", descr = "(use) \"use ...;\" b", priority = -1000, trigEngine = te("w")}, {
-		t"use ", t"std::", i(1, "", {key = "i2"}), t";"
+		t"use ", d(1, function(args) return sn(nil, {t"std::", i(2, "", {key = "i2"})}) end, {}, {key = "i1"}), t";"
+	}),
+	s({trig = ".it", descr = "(.it) \".iter()\"", priority = -50, trigEngine = te("i")}, {
+		t".iter()", i(0, "", {key = "i0"})
 	}),
 })

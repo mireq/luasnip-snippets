@@ -42,45 +42,35 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}, {2, 3}},
-	{{1, 1}, {2, 3}},
-	1,
-	2,
-	1,
-	1,
-	1,
-	1,
-	2,
-	1,
-	1,
-	1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	1,
-	1,
-	0,
-	2,
-	1,
-	1,
+	{{1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
 }
 ls.add_snippets("crystal", {
-	s({trig = "\\b(de)?f", descr = "(\\b(de)?f) \"def <name>...\"", priority = -50, trigEngine = te("r")}, {
-		t"def ", i(1, "method_name", {key = "i1"}), t"(", i(2, "*args", {key = "i2"}), t")", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end"
-	}),
-	s({trig = "\\b(pde)?f", descr = "(\\b(pde)?f) \"private def <name>...\"", priority = -50, trigEngine = te("r")}, {
-		t"private def ", i(1, "method_name", {key = "i1"}), t"(", i(2, "*args", {key = "i2"}), t")", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end"
-	}),
 	s({trig = "req", descr = "(req) require", priority = -1000, trigEngine = te("w")}, {
 		t"require \"", i(1, "", {key = "i1"}), t"\""
 	}),
@@ -106,7 +96,7 @@ ls.add_snippets("crystal", {
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"if ", i(1, "", {key = "i1"}), nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"end"
 	}),
 	s({trig = "ife", descr = "(ife)", priority = -1000, trigEngine = te("w")}, {
@@ -118,7 +108,7 @@ ls.add_snippets("crystal", {
 	}),
 	s({trig = "wh", descr = "(wh)", priority = -1000, trigEngine = te("w")}, {
 		t"while ", i(1, "", {key = "i1"}), nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"end"
 	}),
 	s({trig = "cla", descr = "(cla) class .. end", priority = -1000, trigEngine = te("w")}, {
@@ -170,7 +160,7 @@ ls.add_snippets("crystal", {
 	}),
 	s({trig = "do", descr = "(do)", priority = -1000, trigEngine = te("w")}, {
 		t"do", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"end"
 	}),
 	s({trig = "dov", descr = "(dov)", priority = -1000, trigEngine = te("w")}, {
@@ -185,6 +175,16 @@ ls.add_snippets("crystal", {
 	}),
 	s({trig = "it", descr = "(it)", priority = -1000, trigEngine = te("w")}, {
 		t"it \"", i(1, "", {key = "i1"}), t"\" do", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"end"
+	}),
+	s({trig = "\\b(de)?f", descr = "(\\b(de)?f) \"def <name>...\"", priority = -50, trigEngine = te("r")}, {
+		t"def ", i(1, "method_name", {key = "i1"}), d(2, function(args) return sn(nil, {t"(", i(3, "*args", {key = "i3"}), t")"}) end, {}, {key = "i2"}), nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"end"
+	}),
+	s({trig = "\\b(pde)?f", descr = "(\\b(pde)?f) \"private def <name>...\"", priority = -50, trigEngine = te("r")}, {
+		t"private def ", i(1, "method_name", {key = "i1"}), d(2, function(args) return sn(nil, {t"(", i(3, "*args", {key = "i3"}), t")"}) end, {}, {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),

@@ -42,18 +42,18 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	8,
-	3,
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}},
 }
 ls.add_snippets("ledger", {
-	s({trig = "t", descr = "(t) \"Transaction\"", priority = -50, trigEngine = te("b")}, {
-		d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("strftime(\"%Y\")")}, ""), {key = "i1"}) }) end), t"-", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("strftime(\"%m\")")}, ""), {key = "i2"}) }) end), t"-", d(3, function(args, snip) return sn(nil, { i(1, jt({c_viml("strftime(\"%d\")")}, ""), {key = "i3"}) }) end), t" ", i(4, "*", {key = "i4"}), t" ", i(5, "Payee", {key = "i5"}), nl(),
-		t"\t", i(6, "Expenses", {key = "i6"}), t"  \t\t$", i(7, "0.00", {key = "i7"}), nl(),
-		t"\t", i(8, "Assets:Checking", {key = "i8"}), i(0, "", {key = "i0"})
-	}),
 	s({trig = "ent", descr = "(ent)", priority = -1000, trigEngine = te("w")}, {
 		f(function(args, snip) return c_viml("strftime(\"%Y/%m/%d\")") end, {}), t" ", i(1, "transaction", {key = "i1"}), nl(),
 		t"    ", i(2, "account", {key = "i2"}), t"    ", i(3, "value", {key = "i3"}), nl(),
 		t"    ", i(0, "account", {key = "i0"})
+	}),
+	s({trig = "t", descr = "(t) \"Transaction\"", priority = -50, trigEngine = te("b")}, {
+		d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("strftime(\"%Y\")")}, ""), {key = "i1"}) }) end), t"-", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("strftime(\"%m\")")}, ""), {key = "i2"}) }) end), t"-", d(3, function(args, snip) return sn(nil, { i(1, jt({c_viml("strftime(\"%d\")")}, ""), {key = "i3"}) }) end), t" ", i(4, "*", {key = "i4"}), t" ", i(5, "Payee", {key = "i5"}), nl(),
+		t"\t", i(6, "Expenses", {key = "i6"}), t"  \t\t$", i(7, "0.00", {key = "i7"}), nl(),
+		t"\t", i(8, "Assets:Checking", {key = "i8"}), i(0, "", {key = "i0"})
 	}),
 })

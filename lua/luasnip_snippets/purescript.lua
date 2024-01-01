@@ -42,24 +42,24 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	0,
-	0,
-	1,
-	2,
-	4,
-	4,
-	5,
-	6,
-	2,
-	3,
-	1,
-	2,
-	2,
-	0,
-	1,
-	1,
-	1,
-	2,
+	{{0, 0}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}, {3, 3}},
+	{{0, 0}, {1, 1}},
+	{{1, 1}, {2, 2}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{0, 0}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}},
+	{{0, 0}, {1, 1}, {2, 2}},
+	{{1, 1}, {2, 2}},
 }
 ls.add_snippets("purescript", {
 	s({trig = "mod", descr = "(mod)", priority = -1000, trigEngine = te("w")}, {
@@ -142,11 +142,11 @@ ls.add_snippets("purescript", {
 	}),
 	s({trig = "da", descr = "(da)", priority = -1000, trigEngine = te("w")}, {
 		t"data ", i(1, "Type", {key = "i1"}), t" =", nl(),
-		t"\t", cp(1)
+		t"\t", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"})
 	}),
 	s({trig = "nty", descr = "(nty)", priority = -1000, trigEngine = te("w")}, {
 		t"newtype ", i(1, "Type", {key = "i1"}), t" =", nl(),
-		t"\t", cp(1), t" ", i(0, "Int", {key = "i0"})
+		t"\t", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t" ", i(0, "Int", {key = "i0"})
 	}),
 	s({trig = "fi", descr = "(fi)", priority = -1000, trigEngine = te("w")}, {
 		t"foreign import ", i(1, "", {key = "i1"}), t" :: ", i(2, "", {key = "i2"})
