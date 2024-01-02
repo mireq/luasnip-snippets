@@ -11,7 +11,7 @@ Screenshots
 Installation
 ------------
 
-Use following code to configure snippets using [lazy.nvim](https://github.com/folke/lazy.nvim)
+This is complete configuration using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -31,13 +31,15 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{
 		'mireq/luasnip-snippets',
-		--dir = "/tmp/snippets",
 		dependencies = {'L3MON4D3/LuaSnip'},
 		init = function()
+			-- Some snippets deppends on author's informations
 			vim.g.snips_author = 'yourname'
 			vim.g.snips_email = 'yourname@email.com'
 			vim.g.snips_github = 'https://github.com/yourname'
 			vim.g.snips_company = 'company'
+
+			-- Mandatory setup function
 			require('luasnip_snippets.common.snip_utils').setup()
 		end
 
@@ -52,11 +54,15 @@ require("lazy").setup({
 		init = function()
 			local ls = require('luasnip')
 			ls.setup({
+			    -- Required to automatically include base snippets, like "c" snippets for "cpp"
 				load_ft_func = require('luasnip_snippets.common.snip_utils').load_ft_func,
 				ft_func = require('luasnip_snippets.common.snip_utils').ft_func,
-				store_selection_keys = '<c-x>',
+				-- To enable auto expansin
 				enable_autosnippets = true,
+				-- Uncomment to enable visual snippets triggered using <c-x>
+				-- store_selection_keys = '<c-x>',
 			})
+			-- LuaSnip key bindings
 			vim.keymap.set({"i", "s"}, "<Tab>", function() if ls.expand_or_jumpable() then ls.expand_or_jump() else vim.api.nvim_input('<C-V><Tab>') end end, {silent = true})
 			vim.keymap.set({"i", "s"}, "<S-Tab>", function() ls.jump(-1) end, {silent = true})
 			vim.keymap.set({"i", "s"}, "<C-E>", function() if ls.choice_active() then ls.change_choice(1) end end, {silent = true})
