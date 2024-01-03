@@ -33,12 +33,6 @@ require("lazy").setup({
 		'mireq/luasnip-snippets',
 		dependencies = {'L3MON4D3/LuaSnip'},
 		init = function()
-			-- Some snippets deppends on author's informations
-			vim.g.snips_author = 'yourname'
-			vim.g.snips_email = 'yourname@email.com'
-			vim.g.snips_github = 'https://github.com/yourname'
-			vim.g.snips_company = 'company'
-
 			-- Mandatory setup function
 			require('luasnip_snippets.common.snip_utils').setup()
 		end
