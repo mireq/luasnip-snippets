@@ -293,6 +293,21 @@ def iter_all_tokens(tokens: list[LSNode]) -> Iterable[LSNode]:
 			yield from iter_all_tokens(token.children)
 
 
+def tokens_to_text(tokens: list[LSNode]) -> str:
+	text = StringIO()
+
+	def write_tokens(tokens: list[LSNode], indent: int = 0):
+		for token in tokens:
+			if isinstance(token, LSInsertNode):
+				text.write('  ' * indent + f'{token.__class__.__name__}({token.number!r}, {token.original_number!r})\n')
+				write_tokens(token.children, indent + 1)
+			else:
+				text.write('  ' * indent + f'{token!r}\n')
+	write_tokens(tokens)
+
+	return text.getvalue()
+
+
 @dataclass
 class ParsedSnippet:
 	index: int
@@ -595,8 +610,7 @@ def parse_snippet(snippet) -> tuple[list[LSNode], dict[int, int]]:
 		return result_tokens
 	token_list = remap_numbers(token_list)
 
-	for token in iter_all_tokens(token_list):
-		print(token)
+	print(tokens_to_text(token_list))
 
 	sys.exit(0)
 
