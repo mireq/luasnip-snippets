@@ -404,8 +404,9 @@ class ParsedSnippet:
 							related_nodes = {}
 							for child in token.children:
 								if isinstance(child, LSCopyNode) or isinstance(child, LSInsertNode) or isinstance(child, LSTransformationNode):
-									if not child.number in related_nodes:
-										related_nodes[child.number] = len(related_nodes) + 1
+									number = getattr(child, 'original_number', child.number)
+									if number in related_nodes:
+										related_nodes[number] = len(related_nodes) + 1
 							dynamic_node_content = ', '.join(self.token_to_dynamic_text(child, related_nodes) for child in token.children)
 							related_nodes_code = ''
 							if related_nodes:
