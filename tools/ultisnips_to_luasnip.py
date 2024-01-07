@@ -601,11 +601,11 @@ def parse_snippet(snippet) -> tuple[list[LSNode], dict[int, int]]:
 		for token in tokens:
 			if isinstance(token, LSInsertNode):
 				children = remap_numbers(token.children)
-				token = LSInsertNode(remap.get(token.number, token.number), children, token.number)
+				token = LSInsertNode(remap.get(token.number, token.number), children, token.original_number)
 			elif isinstance(token, LSCopyNode):
 				token = LSCopyNode(remap.get(token.number, token.number), token.number)
 			elif isinstance(token, LSTransformationNode):
-				token = LSTransformationNode(remap.get(token.number, token.number), token.search, token.replace, token.number)
+				token = LSTransformationNode(remap.get(token.number, token.number), token.search, token.replace, token.original_number)
 			result_tokens.append(token)
 		return result_tokens
 	token_list = remap_numbers(token_list)
