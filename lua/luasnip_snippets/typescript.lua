@@ -42,26 +42,26 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{1},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1, 2, 3, 4, 5, 6},
+	{1},
+	{0, 1, 2, 3},
+	{1, 2, 3, 4},
 }
 ls.add_snippets("typescript", {
 	s({trig = "tconst", descr = "(tconst) \"ts const\"", priority = -1000, trigEngine = te("w")}, {
@@ -144,13 +144,6 @@ ls.add_snippets("typescript", {
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
-	s({trig = "rfc", descr = "(rfc) \"react functional component\"", priority = -49, trigEngine = te("")}, {
-		t"import React, { FC } from \"react\"", nl(),
-		nl(),
-		t"interface ", i(1, "function_name", {key = "i1"}), t"Props {", i(4, "props_types", {key = "i4"}), t"}", nl(),
-		nl(),
-		t"export const ", i(1, "function_name", {key = "i1"}), t": FC<", i(1, "function_name", {key = "i1"}), t"Props> = (", i(2, "props", {key = "i2"}), t") => ", i(3, "function_body", {key = "i3"})
-	}),
 	s({trig = "nspc", descr = "(nspc) \"namespace\"", priority = -50, trigEngine = te("")}, {
 		t"namespace ", i(1, "", {key = "i1"}), t" {", nl(),
 		t"}"
@@ -159,5 +152,12 @@ ls.add_snippets("typescript", {
 		t"function ", i(1, "function_name", {key = "i1"}), t" (", i(2, "argument", {key = "i2"}), t": ", i(3, "argument_type", {key = "i3"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}"
+	}),
+	s({trig = "rfc", descr = "(rfc) \"react functional component\"", priority = -49, trigEngine = te("")}, {
+		t"import React, { FC } from \"react\"", nl(),
+		nl(),
+		t"interface ", i(1, "function_name", {key = "i1"}), t"Props {", i(4, "props_types", {key = "i4"}), t"}", nl(),
+		nl(),
+		t"export const ", i(1, "function_name", {key = "i1"}), t": FC<", i(1, "function_name", {key = "i1"}), t"Props> = (", i(2, "props", {key = "i2"}), t") => ", i(3, "function_body", {key = "i3"})
 	}),
 })

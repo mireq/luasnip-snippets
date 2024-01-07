@@ -42,22 +42,22 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}, {1, 1}, {2, 2}},
+	{0, 1, 2},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}},
+	{0, 1, 2, 3, 4, 5, 6, 7},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3, 4},
+	{0, 1},
+	{0, 1, 2, 3, 4, 5, 6, 7},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3, 4},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1, 2},
+	{1},
 	{},
 	{},
 	{},
@@ -70,7 +70,7 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{1, 1}},
+	{1},
 	{},
 	{},
 	{},
@@ -80,7 +80,7 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{1, 1}},
+	{1},
 	{},
 	{},
 	{},
@@ -90,70 +90,70 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{0, 0}, {1, 1}},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
@@ -161,31 +161,31 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{0, 1, 2, 3, 4, 5, 6, 7},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
 	{},
 	{},
@@ -199,58 +199,58 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3, 4, 5, 6, 7},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1, 2, 3, 4},
+	{0, 1},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
+	{0, 1},
 	{},
 	{},
 	{},
@@ -259,7 +259,7 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
@@ -281,59 +281,59 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}},
+	{0, 1, 2},
+	{0},
 	{},
-	{{0, 0}},
+	{0},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
+	{0, 1},
+	{0},
+	{0},
+	{0},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
+	{0, 1, 2, 3},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
@@ -343,56 +343,56 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
+	{0, 1},
+	{1},
+	{1},
+	{1, 2},
 	{},
 	{},
 	{},
 	{},
 	{},
-	{{1, 1}},
+	{1},
 	{},
 	{},
 	{},
-	{{1, 1}},
+	{1},
 	{},
 	{},
 	{},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
+	{1},
+	{1, 2},
+	{1},
+	{1},
+	{1},
+	{1},
+	{1, 2},
 	{},
-	{{1, 1}},
+	{1},
 	{},
-	{{1, 1}},
+	{1},
 	{},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}},
+	{1, 2},
+	{1},
+	{1},
+	{1, 2},
+	{1},
+	{1},
+	{0, 1},
 	{},
-	{{1, 1}},
+	{1},
 	{},
 	{},
 	{},
@@ -404,33 +404,33 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{1, 1}},
+	{1},
 	{},
 	{},
 	{},
 	{},
-	{{1, 1}},
+	{1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3},
 	{},
 	{},
 	{},
@@ -439,73 +439,73 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}},
+	{0, 1},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3},
+	{0, 1, 2},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0},
+	{0, 1},
+	{0},
+	{0, 1, 2, 3},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3},
+	{0, 1, 2},
 	{},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
+	{1},
+	{1, 2},
 	{},
 	{},
 	{},
@@ -515,65 +515,65 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
+	{1},
+	{1, 2},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
+	{1},
+	{1, 2},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
@@ -581,14 +581,14 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
@@ -596,27 +596,27 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
+	{0, 1, 2, 3},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3, 4, 5},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
@@ -625,139 +625,139 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}, {1, 1}},
+	{0, 1},
 	{},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}},
-	{{0, 0}},
+	{0},
+	{0},
 	{},
 	{},
 	{},
 	{},
 	{},
-	{{0, 0}},
-	{{0, 0}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0},
+	{0},
+	{1},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3, 4},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3},
+	{0},
+	{0},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3, 4, 5, 6},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{1},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
+	{1},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{1},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0},
+	{0, 1},
+	{0},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3, 4, 5, 6},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2},
+	{0},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{1, 2, 3, 4, 5, 6, 7, 8, 9},
+	{1, 2, 3},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
 }
 ls.add_snippets("css", {
 	s({trig = ".", descr = "(.) \"selector { }\"", priority = -1000, trigEngine = te("w")}, {
@@ -1308,7 +1308,7 @@ ls.add_snippets("css", {
 		t"box-shadow: ", i(1, "0", {key = "i1"}), t" ", i(2, "0", {key = "i2"}), t" ", i(3, "0", {key = "i3"}), t" #", i(4, "000", {key = "i4"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "bxsh", descr = "(bxsh) \"box-shadow: color-hex x y blur (text)\"", priority = -50, trigEngine = te("")}, {
-		t"box-shadow: ", d(1, function(args) return sn(nil, {i(2, "offset-x", {key = "i2"}), t" ", i(3, "offset-y", {key = "i3"}), t" ", i(4, "blur", {key = "i4"}), t" ", i(5, "spread", {key = "i5"}), t" ", i(6, "color", {key = "i6"}), t" ", i(7, "inset", {key = "i7"})}) end, {}, {key = "i1"}), t";", i(0, "", {key = "i0"})
+		t"box-shadow: ", d(1, function(args) return sn(nil, {i(1, "offset-x", {key = "i2"}), t" ", i(2, "offset-y", {key = "i3"}), t" ", i(3, "blur", {key = "i4"}), t" ", i(4, "spread", {key = "i5"}), t" ", i(5, "color", {key = "i6"}), t" ", i(6, "inset", {key = "i7"})}) end, {}, {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "bxsh:n", descr = "(bxsh:n)", priority = -1000, trigEngine = te("w")}, {
 		t"box-shadow: none;"
@@ -1912,28 +1912,28 @@ ls.add_snippets("css", {
 	}),
 	s({trig = "list", descr = "(list) \"list-style: type position image (list)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"list-style-image: url(", i(1, "", {key = "i1"}), t");", i(2, "", {key = "i0"})
+			t"list-style-image: url(", i(1, "", {key = "i1"}), t");", i(0, "", {key = "i0"})
 		},
 		{
-			t"list-style-position: ", i(1, "inside/outside", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"list-style-position: ", i(1, "inside/outside", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"list-style-type: ", i(1, "cjk-ideographic/hiragana/katakana/hiragana-iroha/katakana-iroha", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"list-style-type: ", i(1, "cjk-ideographic/hiragana/katakana/hiragana-iroha/katakana-iroha", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"list-style-type: ", i(1, "none/disc/circle/square", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"list-style-type: ", i(1, "none/disc/circle/square", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"list-style-type: ", i(1, "decimal/decimal-leading-zero/zero", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"list-style-type: ", i(1, "decimal/decimal-leading-zero/zero", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"list-style-type: ", i(1, "hebrew/armenian/georgian", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"list-style-type: ", i(1, "hebrew/armenian/georgian", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"list-style-type: ", i(1, "lower-roman/upper-roman/lower-alpha/upper-alpha/lower-greek/lower-latin/upper-latin", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"list-style-type: ", i(1, "lower-roman/upper-roman/lower-alpha/upper-alpha/lower-greek/lower-latin/upper-latin", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"list-style: ", i(1, "none/disc/circle/square/decimal/zero", {key = "i1"}), t" ", i(2, "inside/outside", {key = "i2"}), t" url(", i(3, "", {key = "i3"}), t");", i(4, "", {key = "i0"})
+			t"list-style: ", i(1, "none/disc/circle/square/decimal/zero", {key = "i1"}), t" ", i(2, "inside/outside", {key = "i2"}), t" url(", i(3, "", {key = "i3"}), t");", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "list:c", descr = "(list:c)", priority = -1000, trigEngine = te("w")}, {
@@ -2450,7 +2450,7 @@ ls.add_snippets("css", {
 		t"text-shadow: ", i(1, "0", {key = "i1"}), t" ", i(2, "0", {key = "i2"}), t" ", i(3, "0", {key = "i3"}), t" #", i(4, "000", {key = "i4"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "tsh", descr = "(tsh) \"text-shadow: color-hex x y blur (text)\"", priority = -50, trigEngine = te("")}, {
-		t"text-shadow: ", d(1, function(args) return sn(nil, {i(2, "offset-x", {key = "i2"}), t" ", i(3, "offset-y", {key = "i3"}), t" ", i(4, "blur", {key = "i4"}), t" ", i(5, "color", {key = "i5"})}) end, {}, {key = "i1"}), t";", i(0, "", {key = "i0"})
+		t"text-shadow: ", d(1, function(args) return sn(nil, {i(1, "offset-x", {key = "i2"}), t" ", i(2, "offset-y", {key = "i3"}), t" ", i(3, "blur", {key = "i4"}), t" ", i(4, "color", {key = "i5"})}) end, {}, {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "tsh:n", descr = "(tsh:n)", priority = -1000, trigEngine = te("w")}, {
 		t"text-shadow: none;"
@@ -2685,96 +2685,96 @@ ls.add_snippets("css", {
 	}),
 	s({trig = "background", descr = "(background) \"background:  color image repeat attachment position (background)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"background-attachment: ", i(1, "scroll/fixed", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"background-attachment: ", i(1, "scroll/fixed", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"background-color: #", i(1, "DDD", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"background-color: #", i(1, "DDD", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"background-color: ", i(1, "red", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"background-color: ", i(1, "red", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"background-color: rgb(", i(1, "255", {key = "i1"}), t",", i(2, "255", {key = "i2"}), t",", i(3, "255", {key = "i3"}), t");", i(4, "", {key = "i0"})
+			t"background-color: rgb(", i(1, "255", {key = "i1"}), t",", i(2, "255", {key = "i2"}), t",", i(3, "255", {key = "i3"}), t");", i(0, "", {key = "i0"})
 		},
 		{
-			t"background-color: transparent;", i(1, "", {key = "i0"})
+			t"background-color: transparent;", i(0, "", {key = "i0"})
 		},
 		{
-			t"background-image: none;", i(1, "", {key = "i0"})
+			t"background-image: none;", i(0, "", {key = "i0"})
 		},
 		{
-			t"background-image: url(", i(1, "", {key = "i1"}), t");", i(2, "", {key = "i0"})
+			t"background-image: url(", i(1, "", {key = "i1"}), t");", i(0, "", {key = "i0"})
 		},
 		{
-			t"background-position: ", i(1, "top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"background-position: ", i(1, "top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"background-repeat: ", i(1, "repeat/repeat-x/repeat-y/no-repeat", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"background-repeat: ", i(1, "repeat/repeat-x/repeat-y/no-repeat", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"background:", d(6, function(args) return sn(nil, {t" #", i(1, "DDD", {key = "i1"})}) end, {}, {key = "i6"}), t" url(", i(2, "", {key = "i2"}), t") ", i(3, "repeat/repeat-x/repeat-y/no-repeat", {key = "i3"}), t" ", i(4, "scroll/fixed", {key = "i4"}), t" ", i(5, "top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos", {key = "i5"}), t";", i(7, "", {key = "i0"})
+			t"background:", d(5, function(args) return sn(nil, {t" #", i(1, "DDD", {key = "i1"})}) end, {}, {key = "i6"}), t" url(", i(1, "", {key = "i2"}), t") ", i(2, "repeat/repeat-x/repeat-y/no-repeat", {key = "i3"}), t" ", i(3, "scroll/fixed", {key = "i4"}), t" ", i(4, "top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos", {key = "i5"}), t";", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "border", descr = "(border) \"border:   size style color (border)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"border-bottom-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"border-bottom-color: #", i(1, "999", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-bottom-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"border-bottom-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-bottom-width: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+			t"border-bottom-width: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-bottom: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+			t"border-bottom: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-color: ", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"border-color: ", i(1, "999", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-right-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"border-right-color: #", i(1, "999", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-left-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"border-left-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
 			t"border-left-width: ", i(1, "1", {key = "i1"}), t"px"
 		},
 		{
-			t"border-left: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+			t"border-left: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-right-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"border-right-color: #", i(1, "999", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-right-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"border-right-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
 			t"border-right-width: ", i(1, "1", {key = "i1"}), t"px"
 		},
 		{
-			t"border-right: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+			t"border-right: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"border-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-top-color: #", i(1, "999", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"border-top-color: #", i(1, "999", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-top-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"border-top-style: ", i(1, "none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
 			t"border-top-width: ", i(1, "1", {key = "i1"}), t"px"
 		},
 		{
-			t"border-top: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+			t"border-top: ", i(1, "1", {key = "i1"}), t"px ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border-width: ", i(1, "1px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"border-width: ", i(1, "1px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"border: ", i(1, "1px", {key = "i1"}), t" ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(4, "", {key = "i0"})
+			t"border: ", i(1, "1px", {key = "i1"}), t" ", i(2, "solid", {key = "i2"}), t" #", i(3, "999", {key = "i3"}), t";", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "clear", descr = "(clear) \"clear: value (clear)\"", priority = -50, trigEngine = te("")}, {
@@ -2782,21 +2782,21 @@ ls.add_snippets("css", {
 	}),
 	s({trig = "color", descr = "(color) \"color:  color-rgb (color)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"color: #", i(1, "DDD", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"color: #", i(1, "DDD", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"color: ", i(1, "red", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"color: ", i(1, "red", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"color: rgb(", i(1, "255", {key = "i1"}), t",", i(2, "255", {key = "i2"}), t",", i(3, "255", {key = "i3"}), t");", i(4, "", {key = "i0"})
+			t"color: rgb(", i(1, "255", {key = "i1"}), t",", i(2, "255", {key = "i2"}), t",", i(3, "255", {key = "i3"}), t");", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "cursor", descr = "(cursor) \"cursor: url (cursor)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"cursor: ", i(1, "default/auto/crosshair/pointer/move/*-resize/text/wait/help", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"cursor: ", i(1, "default/auto/crosshair/pointer/move/*-resize/text/wait/help", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"cursor: url(", i(1, "", {key = "i1"}), t");", i(2, "", {key = "i0"})
+			t"cursor: url(", i(1, "", {key = "i1"}), t");", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "direction", descr = "(direction) \"direction: ltr|rtl (direction)\"", priority = -50, trigEngine = te("")}, {
@@ -2804,16 +2804,16 @@ ls.add_snippets("css", {
 	}),
 	s({trig = "display", descr = "(display) \"display: table-types (display)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"display: block;", i(1, "", {key = "i0"})
+			t"display: block;", i(0, "", {key = "i0"})
 		},
 		{
-			t"display: ", i(1, "none/inline/block/list-item/run-in/compact/marker", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"display: ", i(1, "none/inline/block/list-item/run-in/compact/marker", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"display: inline;", i(1, "", {key = "i0"})
+			t"display: inline;", i(0, "", {key = "i0"})
 		},
 		{
-			t"display: ", i(1, "table/inline-table/table-row-group/table-header-group/table-footer-group/table-row/table-column-group/table-column/table-cell/table-caption", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"display: ", i(1, "table/inline-table/table-row-group/table-header-group/table-footer-group/table-row/table-column-group/table-column/table-cell/table-caption", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "float", descr = "(float) \"float: left:right:none (float)\"", priority = -50, trigEngine = te("")}, {
@@ -2821,64 +2821,64 @@ ls.add_snippets("css", {
 	}),
 	s({trig = "font", descr = "(font) \"font: size font (font)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"font-family: ", i(1, "Arial, \"MS Trebuchet\"", {key = "i1"}), t", ", i(2, "sans-", {key = "i2"}), t"serif;", i(3, "", {key = "i0"})
+			t"font-family: ", i(1, "Arial, \"MS Trebuchet\"", {key = "i1"}), t", ", i(2, "sans-", {key = "i2"}), t"serif;", i(0, "", {key = "i0"})
 		},
 		{
-			t"font-size: ", i(1, "100%", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"font-size: ", i(1, "100%", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"font-style: ", i(1, "normal/italic/oblique", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"font-style: ", i(1, "normal/italic/oblique", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"font-variant: ", i(1, "normal/small-caps", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"font-variant: ", i(1, "normal/small-caps", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"font-weight: ", i(1, "normal/bold", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"font-weight: ", i(1, "normal/bold", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"font: ", i(1, "normal/italic/oblique", {key = "i1"}), t" ", i(2, "normal/small-caps", {key = "i2"}), t" ", i(3, "normal/bold", {key = "i3"}), t" ", i(4, "1em/1.5em", {key = "i4"}), t" ", i(5, "Arial", {key = "i5"}), t", ", i(6, "sans-", {key = "i6"}), t"serif;", i(7, "", {key = "i0"})
+			t"font: ", i(1, "normal/italic/oblique", {key = "i1"}), t" ", i(2, "normal/small-caps", {key = "i2"}), t" ", i(3, "normal/bold", {key = "i3"}), t" ", i(4, "1em/1.5em", {key = "i4"}), t" ", i(5, "Arial", {key = "i5"}), t", ", i(6, "sans-", {key = "i6"}), t"serif;", i(0, "", {key = "i0"})
 		},
 		{
-			t"font: ", i(1, "75%", {key = "i1"}), t" ", i(2, "\"Lucida Grande\", \"Trebuchet MS\", Verdana,", {key = "i2"}), t" ", i(3, "sans-", {key = "i3"}), t"serif;", i(4, "", {key = "i0"})
+			t"font: ", i(1, "75%", {key = "i1"}), t" ", i(2, "\"Lucida Grande\", \"Trebuchet MS\", Verdana,", {key = "i2"}), t" ", i(3, "sans-", {key = "i3"}), t"serif;", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "letter", descr = "(letter) \"letter-spacing:   length-px (letter)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"letter-spacing: ", i(1, "", {key = "i1"}), t"em;", i(2, "", {key = "i0"})
+			t"letter-spacing: ", i(1, "", {key = "i1"}), t"em;", i(0, "", {key = "i0"})
 		},
 		{
-			t"letter-spacing: ", i(1, "", {key = "i1"}), t"px;", i(2, "", {key = "i0"})
+			t"letter-spacing: ", i(1, "", {key = "i1"}), t"px;", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "margin", descr = "(margin) \"margin: V H (margin)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"margin-bottom: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"margin-bottom: ", i(1, "20px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"margin-left: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"margin-left: ", i(1, "20px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"margin-right: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"margin-right: ", i(1, "20px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"margin-top: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"margin-top: ", i(1, "20px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"margin: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"margin: ", i(1, "20px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"margin: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t" ", i(3, "40px", {key = "i3"}), t" ", i(4, "0px", {key = "i4"}), t";", i(5, "", {key = "i0"})
+			t"margin: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t" ", i(3, "40px", {key = "i3"}), t" ", i(4, "0px", {key = "i4"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"margin: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t";", i(3, "", {key = "i0"})
+			t"margin: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t";", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "marker", descr = "(marker) \"marker-offset: length (marker)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"marker-offset: auto;", i(1, "", {key = "i0"})
+			t"marker-offset: auto;", i(0, "", {key = "i0"})
 		},
 		{
-			t"marker-offset: ", i(1, "10px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"marker-offset: ", i(1, "10px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "overflow", descr = "(overflow) \"overflow: type (overflow)\"", priority = -50, trigEngine = te("")}, {
@@ -2886,25 +2886,25 @@ ls.add_snippets("css", {
 	}),
 	s({trig = "padding", descr = "(padding) \"padding:   all (padding)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"padding-bottom: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"padding-bottom: ", i(1, "20px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"padding-left: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"padding-left: ", i(1, "20px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"padding-right: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"padding-right: ", i(1, "20px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"padding-top: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"padding-top: ", i(1, "20px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"padding: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t" ", i(3, "40px", {key = "i3"}), t" ", i(4, "0px", {key = "i4"}), t";", i(5, "", {key = "i0"})
+			t"padding: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t" ", i(3, "40px", {key = "i3"}), t" ", i(4, "0px", {key = "i4"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"padding: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t";", i(3, "", {key = "i0"})
+			t"padding: ", i(1, "20px", {key = "i1"}), t" ", i(2, "0px", {key = "i2"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"padding: ", i(1, "20px", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"padding: ", i(1, "20px", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "position", descr = "(position) \"position: type (position)\"", priority = -50, trigEngine = te("")}, {
@@ -2917,13 +2917,13 @@ ls.add_snippets("css", {
 	}),
 	s({trig = "scrollbar", descr = "(scrollbar) \"scrollbar\"", priority = -50, trigEngine = te("")}, {
 		t"scrollbar-base-color:       ", i(1, "#CCCCCC", {key = "i1"}), t";", d(2, function(args) return sn(nil, {nl(),
-t"scrollbar-arrow-color:      $", i(3, "#000000", {key = "i3"}), nl(),
-t"scrollbar-track-color:      $", i(4, "#999999", {key = "i4"}), nl(),
-t"scrollbar-3dlight-color:    $", i(5, "#EEEEEE", {key = "i5"}), nl(),
-t"scrollbar-highlight-color:  $", i(6, "#FFFFFF", {key = "i6"}), nl(),
-t"scrollbar-face-color:       $", i(7, "#CCCCCC", {key = "i7"}), nl(),
-t"scrollbar-shadow-color:     $", i(9, "#999999", {key = "i9"}), nl(),
-t"scrollbar-darkshadow-color: ", i(8, "#666666", {key = "i8"}), t"scrollbar-darkshadow-color: ${8:#666666}"}) end, {}, {key = "i2"})
+t"scrollbar-arrow-color:      $", i(1, "#000000", {key = "i3"}), nl(),
+t"scrollbar-track-color:      $", i(2, "#999999", {key = "i4"}), nl(),
+t"scrollbar-3dlight-color:    $", i(3, "#EEEEEE", {key = "i5"}), nl(),
+t"scrollbar-highlight-color:  $", i(4, "#FFFFFF", {key = "i6"}), nl(),
+t"scrollbar-face-color:       $", i(5, "#CCCCCC", {key = "i7"}), nl(),
+t"scrollbar-shadow-color:     $", i(7, "#999999", {key = "i9"}), nl(),
+t"scrollbar-darkshadow-color: ", i(6, "#666666", {key = "i8"}), t"scrollbar-darkshadow-color: ${8:#666666}"}) end, {}, {key = "i2"})
 	}),
 	s({trig = "selection", descr = "(selection) \"selection\"", priority = -50, trigEngine = te("")}, {
 		i(1, "", {key = "i1"}), t"::-moz-selection,", nl(),
@@ -2934,16 +2934,16 @@ t"scrollbar-darkshadow-color: ", i(8, "#666666", {key = "i8"}), t"scrollbar-dark
 	}),
 	s({trig = "text", descr = "(text) \"text-transform: capitalize:upper:lower (text)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"text-align: ", i(1, "left/right/center/justify", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"text-align: ", i(1, "left/right/center/justify", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"text-decoration: ", i(1, "none/underline/overline/line-through/blink", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"text-decoration: ", i(1, "none/underline/overline/line-through/blink", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"text-indent: ", i(1, "10", {key = "i1"}), t"px;", i(2, "", {key = "i0"})
+			t"text-indent: ", i(1, "10", {key = "i1"}), t"px;", i(0, "", {key = "i0"})
 		},
 		{
-			t"text-transform: ", i(1, "capitalize/uppercase/lowercase", {key = "i1"}), t";", i(2, "", {key = "i0"})
+			t"text-transform: ", i(1, "capitalize/uppercase/lowercase", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "vertical", descr = "(vertical) \"vertical-align: type (vertical)\"", priority = -50, trigEngine = te("")}, {

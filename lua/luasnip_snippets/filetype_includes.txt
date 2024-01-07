@@ -1,30 +1,29 @@
-all _
 bash sh
 blade html
 coffee-jasmine coffee
 coffee-react coffee
 cpp c
-cuda c cpp
+cuda cpp c
 eelixir html
 eruby html
 freemarker html
 heex html eelixir
 htmldjango html
-htmljinja html jinja2
+htmljinja jinja2 html
 jinja html
 lhaskell haskell
 octave matlab
 pandoc markdown
+python python_extra
 rmd markdown
 rnoweb tex r
 scss css
-smarty css javascript html
+smarty javascript html css
 soy html
-svelte css javascript html
+svelte javascript html css
 systemverilog verilog
 typescript javascript javascript_react
 typescript_react javascript javascript_react typescript
 typescriptreact javascript typescript
-vue css javascript html
+vue javascript html css
 xhtml html
-python python_extra

@@ -42,472 +42,267 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2, 3, 4, 5, 6},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2, 3, 4, 5, 6},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{1},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3, 4, 5},
+	{1, 2},
+	{0, 1, 2, 3},
+	{0, 1, 2},
 	{},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
+	{1, 2},
+	{1},
+	{1},
+	{1, 2},
+	{1},
+	{1, 2, 3},
+	{1, 2},
+	{1},
+	{1},
+	{1, 2},
+	{0, 1, 2},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{1},
+	{0, 1},
+	{1, 2, 3},
+	{0, 1, 2},
+	{1, 2, 3, 4, 5},
 	{},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1},
+	{1},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3, 4},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2, 3},
+	{1},
+	{1, 2, 3, 4},
+	{1},
+	{1, 2},
+	{1, 2, 3},
+	{0, 1, 2},
+	{1, 2, 3},
+	{0, 1, 2, 3, 4},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{0, 1},
+	{1, 2},
+	{1},
+	{1},
+	{1},
+	{1, 2},
+	{0, 1, 2},
+	{0},
+	{1, 2, 3},
+	{1, 2},
+	{0, 1},
+	{1, 2},
+	{0, 1},
+	{1, 2, 3},
+	{0, 1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1, 2},
+	{1, 2},
+	{0},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{1, 2, 3, 4},
+	{1, 2},
+	{0, 1},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1},
+	{1},
+	{1},
+	{1},
+	{1},
+	{1},
+	{1},
+	{1},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1},
+	{0, 1, 2, 3},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2, 3, 4},
+	{1},
+	{1},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3},
+	{1},
+	{1},
+	{1},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1},
+	{1},
+	{1},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3},
+	{0},
+	{1},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1},
+	{1},
+	{1, 2},
+	{0, 1, 2},
+	{1, 2},
+	{1},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2, 3, 4},
+	{0, 1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{1, 2},
 	{},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}},
+	{0},
+	{0, 1, 2, 3, 4},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1},
+	{1},
+	{1, 2},
+	{1, 2, 3, 4},
+	{1},
+	{0, 1, 2},
+	{1},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{0, 1, 2, 3},
+	{0, 1, 2},
+	{1, 2, 3, 4},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3},
+	{1, 2, 3, 4},
+	{1, 2, 3},
+	{1, 2, 3},
+	{1, 2, 3, 4},
+	{1, 2, 3, 4},
+	{1, 2, 3, 4, 5},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3},
+	{1, 2, 3},
+	{1},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3, 4},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2},
+	{1, 2},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1},
+	{1, 2, 3},
+	{0, 1},
+	{1, 2, 3},
+	{1, 2},
+	{0, 1, 2, 3},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2},
+	{0},
+	{0},
+	{0},
+	{0, 1},
+	{1, 2, 3, 4},
+	{0, 1},
+	{1, 2},
 }
 ls.add_snippets("coffee", {
-	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
-		t"define [\"", i(1, "#dependencies1", {key = "i1"}), t"\"], (", i(2, "#dependencies2", {key = "i2"}), t") ->", nl(),
-		t"\t", i(0, "TARGET", {key = "i0"}), nl()
-	}),
-	s({trig = "defn", descr = "(defn)", priority = -1000, trigEngine = te("w")}, {
-		t"define \"", i(1, "#name", {key = "i1"}), t"\", [\"", i(2, "#dependencies1", {key = "i2"}), t"\"], (", i(3, "#dependencies2", {key = "i3"}), t") ->", nl(),
-		t"\t", i(0, "TARGET", {key = "i0"}), nl()
-	}),
-	s({trig = "reqjs", descr = "(reqjs)", priority = -1000, trigEngine = te("w")}, {
-		t"require [\"", i(1, "#dependencies1", {key = "i1"}), t"\"], (", i(2, "#dependencies2", {key = "i2"}), t") ->", nl(),
-		t"\t", i(0, "TARGET", {key = "i0"})
-	}),
-	s({trig = "forindo", descr = "(forindo)", priority = -1000, trigEngine = te("w")}, {
-		t"for ", i(1, "name", {key = "i1"}), t" in ", i(2, "array", {key = "i2"}), nl(),
-		t"\tdo (", cp(1), t") ->", nl(),
-		t"\t\t", i(0, "", {key = "i0"})
-	}),
-	s({trig = "fora", descr = "(fora) \"Array Comprehension\"", priority = -50, trigEngine = te("b")}, {
-		t"for ", i(1, "name", {key = "i1"}), t" in ", i(2, "array", {key = "i2"}), nl(),
-		t"\t", i(0, "# body...", {key = "i0"})
-	}),
-	s({trig = "foro", descr = "(foro) \"Object Comprehension\"", priority = -50, trigEngine = te("b")}, {
-		t"for ", i(1, "key", {key = "i1"}), t", ", i(2, "value", {key = "i2"}), t" of ", i(3, "Object", {key = "i3"}), nl(),
-		t"\t", i(0, "# body...", {key = "i0"})
-	}),
-	s({trig = "forr", descr = "(forr) \"Range Comprehension (inclusive)\"", priority = -50, trigEngine = te("b")}, {
-		t"for ", i(1, "name", {key = "i1"}), t" in [", i(2, "start", {key = "i2"}), t"..", i(3, "finish", {key = "i3"}), t"]", f(function(args, snip) return c_py({"coffee", 7}, "snip.rv = \" by \" if t[4] else \"\"", python_globals, args, snip, "", am[7]) end, ae(am[7])), i(4, "step", {key = "i4"}), nl(),
-		t"\t", i(0, "# body...", {key = "i0"})
-	}),
-	s({trig = "forrb", descr = "(forrb)", priority = -1000, trigEngine = te("w")}, {
-		t"for ", i(1, "name", {key = "i1"}), t" in [", i(2, "start", {key = "i2"}), t"..", i(3, "finish", {key = "i3"}), t"] by ", i(4, "step", {key = "i4"}), nl(),
-		t"\t", i(0, "", {key = "i0"})
-	}),
-	s({trig = "forrex", descr = "(forrex) \"Range Comprehension (exclusive)\"", priority = -50, trigEngine = te("b")}, {
-		t"for ", i(1, "name", {key = "i1"}), t" in [", i(2, "start", {key = "i2"}), t"...", i(3, "finish", {key = "i3"}), t"]", f(function(args, snip) return c_py({"coffee", 9}, "snip.rv = \" by \" if t[4] else \"\"", python_globals, args, snip, "", am[9]) end, ae(am[9])), i(4, "step", {key = "i4"}), nl(),
-		t"\t", i(0, "# body...", {key = "i0"})
-	}),
-	s({trig = "forrexb", descr = "(forrexb)", priority = -1000, trigEngine = te("w")}, {
-		t"for ", i(1, "name", {key = "i1"}), t" in [", i(2, "start", {key = "i2"}), t"...", i(3, "finish", {key = "i3"}), t"] by ", i(4, "step", {key = "i4"}), nl(),
-		t"\t", i(0, "", {key = "i0"})
-	}),
-	s({trig = "fun", descr = "(fun) \"Function\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "name", {key = "i1"}), t" = ", f(function(args, snip) return c_py({"coffee", 11}, "snip.rv = \"(\" if t[2] else \"\"", python_globals, args, snip, "", am[11]) end, ae(am[11])), i(2, "args", {key = "i2"}), f(function(args, snip) return c_py({"coffee", 11}, "snip.rv = \") \" if t[2] else \"\"", python_globals, args, snip, "", am[11]) end, ae(am[11])), t"->", nl(),
-		t"\t", i(0, "# body...", {key = "i0"})
-	}),
-	s({trig = "bfun", descr = "(bfun) \"Function (bound)\"", priority = -50, trigEngine = te("i")}, {
-		f(function(args, snip) return c_py({"coffee", 12}, "snip.rv = \"(\" if t[1] else \"\"", python_globals, args, snip, "", am[12]) end, ae(am[12])), i(1, "args", {key = "i1"}), f(function(args, snip) return c_py({"coffee", 12}, "snip.rv = \") \" if t[1] else \"\"", python_globals, args, snip, "", am[12]) end, ae(am[12])), t"=>", f(function(args, snip) return c_py({"coffee", 12}, "snip.rv = \" \" if t[2] and not t[2].startswith(\"\\n\") else \"\"", python_globals, args, snip, "", am[12]) end, ae(am[12])), i(2, "expr", {key = "i2"})
-	}),
-	s({trig = "cla", descr = "(cla) \"Class\"", priority = -50, trigEngine = te("b")}, {
-		t"class ", i(1, "ClassName", {key = "i1"}), f(function(args, snip) return c_py({"coffee", 13}, "snip.rv = \" extends \" if t[2] else \"\"", python_globals, args, snip, "", am[13]) end, ae(am[13])), i(2, "Ancestor", {key = "i2"}), nl(),
-		nl(),
-		t"\t", d(3, function(args) return sn(nil, {t"constructor:", f(function(args, snip) return c_py({"coffee", 13}, "snip.rv = \" (\" if t[4] else \"\"", python_globals, args, snip, "", am[13]) end, ae(am[13])), i(4, "args", {key = "i4"}), f(function(args, snip) return c_py({"coffee", 13}, "snip.rv = \")\" if t[4] else \"\"", python_globals, args, snip, "", am[13]) end, ae(am[13])), t" ->", nl(),
-t"\t", i(5, "# body...", {key = "i5"})}) end, {}, {key = "i3"}), nl(),
-		t"\t", i(0, "", {key = "i0"})
-	}),
-	s({trig = "if", descr = "(if) \"If\"", priority = -50, trigEngine = te("b")}, {
-		t"if ", i(1, "condition", {key = "i1"}), nl(),
-		t"\t", i(0, "# body...", {key = "i0"})
-	}),
-	s({trig = "ife", descr = "(ife) \"If .. Else\"", priority = -50, trigEngine = te("b")}, {
-		t"if ", i(1, "condition", {key = "i1"}), nl(),
-		t"\t", i(2, "# body...", {key = "i2"}), nl(),
-		t"else", nl(),
-		t"\t", i(3, "# body...", {key = "i3"})
-	}),
-	s({trig = "eif", descr = "(eif)", priority = -1000, trigEngine = te("w")}, {
-		t"else if ", i(1, "", {key = "i1"}), nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end)
-	}),
-	s({trig = "ifte", descr = "(ifte) \"Ternary if\"", priority = -50, trigEngine = te("b")}, {
-		t"if ", i(1, "condition", {key = "i1"}), t" then ", i(2, "value", {key = "i2"}), t" else ", i(3, "other", {key = "i3"})
-	}),
-	s({trig = "unl", descr = "(unl) \"Unless\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "action", {key = "i1"}), t" unless ", i(2, "condition", {key = "i2"})
-	}),
-	s({trig = "swi", descr = "(swi) \"Switch\"", priority = -50, trigEngine = te("b")}, {
-		t"switch ", i(1, "object", {key = "i1"}), nl(),
-		t"\twhen ", i(2, "value", {key = "i2"}), nl(),
-		t"\t\t", i(3, "# body...", {key = "i3"}), nl(),
-		t"\telse", nl(),
-		t"\t\t", i(0, "", {key = "i0"})
-	}),
-	s({trig = "log", descr = "(log) \"Log\"", priority = -50, trigEngine = te("b")}, {
-		t"console.log ", d(1, function(args) return sn(nil, {t"\"", i(2, "msg", {key = "i2"}), t"\""}) end, {}, {key = "i1"})
-	}),
-	s({trig = "try", descr = "(try) \"Try .. Catch\"", priority = -50, trigEngine = te("b")}, {
-		t"try", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"catch ", i(2, "error", {key = "i2"}), nl(),
-		t"\t", i(3, "", {key = "i3"})
-	}),
-	s({trig = "req", descr = "(req) \"Require\"", priority = -50, trigEngine = te("b")}, {
-		tr(1, "^\'?(\\w+)\'?$", "\\L$1\\E"), t" = require(", d(1, function(args) return sn(nil, {t"\'", i(2, "sys", {key = "i2"}), t"\'"}) end, {}, {key = "i1"}), t")"
-	}),
-	s({trig = "exp", descr = "(exp)", priority = -1000, trigEngine = te("w")}, {
-		i(0, "root", {key = "i0"}), t" = exports ? this", nl()
-	}),
-	s({trig = "jsonp", descr = "(jsonp)", priority = -1000, trigEngine = te("w")}, {
-		t"JSON.parse ", i(0, "jstr", {key = "i0"})
-	}),
-	s({trig = "jsons", descr = "(jsons)", priority = -1000, trigEngine = te("w")}, {
-		t"JSON.stringify ", i(0, "object", {key = "i0"})
-	}),
-	s({trig = "ngc", descr = "(ngc)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "controllerName", {key = "i1"}), t" = (", i(2, "scope", {key = "i2"}), t", ", i(3, "injectables", {key = "i3"}), t") ->", nl(),
-		t"\t", i(4, "", {key = "i4"})
-	}),
-	s({trig = "ngfor", descr = "(ngfor)", priority = -1000, trigEngine = te("w")}, {
-		t"angular.forEach ", i(1, "iterateOver", {key = "i1"}), t", (value, key) ->", nl(),
-		t"\t", i(2, "", {key = "i2"})
-	}),
-	s({trig = "ngm", descr = "(ngm)", priority = -1000, trigEngine = te("w")}, {
-		t"angular.module \'", i(1, "moduleName", {key = "i1"}), t"\', [", i(2, "moduleDependencies", {key = "i2"}), t"]", nl(),
-		i(3, "", {key = "i3"})
-	}),
-	s({trig = "ngma", descr = "(ngma)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "moduleName", {key = "i1"}), t" = angular.module \'", cp(1), t"\', [", i(2, "moduleDeps", {key = "i2"}), t"]", nl(),
-		i(3, "", {key = "i3"})
-	}),
-	s({trig = "ngmc", descr = "(ngmc)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "moduleName", {key = "i1"}), t" = angular.module(\'", cp(1), t"\', [", i(2, "moduleDeps", {key = "i2"}), t"], (", i(3, "configDeps", {key = "i3"}), t") ->", nl(),
-		t"\t", i(4, "", {key = "i4"}), nl(),
-		t")"
-	}),
-	s({trig = "ngmfa", descr = "(ngmfa)", priority = -1000, trigEngine = te("w")}, {
-		t"factory \'", i(1, "factoryName", {key = "i1"}), t"\', (", i(2, "dependencies", {key = "i2"}), t") ->", nl(),
-		t"\t", i(3, "", {key = "i3"})
-	}),
-	s({trig = "ngms", descr = "(ngms)", priority = -1000, trigEngine = te("w")}, {
-		t"service \'", i(1, "serviceName", {key = "i1"}), t"\', (", i(2, "injectables", {key = "i2"}), t") ->", nl(),
-		t"\t", i(3, "", {key = "i3"})
-	}),
-	s({trig = "ngmfi", descr = "(ngmfi)", priority = -1000, trigEngine = te("w")}, {
-		t"filter \'", i(1, "filterName", {key = "i1"}), t"\', (", i(2, "injectables", {key = "i2"}), t") ->", nl(),
-		t"\t(input, ", i(3, "args", {key = "i3"}), t") ->", nl(),
-		t"\t\t", i(4, "", {key = "i4"})
-	}),
-	s({trig = "ngrw", descr = "(ngrw)", priority = -1000, trigEngine = te("w")}, {
-		t"$routeProvider.when \'", i(1, "url", {key = "i1"}), t"\',", nl(),
-		t"\ttemplateUrl: \'", i(2, "templateUrl", {key = "i2"}), t"\'", nl(),
-		t"\tcontroller: \'", i(3, "controller", {key = "i3"}), t"\'", nl(),
-		i(4, "", {key = "i4"})
-	}),
-	s({trig = "ngrwr", descr = "(ngrwr)", priority = -1000, trigEngine = te("w")}, {
-		t"$routeProvider.when \'", i(1, "url", {key = "i1"}), t"\',", nl(),
-		t"\ttemplateUrl: \'", i(2, "templateUrl", {key = "i2"}), t"\'", nl(),
-		t"\tcontroller: \'", i(3, "controller", {key = "i3"}), t"\'", nl(),
-		t"\tresolve:", nl(),
-		t"\t\t", i(4, "", {key = "i4"}), nl(),
-		i(5, "", {key = "i5"})
-	}),
-	s({trig = "ngro", descr = "(ngro)", priority = -1000, trigEngine = te("w")}, {
-		t"$routeProvider.otherwise redirectTo: \'", i(1, "url", {key = "i1"}), t"\'", nl(),
-		i(2, "", {key = "i2"})
-	}),
-	s({trig = "$f", descr = "($f)", priority = -1000, trigEngine = te("w")}, {
-		t"$scope.", i(1, "functionName", {key = "i1"}), t" = (", i(2, "args", {key = "i2"}), t") ->", nl(),
-		t"\t", i(3, "", {key = "i3"})
-	}),
-	s({trig = "$v", descr = "($v)", priority = -1000, trigEngine = te("w")}, {
-		t"$scope.", i(1, "variable", {key = "i1"}), t" = ", i(2, "value", {key = "i2"}), nl(),
-		i(3, "", {key = "i3"})
-	}),
-	s({trig = "$va", descr = "($va)", priority = -1000, trigEngine = te("w")}, {
-		t"$scope.", i(1, "variable", {key = "i1"}), t" = ", i(2, "variable", {key = "i2"}), nl(),
-		i(3, "", {key = "i3"})
-	}),
-	s({trig = "$w", descr = "($w)", priority = -1000, trigEngine = te("w")}, {
-		t"$scope.$watch \'", i(1, "watchExpr", {key = "i1"}), t"\', (newValue, oldValue) ->", nl(),
-		t"\t", i(2, "", {key = "i2"})
-	}),
-	s({trig = "$on", descr = "($on)", priority = -1000, trigEngine = te("w")}, {
-		t"$scope.$on \'", i(1, "eventName", {key = "i1"}), t"\', (event, ", i(2, "args", {key = "i2"}), t") ->", nl(),
-		t"\t", i(3, "", {key = "i3"})
-	}),
-	s({trig = "$b", descr = "($b)", priority = -1000, trigEngine = te("w")}, {
-		t"$scope.$broadcast \'", i(1, "eventName", {key = "i1"}), t"\', ", i(2, "eventArgs", {key = "i2"}), nl(),
-		i(3, "", {key = "i3"})
-	}),
-	s({trig = "$e", descr = "($e)", priority = -1000, trigEngine = te("w")}, {
-		t"$scope.$emit \'", i(1, "eventName", {key = "i1"}), t"\', ", i(2, "eventArgs", {key = "i2"}), nl(),
-		i(3, "", {key = "i3"})
-	}),
-	s({trig = "ngdcf", descr = "(ngdcf)", priority = -1000, trigEngine = te("w")}, {
-		t"compile = (tElement, tAttrs, transclude) ->", nl(),
-		t"\t(scope, element, attrs) ->", nl(),
-		t"\t\t", i(1, "", {key = "i1"})
-	}),
-	s({trig = "ngdlf", descr = "(ngdlf)", priority = -1000, trigEngine = te("w")}, {
-		t"(scope, element, attrs", i(1, "ctrl", {key = "i1"}), t") ->", nl(),
-		t"\t", i(2, "", {key = "i2"})
-	}),
-	s({trig = "ngdc", descr = "(ngdc)", priority = -1000, trigEngine = te("w")}, {
-		t"directive \'", i(1, "directiveName", {key = "i1"}), t"\', factory = (", i(2, "injectables", {key = "i2"}), t") ->", nl(),
-		t"\tdirectiveDefinitionObject =", nl(),
-		t"\t\t", i(3, "directiveAttrs", {key = "i3"}), nl(),
-		t"\t\tcompile: compile = (tElement, tAttrs, transclude) ->", nl(),
-		t"\t\t\t(scope, element, attrs) ->", nl(),
-		t"\tdirectiveDefinitionObject"
-	}),
-	s({trig = "ngdl", descr = "(ngdl)", priority = -1000, trigEngine = te("w")}, {
-		t".directive(\'", i(1, "directiveName", {key = "i1"}), t"\', (", i(2, "directiveDeps", {key = "i2"}), t") ->", nl(),
-		t"\t(scope, element, attrs", i(3, "ctrl", {key = "i3"}), t") ->", nl(),
-		t"\t\t", i(4, "", {key = "i4"}), nl()
-	}),
 	s({trig = "add", descr = "(add)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "obj", {key = "i1"}), t".add(\'", i(2, "selector expression", {key = "i2"}), t"\')"
 	}),
@@ -1239,6 +1034,211 @@ t"\t", i(5, "# body...", {key = "i5"})}) end, {}, {key = "i3"}), nl(),
 	}),
 	s({trig = "wrap", descr = "(wrap)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "obj", {key = "i1"}), t".wrap(\'", i(2, "&ltdiv class=\"extra-wrapper\"&gt&lt/div&gt", {key = "i2"}), t"\')"
+	}),
+	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
+		t"define [\"", i(1, "#dependencies1", {key = "i1"}), t"\"], (", i(2, "#dependencies2", {key = "i2"}), t") ->", nl(),
+		t"\t", i(0, "TARGET", {key = "i0"}), nl()
+	}),
+	s({trig = "defn", descr = "(defn)", priority = -1000, trigEngine = te("w")}, {
+		t"define \"", i(1, "#name", {key = "i1"}), t"\", [\"", i(2, "#dependencies1", {key = "i2"}), t"\"], (", i(3, "#dependencies2", {key = "i3"}), t") ->", nl(),
+		t"\t", i(0, "TARGET", {key = "i0"}), nl()
+	}),
+	s({trig = "reqjs", descr = "(reqjs)", priority = -1000, trigEngine = te("w")}, {
+		t"require [\"", i(1, "#dependencies1", {key = "i1"}), t"\"], (", i(2, "#dependencies2", {key = "i2"}), t") ->", nl(),
+		t"\t", i(0, "TARGET", {key = "i0"})
+	}),
+	s({trig = "ngc", descr = "(ngc)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "controllerName", {key = "i1"}), t" = (", i(2, "scope", {key = "i2"}), t", ", i(3, "injectables", {key = "i3"}), t") ->", nl(),
+		t"\t", i(4, "", {key = "i4"})
+	}),
+	s({trig = "ngfor", descr = "(ngfor)", priority = -1000, trigEngine = te("w")}, {
+		t"angular.forEach ", i(1, "iterateOver", {key = "i1"}), t", (value, key) ->", nl(),
+		t"\t", i(2, "", {key = "i2"})
+	}),
+	s({trig = "ngm", descr = "(ngm)", priority = -1000, trigEngine = te("w")}, {
+		t"angular.module \'", i(1, "moduleName", {key = "i1"}), t"\', [", i(2, "moduleDependencies", {key = "i2"}), t"]", nl(),
+		i(3, "", {key = "i3"})
+	}),
+	s({trig = "ngma", descr = "(ngma)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "moduleName", {key = "i1"}), t" = angular.module \'", cp(1), t"\', [", i(2, "moduleDeps", {key = "i2"}), t"]", nl(),
+		i(3, "", {key = "i3"})
+	}),
+	s({trig = "ngmc", descr = "(ngmc)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "moduleName", {key = "i1"}), t" = angular.module(\'", cp(1), t"\', [", i(2, "moduleDeps", {key = "i2"}), t"], (", i(3, "configDeps", {key = "i3"}), t") ->", nl(),
+		t"\t", i(4, "", {key = "i4"}), nl(),
+		t")"
+	}),
+	s({trig = "ngmfa", descr = "(ngmfa)", priority = -1000, trigEngine = te("w")}, {
+		t"factory \'", i(1, "factoryName", {key = "i1"}), t"\', (", i(2, "dependencies", {key = "i2"}), t") ->", nl(),
+		t"\t", i(3, "", {key = "i3"})
+	}),
+	s({trig = "ngms", descr = "(ngms)", priority = -1000, trigEngine = te("w")}, {
+		t"service \'", i(1, "serviceName", {key = "i1"}), t"\', (", i(2, "injectables", {key = "i2"}), t") ->", nl(),
+		t"\t", i(3, "", {key = "i3"})
+	}),
+	s({trig = "ngmfi", descr = "(ngmfi)", priority = -1000, trigEngine = te("w")}, {
+		t"filter \'", i(1, "filterName", {key = "i1"}), t"\', (", i(2, "injectables", {key = "i2"}), t") ->", nl(),
+		t"\t(input, ", i(3, "args", {key = "i3"}), t") ->", nl(),
+		t"\t\t", i(4, "", {key = "i4"})
+	}),
+	s({trig = "ngrw", descr = "(ngrw)", priority = -1000, trigEngine = te("w")}, {
+		t"$routeProvider.when \'", i(1, "url", {key = "i1"}), t"\',", nl(),
+		t"\ttemplateUrl: \'", i(2, "templateUrl", {key = "i2"}), t"\'", nl(),
+		t"\tcontroller: \'", i(3, "controller", {key = "i3"}), t"\'", nl(),
+		i(4, "", {key = "i4"})
+	}),
+	s({trig = "ngrwr", descr = "(ngrwr)", priority = -1000, trigEngine = te("w")}, {
+		t"$routeProvider.when \'", i(1, "url", {key = "i1"}), t"\',", nl(),
+		t"\ttemplateUrl: \'", i(2, "templateUrl", {key = "i2"}), t"\'", nl(),
+		t"\tcontroller: \'", i(3, "controller", {key = "i3"}), t"\'", nl(),
+		t"\tresolve:", nl(),
+		t"\t\t", i(4, "", {key = "i4"}), nl(),
+		i(5, "", {key = "i5"})
+	}),
+	s({trig = "ngro", descr = "(ngro)", priority = -1000, trigEngine = te("w")}, {
+		t"$routeProvider.otherwise redirectTo: \'", i(1, "url", {key = "i1"}), t"\'", nl(),
+		i(2, "", {key = "i2"})
+	}),
+	s({trig = "$f", descr = "($f)", priority = -1000, trigEngine = te("w")}, {
+		t"$scope.", i(1, "functionName", {key = "i1"}), t" = (", i(2, "args", {key = "i2"}), t") ->", nl(),
+		t"\t", i(3, "", {key = "i3"})
+	}),
+	s({trig = "$v", descr = "($v)", priority = -1000, trigEngine = te("w")}, {
+		t"$scope.", i(1, "variable", {key = "i1"}), t" = ", i(2, "value", {key = "i2"}), nl(),
+		i(3, "", {key = "i3"})
+	}),
+	s({trig = "$va", descr = "($va)", priority = -1000, trigEngine = te("w")}, {
+		t"$scope.", i(1, "variable", {key = "i1"}), t" = ", i(2, "variable", {key = "i2"}), nl(),
+		i(3, "", {key = "i3"})
+	}),
+	s({trig = "$w", descr = "($w)", priority = -1000, trigEngine = te("w")}, {
+		t"$scope.$watch \'", i(1, "watchExpr", {key = "i1"}), t"\', (newValue, oldValue) ->", nl(),
+		t"\t", i(2, "", {key = "i2"})
+	}),
+	s({trig = "$on", descr = "($on)", priority = -1000, trigEngine = te("w")}, {
+		t"$scope.$on \'", i(1, "eventName", {key = "i1"}), t"\', (event, ", i(2, "args", {key = "i2"}), t") ->", nl(),
+		t"\t", i(3, "", {key = "i3"})
+	}),
+	s({trig = "$b", descr = "($b)", priority = -1000, trigEngine = te("w")}, {
+		t"$scope.$broadcast \'", i(1, "eventName", {key = "i1"}), t"\', ", i(2, "eventArgs", {key = "i2"}), nl(),
+		i(3, "", {key = "i3"})
+	}),
+	s({trig = "$e", descr = "($e)", priority = -1000, trigEngine = te("w")}, {
+		t"$scope.$emit \'", i(1, "eventName", {key = "i1"}), t"\', ", i(2, "eventArgs", {key = "i2"}), nl(),
+		i(3, "", {key = "i3"})
+	}),
+	s({trig = "ngdcf", descr = "(ngdcf)", priority = -1000, trigEngine = te("w")}, {
+		t"compile = (tElement, tAttrs, transclude) ->", nl(),
+		t"\t(scope, element, attrs) ->", nl(),
+		t"\t\t", i(1, "", {key = "i1"})
+	}),
+	s({trig = "ngdlf", descr = "(ngdlf)", priority = -1000, trigEngine = te("w")}, {
+		t"(scope, element, attrs", i(1, "ctrl", {key = "i1"}), t") ->", nl(),
+		t"\t", i(2, "", {key = "i2"})
+	}),
+	s({trig = "ngdc", descr = "(ngdc)", priority = -1000, trigEngine = te("w")}, {
+		t"directive \'", i(1, "directiveName", {key = "i1"}), t"\', factory = (", i(2, "injectables", {key = "i2"}), t") ->", nl(),
+		t"\tdirectiveDefinitionObject =", nl(),
+		t"\t\t", i(3, "directiveAttrs", {key = "i3"}), nl(),
+		t"\t\tcompile: compile = (tElement, tAttrs, transclude) ->", nl(),
+		t"\t\t\t(scope, element, attrs) ->", nl(),
+		t"\tdirectiveDefinitionObject"
+	}),
+	s({trig = "ngdl", descr = "(ngdl)", priority = -1000, trigEngine = te("w")}, {
+		t".directive(\'", i(1, "directiveName", {key = "i1"}), t"\', (", i(2, "directiveDeps", {key = "i2"}), t") ->", nl(),
+		t"\t(scope, element, attrs", i(3, "ctrl", {key = "i3"}), t") ->", nl(),
+		t"\t\t", i(4, "", {key = "i4"}), nl()
+	}),
+	s({trig = "forindo", descr = "(forindo)", priority = -1000, trigEngine = te("w")}, {
+		t"for ", i(1, "name", {key = "i1"}), t" in ", i(2, "array", {key = "i2"}), nl(),
+		t"\tdo (", cp(1), t") ->", nl(),
+		t"\t\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "fora", descr = "(fora) \"Array Comprehension\"", priority = -50, trigEngine = te("b")}, {
+		t"for ", i(1, "name", {key = "i1"}), t" in ", i(2, "array", {key = "i2"}), nl(),
+		t"\t", i(0, "# body...", {key = "i0"})
+	}),
+	s({trig = "foro", descr = "(foro) \"Object Comprehension\"", priority = -50, trigEngine = te("b")}, {
+		t"for ", i(1, "key", {key = "i1"}), t", ", i(2, "value", {key = "i2"}), t" of ", i(3, "Object", {key = "i3"}), nl(),
+		t"\t", i(0, "# body...", {key = "i0"})
+	}),
+	s({trig = "forr", descr = "(forr) \"Range Comprehension (inclusive)\"", priority = -50, trigEngine = te("b")}, {
+		t"for ", i(1, "name", {key = "i1"}), t" in [", i(2, "start", {key = "i2"}), t"..", i(3, "finish", {key = "i3"}), t"]", f(function(args, snip) return c_py({"coffee", 237}, "snip.rv = \" by \" if t[4] else \"\"", python_globals, args, snip, "", am[237]) end, ae(am[237])), i(4, "step", {key = "i4"}), nl(),
+		t"\t", i(0, "# body...", {key = "i0"})
+	}),
+	s({trig = "forrb", descr = "(forrb)", priority = -1000, trigEngine = te("w")}, {
+		t"for ", i(1, "name", {key = "i1"}), t" in [", i(2, "start", {key = "i2"}), t"..", i(3, "finish", {key = "i3"}), t"] by ", i(4, "step", {key = "i4"}), nl(),
+		t"\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "forrex", descr = "(forrex) \"Range Comprehension (exclusive)\"", priority = -50, trigEngine = te("b")}, {
+		t"for ", i(1, "name", {key = "i1"}), t" in [", i(2, "start", {key = "i2"}), t"...", i(3, "finish", {key = "i3"}), t"]", f(function(args, snip) return c_py({"coffee", 239}, "snip.rv = \" by \" if t[4] else \"\"", python_globals, args, snip, "", am[239]) end, ae(am[239])), i(4, "step", {key = "i4"}), nl(),
+		t"\t", i(0, "# body...", {key = "i0"})
+	}),
+	s({trig = "forrexb", descr = "(forrexb)", priority = -1000, trigEngine = te("w")}, {
+		t"for ", i(1, "name", {key = "i1"}), t" in [", i(2, "start", {key = "i2"}), t"...", i(3, "finish", {key = "i3"}), t"] by ", i(4, "step", {key = "i4"}), nl(),
+		t"\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "fun", descr = "(fun) \"Function\"", priority = -50, trigEngine = te("b")}, {
+		i(1, "name", {key = "i1"}), t" = ", f(function(args, snip) return c_py({"coffee", 241}, "snip.rv = \"(\" if t[2] else \"\"", python_globals, args, snip, "", am[241]) end, ae(am[241])), i(2, "args", {key = "i2"}), f(function(args, snip) return c_py({"coffee", 241}, "snip.rv = \") \" if t[2] else \"\"", python_globals, args, snip, "", am[241]) end, ae(am[241])), t"->", nl(),
+		t"\t", i(0, "# body...", {key = "i0"})
+	}),
+	s({trig = "bfun", descr = "(bfun) \"Function (bound)\"", priority = -50, trigEngine = te("i")}, {
+		f(function(args, snip) return c_py({"coffee", 242}, "snip.rv = \"(\" if t[1] else \"\"", python_globals, args, snip, "", am[242]) end, ae(am[242])), i(1, "args", {key = "i1"}), f(function(args, snip) return c_py({"coffee", 242}, "snip.rv = \") \" if t[1] else \"\"", python_globals, args, snip, "", am[242]) end, ae(am[242])), t"=>", f(function(args, snip) return c_py({"coffee", 242}, "snip.rv = \" \" if t[2] and not t[2].startswith(\"\\n\") else \"\"", python_globals, args, snip, "", am[242]) end, ae(am[242])), i(2, "expr", {key = "i2"})
+	}),
+	s({trig = "cla", descr = "(cla) \"Class\"", priority = -50, trigEngine = te("b")}, {
+		t"class ", i(1, "ClassName", {key = "i1"}), f(function(args, snip) return c_py({"coffee", 243}, "snip.rv = \" extends \" if t[2] else \"\"", python_globals, args, snip, "", am[243]) end, ae(am[243])), i(2, "Ancestor", {key = "i2"}), nl(),
+		nl(),
+		t"\t", d(3, function(args) return sn(nil, {t"constructor:", f(function(args, snip) return c_py({"coffee", 243}, "snip.rv = \" (\" if t[4] else \"\"", python_globals, args, snip, "", am[243]) end, ae(am[243])), i(1, "args", {key = "i4"}), f(function(args, snip) return c_py({"coffee", 243}, "snip.rv = \")\" if t[4] else \"\"", python_globals, args, snip, "", am[243]) end, ae(am[243])), t" ->", nl(),
+t"\t", i(2, "# body...", {key = "i5"})}) end, {}, {key = "i3"}), nl(),
+		t"\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "if", descr = "(if) \"If\"", priority = -50, trigEngine = te("b")}, {
+		t"if ", i(1, "condition", {key = "i1"}), nl(),
+		t"\t", i(0, "# body...", {key = "i0"})
+	}),
+	s({trig = "ife", descr = "(ife) \"If .. Else\"", priority = -50, trigEngine = te("b")}, {
+		t"if ", i(1, "condition", {key = "i1"}), nl(),
+		t"\t", i(2, "# body...", {key = "i2"}), nl(),
+		t"else", nl(),
+		t"\t", i(3, "# body...", {key = "i3"})
+	}),
+	s({trig = "eif", descr = "(eif)", priority = -1000, trigEngine = te("w")}, {
+		t"else if ", i(1, "", {key = "i1"}), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end)
+	}),
+	s({trig = "ifte", descr = "(ifte) \"Ternary if\"", priority = -50, trigEngine = te("b")}, {
+		t"if ", i(1, "condition", {key = "i1"}), t" then ", i(2, "value", {key = "i2"}), t" else ", i(3, "other", {key = "i3"})
+	}),
+	s({trig = "unl", descr = "(unl) \"Unless\"", priority = -50, trigEngine = te("b")}, {
+		i(1, "action", {key = "i1"}), t" unless ", i(2, "condition", {key = "i2"})
+	}),
+	s({trig = "swi", descr = "(swi) \"Switch\"", priority = -50, trigEngine = te("b")}, {
+		t"switch ", i(1, "object", {key = "i1"}), nl(),
+		t"\twhen ", i(2, "value", {key = "i2"}), nl(),
+		t"\t\t", i(3, "# body...", {key = "i3"}), nl(),
+		t"\telse", nl(),
+		t"\t\t", i(0, "", {key = "i0"})
+	}),
+	s({trig = "log", descr = "(log) \"Log\"", priority = -50, trigEngine = te("b")}, {
+		t"console.log ", d(1, function(args) return sn(nil, {t"\"", i(1, "msg", {key = "i2"}), t"\""}) end, {}, {key = "i1"})
+	}),
+	s({trig = "try", descr = "(try) \"Try .. Catch\"", priority = -50, trigEngine = te("b")}, {
+		t"try", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"catch ", i(2, "error", {key = "i2"}), nl(),
+		t"\t", i(3, "", {key = "i3"})
+	}),
+	s({trig = "req", descr = "(req) \"Require\"", priority = -50, trigEngine = te("b")}, {
+		tr(1, "^\'?(\\w+)\'?$", "\\L$1\\E"), t" = require(", d(1, function(args) return sn(nil, {t"\'", i(1, "sys", {key = "i2"}), t"\'"}) end, {}, {key = "i1"}), t")"
+	}),
+	s({trig = "exp", descr = "(exp)", priority = -1000, trigEngine = te("w")}, {
+		i(0, "root", {key = "i0"}), t" = exports ? this", nl()
+	}),
+	s({trig = "jsonp", descr = "(jsonp)", priority = -1000, trigEngine = te("w")}, {
+		t"JSON.parse ", i(0, "jstr", {key = "i0"})
+	}),
+	s({trig = "jsons", descr = "(jsons)", priority = -1000, trigEngine = te("w")}, {
+		t"JSON.stringify ", i(0, "object", {key = "i0"})
 	}),
 	s({trig = "elif", descr = "(elif) \"Else if\"", priority = -50, trigEngine = te("b")}, {
 		t"else if ", i(1, "condition", {key = "i1"}), nl(),

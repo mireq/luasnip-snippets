@@ -42,11 +42,11 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
+	{0},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
 }
 ls.add_snippets("supercollider", {
 	s({trig = "b", descr = "(b)", priority = -1000, trigEngine = te("w")}, {
@@ -72,7 +72,7 @@ ls.add_snippets("supercollider", {
 		t"}"
 	}),
 	s({trig = "sdef", descr = "(sdef)", priority = 0, trigEngine = te("")}, {
-		t"SynthDef(\\", i(1, "synthName", {key = "i1"}), t", {", d(2, function(args) return sn(nil, {t" |", i(3, "x", {key = "i3"}), t"|"}) end, {}, {key = "i2"}), nl(),
+		t"SynthDef(\\", i(1, "synthName", {key = "i1"}), t", {", d(2, function(args) return sn(nil, {t" |", i(1, "x", {key = "i3"}), t"|"}) end, {}, {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}).add;"
 	}),

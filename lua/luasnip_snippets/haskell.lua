@@ -42,53 +42,53 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0, 1, 2, 3, 4, 5, 6, 7},
+	{0, 1, 2},
+	{0},
+	{0, 1},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1},
 	{},
-	{{1, 1}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{1},
+	{0},
+	{0, 1, 2},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1, 2, 3, 4, 5, 6},
+	{1, 2},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2},
+	{1, 2, 3},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0},
+	{0},
+	{0, 1, 2, 3, 4},
 }
 ls.add_snippets("haskell", {
 	s({trig = "lang", descr = "(lang)", priority = -1000, trigEngine = te("w")}, {
@@ -117,7 +117,7 @@ ls.add_snippets("haskell", {
 		t"--"
 	}),
 	s({trig = "imp", descr = "(imp) \"Simple import\"", priority = -50, trigEngine = te("")}, {
-		t"import ", d(1, function(args) return sn(nil, {i(2, "Data", {key = "i2"}), t".", i(0, "Text", {key = "i0"})}) end, {}, {key = "i1"})
+		t"import ", d(1, function(args) return sn(nil, {i(1, "Data", {key = "i2"}), t".", i(2, "Text", {key = "i0"})}) end, {}, {key = "i1"})
 	}),
 	s({trig = "import", descr = "(import)", priority = -1000, trigEngine = te("w")}, {
 		t"import ", i(0, "Data.Text", {key = "i0"})
@@ -126,7 +126,7 @@ ls.add_snippets("haskell", {
 		t"import ", i(1, "Data.Text", {key = "i1"}), t" (", i(0, "head", {key = "i0"}), t")"
 	}),
 	s({trig = "impq", descr = "(impq) \"Qualified import\"", priority = -50, trigEngine = te("")}, {
-		t"import qualified ", d(1, function(args) return sn(nil, {i(2, "Data", {key = "i2"}), t".", i(3, "Text", {key = "i3"})}) end, {}, {key = "i1"}), t" as ", d(4, function(args, snip) return sn(nil, { i(1, jt({c_py({"haskell", 9}, "snip.rv = t[1].split(\".\")[-1]", python_globals, args, snip, "", am[9])}, ""), {key = "i0"}) }) end)
+		t"import qualified ", d(1, function(args) return sn(nil, {i(1, "Data", {key = "i2"}), t".", i(2, "Text", {key = "i3"})}) end, {}, {key = "i1"}), t" as ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"haskell", 9}, "snip.rv = t[1].split(\".\")[-1]", python_globals, args, snip, "", am[9])}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "importq", descr = "(importq)", priority = -1000, trigEngine = te("w")}, {
 		t"import qualified ", i(1, "Data.Text", {key = "i1"}), t" as ", i(0, "T", {key = "i0"})
@@ -288,6 +288,6 @@ ls.add_snippets("haskell", {
 		t"-}"
 	}),
 	s({trig = "imp2", descr = "(imp2) \"Selective import\"", priority = -50, trigEngine = te("b")}, {
-		t"import ", d(1, function(args) return sn(nil, {i(2, "Data", {key = "i2"}), t".", i(3, "Text", {key = "i3"})}) end, {}, {key = "i1"}), t" (", i(4, "", {key = "i4"}), t")", i(0, "", {key = "i0"})
+		t"import ", d(1, function(args) return sn(nil, {i(1, "Data", {key = "i2"}), t".", i(2, "Text", {key = "i3"})}) end, {}, {key = "i1"}), t" (", i(2, "", {key = "i4"}), t")", i(0, "", {key = "i0"})
 	}),
 })

@@ -42,14 +42,14 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}},
-	{{1, 1}},
+	{1},
+	{1},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}},
-	{{1, 1}},
-	{{0, 0}},
+	{0, 1, 2},
+	{0, 1, 2, 3},
+	{0},
+	{1},
+	{0},
 }
 ls.add_snippets("make", {
 	s({trig = "base", descr = "(base)", priority = -1000, trigEngine = te("w")}, {

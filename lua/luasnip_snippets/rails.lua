@@ -42,285 +42,285 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}, {2, 2}},
-	{{1, 2}, {2, 12}, {3, 13}, {4, 14}, {5, 15}, {6, 16}, {7, 17}},
-	{{1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 10}},
-	{{1, 2}, {2, 12}, {3, 13}, {4, 14}},
-	{{1, 2}, {2, 10}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{0, 0}},
-	{{0, 0}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 4}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 10}, {4, 11}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 10}, {4, 11}},
-	{{0, 0}, {1, 2}, {2, 3}, {3, 4}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 2}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
+	{1, 2},
+	{2, 12, 13, 14, 15, 16, 17},
+	{2, 3, 4, 5, 10},
+	{2, 12, 13, 14},
+	{2, 10},
+	{0, 1, 2, 3},
+	{0, 1, 2},
+	{0, 1},
+	{1, 2, 3},
+	{0, 1, 2, 3, 4, 5, 6},
+	{0},
+	{0},
+	{1, 2, 3, 4},
+	{1},
+	{0},
+	{0, 1, 2},
+	{1, 2},
+	{0, 1},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1},
+	{0, 1},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1, 2},
+	{1, 2, 3, 4},
+	{1, 2, 4},
+	{0, 1, 2, 4},
+	{1, 2, 3, 4},
+	{1, 2, 3, 4},
+	{0, 1},
+	{1},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{1, 2, 3, 4},
+	{0, 1, 2, 10, 11},
+	{0, 1, 2, 10, 11},
+	{0, 2, 3, 4},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0, 1},
+	{1},
+	{0},
+	{0},
+	{0},
+	{1},
+	{1},
+	{1, 2},
+	{0, 1, 2},
+	{1},
+	{1, 2},
+	{1},
+	{1, 2, 3, 4},
+	{1, 2},
+	{0},
+	{1},
+	{1},
+	{1, 2},
+	{0},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
+	{1},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{0, 2},
+	{0},
+	{0, 1, 2},
+	{0, 1, 2, 3},
+	{0},
+	{1, 2, 3},
+	{1, 2, 3, 4},
+	{1, 2, 3, 4, 5, 6},
+	{1, 2, 3, 4, 5, 6},
+	{1, 2, 3, 4, 5, 6},
+	{1, 2, 3, 4, 5},
+	{1, 2, 3, 4},
+	{1, 2, 3, 4},
+	{1, 2, 3, 4},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2, 3},
+	{1, 2, 3},
+	{0, 1, 2, 3, 4},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1, 2, 3},
+	{0, 1},
+	{0},
+	{1},
+	{0},
+	{0},
+	{0},
+	{0, 1, 2},
+	{0},
+	{0, 1},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3, 4, 5, 6},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3, 4},
+	{0, 1},
+	{0},
+	{0, 1, 2, 3, 4},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0, 1},
+	{0},
+	{0},
+	{0},
+	{0, 1},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0, 1},
+	{0},
 	{},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
+	{0},
+	{0},
+	{0},
+	{0, 1},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0, 1},
+	{0, 1},
+	{1, 2, 3, 4, 5},
+	{0, 1, 2, 3},
+	{0, 1},
+	{1},
+	{0, 1, 2},
+	{1, 2, 3},
+	{0, 1, 2},
+	{1, 2},
+	{0, 1},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0, 1},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 5}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 5}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 3}, {3, 4}, {4, 5}, {5, 6}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 2}, {2, 10}, {3, 11}, {4, 12}, {5, 13}},
-	{{1, 2}, {2, 12}, {3, 13}, {4, 14}, {5, 15}, {6, 16}, {7, 17}},
-	{{1, 2}, {2, 10}},
-	{{1, 2}, {2, 12}, {3, 13}, {4, 14}},
+	{0, 1, 2, 3, 4, 5, 6},
+	{0, 1, 2, 3, 4, 5, 6},
+	{1, 2, 3, 5},
+	{1, 2, 3, 5},
+	{1},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2, 3, 4},
+	{1, 2, 3},
+	{1, 3, 4, 5, 6},
+	{1, 2, 3, 4, 5, 6},
+	{1, 2, 3},
+	{1},
+	{0, 1},
+	{1},
+	{1, 2},
+	{0, 1, 2},
+	{2, 10, 11, 12, 13},
+	{2, 12, 13, 14, 15, 16, 17},
+	{2, 10},
+	{2, 12, 13, 14},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 5}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 6}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}, {10, 10}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}, {10, 10}, {11, 11}, {12, 12}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
+	{0, 1, 2},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3, 4, 5, 6},
+	{0, 1},
+	{0, 1},
+	{0},
+	{0, 1, 2, 3, 4},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0},
+	{1, 2, 3, 4, 5, 6, 7},
+	{1, 2, 3, 4, 5, 6},
+	{1, 2, 3, 5},
+	{1, 2, 3, 4, 5},
+	{1, 2, 3, 4, 5, 6, 7},
+	{1, 2, 3, 4, 5, 6, 7},
+	{1, 2, 3, 4, 5, 6, 7},
+	{1, 2, 3, 4, 5, 6},
+	{1, 2, 3, 4, 5},
+	{1, 2, 3, 4, 5},
+	{1, 2, 3, 4, 6},
+	{1},
+	{1, 2},
+	{0, 1, 2},
+	{1, 2, 3, 4, 5, 6, 7, 8},
+	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+	{1, 2, 3, 4},
+	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12},
+	{1, 2, 3, 4, 5, 6, 7, 8},
+	{1, 2, 3},
+	{1, 2, 3, 4, 5, 6, 7, 8},
+	{1, 2, 3, 4, 5, 6, 7},
+	{0, 1, 2, 3, 4, 5, 6, 7},
+	{1, 2},
+	{0},
+	{0, 1, 2, 3, 4, 5},
+	{1, 2, 3, 4, 5, 6},
 }
 ls.add_snippets("rails", {
 	s({trig = "art", descr = "(art) \"Test Assert Redirected To (art)\"", priority = -50, trigEngine = te("")}, {
-		t"assert_redirected_to ", d(2, function(args) return sn(nil, {t"action: \"", i(1, "index", {key = "i1"}), t"\""}) end, {}, {key = "i2"})
+		t"assert_redirected_to ", d(1, function(args) return sn(nil, {t"action: \"", i(1, "index", {key = "i1"}), t"\""}) end, {}, {key = "i2"})
 	}),
 	s({trig = "artnp", descr = "(artnp) \"assert_redirected_to (nested path)\"", priority = -50, trigEngine = te("")}, {
-		t"assert_redirected_to ", d(1, function(args) return sn(nil, {i(2, "parent", {key = "i12"}), t"_", i(3, "child", {key = "i13"}), t"_path(", i(4, "@", {key = "i14"}), d(4, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i15"}), t", ", i(6, "@", {key = "i16"}), d(6, function(args) return sn(nil, {cp(13)}) end, {}, {key = "i17"}), t")"}) end, {}, {key = "i2"})
+		t"assert_redirected_to ", d(1, function(args) return sn(nil, {i(1, "parent", {key = "i12"}), t"_", i(2, "child", {key = "i13"}), t"_path(", i(3, "@", {key = "i14"}), d(4, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i15"}), t", ", i(5, "@", {key = "i16"}), d(6, function(args) return sn(nil, {cp(13)}) end, {}, {key = "i17"}), t")"}) end, {}, {key = "i2"})
 	}),
 	s({trig = "artnpp", descr = "(artnpp) \"assert_redirected_to (nested path plural)\"", priority = -50, trigEngine = te("")}, {
-		t"assert_redirected_to ", d(5, function(args) return sn(nil, {i(1, "parent", {key = "i2"}), t"_", i(2, "child", {key = "i3"}), t"_path(", i(3, "@", {key = "i4"}), d(-1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i5"}), t")"}) end, {}, {key = "i10"})
+		t"assert_redirected_to ", d(1, function(args) return sn(nil, {i(1, "parent", {key = "i2"}), t"_", i(2, "child", {key = "i3"}), t"_path(", i(3, "@", {key = "i4"}), d(4, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i5"}), t")"}) end, {}, {key = "i10"})
 	}),
 	s({trig = "artp", descr = "(artp) \"assert_redirected_to (path)\"", priority = -50, trigEngine = te("")}, {
-		t"assert_redirected_to ", d(1, function(args) return sn(nil, {i(2, "model", {key = "i12"}), t"_path(", i(3, "@", {key = "i13"}), d(3, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i14"}), t")"}) end, {}, {key = "i2"})
+		t"assert_redirected_to ", d(1, function(args) return sn(nil, {i(1, "model", {key = "i12"}), t"_path(", i(2, "@", {key = "i13"}), d(3, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i14"}), t")"}) end, {}, {key = "i2"})
 	}),
 	s({trig = "artpp", descr = "(artpp) \"assert_redirected_to (path plural)\"", priority = -50, trigEngine = te("")}, {
-		t"assert_redirected_to ", d(2, function(args) return sn(nil, {i(1, "model", {key = "i2"}), t"s_path"}) end, {}, {key = "i10"})
+		t"assert_redirected_to ", d(1, function(args) return sn(nil, {i(1, "model", {key = "i2"}), t"s_path"}) end, {}, {key = "i10"})
 	}),
 	s({trig = "asd", descr = "(asd) \"assert_difference\"", priority = -50, trigEngine = te("")}, {
 		t"assert_difference \"", i(1, "Model", {key = "i1"}), t".", i(2, "count", {key = "i2"}), t"\", ", i(3, "1", {key = "i3"}), t" do", nl(),
@@ -336,11 +336,11 @@ ls.add_snippets("rails", {
 		t"assert_response :", i(1, "success", {key = "i1"}), t", @response.body", i(0, "", {key = "i0"})
 	}),
 	s({trig = "asrj", descr = "(asrj) \"assert_rjs\"", priority = -50, trigEngine = te("")}, {
-		t"assert_rjs :", i(1, "replace", {key = "i1"}), t", ", d(2, function(args) return sn(nil, {t"\"", i(3, "dom id", {key = "i3"}), t"\""}) end, {}, {key = "i2"})
+		t"assert_rjs :", i(1, "replace", {key = "i1"}), t", ", d(2, function(args) return sn(nil, {t"\"", i(1, "dom id", {key = "i3"}), t"\""}) end, {}, {key = "i2"})
 	}),
 	s({trig = "ass", descr = "(ass) \"assert_select\"", priority = -50, trigEngine = te("")}, {
-		t"assert_select \'", i(1, "path", {key = "i1"}), t"\'", d(2, function(args) return sn(nil, {t", ", i(3, "text", {key = "i3"}), t": ", d(2, function(args) return sn(nil, {t"\'", i(5, "inner_html", {key = "i5"}), t"\'"}) end, {}, {key = "i4"})}) end, {}, {key = "i2"}), d(6, function(args) return sn(nil, {t" do", nl(),
-i(0, "", {key = "i0"}), t"\t$0", nl(),
+		t"assert_select \'", i(1, "path", {key = "i1"}), t"\'", d(2, function(args) return sn(nil, {t", ", i(1, "text", {key = "i3"}), t": ", d(2, function(args) return sn(nil, {t"\'", i(1, "inner_html", {key = "i5"}), t"\'"}) end, {}, {key = "i4"})}) end, {}, {key = "i2"}), d(3, function(args) return sn(nil, {t" do", nl(),
+i(1, "", {key = "i0"}), t"\t$0", nl(),
 t"en"}) end, {}, {key = "i6"})
 	}),
 	s({trig = "ba", descr = "(ba)", priority = -1000, trigEngine = te("w")}, {
@@ -443,10 +443,10 @@ t"en"}) end, {}, {key = "i6"})
 	}),
 	s({trig = "dele", descr = "(dele) delegate .. to .. prefix .. allow_nil", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"delegate :", i(1, "methods", {key = "i1"}), t", to: :", i(2, "object", {key = "i0"})
+			t"delegate :", i(1, "methods", {key = "i1"}), t", to: :", i(0, "object", {key = "i0"})
 		},
 		{
-			t"delegate :", i(1, "methods", {key = "i1"}), t", to: :", i(2, "object", {key = "i2"}), t", prefix: :", i(3, "prefix", {key = "i3"}), t", allow_nil: ", i(4, "allow_nil", {key = "i0"})
+			t"delegate :", i(1, "methods", {key = "i1"}), t", to: :", i(2, "object", {key = "i2"}), t", prefix: :", i(3, "prefix", {key = "i3"}), t", allow_nil: ", i(0, "allow_nil", {key = "i0"})
 		},
 	})),
 	s({trig = "amc", descr = "(amc)", priority = -1000, trigEngine = te("w")}, {
@@ -456,13 +456,13 @@ t"en"}) end, {}, {key = "i6"})
 		t"flash[:", i(1, "notice", {key = "i1"}), t"] = \"", i(2, "Successfully created...", {key = "i2"}), t"\"", i(0, "", {key = "i0"})
 	}),
 	s({trig = "habtm", descr = "(habtm) \"has_and_belongs_to_many (habtm)\"", priority = -50, trigEngine = te("")}, {
-		t"has_and_belongs_to_many :", i(1, "object", {key = "i1"}), d(2, function(args) return sn(nil, {t", join_table: \"", i(3, "table_name", {key = "i3"}), t"\", foreign_key: \"", d(2, function(args) return sn(nil, {cp(1), t"_id"}) end, {}, {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"has_and_belongs_to_many :", i(1, "object", {key = "i1"}), d(2, function(args) return sn(nil, {t", join_table: \"", i(1, "table_name", {key = "i3"}), t"\", foreign_key: \"", d(2, function(args) return sn(nil, {cp(1), t"_id"}) end, {}, {key = "i4"}), t"\""}) end, {}, {key = "i2"})
 	}),
 	s({trig = "hm", descr = "(hm) \"has_many (hm)\"", priority = -50, trigEngine = te("")}, {
-		t"has_many :", i(1, "object", {key = "i1"}), t"s", d(2, function(args) return sn(nil, {t", class_name: \"", cp(1), t"\", foreign_key: \"", i(3, "reference", {key = "i4"}), t"_id\""}) end, {}, {key = "i2"})
+		t"has_many :", i(1, "object", {key = "i1"}), t"s", d(2, function(args) return sn(nil, {t", class_name: \"", cp(1), t"\", foreign_key: \"", i(1, "reference", {key = "i4"}), t"_id\""}) end, {}, {key = "i2"})
 	}),
 	s({trig = "hmd", descr = "(hmd) \"has_many dependent: :destroy\"", priority = -50, trigEngine = te("")}, {
-		t"has_many :", i(1, "object", {key = "i1"}), t"s", d(2, function(args) return sn(nil, {t", class_name: \"", cp(1), t"\", foreign_key: \"", i(3, "reference", {key = "i4"}), t"_id\""}) end, {}, {key = "i2"}), t", dependent: :destroy", i(0, "", {key = "i0"})
+		t"has_many :", i(1, "object", {key = "i1"}), t"s", d(2, function(args) return sn(nil, {t", class_name: \"", cp(1), t"\", foreign_key: \"", i(1, "reference", {key = "i4"}), t"_id\""}) end, {}, {key = "i2"}), t", dependent: :destroy", i(0, "", {key = "i0"})
 	}),
 	s({trig = "hmt", descr = "(hmt) \"has_many (through)\"", priority = -50, trigEngine = te("")}, {
 		t"has_many :", i(1, "objects", {key = "i1"}), t", through: :", i(2, "join_association", {key = "i2"}), d(3, function(args) return sn(nil, {t", source: :", d(1, function(args) return sn(nil, {cp(2), t"_table_foreign_key_to_", cp(1), t"_table"}) end, {}, {key = "i4"})}) end, {}, {key = "i3"})
@@ -508,12 +508,12 @@ t"en"}) end, {}, {key = "i6"})
 	}),
 	s({trig = "mapr", descr = "(mapr) \"map.resource\"", priority = -50, trigEngine = te("")}, {
 		i(1, "map", {key = "i1"}), t".resource :", i(2, "resource", {key = "i2"}), d(3, function(args) return sn(nil, {t" do |", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i11"}), t"|", nl(),
-i(0, "", {key = "i0"}), t"\t$0", nl(),
+i(2, "", {key = "i0"}), t"\t$0", nl(),
 t"en"}) end, {}, {key = "i10"})
 	}),
 	s({trig = "maprs", descr = "(maprs) \"map.resources\"", priority = -50, trigEngine = te("")}, {
 		i(1, "map", {key = "i1"}), t".resources :", i(2, "resource", {key = "i2"}), d(3, function(args) return sn(nil, {t" do |", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i11"}), t"|", nl(),
-i(0, "", {key = "i0"}), t"\t$0", nl(),
+i(2, "", {key = "i0"}), t"\t$0", nl(),
 t"en"}) end, {}, {key = "i10"})
 	}),
 	s({trig = "mapwo", descr = "(mapwo) \"map.with_options\"", priority = -50, trigEngine = te("")}, {
@@ -597,7 +597,7 @@ t"en"}) end, {}, {key = "i10"})
 	}),
 	s({trig = "rest", descr = "(rest) \"respond_to\"", priority = -50, trigEngine = te("")}, {
 		t"respond_to do |wants|", nl(),
-		t"\twants.", i(1, "html", {key = "i1"}), d(2, function(args) return sn(nil, {t" { ", i(0, "", {key = "i0"}), t" }"}) end, {}, {key = "i2"}), nl(),
+		t"\twants.", i(1, "html", {key = "i1"}), d(2, function(args) return sn(nil, {t" { ", i(1, "", {key = "i0"}), t" }"}) end, {}, {key = "i2"}), nl(),
 		t"end"
 	}),
 	s({trig = "rf", descr = "(rf) \"render (file) (rf)\"", priority = -50, trigEngine = te("")}, {
@@ -674,31 +674,31 @@ t"en"}) end, {}, {key = "i10"})
 		t"Digest::SHA1.hexdigest(", i(0, "string", {key = "i0"}), t")"
 	}),
 	s({trig = "va", descr = "(va) \"validates_associated (va)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_associated :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(3, "create", {key = "i3"})}) end, {}, {key = "i2"})
+		t"validates_associated :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"})}) end, {}, {key = "i2"})
 	}),
 	s({trig = "vc", descr = "(vc) \"validates_confirmation_of (vc)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_confirmation_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(3, "create", {key = "i3"}), t", message: \"", i(4, "should match confirmation", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_confirmation_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "should match confirmation", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
 	}),
 	s({trig = "ve", descr = "(ve) \"validates_exclusion_of (ve)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_exclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(4, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(5, "create", {key = "i5"}), t", message: \"", i(6, "extension %s is not allowed", {key = "i6"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_exclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not allowed", {key = "i6"}), t"\""}) end, {}, {key = "i2"})
 	}),
 	s({trig = "vf", descr = "(vf) \"validates_format_of\"", priority = -50, trigEngine = te("")}, {
-		t"validates_format_of :", i(1, "attribute", {key = "i1"}), t", with: /", d(2, function(args) return sn(nil, {t"^[", i(3, "\\w\\d", {key = "i3"}), t"]+$"}) end, {}, {key = "i2"}), t"/", d(4, function(args) return sn(nil, {t", on: :", i(5, "create", {key = "i5"}), t", message: \"", i(6, "is invalid", {key = "i6"}), t"\""}) end, {}, {key = "i4"})
+		t"validates_format_of :", i(1, "attribute", {key = "i1"}), t", with: /", d(2, function(args) return sn(nil, {t"^[", i(1, "\\w\\d", {key = "i3"}), t"]+$"}) end, {}, {key = "i2"}), t"/", d(3, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i5"}), t", message: \"", i(2, "is invalid", {key = "i6"}), t"\""}) end, {}, {key = "i4"})
 	}),
 	s({trig = "vi", descr = "(vi) \"validates_inclusion_of\"", priority = -50, trigEngine = te("")}, {
-		t"validates_inclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(4, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(5, "create", {key = "i5"}), t", message: \"", i(6, "extension %s is not included in the list", {key = "i6"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_inclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not included in the list", {key = "i6"}), t"\""}) end, {}, {key = "i2"})
 	}),
 	s({trig = "vl", descr = "(vl) \"validates_length_of (vl)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_length_of :", i(1, "attribute", {key = "i1"}), t", within: ", i(2, "3..20", {key = "i2"}), d(3, function(args) return sn(nil, {t", on: :", i(4, "create", {key = "i4"}), t", message: \"", i(5, "must be present", {key = "i5"}), t"\""}) end, {}, {key = "i3"})
+		t"validates_length_of :", i(1, "attribute", {key = "i1"}), t", within: ", i(2, "3..20", {key = "i2"}), d(3, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i4"}), t", message: \"", i(2, "must be present", {key = "i5"}), t"\""}) end, {}, {key = "i3"})
 	}),
 	s({trig = "vn", descr = "(vn) \"validates_numericality_of\"", priority = -50, trigEngine = te("")}, {
-		t"validates_numericality_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(3, "create", {key = "i3"}), t", message: \"", i(4, "is not a number", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_numericality_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "is not a number", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
 	}),
 	s({trig = "vp", descr = "(vp) \"validates_presence_of (vp)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_presence_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(3, "create", {key = "i3"}), t", message: \"", i(4, "can\'t be blank", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_presence_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "can\'t be blank", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
 	}),
 	s({trig = "vu", descr = "(vu) \"validates_uniqueness_of (vu)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_uniqueness_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(3, "create", {key = "i3"}), t", message: \"", i(4, "must be unique", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_uniqueness_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "must be unique", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
 	}),
 	s({trig = "format", descr = "(format) \"format (respond_with)\"", priority = -50, trigEngine = te("")}, {
 		t"format.", i(1, "html|xml|json|js|any", {key = "i1"}), t" { ", i(0, "", {key = "i0"}), t" }"
@@ -713,7 +713,7 @@ t"en"}) end, {}, {key = "i10"})
 		t"xhr :delete, :", i(1, "destroy", {key = "i1"}), t", id: ", i(2, "1", {key = "i2"}), i(0, "", {key = "i0"})
 	}),
 	s({trig = "xget", descr = "(xget) \"xhr get\"", priority = -50, trigEngine = te("")}, {
-		t"xhr :get, :", i(1, "show", {key = "i1"}), d(2, function(args) return sn(nil, {t", id: ", i(3, "1", {key = "i3"})}) end, {}, {key = "i2"}), i(0, "", {key = "i0"})
+		t"xhr :get, :", i(1, "show", {key = "i1"}), d(2, function(args) return sn(nil, {t", id: ", i(1, "1", {key = "i3"})}) end, {}, {key = "i2"}), i(0, "", {key = "i0"})
 	}),
 	s({trig = "xpost", descr = "(xpost) \"xhr post\"", priority = -50, trigEngine = te("")}, {
 		t"xhr :post, :", i(1, "create", {key = "i1"}), t", ", i(2, "object", {key = "i2"}), t": { ", i(3, "", {key = "i3"}), t" }"
@@ -768,7 +768,7 @@ t"en"}) end, {}, {key = "i10"})
 		{
 			t"class ", f(function(args, snip) return c_viml("substitute( substitute(vim_snippets#Filename(), \'^\\d\\+_\', \'\',\'\'), \'\\(_\\|^\\)\\(.\\)\', \'\\u\\2\', \'g\')") end, {}), t" < ActiveRecord::Migration", nl(),
 			t"\tdef up", nl(),
-			t"\t\t", i(1, "", {key = "i0"}), nl(),
+			t"\t\t", i(0, "", {key = "i0"}), nl(),
 			t"\tend", nl(),
 			nl(),
 			t"\tdef down", nl(),
@@ -778,7 +778,7 @@ t"en"}) end, {}, {key = "i10"})
 		{
 			t"class ", f(function(args, snip) return c_viml("substitute( substitute(vim_snippets#Filename(), \'^\\d\\+_\', \'\',\'\'), \'\\(_\\|^\\)\\(.\\)\', \'\\u\\2\', \'g\')") end, {}), t" < ActiveRecord::Migration", nl(),
 			t"\tdef change", nl(),
-			t"\t\t", i(1, "", {key = "i0"}), nl(),
+			t"\t\t", i(0, "", {key = "i0"}), nl(),
 			t"\tend", nl(),
 			t"end"
 		},
@@ -798,11 +798,11 @@ t"en"}) end, {}, {key = "i10"})
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "tcbi", descr = "(tcbi) \"Create binary column\"", priority = -50, trigEngine = te("")}, {
-		t"t.binary :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {t", limit: ", i(3, "2", {key = "i3"}), t".megabytes"}) end, {}, {key = "i2"}), nl(),
+		t"t.binary :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {t", limit: ", i(1, "2", {key = "i3"}), t".megabytes"}) end, {}, {key = "i2"}), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "tcd", descr = "(tcd) \"Create decimal column\"", priority = -50, trigEngine = te("")}, {
-		t"t.decimal :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", precision: ", i(4, "10", {key = "i4"})}) end, {}, {key = "i3"}), d(3, function(args) return sn(nil, {t", scale: ", i(6, "2", {key = "i6"})}) end, {}, {key = "i5"})}) end, {}, {key = "i2"}), nl(),
+		t"t.decimal :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", precision: ", i(1, "10", {key = "i4"})}) end, {}, {key = "i3"}), d(2, function(args) return sn(nil, {t", scale: ", i(1, "2", {key = "i6"})}) end, {}, {key = "i5"})}) end, {}, {key = "i2"}), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "tcda", descr = "(tcda) \"Create date column\"", priority = -50, trigEngine = te("")}, {
@@ -830,7 +830,7 @@ t"en"}) end, {}, {key = "i10"})
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "tcr", descr = "(tcr) \"Create references column\"", priority = -50, trigEngine = te("")}, {
-		t"t.references :", i(1, "taggable", {key = "i1"}), d(2, function(args) return sn(nil, {t", polymorphic: ", d(1, function(args) return sn(nil, {t"{ default: \'", i(4, "Photo", {key = "i4"}), t"\' }"}) end, {}, {key = "i3"})}) end, {}, {key = "i2"}), nl(),
+		t"t.references :", i(1, "taggable", {key = "i1"}), d(2, function(args) return sn(nil, {t", polymorphic: ", d(1, function(args) return sn(nil, {t"{ default: \'", i(1, "Photo", {key = "i4"}), t"\' }"}) end, {}, {key = "i3"})}) end, {}, {key = "i2"}), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "tcs", descr = "(tcs) \"Create string column\"", priority = -50, trigEngine = te("")}, {
@@ -956,7 +956,7 @@ t"en"}) end, {}, {key = "i10"})
 		i(1, "super_class", {key = "i1"}), t".instance_method(:", i(0, "method", {key = "i0"}), t").bind(self).call"
 	}),
 	s({trig = "anaf", descr = "(anaf) \"accepts_nested_attributes_for\"", priority = -50, trigEngine = te("")}, {
-		t"accepts_nested_attributes_for :", i(1, "association_name", {key = "i1"}), d(2, function(args) return sn(nil, {i(3, ", allow_destroy: true", {key = "i3"}), d(2, function(args) return sn(nil, {t", reject_if: proc { |obj| ", i(5, "obj.blank?", {key = "i5"}), t" }"}) end, {}, {key = "i4"})}) end, {}, {key = "i2"}), nl()
+		t"accepts_nested_attributes_for :", i(1, "association_name", {key = "i1"}), d(2, function(args) return sn(nil, {i(1, ", allow_destroy: true", {key = "i3"}), d(2, function(args) return sn(nil, {t", reject_if: proc { |obj| ", i(1, "obj.blank?", {key = "i5"}), t" }"}) end, {}, {key = "i4"})}) end, {}, {key = "i2"}), nl()
 	}),
 	s({trig = "clac", descr = "(clac) \"Create controller class\"", priority = -50, trigEngine = te("")}, {
 		t"class ", i(1, "Model", {key = "i1"}), t"Controller < ApplicationController", nl(),
@@ -1069,7 +1069,7 @@ t"en"}) end, {}, {key = "i10"})
 	s({trig = "mcol", descr = "(mcol) \"Migration Remove and Add Column (mrac)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
 			t"t.column ", i(1, "title", {key = "i1"}), t", :", i(2, "string", {key = "i2"}), nl(),
-			i(3, "", {key = "i0"})
+			i(0, "", {key = "i0"})
 		},
 		{
 			t"remove_column :", i(1, "table", {key = "i1"}), t", :", i(2, "column", {key = "i2"}), i(3, " [press tab twice to generate add_column]", {key = "i3"})
@@ -1133,34 +1133,34 @@ t"en"}) end, {}, {key = "i10"})
 	}),
 	s({trig = "deftg", descr = "(deftg) \"def get request\"", priority = -50, trigEngine = te("")}, {
 		t"def test_should_get_", i(1, "action", {key = "i1"}), nl(),
-		t"\t", d(2, function(args) return sn(nil, {t"@", i(3, "model", {key = "i3"}), t" = ", d(2, function(args) return sn(nil, {cp(3), t"s"}) end, {}, {key = "i4"}), t"(:", i(5, "fixture_name", {key = "i5"}), t")", nl()}) end, {}, {key = "i2"}), t"get :", cp(1), d(6, function(args) return sn(nil, {t", id: @", cp(3), t".to_param"}) end, {}, {key = "i6"}), nl(),
+		t"\t", d(2, function(args) return sn(nil, {t"@", i(1, "model", {key = "i3"}), t" = ", d(2, function(args) return sn(nil, {cp(3), t"s"}) end, {}, {key = "i4"}), t"(:", i(3, "fixture_name", {key = "i5"}), t")", nl()}) end, {}, {key = "i2"}), t"get :", cp(1), d(3, function(args) return sn(nil, {t", id: @", cp(3), t".to_param"}) end, {}, {key = "i6"}), nl(),
 		t"\tassert_response :success", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "deftp", descr = "(deftp) \"def post request\"", priority = -50, trigEngine = te("")}, {
 		t"def test_should_post_", i(1, "action", {key = "i1"}), nl(),
-		t"\t", d(3, function(args) return sn(nil, {t"@", cp(2), t" = ", d(1, function(args) return sn(nil, {cp(2), t"s"}) end, {}, {key = "i4"}), t"(:", i(5, "fixture_name", {key = "i5"}), t")", nl()}) end, {}, {key = "i3"}), t"post :", cp(1), d(6, function(args) return sn(nil, {t", id: @", cp(2), t".to_param"}) end, {}, {key = "i6"}), t", ", i(2, "model", {key = "i2"}), t": { ", i(0, "", {key = "i0"}), t" }", nl(),
+		t"\t", d(3, function(args) return sn(nil, {t"@", cp(2), t" = ", d(1, function(args) return sn(nil, {cp(2), t"s"}) end, {}, {key = "i4"}), t"(:", i(2, "fixture_name", {key = "i5"}), t")", nl()}) end, {}, {key = "i3"}), t"post :", cp(1), d(4, function(args) return sn(nil, {t", id: @", cp(2), t".to_param"}) end, {}, {key = "i6"}), t", ", i(2, "model", {key = "i2"}), t": { ", i(0, "", {key = "i0"}), t" }", nl(),
 		t"\tassert_response :redirect", nl(),
 		nl(),
 		t"end"
 	}),
 	s({trig = "fina", descr = "(fina) \"find(:all)\"", priority = -50, trigEngine = te("")}, {
-		t"find(:all", d(1, function(args) return sn(nil, {t", conditions: [\'", d(1, function(args) return sn(nil, {i(3, "field", {key = "i3"}), t" = ?"}) end, {}, {key = "i2"}), t"\', ", i(4, "true", {key = "i5"}), t"]"}) end, {}, {key = "i1"}), t")"
+		t"find(:all", d(1, function(args) return sn(nil, {t", conditions: [\'", d(1, function(args) return sn(nil, {i(1, "field", {key = "i3"}), t" = ?"}) end, {}, {key = "i2"}), t"\', ", i(2, "true", {key = "i5"}), t"]"}) end, {}, {key = "i1"}), t")"
 	}),
 	s({trig = "finf", descr = "(finf) \"find(:first)\"", priority = -50, trigEngine = te("")}, {
-		t"find(:first", d(1, function(args) return sn(nil, {t", conditions: [\'", d(1, function(args) return sn(nil, {i(3, "field", {key = "i3"}), t" = ?"}) end, {}, {key = "i2"}), t"\', ", i(4, "true", {key = "i5"}), t"]"}) end, {}, {key = "i1"}), t")"
+		t"find(:first", d(1, function(args) return sn(nil, {t", conditions: [\'", d(1, function(args) return sn(nil, {i(1, "field", {key = "i3"}), t" = ?"}) end, {}, {key = "i2"}), t"\', ", i(2, "true", {key = "i5"}), t"]"}) end, {}, {key = "i1"}), t")"
 	}),
 	s({trig = "fini", descr = "(fini) \"find(id)\"", priority = -50, trigEngine = te("")}, {
 		t"find(", i(1, "id", {key = "i1"}), t")"
 	}),
 	s({trig = "fine", descr = "(fine) \"find_each\"", priority = -50, trigEngine = te("")}, {
-		t"find_each(${1conditions: {:", i(2, "field", {key = "i2"}), t": ", i(3, "true", {key = "i3"}), t"}}) do |", d(4, function(args) return sn(nil, {t"${TM_CURRENT_WORD/(\\w+)\\./\\L", i(1, "", {key = "i1"}), t"/g}"}) end, {}, {key = "i4"}), t"|", nl(),
+		t"find_each(${1conditions: {:", i(1, "field", {key = "i2"}), t": ", i(2, "true", {key = "i3"}), t"}}) do |", d(3, function(args) return sn(nil, {t"${TM_CURRENT_WORD/(\\w+)\\./\\L", i(1, "", {key = "i1"}), t"/g}"}) end, {}, {key = "i4"}), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "finb", descr = "(finb) \"find_in_batches\"", priority = -50, trigEngine = te("")}, {
-		t"find_in_batches(${1conditions: {:", i(2, "field", {key = "i2"}), t": ", i(3, "true", {key = "i3"}), t"}}) do |", d(4, function(args) return sn(nil, {t"${TM_CURRENT_WORD/(\\w+)\\./\\L", i(1, "", {key = "i1"}), t"/g}"}) end, {}, {key = "i4"}), t"s|", nl(),
+		t"find_in_batches(${1conditions: {:", i(1, "field", {key = "i2"}), t": ", i(2, "true", {key = "i3"}), t"}}) do |", d(3, function(args) return sn(nil, {t"${TM_CURRENT_WORD/(\\w+)\\./\\L", i(1, "", {key = "i1"}), t"/g}"}) end, {}, {key = "i4"}), t"s|", nl(),
 		t"\t", cp(4), t"s.each do |", cp(4), t"|", nl(),
 		t"\t\t", i(0, "", {key = "i0"}), nl(),
 		t"\tend", nl(),
@@ -1170,13 +1170,13 @@ t"en"}) end, {}, {key = "i10"})
 		i(1, "map", {key = "i1"}), t".", i(2, "connect", {key = "i2"}), t" \'", i(3, ":controller/:action/:id", {key = "i3"}), t"\'"
 	}),
 	s({trig = "ncl", descr = "(ncl) \"named_scope lambda\"", priority = -50, trigEngine = te("")}, {
-		t"named_scope :name, lambda { |${1param}| { :conditions: ", d(2, function(args) return sn(nil, {t"[\'", d(1, function(args) return sn(nil, {i(4, "field", {key = "i5"}), t" = ?"}) end, {}, {key = "i4"}), t"\', ", d(3, function(args) return sn(nil, {i(1, "", {key = "i1"})}) end, {}, {key = "i6"}), t"]"}) end, {}, {key = "i3"}), t" } }", nl()
+		t"named_scope :name, lambda { |${1param}| { :conditions: ", d(1, function(args) return sn(nil, {t"[\'", d(1, function(args) return sn(nil, {i(1, "field", {key = "i5"}), t" = ?"}) end, {}, {key = "i4"}), t"\', ", d(2, function(args) return sn(nil, {i(1, "", {key = "i1"})}) end, {}, {key = "i6"}), t"]"}) end, {}, {key = "i3"}), t" } }", nl()
 	}),
 	s({trig = "nc", descr = "(nc) \"named_scope\"", priority = -50, trigEngine = te("")}, {
-		t"named_scope :name", d(1, function(args) return sn(nil, {t", joins: :", i(2, "table", {key = "i2"})}) end, {}, {key = "i1"}), t", conditions: ", d(3, function(args) return sn(nil, {t"[\'", d(1, function(args) return sn(nil, {i(5, "field", {key = "i5"}), t" = ?"}) end, {}, {key = "i4"}), t"\', ", i(6, "true", {key = "i6"}), t"]"}) end, {}, {key = "i3"}), nl()
+		t"named_scope :name", d(1, function(args) return sn(nil, {t", joins: :", i(1, "table", {key = "i2"})}) end, {}, {key = "i1"}), t", conditions: ", d(2, function(args) return sn(nil, {t"[\'", d(1, function(args) return sn(nil, {i(1, "field", {key = "i5"}), t" = ?"}) end, {}, {key = "i4"}), t"\', ", i(2, "true", {key = "i6"}), t"]"}) end, {}, {key = "i3"}), nl()
 	}),
 	s({trig = "dscope", descr = "(dscope) \"default_scope\"", priority = -50, trigEngine = te("")}, {
-		t"default_scope ", d(1, function(args) return sn(nil, {t"order(", d(1, function(args) return sn(nil, {t"\'", i(3, "created_at DESC", {key = "i3"}), t"\'"}) end, {}, {key = "i2"}), t")"}) end, {}, {key = "i1"})
+		t"default_scope ", d(1, function(args) return sn(nil, {t"order(", d(1, function(args) return sn(nil, {t"\'", i(1, "created_at DESC", {key = "i3"}), t"\'"}) end, {}, {key = "i2"}), t")"}) end, {}, {key = "i1"})
 	}),
 	s({trig = "rea", descr = "(rea) \"redirect_to (action)\"", priority = -50, trigEngine = te("")}, {
 		t"redirect_to action: \"", i(1, "index", {key = "i1"}), t"\""
@@ -1194,16 +1194,16 @@ t"en"}) end, {}, {key = "i10"})
 		t"redirect_to controller: \"", i(1, "items", {key = "i1"}), t"\", action: \"", i(2, "show", {key = "i2"}), t"\", id: ", i(0, "@item", {key = "i0"})
 	}),
 	s({trig = "renpp", descr = "(renpp) \"redirect_to (nested path plural)\"", priority = -50, trigEngine = te("")}, {
-		t"redirect_to(", d(1, function(args) return sn(nil, {i(2, "parent", {key = "i10"}), t"_", i(3, "child", {key = "i11"}), t"_path(", i(4, "@", {key = "i12"}), d(4, function(args) return sn(nil, {cp(10)}) end, {}, {key = "i13"}), t")"}) end, {}, {key = "i2"}), t")"
+		t"redirect_to(", d(1, function(args) return sn(nil, {i(1, "parent", {key = "i10"}), t"_", i(2, "child", {key = "i11"}), t"_path(", i(3, "@", {key = "i12"}), d(4, function(args) return sn(nil, {cp(10)}) end, {}, {key = "i13"}), t")"}) end, {}, {key = "i2"}), t")"
 	}),
 	s({trig = "renp", descr = "(renp) \"redirect_to (nested path)\"", priority = -50, trigEngine = te("")}, {
-		t"redirect_to(", d(1, function(args) return sn(nil, {i(2, "parent", {key = "i12"}), t"_", i(3, "child", {key = "i13"}), t"_path(", i(4, "@", {key = "i14"}), d(4, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i15"}), t", ", i(6, "@", {key = "i16"}), d(6, function(args) return sn(nil, {cp(13)}) end, {}, {key = "i17"}), t")"}) end, {}, {key = "i2"}), t")"
+		t"redirect_to(", d(1, function(args) return sn(nil, {i(1, "parent", {key = "i12"}), t"_", i(2, "child", {key = "i13"}), t"_path(", i(3, "@", {key = "i14"}), d(4, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i15"}), t", ", i(5, "@", {key = "i16"}), d(6, function(args) return sn(nil, {cp(13)}) end, {}, {key = "i17"}), t")"}) end, {}, {key = "i2"}), t")"
 	}),
 	s({trig = "repp", descr = "(repp) \"redirect_to (path plural)\"", priority = -50, trigEngine = te("")}, {
-		t"redirect_to(", d(1, function(args) return sn(nil, {i(2, "model", {key = "i10"}), t"s_path"}) end, {}, {key = "i2"}), t")"
+		t"redirect_to(", d(1, function(args) return sn(nil, {i(1, "model", {key = "i10"}), t"s_path"}) end, {}, {key = "i2"}), t")"
 	}),
 	s({trig = "rep", descr = "(rep) \"redirect_to (path)\"", priority = -50, trigEngine = te("")}, {
-		t"redirect_to(", d(1, function(args) return sn(nil, {i(2, "model", {key = "i12"}), t"_path(", i(3, "@", {key = "i13"}), d(3, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i14"}), t")"}) end, {}, {key = "i2"}), t")"
+		t"redirect_to(", d(1, function(args) return sn(nil, {i(1, "model", {key = "i12"}), t"_path(", i(2, "@", {key = "i13"}), d(3, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i14"}), t")"}) end, {}, {key = "i2"}), t")"
 	}),
 	s({trig = "reb", descr = "(reb) \"redirect_to :back\"", priority = -50, trigEngine = te("")}, {
 		t"redirect_to :back"
@@ -1215,98 +1215,98 @@ t"en"}) end, {}, {key = "i10"})
 	}),
 	s({trig = "t.", descr = "(t.) \"t.timestamps (tctss)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"t.binary :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {t", limit: ", i(3, "2", {key = "i3"}), t".megabytes"}) end, {}, {key = "i2"}), nl(),
-			t"t.", i(4, "", {key = "i0"})
+			t"t.binary :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {t", limit: ", i(1, "2", {key = "i3"}), t".megabytes"}) end, {}, {key = "i2"}), nl(),
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.boolean :", i(1, "title", {key = "i1"}), nl(),
-			t"t.", i(2, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.date :", i(1, "title", {key = "i1"}), nl(),
-			t"t.", i(2, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.datetime :", i(1, "title", {key = "i1"}), nl(),
-			t"t.", i(2, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
-			t"t.decimal :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", precision: ", i(4, "10", {key = "i4"})}) end, {}, {key = "i3"}), d(3, function(args) return sn(nil, {t", scale: ", i(6, "2", {key = "i6"})}) end, {}, {key = "i5"})}) end, {}, {key = "i2"}), nl(),
-			t"t.", i(7, "", {key = "i0"})
+			t"t.decimal :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", precision: ", i(1, "10", {key = "i4"})}) end, {}, {key = "i3"}), d(2, function(args) return sn(nil, {t", scale: ", i(1, "2", {key = "i6"})}) end, {}, {key = "i5"})}) end, {}, {key = "i2"}), nl(),
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.float :", i(1, "title", {key = "i1"}), nl(),
-			t"t.", i(2, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.integer :", i(1, "title", {key = "i1"}), nl(),
-			t"t.", i(2, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.integer :lock_version, null: false, default: 0", nl(),
-			t"t.", i(1, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
-			t"t.references :", i(1, "taggable", {key = "i1"}), d(2, function(args) return sn(nil, {t", polymorphic: ", d(1, function(args) return sn(nil, {t"{ default: \'", i(4, "Photo", {key = "i4"}), t"\' }"}) end, {}, {key = "i3"})}) end, {}, {key = "i2"}), nl(),
-			t"t.", i(5, "", {key = "i0"})
+			t"t.references :", i(1, "taggable", {key = "i1"}), d(2, function(args) return sn(nil, {t", polymorphic: ", d(1, function(args) return sn(nil, {t"{ default: \'", i(1, "Photo", {key = "i4"}), t"\' }"}) end, {}, {key = "i3"})}) end, {}, {key = "i2"}), nl(),
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.rename(:", i(1, "old_column_name", {key = "i1"}), t", :", i(2, "new_column_name", {key = "i2"}), t")", nl(),
-			t"t.", i(3, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.string :", i(1, "title", {key = "i1"}), nl(),
-			t"t.", i(2, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.text :", i(1, "title", {key = "i1"}), nl(),
-			t"t.", i(2, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.time :", i(1, "title", {key = "i1"}), nl(),
-			t"t.", i(2, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.timestamp :", i(1, "title", {key = "i1"}), nl(),
-			t"t.", i(2, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 		{
 			t"t.timestamps", nl(),
-			t"t.", i(1, "", {key = "i0"})
+			t"t.", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "vaoif", descr = "(vaoif) \"validates_acceptance_of if\"", priority = -50, trigEngine = te("")}, {
-		t"validates_acceptance_of :", i(1, "terms", {key = "i1"}), d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", accept: \"", i(4, "1", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), d(3, function(args) return sn(nil, {t", message: \"", i(6, "You must accept the terms of service", {key = "i6"}), t"\""}) end, {}, {key = "i5"})}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(7, "obj.condition?", {key = "i7"}), t" }}"
+		t"validates_acceptance_of :", i(1, "terms", {key = "i1"}), d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", accept: \"", i(1, "1", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), d(2, function(args) return sn(nil, {t", message: \"", i(1, "You must accept the terms of service", {key = "i6"}), t"\""}) end, {}, {key = "i5"})}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i7"}), t" }}"
 	}),
 	s({trig = "vao", descr = "(vao) \"validates_acceptance_of\"", priority = -50, trigEngine = te("")}, {
-		t"validates :", i(1, "terms", {key = "i1"}), d(2, function(args) return sn(nil, {t", acceptance: ", d(1, function(args) return sn(nil, {t"{ accept: \"", i(4, "1", {key = "i4"}), t"\"", d(2, function(args) return sn(nil, {t", message: \"", i(6, "You must accept the terms of service", {key = "i6"}), t"\""}) end, {}, {key = "i5"}), t"}"}) end, {}, {key = "i3"}), t" "}) end, {}, {key = "i2"})
+		t"validates :", i(1, "terms", {key = "i1"}), d(2, function(args) return sn(nil, {t", acceptance: ", d(1, function(args) return sn(nil, {t"{ accept: \"", i(1, "1", {key = "i4"}), t"\"", d(2, function(args) return sn(nil, {t", message: \"", i(1, "You must accept the terms of service", {key = "i6"}), t"\""}) end, {}, {key = "i5"}), t"}"}) end, {}, {key = "i3"}), t" "}) end, {}, {key = "i2"})
 	}),
 	s({trig = "vaif", descr = "(vaif) \"validates_associated if (vaif)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_associated :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(3, "create", {key = "i3"}), t", if: proc { |obj| ", i(4, "obj.condition?", {key = "i5"}), t" }"}) end, {}, {key = "i2"})
+		t"validates_associated :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", if: proc { |obj| ", i(2, "obj.condition?", {key = "i5"}), t" }"}) end, {}, {key = "i2"})
 	}),
 	s({trig = "vcif", descr = "(vcif) \"validates_confirmation_of if (vcif)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_confirmation_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(3, "create", {key = "i3"}), t", message: \"", i(4, "should match confirmation", {key = "i4"}), t"\", if: proc { |obj| ", i(5, "obj.condition?", {key = "i5"}), t" }"}) end, {}, {key = "i2"})
+		t"validates_confirmation_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "should match confirmation", {key = "i4"}), t"\", if: proc { |obj| ", i(3, "obj.condition?", {key = "i5"}), t" }"}) end, {}, {key = "i2"})
 	}),
 	s({trig = "veif", descr = "(veif) \"validates_exclusion_of if (veif)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_exclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(4, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(5, "create", {key = "i5"}), t", message: \"", i(6, "extension %s is not allowed", {key = "i6"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(7, "obj.condition?", {key = "i7"}), t" }}"
+		t"validates_exclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not allowed", {key = "i6"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i7"}), t" }}"
 	}),
 	s({trig = "vfif", descr = "(vfif) \"validates_format_of if\"", priority = -50, trigEngine = te("")}, {
-		t"validates_format_of :", i(1, "attribute", {key = "i1"}), t", with: /", d(2, function(args) return sn(nil, {t"^[", i(3, "\\w\\d", {key = "i3"}), t"]+$"}) end, {}, {key = "i2"}), t"/", d(4, function(args) return sn(nil, {t", on: :", i(5, "create", {key = "i5"}), t", message: \"", i(6, "is invalid", {key = "i6"}), t"\""}) end, {}, {key = "i4"}), t", if: proc { |obj| ", i(7, "obj.condition?", {key = "i7"}), t" }}"
+		t"validates_format_of :", i(1, "attribute", {key = "i1"}), t", with: /", d(2, function(args) return sn(nil, {t"^[", i(1, "\\w\\d", {key = "i3"}), t"]+$"}) end, {}, {key = "i2"}), t"/", d(3, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i5"}), t", message: \"", i(2, "is invalid", {key = "i6"}), t"\""}) end, {}, {key = "i4"}), t", if: proc { |obj| ", i(4, "obj.condition?", {key = "i7"}), t" }}"
 	}),
 	s({trig = "viif", descr = "(viif) \"validates_inclusion_of if\"", priority = -50, trigEngine = te("")}, {
-		t"validates_inclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(4, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(5, "create", {key = "i5"}), t", message: \"", i(6, "extension %s is not included in the list", {key = "i6"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(7, "obj.condition?", {key = "i7"}), t" }}"
+		t"validates_inclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not included in the list", {key = "i6"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i7"}), t" }}"
 	}),
 	s({trig = "vlif", descr = "(vlif) \"validates_length_of if\"", priority = -50, trigEngine = te("")}, {
-		t"validates_length_of :", i(1, "attribute", {key = "i1"}), t", within: ", i(2, "3..20", {key = "i2"}), d(3, function(args) return sn(nil, {t", on: :", i(4, "create", {key = "i4"}), t", message: \"", i(5, "must be present", {key = "i5"}), t"\""}) end, {}, {key = "i3"}), t", if: proc { |obj| ", i(6, "obj.condition?", {key = "i6"}), t" }}"
+		t"validates_length_of :", i(1, "attribute", {key = "i1"}), t", within: ", i(2, "3..20", {key = "i2"}), d(3, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i4"}), t", message: \"", i(2, "must be present", {key = "i5"}), t"\""}) end, {}, {key = "i3"}), t", if: proc { |obj| ", i(4, "obj.condition?", {key = "i6"}), t" }}"
 	}),
 	s({trig = "vnif", descr = "(vnif) \"validates_numericality_of if\"", priority = -50, trigEngine = te("")}, {
-		t"validates_numericality_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(3, "create", {key = "i3"}), t", message: \"", i(4, "is not a number", {key = "i4"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(5, "obj.condition?", {key = "i5"}), t" }}"
+		t"validates_numericality_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "is not a number", {key = "i4"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i5"}), t" }}"
 	}),
 	s({trig = "vpif", descr = "(vpif) \"validates_presence_of if (vpif) 2\"", priority = -50, trigEngine = te("")}, {
-		t"validates_presence_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(3, "create", {key = "i3"}), t", message: \"", i(4, "can\'t be blank", {key = "i4"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(5, "obj.condition?", {key = "i5"}), t" }}"
+		t"validates_presence_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "can\'t be blank", {key = "i4"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i5"}), t" }}"
 	}),
 	s({trig = "vuif", descr = "(vuif) \"validates_uniqueness_of if (vuif)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_uniqueness_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(3, "create", {key = "i3"}), t", message: \"", i(4, "must be unique", {key = "i4"}), t"\", if: proc { |obj| ", i(5, "obj.condition?", {key = "i6"}), t" }"}) end, {}, {key = "i2"})
+		t"validates_uniqueness_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "must be unique", {key = "i4"}), t"\", if: proc { |obj| ", i(3, "obj.condition?", {key = "i6"}), t" }"}) end, {}, {key = "i2"})
 	}),
 	s({trig = "verify", descr = "(verify) \"verify -- redirect\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
@@ -1317,47 +1317,47 @@ t"en"}) end, {}, {key = "i10"})
 		},
 	})),
 	s({trig = "wants", descr = "(wants) \"wants_format\"", priority = -50, trigEngine = te("")}, {
-		t"wants.", i(1, "js|json|html", {key = "i1"}), d(2, function(args) return sn(nil, {t" { ", i(0, "", {key = "i0"}), t" }"}) end, {}, {key = "i2"})
+		t"wants.", i(1, "js|json|html", {key = "i1"}), d(2, function(args) return sn(nil, {t" { ", i(1, "", {key = "i0"}), t" }"}) end, {}, {key = "i2"})
 	}),
 	s({trig = "col", descr = "(col) \"collection routes\"", priority = -50, trigEngine = te("")}, {
 		t"collection do", nl(),
-		t"\t", d(1, function(args) return sn(nil, {t"get :", i(2, "action", {key = "i2"})}) end, {}, {key = "i1"}), nl(),
-		t"\t", d(3, function(args) return sn(nil, {t"put :", i(4, "action", {key = "i4"})}) end, {}, {key = "i3"}), nl(),
-		t"\t", d(5, function(args) return sn(nil, {t"post :", i(6, "action", {key = "i6"})}) end, {}, {key = "i5"}), nl(),
-		t"\t", d(7, function(args) return sn(nil, {t"delete :", i(8, "action", {key = "i8"})}) end, {}, {key = "i7"}), nl(),
+		t"\t", d(1, function(args) return sn(nil, {t"get :", i(1, "action", {key = "i2"})}) end, {}, {key = "i1"}), nl(),
+		t"\t", d(2, function(args) return sn(nil, {t"put :", i(1, "action", {key = "i4"})}) end, {}, {key = "i3"}), nl(),
+		t"\t", d(3, function(args) return sn(nil, {t"post :", i(1, "action", {key = "i6"})}) end, {}, {key = "i5"}), nl(),
+		t"\t", d(4, function(args) return sn(nil, {t"delete :", i(1, "action", {key = "i8"})}) end, {}, {key = "i7"}), nl(),
 		t"end"
 	}),
 	s({trig = "gem", descr = "(gem) \"gem\"", priority = -50, trigEngine = te("")}, {
-		t"gem \'", i(1, "name", {key = "i1"}), t"\'", d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", \"", i(4, "1.0", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), d(3, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", require: ", d(1, function(args) return sn(nil, {t"\"", d(1, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i8"}), t"\""}) end, {}, {key = "i7"})}) end, {}, {key = "i6"}), d(4, function(args) return sn(nil, {t", group: :", i(10, "test", {key = "i10"})}) end, {}, {key = "i9"})}) end, {}, {key = "i5"})}) end, {}, {key = "i2"})
+		t"gem \'", i(1, "name", {key = "i1"}), t"\'", d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", \"", i(1, "1.0", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", require: ", d(1, function(args) return sn(nil, {t"\"", d(1, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i8"}), t"\""}) end, {}, {key = "i7"})}) end, {}, {key = "i6"}), d(2, function(args) return sn(nil, {t", group: :", i(1, "test", {key = "i10"})}) end, {}, {key = "i9"})}) end, {}, {key = "i5"})}) end, {}, {key = "i2"})
 	}),
 	s({trig = "gemg", descr = "(gemg) \"gem :git\"", priority = -50, trigEngine = te("")}, {
-		t"gem \'", i(1, "paperclip", {key = "i1"}), t"\', git: \"", i(2, "git://github.com/thoughtbot/paperclip.git", {key = "i2"}), t"\"", d(3, function(args) return sn(nil, {t", branch: \"", i(4, "rails3", {key = "i4"}), t"\""}) end, {}, {key = "i3"})
+		t"gem \'", i(1, "paperclip", {key = "i1"}), t"\', git: \"", i(2, "git://github.com/thoughtbot/paperclip.git", {key = "i2"}), t"\"", d(3, function(args) return sn(nil, {t", branch: \"", i(1, "rails3", {key = "i4"}), t"\""}) end, {}, {key = "i3"})
 	}),
 	s({trig = "match", descr = "(match) \"match\"", priority = -50, trigEngine = te("")}, {
-		t"match \'", d(1, function(args) return sn(nil, {i(2, ":controller", {key = "i2"}), d(2, function(args) return sn(nil, {t"/", i(4, ":action", {key = "i4"}), d(2, function(args) return sn(nil, {t"/", i(6, ":id", {key = "i6"}), i(7, "(.:format)", {key = "i7"})}) end, {}, {key = "i5"})}) end, {}, {key = "i3"})}) end, {}, {key = "i1"}), t"\'", d(8, function(args) return sn(nil, {t" \'", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i9"}), t"#", d(2, function(args) return sn(nil, {cp(4)}) end, {}, {key = "i10"}), t"\'", d(3, function(args) return sn(nil, {t", as: :", d(1, function(args) return sn(nil, {cp(10)}) end, {}, {key = "i12"})}) end, {}, {key = "i11"})}) end, {}, {key = "i8"})
+		t"match \'", d(1, function(args) return sn(nil, {i(1, ":controller", {key = "i2"}), d(2, function(args) return sn(nil, {t"/", i(1, ":action", {key = "i4"}), d(2, function(args) return sn(nil, {t"/", i(1, ":id", {key = "i6"}), i(2, "(.:format)", {key = "i7"})}) end, {}, {key = "i5"})}) end, {}, {key = "i3"})}) end, {}, {key = "i1"}), t"\'", d(2, function(args) return sn(nil, {t" \'", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i9"}), t"#", d(2, function(args) return sn(nil, {cp(4)}) end, {}, {key = "i10"}), t"\'", d(3, function(args) return sn(nil, {t", as: :", d(1, function(args) return sn(nil, {cp(10)}) end, {}, {key = "i12"})}) end, {}, {key = "i11"})}) end, {}, {key = "i8"})
 	}),
 	s({trig = "member", descr = "(member) \"member routes\"", priority = -50, trigEngine = te("")}, {
 		t"member do", nl(),
-		t"\t", d(1, function(args) return sn(nil, {t"get :", i(2, "action", {key = "i2"})}) end, {}, {key = "i1"}), nl(),
-		t"\t", d(3, function(args) return sn(nil, {t"put :", i(4, "action", {key = "i4"})}) end, {}, {key = "i3"}), nl(),
-		t"\t", d(5, function(args) return sn(nil, {t"post :", i(6, "action", {key = "i6"})}) end, {}, {key = "i5"}), nl(),
-		t"\t", d(7, function(args) return sn(nil, {t"delete :", i(8, "action", {key = "i8"})}) end, {}, {key = "i7"}), nl(),
+		t"\t", d(1, function(args) return sn(nil, {t"get :", i(1, "action", {key = "i2"})}) end, {}, {key = "i1"}), nl(),
+		t"\t", d(2, function(args) return sn(nil, {t"put :", i(1, "action", {key = "i4"})}) end, {}, {key = "i3"}), nl(),
+		t"\t", d(3, function(args) return sn(nil, {t"post :", i(1, "action", {key = "i6"})}) end, {}, {key = "i5"}), nl(),
+		t"\t", d(4, function(args) return sn(nil, {t"delete :", i(1, "action", {key = "i8"})}) end, {}, {key = "i7"}), nl(),
 		t"end"
 	}),
 	s({trig = "res", descr = "(res) \"resources\"", priority = -50, trigEngine = te("")}, {
 		t"resources :", i(1, "posts", {key = "i1"}), d(2, function(args) return sn(nil, {t" do", nl(),
-i(3, "", {key = "i3"}), t"\t$3", nl(),
+i(1, "", {key = "i3"}), t"\t$3", nl(),
 t"en"}) end, {}, {key = "i2"})
 	}),
 	s({trig = "scope", descr = "(scope) \"scope\"", priority = -50, trigEngine = te("")}, {
-		t"scope :", i(1, "name", {key = "i1"}), t", { ", d(2, function(args) return sn(nil, {t"joins(:", i(3, "table", {key = "i3"}), t")."}) end, {}, {key = "i2"}), t"where(", d(4, function(args) return sn(nil, {t"\'", d(1, function(args) return sn(nil, {cp(3), t".", i(6, "field", {key = "i6"})}) end, {}, {key = "i5"}), t" = ?\', ", d(3, function(args) return sn(nil, {t"\'", i(8, "value", {key = "i8"}), t"\'"}) end, {}, {key = "i7"})}) end, {}, {key = "i4"}), t") }"
+		t"scope :", i(1, "name", {key = "i1"}), t", { ", d(2, function(args) return sn(nil, {t"joins(:", i(1, "table", {key = "i3"}), t")."}) end, {}, {key = "i2"}), t"where(", d(3, function(args) return sn(nil, {t"\'", d(1, function(args) return sn(nil, {cp(3), t".", i(1, "field", {key = "i6"})}) end, {}, {key = "i5"}), t" = ?\', ", d(2, function(args) return sn(nil, {t"\'", i(1, "value", {key = "i8"}), t"\'"}) end, {}, {key = "i7"})}) end, {}, {key = "i4"}), t") }"
 	}),
 	s({trig = "scopel", descr = "(scopel) \"scope lambda\"", priority = -50, trigEngine = te("")}, {
-		t"scope :", i(1, "name", {key = "i1"}), t", lambda { |", i(2, "param", {key = "i2"}), t"| ", d(3, function(args) return sn(nil, {t"where(", d(1, function(args) return sn(nil, {t":", i(5, "field", {key = "i5"}), t": ", d(2, function(args) return sn(nil, {t"\"", i(7, "value", {key = "i7"}), t"\""}) end, {}, {key = "i6"})}) end, {}, {key = "i4"}), t")"}) end, {}, {key = "i3"}), t" }"
+		t"scope :", i(1, "name", {key = "i1"}), t", lambda { |", i(2, "param", {key = "i2"}), t"| ", d(3, function(args) return sn(nil, {t"where(", d(1, function(args) return sn(nil, {t":", i(1, "field", {key = "i5"}), t": ", d(2, function(args) return sn(nil, {t"\"", i(1, "value", {key = "i7"}), t"\""}) end, {}, {key = "i6"})}) end, {}, {key = "i4"}), t")"}) end, {}, {key = "i3"}), t" }"
 	}),
 	s({trig = "scopee", descr = "(scopee) \"scope with extension\"", priority = -50, trigEngine = te("")}, {
-		t"scope :", i(1, "name", {key = "i1"}), t", { ", d(2, function(args) return sn(nil, {t"where(", d(1, function(args) return sn(nil, {t":", i(4, "field", {key = "i4"}), t": ", d(2, function(args) return sn(nil, {t"\'", i(6, "value", {key = "i6"}), t"\'"}) end, {}, {key = "i5"})}) end, {}, {key = "i3"}), t")"}) end, {}, {key = "i2"}), t" } do", nl(),
-		t"\tdef ", i(7, "method_name", {key = "i7"}), nl(),
+		t"scope :", i(1, "name", {key = "i1"}), t", { ", d(2, function(args) return sn(nil, {t"where(", d(1, function(args) return sn(nil, {t":", i(1, "field", {key = "i4"}), t": ", d(2, function(args) return sn(nil, {t"\'", i(1, "value", {key = "i6"}), t"\'"}) end, {}, {key = "i5"})}) end, {}, {key = "i3"}), t")"}) end, {}, {key = "i2"}), t" } do", nl(),
+		t"\tdef ", i(3, "method_name", {key = "i7"}), nl(),
 		t"\t\t", i(0, "", {key = "i0"}), nl(),
 		t"\tend", nl(),
 		t"end"
@@ -1371,11 +1371,11 @@ t"en"}) end, {}, {key = "i2"})
 		t"end"
 	}),
 	s({trig = "trans", descr = "(trans) \"Translation snippet\"", priority = -50, trigEngine = te("")}, {
-		t"I18n.t(\'", f(function(args, snip) return c_viml("substitute(substitute(substitute(@%, substitute(getcwd() . \"/\", \"\\/\", \"\\\\\\\\/\", \"g\"), \"\", \"\"), \"\\\\(\\\\.\\\\(html\\\\|js\\\\)\\\\.\\\\(haml\\\\|erb\\\\)\\\\|\\\\(_controller\\\\)\\\\?\\\\.rb\\\\)$\", \"\", \"\"), \"/\", \".\", \"g\")") end, {}), t".", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[^\\w]", "_")}, ""), {key = "i2"}) }) end, {k"i1"}), i(3, "", {key = "i3"}), t"\', default: \"", i(1, "some_text", {key = "i1"}), t"\"", i(4, "", {key = "i4"}), t")", d(5, function(args) return sn(nil, {i(0, "", {key = "i0"})}) end, {}, {key = "i5"})
+		t"I18n.t(\'", f(function(args, snip) return c_viml("substitute(substitute(substitute(@%, substitute(getcwd() . \"/\", \"\\/\", \"\\\\\\\\/\", \"g\"), \"\", \"\"), \"\\\\(\\\\.\\\\(html\\\\|js\\\\)\\\\.\\\\(haml\\\\|erb\\\\)\\\\|\\\\(_controller\\\\)\\\\?\\\\.rb\\\\)$\", \"\", \"\"), \"/\", \".\", \"g\")") end, {}), t".", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[^\\w]", "_")}, ""), {key = "i2"}) }) end, {k"i1"}), i(3, "", {key = "i3"}), t"\', default: \"", i(1, "some_text", {key = "i1"}), t"\"", i(4, "", {key = "i4"}), t")", d(5, function(args) return sn(nil, {i(1, "", {key = "i0"})}) end, {}, {key = "i5"})
 	}),
 	s({trig = "route_spec", descr = "(route_spec)", priority = -50, trigEngine = te("")}, {
 		t"it \'routes to #", i(1, "action", {key = "i1"}), t"\' do", nl(),
-		t"\t", i(2, "get", {key = "i2"}), t"(\'/", i(3, "url", {key = "i3"}), t"\').should route_to(\'", f(function(args, snip) return c_viml("substitute(expand(\'%:t:r\'), \'_routing_spec$\', \'\', \'\')") end, {}), t"#", cp(1), t"\'", d(4, function(args) return sn(nil, {t", ", i(5, "params", {key = "i5"})}) end, {}, {key = "i4"}), t")", i(6, "", {key = "i6"}), nl(),
+		t"\t", i(2, "get", {key = "i2"}), t"(\'/", i(3, "url", {key = "i3"}), t"\').should route_to(\'", f(function(args, snip) return c_viml("substitute(expand(\'%:t:r\'), \'_routing_spec$\', \'\', \'\')") end, {}), t"#", cp(1), t"\'", d(4, function(args) return sn(nil, {t", ", i(1, "params", {key = "i5"})}) end, {}, {key = "i4"}), t")", i(5, "", {key = "i6"}), nl(),
 		t"end"
 	}),
 })

@@ -42,9 +42,9 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
+	{1, 2},
+	{1, 2},
+	{1, 2},
 	{},
 }
 ls.add_snippets("dart-flutter", {

@@ -42,14 +42,14 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}, {10, 10}, {11, 11}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1},
+	{1},
+	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11},
+	{1, 2},
+	{1, 2},
 }
 ls.add_snippets("javascript-d3", {
 	s({trig = ".attr", descr = "(.attr)", priority = -1000, trigEngine = te("w")}, {

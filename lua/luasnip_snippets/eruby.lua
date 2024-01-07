@@ -42,86 +42,86 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}},
-	{{1, 1}},
-	{{0, 0}},
-	{{0, 0}},
+	{0},
+	{1},
+	{0},
+	{0},
 	{},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 14}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 12}, {5, 13}, {6, 14}, {7, 15}, {8, 16}, {9, 17}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 10}, {5, 11}, {6, 12}, {7, 13}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 12}, {5, 13}, {6, 14}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1},
+	{0, 1, 2, 3},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3, 4},
+	{1},
+	{1},
+	{0, 1},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1, 2},
+	{1, 2, 3, 4},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1, 2},
+	{1},
+	{1, 2, 3, 4, 5, 6, 7},
+	{1, 2, 3},
+	{0},
+	{1, 2, 3, 4, 14},
+	{1, 2, 3, 12, 13, 14, 15, 16, 17},
+	{1, 2, 3, 10, 11, 12, 13},
+	{1, 2, 3, 12, 13, 14},
+	{1, 2, 3, 4},
+	{1, 2},
+	{1},
+	{0, 1, 2, 3},
+	{1, 2},
+	{0, 1},
+	{0, 1},
+	{1, 2, 3},
+	{0},
+	{0, 1},
+	{0, 1, 2},
 	{},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}, {10, 10}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}, {10, 10}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 9}, {10, 10}, {11, 11}},
-	{{0, 0}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{0, 1},
+	{0, 1, 2, 3, 4, 5, 6},
+	{0, 1, 2},
+	{1},
+	{1},
+	{1},
+	{1, 2, 3},
+	{1},
+	{1, 2},
+	{1, 2, 3},
+	{1},
+	{1},
+	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+	{1, 2},
+	{1, 2, 3, 4, 5},
+	{1, 2, 3, 4},
+	{1, 2, 3, 4},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11},
+	{0},
+	{1, 2, 3, 4},
 }
 
 local python_globals = {
@@ -263,10 +263,10 @@ ls.add_snippets("eruby", {
 		t"I18n.t(\'", i(1, "type.key", {key = "i1"}), t"\')"
 	}),
 	s({trig = "it", descr = "(it) \"image_tag\"", priority = -50, trigEngine = te("w")}, {
-		f(function(args, snip) return c_py({"eruby", 37}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[37]) end, ae(am[37])), t"image_tag \"", i(1, "", {key = "i1"}), i(2, ".png", {key = "i2"}), t"\"", d(3, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", title: \"", i(5, "title", {key = "i5"}), t"\""}) end, {}, {key = "i4"}), d(3, function(args) return sn(nil, {t", class: \"", i(7, "class", {key = "i7"}), t"\""}) end, {}, {key = "i6"})}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"eruby", 37}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[37]) end, ae(am[37]))
+		f(function(args, snip) return c_py({"eruby", 37}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[37]) end, ae(am[37])), t"image_tag \"", i(1, "", {key = "i1"}), i(2, ".png", {key = "i2"}), t"\"", d(3, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", title: \"", i(1, "title", {key = "i5"}), t"\""}) end, {}, {key = "i4"}), d(2, function(args) return sn(nil, {t", class: \"", i(1, "class", {key = "i7"}), t"\""}) end, {}, {key = "i6"})}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"eruby", 37}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[37]) end, ae(am[37]))
 	}),
 	s({trig = "jit", descr = "(jit) \"javascript_include_tag\"", priority = -50, trigEngine = te("w")}, {
-		f(function(args, snip) return c_py({"eruby", 38}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[38]) end, ae(am[38])), t"javascript_include_tag ", i(1, ":all", {key = "i1"}), d(2, function(args) return sn(nil, {t", cache: ", i(3, "true", {key = "i3"})}) end, {}, {key = "i2"}), f(function(args, snip) return c_py({"eruby", 38}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[38]) end, ae(am[38]))
+		f(function(args, snip) return c_py({"eruby", 38}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[38]) end, ae(am[38])), t"javascript_include_tag ", i(1, ":all", {key = "i1"}), d(2, function(args) return sn(nil, {t", cache: ", i(1, "true", {key = "i3"})}) end, {}, {key = "i2"}), f(function(args, snip) return c_py({"eruby", 38}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[38]) end, ae(am[38]))
 	}),
 	s({trig = "jsit", descr = "(jsit)", priority = -1000, trigEngine = te("w")}, {
 		t"<%= javascript_include_tag \"", i(0, "", {key = "i0"}), t"\" %>"
@@ -275,16 +275,16 @@ ls.add_snippets("eruby", {
 		f(function(args, snip) return c_py({"eruby", 40}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[40]) end, ae(am[40])), t"link_to ", i(1, "model", {key = "i1"}), t".", i(2, "name", {key = "i2"}), t", ", d(3, function(args) return sn(nil, {d(1, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i4"}), t"_path(", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i14"}), t")"}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"eruby", 40}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[40]) end, ae(am[40]))
 	}),
 	s({trig = "linp", descr = "(linp) \"link_to (nested path)\"", priority = -50, trigEngine = te("w")}, {
-		f(function(args, snip) return c_py({"eruby", 41}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[41]) end, ae(am[41])), t"link_to ", d(1, function(args) return sn(nil, {t"\"", i(2, "link text...", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(3, function(args) return sn(nil, {i(4, "parent", {key = "i12"}), t"_", i(5, "child", {key = "i13"}), t"_path(", i(6, "@", {key = "i14"}), d(4, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i15"}), t", ", i(8, "@", {key = "i16"}), d(6, function(args) return sn(nil, {cp(13)}) end, {}, {key = "i17"}), t")"}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"eruby", 41}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[41]) end, ae(am[41]))
+		f(function(args, snip) return c_py({"eruby", 41}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[41]) end, ae(am[41])), t"link_to ", d(1, function(args) return sn(nil, {t"\"", i(1, "link text...", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(2, function(args) return sn(nil, {i(1, "parent", {key = "i12"}), t"_", i(2, "child", {key = "i13"}), t"_path(", i(3, "@", {key = "i14"}), d(4, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i15"}), t", ", i(5, "@", {key = "i16"}), d(6, function(args) return sn(nil, {cp(13)}) end, {}, {key = "i17"}), t")"}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"eruby", 41}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[41]) end, ae(am[41]))
 	}),
 	s({trig = "linpp", descr = "(linpp) \"link_to (nested path plural)\"", priority = -50, trigEngine = te("w")}, {
-		f(function(args, snip) return c_py({"eruby", 42}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[42]) end, ae(am[42])), t"link_to ", d(1, function(args) return sn(nil, {t"\"", i(2, "link text...", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(3, function(args) return sn(nil, {i(4, "parent", {key = "i10"}), t"_", i(5, "child", {key = "i11"}), t"_path(", i(6, "@", {key = "i12"}), d(4, function(args) return sn(nil, {cp(10)}) end, {}, {key = "i13"}), t")"}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"eruby", 42}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[42]) end, ae(am[42]))
+		f(function(args, snip) return c_py({"eruby", 42}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[42]) end, ae(am[42])), t"link_to ", d(1, function(args) return sn(nil, {t"\"", i(1, "link text...", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(2, function(args) return sn(nil, {i(1, "parent", {key = "i10"}), t"_", i(2, "child", {key = "i11"}), t"_path(", i(3, "@", {key = "i12"}), d(4, function(args) return sn(nil, {cp(10)}) end, {}, {key = "i13"}), t")"}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"eruby", 42}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[42]) end, ae(am[42]))
 	}),
 	s({trig = "lip", descr = "(lip) \"link_to (path)\"", priority = -50, trigEngine = te("w")}, {
-		f(function(args, snip) return c_py({"eruby", 43}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[43]) end, ae(am[43])), t"link_to ", d(1, function(args) return sn(nil, {t"\"", i(2, "link text...", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(3, function(args) return sn(nil, {i(4, "model", {key = "i12"}), t"_path(", i(5, "@", {key = "i13"}), d(3, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i14"}), t")"}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"eruby", 43}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[43]) end, ae(am[43]))
+		f(function(args, snip) return c_py({"eruby", 43}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[43]) end, ae(am[43])), t"link_to ", d(1, function(args) return sn(nil, {t"\"", i(1, "link text...", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(2, function(args) return sn(nil, {i(1, "model", {key = "i12"}), t"_path(", i(2, "@", {key = "i13"}), d(3, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i14"}), t")"}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"eruby", 43}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[43]) end, ae(am[43]))
 	}),
 	s({trig = "lipp", descr = "(lipp) \"link_to (path plural)\"", priority = -50, trigEngine = te("w")}, {
-		f(function(args, snip) return c_py({"eruby", 44}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[44]) end, ae(am[44])), t"link_to ", d(1, function(args) return sn(nil, {t"\"", i(2, "link text...", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(3, function(args) return sn(nil, {i(4, "model", {key = "i4"}), t"s_path"}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"eruby", 44}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[44]) end, ae(am[44]))
+		f(function(args, snip) return c_py({"eruby", 44}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[44]) end, ae(am[44])), t"link_to ", d(1, function(args) return sn(nil, {t"\"", i(1, "link text...", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(2, function(args) return sn(nil, {i(1, "model", {key = "i4"}), t"s_path"}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"eruby", 44}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[44]) end, ae(am[44]))
 	}),
 	s({trig = "lt", descr = "(lt) \"link_to (name, dest)\"", priority = -50, trigEngine = te("w")}, {
 		f(function(args, snip) return c_py({"eruby", 45}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[45]) end, ae(am[45])), t"link_to \"", i(1, "link text...", {key = "i1"}), t"\", ", i(2, "dest", {key = "i2"}), f(function(args, snip) return c_py({"eruby", 45}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[45]) end, ae(am[45]))
@@ -305,7 +305,7 @@ ls.add_snippets("eruby", {
 		t"<%= render template: \"", i(1, "file", {key = "i1"}), t"\"", i(0, "", {key = "i0"}), t" %>"
 	}),
 	s({trig = "slt", descr = "(slt) \"stylesheet_link_tag\"", priority = -50, trigEngine = te("w")}, {
-		f(function(args, snip) return c_py({"eruby", 51}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[51]) end, ae(am[51])), t"stylesheet_link_tag ", i(1, ":all", {key = "i1"}), d(2, function(args) return sn(nil, {t", cache: ", i(3, "true", {key = "i3"})}) end, {}, {key = "i2"}), f(function(args, snip) return c_py({"eruby", 51}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[51]) end, ae(am[51]))
+		f(function(args, snip) return c_py({"eruby", 51}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[51]) end, ae(am[51])), t"stylesheet_link_tag ", i(1, ":all", {key = "i1"}), d(2, function(args) return sn(nil, {t", cache: ", i(1, "true", {key = "i3"})}) end, {}, {key = "i2"}), f(function(args, snip) return c_py({"eruby", 51}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[51]) end, ae(am[51]))
 	}),
 	s({trig = "sslt", descr = "(sslt)", priority = -1000, trigEngine = te("w")}, {
 		t"<%= stylesheet_link_tag \"", i(0, "", {key = "i0"}), t"\" %>"
@@ -329,14 +329,14 @@ ls.add_snippets("eruby", {
 		f(function(args, snip) return c_py({"eruby", 56}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[56]) end, ae(am[56])), t"Fixtures.identify(:", i(1, "name", {key = "i1"}), t")", f(function(args, snip) return c_py({"eruby", 56}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[56]) end, ae(am[56])), i(0, "", {key = "i0"})
 	}),
 	s({trig = "ft", descr = "(ft) \"form_tag\"", priority = -50, trigEngine = te("w")}, {
-		f(function(args, snip) return c_py({"eruby", 57}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_INLINE\', snip)", python_globals, args, snip, "", am[57]) end, ae(am[57])), t"form_tag(", d(1, function(args) return sn(nil, {t"action: \'", i(2, "update", {key = "i2"}), t"\'"}) end, {}, {key = "i1"}), d(3, function(args) return sn(nil, {t", ", d(1, function(args) return sn(nil, {i(5, "class", {key = "i5"}), t": \'", i(6, "form", {key = "i6"}), t"\'}"}) end, {}, {key = "i4"})}) end, {}, {key = "i3"}), t") do", f(function(args, snip) return c_py({"eruby", 57}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[57]) end, ae(am[57])), nl(),
+		f(function(args, snip) return c_py({"eruby", 57}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_INLINE\', snip)", python_globals, args, snip, "", am[57]) end, ae(am[57])), t"form_tag(", d(1, function(args) return sn(nil, {t"action: \'", i(1, "update", {key = "i2"}), t"\'"}) end, {}, {key = "i1"}), d(2, function(args) return sn(nil, {t", ", d(1, function(args) return sn(nil, {i(1, "class", {key = "i5"}), t": \'", i(2, "form", {key = "i6"}), t"\'}"}) end, {}, {key = "i4"})}) end, {}, {key = "i3"}), t") do", f(function(args, snip) return c_py({"eruby", 57}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[57]) end, ae(am[57])), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		f(function(args, snip) return c_py({"eruby", 57}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_BLOCK\', snip)", python_globals, args, snip, "", am[57]) end, ae(am[57]))
 	}),
 	s({trig = "f.", descr = "(f.) \"f.text_field\"", priority = -50, trigEngine = te("w")}, c(1, {
 		{
 			f(function(args, snip) return c_py({"eruby", 58}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_INLINE\', snip)", python_globals, args, snip, "", am[58]) end, ae(am[58])), t"f.fields_for :", i(1, "attribute", {key = "i1"}), t" do |", i(2, "f", {key = "i2"}), t"|", f(function(args, snip) return c_py({"eruby", 58}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_INLINE\', snip)", python_globals, args, snip, "", am[58]) end, ae(am[58])), nl(),
-			t"\t", i(3, "", {key = "i0"}), nl(),
+			t"\t", i(0, "", {key = "i0"}), nl(),
 			f(function(args, snip) return c_py({"eruby", 58}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_BLOCK\', snip)", python_globals, args, snip, "", am[58]) end, ae(am[58]))
 		},
 		{
@@ -368,43 +368,43 @@ ls.add_snippets("eruby", {
 		},
 	})),
 	s({trig = "ist", descr = "(ist) \"image_submit_tag\"", priority = -50, trigEngine = te("w")}, {
-		f(function(args, snip) return c_py({"eruby", 68}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[68]) end, ae(am[68])), t"image_submit_tag(\"", i(1, "agree.png", {key = "i1"}), t"\"", d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", id: \"", d(1, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^(\\w+)(\\.\\w*)?$", "$1")}, ""), {key = "i4"}) }) end, {k"i1"}), t"\""}) end, {}, {key = "i3"}), d(3, function(args) return sn(nil, {t", name: \"", d(1, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^(\\w+)(\\.\\w*)?$", "$1")}, ""), {key = "i6"}) }) end, {k"i1"}), t"\""}) end, {}, {key = "i5"}), d(5, function(args) return sn(nil, {t", class: \"", d(1, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^(\\w+)(\\.\\w*)?$", "$1"), "-button"}, ""), {key = "i8"}) }) end, {k"i1"}), t"\""}) end, {}, {key = "i7"}), d(7, function(args) return sn(nil, {t", disabled: ", i(10, "false", {key = "i10"})}) end, {}, {key = "i9"})}) end, {}, {key = "i2"}), t")", f(function(args, snip) return c_py({"eruby", 68}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[68]) end, ae(am[68]))
+		f(function(args, snip) return c_py({"eruby", 68}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[68]) end, ae(am[68])), t"image_submit_tag(\"", i(1, "agree.png", {key = "i1"}), t"\"", d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", id: \"", d(1, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^(\\w+)(\\.\\w*)?$", "$1")}, ""), {key = "i4"}) }) end, {k"i1"}), t"\""}) end, {}, {key = "i3"}), d(2, function(args) return sn(nil, {t", name: \"", d(1, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^(\\w+)(\\.\\w*)?$", "$1")}, ""), {key = "i6"}) }) end, {k"i1"}), t"\""}) end, {}, {key = "i5"}), d(3, function(args) return sn(nil, {t", class: \"", d(1, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "^(\\w+)(\\.\\w*)?$", "$1"), "-button"}, ""), {key = "i8"}) }) end, {k"i1"}), t"\""}) end, {}, {key = "i7"}), d(4, function(args) return sn(nil, {t", disabled: ", i(1, "false", {key = "i10"})}) end, {}, {key = "i9"})}) end, {}, {key = "i2"}), t")", f(function(args, snip) return c_py({"eruby", 68}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[68]) end, ae(am[68]))
 	}),
 	s({trig = "layout", descr = "(layout) \"layout\"", priority = -50, trigEngine = te("")}, {
-		t"layout \"", i(1, "template_name", {key = "i1"}), t"\"", d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", only: ", d(1, function(args) return sn(nil, {t"[:", i(5, "action", {key = "i5"}), t", :", i(6, "action", {key = "i6"}), t"]"}) end, {}, {key = "i4"})}) end, {}, {key = "i3"}), d(5, function(args) return sn(nil, {t", except: ", d(1, function(args) return sn(nil, {t"[:", i(9, "action", {key = "i9"}), t", :", i(10, "action", {key = "i10"}), t"]"}) end, {}, {key = "i8"})}) end, {}, {key = "i7"})}) end, {}, {key = "i2"})
+		t"layout \"", i(1, "template_name", {key = "i1"}), t"\"", d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", only: ", d(1, function(args) return sn(nil, {t"[:", i(1, "action", {key = "i5"}), t", :", i(2, "action", {key = "i6"}), t"]"}) end, {}, {key = "i4"})}) end, {}, {key = "i3"}), d(2, function(args) return sn(nil, {t", except: ", d(1, function(args) return sn(nil, {t"[:", i(1, "action", {key = "i9"}), t", :", i(2, "action", {key = "i10"}), t"]"}) end, {}, {key = "i8"})}) end, {}, {key = "i7"})}) end, {}, {key = "i2"})
 	}),
 	s({trig = "hide", descr = "(hide) \"page.hide (*ids)\"", priority = -50, trigEngine = te("")}, {
-		t"page.hide ", d(1, function(args) return sn(nil, {t"\"", i(2, "id(s)", {key = "i2"}), t"\""}) end, {}, {key = "i1"})
+		t"page.hide ", d(1, function(args) return sn(nil, {t"\"", i(1, "id(s)", {key = "i2"}), t"\""}) end, {}, {key = "i1"})
 	}),
 	s({trig = "ins", descr = "(ins) \"page.insert_html (position, id, partial)\"", priority = -50, trigEngine = te("")}, {
-		t"page.insert_html :", i(1, "top", {key = "i1"}), t", ", d(2, function(args) return sn(nil, {t"\"", i(3, "id", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), t", ", d(4, function(args) return sn(nil, {t"partial: \"", i(5, "template", {key = "i5"}), t"\""}) end, {}, {key = "i4"})
+		t"page.insert_html :", i(1, "top", {key = "i1"}), t", ", d(2, function(args) return sn(nil, {t"\"", i(1, "id", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), t", ", d(3, function(args) return sn(nil, {t"partial: \"", i(1, "template", {key = "i5"}), t"\""}) end, {}, {key = "i4"})
 	}),
 	s({trig = "rep", descr = "(rep) \"page.replace (id, partial)\"", priority = -50, trigEngine = te("")}, {
-		t"page.replace ", d(1, function(args) return sn(nil, {t"\"", i(2, "id", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(3, function(args) return sn(nil, {t"partial: \"", i(4, "template", {key = "i4"}), t"\""}) end, {}, {key = "i3"})
+		t"page.replace ", d(1, function(args) return sn(nil, {t"\"", i(1, "id", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(2, function(args) return sn(nil, {t"partial: \"", i(1, "template", {key = "i4"}), t"\""}) end, {}, {key = "i3"})
 	}),
 	s({trig = "reph", descr = "(reph) \"page.replace_html (id, partial)\"", priority = -50, trigEngine = te("")}, {
-		t"page.replace_html ", d(1, function(args) return sn(nil, {t"\"", i(2, "id", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(3, function(args) return sn(nil, {t"partial: \"", i(4, "template", {key = "i4"}), t"\""}) end, {}, {key = "i3"})
+		t"page.replace_html ", d(1, function(args) return sn(nil, {t"\"", i(1, "id", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", ", d(2, function(args) return sn(nil, {t"partial: \"", i(1, "template", {key = "i4"}), t"\""}) end, {}, {key = "i3"})
 	}),
 	s({trig = "show", descr = "(show) \"page.show (*ids)\"", priority = -50, trigEngine = te("")}, {
-		t"page.show ", d(1, function(args) return sn(nil, {t"\"", i(2, "id(s)", {key = "i2"}), t"\""}) end, {}, {key = "i1"})
+		t"page.show ", d(1, function(args) return sn(nil, {t"\"", i(1, "id(s)", {key = "i2"}), t"\""}) end, {}, {key = "i1"})
 	}),
 	s({trig = "tog", descr = "(tog) \"page.toggle (*ids)\"", priority = -50, trigEngine = te("")}, {
-		t"page.toggle ", d(1, function(args) return sn(nil, {t"\"", i(2, "id(s)", {key = "i2"}), t"\""}) end, {}, {key = "i1"})
+		t"page.toggle ", d(1, function(args) return sn(nil, {t"\"", i(1, "id(s)", {key = "i2"}), t"\""}) end, {}, {key = "i1"})
 	}),
 	s({trig = "vis", descr = "(vis) \"page.visual_effect (effect, id)\"", priority = -50, trigEngine = te("")}, {
-		t"page.visual_effect :", i(1, "toggle_slide", {key = "i1"}), t", ", d(2, function(args) return sn(nil, {t"\"", i(3, "DOM ID", {key = "i3"}), t"\""}) end, {}, {key = "i2"})
+		t"page.visual_effect :", i(1, "toggle_slide", {key = "i1"}), t", ", d(2, function(args) return sn(nil, {t"\"", i(1, "DOM ID", {key = "i3"}), t"\""}) end, {}, {key = "i2"})
 	}),
 	s({trig = "rpo", descr = "(rpo) \"render (partial,object) (rpo)\"", priority = -50, trigEngine = te("")}, {
 		t"render partial: \"", i(1, "item", {key = "i1"}), t"\", object: ", d(2, function(args) return sn(nil, {t"@", cp(1)}) end, {}, {key = "i2"})
 	}),
 	s({trig = "st", descr = "(st) \"submit_tag\"", priority = -50, trigEngine = te("w")}, {
-		f(function(args, snip) return c_py({"eruby", 78}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[78]) end, ae(am[78])), t"submit_tag \"", i(1, "Save changes", {key = "i1"}), t"\"", d(2, function(args) return sn(nil, {t", id: \"", i(3, "submit", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), d(4, function(args) return sn(nil, {t", name: \"", d(1, function(args) return sn(nil, {cp(3)}) end, {}, {key = "i5"}), t"\""}) end, {}, {key = "i4"}), d(6, function(args) return sn(nil, {t", class: \"", d(1, function(args) return sn(nil, {t"form_", cp(3)}) end, {}, {key = "i7"}), t"\""}) end, {}, {key = "i6"}), d(8, function(args) return sn(nil, {t", disabled: ", i(9, "false", {key = "i9"})}) end, {}, {key = "i8"}), d(10, function(args) return sn(nil, {t", disable_with: \"", i(11, "Please wait...", {key = "i11"}), t"\""}) end, {}, {key = "i10"}), f(function(args, snip) return c_py({"eruby", 78}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[78]) end, ae(am[78]))
+		f(function(args, snip) return c_py({"eruby", 78}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[78]) end, ae(am[78])), t"submit_tag \"", i(1, "Save changes", {key = "i1"}), t"\"", d(2, function(args) return sn(nil, {t", id: \"", i(1, "submit", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), d(3, function(args) return sn(nil, {t", name: \"", d(1, function(args) return sn(nil, {cp(3)}) end, {}, {key = "i5"}), t"\""}) end, {}, {key = "i4"}), d(4, function(args) return sn(nil, {t", class: \"", d(1, function(args) return sn(nil, {t"form_", cp(3)}) end, {}, {key = "i7"}), t"\""}) end, {}, {key = "i6"}), d(5, function(args) return sn(nil, {t", disabled: ", i(1, "false", {key = "i9"})}) end, {}, {key = "i8"}), d(6, function(args) return sn(nil, {t", disable_with: \"", i(1, "Please wait...", {key = "i11"}), t"\""}) end, {}, {key = "i10"}), f(function(args, snip) return c_py({"eruby", 78}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[78]) end, ae(am[78]))
 	}),
 	s({trig = "else", descr = "(else) \"else (ERB)\"", priority = -50, trigEngine = te("")}, {
 		t"<% else %>", nl(),
 		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "lf", descr = "(lf) \"link_to_function\"", priority = -50, trigEngine = te("")}, {
-		f(function(args, snip) return c_py({"eruby", 80}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[80]) end, ae(am[80])), t"link_to_function ", d(1, function(args) return sn(nil, {t"\"", i(2, "Greeting", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", \"", i(3, "alert(\'Hello world!\')", {key = "i3"}), t"\"", i(4, "", {key = "i4"}), f(function(args, snip) return c_py({"eruby", 80}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[80]) end, ae(am[80]))
+		f(function(args, snip) return c_py({"eruby", 80}, "textmate_var(\'TM_RAILS_TEMPLATE_START_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[80]) end, ae(am[80])), t"link_to_function ", d(1, function(args) return sn(nil, {t"\"", i(1, "Greeting", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", \"", i(2, "alert(\'Hello world!\')", {key = "i3"}), t"\"", i(3, "", {key = "i4"}), f(function(args, snip) return c_py({"eruby", 80}, "textmate_var(\'TM_RAILS_TEMPLATE_END_RUBY_EXPR\', snip)", python_globals, args, snip, "", am[80]) end, ae(am[80]))
 	}),
 })

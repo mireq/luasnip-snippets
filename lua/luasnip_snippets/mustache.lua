@@ -42,9 +42,9 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}},
+	{0, 1},
+	{0, 1},
+	{1, 2, 3},
 }
 ls.add_snippets("mustache", {
 	s({trig = "if", descr = "(if) # {{#value}} ... {{/value}}", priority = -1000, trigEngine = te("w")}, {

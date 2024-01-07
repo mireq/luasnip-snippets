@@ -42,14 +42,14 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
+	{0},
+	{0},
+	{0},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1, 2, 3},
+	{1, 2, 3},
+	{1, 2},
 }
 ls.add_snippets("texmath", {
 	s({trig = "eqnn", descr = "(eqnn) \"Equation without a number\"", priority = -50, trigEngine = te("b")}, {

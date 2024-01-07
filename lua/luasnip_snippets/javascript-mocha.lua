@@ -42,16 +42,16 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
+	{0, 1},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0, 1},
+	{0, 1},
+	{0, 1},
 }
 ls.add_snippets("javascript-mocha", {
 	s({trig = "des", descr = "(des) \"describe(\'thing\', function() { ... })\" b", priority = -1000, trigEngine = te("w")}, {

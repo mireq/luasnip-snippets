@@ -42,13 +42,13 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3, 4},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
 }
 ls.add_snippets("javascript-bemjson", {
 	s({trig = "b", descr = "(b)", priority = -1000, trigEngine = te("w")}, {

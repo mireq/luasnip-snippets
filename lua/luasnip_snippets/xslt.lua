@@ -42,31 +42,31 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{0, 0}},
-	{{1, 1}, {2, 2}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{1, 2, 3, 4},
+	{1, 2, 3, 4, 5},
+	{1},
+	{1, 2},
+	{1, 2},
+	{1},
+	{1, 2, 3, 4},
+	{1, 2},
+	{1},
+	{1, 2},
+	{1, 2},
+	{1},
+	{1},
+	{0},
+	{1, 2},
+	{0},
+	{0, 1},
+	{0, 1},
+	{0},
+	{1},
+	{0, 1},
+	{1},
+	{0, 1},
+	{0, 1},
+	{0, 1},
 }
 ls.add_snippets("xslt", {
 	s({trig = "apply-templates", descr = "(apply-templates) plain", priority = -1000, trigEngine = te("w")}, c(1, {
@@ -143,11 +143,11 @@ ls.add_snippets("xslt", {
 	}),
 	s({trig = "template", descr = "(template) named", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"<xsl:template match=\"", i(1, "*", {key = "i1"}), t"\">", i(2, "", {key = "i0"}), nl(),
+			t"<xsl:template match=\"", i(1, "*", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), nl(),
 			t"</xsl:template>", nl()
 		},
 		{
-			t"<xsl:template name=\"", i(1, "name", {key = "i1"}), t"\">", i(2, "", {key = "i0"}), nl(),
+			t"<xsl:template name=\"", i(1, "name", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), nl(),
 			t"</xsl:template>", nl()
 		},
 	})),
@@ -159,7 +159,7 @@ ls.add_snippets("xslt", {
 	}),
 	s({trig = "variable", descr = "(variable) select", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"<xsl:variable name=\"", i(1, "name", {key = "i1"}), t"\">", i(2, "", {key = "i0"}), nl(),
+			t"<xsl:variable name=\"", i(1, "name", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), nl(),
 			t"</xsl:variable>", nl()
 		},
 		{
@@ -172,10 +172,10 @@ ls.add_snippets("xslt", {
 	}),
 	s({trig = "with-param", descr = "(with-param) select", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"<xsl:with-param name=\"", i(1, "name", {key = "i1"}), t"\">", i(2, "", {key = "i0"}), t"</xsl:with-param>", nl()
+			t"<xsl:with-param name=\"", i(1, "name", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</xsl:with-param>", nl()
 		},
 		{
-			t"<xsl:with-param name=\"", i(1, "name", {key = "i1"}), t"\" select=\"", i(2, "*", {key = "i0"}), t"\" />", nl()
+			t"<xsl:with-param name=\"", i(1, "name", {key = "i1"}), t"\" select=\"", i(0, "*", {key = "i0"}), t"\" />", nl()
 		},
 	})),
 })

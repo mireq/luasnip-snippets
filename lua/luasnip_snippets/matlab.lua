@@ -42,19 +42,19 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}},
+	{0, 1},
+	{0, 1, 2},
+	{0},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2, 3},
+	{0, 1, 2},
+	{1, 2, 3, 4, 5},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2, 3, 4},
 }
 ls.add_snippets("matlab", {
 	s({trig = "if", descr = "(if) if", priority = -1000, trigEngine = te("w")}, {
@@ -108,7 +108,7 @@ ls.add_snippets("matlab", {
 		t"\tcase ", i(2, "0", {key = "i2"}), nl(),
 		t"\t\t", i(3, "", {key = "i3"}), d(4, function(args) return sn(nil, {nl(),
 t"\totherwise", nl(),
-t"\t\t", i(5, "", {key = "i5"}), t"\t\t${5"}) end, {}, {key = "i4"}), nl(),
+t"\t\t", i(1, "", {key = "i5"}), t"\t\t${5"}) end, {}, {key = "i4"}), nl(),
 		t"end"
 	}),
 	s({trig = "@", descr = "(@) anonymous function", priority = -1000, trigEngine = te("w")}, {

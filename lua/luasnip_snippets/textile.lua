@@ -42,12 +42,12 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{0, 0}, {1, 1}, {2, 2}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}},
-	{{1, 1}},
-	{{0, 0}, {1, 1}, {2, 2}},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1},
+	{0, 1},
+	{1},
+	{0, 1, 2},
 }
 ls.add_snippets("textile", {
 	s({trig = "header", descr = "(header)", priority = -1000, trigEngine = te("w")}, {

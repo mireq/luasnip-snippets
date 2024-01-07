@@ -42,19 +42,19 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{1, 2},
+	{1, 2, 3},
 	{},
-	{{0, 0}, {1, 1}, {2, 3}},
+	{0, 1, 3},
 	{},
-	{{0, 0}, {1, 1}, {2, 3}},
+	{0, 1, 3},
 }
 ls.add_snippets("javascript-ember", {
 	s({trig = "eapp", descr = "(eapp) \"App.Name = Ember.Application.create({});\"", priority = -50, trigEngine = te("")}, {

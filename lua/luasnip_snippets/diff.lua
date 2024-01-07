@@ -42,7 +42,7 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}, {1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}},
+	{0, 1, 2, 3, 4, 5, 6, 7, 8},
 }
 ls.add_snippets("diff", {
 	s({trig = "header", descr = "(header) DEP-3 style header", priority = -1000, trigEngine = te("w")}, {

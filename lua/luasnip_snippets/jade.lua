@@ -42,12 +42,12 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{1, 1}, {2, 2}},
-	{{1, 1}, {2, 2}, {3, 3}},
-	{{1, 1}, {2, 2}},
-	{{1, 1}},
-	{{1, 1}},
-	{{1, 1}},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2},
+	{1},
+	{1},
+	{1},
 }
 ls.add_snippets("jade", {
 	s({trig = "rep", descr = "(rep)", priority = -1000, trigEngine = te("w")}, {

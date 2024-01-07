@@ -42,13 +42,13 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
-	{{0, 0}},
+	{0, 1},
+	{0, 1},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
 }
 ls.add_snippets("javascript-jasmine-arrow", {
 	s({trig = "des", descr = "(des) \"Describe (js)\"", priority = -50, trigEngine = te("b")}, {

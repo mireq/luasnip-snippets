@@ -42,9 +42,9 @@ local make_actions = su.make_actions
 
 
 local am = { -- argument mapping: token index to placeholder number
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
-	{{0, 0}, {1, 1}},
+	{0, 1},
+	{0, 1},
+	{0, 1},
 	{},
 }
 
