@@ -531,7 +531,7 @@ def parse_snippet(snippet) -> tuple[list[LSNode], dict[int, int]]:
 
 	token_list = transform_tokens(tokens, lines)
 
-	insert_numbers = set()
+	insert_numbers = set(token.number for token in iter_all_tokens(token_list) if isinstance(token, LSInsertNode))
 	max_number = 0
 	def resolve_insert_or_copy_nodes(tokens: list[LSNode]) -> list[LSNode]:
 		nonlocal max_number
