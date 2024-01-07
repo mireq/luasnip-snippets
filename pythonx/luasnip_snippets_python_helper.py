@@ -313,7 +313,7 @@ def get_node_locals(node_id):
 INDENT_RE = re.compile(r'^[ \t]*')
 
 
-def execute_code(node_id, node_code, global_code, tabstops, env, indent, tabstop_mapping):
+def execute_code(node_id, node_code, global_code, tabstops, env, indent, tabstops_idx):
 	global_code = 'import re, os, vim, string, random\n' + '\n'.join(global_code or [])
 	codes = (
 		global_code,
@@ -332,12 +332,7 @@ def execute_code(node_id, node_code, global_code, tabstops, env, indent, tabstop
 	snip = SnippetUtil(indent, vim.eval("visualmode()"), text, context, start, end)
 	path = vim.eval('expand("%")') or ""
 
-	if isinstance(tabstop_mapping, list):
-		source_map = {}
-		for i, val in enumerate(tabstop_mapping):
-			source_map[val[1]] = i
-	else:
-		source_map = None
+	source_map = {val: i for i, val in enumerate(tabstops_idx)}
 
 	node_locals = get_node_locals(tuple(node_id))
 	node_locals.update({

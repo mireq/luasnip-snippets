@@ -316,12 +316,9 @@ class ParsedSnippet:
 	tokens: list[LSNode]
 	snippet: UltiSnipsSnippetDefinition
 	actions: dict[str, str]
-	token_number_to_index: dict[int, int]
 
-	def get_code(self, indent: int, replace_zero_placeholders: bool = False) -> str:
-		tokens = self.tokens
-		tokens = self.__replace_placeholder_numbers(tokens, replace_zero_placeholders)
-		return self.render_tokens(tokens, indent)
+	def get_code(self, indent: int) -> str:
+		return self.render_tokens(self.tokens, indent)
 
 	def get_actions_code(self) -> str:
 		actions = []
@@ -331,30 +328,6 @@ class ParsedSnippet:
 
 	def iter_all_tokens(self) -> Iterable[LSNode]:
 		yield from iter_all_tokens(self.tokens)
-
-	@property
-	def max_placeholder(self) -> int:
-		return max(self.token_number_to_index.values(), default=0)
-
-	@property
-	def max_token(self) -> int:
-		return max(self.token_number_to_index.keys(), default=0)
-
-	def __replace_placeholder_numbers(self, tokens: list[LSNode], force: bool):
-		def replace_token(token):
-			if isinstance(token, LSInsertNode):
-				shouldd_replace = force
-				if not shouldd_replace and len(token.children) > 1 or (len(token.children) == 1 and not isinstance(token.children[0], LSTextNode)):
-					shouldd_replace = True
-				if shouldd_replace and token.number == 0:
-					token = LSInsertNode(self.max_placeholder + 1, token.children, 0)
-					return token
-				else:
-					return token
-			else:
-				return token
-
-		return [replace_token(token) for token in tokens]
 
 	def render_tokens(self, tokens: List[LSNode], indent: int = 0, at_line_start: bool = True, parent: LSNode | None = None) -> str:
 		snippet_body = StringIO()
@@ -701,8 +674,6 @@ def main():
 
 	global_definitions = defaultdict(OrderedSet)
 
-	snippets = [s for s in snippets if s.trigger == 'ifl']
-
 	for index, snippet in enumerate(snippets, 1):
 		for global_type, global_codes in snippet._globals.items():
 			for global_code in global_codes:
@@ -723,7 +694,6 @@ def main():
 
 		try:
 			tokens = parse_snippet(snippet)
-			token_number_to_index = {}
 		except Exception:
 			logger.exception("Parsing error of snippet: %s", snippet.trigger)
 			continue
@@ -743,7 +713,6 @@ def main():
 			tokens=tokens,
 			snippet=snippet,
 			actions=snippet._actions,
-			token_number_to_index=token_number_to_index,
 		)
 		if '!' in opts:
 			snippet_code[snippet.trigger] = [parsed_snippet]
@@ -762,7 +731,8 @@ def main():
 		fp.write('\n')
 		fp.write('local am = { -- argument mapping: token index to placeholder number\n')
 		for snippet in snippet_code_list:
-			token_mapping = ', '.join([f'{"{"}{index}, {number}{"}"}' for number, index in snippet.token_number_to_index.items()])
+			token_numbers = sorted(list(set(token.original_number for token in iter_all_tokens(snippet.tokens) if isinstance(token, (LSInsertNode, LSTransformationNode)))))
+			token_mapping = ', '.join(str(number) for number in token_numbers)
 			fp.write(f'\t{{{token_mapping}}},\n')
 		fp.write('}\n')
 		if code_globals:
