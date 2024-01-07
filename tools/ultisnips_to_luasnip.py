@@ -184,6 +184,7 @@ class LSInsertNode(LSNode):
 
 	@property
 	def is_nested(self):
+		#return any(isinstance(child, (LSInsertNode, LSCopyNode, LSInsertOrCopyNode_)) for child in iter_all_tokens(self.children))
 		for child in self.children:
 			if isinstance(child, (LSInsertNode, LSCopyNode, LSInsertOrCopyNode_)):
 				return True
@@ -538,32 +539,59 @@ def parse_snippet(snippet) -> tuple[list[LSNode], dict[int, int]]:
 
 	token_list = transform_tokens(tokens, lines)
 
-	insert_nodes = {}
+	insert_tokens = set()
 	node_numbers = set()
+	def resolve_insert_tokens(tokens: list[LSNode]) -> list[LSNode]:
+		result_tokens = []
+		for token in tokens:
+			if isinstance(token, LSInsertNode):
+				insert_tokens.add(token.number)
+			elif isinstance(token, LSInsertOrCopyNode_):
+				if token.number in insert_tokens:
+					token = LSCopyNode(token.number)
+				else:
+					token = LSInsertNode(token.number, token.children)
+					insert_tokens.add(token.number)
+			if isinstance(token, LSInsertNode):
+				token.children = resolve_insert_tokens(token.children)
+			if isinstance(token, (LSInsertNode, LSCopyNode)):
+				node_numbers.add(token.number)
+			result_tokens.append(token)
+		return result_tokens
+
+	token_list = resolve_insert_tokens(token_list)
 
 	for token in iter_all_tokens(token_list):
-		if isinstance(token, LSInsertNode):
-			insert_nodes.setdefault(token.number, token)
+		print(token)
 
-	insert_tokens = set(token.number for token in insert_nodes.values())
-	def finalize_token(token):
-		if isinstance(token, LSInsertNode):
-			token = LSInsertNode(token.number, token.children)
-			insert_tokens.add(token.number)
-		elif isinstance(token, LSInsertOrCopyNode_):
-			if token.number in insert_tokens:
-				token = LSCopyNode(token.number)
-			else:
-				token = LSInsertNode(token.number, token.children)
-				insert_tokens.add(token.number)
-		if isinstance(token, LSInsertNode):
-			token.children = [finalize_token(child) for child in token.children]
-		if isinstance(token, (LSInsertNode, LSCopyNode)):
-			node_numbers.add(token.number)
-		return token
+	sys.exit(0)
 
-	# replace zero tokens and copy or insert tokens
-	token_list = [finalize_token(token) for token in token_list]
+	#insert_nodes = {}
+	#node_numbers = set()
+
+	#for token in iter_all_tokens(token_list):
+	#	if isinstance(token, LSInsertNode):
+	#		insert_nodes.setdefault(token.number, token)
+
+	#insert_tokens = set(token.number for token in insert_nodes.values())
+	#def finalize_token(token):
+	#	if isinstance(token, LSInsertNode):
+	#		token = LSInsertNode(token.number, token.children)
+	#		insert_tokens.add(token.number)
+	#	elif isinstance(token, LSInsertOrCopyNode_):
+	#		if token.number in insert_tokens:
+	#			token = LSCopyNode(token.number)
+	#		else:
+	#			token = LSInsertNode(token.number, token.children)
+	#			insert_tokens.add(token.number)
+	#	if isinstance(token, LSInsertNode):
+	#		token.children = [finalize_token(child) for child in token.children]
+	#	if isinstance(token, (LSInsertNode, LSCopyNode)):
+	#		node_numbers.add(token.number)
+	#	return token
+
+	## replace zero tokens and copy or insert tokens
+	#token_list = [finalize_token(token) for token in token_list]
 
 	# try to correctly remap node numbers
 	offset = 0 if 0 in node_numbers else 1
@@ -676,6 +704,8 @@ def main():
 		pass
 
 	global_definitions = defaultdict(OrderedSet)
+
+	snippets = [s for s in snippets if s.trigger == 'ifl']
 
 	for index, snippet in enumerate(snippets, 1):
 		for global_type, global_codes in snippet._globals.items():
