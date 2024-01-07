@@ -180,15 +180,19 @@ class LSInsertNode(LSNode):
 		self.original_number = self.number if original_number is None else original_number
 
 	def __repr__(self):
-		return f'{self.__class__.__name__}({self.number!r}, {self.children!r})'
+		return f'{self.__class__.__name__}({self.number!r}, {self.children!r}, {self.original_number!r})'
 
 	@property
-	def is_nested(self):
+	def is_nested(self) -> bool:
 		#return any(isinstance(child, (LSInsertNode, LSCopyNode, LSInsertOrCopyNode_)) for child in iter_all_tokens(self.children))
 		for child in self.children:
 			if isinstance(child, (LSInsertNode, LSCopyNode, LSInsertOrCopyNode_)):
 				return True
 		return False
+
+	@property
+	def is_simple(self) -> bool:
+		return all(isinstance(child, LSTextNode) for child in self.children)
 
 
 class LSCopyNode(LSNode):
@@ -374,8 +378,7 @@ class ParsedSnippet:
 
 						node_indent = INDENT_RE.match(''.join(accumulated_text[-operator.indexOf(reversed(accumulated_text), '\n'):])).group(1)
 
-						is_simple = all(isinstance(child, LSTextNode) for child in token.children)
-						if is_simple:
+						if token.is_simple:
 							text_content = ''.join(child.text for child in token.children)
 							if '\n' in text_content:
 								text_content = ', '.join(escape_lua_string(line) for line in text_content.split('\n'))
@@ -539,27 +542,58 @@ def parse_snippet(snippet) -> tuple[list[LSNode], dict[int, int]]:
 
 	token_list = transform_tokens(tokens, lines)
 
-	insert_tokens = set()
-	node_numbers = set()
-	def resolve_insert_tokens(tokens: list[LSNode]) -> list[LSNode]:
+	insert_numbers = set()
+	max_number = 0
+	def resolve_insert_or_copy_nodes(tokens: list[LSNode]) -> list[LSNode]:
+		nonlocal max_number
 		result_tokens = []
 		for token in tokens:
-			if isinstance(token, LSInsertNode):
-				insert_tokens.add(token.number)
-			elif isinstance(token, LSInsertOrCopyNode_):
-				if token.number in insert_tokens:
+			if isinstance(token, LSInsertOrCopyNode_):
+				if token.number in insert_numbers:
 					token = LSCopyNode(token.number)
 				else:
 					token = LSInsertNode(token.number, token.children)
-					insert_tokens.add(token.number)
+					insert_numbers.add(token.number)
 			if isinstance(token, LSInsertNode):
-				token.children = resolve_insert_tokens(token.children)
-			if isinstance(token, (LSInsertNode, LSCopyNode)):
-				node_numbers.add(token.number)
+				token.children = resolve_insert_or_copy_nodes(token.children)
+			if isinstance(token, (LSInsertNode, LSCopyNode, LSTransformationNode)):
+				max_number = max(max_number, token.number)
 			result_tokens.append(token)
 		return result_tokens
+	token_list = resolve_insert_or_copy_nodes(token_list)
 
-	token_list = resolve_insert_tokens(token_list)
+	def replace_zero_nodes_if_needed(tokens: list[LSNode], nested: bool = False) -> list[LSNode]:
+		result_tokens = []
+		for token in tokens:
+			if isinstance(token, LSInsertNode) and token.number == 0 and ((token.is_nested or not token.is_simple) or nested):
+				result_tokens.append(LSInsertNode(max_number + 1, token.children, token.original_number))
+			else:
+				result_tokens.append(token)
+			if isinstance(token, LSInsertNode):
+				token.children = replace_zero_nodes_if_needed(token.children, nested=True)
+		return result_tokens
+	token_list = replace_zero_nodes_if_needed(token_list, nested=False)
+
+
+	# try to correctly remap node numbers
+	node_numbers = set(token.number for token in iter_all_tokens(token_list) if isinstance(token, (LSInsertNode, LSCopyNode, LSTransformationNode)))
+	offset = 0 if 0 in node_numbers else 1
+	node_numbers = sorted(node_numbers)
+	remap = {node_numbers[new_number]: new_number + offset for new_number in range(len(node_numbers))}
+
+	def remap_numbers(tokens):
+		result_tokens = []
+		for token in tokens:
+			if isinstance(token, LSInsertNode):
+				children = remap_numbers(token.children)
+				token = LSInsertNode(remap.get(token.number, token.number), children, token.number)
+			elif isinstance(token, LSCopyNode):
+				token = LSCopyNode(remap.get(token.number, token.number), token.number)
+			elif isinstance(token, LSTransformationNode):
+				token = LSTransformationNode(remap.get(token.number, token.number), token.search, token.replace, token.number)
+			result_tokens.append(token)
+		return result_tokens
+	token_list = remap_numbers(token_list)
 
 	for token in iter_all_tokens(token_list):
 		print(token)
@@ -592,11 +626,6 @@ def parse_snippet(snippet) -> tuple[list[LSNode], dict[int, int]]:
 
 	## replace zero tokens and copy or insert tokens
 	#token_list = [finalize_token(token) for token in token_list]
-
-	# try to correctly remap node numbers
-	offset = 0 if 0 in node_numbers else 1
-	node_numbers = sorted(node_numbers)
-	remap = {node_numbers[new_number]: new_number + offset for new_number in range(len(node_numbers))}
 
 	def remap_numbers(token):
 		if isinstance(token, LSInsertNode):
