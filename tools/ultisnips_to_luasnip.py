@@ -300,7 +300,7 @@ class ParsedSnippet:
 
 	def get_code(self, indent: int, replace_zero_placeholders: bool = False) -> str:
 		tokens = self.tokens
-		tokens = self.__replace_zero_placeholders(tokens, replace_zero_placeholders)
+		tokens = self.__replace_placeholder_numbers(tokens, replace_zero_placeholders)
 		return self.render_tokens(tokens, indent)
 
 	def get_actions_code(self) -> str:
@@ -320,7 +320,7 @@ class ParsedSnippet:
 	def max_token(self) -> int:
 		return max(self.token_number_to_index.keys(), default=0)
 
-	def __replace_zero_placeholders(self, tokens: list[LSNode], force: bool):
+	def __replace_placeholder_numbers(self, tokens: list[LSNode], force: bool):
 		def replace_token(token):
 			if isinstance(token, LSInsertNode):
 				shouldd_replace = force
