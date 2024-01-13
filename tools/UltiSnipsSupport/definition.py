@@ -47,3 +47,7 @@ class SnipMateSnippetDefinition(SnippetDefinition):
 			None,
 			{},
 		)
+
+
+class UltiSnipsSnippetDefinition(SnippetDefinition):
+	pass
