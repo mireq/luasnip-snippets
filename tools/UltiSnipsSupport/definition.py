@@ -1,5 +1,14 @@
 # -*- coding: utf-8 -*-
 import typing
+from dataclasses import dataclass
+from pathlib import Path
+
+
+@dataclass(slots=True)
+class Location:
+	line_nr: int
+	path: Path
+
 
 
 class SnippetDefinition:
@@ -11,7 +20,7 @@ class SnippetDefinition:
 		description: str,
 		options: str,
 		global_code: dict[str, str],
-		location: str,
+		location: Location,
 		context: typing.Any,
 		actions: dict[str, str]
 	):
@@ -34,7 +43,7 @@ class SnipMateSnippetDefinition(SnippetDefinition):
 		trigger: str,
 		value: str,
 		description: str,
-		location: str,
+		location: Location,
 	):
 		super().__init__(
 			self.SNIPMATE_SNIPPET_PRIORITY,

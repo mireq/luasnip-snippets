@@ -2,7 +2,7 @@
 import typing
 from pathlib import Path
 
-from .definition import SnippetDefinition
+from .definition import SnippetDefinition, SnipMateSnippetDefinition, Location
 from .text import LineIterator, head_tail
 
 
@@ -24,10 +24,8 @@ class SnippetExtendsEvent(SnippetEvent):
 
 
 class SnippetDefinitionEvent(SnippetEvent):
-	def __init__(self, content: str, trigger: str, description: str, line: str, line_nr: int, path: Path):
-		self.content = content
-		self.trigger = trigger
-		self.description = description
+	def __init__(self, snippet: SnippetDefinition, line: str, line_nr: int, path: Path):
+		self.snippet = snippet
 		super().__init__(line, line_nr, path)
 
 
@@ -106,9 +104,12 @@ class SnipMateFileSource(SnippetFileSource):
 		content = content[:-1]  # Chomp the last newline
 
 		return SnippetDefinitionEvent(
-			content,
-			trigger,
-			description,
+			SnipMateSnippetDefinition(
+				trigger,
+				content,
+				description,
+				Location(start_line_index, path),
+			),
 			start_line_index,
 			lines,
 			path
