@@ -413,7 +413,7 @@ class EndOfTextToken(Token):
 	"""Appears at the end of the text."""
 
 	def __repr__(self):
-		return "EndOfText(%r)" % self.end
+		return "EndOfText(%r)" % (self.end,)
 
 
 def get_allowed_tokens(source_type: SourceType, in_tabstops: bool = False) -> list[typing.Type[Token]]:
