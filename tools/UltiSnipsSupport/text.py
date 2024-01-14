@@ -1,5 +1,23 @@
 # -*- coding: utf-8 -*-
 import typing
+import re
+
+
+UNESCAPE_RE = re.compile(r'\\(.)')
+
+
+def escape(text: str, chars: str) -> str:
+	"""
+	Escapes all characters in 'chars' found in 'text' with a backslash.
+	"""
+	return ''.join('\\' + char if char in chars else char for char in text)
+
+
+def unescape(text: str) -> str:
+	"""
+	Unescapes all characters in 'text' that are preceded by a backslash.
+	"""
+	return UNESCAPE_RE.sub(r'\1', text)
 
 
 def head_tail(line: str) -> tuple[str, str]:

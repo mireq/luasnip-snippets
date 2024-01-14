@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import typing
+from enum import Enum, auto
 from pathlib import Path
 
 from .definition import SnippetDefinition, SnipMateSnippetDefinition, Location
@@ -30,7 +31,14 @@ class SnippetDefinitionEvent(SnippetEvent):
 		super().__init__(line, line_nr, path)
 
 
+class SourceType(Enum):
+	SNIPMATE = auto()
+	ULTISNIPS = auto()
+
+
 class SnippetFileSource:
+	source_type: SourceType
+
 	def __init__(self, filetype: str, source_directories: typing.Iterable[Path]):
 		self.filetype = filetype
 		self.source_directories = list(source_directories)
@@ -59,6 +67,8 @@ class SnippetFileSource:
 
 
 class SnipMateFileSource(SnippetFileSource):
+	source_type = SourceType.SNIPMATE
+
 	def get_snippet_files(self) -> typing.Iterable[Path]:
 		files = []
 		ft = self.filetype
@@ -123,3 +133,7 @@ class SnipMateFileSource(SnippetFileSource):
 			lines,
 			path
 		)
+
+
+class UltiSnipsFileSource(SnippetFileSource):
+	source_type = SourceType.ULTISNIPS
