@@ -24,9 +24,16 @@ class LineIterator:
 		self.__lines = text.splitlines(True)
 
 	def __iter__(self) -> typing.Iterable[str]:
-		for idx, line in enumerate(self.__lines):
-			yield line
-			self.line_index = idx
+		return self
 
-	def peek(self) -> str:
-		return self.__lines[self.line_index + 1]
+	def __next__(self) -> str:
+		if self.line_index + 1 < len(self.__lines):
+			self.line_index += 1
+			return self.__lines[self.line_index]
+		raise StopIteration()
+
+	def peek(self) -> str | None:
+		try:
+			return self.__lines[self.line_index + 1]
+		except IndexError:
+			return None

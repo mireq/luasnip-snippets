@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
+import logging
 import typing
 from pathlib import Path
 
 from .definition import SnippetDefinition, SnipMateSnippetDefinition, Location
 from .text import LineIterator, head_tail
+
+
+logger = logging.getLogger(__name__)
 
 
 class SnippetEvent:
@@ -34,6 +38,7 @@ class SnippetFileSource:
 		self.filetype = filetype
 		self.source_directories = list(source_directories)
 		self.snippets: list[SnippetDefinition] = []
+		self.extends: set[str] = set()
 		self.load_snippets()
 
 	def get_snippet_files(self) -> typing.Iterable[Path]:
@@ -46,7 +51,14 @@ class SnippetFileSource:
 		for path in self.get_snippet_files():
 			with path.open('r') as fp:
 				file_data = fp.read()
-			self.snippets.extend(self.parse_snippet_file(file_data, path))
+			for event in self.parse_snippet_file(file_data, path):
+				match event:
+					case SnippetErrorEvent():
+						logger.error("Snippet parsing error on line %s:%d - %s", event.path, event.line_nr, event.line)
+					case SnippetExtendsEvent():
+						self.extends.add(event.filetype)
+					case SnippetDefinitionEvent():
+						self.snippets.append(event.snippet)
 
 
 class SnipMateFileSource(SnippetFileSource):
