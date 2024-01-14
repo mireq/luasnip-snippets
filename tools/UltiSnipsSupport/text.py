@@ -8,7 +8,8 @@ def head_tail(line: str) -> tuple[str, str]:
 	"""
 
 	try:
-		return tuple(part.strip() for part in line.split(None, 1))
+		head, tail = line.split(None, 1)
+		return (head.strip(), tail)
 	except ValueError:
 		return (line.strip(), '')
 
@@ -19,13 +20,13 @@ class LineIterator:
 	"""
 
 	def __init__(self, text: str):
-		self.__index = -1
+		self.line_index = -1
 		self.__lines = text.splitlines(True)
 
 	def __iter__(self) -> typing.Iterable[str]:
 		for idx, line in enumerate(self.__lines):
 			yield line
-			self.__index = idx
+			self.line_index = idx
 
 	def peek(self) -> str:
-		return self.__lines[self.__index + 1]
+		return self.__lines[self.line_index + 1]

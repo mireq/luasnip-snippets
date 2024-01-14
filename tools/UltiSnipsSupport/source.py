@@ -1,33 +1,37 @@
 # -*- coding: utf-8 -*-
 import typing
-from enum import Enum, auto
 from pathlib import Path
 
 from .definition import SnippetDefinition
+from .text import LineIterator, head_tail
 
 
 class SnippetEvent:
-	pass
+	def __init__(self, line: str, line_nr: int, path: Path):
+		self.line = line
+		self.line_nr = line_nr
+		self.path = path
 
 
 class SnippetErrorEvent(SnippetEvent):
-	def __init__(self, line: str, line_nr: int):
-		self.line = line
-		self.line_nr = line_nr
+	pass
 
 
 class SnippetExtendsEvent(SnippetEvent):
-	def __init__(self, filetype: str):
+	def __init__(self, filetype: str, line: str, line_nr: int, path: Path):
 		self.filetype = filetype
+		super().__init__(filetype, line, line_nr, path)
 
 
 class SnippetDefinitionEvent(SnippetEvent):
-	def __init__(self, snippet: SnippetDefinition):
-		self.snippet = snippet
+	def __init__(self, content: str, trigger: str, description: str, line: str, line_nr: int, path: Path):
+		self.content = content
+		self.trigger = trigger
+		self.description = description
+		super().__init__(line, line_nr, path)
 
 
 class SnippetFileSource:
-
 	def __init__(self, filetype: str, source_directories: typing.Iterable[Path]):
 		self.filetype = filetype
 		self.source_directories = list(source_directories)
@@ -37,7 +41,7 @@ class SnippetFileSource:
 	def get_snippet_files(self) -> typing.Iterable[Path]:
 		raise NotImplementedError()
 
-	def parse_snippet_file(self, data: str, filename: Path) -> typing.Iterable[SnippetEvent]:
+	def parse_snippet_file(self, data: str, path: Path) -> typing.Iterable[SnippetEvent]:
 		raise NotImplementedError()
 
 	def load_snippets(self) -> typing.Iterable[SnippetEvent]:
@@ -59,3 +63,53 @@ class SnipMateFileSource(SnippetFileSource):
 			files.extend(sorted(source_dir.joinpath(ft).glob('*.snippet')))
 			files.extend(sorted(source_dir.joinpath(ft).glob('**/*.snippet')))
 		return files
+
+	def parse_snippet_file(self, data: str, path: Path) -> typing.Iterable[SnippetEvent]:
+		if path.suffix == 'snippet':
+			yield self.__parse_snippet_file(data, path)
+		else:
+			yield from self.__parse_snippets_file(data, path)
+
+	def __parse_snippet_file(self, data: str, path: Path) -> SnippetEvent:
+		# TODO
+		raise NotImplementedError()
+
+	def __parse_snippets_file(self, data: str, path: Path) -> typing.Iterable[SnippetEvent]:
+		lines = LineIterator(data)
+
+		for line in lines:
+			if not line.strip():
+				continue
+
+			head, tail = head_tail(line)
+			if head == "extends":
+				yield SnippetExtendsEvent(tail, line, lines.line_index, path)
+			elif head in "snippet":
+				yield self.__parse_snippet(line, lines, path)
+			elif head and not head.startswith("#"):
+				yield SnippetErrorEvent(line, lines.line_index, path)
+
+	def __parse_snippet(self, line: str, lines: LineIterator, path: Path) -> SnippetEvent:
+		start_line_index = lines.line_index
+		trigger, description = head_tail(line[len("snippet") :].lstrip())
+		content = ""
+		while True:
+			next_line = lines.peek()
+			if next_line is None:
+				break
+			if next_line.strip() and not next_line.startswith("\t"):
+				break
+			line = next(lines)
+			if line[0] == "\t":
+				line = line[1:]
+			content += line
+		content = content[:-1]  # Chomp the last newline
+
+		return SnippetDefinitionEvent(
+			content,
+			trigger,
+			description,
+			start_line_index,
+			lines,
+			path
+		)
