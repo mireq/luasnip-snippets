@@ -1,11 +1,30 @@
 # -*- coding: utf-8 -*-
 import typing
+import os
 from enum import Enum, auto
 from pathlib import Path
 
 from .definition import SnippetDefinition, SnipMateSnippetDefinition, Location
 from .error import ParseError
 from .text import LineIterator, head_tail
+
+
+def _splitall(path):
+	"""Split 'path' into all its components."""
+	# From http://my.safaribooksonline.com/book/programming/python/0596001673/files/pythoncook-chp-4-sect-16
+	allparts = []
+	while True:
+		parts = os.path.split(path)
+		if parts[0] == path:  # sentinel for absolute paths
+			allparts.insert(0, parts[0])
+			break
+		elif parts[1] == path:  # sentinel for relative paths
+			allparts.insert(0, parts[1])
+			break
+		else:
+			path = parts[0]
+			allparts.insert(0, parts[1])
+	return allparts
 
 
 class SnippetEvent:
@@ -87,9 +106,30 @@ class SnipMateFileSource(SnippetFileSource):
 		else:
 			yield from self.__parse_snippets_file(data, path)
 
-	def __parse_snippet_file(self, data: str, path: Path) -> SnippetEvent:
-		# TODO
-		raise NotImplementedError()
+	def __parse_snippet_file(self, content: str, path: Path) -> SnippetEvent:
+		full_filename = str(path.absolute())
+		filename = full_filename[: -len(".snippet")]  # strip extension
+		segments = _splitall(filename)
+		segments = segments[segments.index("snippets") + 1 :]
+		assert len(segments) in (2, 3)
+
+		trigger = segments[1]
+		description = segments[2] if 2 < len(segments) else ""
+
+		content = content[: -len(os.linesep)] if content.endswith(os.linesep) else content
+
+		return SnippetDefinitionEvent(
+			SnipMateSnippetDefinition(
+				trigger,
+				content,
+				description,
+				Location(0, path),
+			),
+			'',
+			0,
+			path
+		)
+
 
 	def __parse_snippets_file(self, data: str, path: Path) -> typing.Iterable[SnippetEvent]:
 		lines = LineIterator(data)
@@ -129,8 +169,8 @@ class SnipMateFileSource(SnippetFileSource):
 				description,
 				Location(start_line_index, path, line),
 			),
+			line,
 			start_line_index,
-			lines,
 			path
 		)
 
