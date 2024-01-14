@@ -6,10 +6,24 @@ from pathlib import Path
 from .definition import SnippetDefinition
 
 
-class Event(Enum):
-	SNIPPET = auto()
-	EXTENDS = auto()
-	ERROR = auto()
+class SnippetEvent:
+	pass
+
+
+class SnippetErrorEvent(SnippetEvent):
+	def __init__(self, line: str, line_nr: int):
+		self.line = line
+		self.line_nr = line_nr
+
+
+class SnippetExtendsEvent(SnippetEvent):
+	def __init__(self, filetype: str):
+		self.filetype = filetype
+
+
+class SnippetDefinitionEvent(SnippetEvent):
+	def __init__(self, snippet: SnippetDefinition):
+		self.snippet = snippet
 
 
 class SnippetFileSource:
@@ -21,11 +35,16 @@ class SnippetFileSource:
 		self.load_snippets()
 
 	def get_snippet_files(self) -> typing.Iterable[Path]:
-		raise NotImplemented
+		raise NotImplementedError()
 
-	def load_snippets(self):
+	def parse_snippet_file(self, data: str, filename: Path) -> typing.Iterable[SnippetEvent]:
+		raise NotImplementedError()
+
+	def load_snippets(self) -> typing.Iterable[SnippetEvent]:
 		for path in self.get_snippet_files():
-			print(path)
+			with path.open('r') as fp:
+				file_data = fp.read()
+			self.snippets.extend(self.parse_snippet_file(file_data, path))
 
 
 class SnipMateFileSource(SnippetFileSource):
