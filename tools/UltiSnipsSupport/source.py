@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
-import logging
 import typing
 from pathlib import Path
 
 from .definition import SnippetDefinition, SnipMateSnippetDefinition, Location
+from .error import ParseError
 from .text import LineIterator, head_tail
-
-
-logger = logging.getLogger(__name__)
 
 
 class SnippetEvent:
@@ -54,7 +51,7 @@ class SnippetFileSource:
 			for event in self.parse_snippet_file(file_data, path):
 				match event:
 					case SnippetErrorEvent():
-						logger.error("Snippet parsing error on line %s:%d - %s", event.path, event.line_nr, event.line)
+						raise ParseError("Snippet parse error", Location(event.line_nr, event.path, event.line))
 					case SnippetExtendsEvent():
 						self.extends.add(event.filetype)
 					case SnippetDefinitionEvent():
@@ -120,7 +117,7 @@ class SnipMateFileSource(SnippetFileSource):
 				trigger,
 				content,
 				description,
-				Location(start_line_index, path),
+				Location(start_line_index, path, line),
 			),
 			start_line_index,
 			lines,

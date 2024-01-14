@@ -8,7 +8,13 @@ from pathlib import Path
 class Location:
 	line_nr: int
 	path: Path
+	line: str | None = None
 
+	def __str__(self) -> str:
+		if self.line is None:
+			return f'{self.path}:{self.line_nr}'
+		else:
+			return f'{self.path}:{self.line_nr} - {self.line}'
 
 
 class SnippetDefinition:
