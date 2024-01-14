@@ -336,7 +336,7 @@ class EscapeCharToken(Token):
 		return "EscapeCharToken(%r,%r,%r)" % (self.start, self.end, self.initial_text)
 
 
-class ShellCodeToken(Token):
+class EmbeddedCodeBaseToken(Token):
 
 	"""`echo "hi"`"""
 
@@ -351,7 +351,63 @@ class ShellCodeToken(Token):
 		self.code = _parse_till_unescaped_char(stream, "`")[0]
 
 	def __repr__(self):
-		return "ShellCodeToken(%r,%r,%r)" % (self.start, self.end, self.code)
+		return "%s(%r,%r,%r)" % (self.__class__.__name__, self.start, self.end, self.code)
+
+
+class VimLCodeTokenBaseToken(Token):
+
+	"""`!v g:hi`"""
+
+	CHECK = re.compile(r"^`!v\s")
+
+	@classmethod
+	def starts_here(cls, stream):
+		"""Returns true if this token starts at the current position in
+		'stream'."""
+		return cls.CHECK.match(stream.peek(4)) is not None
+
+	def _parse(self, stream, indent):
+		for _ in range(4):
+			next(stream)  # `!v
+		self.code = _parse_till_unescaped_char(stream, "`")[0]
+
+	def __repr__(self):
+		return "%s(%r,%r,%r)" % (self.__class__.__name__, self.start, self.end, self.code)
+
+
+class ShellCodeToken(Token):
+	"""
+	Base for shell code
+	"""
+	pass
+
+
+class VimLCodeToken(Token):
+	"""
+	Base for vim lang code
+	"""
+	pass
+
+
+class UltisnipsShellCodeToken(ShellCodeToken, EmbeddedCodeBaseToken):
+	"""
+	Ultisnips shell code token
+	"""
+	pass
+
+
+class UltisnipsVimLCodeToken(VimLCodeToken, VimLCodeTokenBaseToken):
+	"""
+	Ultisnips vim code token
+	"""
+	pass
+
+
+class SnipmateVimLCodeToken(VimLCodeToken, EmbeddedCodeBaseToken):
+	"""
+	Snipmate supports only viml tokens
+	"""
+	pass
 
 
 class PythonCodeToken(Token):
@@ -387,27 +443,6 @@ class PythonCodeToken(Token):
 		return "PythonCodeToken(%r,%r,%r)" % (self.start, self.end, self.code)
 
 
-class VimLCodeToken(Token):
-
-	"""`!v g:hi`"""
-
-	CHECK = re.compile(r"^`!v\s")
-
-	@classmethod
-	def starts_here(cls, stream):
-		"""Returns true if this token starts at the current position in
-		'stream'."""
-		return cls.CHECK.match(stream.peek(4)) is not None
-
-	def _parse(self, stream, indent):
-		for _ in range(4):
-			next(stream)  # `!v
-		self.code = _parse_till_unescaped_char(stream, "`")[0]
-
-	def __repr__(self):
-		return "VimLCodeToken(%r,%r,%r)" % (self.start, self.end, self.code)
-
-
 class EndOfTextToken(Token):
 
 	"""Appears at the end of the text."""
@@ -426,8 +461,8 @@ def get_allowed_tokens(source_type: SourceType, in_tabstops: bool = False) -> li
 			TabStopToken,
 			MirrorToken,
 			PythonCodeToken,
-			VimLCodeToken,
-			ShellCodeToken,
+			UltisnipsVimLCodeToken,
+			UltisnipsShellCodeToken,
 		]
 	else:
 		if in_tabstops:
@@ -435,7 +470,7 @@ def get_allowed_tokens(source_type: SourceType, in_tabstops: bool = False) -> li
 				EscapeCharToken,
 				VisualToken,
 				MirrorToken,
-				ShellCodeToken,
+				SnipmateVimLCodeToken,
 			]
 		else:
 			return [
@@ -443,7 +478,7 @@ def get_allowed_tokens(source_type: SourceType, in_tabstops: bool = False) -> li
 				VisualToken,
 				TabStopToken,
 				MirrorToken,
-				ShellCodeToken,
+				SnipmateVimLCodeToken,
 			]
 
 
