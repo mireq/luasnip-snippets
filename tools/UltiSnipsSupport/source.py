@@ -3,6 +3,7 @@ import typing
 import os
 from enum import Enum, auto
 from pathlib import Path
+from collections import defaultdict
 
 from .definition import SnippetDefinition, SnipMateSnippetDefinition, Location
 from .error import ParseError
@@ -130,7 +131,6 @@ class SnipMateFileSource(SnippetFileSource):
 			path
 		)
 
-
 	def __parse_snippets_file(self, data: str, path: Path) -> typing.Iterable[SnippetEvent]:
 		lines = LineIterator(data)
 
@@ -177,3 +177,26 @@ class SnipMateFileSource(SnippetFileSource):
 
 class UltiSnipsFileSource(SnippetFileSource):
 	source_type = SourceType.ULTISNIPS
+
+	def get_snippet_files(self) -> typing.Iterable[Path]:
+		files = []
+		ft = self.filetype
+		for source_dir in self.source_directories:
+			snippet_file = source_dir / f'{ft}.snippets'
+			if snippet_file.exists():
+				files.append(snippet_file)
+			files.extend(sorted(source_dir.joinpath(ft).glob(f'{ft}_*.snippets')))
+			files.extend(sorted(source_dir.joinpath(ft).glob(f'{ft}/*')))
+		return files
+
+	def parse_snippet_file(self, data: str, path: Path) -> typing.Iterable[SnippetEvent]:
+		python_globals = defaultdict(list)
+		lines = LineIterator(data)
+		current_priority = 0
+		actions = {}
+		context = None
+
+		for line in lines:
+			if not line.strip():
+				continue
+			print(line)
