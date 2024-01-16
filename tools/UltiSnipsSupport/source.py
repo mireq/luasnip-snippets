@@ -5,7 +5,7 @@ from enum import Enum, auto
 from pathlib import Path
 from collections import defaultdict
 
-from .definition import SnippetDefinition, SnipMateSnippetDefinition, Location
+from .definition import SnippetDefinition, SnipMateSnippetDefinition, UltiSnipsSnippetDefinition, Location
 from .error import ParseError
 from .text import LineIterator, head_tail
 
@@ -36,7 +36,9 @@ class SnippetEvent:
 
 
 class SnippetErrorEvent(SnippetEvent):
-	pass
+	def __init__(self, line: str, line_nr: int, path: Path, message: str | None = None):
+		super().__init__(line, line_nr, path)
+		self.message = message
 
 
 class SnippetExtendsEvent(SnippetEvent):
@@ -79,7 +81,10 @@ class SnippetFileSource:
 			for event in self.parse_snippet_file(file_data, path):
 				match event:
 					case SnippetErrorEvent():
-						raise ParseError("Snippet parse error", Location(event.line_nr, event.path, event.line))
+						if event.message is None:
+							raise ParseError("Snippet parse error", Location(event.line_nr, event.path, event.line))
+						else:
+							raise ParseError(event.message, Location(event.line_nr, event.path, event.line))
 					case SnippetExtendsEvent():
 						self.extends.add(event.filetype)
 					case SnippetDefinitionEvent():
@@ -199,4 +204,92 @@ class UltiSnipsFileSource(SnippetFileSource):
 		for line in lines:
 			if not line.strip():
 				continue
-			print(line)
+
+			head, tail = head_tail(line)
+			if head in ("snippet", "global"):
+				snippet = self._handle_snippet_or_global(
+					line,
+					lines,
+					path,
+					python_globals,
+					current_priority,
+					actions,
+					context,
+				)
+
+				actions = {}
+				context = None
+				if snippet is not None:
+					yield snippet
+
+	def _handle_snippet_or_global(self, line: str, lines: LineIterator, path: Path, python_globals: dict, priority: int, pre_expand: dict, context: dict | None) -> SnippetEvent:
+		start_line_index = lines.line_index
+		descr = ""
+		opts = ""
+
+		# Ensure this is a snippet
+		snip = line.split()[0]
+
+		# Get and strip options if they exist
+		remain = line[len(snip) :].strip()
+		words = remain.split()
+
+		if len(words) > 2:
+			# second to last word ends with a quote
+			if '"' not in words[-1] and words[-2][-1] == '"':
+				opts = words[-1]
+				remain = remain[: -len(opts) - 1].rstrip()
+
+		if "e" in opts and not context:
+			left = remain[:-1].rfind('"')
+			if left != -1 and left != 0:
+				context, remain = remain[left:].strip('"'), remain[:left]
+
+		# Get and strip description if it exists
+		remain = remain.strip()
+		if len(remain.split()) > 1 and remain[-1] == '"':
+			left = remain[:-1].rfind('"')
+			if left != -1 and left != 0:
+				descr, remain = remain[left:], remain[:left]
+
+		# The rest is the trigger
+		trig = remain.strip()
+		if len(trig.split()) > 1 or "r" in opts:
+			if trig[0] != trig[-1]:
+				return SnippetErrorEvent("Invalid multiword trigger: '%s'" % trig, line, lines.line_index, path)
+			trig = trig[1:-1]
+		end = "end" + snip
+		content = ""
+
+		found_end = False
+		for line in lines:
+			if line.rstrip() == end:
+				content = content[:-1]  # Chomp the last newline
+				found_end = True
+				break
+			content += line
+
+		if not found_end:
+			return SnippetErrorEvent("Missing 'endsnippet' for %r" % trig, line, lines.line_index, path)
+
+		if snip == "global":
+			python_globals[trig].append(content)
+		elif snip == "snippet":
+			return SnippetDefinitionEvent(
+				UltiSnipsSnippetDefinition(
+					priority,
+					trig,
+					content,
+					descr,
+					opts,
+					python_globals,
+					Location(start_line_index, path, line),
+					context,
+					pre_expand,
+				),
+				line,
+				start_line_index,
+				path
+			)
+		else:
+			return SnippetErrorEvent("Invalid snippet type: '%s'" % snip, line, lines.line_index, path)
