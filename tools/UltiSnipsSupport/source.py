@@ -221,6 +221,8 @@ class UltiSnipsFileSource(SnippetFileSource):
 				context = None
 				if snippet is not None:
 					yield snippet
+			elif head == "extends":
+				yield SnippetExtendsEvent(tail, line, lines.line_index, path)
 
 	def _handle_snippet_or_global(self, line: str, lines: LineIterator, path: Path, python_globals: dict, priority: int, pre_expand: dict, context: dict | None) -> SnippetEvent:
 		start_line_index = lines.line_index
