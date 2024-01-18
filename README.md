@@ -11,6 +11,8 @@ Screenshots
 Installation
 ------------
 
+Note: requires [pynvim](https://github.com/neovim/pynvim) (see `:help pynvim`).
+
 This is complete configuration using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
