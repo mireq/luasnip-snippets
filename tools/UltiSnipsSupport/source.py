@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
-import typing
+import logging
 import os
+import typing
+from collections import defaultdict
 from enum import Enum, auto
 from pathlib import Path
-from collections import defaultdict
 
+from .configuration import Configuration
 from .definition import SnippetDefinition, SnipMateSnippetDefinition, UltiSnipsSnippetDefinition, Location
 from .error import ParseError
 from .text import LineIterator, head_tail
+
+
+logger = logging.getLogger()
 
 
 def _splitall(path):
@@ -348,3 +353,40 @@ class SnippetSource:
 			UltiSnipsFileSource(filetype, ultisnips_dirs),
 			SnipMateFileSource(filetype, snipmate_dirs),
 		]
+		self.__configuration = Configuration(filetype)
+
+	def get_all_snippets(self) -> list[SnippetDefinition]:
+		possible_snippets: list[SnippetDefinition] = []
+		matching_snippets = defaultdict(list)
+
+		clear_priority = None
+		cleared = {}
+
+		for source in self.sources:
+			possible_snippets.extend(source.snippets)
+		possible_snippets = [s for s in possible_snippets if not s.trigger in self.__configuration.excluded_snippets]
+
+		for source in self.sources:
+			if source.clear_priority is not None and (
+				clear_priority is None or source.clear_priority > clear_priority
+			):
+				clear_priority = source.clear_priority
+			for key, value in source.cleared.items():
+				if key not in cleared or value > cleared[key]:
+					cleared[key] = value
+
+		for snippet in possible_snippets:
+			if (clear_priority is None or snippet.priority > clear_priority) and (
+				snippet.trigger not in cleared
+				or snippet.priority > cleared[snippet.trigger]
+			):
+				matching_snippets[snippet.trigger].append(snippet)
+
+		snippets: list[SnippetDefinition] = []
+		for snippets_with_trigger in matching_snippets.values():
+			highest_priority = max(s.priority for s in snippets_with_trigger)
+			snippets.extend(
+				s for s in snippets_with_trigger if s.priority == highest_priority
+			)
+
+		return snippets
