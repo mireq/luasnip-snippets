@@ -349,11 +349,12 @@ class SnippetSource:
 		ultisnips_dirs: list[Path],
 		snipmate_dirs: list[Path]
 	):
+		self.filetype = filetype
 		self.sources: list[SnippetFileSource] = [
 			UltiSnipsFileSource(filetype, ultisnips_dirs),
 			SnipMateFileSource(filetype, snipmate_dirs),
 		]
-		self.__configuration = Configuration(filetype)
+		self.configuration = Configuration(filetype)
 
 	def get_all_snippets(self) -> list[SnippetDefinition]:
 		possible_snippets: list[SnippetDefinition] = []
@@ -364,7 +365,7 @@ class SnippetSource:
 
 		for source in self.sources:
 			possible_snippets.extend(source.snippets)
-		possible_snippets = [s for s in possible_snippets if not s.trigger in self.__configuration.excluded_snippets]
+		possible_snippets = [s for s in possible_snippets if not s.trigger in self.configuration.excluded_snippets]
 
 		for source in self.sources:
 			if source.clear_priority is not None and (
@@ -390,3 +391,12 @@ class SnippetSource:
 			)
 
 		return snippets
+
+	@property
+	def extends(self) -> list[str]:
+		extends: set[str] = set()
+		for source in self.sources:
+			extends = extends.union(source.extends)
+		extends.discard(self.filetype)
+		extends = extends.union(set((self.configuration.additional_extends)))
+		return list(sorted(extends))
