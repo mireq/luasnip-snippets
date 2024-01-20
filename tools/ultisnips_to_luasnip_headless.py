@@ -60,16 +60,16 @@ def file_type(arg: str) -> str:
 
 
 class ProgramArgs(argparse.Namespace):
-	ultisnips_dir: list[Path]
-	snipmate_dir: list[Path]
+	ultisnips_dirs: list[Path]
+	snipmate_dirs: list[Path]
 	output_dir = Path
 	file_types = list[str]
 
 
 def main():
 	parser = argparse.ArgumentParser(description="Ultisnips snippets to luasnip converter")
-	parser.add_argument('--ultisnips-dir', type=source_dir, action='append', default=[])
-	parser.add_argument('--snipmate-dir', type=source_dir, action='append', default=[])
+	parser.add_argument('--ultisnips-dir', type=source_dir, action='append', default=[], dest='ultisnips_dirs')
+	parser.add_argument('--snipmate-dir', type=source_dir, action='append', default=[], dest='snipmate_dirs')
 	parser.add_argument('--output-dir', type=output_dir, required=True)
 	parser.add_argument('file_types', type=file_type, nargs='*', default=[])
 	args = parser.parse_args(namespace=ProgramArgs())

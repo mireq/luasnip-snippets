@@ -6,15 +6,15 @@ from .source import SnippetSource
 
 
 class ProgramArgs(typing.Protocol):
-	ultisnips_dir: list[Path]
-	snipmate_dir: list[Path]
+	ultisnips_dirs: list[Path]
+	snipmate_dirs: list[Path]
 	output_dir = Path
 
 
 def run(args: ProgramArgs, filetype: str):
 	source = SnippetSource(
 		filetype,
-		ultisnips_dirs=args.ultisnips_dir,
-		snipmate_dirs=args.snipmate_dir
+		ultisnips_dirs=args.ultisnips_dirs,
+		snipmate_dirs=args.snipmate_dirs
 	)
 	print(source)
