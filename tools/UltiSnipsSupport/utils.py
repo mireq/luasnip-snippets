@@ -30,3 +30,8 @@ def escape_multiline_lua_sting(text: str) -> str:
 			break
 		equal_signs += 1
 	return f'{start_delimiter}{text}{end_delimiter}'
+
+
+class OrderedSet(dict):
+	def add(self, value: str):
+		self[value] = len(self)
