@@ -1,0 +1,4 @@
+/tools/vim-snippets
+.ropeproject
+*.pyc
+__pycache__
