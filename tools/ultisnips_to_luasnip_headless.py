@@ -32,8 +32,8 @@ logger = logging.getLogger()
 
 def source_dirs(arg: str) -> list[Path]:
 	paths: list[Path] = []
-	for path in arg.split(os.pathsep):
-		path = Path(arg).absolute()
+	for concrete_path in arg.split(os.pathsep):
+		path = Path(concrete_path).absolute()
 		if not path.exists():
 			raise argparse.ArgumentTypeError(f"Directory `{path}` don't exist")
 		if not path.is_dir():
