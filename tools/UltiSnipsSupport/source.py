@@ -42,14 +42,21 @@ class SnippetErrorEvent(SnippetEvent):
 
 
 class SnippetExtendsEvent(SnippetEvent):
-	def __init__(self, filetype: str, line: str, line_nr: int, path: Path):
-		self.filetype = filetype
-		super().__init__(filetype, line, line_nr, path)
+	def __init__(self, filetypes: list[str], line: str, line_nr: int, path: Path):
+		self.filetypes = filetypes
+		super().__init__(line, line_nr, path)
 
 
 class SnippetDefinitionEvent(SnippetEvent):
 	def __init__(self, snippet: SnippetDefinition, line: str, line_nr: int, path: Path):
 		self.snippet = snippet
+		super().__init__(line, line_nr, path)
+
+
+class SnippetClearEvent(SnippetEvent):
+	def __init__(self, current_priority: int, triggers: list[str], line: str, line_nr: int, path: Path):
+		self.current_priority = current_priority
+		self.triggers = triggers
 		super().__init__(line, line_nr, path)
 
 
@@ -86,7 +93,7 @@ class SnippetFileSource:
 						else:
 							raise ParseError(event.message, Location(event.line_nr, event.path, event.line))
 					case SnippetExtendsEvent():
-						self.extends.add(event.filetype)
+						self.extends = self.extends.union(set(event.filetypes))
 					case SnippetDefinitionEvent():
 						self.snippets.append(event.snippet)
 
@@ -145,7 +152,7 @@ class SnipMateFileSource(SnippetFileSource):
 
 			head, tail = head_tail(line)
 			if head == "extends":
-				yield SnippetExtendsEvent(tail, line, lines.line_index, path)
+				yield SnippetExtendsEvent([filetype.strip() for filetype in tail.split(',')], line, lines.line_index, path)
 			elif head in "snippet":
 				yield self.__parse_snippet(line, lines, path)
 			elif head and not head.startswith("#"):
@@ -222,7 +229,11 @@ class UltiSnipsFileSource(SnippetFileSource):
 				if snippet is not None:
 					yield snippet
 			elif head == "extends":
-				yield SnippetExtendsEvent(tail, line, lines.line_index, path)
+				yield SnippetExtendsEvent([filetype.strip() for filetype in tail.split(',')], line, lines.line_index, path)
+			elif head == "clearsnippets":
+				yield SnippetClearEvent(current_priority, tail.split(), line, lines.line_index, path)
+			elif head and not head.startswith("#"):
+				yield SnippetErrorEvent(line, lines.line_index, path)
 
 	def _handle_snippet_or_global(self, line: str, lines: LineIterator, path: Path, python_globals: dict, priority: int, pre_expand: dict, context: dict | None) -> SnippetEvent:
 		start_line_index = lines.line_index
