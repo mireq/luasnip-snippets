@@ -332,3 +332,19 @@ class UltiSnipsFileSource(SnippetFileSource):
 			)
 		else:
 			return SnippetErrorEvent("Invalid snippet type: '%s'" % snip, line, lines.line_index, path)
+
+
+class SnippetSource:
+	"""
+	Unified snippet source with collected sources of all types
+	"""
+	def __init__(
+		self,
+		filetype: str,
+		ultisnips_dirs: list[Path],
+		snipmate_dirs: list[Path]
+	):
+		self.sources: list[SnippetFileSource] = [
+			UltiSnipsFileSource(filetype, ultisnips_dirs),
+			SnipMateFileSource(filetype, snipmate_dirs),
+		]
