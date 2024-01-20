@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import argparse
-import logging
+import logging.config
 import os
 from pathlib import Path
 
@@ -30,13 +30,16 @@ logging.config.dictConfig(LOG_CONFIG)
 logger = logging.getLogger()
 
 
-def source_dir(arg: str) -> Path:
-	path = Path(arg).absolute()
-	if not path.exists():
-		raise argparse.ArgumentTypeError(f"Directory `{path}` don't exist")
-	if not path.is_dir():
-		raise argparse.ArgumentTypeError(f"File `{path}` is not directory")
-	return path
+def source_dirs(arg: str) -> list[Path]:
+	paths: list[Path] = []
+	for path in arg.split(os.pathsep):
+		path = Path(arg).absolute()
+		if not path.exists():
+			raise argparse.ArgumentTypeError(f"Directory `{path}` don't exist")
+		if not path.is_dir():
+			raise argparse.ArgumentTypeError(f"File `{path}` is not directory")
+		paths.append(path)
+	return paths
 
 
 def output_dir(arg: str) -> Path:
@@ -63,8 +66,8 @@ class ProgramArgs(argparse.Namespace):
 
 def main():
 	parser = argparse.ArgumentParser(description="Ultisnips snippets to luasnip converter")
-	parser.add_argument('--ultisnips-dir', type=source_dir, action='append', default=[], dest='ultisnips_dirs')
-	parser.add_argument('--snipmate-dir', type=source_dir, action='append', default=[], dest='snipmate_dirs')
+	parser.add_argument('--ultisnips-dirs', type=source_dirs, nargs='?', default=[])
+	parser.add_argument('--snipmate-dirs', type=source_dirs, nargs='?', default=[])
 	parser.add_argument('--output-dir', type=output_dir, required=True)
 	parser.add_argument('file_types', type=file_type, nargs='*', default=[])
 	args = parser.parse_args(namespace=ProgramArgs())
