@@ -1,39 +1,34 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import argparse
+import logging
 import os
 from pathlib import Path
+
 from UltiSnipsSupport.transpiler import run
-import logging
 
 
+LOG_CONFIG = {
+	'version': 1,
+	'formatters': {
+		'fmt': {'format': "%(levelname)s: %(message)s"}
+	},
+	'handlers': {
+		'console': {
+			'class':'logging.StreamHandler',
+			'formatter':'fmt',
+			'level':logging.DEBUG
+		},
+	},
+	'root':{
+		'handlers':('console',)
+	}
+}
+
+
+logging.config.dictConfig(LOG_CONFIG)
 logger = logging.getLogger()
 
-
-#from UltiSnipsSupport.source import SnipMateFileSource, UltiSnipsFileSource
-#from UltiSnipsSupport.lexer import tokenize, get_allowed_tokens
-#from pathlib import Path
-#
-##src_dir = Path('./vim-snippets/snippets/')
-##source = SnipMateFileSource('_', [src_dir])
-##for snippet in source.snippets:
-##	print(len(snippet.value))
-##	tokens = list(tokenize(snippet.value, get_allowed_tokens(source.source_type)))
-##	for token in tokens:
-##		print(token)
-#
-#src_dir = Path('./vim-snippets/UltiSnips/')
-#source = UltiSnipsFileSource('all', [src_dir])
-#for snippet in source.snippets:
-#	print(len(snippet.value))
-#
-##with open('./vim-snippets/snippets/_.snippets', 'r') as fp:
-##	snippet_data = fp.read()
-##
-##it = LineIterator(snippet_data)
-##for line in it:
-##	print('peek', it.peek())
-##	print("line", line)
 
 def source_dir(arg: str) -> Path:
 	path = Path(arg).absolute()
