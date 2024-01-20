@@ -54,8 +54,8 @@ class SnippetDefinitionEvent(SnippetEvent):
 
 
 class SnippetClearEvent(SnippetEvent):
-	def __init__(self, current_priority: int, triggers: list[str], line: str, line_nr: int, path: Path):
-		self.current_priority = current_priority
+	def __init__(self, priority: int, triggers: list[str], line: str, line_nr: int, path: Path):
+		self.priority = priority
 		self.triggers = triggers
 		super().__init__(line, line_nr, path)
 
@@ -73,6 +73,8 @@ class SnippetFileSource:
 		self.source_directories = list(source_directories)
 		self.snippets: list[SnippetDefinition] = []
 		self.extends: set[str] = set()
+		self.cleared: dict[str, float] = {}
+		self.clear_priority: None | float = float("-inf")
 		self.load_snippets()
 
 	def get_snippet_files(self) -> typing.Iterable[Path]:
@@ -81,7 +83,7 @@ class SnippetFileSource:
 	def parse_snippet_file(self, data: str, path: Path) -> typing.Iterable[SnippetEvent]:
 		raise NotImplementedError()
 
-	def load_snippets(self) -> typing.Iterable[SnippetEvent]:
+	def load_snippets(self):
 		for path in self.get_snippet_files():
 			with path.open('r') as fp:
 				file_data = fp.read()
@@ -96,6 +98,14 @@ class SnippetFileSource:
 						self.extends = self.extends.union(set(event.filetypes))
 					case SnippetDefinitionEvent():
 						self.snippets.append(event.snippet)
+					case SnippetClearEvent():
+						if event.triggers:
+							for trigger in event.triggers:
+								if trigger not in self.cleared or event.priority > self.cleared[trigger]:
+									self.cleared[trigger] = event.priority
+						else:
+							if self.clear_priority is None or event.priority > self.clear_priority:
+								self.clear_priority = event.priority
 
 
 class SnipMateFileSource(SnippetFileSource):
