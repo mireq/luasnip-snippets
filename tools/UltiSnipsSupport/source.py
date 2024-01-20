@@ -236,7 +236,12 @@ class UltiSnipsFileSource(SnippetFileSource):
 				if tail:
 					context = tail.strip('"').replace(r"\"", '"').replace(r"\\\\", r"\\")
 				else:
-					yield SnippetErrorEvent(line, lines.line_index, path)
+					yield SnippetErrorEvent(line, lines.line_index, path, "Invalid context")
+			elif head == "priority":
+				try:
+					current_priority = int(tail.split()[0])
+				except (ValueError, IndexError):
+					yield SnippetErrorEvent(line, lines.line_index, path, "Invalid priority")
 			elif head and not head.startswith("#"):
 				yield SnippetErrorEvent(line, lines.line_index, path)
 
