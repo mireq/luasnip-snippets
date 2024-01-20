@@ -355,8 +355,10 @@ class SnippetSource:
 			SnipMateFileSource(filetype, snipmate_dirs),
 		]
 		self.configuration = Configuration(filetype)
+		self.snippets: list[SnippetDefinition] = []
+		self.load_snippets()
 
-	def get_all_snippets(self) -> list[SnippetDefinition]:
+	def load_snippets(self) -> list[SnippetDefinition]:
 		possible_snippets: list[SnippetDefinition] = []
 		matching_snippets = defaultdict(list)
 
@@ -383,14 +385,11 @@ class SnippetSource:
 			):
 				matching_snippets[snippet.trigger].append(snippet)
 
-		snippets: list[SnippetDefinition] = []
 		for snippets_with_trigger in matching_snippets.values():
 			highest_priority = max(s.priority for s in snippets_with_trigger)
-			snippets.extend(
+			self.snippets.extend(
 				s for s in snippets_with_trigger if s.priority == highest_priority
 			)
-
-		return snippets
 
 	@property
 	def extends(self) -> list[str]:
