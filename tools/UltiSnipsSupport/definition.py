@@ -40,6 +40,9 @@ class SnippetDefinition:
 		self.context = context
 		self.actions = actions
 
+	def __repr__(self):
+		return f'{self.__class__.__name__}(priority={self.priority!r}, trigger={self.trigger!r}, value={self.value!r}, description={self.description!r}, options={self.options!r}, global_code={self.global_code!r}, location={self.location!r}, context={self.context!r}, actions={self.actions!r})'
+
 
 class SnipMateSnippetDefinition(SnippetDefinition):
 	SNIPMATE_SNIPPET_PRIORITY = -1000
