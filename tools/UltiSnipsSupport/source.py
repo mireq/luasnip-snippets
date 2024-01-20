@@ -232,6 +232,11 @@ class UltiSnipsFileSource(SnippetFileSource):
 				yield SnippetExtendsEvent([filetype.strip() for filetype in tail.split(',')], line, lines.line_index, path)
 			elif head == "clearsnippets":
 				yield SnippetClearEvent(current_priority, tail.split(), line, lines.line_index, path)
+			elif head == "context":
+				if tail:
+					context = tail.strip('"').replace(r"\"", '"').replace(r"\\\\", r"\\")
+				else:
+					yield SnippetErrorEvent(line, lines.line_index, path)
 			elif head and not head.startswith("#"):
 				yield SnippetErrorEvent(line, lines.line_index, path)
 
