@@ -120,6 +120,9 @@ def resolve_insert_or_copy_tokens(
 	tokens: list[LSToken],
 	insert_numbers: set[int]
 ) -> tuple[list[LSToken], set[int]]:
+	"""
+	Changes LSInsertOrCopyToken_ to concreate copy or insert tokens
+	"""
 	result_tokens: list[LSToken] = []
 	for token in tokens:
 		if isinstance(token, LSInsertOrCopyToken_):
@@ -139,6 +142,9 @@ def replace_zero_tokens_if_needed(
 	max_number: int,
 	nested: bool = False,
 ) -> list[LSToken]:
+	"""
+	Replace zero tokens only if needed
+	"""
 	result_tokens = []
 	for token in tokens:
 		if isinstance(token, LSInsertToken) and token.number == 0 and ((token.is_nested or not token.is_simple) or nested):
@@ -147,6 +153,24 @@ def replace_zero_tokens_if_needed(
 			result_tokens.append(token)
 		if isinstance(token, LSInsertToken):
 			token.children = replace_zero_tokens_if_needed(token.children, max_number=max_number, nested=True)
+	return result_tokens
+
+
+def remove_gaps_in_token_numbers(
+	tokens: list[LSToken],
+) -> list[LSToken]:
+	result_tokens = []
+	token_numbers = set(token.number for token in tokens if isinstance(token, (LSInsertToken, LSTransformationToken)))
+	offset = 0 if 0 in token_numbers else 1
+	remap = dict((num, remap) for remap, num in enumerate(sorted(list(token_numbers)), offset))
+
+	for token in tokens:
+		if isinstance(token, LSInsertToken):
+			children = remove_gaps_in_token_numbers(token.children)
+			token = LSInsertToken(remap[token.number], children, token.original_number)
+		elif isinstance(token, LSTransformationToken):
+			token = LSTransformationToken(remap[token.number], token.search, token.replace, token.original_number)
+		result_tokens.append(token)
 	return result_tokens
 
 
@@ -185,5 +209,6 @@ def parse(
 		nested=False,
 		max_number=max_token_number
 	)
+	token_list = remove_gaps_in_token_numbers(token_list)
 
 	return token_list
