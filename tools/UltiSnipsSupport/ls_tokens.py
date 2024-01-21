@@ -13,7 +13,7 @@ class LSToken():
 	def __str__(self):
 		return repr(self)
 
-	@classmethod
+	@staticmethod
 	def iter_all_tokens(tokens: list['LSToken']) -> Iterable['LSToken']:
 		for token in tokens:
 			yield token

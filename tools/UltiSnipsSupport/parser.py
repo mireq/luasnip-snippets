@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from .definition import SnippetDefinition
-from .ls_tokens import LSToken, LSTextToken, LSInsertToken, LSCopyToken, LSInsertOrCopyToken_, LSVisualToken, LSPythonCodeToken, LSVimLCodeToken, LSShellCodeToken, LSTransformationToken
+from .ls_tokens import LSToken, LSTextToken, LSInsertToken, LSCopyToken, LSInsertOrCopyToken_, LSVisualToken, LSPythonCodeToken, LSVimLCodeToken, LSShellCodeToken, LSTransformationToken, LSPlaceholderToken
 from .lexer import tokenize, Token, Position, MirrorToken, EndOfTextToken, TabStopToken, VisualToken, PythonCodeToken, VimLCodeToken, ShellCodeToken, EscapeCharToken, TransformationToken, get_allowed_tokens
 import typing
 
@@ -106,6 +106,14 @@ def transform_tokens(tokens, lines, insert_tokens=None):
 	return merge_adjacent_text_tokens(token_list)
 
 
+def get_tokens_max_number(tokens: list[LSToken]) -> int:
+	max_number = 0
+	for token in LSToken.iter_all_tokens(tokens):
+		if isinstance(token, LSPlaceholderToken):
+			max_number = max(max_number, token.number)
+	return max_number
+
+
 def parse(
 	snippet: SnippetDefinition
 ) -> list[LSToken]:
@@ -116,5 +124,7 @@ def parse(
 	allowed_tokens_tabstop = get_allowed_tokens(snippet.source_type, in_tabstops=True)
 	tokens = do_tokenize(None, snippet_text, allowed_tokens, allowed_tokens_tabstop)
 	token_list = transform_tokens(tokens, lines)
+	max_number = get_tokens_max_number(token_list)
+	print(max_number)
 
 	return token_list
