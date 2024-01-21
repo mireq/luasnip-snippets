@@ -116,6 +116,24 @@ def transform_tokens(tokens, lines, insert_tokens=None):
 	return merge_adjacent_text_tokens(token_list)
 
 
+def resolve_insert_or_copy_tokens(
+	tokens: list[LSToken],
+	insert_numbers: set[int]
+) -> tuple[list[LSToken], set[int]]:
+	result_tokens: list[LSToken] = []
+	for token in tokens:
+		if isinstance(token, LSInsertOrCopyToken_):
+			if token.number in insert_numbers:
+				token = LSCopyToken(token.number)
+			else:
+				token = LSInsertToken(token.number, token.children)
+				insert_numbers.add(token.number)
+		if isinstance(token, LSInsertToken):
+			token.children = resolve_insert_or_copy_tokens(token.children, insert_numbers)
+		result_tokens.append(token)
+	return result_tokens
+
+
 def get_tokens_max_number(tokens: list[LSToken]) -> int:
 	"""
 	Returns max nubmer of token of 0 if there are no tokens
@@ -137,7 +155,14 @@ def parse(
 	allowed_tokens_tabstop = get_allowed_tokens(snippet.source_type, in_tabstops=True)
 	tokens = do_tokenize(None, snippet_text, allowed_tokens, allowed_tokens_tabstop)
 	token_list = transform_tokens(tokens, lines)
-	max_number = get_tokens_max_number(token_list)
-	print(max_number)
+	max_token_number = get_tokens_max_number(token_list)
+	token_list = resolve_insert_or_copy_tokens(
+		token_list,
+		set(
+			token.number
+			for token in LSToken.iter_all_tokens(token_list)
+			if isinstance(token, LSInsertToken)
+		)
+	)
 
 	return token_list
