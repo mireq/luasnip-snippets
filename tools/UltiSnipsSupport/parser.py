@@ -23,7 +23,7 @@ def do_tokenize(
 	return tokens
 
 
-def get_text_nodes_between(
+def get_text_tokens_between(
 	content: list[str],
 	start: tuple[int, int],
 	end: tuple[int, int] | None
@@ -32,7 +32,7 @@ def get_text_nodes_between(
 		return []
 	if end is None:
 		end = (len(content) - 1, len(content[-1]) - 1)
-	text_nodes = []
+	text_tokens = []
 	for line_num in range(start[0], end[0] + 1):
 		col_start = None
 		col_end = None
@@ -45,11 +45,11 @@ def get_text_nodes_between(
 		if text_fragment:
 			if text_fragment[-1:] == '\n':
 				if text_fragment[:-1]:
-					text_nodes.append(text_fragment[:-1])
-				text_nodes.append('\n')
+					text_tokens.append(text_fragment[:-1])
+				text_tokens.append('\n')
 			else:
-				text_nodes.append(text_fragment)
-	return [LSTextToken(text) for text in text_nodes]
+				text_tokens.append(text_fragment)
+	return [LSTextToken(text) for text in text_tokens]
 
 
 def merge_adjacent_text_tokens(tokens: list[LSToken]) -> list[LSToken]:
@@ -64,26 +64,26 @@ def merge_adjacent_text_tokens(tokens: list[LSToken]) -> list[LSToken]:
 	return new_tokens
 
 
-def transform_tokens(tokens, lines, insert_nodes=None):
+def transform_tokens(tokens, lines, insert_tokens=None):
 	token_list = []
-	insert_nodes = insert_nodes or {}
+	insert_tokens = insert_tokens or {}
 
 	previous_token_end = (0, 0)
 	for token in tokens:
-		token_list.extend(get_text_nodes_between(lines, previous_token_end, token.start))
+		token_list.extend(get_text_tokens_between(lines, previous_token_end, token.start))
 		match token:
 			case TabStopToken():
 				child_lines = token.initial_text.splitlines(keepends=True) or ['']
-				child_tokens = transform_tokens(token.child_tokens, child_lines, insert_nodes)
-				if token.number in insert_nodes and not child_tokens and token.initial_text == '':
-					node = LSCopyToken(token.number)
+				child_tokens = transform_tokens(token.child_tokens, child_lines, insert_tokens)
+				if token.number in insert_tokens and not child_tokens and token.initial_text == '':
+					new_token = LSCopyToken(token.number)
 				else:
-					node = LSInsertToken(token.number, child_tokens)
-					insert_nodes.setdefault(token.number, node)
-				token_list.append(node)
+					new_token = LSInsertToken(token.number, child_tokens)
+					insert_tokens.setdefault(token.number, new_token)
+				token_list.append(new_token)
 			case MirrorToken():
-				node = LSInsertOrCopyToken_(token.number)
-				token_list.append(node)
+				new_token = LSInsertOrCopyToken_(token.number)
+				token_list.append(new_token)
 			case VisualToken():
 				token_list.append(LSVisualToken())
 			case EndOfTextToken():
@@ -102,7 +102,7 @@ def transform_tokens(tokens, lines, insert_nodes=None):
 				snippet_text = '\n'.join(lines)
 				raise RuntimeError(f"Unknown token {token} in snippet: \n{snippet_text}")
 		previous_token_end = token.end
-	token_list.extend(get_text_nodes_between(lines, previous_token_end, None))
+	token_list.extend(get_text_tokens_between(lines, previous_token_end, None))
 	return merge_adjacent_text_tokens(token_list)
 
 

@@ -107,7 +107,7 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 
 	for snippet in source.snippets:
 		tokens = parse(snippet)
-		print(tokens)
+		#print(tokens)
 
 
 class ProgramArgs(typing.Protocol):
