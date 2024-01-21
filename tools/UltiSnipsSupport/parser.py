@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from .definition import SnippetDefinition, SnipMateSnippetDefinition, UltiSnipsSnippetDefinition
+from .definition import SnippetDefinition
 from .ls_tokens import LSToken, LSTextToken, LSInsertToken, LSCopyToken, LSInsertOrCopyToken_, LSVisualToken, LSPythonCodeToken, LSVimLCodeToken, LSShellCodeToken, LSTransformationToken
-from .lexer import tokenize, Token, Position, MirrorToken, EndOfTextToken, TabStopToken, VisualToken, PythonCodeToken, VimLCodeToken, ShellCodeToken, EscapeCharToken, TransformationToken, get_allowed_tokens, tokenize
+from .lexer import tokenize, Token, Position, MirrorToken, EndOfTextToken, TabStopToken, VisualToken, PythonCodeToken, VimLCodeToken, ShellCodeToken, EscapeCharToken, TransformationToken, get_allowed_tokens
 import typing
 
 
@@ -23,12 +23,98 @@ def do_tokenize(
 	return tokens
 
 
+def get_text_nodes_between(
+	content: list[str],
+	start: tuple[int, int],
+	end: tuple[int, int] | None
+) -> list[LSTextToken]:
+	if not content:
+		return []
+	if end is None:
+		end = (len(content) - 1, len(content[-1]) - 1)
+	text_nodes = []
+	for line_num in range(start[0], end[0] + 1):
+		col_start = None
+		col_end = None
+		if line_num == start[0]:
+			col_start = start[1]
+		if line_num == end[0]:
+			col_end = end[1]
+		current_line = content[line_num] if line_num < len(content) else ''
+		text_fragment = current_line[col_start:col_end]
+		if text_fragment:
+			if text_fragment[-1:] == '\n':
+				if text_fragment[:-1]:
+					text_nodes.append(text_fragment[:-1])
+				text_nodes.append('\n')
+			else:
+				text_nodes.append(text_fragment)
+	return [LSTextToken(text) for text in text_nodes]
+
+
+def transform_tokens(tokens, lines, insert_nodes=None):
+	token_list = []
+	insert_nodes = insert_nodes or {}
+
+	previous_token_end = (0, 0)
+	for token in tokens:
+		token_list.extend(get_text_nodes_between(lines, previous_token_end, token.start))
+		match token:
+			case TabStopToken():
+				child_lines = token.initial_text.splitlines(keepends=True) or ['']
+				child_tokens = transform_tokens(token.child_tokens, child_lines, insert_nodes)
+				if token.number in insert_nodes and not child_tokens and token.initial_text == '':
+					node = LSCopyToken(token.number)
+				else:
+					node = LSInsertToken(token.number, child_tokens)
+					insert_nodes.setdefault(token.number, node)
+				token_list.append(node)
+			case MirrorToken():
+				node = LSInsertOrCopyToken_(token.number)
+				token_list.append(node)
+			case VisualToken():
+				token_list.append(LSVisualToken())
+			case EndOfTextToken():
+				pass
+			case PythonCodeToken():
+				token_list.append(LSPythonCodeToken(token.code, token.indent))
+			case VimLCodeToken():
+				token_list.append(LSVimLCodeToken(token.code))
+			case ShellCodeToken():
+				token_list.append(LSShellCodeToken(token.code))
+			case EscapeCharToken():
+				token_list.append(LSTextToken(token.initial_text))
+			case TransformationToken():
+				token_list.append(LSTransformationToken(token.number, token.search, token.replace))
+			case _:
+				snippet_text = '\n'.join(lines)
+				raise RuntimeError(f"Unknown token {token} in snippet: \n{snippet_text}")
+		previous_token_end = token.end
+	token_list.extend(get_text_nodes_between(lines, previous_token_end, None))
+
+	def merge_adjacent_text_tokens(tokens: list[LSToken]) -> list[LSToken]:
+		new_tokens: list[LSToken] = []
+		last_token: LSToken | None = None
+		for token in tokens:
+			if isinstance(last_token, LSTextToken) and isinstance(token, LSTextToken) and last_token.text != '\n' and token.text != '\n':
+				last_token.text = last_token.text + token.text
+				continue
+			new_tokens.append(token)
+			last_token = token
+		return new_tokens
+
+	return merge_adjacent_text_tokens(token_list)
+
+
 def parse(
 	snippet: SnippetDefinition
-) -> list[Token]:
+) -> list[LSToken]:
 	snippet_text = snippet.value
+	lines = snippet_text.splitlines(keepends=True)
 
 	allowed_tokens = get_allowed_tokens(snippet.source_type, in_tabstops=False)
 	allowed_tokens_tabstop = get_allowed_tokens(snippet.source_type, in_tabstops=True)
 	tokens = do_tokenize(None, snippet_text, allowed_tokens, allowed_tokens_tabstop)
-	return tokens
+	token_list = transform_tokens(tokens, lines)
+
+	return token_list
