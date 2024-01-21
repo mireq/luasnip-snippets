@@ -3,6 +3,9 @@ import typing
 from dataclasses import dataclass
 from pathlib import Path
 
+if typing.TYPE_CHECKING:
+	from .source import SourceType
+
 
 @dataclass(slots=True)
 class Location:
@@ -43,6 +46,11 @@ class SnippetDefinition:
 	def __repr__(self):
 		return f'{self.__class__.__name__}(priority={self.priority!r}, trigger={self.trigger!r}, value={self.value!r}, description={self.description!r}, options={self.options!r}, global_code={self.global_code!r}, location={self.location!r}, context={self.context!r}, actions={self.actions!r})'
 
+	@property
+	def source_type(self) -> 'SourceType':
+		from .source import SourceType
+		return SourceType.SNIPMATE
+
 
 class SnipMateSnippetDefinition(SnippetDefinition):
 	SNIPMATE_SNIPPET_PRIORITY = -1000
@@ -68,4 +76,7 @@ class SnipMateSnippetDefinition(SnippetDefinition):
 
 
 class UltiSnipsSnippetDefinition(SnippetDefinition):
-	pass
+	@property
+	def source_type(self) -> 'SourceType':
+		from .source import SourceType
+		return SourceType.ULTISNIPS
