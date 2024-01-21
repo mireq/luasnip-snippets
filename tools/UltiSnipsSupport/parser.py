@@ -134,6 +134,22 @@ def resolve_insert_or_copy_tokens(
 	return result_tokens
 
 
+def replace_zero_tokens_if_needed(
+	tokens: list[LSToken],
+	max_number: int,
+	nested: bool = False,
+) -> list[LSToken]:
+	result_tokens = []
+	for token in tokens:
+		if isinstance(token, LSInsertToken) and token.number == 0 and ((token.is_nested or not token.is_simple) or nested):
+			result_tokens.append(LSInsertToken(max_number + 1, token.children, token.original_number))
+		else:
+			result_tokens.append(token)
+		if isinstance(token, LSInsertToken):
+			token.children = replace_zero_tokens_if_needed(token.children, max_number=max_number, nested=True)
+	return result_tokens
+
+
 def get_tokens_max_number(tokens: list[LSToken]) -> int:
 	"""
 	Returns max nubmer of token of 0 if there are no tokens
@@ -163,6 +179,11 @@ def parse(
 			for token in LSToken.iter_all_tokens(token_list)
 			if isinstance(token, LSInsertToken)
 		)
+	)
+	token_list = replace_zero_tokens_if_needed(
+		token_list,
+		nested=False,
+		max_number=max_token_number
 	)
 
 	return token_list
