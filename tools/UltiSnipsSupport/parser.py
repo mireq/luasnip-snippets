@@ -52,6 +52,18 @@ def get_text_nodes_between(
 	return [LSTextToken(text) for text in text_nodes]
 
 
+def merge_adjacent_text_tokens(tokens: list[LSToken]) -> list[LSToken]:
+	new_tokens: list[LSToken] = []
+	last_token: LSToken | None = None
+	for token in tokens:
+		if isinstance(last_token, LSTextToken) and isinstance(token, LSTextToken) and last_token.text != '\n' and token.text != '\n':
+			last_token.text = last_token.text + token.text
+			continue
+		new_tokens.append(token)
+		last_token = token
+	return new_tokens
+
+
 def transform_tokens(tokens, lines, insert_nodes=None):
 	token_list = []
 	insert_nodes = insert_nodes or {}
@@ -91,18 +103,6 @@ def transform_tokens(tokens, lines, insert_nodes=None):
 				raise RuntimeError(f"Unknown token {token} in snippet: \n{snippet_text}")
 		previous_token_end = token.end
 	token_list.extend(get_text_nodes_between(lines, previous_token_end, None))
-
-	def merge_adjacent_text_tokens(tokens: list[LSToken]) -> list[LSToken]:
-		new_tokens: list[LSToken] = []
-		last_token: LSToken | None = None
-		for token in tokens:
-			if isinstance(last_token, LSTextToken) and isinstance(token, LSTextToken) and last_token.text != '\n' and token.text != '\n':
-				last_token.text = last_token.text + token.text
-				continue
-			new_tokens.append(token)
-			last_token = token
-		return new_tokens
-
 	return merge_adjacent_text_tokens(token_list)
 
 

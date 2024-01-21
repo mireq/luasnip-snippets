@@ -4,7 +4,7 @@ from typing import Iterable, Optional
 from .utils import escape_lua_string
 
 
-class LSToken(object):
+class LSToken():
 	__slots__ = []
 
 	def __repr__(self):
@@ -21,23 +21,27 @@ class LSToken(object):
 				yield from LSToken.iter_all_tokens(token.children)
 
 
+class LSPlaceholderToken():
+	__slots__ = ['number']
+
+
 class LSTextToken(LSToken):
 	__slots__ = ['text']
 
-	def __init__(self, text):
-		self.text = text
+	def __init__(self, text: str):
+		self.text: str = text
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.text!r})'
 
 
-class LSInsertToken(LSToken):
-	__slots__ = ['number', 'children', 'original_number']
+class LSInsertToken(LSPlaceholderToken, LSToken):
+	__slots__ = ['children', 'original_number']
 
-	def __init__(self, number, children=[], original_number=None):
-		self.number = number
-		self.children = children
-		self.original_number = self.number if original_number is None else original_number
+	def __init__(self, number: int, children: list[LSToken] | None = None, original_number: int | None = None):
+		self.number: int = number
+		self.children: list[LSToken] = children or []
+		self.original_number: int = self.number if original_number is None else original_number
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.number!r}, {self.children!r}, {self.original_number!r})'
@@ -51,23 +55,23 @@ class LSInsertToken(LSToken):
 		return all(isinstance(child, LSTextToken) for child in self.children)
 
 
-class LSCopyToken(LSToken):
-	__slots__ = ['number', 'original_number']
+class LSCopyToken(LSPlaceholderToken, LSToken):
+	__slots__ = ['original_number']
 
-	def __init__(self, number, original_number=None):
-		self.number = number
-		self.original_number = self.number if original_number is None else original_number
+	def __init__(self, number: int, original_number: int | None = None):
+		self.number: int = number
+		self.original_number: int = self.number if original_number is None else original_number
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.number})'
 
 
-class LSInsertOrCopyToken_(LSToken):
-	__slots__ = ['number', 'children']
+class LSInsertOrCopyToken_(LSPlaceholderToken, LSToken):
+	__slots__ = ['children']
 
-	def __init__(self, number, children=[]):
+	def __init__(self, number: int, children: list[LSToken] | None = None):
 		self.number = number
-		self.children = children
+		self.children: list[LSToken] = children or []
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.number!r}, {self.children!r})'
@@ -89,9 +93,9 @@ class LSCodeToken(LSToken):
 class LSPythonCodeToken(LSCodeToken):
 	__slots__ = ['code', 'indent']
 
-	def __init__(self, code, indent):
-		self.code = code
-		self.indent = indent
+	def __init__(self, code: str, indent: str):
+		self.code: str = code
+		self.indent: str = indent
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r}, {self.indent!r})'
@@ -104,8 +108,8 @@ class LSPythonCodeToken(LSCodeToken):
 class LSVimLCodeToken(LSCodeToken):
 	__slots__ = ['code']
 
-	def __init__(self, code):
-		self.code = code
+	def __init__(self, code: str):
+		self.code: str = code
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r})'
@@ -118,8 +122,8 @@ class LSVimLCodeToken(LSCodeToken):
 class LSShellCodeToken(LSCodeToken):
 	__slots__ = ['code']
 
-	def __init__(self, code):
-		self.code = code
+	def __init__(self, code: str):
+		self.code: str = code
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r})'
@@ -129,14 +133,14 @@ class LSShellCodeToken(LSCodeToken):
 		return f'c_shell({escape_lua_string(code)})'
 
 
-class LSTransformationToken(LSToken):
-	__slots__ = ['number', 'search', 'replace', 'original_number']
+class LSTransformationToken(LSPlaceholderToken, LSToken):
+	__slots__ = ['search', 'replace', 'original_number']
 
 	def __init__(self, number: int, search: str, replace: str, original_number: Optional[int] = None):
-		self.number = number
-		self.search = search
-		self.replace = replace
-		self.original_number = self.number if original_number is None else original_number
+		self.number: int = number
+		self.search: str = search
+		self.replace: str = replace
+		self.original_number: int = self.number if original_number is None else original_number
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.number}, {self.search!r}, {self.replace!r}, {self.original_number})'
