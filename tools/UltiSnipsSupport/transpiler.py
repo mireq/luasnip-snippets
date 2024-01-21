@@ -3,15 +3,19 @@ import logging
 import typing
 from collections import defaultdict
 from pathlib import Path
+from dataclasses import dataclass
 
+from .definition import SnippetDefinition
 from .source import SnippetSource
-from .utils import OrderedSet
+from .utils import OrderedSet, escape_lua_string, escape_multiline_lua_sting
 from .parser import parse
+from .ls_tokens import LSToken, LSInsertToken, LSTransformationToken
 
 
 logger = logging.getLogger()
 
 
+SUPPORTED_OPTS = {'w', 'b', 'i', 'r', '!', 'A'}
 KNOWN_LANGUAGES = {
 	'!p': 'python',
 }
@@ -100,14 +104,65 @@ def save_filetype_mapping(source: SnippetSource, output_dir: Path):
 			fp.write(f'{filetype} {" ".join(included_filetypes)}\n')
 
 
+@dataclass
+class ParsedSnippet:
+	index: int
+	attributes: str
+	tokens: list[LSToken]
+	snippet: SnippetDefinition
+	actions: dict[str, str]
+
+
+def parse_snippet(snippet: SnippetDefinition, index: int) -> ParsedSnippet:
+	opts = set(snippet.options)
+	tokens = parse(snippet)
+	snippet_attrs = [f'trig = {escape_lua_string(snippet.trigger)}']
+	if snippet.description:
+		snippet_attrs.append(f'descr = {escape_lua_string(snippet.description)}')
+	if 'A' in opts:
+		snippet_attrs.append('snippetType = "autosnippet"')
+	snippet_attrs.append(f'priority = {snippet.priority}')
+	snippet_attrs.append(f'trigEngine = te({escape_lua_string(snippet.options)})')
+	return ParsedSnippet(
+		index=index,
+		attributes=", ".join(snippet_attrs),
+		tokens=tokens,
+		snippet=snippet,
+		actions=snippet.actions,
+	)
+
+
 def write_snippets(source: SnippetSource, fp: typing.TextIO):
+
+	snippet_code = defaultdict(list)
+	snippet_code_list = []
+
+	for index, snippet in enumerate(source.snippets):
+		unsupported_opts = set(snippet.options) - SUPPORTED_OPTS
+		if unsupported_opts:
+			for opt in unsupported_opts:
+				logger.error("Option %s no supported in snippet %s", opt, snippet.trigger)
+			continue
+
+		try:
+			parsed_snippet = parse_snippet(snippet, index)
+			if '!' in snippet.options:
+				snippet_code[snippet.trigger] = [parsed_snippet]
+			else:
+				snippet_code[snippet.trigger].append(parsed_snippet)
+			snippet_code_list.append(parsed_snippet)
+		except Exception:
+			logger.exception("Parsing error of snippet: %s", snippet.trigger)
+			continue
+
+	code_globals = {}
+	for language, global_list in extract_global_code_definitions(source).items():
+		code_globals[language] = ', '.join(f'\t{escape_multiline_lua_sting(code_block)}\n' for code_block in global_list)
+
 	fp.write(f'-- Generated using ultisnips_to_luasnip.py\n\n')
 	fp.write(FILE_HEADER)
 	fp.write('\n')
-
-	for snippet in source.snippets:
-		tokens = parse(snippet)
-		#print(tokens)
+	fp.write('local am = { -- argument mapping: token index to placeholder number\n')
 
 
 class ProgramArgs(typing.Protocol):
