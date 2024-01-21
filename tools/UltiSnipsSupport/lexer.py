@@ -482,11 +482,15 @@ def get_allowed_tokens(source_type: SourceType, in_tabstops: bool = False) -> li
 			]
 
 
-def tokenize(text, allowed_tokens):
+def tokenize(
+	text: str,
+	position: Position,
+	allowed_tokens: list[typing.Type[Token]],
+) -> typing.Iterable[Token]:
 	"""Returns an iterator of tokens of 'text'['offset':] which is assumed to
 	have 'indent' as the whitespace of the begging of the lines. Only
 	'allowed_tokens' are considered to be valid tokens."""
-	stream = _TextIterator(text, Position(0, 0))
+	stream = _TextIterator(text, position)
 	try:
 		while True:
 			done_something = False

@@ -6,6 +6,7 @@ from pathlib import Path
 
 from .source import SnippetSource
 from .utils import OrderedSet
+from .parser import parse
 
 
 logger = logging.getLogger()
@@ -103,6 +104,10 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 	fp.write(f'-- Generated using ultisnips_to_luasnip.py\n\n')
 	fp.write(FILE_HEADER)
 	fp.write('\n')
+
+	for snippet in source.snippets:
+		tokens = parse(snippet)
+		print(tokens)
 
 
 class ProgramArgs(typing.Protocol):
