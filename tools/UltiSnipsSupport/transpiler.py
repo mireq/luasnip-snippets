@@ -14,6 +14,47 @@ logger = logging.getLogger()
 KNOWN_LANGUAGES = {
 	'!p': 'python',
 }
+FILE_HEADER = """local ls = require("luasnip")
+local s = ls.snippet
+local sn = ls.snippet_node
+local isn = ls.indent_snippet_node
+local t = ls.text_node
+local i = ls.insert_node
+local f = ls.function_node
+local c = ls.choice_node
+local d = ls.dynamic_node
+local r = ls.restore_node
+local events = require("luasnip.util.events")
+local ai = require("luasnip.nodes.absolute_indexer")
+local extras = require("luasnip.extras")
+local l = extras.lambda
+local rep = extras.rep
+local p = extras.partial
+local m = extras.match
+local n = extras.nonempty
+local dl = extras.dynamic_lambda
+local fmt = require("luasnip.extras.fmt").fmt
+local fmta = require("luasnip.extras.fmt").fmta
+local conds = require("luasnip.extras.expand_conditions")
+local postfix = require("luasnip.extras.postfix").postfix
+local types = require("luasnip.util.types")
+local parse = require("luasnip.util.parser").parse_snippet
+local ms = ls.multi_snippet
+local k = require("luasnip.nodes.key_indexer").new_key
+local su = require("luasnip_snippets.common.snip_utils")
+local cp = su.copy
+local tr = su.transform
+local rx_tr = su.regex_transform
+local jt = su.join_text
+local nl = su.new_line
+local te = su.trig_engine
+local ae = su.args_expand
+local c_py = su.code_python
+local c_viml = su.code_viml
+local c_shell = su.code_shell
+local make_actions = su.make_actions
+
+"""
 
 
 def extract_global_code_definitions(source: SnippetSource) -> dict[str, OrderedSet]:
@@ -58,6 +99,12 @@ def save_filetype_mapping(source: SnippetSource, output_dir: Path):
 			fp.write(f'{filetype} {" ".join(included_filetypes)}\n')
 
 
+def write_snippets(source: SnippetSource, fp: typing.TextIO):
+	fp.write(f'-- Generated using ultisnips_to_luasnip.py\n\n')
+	fp.write(FILE_HEADER)
+	fp.write('\n')
+
+
 class ProgramArgs(typing.Protocol):
 	ultisnips_dirs: list[Path]
 	snipmate_dirs: list[Path]
@@ -72,5 +119,5 @@ def run(args: ProgramArgs, filetype: str):
 	)
 
 	save_filetype_mapping(source, args.output_dir)
-	#for snippet in source.get_all_snippets():
-	#	print(snippet)
+	with args.output_dir.joinpath(f'{filetype}.lua').open('w') as fp:
+		write_snippets(source, fp)
