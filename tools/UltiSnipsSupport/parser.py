@@ -28,6 +28,9 @@ def get_text_tokens_between(
 	start: tuple[int, int],
 	end: tuple[int, int] | None
 ) -> list[LSTextToken]:
+	"""
+	Rreturns text tokens in range between start and end.
+	"""
 	if not content:
 		return []
 	if end is None:
@@ -53,6 +56,10 @@ def get_text_tokens_between(
 
 
 def merge_adjacent_text_tokens(tokens: list[LSToken]) -> list[LSToken]:
+	"""
+	Merge separate text tokens to single token if they are adjacent and there is
+	no newline.
+	"""
 	new_tokens: list[LSToken] = []
 	last_token: LSToken | None = None
 	for token in tokens:
@@ -65,6 +72,9 @@ def merge_adjacent_text_tokens(tokens: list[LSToken]) -> list[LSToken]:
 
 
 def transform_tokens(tokens, lines, insert_tokens=None):
+	"""
+	Transform UltiSnips tokens to luasnip tokens
+	"""
 	token_list = []
 	insert_tokens = insert_tokens or {}
 
@@ -107,6 +117,9 @@ def transform_tokens(tokens, lines, insert_tokens=None):
 
 
 def get_tokens_max_number(tokens: list[LSToken]) -> int:
+	"""
+	Returns max nubmer of token of 0 if there are no tokens
+	"""
 	max_number = 0
 	for token in LSToken.iter_all_tokens(tokens):
 		if isinstance(token, LSPlaceholderToken):
