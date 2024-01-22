@@ -62,6 +62,16 @@ local make_actions = su.make_actions
 """
 
 
+
+@dataclass
+class ParsedSnippet:
+	index: int
+	attributes: str
+	tokens: list[LSToken]
+	snippet: SnippetDefinition
+	actions: dict[str, str]
+
+
 def extract_global_code_definitions(source: SnippetSource) -> dict[str, OrderedSet]:
 	"""
 	Returns dictionary with language key and set of source code values
@@ -80,6 +90,21 @@ def extract_global_code_definitions(source: SnippetSource) -> dict[str, OrderedS
 					logging.error("Unknown code block %s", global_type)
 
 	return dict(global_definitions)
+
+
+def extract_original_token_numbers(snippet: ParsedSnippet) -> list[int]:
+	"""
+	Return all used token numbers
+	"""
+	return sorted(
+		list(
+			set(
+				token.original_number
+				for token in LSToken.iter_all_tokens(snippet.tokens)
+				if isinstance(token, (LSInsertToken, LSTransformationToken))
+			)
+		)
+	)
 
 
 def save_filetype_mapping(source: SnippetSource, output_dir: Path):
@@ -102,15 +127,6 @@ def save_filetype_mapping(source: SnippetSource, output_dir: Path):
 			if not included_filetypes:
 				continue
 			fp.write(f'{filetype} {" ".join(included_filetypes)}\n')
-
-
-@dataclass
-class ParsedSnippet:
-	index: int
-	attributes: str
-	tokens: list[LSToken]
-	snippet: SnippetDefinition
-	actions: dict[str, str]
 
 
 def parse_snippet(snippet: SnippetDefinition, index: int) -> ParsedSnippet:
@@ -162,7 +178,12 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 	fp.write(f'-- Generated using ultisnips_to_luasnip.py\n\n')
 	fp.write(FILE_HEADER)
 	fp.write('\n')
-	fp.write('local am = { -- argument mapping: token index to placeholder number\n')
+	fp.write('local am = { -- list of argument numbers\n')
+	for snippet in snippet_code_list:
+		token_numbers = extract_original_token_numbers(snippet)
+		token_mapping = ', '.join(str(number) for number in token_numbers)
+		fp.write(f'\t{{{token_mapping}}},\n')
+	fp.write('}\n')
 
 
 class ProgramArgs(typing.Protocol):
