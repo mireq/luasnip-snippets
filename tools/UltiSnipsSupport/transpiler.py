@@ -175,15 +175,24 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 	for language, global_list in extract_global_code_definitions(source).items():
 		code_globals[language] = ', '.join(f'\t{escape_multiline_lua_sting(code_block)}\n' for code_block in global_list)
 
+	# generic header
 	fp.write(f'-- Generated using ultisnips_to_luasnip.py\n\n')
 	fp.write(FILE_HEADER)
 	fp.write('\n')
+
+	# argument numbers (required for python code execution)
 	fp.write('local am = { -- list of argument numbers\n')
 	for snippet in snippet_code_list:
 		token_numbers = extract_original_token_numbers(snippet)
 		token_mapping = ', '.join(str(number) for number in token_numbers)
 		fp.write(f'\t{{{token_mapping}}},\n')
 	fp.write('}\n')
+
+	# generate global python code
+	if code_globals:
+		fp.write('\n')
+		fp.write(''.join(f'local {language}_globals = {{\n{global_list}}}\n' for language, global_list in code_globals.items()))
+		fp.write('\n\n')
 
 
 class ProgramArgs(typing.Protocol):
