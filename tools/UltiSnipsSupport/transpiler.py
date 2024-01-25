@@ -4,6 +4,7 @@ import typing
 from collections import defaultdict
 from pathlib import Path
 from dataclasses import dataclass
+import sys
 
 from .definition import SnippetDefinition
 from .source import SnippetSource
@@ -70,6 +71,9 @@ class ParsedSnippet:
 	tokens: list[LSToken]
 	snippet: SnippetDefinition
 	actions: dict[str, str]
+
+	def get_actions_code(self) -> str:
+		return ', '.join(f'[{escape_lua_string(key)}] = {escape_lua_string(value)}' for key, value in self.actions.items())
 
 
 def extract_global_code_definitions(source: SnippetSource) -> dict[str, OrderedSet]:
@@ -150,8 +154,8 @@ def parse_snippet(snippet: SnippetDefinition, index: int) -> ParsedSnippet:
 
 def write_snippets(source: SnippetSource, fp: typing.TextIO):
 
-	snippet_code = defaultdict(list)
-	snippet_code_list = []
+	snippet_code: dict[str, list[ParsedSnippet]] = defaultdict(list)
+	snippet_code_list: list[ParsedSnippet] = []
 
 	for index, snippet in enumerate(source.snippets):
 		unsupported_opts = set(snippet.options) - SUPPORTED_OPTS
@@ -193,6 +197,14 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 		fp.write('\n')
 		fp.write(''.join(f'local {language}_globals = {{\n{global_list}}}\n' for language, global_list in code_globals.items()))
 		fp.write('\n\n')
+
+	fp.write(f'ls.add_snippets({escape_lua_string(source.filetype)}, {{\n')
+	for snippet_list in snippet_code.values():
+		for parsed_snippet in snippet_list:
+			actions_code = parsed_snippet.get_actions_code()
+			if actions_code:
+				sys.stdout.write(f"Unsupported actions: {actions_code}\n")
+				continue
 
 
 class ProgramArgs(typing.Protocol):
