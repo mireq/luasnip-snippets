@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 import logging
+import sys
 import typing
 from collections import defaultdict
-from pathlib import Path
 from dataclasses import dataclass
-import sys
+from io import StringIO
+from pathlib import Path
 
 from .definition import SnippetDefinition
+from .ls_tokens import LSToken, LSInsertToken, LSTransformationToken
+from .parser import parse
 from .source import SnippetSource
 from .utils import OrderedSet, escape_lua_string, escape_multiline_lua_sting
-from .parser import parse
-from .ls_tokens import LSToken, LSInsertToken, LSTransformationToken
 
 
 logger = logging.getLogger()
@@ -74,6 +75,13 @@ class ParsedSnippet:
 
 	def get_actions_code(self) -> str:
 		return ', '.join(f'[{escape_lua_string(key)}] = {escape_lua_string(value)}' for key, value in self.actions.items())
+
+	def get_code(self, indent: int) -> str:
+		return self.render_tokens(self.tokens, indent)
+
+	def render_tokens(self, tokens: list[LSToken], indent: int = 0, at_line_start: bool = True) -> str:
+		snippet_body = StringIO()
+		return snippet_body.getvalue()
 
 
 def extract_global_code_definitions(source: SnippetSource) -> dict[str, OrderedSet]:
@@ -205,6 +213,10 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 			if actions_code:
 				sys.stdout.write(f"Unsupported actions: {actions_code}\n")
 				continue
+			if len(snippet_list) == 1: # single snippet
+				print(parsed_snippet.get_code(indent=2))
+			else: # choices
+				pass # TODO: implement
 
 
 class ProgramArgs(typing.Protocol):
