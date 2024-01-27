@@ -108,10 +108,6 @@ class ParsedSnippet:
 					if token.text == '\n':
 						at_line_start = True
 					snippet_body.write(token.render(ctx))
-				case LSInsertToken():
-					snippet_body.write(token.render(ctx))
-					if token.children and token.is_nested:
-						write_comma()
 				case _:
 					snippet_body.write(token.render(ctx))
 
