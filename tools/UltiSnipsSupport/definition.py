@@ -51,6 +51,10 @@ class SnippetDefinition:
 		from .source import SourceType
 		return SourceType.SNIPMATE
 
+	@property
+	def verbose_description(self) -> str:
+		return f'({self.trigger}) {self.description}'.strip()
+
 
 class SnipMateSnippetDefinition(SnippetDefinition):
 	SNIPMATE_SNIPPET_PRIORITY = -1000

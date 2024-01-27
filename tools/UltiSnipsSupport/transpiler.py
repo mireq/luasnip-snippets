@@ -181,8 +181,8 @@ def parse_snippet(snippet: SnippetDefinition, index: int, filetype: str) -> Pars
 	opts = set(snippet.options)
 	tokens = parse(snippet)
 	snippet_attrs = [f'trig = {escape_lua_string(snippet.trigger)}']
-	if snippet.description:
-		snippet_attrs.append(f'descr = {escape_lua_string(snippet.description)}')
+	if snippet.verbose_description:
+		snippet_attrs.append(f'descr = {escape_lua_string(snippet.verbose_description)}')
 	if 'A' in opts:
 		snippet_attrs.append('snippetType = "autosnippet"')
 	snippet_attrs.append(f'priority = {snippet.priority}')
