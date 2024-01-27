@@ -198,7 +198,7 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 	snippet_code: dict[str, list[ParsedSnippet]] = defaultdict(list)
 	snippet_code_list: list[ParsedSnippet] = []
 
-	for index, snippet in enumerate(source.snippets):
+	for index, snippet in enumerate(source.snippets, 1):
 		unsupported_opts = set(snippet.options) - SUPPORTED_OPTS
 		if unsupported_opts:
 			for opt in unsupported_opts:
