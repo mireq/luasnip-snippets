@@ -8,7 +8,7 @@ from io import StringIO
 from pathlib import Path
 
 from .definition import SnippetDefinition
-from .ls_tokens import LSToken, LSInsertToken, LSTransformationToken
+from .ls_tokens import RenderContext, LSToken, LSTextToken, LSInsertToken, LSTransformationToken
 from .parser import parse
 from .source import SnippetSource
 from .utils import OrderedSet, escape_lua_string, escape_multiline_lua_sting
@@ -72,6 +72,7 @@ class ParsedSnippet:
 	tokens: list[LSToken]
 	snippet: SnippetDefinition
 	actions: dict[str, str]
+	filetype: str
 
 	def get_actions_code(self) -> str:
 		return ', '.join(f'[{escape_lua_string(key)}] = {escape_lua_string(value)}' for key, value in self.actions.items())
@@ -81,6 +82,38 @@ class ParsedSnippet:
 
 	def render_tokens(self, tokens: list[LSToken], indent: int = 0, at_line_start: bool = True) -> str:
 		snippet_body = StringIO()
+
+		is_last_token = False
+		num_tokens = len(tokens)
+		accumulated_text = ['\n']
+
+		def write_comma():
+			if not is_last_token:
+				snippet_body.write(',')
+				if not at_line_start:
+					snippet_body.write(' ')
+
+		ctx: RenderContext = {'parsed_snippet': self}
+
+		for i, token in enumerate(tokens):
+			is_last_token = i == num_tokens - 1
+			if at_line_start:
+				snippet_body.write('\n' + ('\t' * indent))
+				at_line_start = False
+
+			match token:
+				case LSTextToken():
+					accumulated_text.append(token.text)
+					if token.text == '\n':
+						at_line_start = True
+					snippet_body.write(token.render(ctx))
+				case LSInsertToken():
+					pass
+				case _:
+					snippet_body.write(token.render(ctx))
+
+			write_comma()
+
 		return snippet_body.getvalue()
 
 
@@ -141,7 +174,7 @@ def save_filetype_mapping(source: SnippetSource, output_dir: Path):
 			fp.write(f'{filetype} {" ".join(included_filetypes)}\n')
 
 
-def parse_snippet(snippet: SnippetDefinition, index: int) -> ParsedSnippet:
+def parse_snippet(snippet: SnippetDefinition, index: int, filetype: str) -> ParsedSnippet:
 	opts = set(snippet.options)
 	tokens = parse(snippet)
 	snippet_attrs = [f'trig = {escape_lua_string(snippet.trigger)}']
@@ -157,6 +190,7 @@ def parse_snippet(snippet: SnippetDefinition, index: int) -> ParsedSnippet:
 		tokens=tokens,
 		snippet=snippet,
 		actions=snippet.actions,
+		filetype=filetype
 	)
 
 
@@ -173,7 +207,7 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 			continue
 
 		try:
-			parsed_snippet = parse_snippet(snippet, index)
+			parsed_snippet = parse_snippet(snippet, index, source.filetype)
 			if '!' in snippet.options:
 				snippet_code[snippet.trigger] = [parsed_snippet]
 			else:

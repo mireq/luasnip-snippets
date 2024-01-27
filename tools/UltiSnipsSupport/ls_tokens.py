@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
-from typing import Iterable, Optional
+import typing
 
 from .utils import escape_lua_string
+
+
+if typing.TYPE_CHECKING:
+	from .transpiler import ParsedSnippet
+
+
+class RenderContext(typing.TypedDict):
+	parsed_snippet: 'ParsedSnippet'
 
 
 class LSToken():
@@ -13,8 +21,11 @@ class LSToken():
 	def __str__(self):
 		return repr(self)
 
+	def render(self, context: RenderContext) -> str:
+		raise NotImplemented()
+
 	@staticmethod
-	def iter_all_tokens(tokens: list['LSToken']) -> Iterable['LSToken']:
+	def iter_all_tokens(tokens: list['LSToken']) -> typing.Iterable['LSToken']:
 		for token in tokens:
 			yield token
 			if isinstance(token, LSInsertToken) and token.children:
@@ -33,6 +44,12 @@ class LSTextToken(LSToken):
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.text!r})'
+
+	def render(self, context: RenderContext) -> str:
+		if self.text == '\n':
+			return 'nl()'
+		else:
+			return f't{escape_lua_string(self.text)}'
 
 
 class LSInsertToken(LSPlaceholderToken, LSToken):
@@ -65,6 +82,9 @@ class LSCopyToken(LSPlaceholderToken, LSToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.number})'
 
+	def render(self, context: RenderContext) -> str:
+		return f'cp({self.original_number})'
+
 
 class LSInsertOrCopyToken_(LSPlaceholderToken, LSToken):
 	__slots__ = ['children']
@@ -86,7 +106,7 @@ class LSVisualToken(LSToken):
 
 
 class LSCodeToken(LSToken):
-	def get_lua_code(self, snippet: 'ParsedSnippet') -> str:
+	def render_text(self, snippet: 'ParsedSnippet') -> str:
 		raise NotImplemented()
 
 
@@ -100,9 +120,13 @@ class LSPythonCodeToken(LSCodeToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r}, {self.indent!r})'
 
-	def get_lua_code(self, snippet: 'ParsedSnippet') -> str:
+	def render_text(self, snippet: 'ParsedSnippet') -> str:
 		code = self.code.replace("\\`", "`")
 		return f'c_py({{{escape_lua_string(snippet.filetype)}, {snippet.index}}}, {escape_lua_string(code)}, python_globals, args, snip, {escape_lua_string(self.indent)}, am[{snippet.index}])'
+
+	def render(self, context: RenderContext) -> str:
+		snip = context["parsed_snippet"]
+		return f'f(function(args, snip) return {self.render_text(snip)} end, ae(am[{snip.index}]))'
 
 
 class LSVimLCodeToken(LSCodeToken):
@@ -114,9 +138,13 @@ class LSVimLCodeToken(LSCodeToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r})'
 
-	def get_lua_code(self, snippet: 'ParsedSnippet') -> str:
+	def render_text(self, snippet: 'ParsedSnippet') -> str:
 		code = self.code.replace("\\`", "`")
 		return f'c_viml({escape_lua_string(code)})'
+
+	def render(self, context: RenderContext) -> str:
+		snip = context["parsed_snippet"]
+		return f'f(function(args, snip) return {self.render_text(snip)} end)'
 
 
 class LSShellCodeToken(LSCodeToken):
@@ -128,15 +156,19 @@ class LSShellCodeToken(LSCodeToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r})'
 
-	def get_lua_code(self, snippet: 'ParsedSnippet') -> str:
+	def render_text(self, snippet: 'ParsedSnippet') -> str:
 		code = self.code.replace("\\`", "`")
 		return f'c_shell({escape_lua_string(code)})'
+
+	def render(self, context: RenderContext) -> str:
+		snip = context["parsed_snippet"]
+		return f'f(function(args, snip) return {self.render_text(snip)} end)'
 
 
 class LSTransformationToken(LSPlaceholderToken, LSToken):
 	__slots__ = ['search', 'replace', 'original_number']
 
-	def __init__(self, number: int, search: str, replace: str, original_number: Optional[int] = None):
+	def __init__(self, number: int, search: str, replace: str, original_number: int | None = None):
 		self.number: int = number
 		self.search: str = search
 		self.replace: str = replace
@@ -144,3 +176,6 @@ class LSTransformationToken(LSPlaceholderToken, LSToken):
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.number}, {self.search!r}, {self.replace!r}, {self.original_number})'
+
+	def render(self, context: RenderContext) -> str:
+		return f'tr({self.original_number}, {escape_lua_string(self.search)}, {escape_lua_string(self.replace)})'
