@@ -1,15 +1,20 @@
 # -*- coding: utf-8 -*-
+import re
 import typing
+import operator
 
 from .utils import escape_lua_string
-
 
 if typing.TYPE_CHECKING:
 	from .transpiler import ParsedSnippet
 
 
+INDENT_RE = re.compile(r'^([\t ]*)')
+
+
 class RenderContext(typing.TypedDict):
 	parsed_snippet: 'ParsedSnippet'
+	accumulated_text: list[str]
 
 
 class LSToken():
@@ -70,6 +75,39 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 	@property
 	def is_simple(self) -> bool:
 		return all(isinstance(child, LSTextToken) for child in self.children)
+
+	def render(self, context: RenderContext) -> str:
+		snip = context["parsed_snippet"]
+		accumulated_text = context["accumulated_text"]
+
+		if self.children:
+			if self.is_nested: # nested nodes are not supported, unwrapping
+				dynamic_node_content = snip.render_tokens(self.children, at_line_start=False)
+				return f'd({self.number}, function(args) return sn(nil, {{{dynamic_node_content}}}) end, {{}}, {{key = "i{self.original_number}"}})'
+
+			node_indent = INDENT_RE.match(''.join(accumulated_text[-operator.indexOf(reversed(accumulated_text), '\n'):])).group(1)
+
+			if self.is_simple:
+				text_content = ''.join(child.text for child in self.children)
+				if '\n' in text_content:
+					text_content = ', '.join(escape_lua_string(line) for line in text_content.split('\n'))
+					return f'i({self.number}, {{{text_content}}}, {{key = "i{self.original_number}"}})'
+				else:
+					return f'i({self.number}, {escape_lua_string(text_content)}, {{key = "i{self.original_number}"}})'
+			else:
+				related_nodes = {}
+				for child in self.children:
+					if isinstance(child, LSPlaceholderToken):
+						number = getattr(child, 'original_number', child.number)
+						if number not in related_nodes:
+							related_nodes[number] = len(related_nodes) + 1
+				dynamic_node_content = ''
+				related_nodes_code = ''
+				if related_nodes:
+					related_nodes_code = f', {{{", ".join("k" + escape_lua_string("i" + str(v)) for v in related_nodes.keys())}}}'
+				return f'd({self.number}, function(args, snip) return sn(nil, {{ i(1, jt({{{dynamic_node_content}}}, {escape_lua_string(node_indent)}), {{key = "i{self.original_number}"}}) }}) end{related_nodes_code})'
+		else:
+			return f'i({self.number}, "", {{key = "i{self.original_number}"}})'
 
 
 class LSCopyToken(LSPlaceholderToken, LSToken):

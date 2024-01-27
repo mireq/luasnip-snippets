@@ -93,7 +93,7 @@ class ParsedSnippet:
 				if not at_line_start:
 					snippet_body.write(' ')
 
-		ctx: RenderContext = {'parsed_snippet': self}
+		ctx: RenderContext = {'parsed_snippet': self, 'accumulated_text': accumulated_text}
 
 		for i, token in enumerate(tokens):
 			is_last_token = i == num_tokens - 1
@@ -104,11 +104,14 @@ class ParsedSnippet:
 			match token:
 				case LSTextToken():
 					accumulated_text.append(token.text)
+					ctx['accumulated_text'] = accumulated_text
 					if token.text == '\n':
 						at_line_start = True
 					snippet_body.write(token.render(ctx))
 				case LSInsertToken():
-					pass
+					snippet_body.write(token.render(ctx))
+					if token.children and token.is_nested:
+						write_comma()
 				case _:
 					snippet_body.write(token.render(ctx))
 
@@ -248,7 +251,8 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 				sys.stdout.write(f"Unsupported actions: {actions_code}\n")
 				continue
 			if len(snippet_list) == 1: # single snippet
-				print(parsed_snippet.get_code(indent=2))
+				#print(parsed_snippet.get_code(indent=2))
+				parsed_snippet.get_code(indent=2)
 			else: # choices
 				pass # TODO: implement
 
