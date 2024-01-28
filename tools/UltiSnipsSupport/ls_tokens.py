@@ -27,10 +27,10 @@ class LSToken():
 		return repr(self)
 
 	def render(self, context: RenderContext) -> str:
-		raise NotImplemented()
+		raise NotImplementedError()
 
 	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str:
-		raise NotImplemented()
+		raise NotImplementedError()
 
 	@staticmethod
 	def iter_all_tokens(tokens: list['LSToken']) -> typing.Iterable['LSToken']:
