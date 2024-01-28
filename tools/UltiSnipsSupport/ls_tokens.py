@@ -205,7 +205,8 @@ class LSVimLCodeToken(LSCodeToken):
 		return f'c_viml({escape_lua_string(code)})'
 
 	def render(self, context: RenderContext) -> str:
-		return f'f(function(args, snip) return {self.render_text(context, {})} end)'
+		# TODO: remove useless referenced tokens
+		return f'f(function(args, snip) return {self.render_text(context, {})} end, {{}})'
 
 
 class LSShellCodeToken(LSCodeToken):
