@@ -118,7 +118,7 @@ class SnipMateFileSource(SnippetFileSource):
 
 	def get_snippet_files(self) -> typing.Iterable[Path]:
 		files = []
-		ft = self.filetype
+		ft = '_' if self.filetype == 'all' else self.filetype
 		for source_dir in self.source_directories:
 			snippet_file = source_dir / f'{ft}.snippets'
 			if snippet_file.exists():
@@ -351,8 +351,8 @@ class SnippetSource:
 	):
 		self.filetype = filetype
 		self.sources: list[SnippetFileSource] = [
-			UltiSnipsFileSource(filetype, ultisnips_dirs),
 			SnipMateFileSource(filetype, snipmate_dirs),
+			UltiSnipsFileSource(filetype, ultisnips_dirs),
 		]
 		self.configuration = Configuration(filetype)
 		self.snippets: list[SnippetDefinition] = []
