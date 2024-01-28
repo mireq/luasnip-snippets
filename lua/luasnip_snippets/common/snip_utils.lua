@@ -185,11 +185,13 @@ end
 
 
 local regex_matchers = {}
+local match_context = {}
 
 
 local function trig_engine(opts)
 	local function engine(trigger)
 		local function matcher(line_to_cursor, trigger)
+			match_context = {}
 			--local trigger_words = split_at_whitespace(trigger)
 			local words = words_for_line(trigger, line_to_cursor)
 			local matched = nil
@@ -212,6 +214,7 @@ local function trig_engine(opts)
 							matched = line_to_cursor:sub(match.begin_ind, match.end_ind)
 							first_char = match.begin_ind
 							last_char = match.end_ind
+							match_context = {regex=trigger, line=line_to_cursor}
 						end
 					end
 				end
@@ -249,6 +252,7 @@ local function trig_engine(opts)
 			if matched ~= nil and opts:find('b') ~= nil then
 				local content_before_trigger = line_to_cursor:gsub("%s*$", ""):sub(1, -string.len(matched) - 1)
 				if content_before_trigger:gsub("[%s\t]+", "") ~= '' then
+					match_context = {}
 					return nil
 				end
 			end
@@ -285,7 +289,7 @@ local function call_python(python_function_name, opts)
 end
 
 local function code_python(id, node_code, global_code, args, snip, indent, tabstops_idx)
-	return call_python("execute_code", {node_id=id, node_code=node_code, global_code=global_code or {}, tabstops=args, env=snip.env, indent=indent, tabstops_idx=tabstops_idx})
+	return call_python("execute_code", {node_id=id, node_code=node_code, global_code=global_code or {}, tabstops=args, env=snip.env, indent=indent, match_context=match_context, tabstops_idx=tabstops_idx})
 end
 
 local function code_viml(code)

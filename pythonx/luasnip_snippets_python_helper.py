@@ -313,7 +313,7 @@ def get_node_locals(node_id):
 INDENT_RE = re.compile(r'^[ \t]*')
 
 
-def execute_code(node_id, node_code, global_code, tabstops, env, indent, tabstops_idx):
+def execute_code(node_id, node_code, global_code, tabstops, env, indent, match_context, tabstops_idx):
 	global_code = 'import re, os, vim, string, random\n' + '\n'.join(global_code or [])
 	codes = (
 		global_code,
@@ -342,6 +342,13 @@ def execute_code(node_id, node_code, global_code, tabstops, env, indent, tabstop
 		'res': '',
 		'snip': snip,
 	})
+
+	if 'regex' in match_context:
+		for match in re.finditer(match_context['regex'], match_context['line']):
+			if match.end() != len(match_context['line']):
+				continue
+			else:
+				node_locals['match'] = match
 
 	for code, compiled_code in zip(codes, compiled_codes):
 		try:
