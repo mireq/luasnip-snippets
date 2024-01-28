@@ -253,7 +253,7 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 				try:
 					fp.write(f'\ts({{{parsed_snippet.attributes}}}, {{{parsed_snippet.get_code(indent=2)}\n\t}}{actions_code}),\n')
 				except Exception:
-					logger.exception("Error in snippet '%s':\n%s", parsed_snippet.snippet.trigger, parsed_snippet.snippet._value)
+					logger.exception("Error in snippet '%s':\n%s", parsed_snippet.snippet.trigger, parsed_snippet.snippet.value)
 					continue
 			else:
 				snippet_choices = []

@@ -163,6 +163,9 @@ class LSVisualToken(LSToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}()'
 
+	def render(self, context: RenderContext) -> str:
+		return f'f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {{}} end)'
+
 	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str: # pylint: disable=unused-argument
 		return 'snip.env.LS_SELECT_DEDENT or {}'
 
@@ -218,7 +221,7 @@ class LSShellCodeToken(LSCodeToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r})'
 
-	def render_text(self, snippet: 'ParsedSnippet') -> str: # pylint: disable=unused-argument
+	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str:
 		code = self.code.replace("\\`", "`")
 		return f'c_shell({escape_lua_string(code)})'
 
