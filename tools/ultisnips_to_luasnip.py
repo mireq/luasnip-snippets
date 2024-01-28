@@ -227,7 +227,7 @@ class LSVisualNode(LSNode):
 
 class LSCodeNode(LSNode):
 	def get_lua_code(self, snippet: 'ParsedSnippet') -> str:
-		raise NotImplemented()
+		raise NotImplementedError()
 
 
 class LSPythonCodeNode(LSCodeNode):
