@@ -1,0 +1,144 @@
+extends c
+
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+
+snippet ns "namespace .. (namespace)" !
+namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`}
+{
+	$0
+}${1/.+/ \/* /m}$1${1/.+/ *\//m}
+endsnippet
+
+snippet class "class"
+class ${1:`!v vim_snippets#Filename('$1', 'class')`}${2}
+{
+public:
+	$1();
+	~$1();
+private:
+	${0:/* data */}
+}; /* -----  end of class $1  ----- */
+endsnippet
+
+snippet QObject "QObject"
+class ${1:`!v vim_snippets#Filename('$1', 'class')`}: public ${2:QObject}
+{
+Q_OBJECT
+public:
+	$1(${3}QObject *parent = 0);
+	~$1();
+private:
+	${0:/* data */}
+}; /* -----  end of class $1  ----- */
+endsnippet
+
+snippet QWidget "QWidget"
+class ${1:`!v vim_snippets#Filename('$1', 'class')`}: public ${2:QWidget}
+{
+Q_OBJECT
+public:
+	$1(${3}QWidget *parent = 0);
+	~$1();
+private:
+	${0:/* data */}
+}; /* -----  end of class $1  ----- */
+endsnippet
+
+snippet uiDec "Ui Declaration"
+#include <QtGui/$2>
+
+namespace Ui {
+	class ${1:`!v vim_snippets#Filename('$1', 'class')`};
+}
+
+class $1: public ${2:QWidget}
+{
+Q_OBJECT
+public:
+	$1(${3}QWidget *parent = 0);
+	~$1();
+private:
+	Ui::$1 *ui;
+	${0}
+}; /* -----  end of class $1  ----- */
+endsnippet
+
+snippet uiDef "Ui Definition"
+#include "${1:`!v vim_snippets#Filename('$1', 'class')`}.h"
+#include "ui_$1.h"
+
+$1::$1(QWidget *parent):
+	${2:QWidget}(parent),
+	ui(new Ui::$1)
+{
+	ui->setupUi(this);
+}
+
+$1::~$1()
+{
+	delete ui;
+}
+${0}
+endsnippet
+
+snippet langChange "Change language event"
+void ${1:`!v vim_snippets#Filename('$1', 'class')`}::changeEvent(QEvent *event)
+{
+	${2:QWidget}::changeEvent(event);
+	switch (event->type()) {
+		case QEvent::LanguageChange:
+			ui->retranslateUi(this);
+			break;
+		default:
+			break;
+	}
+}
+${0}
+endsnippet
+
+snippet fori
+for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
+	${0:/* code */}
+}
+endsnippet
+
+snippet itera "Auto iterator"
+for (auto ${1:i} = $1.begin(); $1 != $1.end(); ++$1) {
+	${0:std::cout << *$1 << std::endl;}
+}
+endsnippet
+
+snippet mfun "Member function"
+${4:void} ${1:`!v vim_snippets#Filename('$1', 'ClassName')`}::${2:memberFunction}(${3}) {
+	${0:return};
+}
+endsnippet
+
+snippet prop "Property"
+${2:int} ${1:`!v vim_snippets#Filename('$1', 'class')`}::${3:property}() const
+{
+	return m_$3;
+}
+
+void $1::set${3/\w+\s*/\u$0/}(const $2 &$3)
+{
+	m_$3 = $3;
+}
+endsnippet
+
+snippet sprop "Property without reference"
+${2:int} ${1:`!v vim_snippets#Filename('$1', 'class')`}::${3:property}() const
+{
+	return m_$3;
+}
+
+void $1::set${3/\w+\s*/\u$0/}(const $2 $3)
+{
+	m_$3 = $3;
+}
+$0
+endsnippet
+
+# vim:ft=snippets:
