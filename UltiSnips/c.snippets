@@ -1,0 +1,68 @@
+
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+snippet hdr "header"
+/*
+ * =====================================================================
+ *        Version:  1.0
+ *        Created:  `!v strftime("%x")` `!v strftime("%X")`
+ *         Author:  `!v g:snips_author`
+ *        Company:  `!v g:snips_company`
+ * =====================================================================
+ */
+endsnippet
+
+snippet inc "#include <> (inc)" !
+#include <${1:.h}>
+endsnippet
+
+snippet Inc "#include local header (Inc)" !
+#include "${1:`!p snip.rv = snip.basename + '.h'`}"
+endsnippet
+
+snippet main "main() (main)" !
+int main(int argc, char *argv[])
+{
+	${0:/* code */}
+	return 0;
+}
+endsnippet
+
+snippet for "for int loop (fori)" !
+for (${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
+	${0:/* code */}
+}
+endsnippet
+
+snippet Once "Simple include header guard"
+#ifndef  ${1:`!v toupper(Filename('', 'UNTITLED').'_H')`}
+#define  $1
+
+${0:/* code */}
+
+#endif   /* ----- #ifndef $1  ----- */
+endsnippet
+
+snippet if "if .. (if)" !
+if (${1:/* condition */}) {
+	${0:/* code */}
+}
+endsnippet
+
+snippet ife "if .. else"
+if (${1:/* condition */}) {
+	${0:/* code */}
+}
+else {
+
+}
+endsnippet
+
+snippet elif "else if"
+else if (${1:/* condition */}) {
+	${0:/* code */}
+}
+endsnippet
+
+# vim:ft=snippets:
