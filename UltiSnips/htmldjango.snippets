@@ -1,0 +1,100 @@
+snippet html5 "HTML5 Template" !
+{% load staticfiles %}<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block head_title %}${1:title}{% endblock %}</title>
+	<meta charset="utf-8" />
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" />
+	{% block extraheaders %}{% endblock %}
+	{% block extrastyle %}{% endblock %}
+</head>
+<body>
+{% block body %}${0}{% endblock %}
+</body>
+</html>
+endsnippet
+
+snippet bootstrap_head "Bootstrap head" !
+<!-- Navigácia -->
+<header class="navbar navbar-inverse" role="banner">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Zapnúť navigáciu</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="/" class="navbar-brand">${1:site}</a>
+		</div>
+		<nav class="collapse navbar-collapse navbar-collapse" role="navigation">
+			<ul class="nav navbar-nav">
+				<li class="active">
+					<a href="/">Domovská stránka</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a rel="nofollow" href="#">Menu</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+${0}
+endsnippet
+
+
+snippet bootstrap_layout "Bootstrap layout" !
+<div class="row">
+	<div class="col-md-6"></div>
+	<div class="col-md-6"></div>
+</div>
+${0}
+endsnippet
+
+snippet bootstrap_media "Bootstrap media" !
+<div class="media">
+	<a class="pull-left" href="#">
+		<img class="media-object" src="${2:link}" alt="..">
+	</a>
+	<div class="media-body">
+	<h4 class="media-heading">${1:heading}</h4>
+		...
+	</div>
+</div>
+${0}
+endsnippet
+
+snippet bootstrap_menu "Bootstrap menu" !
+<div class="list-group">
+	<a href="#" class="list-group-item">${1:item}</a>
+</div>
+${0}
+endsnippet
+
+snippet block "" !
+{% block ${1} %}
+	${2}
+{% endblock %}
+endsnippet
+
+snippet cdata "" !
+<![CDATA[
+${0}
+]]>
+endsnippet
+
+snippet inc "" bi
+{% include "${1}" %}
+endsnippet
+
+snippet iif "Inline if" !i
+{% if ${1} %}${0}{% endif %}
+endsnippet
+
+snippet % "Statement" !i
+{% ${1} %}${0}
+endsnippet
+
+snippet { "Variable" !i
+{{ ${1} }}${0}
+endsnippet
