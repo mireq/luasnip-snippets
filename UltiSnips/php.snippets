@@ -1,0 +1,237 @@
+## Snippets from SnipMate, taken from
+## https://github.com/scrooloose/snipmate-snippets.git
+
+snippet array "array"
+$${1:arrayName} = array('${2}' => ${3});${4}
+endsnippet
+
+snippet class "class"
+/**
+ * ${1}
+ */
+class ${2:ClassName}
+{
+	${3}
+	function ${4:__construct}(${5:argument})
+	{
+		${6:// code...}
+	}
+}
+endsnippet
+
+snippet def "def"
+define('${1}'${2});${3}
+endsnippet
+
+snippet do "do"
+do {
+	${2:// code... }
+} while (${1:/* condition */});"
+endsnippet
+
+snippet doc_f "doc_f"
+/**
+ * $2
+ * @return ${4:void}
+ * @author ${5:`!v g:snips_author`}
+ **/
+${1:public }function ${2:someFunc}(${3})
+{${6}
+}
+endsnippet
+
+snippet doc_i "doc_i"
+/**
+ * $1
+ * @package ${2:default}
+ * @author ${3:`!v g:snips_author`}
+ **/
+interface ${1:someClass}
+{${4}
+} // END interface $1"
+endsnippet
+
+snippet else "else"
+else {
+	${1:// code...}
+}
+endsnippet
+
+snippet for "for"
+for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++}) {
+	${4:// code...}
+}
+endsnippet
+
+snippet foreachk "foreachk"
+foreach ($${1:variable} as $${2:key} => $${3:value}){
+	${4:// code...}
+}
+endsnippet
+
+snippet get "get"
+$_GET['${1}']${2}
+endsnippet
+
+snippet if "if"
+if (${1:/* condition */}) {
+	${2:// code...}
+}
+endsnippet
+
+snippet inc "inc"
+include '${1:file}';${2}
+endsnippet
+
+snippet log "log"
+error_log(var_export(${1}, true));${2}
+endsnippet
+
+snippet post "post"
+$_POST['${1}']${2}
+endsnippet
+
+snippet req1 "req1"
+require_once '${1:file}';${2}
+endsnippet
+
+snippet session "session"
+$_SESSION['${1}']${2}
+endsnippet
+
+snippet t "t"
+$${1:retVal} = (${2:condition}) ? ${3:a} : ${4:b};${5}
+endsnippet
+
+snippet var "var"
+var_export(${1});${2}
+endsnippet
+
+snippet /* "doxygen comment"
+/**
+ * $0
+ */
+endsnippet
+
+
+snippet wp_admin_menu "Wordpress admin menu"
+
+endsnippet
+
+snippet wp_include_admin_ptions "Include admin options"
+if (is_admin() && file_exists(STYLESHEETPATH. '/admin-options.php')) include_once(STYLESHEETPATH. '/admin-options.php');
+$0
+endsnippet
+
+snippet wp_options_form
+<div class="wrap">
+<?php screen_icon(); ?>
+<h2>${1:Your Plugin Name}</h2>
+
+<form method="post" action="options.php">
+	<?php settings_fields('${2:plugin}_group'); ?>
+	<?php do_settings_sections('$2-settings-page'); ?>
+	<?php submit_button(); ?>
+</form>
+</div>
+$0
+endsnippet
+
+
+snippet wp_options_page
+class ${1:PluginSettingsPage}
+{
+	private $options;
+
+	public function __construct()
+	{
+		add_action('admin_menu', array($this, 'add_plugin_page'));
+		add_action('admin_init', array($this, 'page_init'));
+	}
+
+	public function add_plugin_page()
+	{
+		add_options_page(
+			'${2:Settings Admin}', // Page title
+			'${2:My Settings}', // Menu title
+			'manage_options', // capability
+			'${3:plugin}-settings-page',
+			array($this, 'create_admin_page')
+		);
+	}
+
+	public function create_admin_page()
+	{
+		$this->options = get_option('$3-settings');
+		include(STYLESHEETPATH.'/admin_$3_settings.php');
+	}
+
+	public function page_init()
+	{
+		register_setting(
+			'$3_group',
+			'$3-settings',
+			array($this, 'sanitize')
+		);
+
+		add_settings_section(
+			'setting_section_id',
+			'$2',
+			array($this, 'print_section_info'),
+			'$3-settings-page'
+		);
+
+		add_settings_field(
+			'${5:option_name}',
+			'${6:Option}',
+			array($this, '$5_callback'),
+			'$3-settings-page',
+			'setting_section_id'
+		);
+	}
+
+	public function sanitize($input)
+	{
+		return $input;
+	}
+
+	public function print_section_info()
+	{
+		print 'Enter your settings below:';
+	}
+
+	public function $5_callback()
+	{
+		printf(
+			'<input type="text" id="id_$5" name="$3-settings[$5]" value="%s" />',
+			isset($this->options['$5']) ? esc_attr($this->options['$5']) : ''
+		);
+	}
+}
+
+$settings = new $1();
+$0
+endsnippet
+
+snippet wp_settings_field "Settings field"
+add_settings_field(
+	'${1:option_name}',
+	'${2:Option}',
+	array($this, '$1_callback'),
+	'${3:plugin}-settings-page',
+	'setting_section_id'
+);
+endsnippet
+
+snippet wp_settings_field_callback "Settings field callback"
+public function ${1:option_name}_callback()
+{
+	printf(
+		'<input type="text" id="id_$1" name="${2:plugin}-settings[$1]" value="%s" />',
+		isset($this->options['$1']) ? esc_attr($this->options['$1']) : ''
+	);
+}
+endsnippet
+
+
+# :vim:ft=snippets:
