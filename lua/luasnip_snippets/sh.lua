@@ -41,7 +41,7 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- argument mapping: token index to placeholder number
+local am = { -- list of argument numbers
 	{},
 	{},
 	{},
@@ -231,7 +231,7 @@ ls.add_snippets("sh", {
 	}),
 	s({trig = "here", descr = "(here) \"here document (here)\"", priority = -50, trigEngine = te("")}, {
 		t"<<-", d(2, function(args) return sn(nil, {t"\'", i(1, "TOKEN", {key = "i1"}), t"\'"}) end, {}, {key = "i2"}), nl(),
-		t"\t", i(0, "", {key = "i0"}), f(function(args, snip) return c_shell("echo \\\\n") end, {}), tr(1, "[\'\"`](.+)[\'\"`]", "$1")
+		t"\t", i(0, "", {key = "i0"}), f(function(args, snip) return c_shell("echo \\\\n") end), tr(1, "[\'\"`](.+)[\'\"`]", "$1")
 	}),
 	s({trig = "ift(est)?", descr = "(ift(est)?) \"if ... then (if)\"", priority = -50, trigEngine = te("rb")}, {
 		t"if ", d(1, function(args) return sn(nil, {t"[ ", i(1, "condition", {key = "i1"}), t" ]"}) end, {}, {key = "i2"}), t"; then", nl(),

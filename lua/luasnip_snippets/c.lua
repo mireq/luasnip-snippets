@@ -41,7 +41,7 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- argument mapping: token index to placeholder number
+local am = { -- list of argument numbers
 	{0},
 	{0},
 	{1},
@@ -565,22 +565,3 @@ ls.add_snippets("c", {
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
-	s({trig = "hdr", descr = "(hdr) \"header\"", priority = 0, trigEngine = te("")}, {
-		t"/*", nl(),
-		t" * =====================================================================", nl(),
-		t" *        Version:  1.0", nl(),
-		t" *        Created:  ", f(function(args, snip) return c_viml("strftime(\"%x\")") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%X\")") end, {}), nl(),
-		t" *         Author:  ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
-		t" *        Company:  ", f(function(args, snip) return c_viml("g:snips_company") end, {}), nl(),
-		t" * =====================================================================", nl(),
-		t" */"
-	}),
-	s({trig = "Once", descr = "(Once) \"Simple include header guard\"", priority = 0, trigEngine = te("")}, {
-		t"#ifndef  ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("toupper(Filename(\'\', \'UNTITLED\').\'_H\')")}, ""), {key = "i1"}) }) end), nl(),
-		t"#define  ", cp(1), nl(),
-		nl(),
-		i(0, "/* code */", {key = "i0"}), nl(),
-		nl(),
-		t"#endif   /* ----- #ifndef ", cp(1), t"  ----- */"
-	}),
-})

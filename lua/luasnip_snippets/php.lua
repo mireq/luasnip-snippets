@@ -41,7 +41,7 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- argument mapping: token index to placeholder number
+local am = { -- list of argument numbers
 	{0},
 	{1},
 	{0},
@@ -178,6 +178,17 @@ local am = { -- argument mapping: token index to placeholder number
 	{0, 1},
 	{0, 1},
 	{0, 1},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1, 2, 3, 4, 5},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1},
 	{1},
 	{},
 	{0},
@@ -185,17 +196,6 @@ local am = { -- argument mapping: token index to placeholder number
 	{0, 1, 2, 3, 5, 6},
 	{1, 2, 3},
 	{1, 2},
-	{0, 1, 2, 3, 4, 5},
-	{0, 1, 2, 3, 4, 5},
-	{0, 1, 2, 3, 4, 5},
-	{0, 1, 2, 3, 4, 5},
-	{0, 1, 2, 3, 4, 5},
-	{0, 1, 2, 3, 4, 5},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1},
 }
 
 local python_globals = {
@@ -997,6 +997,132 @@ ls.add_snippets("php", {
 	s({trig = "id", descr = "(id) \"is_dir\"", priority = -1000, trigEngine = te("w")}, {
 		t"is_dir(", i(1, "path", {key = "i1"}), t")", i(0, "", {key = "i0"})
 	}),
+	s({trig = "pub", descr = "(pub) \"Public function\"", priority = -50, trigEngine = te("b")}, {
+		t"/**", nl(),
+		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
+		t" *", nl(),
+		t" * @return ", i(4, "void", {key = "i4"}), nl(),
+		t" */", nl(),
+		t"public function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
+		t"{", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
+		t"}", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "pro", descr = "(pro) \"Protected function\"", priority = -50, trigEngine = te("b")}, {
+		t"/**", nl(),
+		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
+		t" *", nl(),
+		t" * @return ", i(4, "void", {key = "i4"}), nl(),
+		t" */", nl(),
+		t"protected function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
+		t"{", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
+		t"}", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "pri", descr = "(pri) \"Private function\"", priority = -50, trigEngine = te("b")}, {
+		t"/**", nl(),
+		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
+		t" *", nl(),
+		t" * @return ", i(4, "void", {key = "i4"}), nl(),
+		t" */", nl(),
+		t"private function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
+		t"{", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
+		t"}", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "pubs", descr = "(pubs) \"Public static function\"", priority = -50, trigEngine = te("b")}, {
+		t"/**", nl(),
+		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
+		t" *", nl(),
+		t" * @return ", i(4, "void", {key = "i4"}), nl(),
+		t" */", nl(),
+		t"public static function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
+		t"{", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
+		t"}", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "pros", descr = "(pros) \"Protected static function\"", priority = -50, trigEngine = te("b")}, {
+		t"/**", nl(),
+		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
+		t" *", nl(),
+		t" * @return ", i(4, "void", {key = "i4"}), nl(),
+		t" */", nl(),
+		t"protected static function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
+		t"{", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
+		t"}", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "pris", descr = "(pris) \"Private static function\"", priority = -50, trigEngine = te("b")}, {
+		t"/**", nl(),
+		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
+		t" *", nl(),
+		t" * @return ", i(4, "void", {key = "i4"}), nl(),
+		t" */", nl(),
+		t"private static function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
+		t"{", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
+		t"}", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "fu", descr = "(fu) \"Function snip\"", priority = -50, trigEngine = te("b")}, {
+		t"function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
+		t"{", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(3, "return null;", {key = "i3"}), nl(),
+		t"}", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "new", descr = "(new) \"New class instance\"", priority = -50, trigEngine = te("b")}, {
+		t"$", i(1, "variableName", {key = "i1"}), t" = new ", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "\\w+\\s*", "\\u$0")}, ""), {key = "i2"}) }) end, {k"i1"}), t"(", i(3, "", {key = "i3"}), t");", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "construct", descr = "(construct) \"__construct()\"", priority = -50, trigEngine = te("b")}, {
+		t"/**", nl(),
+		t" * @param", i(2, "", {key = "i2"}), t" ", tr(1, ", ", "\\n     * \\@param "), nl(),
+		t" */", nl(),
+		t"public function __construct(", i(1, "$dependencies", {key = "i1"}), t")", nl(),
+		t"{", tr(1, "\\w* ?\\$(\\w+)(, )*", "\\n        $this->$1 = $$1;"), nl(),
+		t"}", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "testcase", descr = "(testcase) \"class XYZTest extends \\PHPUnit_Framework_TestCase { ... }\"", priority = -50, trigEngine = te("")}, {
+		t"<?php", nl(),
+		nl(),
+		t"namespace ", f(function(args, snip) return c_py({"php", 146}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[146]) end, ae(am[146])), t";", nl(),
+		nl(),
+		t"/**", nl(),
+		t" * @author ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
+		t" */", nl(),
+		t"class ", f(function(args, snip) return c_py({"php", 146}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[146]) end, ae(am[146])), t" extends \\PHPUnit_Framework_TestCase", nl(),
+		t"{", nl(),
+		t"\tpublic function test", i(1, "", {key = "i1"}), t"()", nl(),
+		t"\t{", nl(),
+		t"\t\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i0"}) }) end), nl(),
+		t"\t}", nl(),
+		t"}"
+	}),
+	s({trig = "testcase6", descr = "(testcase6) \"class XYZTest extends TestCase { ... }\"", priority = -50, trigEngine = te("")}, {
+		t"<?php", nl(),
+		nl(),
+		t"namespace ", f(function(args, snip) return c_py({"php", 147}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[147]) end, ae(am[147])), t";", nl(),
+		nl(),
+		t"use PHPUnit\\Framework\\TestCase;", nl(),
+		nl(),
+		t"/**", nl(),
+		t" * @author ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
+		t" */", nl(),
+		t"class ", f(function(args, snip) return c_py({"php", 147}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[147]) end, ae(am[147])), t" extends TestCase", nl(),
+		t"{", nl(),
+		t"\tpublic function test", i(1, "", {key = "i1"}), t"()", nl(),
+		t"\t{", nl(),
+		t"\t\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i0"}) }) end), nl(),
+		t"\t}", nl(),
+		t"}"
+	}),
 	s({trig = "else", descr = "(else) \"else\"", priority = 0, trigEngine = te("")}, {
 		t"else {", nl(),
 		t"\t", i(1, "// code...", {key = "i1"}), nl(),
@@ -1111,132 +1237,6 @@ ls.add_snippets("php", {
 		t"\t\t\'<input type=\"text\" id=\"id_", cp(1), t"\" name=\"", i(2, "plugin", {key = "i2"}), t"-settings[", cp(1), t"]\" value=\"%s\" />\',", nl(),
 		t"\t\tisset($this->options[\'", cp(1), t"\']) ? esc_attr($this->options[\'", cp(1), t"\']) : \'\'", nl(),
 		t"\t);", nl(),
-		t"}"
-	}),
-	s({trig = "pub", descr = "(pub) \"Public function\"", priority = -50, trigEngine = te("b")}, {
-		t"/**", nl(),
-		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
-		t" *", nl(),
-		t" * @return ", i(4, "void", {key = "i4"}), nl(),
-		t" */", nl(),
-		t"public function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
-		t"{", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
-		t"}", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "pro", descr = "(pro) \"Protected function\"", priority = -50, trigEngine = te("b")}, {
-		t"/**", nl(),
-		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
-		t" *", nl(),
-		t" * @return ", i(4, "void", {key = "i4"}), nl(),
-		t" */", nl(),
-		t"protected function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
-		t"{", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
-		t"}", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "pri", descr = "(pri) \"Private function\"", priority = -50, trigEngine = te("b")}, {
-		t"/**", nl(),
-		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
-		t" *", nl(),
-		t" * @return ", i(4, "void", {key = "i4"}), nl(),
-		t" */", nl(),
-		t"private function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
-		t"{", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
-		t"}", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "pubs", descr = "(pubs) \"Public static function\"", priority = -50, trigEngine = te("b")}, {
-		t"/**", nl(),
-		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
-		t" *", nl(),
-		t" * @return ", i(4, "void", {key = "i4"}), nl(),
-		t" */", nl(),
-		t"public static function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
-		t"{", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
-		t"}", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "pros", descr = "(pros) \"Protected static function\"", priority = -50, trigEngine = te("b")}, {
-		t"/**", nl(),
-		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
-		t" *", nl(),
-		t" * @return ", i(4, "void", {key = "i4"}), nl(),
-		t" */", nl(),
-		t"protected static function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
-		t"{", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
-		t"}", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "pris", descr = "(pris) \"Private static function\"", priority = -50, trigEngine = te("b")}, {
-		t"/**", nl(),
-		t" * ", i(3, "undocumented function", {key = "i3"}), nl(),
-		t" *", nl(),
-		t" * @return ", i(4, "void", {key = "i4"}), nl(),
-		t" */", nl(),
-		t"private static function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
-		t"{", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(5, "return null;", {key = "i5"}), nl(),
-		t"}", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "fu", descr = "(fu) \"Function snip\"", priority = -50, trigEngine = te("b")}, {
-		t"function ", i(1, "name", {key = "i1"}), t"(", i(2, "$param", {key = "i2"}), t")", nl(),
-		t"{", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(3, "return null;", {key = "i3"}), nl(),
-		t"}", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "new", descr = "(new) \"New class instance\"", priority = -50, trigEngine = te("b")}, {
-		t"$", i(1, "variableName", {key = "i1"}), t" = new ", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "\\w+\\s*", "\\u$0")}, ""), {key = "i2"}) }) end, {k"i1"}), t"(", i(3, "", {key = "i3"}), t");", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "construct", descr = "(construct) \"__construct()\"", priority = -50, trigEngine = te("b")}, {
-		t"/**", nl(),
-		t" * @param", i(2, "", {key = "i2"}), t" ", tr(1, ", ", "\\n     * \\@param "), nl(),
-		t" */", nl(),
-		t"public function __construct(", i(1, "$dependencies", {key = "i1"}), t")", nl(),
-		t"{", tr(1, "\\w* ?\\$(\\w+)(, )*", "\\n        $this->$1 = $$1;"), nl(),
-		t"}", nl(),
-		i(0, "", {key = "i0"})
-	}),
-	s({trig = "testcase", descr = "(testcase) \"class XYZTest extends \\PHPUnit_Framework_TestCase { ... }\"", priority = -50, trigEngine = te("")}, {
-		t"<?php", nl(),
-		nl(),
-		t"namespace ", f(function(args, snip) return c_py({"php", 153}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[153]) end, ae(am[153])), t";", nl(),
-		nl(),
-		t"/**", nl(),
-		t" * @author ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
-		t" */", nl(),
-		t"class ", f(function(args, snip) return c_py({"php", 153}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[153]) end, ae(am[153])), t" extends \\PHPUnit_Framework_TestCase", nl(),
-		t"{", nl(),
-		t"\tpublic function test", i(1, "", {key = "i1"}), t"()", nl(),
-		t"\t{", nl(),
-		t"\t\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i0"}) }) end), nl(),
-		t"\t}", nl(),
-		t"}"
-	}),
-	s({trig = "testcase6", descr = "(testcase6) \"class XYZTest extends TestCase { ... }\"", priority = -50, trigEngine = te("")}, {
-		t"<?php", nl(),
-		nl(),
-		t"namespace ", f(function(args, snip) return c_py({"php", 154}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[154]) end, ae(am[154])), t";", nl(),
-		nl(),
-		t"use PHPUnit\\Framework\\TestCase;", nl(),
-		nl(),
-		t"/**", nl(),
-		t" * @author ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
-		t" */", nl(),
-		t"class ", f(function(args, snip) return c_py({"php", 154}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[154]) end, ae(am[154])), t" extends TestCase", nl(),
-		t"{", nl(),
-		t"\tpublic function test", i(1, "", {key = "i1"}), t"()", nl(),
-		t"\t{", nl(),
-		t"\t\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i0"}) }) end), nl(),
-		t"\t}", nl(),
 		t"}"
 	}),
 })

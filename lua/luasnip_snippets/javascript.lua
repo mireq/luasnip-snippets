@@ -41,7 +41,217 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- argument mapping: token index to placeholder number
+local am = { -- list of argument numbers
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2, 3, 4, 5, 6},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2, 3, 4, 5, 6},
+	{0, 1},
+	{0, 1},
+	{0, 1, 2},
+	{1},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3, 4, 5},
+	{1, 2},
+	{0, 1, 2, 3},
+	{0, 1, 2},
+	{},
+	{1, 2},
+	{1},
+	{1},
+	{1, 2},
+	{1},
+	{1, 2, 3},
+	{1, 2},
+	{1},
+	{1},
+	{1, 2},
+	{0, 1, 2},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{1},
+	{0, 1},
+	{1, 2, 3},
+	{0, 1, 2},
+	{1, 2, 3, 4, 5},
+	{},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1},
+	{1},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3, 4},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2, 3},
+	{1},
+	{1, 2, 3, 4},
+	{1},
+	{1, 2},
+	{1, 2, 3},
+	{0, 1, 2},
+	{1, 2, 3},
+	{0, 1, 2, 3, 4},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{0, 1},
+	{1, 2},
+	{1},
+	{1},
+	{1},
+	{1, 2},
+	{0, 1, 2},
+	{0},
+	{1, 2, 3},
+	{1, 2},
+	{0, 1},
+	{1, 2},
+	{0, 1},
+	{1, 2, 3},
+	{0, 1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{0, 1},
+	{0, 1, 2},
+	{1, 2},
+	{0},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{1, 2, 3, 4},
+	{1, 2},
+	{0, 1},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1},
+	{1},
+	{1},
+	{1},
+	{1},
+	{1},
+	{1},
+	{1},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1},
+	{0, 1, 2, 3},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2, 3, 4},
+	{1},
+	{1},
+	{0, 1, 2, 3, 4},
+	{1, 2, 3},
+	{0, 1, 2, 3},
+	{1},
+	{1},
+	{1},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1},
+	{1},
+	{1},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3},
+	{1, 2},
+	{0, 1, 2, 3, 4, 5},
+	{1, 2},
+	{1, 2},
+	{1, 2, 3},
+	{1, 2, 3},
+	{0},
+	{1},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1},
+	{1},
+	{1, 2},
+	{0, 1, 2},
+	{1, 2},
+	{1},
+	{1, 2, 3},
+	{1, 2},
+	{1, 2, 3, 4},
+	{0, 1, 2},
+	{1, 2},
+	{0, 1, 2},
+	{1, 2},
+	{},
+	{0},
+	{0, 1, 2, 3, 4},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1, 2},
+	{1},
+	{1},
+	{1, 2},
+	{1, 2, 3, 4},
+	{1},
+	{0, 1, 2},
+	{1},
+	{1, 2},
+	{1, 2},
+	{1, 2},
 	{},
 	{},
 	{1},
@@ -82,10 +292,17 @@ local am = { -- argument mapping: token index to placeholder number
 	{1, 2, 3},
 	{1, 2},
 	{},
+	{1, 2, 3},
+	{1, 2, 3},
+	{1, 2},
 	{1},
 	{1, 2},
-	{1, 2, 3},
-	{0, 1, 2, 3, 4},
+	{0, 1, 2},
+	{0, 1, 2, 3},
+	{0, 1, 2},
+	{},
+	{1},
+	{1, 2},
 	{1, 2},
 	{1, 2, 3},
 	{1, 2},
@@ -98,15 +315,6 @@ local am = { -- argument mapping: token index to placeholder number
 	{},
 	{},
 	{},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1},
-	{1, 2},
 	{0, 1, 2, 3},
 	{0, 1, 2},
 	{0, 1, 2},
@@ -136,14 +344,11 @@ local am = { -- argument mapping: token index to placeholder number
 	{0, 1, 2},
 	{},
 	{0, 1, 2, 3, 4, 5, 6},
-	{0, 1, 2, 3, 4, 5},
-	{1, 2},
 	{0},
 	{0, 1, 2},
 	{0, 1},
 	{0},
 	{0},
-	{1, 2},
 	{0, 1},
 	{0, 1},
 	{0, 1},
@@ -192,212 +397,6 @@ local am = { -- argument mapping: token index to placeholder number
 	{0},
 	{0, 1},
 	{0},
-	{0},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2, 3, 4, 5, 6},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4, 5, 6},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{1},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3, 4, 5},
-	{1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{},
-	{1, 2},
-	{1},
-	{1},
-	{1, 2},
-	{1},
-	{1, 2, 3},
-	{1, 2},
-	{1},
-	{1},
-	{1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{1},
-	{0, 1},
-	{1, 2, 3},
-	{0, 1, 2},
-	{1, 2, 3, 4, 5},
-	{},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3, 4},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3},
-	{1},
-	{1, 2, 3, 4},
-	{1},
-	{1, 2},
-	{1, 2, 3},
-	{0, 1, 2},
-	{1, 2, 3},
-	{0, 1, 2, 3, 4},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{0, 1},
-	{1, 2},
-	{1},
-	{1},
-	{1},
-	{1, 2},
-	{0, 1, 2},
-	{0},
-	{1, 2, 3},
-	{1, 2},
-	{0, 1},
-	{1, 2},
-	{0, 1},
-	{1, 2, 3},
-	{0, 1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{1, 2},
-	{0},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{1, 2, 3, 4},
-	{1, 2},
-	{0, 1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3, 4},
-	{1},
-	{1},
-	{0, 1, 2, 3},
-	{1},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{0},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1},
-	{1},
-	{1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{1},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3, 4},
-	{0, 1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{},
-	{0},
-	{0, 1, 2, 3, 4},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2, 3, 4},
-	{1},
-	{0, 1, 2},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
 	{0},
 	{0, 1, 2, 3, 10},
 	{0, 1},
@@ -405,753 +404,17 @@ local am = { -- argument mapping: token index to placeholder number
 	{0, 1, 2},
 	{0, 1, 2},
 	{1, 2},
-	{1, 2, 3, 4},
-	{1, 3, 4},
-	{0, 1, 2},
-	{1, 2},
-	{2, 3, 4, 5},
-	{1, 2, 3, 4, 5},
-	{1, 2, 3, 4},
-	{1, 2},
+	{0},
 }
 
 local python_globals = {
-	[[# Capitalize the first letter without affecting the rest of the letters
-def capitalize_first(word):
-	if(word):
-		word = word[0].upper() + word[1:]
-	return word]]
-, 	[[from javascript_snippets import (
+	[[from javascript_snippets import (
 	semi, space_before_function_paren, keyword_spacing
 )]]
 }
 
 
 ls.add_snippets("javascript", {
-	s({trig = "ir", descr = "(ir) \"import React\"", priority = 0, trigEngine = te("")}, {
-		t"import React from \"react\""
-	}),
-	s({trig = "irc", descr = "(irc) \"import React and Component\"", priority = 0, trigEngine = te("")}, {
-		t"import React, { Component } from \"react\""
-	}),
-	s({trig = "irh", descr = "(irh) import React hooks", priority = -1000, trigEngine = te("w")}, {
-		t"import { use", i(1, "", {key = "i1"}), t" } from \'react\';", nl()
-	}),
-	s({trig = "ird", descr = "(ird) import ReactDOM", priority = -1000, trigEngine = te("w")}, {
-		t"import ReactDOM from \'react-dom\';", nl()
-	}),
-	s({trig = "irp", descr = "(irp) import PropTypes", priority = -1000, trigEngine = te("w")}, {
-		t"import PropTypes from \'prop-types\';", nl()
-	}),
-	s({trig = "cdm", descr = "(cdm) componentDidMount", priority = -1000, trigEngine = te("w")}, {
-		t"componentDidMount() {", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
-	}),
-	s({trig = "cdup", descr = "(cdup) componentDidUpdate", priority = -1000, trigEngine = te("w")}, {
-		t"componentDidUpdate(prevProps, prevState) {", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
-	}),
-	s({trig = "cwm", descr = "(cwm) componentWillMount", priority = -1000, trigEngine = te("w")}, {
-		t"componentWillMount() {", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
-	}),
-	s({trig = "cwr", descr = "(cwr) componentWillReceiveProps", priority = -1000, trigEngine = te("w")}, {
-		t"componentWillReceiveProps(nextProps) {", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
-	}),
-	s({trig = "cwun", descr = "(cwun) componentWillUnmount", priority = -1000, trigEngine = te("w")}, {
-		t"componentWillUnmount() {", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
-	}),
-	s({trig = "cwu", descr = "(cwu) componentWillUpdate", priority = -1000, trigEngine = te("w")}, {
-		t"componentWillUpdate(nextProps, nextState) {", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
-	}),
-	s({trig = "scu", descr = "(scu) shouldComponentUpdate", priority = -1000, trigEngine = te("w")}, {
-		t"shouldComponentUpdate(nextProps, nextState) {", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "spt", descr = "(spt) static propTypes", priority = -1000, trigEngine = te("w")}, {
-		t"static propTypes = {", nl(),
-		t"\t", i(1, "", {key = "i1"}), t": PropTypes.", i(2, "", {key = "i2"}), nl(),
-		t"};", nl()
-	}),
-	s({trig = "pt", descr = "(pt) propTypes", priority = -1000, trigEngine = te("w")}, {
-		i(1, "", {key = "i1"}), t".propTypes = {", nl(),
-		t"\t", i(2, "", {key = "i2"}), t": PropTypes.", cp(2), nl(),
-		t"};", nl()
-	}),
-	s({trig = "sdp", descr = "(sdp) static defaultProps", priority = -1000, trigEngine = te("w")}, {
-		t"static defaultProps = {", nl(),
-		t"\t", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), t"\t", nl(),
-		t"};", nl()
-	}),
-	s({trig = "dp", descr = "(dp) defaultProps", priority = -1000, trigEngine = te("w")}, {
-		i(1, "", {key = "i1"}), t".defaultProps = {", nl(),
-		t"\t", i(2, "", {key = "i2"}), t": ", i(3, "", {key = "i3"}), nl(),
-		t"};", nl()
-	}),
-	s({trig = "pp", descr = "(pp) props", priority = -1000, trigEngine = te("w")}, {
-		t"props.", i(1, "", {key = "i1"}), t";", nl()
-	}),
-	s({trig = "tp", descr = "(tp) this props", priority = -1000, trigEngine = te("w")}, {
-		t"this.props.", i(1, "", {key = "i1"}), t";", nl()
-	}),
-	s({trig = "st", descr = "(st)", priority = -1000, trigEngine = te("w")}, {
-		t"state = {", nl(),
-		t"\t", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), t",", nl(),
-		t"};", nl()
-	}),
-	s({trig = "sst", descr = "(sst)", priority = -1000, trigEngine = te("w")}, {
-		t"this.setState({", nl(),
-		t"\t", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), nl(),
-		t"});", nl()
-	}),
-	s({trig = "tst", descr = "(tst)", priority = -1000, trigEngine = te("w")}, {
-		t"this.state.", i(1, "", {key = "i1"}), t";", nl()
-	}),
-	s({trig = "raf", descr = "(raf)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "ComponentName", {key = "i1"}), t" = (", i(2, "props", {key = "i2"}), t") => {", nl(),
-		t"\t", i(3, "state", {key = "i3"}), nl(),
-		nl(),
-		t"\treturn (", nl(),
-		t"\t\t<>", nl(),
-		t"\t\t\t", i(4, "", {key = "i4"}), nl(),
-		t"\t\t</>", nl(),
-		t"\t);", nl(),
-		t"};", nl()
-	}),
-	s({trig = "rcla", descr = "(rcla)", priority = -1000, trigEngine = te("w")}, {
-		t"class ", i(1, "ClassName", {key = "i1"}), t" extends Component {", nl(),
-		t"\trender() {", nl(),
-		t"\t\treturn (", nl(),
-		t"\t\t\t<>", nl(),
-		t"\t\t\t\t", i(2, "", {key = "i2"}), nl(),
-		t"\t\t\t</>", nl(),
-		t"\t\t);", nl(),
-		t"\t}", nl(),
-		t"}", nl()
-	}),
-	s({trig = "ercla", descr = "(ercla)", priority = -1000, trigEngine = te("w")}, {
-		t"export default class ", i(1, "ClassName", {key = "i1"}), t" extends Component {", nl(),
-		t"\trender() {", nl(),
-		t"\t\treturn (", nl(),
-		t"\t\t\t<>", nl(),
-		t"\t\t\t\t", i(2, "", {key = "i2"}), nl(),
-		t"\t\t\t</>", nl(),
-		t"\t\t);", nl(),
-		t"\t};", nl(),
-		t"};", nl()
-	}),
-	s({trig = "ctor", descr = "(ctor)", priority = -1000, trigEngine = te("w")}, {
-		t"constructor() {", nl(),
-		t"\tsuper();", nl(),
-		nl(),
-		t"\t", i(1, "state", {key = "i1"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "ren", descr = "(ren)", priority = -1000, trigEngine = te("w")}, {
-		t"render() {", nl(),
-		t"\treturn (", nl(),
-		t"\t\t<>", nl(),
-		t"\t\t\t", i(1, "", {key = "i2"}), nl(),
-		t"\t\t</>", nl(),
-		t"\t);", nl(),
-		t"}", nl()
-	}),
-	s({trig = "fup", descr = "(fup)", priority = -1000, trigEngine = te("w")}, {
-		t"forceUpdate(", i(1, "callback", {key = "i1"}), t");", nl()
-	}),
-	s({trig = "uses", descr = "(uses) useState", priority = -1000, trigEngine = te("w")}, {
-		t"const [", i(1, "state", {key = "i1"}), t", set", i(2, "", {key = "i2"}), t"] = useState(", i(3, "initialState", {key = "i3"}), t");", nl()
-	}),
-	s({trig = "usee", descr = "(usee) useEffect", priority = -1000, trigEngine = te("w")}, {
-		t"useEffect(() => {", nl(),
-		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"});", nl()
-	}),
-	s({trig = "userd", descr = "(userd) useReducer", priority = -1000, trigEngine = te("w")}, {
-		t"const [", i(1, "state", {key = "i1"}), t", ", i(2, "dispatch", {key = "i2"}), t"] = useReducer(", i(3, "reducer", {key = "i3"}), t");", nl()
-	}),
-	s({trig = "userf", descr = "(userf) useRef", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "refContainer", {key = "i1"}), t" = useRef(", i(2, "initialValue", {key = "i2"}), t");", nl()
-	}),
-	s({trig = "usect", descr = "(usect) useContext", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "value", {key = "i1"}), t" = useContext(", i(2, "MyContext", {key = "i2"}), t");", nl()
-	}),
-	s({trig = "usecb", descr = "(usecb) useCallback", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "memoizedCallback", {key = "i1"}), t" = useCallback(", nl(),
-		t"() => {", nl(),
-		t"\t", i(2, "", {key = "i2"}), t"(", i(3, "", {key = "i3"}), t")", nl(),
-		t"},", nl(),
-		t"[", cp(3), t"]", nl(),
-		t");", nl()
-	}),
-	s({trig = "usem", descr = "(usem) useMemo", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "memoizedCallback", {key = "i1"}), t" = useMemo(() => ", i(2, "", {key = "i2"}), t"(", i(3, "", {key = "i3"}), t"), [", cp(3), t"]);", nl()
-	}),
-	s({trig = "usei", descr = "(usei) useImperativeHandle", priority = -1000, trigEngine = te("w")}, {
-		t"useImperativeHandle(", i(1, "ref", {key = "i1"}), t", ", i(2, "createHandle", {key = "i2"}), t");", nl()
-	}),
-	s({trig = "used", descr = "(used) useDebugValue", priority = -1000, trigEngine = te("w")}, {
-		t"useDebugValue(", i(1, "value", {key = "i1"}), t");", nl()
-	}),
-	s({trig = "rdr", descr = "(rdr) ReactDOM.render", priority = -1000, trigEngine = te("w")}, {
-		t"ReactDOM.render(", i(1, "", {key = "i1"}), t", ", i(2, "", {key = "i2"}), t");", nl()
-	}),
-	s({trig = "rdh", descr = "(rdh) ReactDOM.hydrate", priority = -1000, trigEngine = te("w")}, {
-		t"ReactDOM.hydrate(", i(1, "element", {key = "i1"}), t", ", i(2, "container", {key = "i2"}), t"[, ", i(3, "callback", {key = "i3"}), t"]);", nl()
-	}),
-	s({trig = "rdcp", descr = "(rdcp) ReactDOM.createPortal", priority = -1000, trigEngine = te("w")}, {
-		t"ReactDOM.createPortal(", i(1, "child", {key = "i1"}), t", ", i(2, "container", {key = "i2"}), t");"
-	}),
-	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
-		t"#!/usr/bin/env node"
-	}),
-	s({trig = "ex", descr = "(ex)", priority = -1000, trigEngine = te("w")}, {
-		t"module.exports = ", i(1, "", {key = "i1"}), t";"
-	}),
-	s({trig = "re", descr = "(re)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "", {key = "i1"}), t" = require(\'", i(2, "module_name", {key = "i2"}), t"\');"
-	}),
-	s({trig = "on", descr = "(on)", priority = -1000, trigEngine = te("w")}, c(1, {
-		{
-			t"on(\'", i(1, "event_name", {key = "i1"}), t"\', function(", i(2, "stream", {key = "i2"}), t") {", nl(),
-			t"  ", i(3, "", {key = "i3"}), nl(),
-			t"});"
-		},
-		{
-			i(1, "obj", {key = "i1"}), t".on(\'", i(2, "events", {key = "i2"}), t"\', \'", i(3, "selector expression", {key = "i3"}), t"\', function (", i(4, "e", {key = "i4"}), t") {", nl(),
-			t"\t", i(0, "// event handler", {key = "i0"}), nl(),
-			t"});"
-		},
-	})),
-	s({trig = "emit", descr = "(emit)", priority = -1000, trigEngine = te("w")}, {
-		t"emit(\'", i(1, "event_name", {key = "i1"}), t"\', ", i(2, "args", {key = "i2"}), t");"
-	}),
-	s({trig = "once", descr = "(once)", priority = -1000, trigEngine = te("w")}, {
-		t"once(\'", i(1, "event_name", {key = "i1"}), t"\', function(", i(2, "stream", {key = "i2"}), t") {", nl(),
-		t"  ", i(3, "", {key = "i3"}), nl(),
-		t"});"
-	}),
-	s({trig = "http", descr = "(http)", priority = -1000, trigEngine = te("w")}, {
-		t"http.createServer(", i(1, "handler", {key = "i1"}), t").listen(", i(2, "port_number", {key = "i2"}), t");"
-	}),
-	s({trig = "net", descr = "(net)", priority = -1000, trigEngine = te("w")}, {
-		t"net.createServer(function(", i(1, "socket", {key = "i1"}), t"){", nl(),
-		t"\t", cp(1), t".on(\'data\', function(\'data\'){", nl(),
-		t"\t  ", i(2, "", {key = "i2"}), nl(),
-		t"\t]});", nl(),
-		t"\t", cp(1), t".on(\'end\', function(){", nl(),
-		t"\t  ", i(3, "", {key = "i3"}), nl(),
-		t"\t});", nl(),
-		t"}).listen(", i(4, "8124", {key = "i4"}), t");"
-	}),
-	s({trig = "pipe", descr = "(pipe)", priority = -1000, trigEngine = te("w")}, {
-		t"pipe(", i(1, "stream", {key = "i1"}), t")", i(2, "", {key = "i2"})
-	}),
-	s({trig = "eget", descr = "(eget)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "app", {key = "i1"}), t".get(\'", i(2, "route", {key = "i2"}), t"\', ", i(3, "handler", {key = "i3"}), t");"
-	}),
-	s({trig = "epost", descr = "(epost)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "app", {key = "i1"}), t".post(\'", i(2, "route", {key = "i2"}), t"\', ", i(3, "handler", {key = "i3"}), t");"
-	}),
-	s({trig = "eput", descr = "(eput)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "app", {key = "i1"}), t".put(\'", i(2, "route", {key = "i2"}), t"\', ", i(3, "handler", {key = "i3"}), t");"
-	}),
-	s({trig = "edel", descr = "(edel)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "app", {key = "i1"}), t".delete(\'", i(2, "route", {key = "i2"}), t"\', ", i(3, "handler", {key = "i3"}), t");"
-	}),
-	s({trig = "stdin", descr = "(stdin)", priority = -1000, trigEngine = te("w")}, {
-		t"process.stdin"
-	}),
-	s({trig = "stdout", descr = "(stdout)", priority = -1000, trigEngine = te("w")}, {
-		t"process.stdout"
-	}),
-	s({trig = "stderr", descr = "(stderr)", priority = -1000, trigEngine = te("w")}, {
-		t"process.stderr"
-	}),
-	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
-		t"define([\"", i(1, "#dependencies1", {key = "i1"}), t"\"], function (", i(2, "#dependencies2", {key = "i2"}), t") {", nl(),
-		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
-		t"});", nl()
-	}),
-	s({trig = "defn", descr = "(defn)", priority = -1000, trigEngine = te("w")}, {
-		t"define(\"", i(1, "#name", {key = "i1"}), t"\", [\"", i(2, "#dependencies1", {key = "i2"}), t"\"], function (", i(3, "#dependencies2", {key = "i3"}), t") {", nl(),
-		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
-		t"});", nl()
-	}),
-	s({trig = "reqjs", descr = "(reqjs)", priority = -1000, trigEngine = te("w")}, {
-		t"require([\"", i(1, "#dependencies1", {key = "i1"}), t"\"], function (", i(2, "#dependencies2", {key = "i2"}), t") {", nl(),
-		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
-		t"});"
-	}),
-	s({trig = "ist", descr = "(ist)", priority = -1000, trigEngine = te("w")}, {
-		t"import { createStore } from \'redux\';"
-	}),
-	s({trig = "con", descr = "(con)", priority = -1000, trigEngine = te("w")}, {
-		t"connect(", i(1, "mapStateToProps", {key = "i1"}), t", ", i(2, "mapDispatchToProps", {key = "i2"}), t")(<", i(3, "VISUAL", {key = "i3"}), t"/>);"
-	}),
-	s({trig = "act", descr = "(act)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "actionName", {key = "i1"}), t" = (", i(2, "arg", {key = "i2"}), t") => {", nl(),
-		t"\treturn {", nl(),
-		t"\t\ttype: ", i(3, "VISUAL", {key = "i3"}), t",", nl(),
-		t"\t\t", cp(2), nl(),
-		t"\t};", nl(),
-		t"};"
-	}),
-	s({trig = "rdc", descr = "(rdc)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "reducerName", {key = "i1"}), t" = (state={}, action) => {", nl(),
-		t"\tswitch(action.type) {", nl(),
-		t"\t\tcase ", i(1, "action", {key = "i1"}), t":", nl(),
-		t"\t\t\treturn {", nl(),
-		t"\t\t\t\t...state,", nl(),
-		t"\t\t\t\t", i(2, "", {key = "i2"}), nl(),
-		t"\t\t\t};", nl(),
-		t"\t\tdefault:", nl(),
-		t"\t\t\treturn state;", nl(),
-		t"\t};", nl(),
-		t"};"
-	}),
-	s({trig = "mstp", descr = "(mstp)", priority = -1000, trigEngine = te("w")}, {
-		t"const mapStateToProps = (state) => {", nl(),
-		t"\treturn {", nl(),
-		t"\t\t", i(1, "propName", {key = "i1"}), t": state.", cp(1), t",", nl(),
-		t"\t};", nl(),
-		t"};"
-	}),
-	s({trig = "mdtp", descr = "(mdtp)", priority = -1000, trigEngine = te("w")}, {
-		t"const mapDispatchToProps = (dispatch) => {", nl(),
-		t"\treturn {", nl(),
-		t"\t\t", i(1, "propName", {key = "i1"}), t": () => {", nl(),
-		t"\t\t\tdispatch(", i(2, "actionName", {key = "i2"}), t"());", nl(),
-		t"\t\t},", nl(),
-		t"\t};", nl(),
-		t"};"
-	}),
-	s({trig = "proto", descr = "(proto) \"Prototype (proto)\"", priority = -50, trigEngine = te("")}, {
-		i(1, "class_name", {key = "i1"}), t".prototype.", i(2, "method_name", {key = "i2"}), t" = function", f(function(args, snip) return c_py({"javascript", 66}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[66]) end, ae(am[66])), t"(", i(3, "first_argument", {key = "i3"}), t") {", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}", f(function(args, snip) return c_py({"javascript", 66}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[66]) end, ae(am[66])), nl()
-	}),
-	s({trig = "fun", descr = "(fun) \"function (named)\"", priority = -50, trigEngine = te("b")}, {
-		t"function ", i(1, "function_name", {key = "i1"}), f(function(args, snip) return c_py({"javascript", 67}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[67]) end, ae(am[67])), t"(", i(2, "argument", {key = "i2"}), t") {", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "asf", descr = "(asf) \"async function\"", priority = -1000, trigEngine = te("w")}, {
-		t"async function ", i(1, "function_name", {key = "i1"}), t"(", i(2, "", {key = "i2"}), t") {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "anf", descr = "(anf) \"function (anonymous)\"", priority = -50, trigEngine = te("i")}, {
-		t"function", f(function(args, snip) return c_py({"javascript", 69}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[69]) end, ae(am[69])), t"(", i(1, "", {key = "i1"}), t") {", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "vaf", descr = "(vaf)", priority = -1000, trigEngine = te("w")}, {
-		t"var ", i(1, "function_name", {key = "i1"}), t" = function(", i(2, "", {key = "i2"}), t") {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"};"
-	}),
-	s({trig = "vf", descr = "(vf) \"function (assigned to var)\"", priority = -50, trigEngine = te("")}, {
-		i(1, "var ", {key = "i1"}), i(2, "function_name", {key = "i2"}), t" = function ", cp(2), f(function(args, snip) return c_py({"javascript", 71}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[71]) end, ae(am[71])), t"(", i(3, "", {key = "i3"}), t") {", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}", f(function(args, snip) return c_py({"javascript", 71}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[71]) end, ae(am[71]))
-	}),
-	s({trig = "(f", descr = "((f)", priority = -1000, trigEngine = te("w")}, {
-		t"(function(", i(1, "", {key = "i1"}), t") {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}(", i(2, "", {key = "i2"}), t"));"
-	}),
-	s({trig = ";fe", descr = "(;fe) \"Minify safe iife\"", priority = -50, trigEngine = te("")}, {
-		t";(function", f(function(args, snip) return c_py({"javascript", 73}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[73]) end, ae(am[73])), t"(", i(1, "", {key = "i1"}), t") {", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}(", i(2, "", {key = "i2"}), t"))"
-	}),
-	s({trig = "sdf", descr = "(sdf)", priority = -1000, trigEngine = te("w")}, {
-		t"var ", i(1, "function_name", {key = "i1"}), t" = function (", i(2, "argument", {key = "i2"}), t") {", nl(),
-		t"\t", i(3, "", {key = "i3"}), nl(),
-		nl(),
-		t"\t", cp(1), t" = function (", cp(2), t") {", nl(),
-		t"\t\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i0"}) }) end), nl(),
-		t"\t};", nl(),
-		t"};"
-	}),
-	s({trig = "if", descr = "(if) \"if (condition) { ... }\"", priority = -50, trigEngine = te("")}, {
-		t"if", f(function(args, snip) return c_py({"javascript", 75}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[75]) end, ae(am[75])), t"(", i(1, "true", {key = "i1"}), t") {", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "ife", descr = "(ife) \"if (condition) { ... } else { ... }\"", priority = -50, trigEngine = te("")}, {
-		t"if", f(function(args, snip) return c_py({"javascript", 76}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[76]) end, ae(am[76])), t"(", i(1, "true", {key = "i1"}), t") {", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}", f(function(args, snip) return c_py({"javascript", 76}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[76]) end, ae(am[76])), t"else", f(function(args, snip) return c_py({"javascript", 76}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[76]) end, ae(am[76])), t"{", nl(),
-		t"\t", i(2, "", {key = "i2"}), nl(),
-		t"}"
-	}),
-	s({trig = "ter", descr = "(ter) Ternary: `condition ? true : false`", priority = -1000, trigEngine = te("w")}, {
-		i(1, "", {key = "i1"}), t" ? ", i(2, "", {key = "i2"}), t": ", i(0, "", {key = "i0"})
-	}),
-	s({trig = "switch", descr = "(switch)", priority = -50, trigEngine = te("")}, {
-		t"switch", f(function(args, snip) return c_py({"javascript", 78}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[78]) end, ae(am[78])), t"(", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(1, "expression", {key = "i1"}), t") {", nl(),
-		t"\tcase \'", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(3, "case", {key = "i3"}), t"\':", nl(),
-		t"\t\t", i(4, "", {key = "i4"}), nl(),
-		t"\t\tbreak", f(function(args, snip) return c_py({"javascript", 78}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[78]) end, ae(am[78])), nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"\tdefault:", nl(),
-		t"\t\t", i(2, "", {key = "i2"}), nl(),
-		t"}"
-	}),
-	s({trig = "case", descr = "(case) \"case \'xyz\': ... break\"", priority = -50, trigEngine = te("")}, {
-		t"case", f(function(args, snip) return c_py({"javascript", 79}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[79]) end, ae(am[79])), t"\'", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(1, "case", {key = "i1"}), t"\':", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"\tbreak", f(function(args, snip) return c_py({"javascript", 79}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[79]) end, ae(am[79]))
-	}),
-	s({trig = "try", descr = "(try) \"try { ... } catch(e) { ... }\"", priority = -1000, trigEngine = te("w")}, {
-		t"try {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"} catch (", i(1, "e", {key = "i1"}), t") {", nl(),
-		t"\t", i(2, "/* handle error */", {key = "i2"}), nl(),
-		t"}"
-	}),
-	s({trig = "tryf", descr = "(tryf) \"try { ... } catch(e) { ... } finally { ... }\"", priority = -1000, trigEngine = te("w")}, {
-		t"try {", nl(),
-		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"} catch (", i(1, "e", {key = "i1"}), t") {", nl(),
-		t"\t", i(2, "/* handle error */", {key = "i2"}), nl(),
-		t"} finally {", nl(),
-		t"\t", i(3, "/* be executed regardless of the try / catch result*/", {key = "i3"}), nl(),
-		t"}"
-	}),
-	s({trig = "terr", descr = "(terr)", priority = -1000, trigEngine = te("w")}, {
-		t"throw new Error(\'", i(1, "error message", {key = "i1"}), t"\')"
-	}),
-	s({trig = "ret", descr = "(ret) \"Return statement\"", priority = -50, trigEngine = te("")}, {
-		t"return ", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), f(function(args, snip) return c_py({"javascript", 83}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[83]) end, ae(am[83]))
-	}),
-	s({trig = "for", descr = "(for) \"for (...) {...}\"", priority = -1000, trigEngine = te("w")}, {
-		t"for (let ", i(1, "i", {key = "i1"}), t" = 0, ", i(2, "len", {key = "i2"}), t" = ", i(3, "Things.length", {key = "i3"}), t"; ", cp(1), t" < ", cp(2), t"; ", cp(1), t"++) {", nl(),
-		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "forr", descr = "(forr) \"reversed for (...) {...}\"", priority = -1000, trigEngine = te("w")}, {
-		t"for (let ", i(2, "i", {key = "i2"}), t" = ", i(1, "Things.length", {key = "i1"}), t" - 1; ", cp(2), t" >= 0; ", cp(2), t"--) {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "wh", descr = "(wh) \"(condition) { ... }\"", priority = -1000, trigEngine = te("w")}, {
-		t"while (", i(1, "true", {key = "i1"}), t") {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "wht", descr = "(wht) \"(true) { ... }\"", priority = -1000, trigEngine = te("w")}, {
-		t"while (true) {", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "do", descr = "(do) \"do { ... } while (condition)\"", priority = -50, trigEngine = te("")}, {
-		t"do", f(function(args, snip) return c_py({"javascript", 88}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[88]) end, ae(am[88])), t"{", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}", f(function(args, snip) return c_py({"javascript", 88}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[88]) end, ae(am[88])), t"while", f(function(args, snip) return c_py({"javascript", 88}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[88]) end, ae(am[88])), t"(", i(1, "/* condition */", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 88}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[88]) end, ae(am[88]))
-	}),
-	s({trig = "fori", descr = "(fori)", priority = -1000, trigEngine = te("w")}, {
-		t"for (let ", i(1, "prop", {key = "i1"}), t" in ", i(2, "object", {key = "i2"}), t") {", nl(),
-		t"\t", d(3, function(args) return sn(nil, {cp(2), t"[", cp(1), t"]"}) end, {}, {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = ":f", descr = "(:f) \"Object Method\"", priority = -50, trigEngine = te("")}, {
-		i(1, "method_name", {key = "i1"}), t": function", f(function(args, snip) return c_py({"javascript", 90}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[90]) end, ae(am[90])), t"(", i(2, "attribute", {key = "i3"}), t") {", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}", i(3, ",", {key = "i10"})
-	}),
-	s({trig = "has", descr = "(has)", priority = -1000, trigEngine = te("w")}, {
-		t"hasOwnProperty(", i(0, "", {key = "i0"}), t")"
-	}),
-	s({trig = "sing", descr = "(sing)", priority = -1000, trigEngine = te("w")}, {
-		t"function ", i(1, "Singleton", {key = "i1"}), t" (", i(2, "argument", {key = "i2"}), t") {", nl(),
-		t"\t// the cached instance", nl(),
-		t"\tvar instance;", nl(),
-		nl(),
-		t"\t// rewrite the constructor", nl(),
-		t"\t", cp(1), t" = function ", cp(1), t"(", cp(2), t") {", nl(),
-		t"\t\treturn instance;", nl(),
-		t"\t};", nl(),
-		nl(),
-		t"\t// carry over the prototype properties", nl(),
-		t"\t", cp(1), t".prototype = this;", nl(),
-		nl(),
-		t"\t// the instance", nl(),
-		t"\tinstance = new ", cp(1), t"();", nl(),
-		nl(),
-		t"\t// reset the constructor pointer", nl(),
-		t"\tinstance.constructor = ", cp(1), t";", nl(),
-		nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		nl(),
-		t"\treturn instance;", nl(),
-		t"}"
-	}),
-	s({trig = "obj", descr = "(obj)", priority = -1000, trigEngine = te("w")}, {
-		t"function object(o) {", nl(),
-		t"\tfunction F() {}", nl(),
-		t"\tF.prototype = o;", nl(),
-		t"\treturn new F();", nl(),
-		t"}"
-	}),
-	s({trig = "props", descr = "(props)", priority = -1000, trigEngine = te("w")}, {
-		t"var ", i(1, "my_object", {key = "i1"}), t" = Object.defineProperties(", nl(),
-		t"\t", i(2, "new Object()", {key = "i2"}), t",", nl(),
-		t"\t{", nl(),
-		t"\t\t", i(3, "property", {key = "i3"}), t" : {", nl(),
-		t"\t\t\tget : function ", cp(1), t"_", cp(3), t"_getter() {", nl(),
-		t"\t\t\t\t// getter code", nl(),
-		t"\t\t\t},", nl(),
-		t"\t\t\tset : function ", cp(1), t"_", cp(3), t"_setter(value) {", nl(),
-		t"\t\t\t\t// setter code", nl(),
-		t"\t\t\t},", nl(),
-		t"\t\t\tvalue        : ", i(4, "value", {key = "i4"}), t",", nl(),
-		t"\t\t\twriteable    : ", i(5, "boolean", {key = "i5"}), t",", nl(),
-		t"\t\t\tenumerable   : ", i(6, "boolean", {key = "i6"}), t",", nl(),
-		t"\t\t\tconfigurable : ", i(0, "boolean", {key = "i0"}), nl(),
-		t"\t\t}", nl(),
-		t"\t}", nl(),
-		t");"
-	}),
-	s({trig = "prop", descr = "(prop)", priority = -1000, trigEngine = te("w")}, c(1, {
-		{
-			t"Object.defineProperty(", nl(),
-			t"\t", i(1, "object", {key = "i1"}), t",", nl(),
-			t"\t\'", i(2, "property", {key = "i2"}), t"\',", nl(),
-			t"\t{", nl(),
-			t"\t\tget : function ", cp(1), t"_", cp(2), t"_getter() {", nl(),
-			t"\t\t\t// getter code", nl(),
-			t"\t\t},", nl(),
-			t"\t\tset : function ", cp(1), t"_", cp(2), t"_setter(value) {", nl(),
-			t"\t\t\t// setter code", nl(),
-			t"\t\t},", nl(),
-			t"\t\tvalue        : ", i(3, "value", {key = "i3"}), t",", nl(),
-			t"\t\twriteable    : ", i(4, "boolean", {key = "i4"}), t",", nl(),
-			t"\t\tenumerable   : ", i(5, "boolean", {key = "i5"}), t",", nl(),
-			t"\t\tconfigurable : ", i(0, "boolean", {key = "i0"}), nl(),
-			t"\t}", nl(),
-			t");"
-		},
-		{
-			i(1, "obj", {key = "i1"}), t".prop(\'", i(2, "property name", {key = "i2"}), t"\')"
-		},
-	})),
-	s({trig = "/**", descr = "(/**)", priority = -1000, trigEngine = te("w")}, {
-		t"/**", nl(),
-		t" * ", i(0, "description", {key = "i0"}), nl(),
-		t" *", nl(),
-		t" */"
-	}),
-	s({trig = "@par", descr = "(@par)", priority = -1000, trigEngine = te("w")}, {
-		t"@param {", i(1, "type", {key = "i1"}), t"} ", i(2, "name", {key = "i2"}), t" ", i(0, "description", {key = "i0"})
-	}),
-	s({trig = "@ret", descr = "(@ret)", priority = -1000, trigEngine = te("w")}, {
-		t"@return {", i(1, "type", {key = "i1"}), t"} ", i(0, "description", {key = "i0"})
-	}),
-	s({trig = "jsonp", descr = "(jsonp)", priority = -1000, trigEngine = te("w")}, {
-		t"JSON.parse(", i(0, "jstr", {key = "i0"}), t");"
-	}),
-	s({trig = "jsons", descr = "(jsons)", priority = -1000, trigEngine = te("w")}, {
-		t"JSON.stringify(", i(0, "object", {key = "i0"}), t");"
-	}),
-	s({trig = "get", descr = "(get) \"Get Elements\"", priority = -50, trigEngine = te("")}, {
-		t"getElement", tr(1, "(T)|(C)|.*", "(?1:s)(?2:s)"), t"By", i(1, "T", {key = "i1"}), tr(1, "(T)|(I)|(C).*", "(?1:agName)(?2:d)(?3:lassName)"), t"(\'", i(2, "", {key = "i2"}), t"\')"
-	}),
-	s({trig = "gett", descr = "(gett)", priority = -1000, trigEngine = te("w")}, {
-		t"getElementBy", i(1, "Id", {key = "i1"}), t"(\'", i(0, "", {key = "i0"}), t"\')"
-	}),
-	s({trig = "by.", descr = "(by.)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "document", {key = "i1"}), t".getElementsByClassName(\'", i(0, "class", {key = "i0"}), t"\')"
-	}),
-	s({trig = "by#", descr = "(by#)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "document", {key = "i1"}), t".getElementById(\'", i(0, "element ID", {key = "i0"}), t"\')"
-	}),
-	s({trig = "qs", descr = "(qs)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "document", {key = "i1"}), t".querySelector(\'", i(0, "CSS selector", {key = "i0"}), t"\')"
-	}),
-	s({trig = "qsa", descr = "(qsa)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "document", {key = "i1"}), t".querySelectorAll(\'", i(0, "CSS selector", {key = "i0"}), t"\')"
-	}),
-	s({trig = "de", descr = "(de)", priority = -50, trigEngine = te("")}, {
-		t"debugger", f(function(args, snip) return c_py({"javascript", 108}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[108]) end, ae(am[108]))
-	}),
-	s({trig = "cl", descr = "(cl) \"console.log\"", priority = -50, trigEngine = te("")}, {
-		t"console.log(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 109}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[109]) end, ae(am[109]))
-	}),
-	s({trig = "cd", descr = "(cd) \"console.debug\"", priority = -50, trigEngine = te("")}, {
-		t"console.debug(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 110}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[110]) end, ae(am[110]))
-	}),
-	s({trig = "ce", descr = "(ce) \"console.error\"", priority = -50, trigEngine = te("")}, {
-		t"console.error(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 111}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[111]) end, ae(am[111]))
-	}),
-	s({trig = "cw", descr = "(cw) \"console.warn\"", priority = -50, trigEngine = te("")}, {
-		t"console.warn(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 112}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[112]) end, ae(am[112]))
-	}),
-	s({trig = "ci", descr = "(ci) \"console.info\"", priority = -50, trigEngine = te("")}, {
-		t"console.info(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 113}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[113]) end, ae(am[113]))
-	}),
-	s({trig = "ct", descr = "(ct) \"console.trace\"", priority = -50, trigEngine = te("")}, {
-		t"console.trace(", i(0, "label", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 114}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[114]) end, ae(am[114]))
-	}),
-	s({trig = "ctime", descr = "(ctime) \"console.time ... console.timeEnd\"", priority = -50, trigEngine = te("")}, {
-		t"console.time(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 115}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[115]) end, ae(am[115])), nl(),
-		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
-		t"console.timeEnd(\"", cp(1), t"\")", f(function(args, snip) return c_py({"javascript", 115}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[115]) end, ae(am[115]))
-	}),
-	s({trig = "ctimestamp", descr = "(ctimestamp) \"console.timeStamp\"", priority = -50, trigEngine = te("")}, {
-		t"console.timeStamp(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 116}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[116]) end, ae(am[116]))
-	}),
-	s({trig = "ca", descr = "(ca) \"console.assert\"", priority = -50, trigEngine = te("")}, {
-		t"console.assert(", i(1, "expression", {key = "i1"}), t", ", i(0, "obj", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 117}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[117]) end, ae(am[117]))
-	}),
-	s({trig = "cclear", descr = "(cclear) \"console.clear\"", priority = -50, trigEngine = te("")}, {
-		t"console.clear()", f(function(args, snip) return c_py({"javascript", 118}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[118]) end, ae(am[118]))
-	}),
-	s({trig = "cdir", descr = "(cdir) \"console.dir\"", priority = -50, trigEngine = te("")}, {
-		t"console.dir(", i(0, "obj", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 119}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[119]) end, ae(am[119]))
-	}),
-	s({trig = "cdirx", descr = "(cdirx) \"console.dirxml\"", priority = -50, trigEngine = te("")}, {
-		t"console.dirxml(", i(1, "object", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 120}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[120]) end, ae(am[120]))
-	}),
-	s({trig = "cgroup", descr = "(cgroup) \"console.group\"", priority = -50, trigEngine = te("")}, {
-		t"console.group(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 121}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[121]) end, ae(am[121])), nl(),
-		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
-		t"console.groupEnd()", f(function(args, snip) return c_py({"javascript", 121}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[121]) end, ae(am[121]))
-	}),
-	s({trig = "cgroupc", descr = "(cgroupc) \"console.groupCollapsed\"", priority = -50, trigEngine = te("")}, {
-		t"console.groupCollapsed(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 122}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[122]) end, ae(am[122])), nl(),
-		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
-		t"console.groupEnd()", f(function(args, snip) return c_py({"javascript", 122}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[122]) end, ae(am[122]))
-	}),
-	s({trig = "cprof", descr = "(cprof) \"console.profile\"", priority = -50, trigEngine = te("")}, {
-		t"console.profile(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 123}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[123]) end, ae(am[123])), nl(),
-		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
-		t"console.profileEnd()", f(function(args, snip) return c_py({"javascript", 123}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[123]) end, ae(am[123]))
-	}),
-	s({trig = "ctable", descr = "(ctable) \"console.table\"", priority = -50, trigEngine = te("")}, {
-		t"console.table(", d(1, function(args) return sn(nil, {t"\"", i(1, "value", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 124}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[124]) end, ae(am[124]))
-	}),
-	s({trig = "clstr", descr = "(clstr) \"console.log stringified\"", priority = -50, trigEngine = te("")}, {
-		t"console.log(JSON.stringify(", i(0, "", {key = "i0"}), t", null, 2))", f(function(args, snip) return c_py({"javascript", 125}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[125]) end, ae(am[125]))
-	}),
-	s({trig = "us", descr = "(us)", priority = -50, trigEngine = te("")}, {
-		t"\'use strict\'", f(function(args, snip) return c_py({"javascript", 126}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[126]) end, ae(am[126]))
-	}),
-	s({trig = "timeout", descr = "(timeout) \"setTimeout function\"", priority = -50, trigEngine = te("")}, {
-		t"setTimeout(function", f(function(args, snip) return c_py({"javascript", 127}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[127]) end, ae(am[127])), t"() {", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}", d(2, function(args) return sn(nil, {t".bind(", i(1, "this", {key = "i3"}), t")"}) end, {}, {key = "i2"}), t", ", i(1, "10", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 127}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[127]) end, ae(am[127]))
-	}),
-	s({trig = "const", descr = "(const)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "", {key = "i1"}), t" = ", i(0, "", {key = "i0"}), t";"
-	}),
-	s({trig = "constn", descr = "(constn)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "", {key = "i1"}), t" = new ", i(0, "", {key = "i0"}), t";"
-	}),
-	s({trig = "let", descr = "(let)", priority = -1000, trigEngine = te("w")}, {
-		t"let ", i(1, "", {key = "i1"}), t" = ", i(0, "", {key = "i0"}), t";"
-	}),
-	s({trig = "im", descr = "(im) \"import xyz from \'xyz\'\"", priority = -1000, trigEngine = te("w")}, {
-		t"import ", i(1, "", {key = "i1"}), t" from \'", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\';"
-	}),
-	s({trig = "imas", descr = "(imas) \"import * as xyz from \'xyz\'\"", priority = -1000, trigEngine = te("w")}, {
-		t"import * as ", i(1, "", {key = "i1"}), t" from \'", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\';"
-	}),
-	s({trig = "imm", descr = "(imm) \"import { member } from \'xyz\'\"", priority = -1000, trigEngine = te("w")}, {
-		t"import { ", i(1, "", {key = "i1"}), t" } from \'", i(2, "", {key = "i2"}), t"\';"
-	}),
-	s({trig = "cla", descr = "(cla)", priority = -1000, trigEngine = te("w")}, {
-		t"class ", i(1, "", {key = "i1"}), t" {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "clax", descr = "(clax)", priority = -1000, trigEngine = te("w")}, {
-		t"class ", i(1, "", {key = "i1"}), t" extends ", i(2, "", {key = "i2"}), t" {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "clac", descr = "(clac)", priority = -1000, trigEngine = te("w")}, {
-		t"class ", i(1, "", {key = "i1"}), t" {", nl(),
-		t"\tconstructor(", i(2, "", {key = "i2"}), t") {", nl(),
-		t"\t\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i0"}) }) end), nl(),
-		t"\t}", nl(),
-		t"}"
-	}),
-	s({trig = "foro", descr = "(foro) \"for (const prop of object}) { ... }\"", priority = -1000, trigEngine = te("w")}, {
-		t"for (const ", i(1, "prop", {key = "i1"}), t" of ", i(2, "object", {key = "i2"}), t") {", nl(),
-		t"\t", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "forl", descr = "(forl) \"for (let prop of object}) { ... }\"", priority = -1000, trigEngine = te("w")}, {
-		t"for (let ", i(1, "prop", {key = "i1"}), t" of ", i(2, "object", {key = "i2"}), t") {", nl(),
-		t"\t", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "fun*", descr = "(fun*)", priority = -1000, trigEngine = te("w")}, {
-		t"function* ", i(1, "function_name", {key = "i1"}), t"(", i(2, "", {key = "i2"}), t") {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "c=>", descr = "(c=>)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "function_name", {key = "i1"}), t" = (", i(2, "", {key = "i2"}), t") => {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "ca=>", descr = "(ca=>)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "function_name", {key = "i1"}), t" = async (", i(2, "", {key = "i2"}), t") => {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "caf", descr = "(caf)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "function_name", {key = "i1"}), t" = (", i(2, "", {key = "i2"}), t") => {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "casf", descr = "(casf)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "function_name", {key = "i1"}), t" = async (", i(2, "", {key = "i2"}), t") => {", nl(),
-		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "=>", descr = "(=>)", priority = -1000, trigEngine = te("w")}, {
-		t"(", i(1, "", {key = "i1"}), t") => {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "af", descr = "(af) \"() =>\"", priority = -1000, trigEngine = te("w")}, {
-		t"(", i(1, "", {key = "i1"}), t") => ", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
-	}),
-	s({trig = "afb", descr = "(afb) \"() => {}\"", priority = -1000, trigEngine = te("w")}, {
-		t"(", i(1, "", {key = "i1"}), t") => {", nl(),
-		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"}"
-	}),
-	s({trig = "sym", descr = "(sym)", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "", {key = "i1"}), t" = Symbol(\'", i(0, "", {key = "i0"}), t"\');"
-	}),
-	s({trig = "ed", descr = "(ed)", priority = -1000, trigEngine = te("w")}, {
-		t"export default ", i(0, "", {key = "i0"})
-	}),
-	s({trig = "${", descr = "(${)", priority = -1000, trigEngine = te("w")}, {
-		t"${", i(1, "", {key = "i1"}), t"}", i(0, "", {key = "i0"})
-	}),
-	s({trig = "as", descr = "(as) \"async\"", priority = -1000, trigEngine = te("w")}, {
-		t"async ", i(0, "", {key = "i0"})
-	}),
-	s({trig = "aw", descr = "(aw) \"await\"", priority = -1000, trigEngine = te("w")}, {
-		t"await ", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
-	}),
 	s({trig = "add", descr = "(add)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "obj", {key = "i1"}), t".add(\'", i(2, "selector expression", {key = "i2"}), t"\')"
 	}),
@@ -1521,6 +784,9 @@ ls.add_snippets("javascript", {
 		t"\t", i(0, "// event handler", {key = "i0"}), nl(),
 		t"});"
 	}),
+	s({trig = "get", descr = "(get) \"Get Elements\"", priority = -50, trigEngine = te("")}, {
+		t"getElement", tr(1, "(T)|(C)|.*", "(?1:s)(?2:s)"), t"By", i(1, "T", {key = "i1"}), tr(1, "(T)|(I)|(C).*", "(?1:agName)(?2:d)(?3:lassName)"), t"(\'", i(2, "", {key = "i2"}), t"\')"
+	}),
 	s({trig = "getjson", descr = "(getjson)", priority = -1000, trigEngine = te("w")}, {
 		t"$.getJSON(\'", i(1, "mydomain.com/url", {key = "i1"}), t"\',", nl(),
 		t"\t", i(2, "{ param1: value1 },", {key = "i2"}), nl(),
@@ -1710,6 +976,18 @@ ls.add_snippets("javascript", {
 	s({trig = "offsetp", descr = "(offsetp)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "obj", {key = "i1"}), t".offsetParent()"
 	}),
+	s({trig = "on", descr = "(on)", priority = -1000, trigEngine = te("w")}, c(1, {
+		{
+			i(1, "obj", {key = "i1"}), t".on(\'", i(2, "events", {key = "i2"}), t"\', \'", i(3, "selector expression", {key = "i3"}), t"\', function (", i(4, "e", {key = "i4"}), t") {", nl(),
+			t"\t", i(0, "// event handler", {key = "i0"}), nl(),
+			t"});"
+		},
+		{
+			t"on(\'", i(1, "event_name", {key = "i1"}), t"\', function(", i(2, "stream", {key = "i2"}), t") {", nl(),
+			t"  ", i(3, "", {key = "i3"}), nl(),
+			t"});"
+		},
+	})),
 	s({trig = "one", descr = "(one)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "obj", {key = "i1"}), t".one(\'", i(2, "event name", {key = "i2"}), t"\', function (", i(3, "e", {key = "i3"}), t") {", nl(),
 		t"\t", i(0, "// event handler", {key = "i0"}), nl(),
@@ -1760,6 +1038,29 @@ ls.add_snippets("javascript", {
 	s({trig = "promise", descr = "(promise)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "obj", {key = "i1"}), t".promise(", i(2, "\'fx\'", {key = "i2"}), t", ", i(3, "target", {key = "i3"}), t")"
 	}),
+	s({trig = "prop", descr = "(prop)", priority = -1000, trigEngine = te("w")}, c(1, {
+		{
+			i(1, "obj", {key = "i1"}), t".prop(\'", i(2, "property name", {key = "i2"}), t"\')"
+		},
+		{
+			t"Object.defineProperty(", nl(),
+			t"\t", i(1, "object", {key = "i1"}), t",", nl(),
+			t"\t\'", i(2, "property", {key = "i2"}), t"\',", nl(),
+			t"\t{", nl(),
+			t"\t\tget : function ", cp(1), t"_", cp(2), t"_getter() {", nl(),
+			t"\t\t\t// getter code", nl(),
+			t"\t\t},", nl(),
+			t"\t\tset : function ", cp(1), t"_", cp(2), t"_setter(value) {", nl(),
+			t"\t\t\t// setter code", nl(),
+			t"\t\t},", nl(),
+			t"\t\tvalue        : ", i(3, "value", {key = "i3"}), t",", nl(),
+			t"\t\twriteable    : ", i(4, "boolean", {key = "i4"}), t",", nl(),
+			t"\t\tenumerable   : ", i(5, "boolean", {key = "i5"}), t",", nl(),
+			t"\t\tconfigurable : ", i(0, "boolean", {key = "i0"}), nl(),
+			t"\t}", nl(),
+			t");"
+		},
+	})),
 	s({trig = "proxy", descr = "(proxy)", priority = -1000, trigEngine = te("w")}, {
 		t"$.proxy(", i(1, "function", {key = "i1"}), t", ", i(2, "this", {key = "i2"}), t")"
 	}),
@@ -1938,11 +1239,694 @@ ls.add_snippets("javascript", {
 	s({trig = "wrap", descr = "(wrap)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "obj", {key = "i1"}), t".wrap(\'", i(2, "&lt;div class=\"extra-wrapper\"&gt;&lt;/div&gt;", {key = "i2"}), t"\')"
 	}),
-	s({trig = "pr", descr = "(pr) \"Print\"", priority = 0, trigEngine = te("i")}, {
-		t"console.log(", i(0, "", {key = "i0"}), t");"
+	s({trig = "ir", descr = "(ir) import React", priority = -1000, trigEngine = te("w")}, {
+		t"import React from \'react\';", nl()
+	}),
+	s({trig = "irc", descr = "(irc) import React and Component", priority = -1000, trigEngine = te("w")}, {
+		t"import React, { Component } from \'react\';", nl()
+	}),
+	s({trig = "irh", descr = "(irh) import React hooks", priority = -1000, trigEngine = te("w")}, {
+		t"import { use", i(1, "", {key = "i1"}), t" } from \'react\';", nl()
+	}),
+	s({trig = "ird", descr = "(ird) import ReactDOM", priority = -1000, trigEngine = te("w")}, {
+		t"import ReactDOM from \'react-dom\';", nl()
+	}),
+	s({trig = "irp", descr = "(irp) import PropTypes", priority = -1000, trigEngine = te("w")}, {
+		t"import PropTypes from \'prop-types\';", nl()
+	}),
+	s({trig = "cdm", descr = "(cdm) componentDidMount", priority = -1000, trigEngine = te("w")}, {
+		t"componentDidMount() {", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"};", nl()
+	}),
+	s({trig = "cdup", descr = "(cdup) componentDidUpdate", priority = -1000, trigEngine = te("w")}, {
+		t"componentDidUpdate(prevProps, prevState) {", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"};", nl()
+	}),
+	s({trig = "cwm", descr = "(cwm) componentWillMount", priority = -1000, trigEngine = te("w")}, {
+		t"componentWillMount() {", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"};", nl()
+	}),
+	s({trig = "cwr", descr = "(cwr) componentWillReceiveProps", priority = -1000, trigEngine = te("w")}, {
+		t"componentWillReceiveProps(nextProps) {", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"};", nl()
+	}),
+	s({trig = "cwun", descr = "(cwun) componentWillUnmount", priority = -1000, trigEngine = te("w")}, {
+		t"componentWillUnmount() {", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"};", nl()
+	}),
+	s({trig = "cwu", descr = "(cwu) componentWillUpdate", priority = -1000, trigEngine = te("w")}, {
+		t"componentWillUpdate(nextProps, nextState) {", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"};", nl()
+	}),
+	s({trig = "scu", descr = "(scu) shouldComponentUpdate", priority = -1000, trigEngine = te("w")}, {
+		t"shouldComponentUpdate(nextProps, nextState) {", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"}", nl()
+	}),
+	s({trig = "spt", descr = "(spt) static propTypes", priority = -1000, trigEngine = te("w")}, {
+		t"static propTypes = {", nl(),
+		t"\t", i(1, "", {key = "i1"}), t": PropTypes.", i(2, "", {key = "i2"}), nl(),
+		t"};", nl()
+	}),
+	s({trig = "pt", descr = "(pt) propTypes", priority = -1000, trigEngine = te("w")}, {
+		i(1, "", {key = "i1"}), t".propTypes = {", nl(),
+		t"\t", i(2, "", {key = "i2"}), t": PropTypes.", cp(2), nl(),
+		t"};", nl()
+	}),
+	s({trig = "sdp", descr = "(sdp) static defaultProps", priority = -1000, trigEngine = te("w")}, {
+		t"static defaultProps = {", nl(),
+		t"\t", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), t"\t", nl(),
+		t"};", nl()
+	}),
+	s({trig = "dp", descr = "(dp) defaultProps", priority = -1000, trigEngine = te("w")}, {
+		i(1, "", {key = "i1"}), t".defaultProps = {", nl(),
+		t"\t", i(2, "", {key = "i2"}), t": ", i(3, "", {key = "i3"}), nl(),
+		t"};", nl()
+	}),
+	s({trig = "pp", descr = "(pp) props", priority = -1000, trigEngine = te("w")}, {
+		t"props.", i(1, "", {key = "i1"}), t";", nl()
+	}),
+	s({trig = "tp", descr = "(tp) this props", priority = -1000, trigEngine = te("w")}, {
+		t"this.props.", i(1, "", {key = "i1"}), t";", nl()
+	}),
+	s({trig = "st", descr = "(st)", priority = -1000, trigEngine = te("w")}, {
+		t"state = {", nl(),
+		t"\t", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), t",", nl(),
+		t"};", nl()
+	}),
+	s({trig = "sst", descr = "(sst)", priority = -1000, trigEngine = te("w")}, {
+		t"this.setState({", nl(),
+		t"\t", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), nl(),
+		t"});", nl()
+	}),
+	s({trig = "tst", descr = "(tst)", priority = -1000, trigEngine = te("w")}, {
+		t"this.state.", i(1, "", {key = "i1"}), t";", nl()
+	}),
+	s({trig = "raf", descr = "(raf)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "ComponentName", {key = "i1"}), t" = (", i(2, "props", {key = "i2"}), t") => {", nl(),
+		t"\t", i(3, "state", {key = "i3"}), nl(),
+		nl(),
+		t"\treturn (", nl(),
+		t"\t\t<>", nl(),
+		t"\t\t\t", i(4, "", {key = "i4"}), nl(),
+		t"\t\t</>", nl(),
+		t"\t);", nl(),
+		t"};", nl()
+	}),
+	s({trig = "rcla", descr = "(rcla)", priority = -1000, trigEngine = te("w")}, {
+		t"class ", i(1, "ClassName", {key = "i1"}), t" extends Component {", nl(),
+		t"\trender() {", nl(),
+		t"\t\treturn (", nl(),
+		t"\t\t\t<>", nl(),
+		t"\t\t\t\t", i(2, "", {key = "i2"}), nl(),
+		t"\t\t\t</>", nl(),
+		t"\t\t);", nl(),
+		t"\t}", nl(),
+		t"}", nl()
+	}),
+	s({trig = "ercla", descr = "(ercla)", priority = -1000, trigEngine = te("w")}, {
+		t"export default class ", i(1, "ClassName", {key = "i1"}), t" extends Component {", nl(),
+		t"\trender() {", nl(),
+		t"\t\treturn (", nl(),
+		t"\t\t\t<>", nl(),
+		t"\t\t\t\t", i(2, "", {key = "i2"}), nl(),
+		t"\t\t\t</>", nl(),
+		t"\t\t);", nl(),
+		t"\t};", nl(),
+		t"};", nl()
+	}),
+	s({trig = "ctor", descr = "(ctor)", priority = -1000, trigEngine = te("w")}, {
+		t"constructor() {", nl(),
+		t"\tsuper();", nl(),
+		nl(),
+		t"\t", i(1, "state", {key = "i1"}), nl(),
+		t"}", nl()
+	}),
+	s({trig = "ren", descr = "(ren)", priority = -1000, trigEngine = te("w")}, {
+		t"render() {", nl(),
+		t"\treturn (", nl(),
+		t"\t\t<>", nl(),
+		t"\t\t\t", i(1, "", {key = "i2"}), nl(),
+		t"\t\t</>", nl(),
+		t"\t);", nl(),
+		t"}", nl()
+	}),
+	s({trig = "fup", descr = "(fup)", priority = -1000, trigEngine = te("w")}, {
+		t"forceUpdate(", i(1, "callback", {key = "i1"}), t");", nl()
+	}),
+	s({trig = "uses", descr = "(uses) useState", priority = -1000, trigEngine = te("w")}, {
+		t"const [", i(1, "state", {key = "i1"}), t", set", i(2, "", {key = "i2"}), t"] = useState(", i(3, "initialState", {key = "i3"}), t");", nl()
+	}),
+	s({trig = "usee", descr = "(usee) useEffect", priority = -1000, trigEngine = te("w")}, {
+		t"useEffect(() => {", nl(),
+		t"\t", i(1, "", {key = "i1"}), nl(),
+		t"});", nl()
+	}),
+	s({trig = "userd", descr = "(userd) useReducer", priority = -1000, trigEngine = te("w")}, {
+		t"const [", i(1, "state", {key = "i1"}), t", ", i(2, "dispatch", {key = "i2"}), t"] = useReducer(", i(3, "reducer", {key = "i3"}), t");", nl()
+	}),
+	s({trig = "userf", descr = "(userf) useRef", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "refContainer", {key = "i1"}), t" = useRef(", i(2, "initialValue", {key = "i2"}), t");", nl()
+	}),
+	s({trig = "usect", descr = "(usect) useContext", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "value", {key = "i1"}), t" = useContext(", i(2, "MyContext", {key = "i2"}), t");", nl()
+	}),
+	s({trig = "usecb", descr = "(usecb) useCallback", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "memoizedCallback", {key = "i1"}), t" = useCallback(", nl(),
+		t"() => {", nl(),
+		t"\t", i(2, "", {key = "i2"}), t"(", i(3, "", {key = "i3"}), t")", nl(),
+		t"},", nl(),
+		t"[", cp(3), t"]", nl(),
+		t");", nl()
+	}),
+	s({trig = "usem", descr = "(usem) useMemo", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "memoizedCallback", {key = "i1"}), t" = useMemo(() => ", i(2, "", {key = "i2"}), t"(", i(3, "", {key = "i3"}), t"), [", cp(3), t"]);", nl()
+	}),
+	s({trig = "usei", descr = "(usei) useImperativeHandle", priority = -1000, trigEngine = te("w")}, {
+		t"useImperativeHandle(", i(1, "ref", {key = "i1"}), t", ", i(2, "createHandle", {key = "i2"}), t");", nl()
+	}),
+	s({trig = "used", descr = "(used) useDebugValue", priority = -1000, trigEngine = te("w")}, {
+		t"useDebugValue(", i(1, "value", {key = "i1"}), t");", nl()
+	}),
+	s({trig = "rdr", descr = "(rdr) ReactDOM.render", priority = -1000, trigEngine = te("w")}, {
+		t"ReactDOM.render(", i(1, "", {key = "i1"}), t", ", i(2, "", {key = "i2"}), t");", nl()
+	}),
+	s({trig = "rdh", descr = "(rdh) ReactDOM.hydrate", priority = -1000, trigEngine = te("w")}, {
+		t"ReactDOM.hydrate(", i(1, "element", {key = "i1"}), t", ", i(2, "container", {key = "i2"}), t"[, ", i(3, "callback", {key = "i3"}), t"]);", nl()
+	}),
+	s({trig = "rdcp", descr = "(rdcp) ReactDOM.createPortal", priority = -1000, trigEngine = te("w")}, {
+		t"ReactDOM.createPortal(", i(1, "child", {key = "i1"}), t", ", i(2, "container", {key = "i2"}), t");"
+	}),
+	s({trig = "ist", descr = "(ist)", priority = -1000, trigEngine = te("w")}, {
+		t"import { createStore } from \'redux\';"
+	}),
+	s({trig = "con", descr = "(con)", priority = -1000, trigEngine = te("w")}, {
+		t"connect(", i(1, "mapStateToProps", {key = "i1"}), t", ", i(2, "mapDispatchToProps", {key = "i2"}), t")(<", i(3, "VISUAL", {key = "i3"}), t"/>);"
+	}),
+	s({trig = "act", descr = "(act)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "actionName", {key = "i1"}), t" = (", i(2, "arg", {key = "i2"}), t") => {", nl(),
+		t"\treturn {", nl(),
+		t"\t\ttype: ", i(3, "VISUAL", {key = "i3"}), t",", nl(),
+		t"\t\t", cp(2), nl(),
+		t"\t};", nl(),
+		t"};"
+	}),
+	s({trig = "rdc", descr = "(rdc)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "reducerName", {key = "i1"}), t" = (state={}, action) => {", nl(),
+		t"\tswitch(action.type) {", nl(),
+		t"\t\tcase ", i(1, "action", {key = "i1"}), t":", nl(),
+		t"\t\t\treturn {", nl(),
+		t"\t\t\t\t...state,", nl(),
+		t"\t\t\t\t", i(2, "", {key = "i2"}), nl(),
+		t"\t\t\t};", nl(),
+		t"\t\tdefault:", nl(),
+		t"\t\t\treturn state;", nl(),
+		t"\t};", nl(),
+		t"};"
+	}),
+	s({trig = "mstp", descr = "(mstp)", priority = -1000, trigEngine = te("w")}, {
+		t"const mapStateToProps = (state) => {", nl(),
+		t"\treturn {", nl(),
+		t"\t\t", i(1, "propName", {key = "i1"}), t": state.", cp(1), t",", nl(),
+		t"\t};", nl(),
+		t"};"
+	}),
+	s({trig = "mdtp", descr = "(mdtp)", priority = -1000, trigEngine = te("w")}, {
+		t"const mapDispatchToProps = (dispatch) => {", nl(),
+		t"\treturn {", nl(),
+		t"\t\t", i(1, "propName", {key = "i1"}), t": () => {", nl(),
+		t"\t\t\tdispatch(", i(2, "actionName", {key = "i2"}), t"());", nl(),
+		t"\t\t},", nl(),
+		t"\t};", nl(),
+		t"};"
+	}),
+	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
+		t"define([\"", i(1, "#dependencies1", {key = "i1"}), t"\"], function (", i(2, "#dependencies2", {key = "i2"}), t") {", nl(),
+		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
+		t"});", nl()
+	}),
+	s({trig = "defn", descr = "(defn)", priority = -1000, trigEngine = te("w")}, {
+		t"define(\"", i(1, "#name", {key = "i1"}), t"\", [\"", i(2, "#dependencies1", {key = "i2"}), t"\"], function (", i(3, "#dependencies2", {key = "i3"}), t") {", nl(),
+		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
+		t"});", nl()
+	}),
+	s({trig = "reqjs", descr = "(reqjs)", priority = -1000, trigEngine = te("w")}, {
+		t"require([\"", i(1, "#dependencies1", {key = "i1"}), t"\"], function (", i(2, "#dependencies2", {key = "i2"}), t") {", nl(),
+		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
+		t"});"
+	}),
+	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
+		t"#!/usr/bin/env node"
+	}),
+	s({trig = "ex", descr = "(ex)", priority = -1000, trigEngine = te("w")}, {
+		t"module.exports = ", i(1, "", {key = "i1"}), t";"
+	}),
+	s({trig = "re", descr = "(re)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "", {key = "i1"}), t" = require(\'", i(2, "module_name", {key = "i2"}), t"\');"
+	}),
+	s({trig = "emit", descr = "(emit)", priority = -1000, trigEngine = te("w")}, {
+		t"emit(\'", i(1, "event_name", {key = "i1"}), t"\', ", i(2, "args", {key = "i2"}), t");"
+	}),
+	s({trig = "once", descr = "(once)", priority = -1000, trigEngine = te("w")}, {
+		t"once(\'", i(1, "event_name", {key = "i1"}), t"\', function(", i(2, "stream", {key = "i2"}), t") {", nl(),
+		t"  ", i(3, "", {key = "i3"}), nl(),
+		t"});"
+	}),
+	s({trig = "http", descr = "(http)", priority = -1000, trigEngine = te("w")}, {
+		t"http.createServer(", i(1, "handler", {key = "i1"}), t").listen(", i(2, "port_number", {key = "i2"}), t");"
+	}),
+	s({trig = "net", descr = "(net)", priority = -1000, trigEngine = te("w")}, {
+		t"net.createServer(function(", i(1, "socket", {key = "i1"}), t"){", nl(),
+		t"\t", cp(1), t".on(\'data\', function(\'data\'){", nl(),
+		t"\t  ", i(2, "", {key = "i2"}), nl(),
+		t"\t]});", nl(),
+		t"\t", cp(1), t".on(\'end\', function(){", nl(),
+		t"\t  ", i(3, "", {key = "i3"}), nl(),
+		t"\t});", nl(),
+		t"}).listen(", i(4, "8124", {key = "i4"}), t");"
+	}),
+	s({trig = "pipe", descr = "(pipe)", priority = -1000, trigEngine = te("w")}, {
+		t"pipe(", i(1, "stream", {key = "i1"}), t")", i(2, "", {key = "i2"})
+	}),
+	s({trig = "eget", descr = "(eget)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "app", {key = "i1"}), t".get(\'", i(2, "route", {key = "i2"}), t"\', ", i(3, "handler", {key = "i3"}), t");"
+	}),
+	s({trig = "epost", descr = "(epost)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "app", {key = "i1"}), t".post(\'", i(2, "route", {key = "i2"}), t"\', ", i(3, "handler", {key = "i3"}), t");"
+	}),
+	s({trig = "eput", descr = "(eput)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "app", {key = "i1"}), t".put(\'", i(2, "route", {key = "i2"}), t"\', ", i(3, "handler", {key = "i3"}), t");"
+	}),
+	s({trig = "edel", descr = "(edel)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "app", {key = "i1"}), t".delete(\'", i(2, "route", {key = "i2"}), t"\', ", i(3, "handler", {key = "i3"}), t");"
+	}),
+	s({trig = "stdin", descr = "(stdin)", priority = -1000, trigEngine = te("w")}, {
+		t"process.stdin"
+	}),
+	s({trig = "stdout", descr = "(stdout)", priority = -1000, trigEngine = te("w")}, {
+		t"process.stdout"
+	}),
+	s({trig = "stderr", descr = "(stderr)", priority = -1000, trigEngine = te("w")}, {
+		t"process.stderr"
+	}),
+	s({trig = "proto", descr = "(proto) \"Prototype (proto)\"", priority = -50, trigEngine = te("")}, {
+		i(1, "class_name", {key = "i1"}), t".prototype.", i(2, "method_name", {key = "i2"}), t" = function", f(function(args, snip) return c_py({"javascript", 274}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[274]) end, ae(am[274])), t"(", i(3, "first_argument", {key = "i3"}), t") {", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"}", f(function(args, snip) return c_py({"javascript", 274}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[274]) end, ae(am[274])), nl()
+	}),
+	s({trig = "fun", descr = "(fun) \"function (named)\"", priority = -50, trigEngine = te("b")}, {
+		t"function ", i(1, "function_name", {key = "i1"}), f(function(args, snip) return c_py({"javascript", 275}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[275]) end, ae(am[275])), t"(", i(2, "argument", {key = "i2"}), t") {", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "asf", descr = "(asf) \"async function\"", priority = -1000, trigEngine = te("w")}, {
+		t"async function ", i(1, "function_name", {key = "i1"}), t"(", i(2, "", {key = "i2"}), t") {", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "anf", descr = "(anf) \"function (anonymous)\"", priority = -50, trigEngine = te("i")}, {
+		t"function", f(function(args, snip) return c_py({"javascript", 277}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[277]) end, ae(am[277])), t"(", i(1, "", {key = "i1"}), t") {", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "vaf", descr = "(vaf)", priority = -1000, trigEngine = te("w")}, {
+		t"var ", i(1, "function_name", {key = "i1"}), t" = function(", i(2, "", {key = "i2"}), t") {", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"};"
+	}),
+	s({trig = "vf", descr = "(vf) \"function (assigned to var)\"", priority = -50, trigEngine = te("")}, {
+		i(1, "var ", {key = "i1"}), i(2, "function_name", {key = "i2"}), t" = function ", cp(2), f(function(args, snip) return c_py({"javascript", 279}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[279]) end, ae(am[279])), t"(", i(3, "", {key = "i3"}), t") {", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"}", f(function(args, snip) return c_py({"javascript", 279}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[279]) end, ae(am[279]))
+	}),
+	s({trig = "(f", descr = "((f)", priority = -1000, trigEngine = te("w")}, {
+		t"(function(", i(1, "", {key = "i1"}), t") {", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}(", i(2, "", {key = "i2"}), t"));"
+	}),
+	s({trig = ";fe", descr = "(;fe) \"Minify safe iife\"", priority = -50, trigEngine = te("")}, {
+		t";(function", f(function(args, snip) return c_py({"javascript", 281}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[281]) end, ae(am[281])), t"(", i(1, "", {key = "i1"}), t") {", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"}(", i(2, "", {key = "i2"}), t"))"
+	}),
+	s({trig = "sdf", descr = "(sdf)", priority = -1000, trigEngine = te("w")}, {
+		t"var ", i(1, "function_name", {key = "i1"}), t" = function (", i(2, "argument", {key = "i2"}), t") {", nl(),
+		t"\t", i(3, "", {key = "i3"}), nl(),
+		nl(),
+		t"\t", cp(1), t" = function (", cp(2), t") {", nl(),
+		t"\t\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i0"}) }) end), nl(),
+		t"\t};", nl(),
+		t"};"
+	}),
+	s({trig = "if", descr = "(if) \"if (condition) { ... }\"", priority = -50, trigEngine = te("")}, {
+		t"if", f(function(args, snip) return c_py({"javascript", 283}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[283]) end, ae(am[283])), t"(", i(1, "true", {key = "i1"}), t") {", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "ife", descr = "(ife) \"if (condition) { ... } else { ... }\"", priority = -50, trigEngine = te("")}, {
+		t"if", f(function(args, snip) return c_py({"javascript", 284}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[284]) end, ae(am[284])), t"(", i(1, "true", {key = "i1"}), t") {", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"}", f(function(args, snip) return c_py({"javascript", 284}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[284]) end, ae(am[284])), t"else", f(function(args, snip) return c_py({"javascript", 284}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[284]) end, ae(am[284])), t"{", nl(),
+		t"\t", i(2, "", {key = "i2"}), nl(),
+		t"}"
+	}),
+	s({trig = "ter", descr = "(ter) Ternary: `condition ? true : false`", priority = -1000, trigEngine = te("w")}, {
+		i(1, "", {key = "i1"}), t" ? ", i(2, "", {key = "i2"}), t": ", i(0, "", {key = "i0"})
+	}),
+	s({trig = "switch", descr = "(switch)", priority = -50, trigEngine = te("")}, {
+		t"switch", f(function(args, snip) return c_py({"javascript", 286}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[286]) end, ae(am[286])), t"(", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(1, "expression", {key = "i1"}), t") {", nl(),
+		t"\tcase \'", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(3, "case", {key = "i3"}), t"\':", nl(),
+		t"\t\t", i(4, "", {key = "i4"}), nl(),
+		t"\t\tbreak", f(function(args, snip) return c_py({"javascript", 286}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[286]) end, ae(am[286])), nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"\tdefault:", nl(),
+		t"\t\t", i(2, "", {key = "i2"}), nl(),
+		t"}"
+	}),
+	s({trig = "case", descr = "(case) \"case \'xyz\': ... break\"", priority = -50, trigEngine = te("")}, {
+		t"case", f(function(args, snip) return c_py({"javascript", 287}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[287]) end, ae(am[287])), t"\'", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(1, "case", {key = "i1"}), t"\':", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"\tbreak", f(function(args, snip) return c_py({"javascript", 287}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[287]) end, ae(am[287]))
+	}),
+	s({trig = "try", descr = "(try) \"try { ... } catch(e) { ... }\"", priority = -1000, trigEngine = te("w")}, {
+		t"try {", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"} catch (", i(1, "e", {key = "i1"}), t") {", nl(),
+		t"\t", i(2, "/* handle error */", {key = "i2"}), nl(),
+		t"}"
+	}),
+	s({trig = "tryf", descr = "(tryf) \"try { ... } catch(e) { ... } finally { ... }\"", priority = -1000, trigEngine = te("w")}, {
+		t"try {", nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"} catch (", i(1, "e", {key = "i1"}), t") {", nl(),
+		t"\t", i(2, "/* handle error */", {key = "i2"}), nl(),
+		t"} finally {", nl(),
+		t"\t", i(3, "/* be executed regardless of the try / catch result*/", {key = "i3"}), nl(),
+		t"}"
+	}),
+	s({trig = "terr", descr = "(terr)", priority = -1000, trigEngine = te("w")}, {
+		t"throw new Error(\'", i(1, "error message", {key = "i1"}), t"\')"
+	}),
+	s({trig = "ret", descr = "(ret) \"Return statement\"", priority = -50, trigEngine = te("")}, {
+		t"return ", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), f(function(args, snip) return c_py({"javascript", 291}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[291]) end, ae(am[291]))
+	}),
+	s({trig = "for", descr = "(for) \"for (...) {...}\"", priority = -1000, trigEngine = te("w")}, {
+		t"for (let ", i(1, "i", {key = "i1"}), t" = 0, ", i(2, "len", {key = "i2"}), t" = ", i(3, "Things.length", {key = "i3"}), t"; ", cp(1), t" < ", cp(2), t"; ", cp(1), t"++) {", nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "forr", descr = "(forr) \"reversed for (...) {...}\"", priority = -1000, trigEngine = te("w")}, {
+		t"for (let ", i(2, "i", {key = "i2"}), t" = ", i(1, "Things.length", {key = "i1"}), t" - 1; ", cp(2), t" >= 0; ", cp(2), t"--) {", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "wh", descr = "(wh) \"(condition) { ... }\"", priority = -1000, trigEngine = te("w")}, {
+		t"while (", i(1, "true", {key = "i1"}), t") {", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "wht", descr = "(wht) \"(true) { ... }\"", priority = -1000, trigEngine = te("w")}, {
+		t"while (true) {", nl(),
+		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "do", descr = "(do) \"do { ... } while (condition)\"", priority = -50, trigEngine = te("")}, {
+		t"do", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[296]) end, ae(am[296])), t"{", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"}", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[296]) end, ae(am[296])), t"while", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[296]) end, ae(am[296])), t"(", i(1, "/* condition */", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[296]) end, ae(am[296]))
+	}),
+	s({trig = "fori", descr = "(fori)", priority = -1000, trigEngine = te("w")}, {
+		t"for (let ", i(1, "prop", {key = "i1"}), t" in ", i(2, "object", {key = "i2"}), t") {", nl(),
+		t"\t", d(3, function(args) return sn(nil, {cp(2), t"[", cp(1), t"]"}) end, {}, {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = ":f", descr = "(:f) \"Object Method\"", priority = -50, trigEngine = te("")}, {
+		i(1, "method_name", {key = "i1"}), t": function", f(function(args, snip) return c_py({"javascript", 298}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[298]) end, ae(am[298])), t"(", i(2, "attribute", {key = "i3"}), t") {", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"}", i(3, ",", {key = "i10"})
+	}),
+	s({trig = "has", descr = "(has)", priority = -1000, trigEngine = te("w")}, {
+		t"hasOwnProperty(", i(0, "", {key = "i0"}), t")"
+	}),
+	s({trig = "sing", descr = "(sing)", priority = -1000, trigEngine = te("w")}, {
+		t"function ", i(1, "Singleton", {key = "i1"}), t" (", i(2, "argument", {key = "i2"}), t") {", nl(),
+		t"\t// the cached instance", nl(),
+		t"\tvar instance;", nl(),
+		nl(),
+		t"\t// rewrite the constructor", nl(),
+		t"\t", cp(1), t" = function ", cp(1), t"(", cp(2), t") {", nl(),
+		t"\t\treturn instance;", nl(),
+		t"\t};", nl(),
+		nl(),
+		t"\t// carry over the prototype properties", nl(),
+		t"\t", cp(1), t".prototype = this;", nl(),
+		nl(),
+		t"\t// the instance", nl(),
+		t"\tinstance = new ", cp(1), t"();", nl(),
+		nl(),
+		t"\t// reset the constructor pointer", nl(),
+		t"\tinstance.constructor = ", cp(1), t";", nl(),
+		nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		nl(),
+		t"\treturn instance;", nl(),
+		t"}"
+	}),
+	s({trig = "obj", descr = "(obj)", priority = -1000, trigEngine = te("w")}, {
+		t"function object(o) {", nl(),
+		t"\tfunction F() {}", nl(),
+		t"\tF.prototype = o;", nl(),
+		t"\treturn new F();", nl(),
+		t"}"
+	}),
+	s({trig = "props", descr = "(props)", priority = -1000, trigEngine = te("w")}, {
+		t"var ", i(1, "my_object", {key = "i1"}), t" = Object.defineProperties(", nl(),
+		t"\t", i(2, "new Object()", {key = "i2"}), t",", nl(),
+		t"\t{", nl(),
+		t"\t\t", i(3, "property", {key = "i3"}), t" : {", nl(),
+		t"\t\t\tget : function ", cp(1), t"_", cp(3), t"_getter() {", nl(),
+		t"\t\t\t\t// getter code", nl(),
+		t"\t\t\t},", nl(),
+		t"\t\t\tset : function ", cp(1), t"_", cp(3), t"_setter(value) {", nl(),
+		t"\t\t\t\t// setter code", nl(),
+		t"\t\t\t},", nl(),
+		t"\t\t\tvalue        : ", i(4, "value", {key = "i4"}), t",", nl(),
+		t"\t\t\twriteable    : ", i(5, "boolean", {key = "i5"}), t",", nl(),
+		t"\t\t\tenumerable   : ", i(6, "boolean", {key = "i6"}), t",", nl(),
+		t"\t\t\tconfigurable : ", i(0, "boolean", {key = "i0"}), nl(),
+		t"\t\t}", nl(),
+		t"\t}", nl(),
+		t");"
+	}),
+	s({trig = "/**", descr = "(/**)", priority = -1000, trigEngine = te("w")}, {
+		t"/**", nl(),
+		t" * ", i(0, "description", {key = "i0"}), nl(),
+		t" *", nl(),
+		t" */"
+	}),
+	s({trig = "@par", descr = "(@par)", priority = -1000, trigEngine = te("w")}, {
+		t"@param {", i(1, "type", {key = "i1"}), t"} ", i(2, "name", {key = "i2"}), t" ", i(0, "description", {key = "i0"})
+	}),
+	s({trig = "@ret", descr = "(@ret)", priority = -1000, trigEngine = te("w")}, {
+		t"@return {", i(1, "type", {key = "i1"}), t"} ", i(0, "description", {key = "i0"})
+	}),
+	s({trig = "jsonp", descr = "(jsonp)", priority = -1000, trigEngine = te("w")}, {
+		t"JSON.parse(", i(0, "jstr", {key = "i0"}), t");"
+	}),
+	s({trig = "jsons", descr = "(jsons)", priority = -1000, trigEngine = te("w")}, {
+		t"JSON.stringify(", i(0, "object", {key = "i0"}), t");"
+	}),
+	s({trig = "gett", descr = "(gett)", priority = -1000, trigEngine = te("w")}, {
+		t"getElementBy", i(1, "Id", {key = "i1"}), t"(\'", i(0, "", {key = "i0"}), t"\')"
+	}),
+	s({trig = "by.", descr = "(by.)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "document", {key = "i1"}), t".getElementsByClassName(\'", i(0, "class", {key = "i0"}), t"\')"
+	}),
+	s({trig = "by#", descr = "(by#)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "document", {key = "i1"}), t".getElementById(\'", i(0, "element ID", {key = "i0"}), t"\')"
+	}),
+	s({trig = "qs", descr = "(qs)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "document", {key = "i1"}), t".querySelector(\'", i(0, "CSS selector", {key = "i0"}), t"\')"
+	}),
+	s({trig = "qsa", descr = "(qsa)", priority = -1000, trigEngine = te("w")}, {
+		i(1, "document", {key = "i1"}), t".querySelectorAll(\'", i(0, "CSS selector", {key = "i0"}), t"\')"
+	}),
+	s({trig = "de", descr = "(de)", priority = -50, trigEngine = te("")}, {
+		t"debugger", f(function(args, snip) return c_py({"javascript", 313}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[313]) end, ae(am[313]))
+	}),
+	s({trig = "cl", descr = "(cl) \"console.log\"", priority = -50, trigEngine = te("")}, {
+		t"console.log(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 314}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[314]) end, ae(am[314]))
+	}),
+	s({trig = "cd", descr = "(cd) \"console.debug\"", priority = -50, trigEngine = te("")}, {
+		t"console.debug(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 315}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[315]) end, ae(am[315]))
+	}),
+	s({trig = "ce", descr = "(ce) \"console.error\"", priority = -50, trigEngine = te("")}, {
+		t"console.error(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 316}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[316]) end, ae(am[316]))
+	}),
+	s({trig = "cw", descr = "(cw) \"console.warn\"", priority = -50, trigEngine = te("")}, {
+		t"console.warn(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 317}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[317]) end, ae(am[317]))
+	}),
+	s({trig = "ci", descr = "(ci) \"console.info\"", priority = -50, trigEngine = te("")}, {
+		t"console.info(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 318}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[318]) end, ae(am[318]))
+	}),
+	s({trig = "ct", descr = "(ct) \"console.trace\"", priority = -50, trigEngine = te("")}, {
+		t"console.trace(", i(0, "label", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 319}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[319]) end, ae(am[319]))
+	}),
+	s({trig = "ctime", descr = "(ctime) \"console.time ... console.timeEnd\"", priority = -50, trigEngine = te("")}, {
+		t"console.time(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 320}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[320]) end, ae(am[320])), nl(),
+		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
+		t"console.timeEnd(\"", cp(1), t"\")", f(function(args, snip) return c_py({"javascript", 320}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[320]) end, ae(am[320]))
+	}),
+	s({trig = "ctimestamp", descr = "(ctimestamp) \"console.timeStamp\"", priority = -50, trigEngine = te("")}, {
+		t"console.timeStamp(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 321}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[321]) end, ae(am[321]))
+	}),
+	s({trig = "ca", descr = "(ca) \"console.assert\"", priority = -50, trigEngine = te("")}, {
+		t"console.assert(", i(1, "expression", {key = "i1"}), t", ", i(0, "obj", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 322}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[322]) end, ae(am[322]))
+	}),
+	s({trig = "cclear", descr = "(cclear) \"console.clear\"", priority = -50, trigEngine = te("")}, {
+		t"console.clear()", f(function(args, snip) return c_py({"javascript", 323}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[323]) end, ae(am[323]))
+	}),
+	s({trig = "cdir", descr = "(cdir) \"console.dir\"", priority = -50, trigEngine = te("")}, {
+		t"console.dir(", i(0, "obj", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 324}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[324]) end, ae(am[324]))
+	}),
+	s({trig = "cdirx", descr = "(cdirx) \"console.dirxml\"", priority = -50, trigEngine = te("")}, {
+		t"console.dirxml(", i(1, "object", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 325}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[325]) end, ae(am[325]))
+	}),
+	s({trig = "cgroup", descr = "(cgroup) \"console.group\"", priority = -50, trigEngine = te("")}, {
+		t"console.group(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 326}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[326]) end, ae(am[326])), nl(),
+		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
+		t"console.groupEnd()", f(function(args, snip) return c_py({"javascript", 326}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[326]) end, ae(am[326]))
+	}),
+	s({trig = "cgroupc", descr = "(cgroupc) \"console.groupCollapsed\"", priority = -50, trigEngine = te("")}, {
+		t"console.groupCollapsed(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 327}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[327]) end, ae(am[327])), nl(),
+		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
+		t"console.groupEnd()", f(function(args, snip) return c_py({"javascript", 327}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[327]) end, ae(am[327]))
+	}),
+	s({trig = "cprof", descr = "(cprof) \"console.profile\"", priority = -50, trigEngine = te("")}, {
+		t"console.profile(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 328}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[328]) end, ae(am[328])), nl(),
+		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
+		t"console.profileEnd()", f(function(args, snip) return c_py({"javascript", 328}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[328]) end, ae(am[328]))
+	}),
+	s({trig = "ctable", descr = "(ctable) \"console.table\"", priority = -50, trigEngine = te("")}, {
+		t"console.table(", d(1, function(args) return sn(nil, {t"\"", i(1, "value", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 329}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[329]) end, ae(am[329]))
+	}),
+	s({trig = "clstr", descr = "(clstr) \"console.log stringified\"", priority = -50, trigEngine = te("")}, {
+		t"console.log(JSON.stringify(", i(0, "", {key = "i0"}), t", null, 2))", f(function(args, snip) return c_py({"javascript", 330}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[330]) end, ae(am[330]))
+	}),
+	s({trig = "us", descr = "(us)", priority = -50, trigEngine = te("")}, {
+		t"\'use strict\'", f(function(args, snip) return c_py({"javascript", 331}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[331]) end, ae(am[331]))
+	}),
+	s({trig = "timeout", descr = "(timeout) \"setTimeout function\"", priority = -50, trigEngine = te("")}, {
+		t"setTimeout(function", f(function(args, snip) return c_py({"javascript", 332}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[332]) end, ae(am[332])), t"() {", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"}", d(2, function(args) return sn(nil, {t".bind(", i(1, "this", {key = "i3"}), t")"}) end, {}, {key = "i2"}), t", ", i(1, "10", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 332}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[332]) end, ae(am[332]))
+	}),
+	s({trig = "const", descr = "(const)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "", {key = "i1"}), t" = ", i(0, "", {key = "i0"}), t";"
+	}),
+	s({trig = "constn", descr = "(constn)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "", {key = "i1"}), t" = new ", i(0, "", {key = "i0"}), t";"
+	}),
+	s({trig = "let", descr = "(let)", priority = -1000, trigEngine = te("w")}, {
+		t"let ", i(1, "", {key = "i1"}), t" = ", i(0, "", {key = "i0"}), t";"
+	}),
+	s({trig = "im", descr = "(im) \"import xyz from \'xyz\'\"", priority = -1000, trigEngine = te("w")}, {
+		t"import ", i(1, "", {key = "i1"}), t" from \'", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\';"
+	}),
+	s({trig = "imas", descr = "(imas) \"import * as xyz from \'xyz\'\"", priority = -1000, trigEngine = te("w")}, {
+		t"import * as ", i(1, "", {key = "i1"}), t" from \'", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\';"
+	}),
+	s({trig = "imm", descr = "(imm) \"import { member } from \'xyz\'\"", priority = -1000, trigEngine = te("w")}, {
+		t"import { ", i(1, "", {key = "i1"}), t" } from \'", i(2, "", {key = "i2"}), t"\';"
+	}),
+	s({trig = "cla", descr = "(cla)", priority = -1000, trigEngine = te("w")}, {
+		t"class ", i(1, "", {key = "i1"}), t" {", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "clax", descr = "(clax)", priority = -1000, trigEngine = te("w")}, {
+		t"class ", i(1, "", {key = "i1"}), t" extends ", i(2, "", {key = "i2"}), t" {", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "clac", descr = "(clac)", priority = -1000, trigEngine = te("w")}, {
+		t"class ", i(1, "", {key = "i1"}), t" {", nl(),
+		t"\tconstructor(", i(2, "", {key = "i2"}), t") {", nl(),
+		t"\t\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t\t"), {key = "i0"}) }) end), nl(),
+		t"\t}", nl(),
+		t"}"
+	}),
+	s({trig = "foro", descr = "(foro) \"for (const prop of object}) { ... }\"", priority = -1000, trigEngine = te("w")}, {
+		t"for (const ", i(1, "prop", {key = "i1"}), t" of ", i(2, "object", {key = "i2"}), t") {", nl(),
+		t"\t", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "forl", descr = "(forl) \"for (let prop of object}) { ... }\"", priority = -1000, trigEngine = te("w")}, {
+		t"for (let ", i(1, "prop", {key = "i1"}), t" of ", i(2, "object", {key = "i2"}), t") {", nl(),
+		t"\t", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "fun*", descr = "(fun*)", priority = -1000, trigEngine = te("w")}, {
+		t"function* ", i(1, "function_name", {key = "i1"}), t"(", i(2, "", {key = "i2"}), t") {", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "c=>", descr = "(c=>)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "function_name", {key = "i1"}), t" = (", i(2, "", {key = "i2"}), t") => {", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "ca=>", descr = "(ca=>)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "function_name", {key = "i1"}), t" = async (", i(2, "", {key = "i2"}), t") => {", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "caf", descr = "(caf)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "function_name", {key = "i1"}), t" = (", i(2, "", {key = "i2"}), t") => {", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "casf", descr = "(casf)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "function_name", {key = "i1"}), t" = async (", i(2, "", {key = "i2"}), t") => {", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "=>", descr = "(=>)", priority = -1000, trigEngine = te("w")}, {
+		t"(", i(1, "", {key = "i1"}), t") => {", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "af", descr = "(af) \"() =>\"", priority = -1000, trigEngine = te("w")}, {
+		t"(", i(1, "", {key = "i1"}), t") => ", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
+	}),
+	s({trig = "afb", descr = "(afb) \"() => {}\"", priority = -1000, trigEngine = te("w")}, {
+		t"(", i(1, "", {key = "i1"}), t") => {", nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
+		t"}"
+	}),
+	s({trig = "sym", descr = "(sym)", priority = -1000, trigEngine = te("w")}, {
+		t"const ", i(1, "", {key = "i1"}), t" = Symbol(\'", i(0, "", {key = "i0"}), t"\');"
+	}),
+	s({trig = "ed", descr = "(ed)", priority = -1000, trigEngine = te("w")}, {
+		t"export default ", i(0, "", {key = "i0"})
+	}),
+	s({trig = "${", descr = "(${)", priority = -1000, trigEngine = te("w")}, {
+		t"${", i(1, "", {key = "i1"}), t"}", i(0, "", {key = "i0"})
+	}),
+	s({trig = "as", descr = "(as) \"async\"", priority = -1000, trigEngine = te("w")}, {
+		t"async ", i(0, "", {key = "i0"})
+	}),
+	s({trig = "aw", descr = "(aw) \"await\"", priority = -1000, trigEngine = te("w")}, {
+		t"await ", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "\'\':f", descr = "(\'\':f) \"object method string\"", priority = -50, trigEngine = te("")}, {
-		t"\'", d(1, function(args) return sn(nil, {i(1, "#thing", {key = "i2"}), t":", i(2, "click", {key = "i3"})}) end, {}, {key = "i1"}), t"\': function", f(function(args, snip) return c_py({"javascript", 358}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[358]) end, ae(am[358])), t"(element) {", nl(),
+		t"\'", d(1, function(args) return sn(nil, {i(1, "#thing", {key = "i2"}), t":", i(2, "click", {key = "i3"})}) end, {}, {key = "i1"}), t"\': function", f(function(args, snip) return c_py({"javascript", 357}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[357]) end, ae(am[357])), t"(element) {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}", i(2, ",", {key = "i10"})
 	}),
@@ -1953,13 +1937,13 @@ ls.add_snippets("javascript", {
 		i(1, "key", {key = "i1"}), t": ", d(2, function(args) return sn(nil, {t"\"", i(1, "value", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), i(3, ", ", {key = "i4"})
 	}),
 	s({trig = "iife", descr = "(iife) \"Immediately-Invoked Function Expression (iife)\"", priority = -50, trigEngine = te("")}, {
-		t"(function", f(function(args, snip) return c_py({"javascript", 361}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[361]) end, ae(am[361])), t"(", i(1, "window", {key = "i1"}), t") {", nl(),
+		t"(function", f(function(args, snip) return c_py({"javascript", 360}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[360]) end, ae(am[360])), t"(", i(1, "window", {key = "i1"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}(", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"))", f(function(args, snip) return c_py({"javascript", 361}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[361]) end, ae(am[361]))
+		t"}(", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"))", f(function(args, snip) return c_py({"javascript", 360}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[360]) end, ae(am[360]))
 	}),
 	s({trig = "fi", descr = "(fi) \"for prop in obj using hasOwnProperty\"", priority = -50, trigEngine = te("b")}, {
-		t"for", f(function(args, snip) return c_py({"javascript", 362}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[362]) end, ae(am[362])), t"(", i(1, "prop", {key = "i1"}), t" in ", i(2, "obj", {key = "i2"}), t"){", nl(),
-		t"\tif", f(function(args, snip) return c_py({"javascript", 362}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[362]) end, ae(am[362])), t"(", cp(2), t".hasOwnProperty(", cp(1), t")) {", nl(),
+		t"for", f(function(args, snip) return c_py({"javascript", 361}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[361]) end, ae(am[361])), t"(", i(1, "prop", {key = "i1"}), t" in ", i(2, "obj", {key = "i2"}), t"){", nl(),
+		t"\tif", f(function(args, snip) return c_py({"javascript", 361}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[361]) end, ae(am[361])), t"(", cp(2), t".hasOwnProperty(", cp(1), t")) {", nl(),
 		t"\t\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"\t}", nl(),
 		t"}"
@@ -1967,42 +1951,7 @@ ls.add_snippets("javascript", {
 	s({trig = "imp", descr = "(imp) \"import\"", priority = -50, trigEngine = te("")}, {
 		t"import ", i(2, "", {key = "i2"}), t" from ", i(1, "", {key = "i1"})
 	}),
-	s({trig = "rfc", descr = "(rfc) \"react functional component\"", priority = 0, trigEngine = te("b")}, {
-		t"import React, {useState} from \"react\"", nl(),
-		nl(),
-		t"function ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"javascript", 364}, "snip.rv = snip.basename", python_globals, args, snip, "", am[364])}, ""), {key = "i1"}) }) end), t"(", i(2, "", {key = "i2"}), t"){", nl(),
-		t"\treturn(", nl(),
-		t"\t\t<div>", nl(),
-		t"\t\t\t", i(3, "<p>Body</p>", {key = "i3"}), nl(),
-		t"\t\t</div>", nl(),
-		t"\t\t)", nl(),
-		t"}", nl(),
-		nl(),
-		t"export default ", i(4, "", {key = "i4"}), f(function(args, snip) return c_py({"javascript", 364}, "snip.rv = snip.basename", python_globals, args, snip, "", am[364]) end, ae(am[364]))
-	}),
-	s({trig = "useS", descr = "(useS) \"useState Hook\"", priority = 0, trigEngine = te("b")}, {
-		t"const [", i(1, "", {key = "i1"}), t", set", f(function(args, snip) return c_py({"javascript", 365}, "snip.rv=capitalize_first(t[1])", python_globals, args, snip, "", am[365]) end, ae(am[365])), t"] = useState(", d(2, function(args) return sn(nil, {t"\"", i(1, "", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), t")"
-	}),
-	s({trig = "useE", descr = "(useE) \"useEffect Hook\"", priority = 0, trigEngine = te("b")}, {
-		t"useEffect(() => {", nl(),
-		t"\t", d(1, function(args) return sn(nil, {i(1, "", {key = "i0"})}) end, {}, {key = "i1"}), nl(),
-		t"\t\t}", i(2, "", {key = "i2"}), t")"
-	}),
-	s({trig = "useC", descr = "(useC) \"useContext Hook\"", priority = 0, trigEngine = te("b")}, {
-		t"const ", i(1, "context", {key = "i1"}), t" = useContext(", i(2, "", {key = "i2"}), t")"
-	}),
-	s({trig = "useRe", descr = "(useRe) \"useReducer Hook\"", priority = 0, trigEngine = te("b")}, {
-		t"const [", i(2, "state", {key = "i3"}), t", ", i(3, "dispatch", {key = "i4"}), t"] = useReducer(", i(4, "reducer", {key = "i5"}), t", ", i(1, "initial_value", {key = "i2"}), t")"
-	}),
-	s({trig = "useCB", descr = "(useCB) \"useCallback(fn, inputs)\"", priority = 0, trigEngine = te("b")}, {
-		t"const ", i(1, "callback", {key = "i1"}), t" = useCallback((", i(2, "", {key = "i2"}), t")) => ", d(3, function(args) return sn(nil, {t"{", nl(),
-i(1, "", {key = "i4"}), t"\t${4}", nl()}) end, {}, {key = "i3"}), t", [", i(4, "", {key = "i5"}), t"])"
-	}),
-	s({trig = "useM", descr = "(useM) \"useMemo(fn, inputs)\"", priority = 0, trigEngine = te("b")}, {
-		t"const ", i(1, "memorized", {key = "i1"}), t" = useMemo(() => ", d(2, function(args) return sn(nil, {t"{", nl(),
-i(1, "", {key = "i3"}), t"\t${3}", nl()}) end, {}, {key = "i2"}), t", [", i(3, "", {key = "i4"}), t"])"
-	}),
-	s({trig = "useR", descr = "(useR) \"useRef(defaultValue)\"", priority = 0, trigEngine = te("b")}, {
-		t"const ", i(1, "ref", {key = "i1"}), t" = useRef(", i(2, "null", {key = "i2"}), t")"
+	s({trig = "pr", descr = "(pr) \"Print\"", priority = 0, trigEngine = te("i")}, {
+		t"console.log(", i(0, "", {key = "i0"}), t");"
 	}),
 })

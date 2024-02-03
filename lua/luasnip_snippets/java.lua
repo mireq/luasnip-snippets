@@ -41,7 +41,7 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- argument mapping: token index to placeholder number
+local am = { -- list of argument numbers
 	{0},
 	{0},
 	{0},
@@ -188,7 +188,7 @@ def nl(snip):
 		snip.rv += " "
 def getArgs(group):
 	import re
-	word = re.compile('[a-zA-Z0-9><.]+ \w+')
+	word = re.compile(r'[a-zA-Z0-9><.]+ \w+')
 	return [i.split(" ") for i in word.findall(group) ]
 
 def camel(word):

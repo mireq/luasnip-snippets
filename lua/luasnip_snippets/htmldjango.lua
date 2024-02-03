@@ -41,7 +41,7 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- argument mapping: token index to placeholder number
+local am = { -- list of argument numbers
 	{0, 1},
 	{1, 2},
 	{0, 1},
@@ -95,25 +95,25 @@ local am = { -- argument mapping: token index to placeholder number
 	{1},
 	{1},
 	{0, 1},
+	{1},
+	{1},
+	{1},
+	{1},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{1},
+	{},
+	{},
+	{1},
+	{0, 1},
 	{0, 1},
 	{0},
 	{0, 1, 2},
 	{0, 1},
 	{0},
-	{1},
-	{0, 1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{},
-	{},
-	{},
-	{},
-	{},
-	{1},
-	{},
-	{},
 	{1},
 }
 ls.add_snippets("htmldjango", {
@@ -296,6 +296,54 @@ ls.add_snippets("htmldjango", {
 	s({trig = "wordwrap", descr = "(wordwrap) \"\"", priority = -50, trigEngine = te("bi")}, {
 		t"wordwrap:", i(1, "", {key = "i1"})
 	}),
+	s({trig = "iif", descr = "(iif) \"Inline if\"", priority = 0, trigEngine = te("!i")}, {
+		t"{% if ", i(1, "", {key = "i1"}), t" %}", i(0, "", {key = "i0"}), t"{% endif %}"
+	}),
+	s({trig = "ielse", descr = "(ielse) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% else %}", i(1, "", {key = "i1"})
+	}),
+	s({trig = "else", descr = "(else) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% else %}", nl(),
+		t"\t", i(1, "", {key = "i1"})
+	}),
+	s({trig = "ielif", descr = "(ielif) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% elif %}", i(1, "", {key = "i1"})
+	}),
+	s({trig = "elif", descr = "(elif) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% elif %}", nl(),
+		t"\t", i(1, "", {key = "i1"})
+	}),
+	s({trig = "verbatim", descr = "(verbatim) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% verbatim %}", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
+		t"{% endverbatim %}"
+	}),
+	s({trig = "super", descr = "(super) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{{ block.super }}"
+	}),
+	s({trig = "staticu", descr = "(staticu) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{{ STATIC_URL }}"
+	}),
+	s({trig = "static", descr = "(static) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% static \"", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"\" %}"
+	}),
+	s({trig = "mediau", descr = "(mediau) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{{ MEDIA_URL }}"
+	}),
+	s({trig = "iblock", descr = "(iblock) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% block ", i(1, "blockname", {key = "i1"}), t" %}", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"{% endblock ", cp(1), t" %}"
+	}),
+	s({trig = "csrf", descr = "(csrf) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% csrf_token %}"
+	}),
+	s({trig = "blocktrans", descr = "(blocktrans) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% blocktrans %}", nl(),
+		t"    ", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
+		t"{% endblocktrans %}"
+	}),
+	s({trig = "lorem", descr = "(lorem) \"\"", priority = -50, trigEngine = te("bi")}, {
+		t"{% lorem ", i(1, "", {key = "i1"}), t" %}"
+	}),
 	s({trig = "html5", descr = "(html5) \"HTML5 Template\"", priority = 0, trigEngine = te("!")}, {
 		t"{% load staticfiles %}<!DOCTYPE html>", nl(),
 		t"<html>", nl(),
@@ -370,53 +418,5 @@ ls.add_snippets("htmldjango", {
 	}),
 	s({trig = "inc", descr = "(inc) \"\"", priority = 0, trigEngine = te("bi")}, {
 		t"{% include \"", i(1, "", {key = "i1"}), t"\" %}"
-	}),
-	s({trig = "iif", descr = "(iif) \"Inline if\"", priority = 0, trigEngine = te("!i")}, {
-		t"{% if ", i(1, "", {key = "i1"}), t" %}", i(0, "", {key = "i0"}), t"{% endif %}"
-	}),
-	s({trig = "ielse", descr = "(ielse) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% else %}", i(1, "", {key = "i1"})
-	}),
-	s({trig = "else", descr = "(else) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% else %}", nl(),
-		t"\t", i(1, "", {key = "i1"})
-	}),
-	s({trig = "ielif", descr = "(ielif) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% elif %}", i(1, "", {key = "i1"})
-	}),
-	s({trig = "elif", descr = "(elif) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% elif %}", nl(),
-		t"\t", i(1, "", {key = "i1"})
-	}),
-	s({trig = "verbatim", descr = "(verbatim) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% verbatim %}", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
-		t"{% endverbatim %}"
-	}),
-	s({trig = "super", descr = "(super) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{{ block.super }}"
-	}),
-	s({trig = "staticu", descr = "(staticu) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{{ STATIC_URL }}"
-	}),
-	s({trig = "static", descr = "(static) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% static \"", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"\" %}"
-	}),
-	s({trig = "mediau", descr = "(mediau) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{{ MEDIA_URL }}"
-	}),
-	s({trig = "iblock", descr = "(iblock) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% block ", i(1, "blockname", {key = "i1"}), t" %}", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t"{% endblock ", cp(1), t" %}"
-	}),
-	s({trig = "csrf", descr = "(csrf) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% csrf_token %}"
-	}),
-	s({trig = "blocktrans", descr = "(blocktrans) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% blocktrans %}", nl(),
-		t"    ", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
-		t"{% endblocktrans %}"
-	}),
-	s({trig = "lorem", descr = "(lorem) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% lorem ", i(1, "", {key = "i1"}), t" %}"
 	}),
 })

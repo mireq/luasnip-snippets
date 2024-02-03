@@ -41,7 +41,7 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- argument mapping: token index to placeholder number
+local am = { -- list of argument numbers
 	{1, 2},
 	{1},
 	{0, 1, 2},
@@ -143,7 +143,7 @@ ls.add_snippets("gitcommit", {
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "t", descr = "(t) \"Todo\"", priority = 0, trigEngine = te("")}, {
-		t"TODO: ", i(1, "What is it", {key = "i1"}), t" (", f(function(args, snip) return c_shell("date \"+%b %d %Y %a (%H:%M:%S)\"") end, {}), t", ", f(function(args, snip) return c_shell("echo $USER") end, {}), t")", nl(),
+		t"TODO: ", i(1, "What is it", {key = "i1"}), t" (", f(function(args, snip) return c_shell("date \"+%b %d %Y %a (%H:%M:%S)\"") end), t", ", f(function(args, snip) return c_shell("echo $USER") end), t")", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "cmt", descr = "(cmt) \"Commit Structure\"", snippetType = "autosnippet", priority = 0, trigEngine = te("bA")}, {

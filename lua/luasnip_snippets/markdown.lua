@@ -41,7 +41,7 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- argument mapping: token index to placeholder number
+local am = { -- list of argument numbers
 	{1, 2},
 	{1, 2},
 	{1, 2},
@@ -384,4 +384,3 @@ ls.add_snippets("markdown", {
 		t"  ", d(1, function(args) return sn(nil, {t"<summary>", i(1, "", {key = "i2"}), t"</summary>"}) end, {}, {key = "i1"}), i(0, "", {key = "i0"}), nl(),
 		t"</details>"
 	}),
-})

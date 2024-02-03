@@ -3,11 +3,11 @@ blade html
 coffee-jasmine coffee
 coffee-react coffee
 cpp c
-cuda cpp c
+cuda cpp
 eelixir html
 eruby html
 freemarker html
-heex html eelixir
+heex eelixir
 htmldjango html
 htmljinja jinja2 html
 jinja html
@@ -22,8 +22,8 @@ smarty javascript html css
 soy html
 svelte javascript html css
 systemverilog verilog
-typescript javascript javascript_react
-typescript_react javascript javascript_react typescript
-typescriptreact javascript typescript
+typescript javascript
+typescript_react typescript javascript_react
+typescriptreact typescript
 vue javascript html css
 xhtml html

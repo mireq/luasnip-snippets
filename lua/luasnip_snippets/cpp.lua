@@ -41,7 +41,7 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- argument mapping: token index to placeholder number
+local am = { -- list of argument numbers
 	{0},
 	{1},
 	{1},
@@ -103,14 +103,6 @@ local am = { -- argument mapping: token index to placeholder number
 	{0, 1, 2},
 	{0, 1, 2},
 	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1, 2, 3},
-	{0, 1, 2, 3},
 	{},
 	{0},
 	{0, 1, 2, 3, 4, 5, 6},
@@ -125,6 +117,14 @@ local am = { -- argument mapping: token index to placeholder number
 	{0, 1, 2, 3},
 	{0, 1, 2, 3},
 	{0, 1, 2, 3, 4},
+	{0, 1, 2},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1, 2, 3},
+	{0, 1, 2},
+	{0, 1, 2},
+	{1, 2, 3},
+	{0, 1, 2, 3},
 }
 
 local python_globals = {
@@ -403,6 +403,128 @@ ls.add_snippets("cpp", {
 	s({trig = "gteparins", descr = "(gteparins) \"GTest:instantiate parameterized test\"", priority = -1000, trigEngine = te("w")}, {
 		t"INSTANTIATE_TEST_SUITE_P(", i(1, "InstantiationName", {key = "i1"}), t", ", i(2, "SuiteName", {key = "i2"}), t", ", i(0, "", {key = "i0"}), t");"
 	}),
+	s({trig = "ponce", descr = "(ponce) \"#pragma once include guard\"", priority = -49, trigEngine = te("")}, {
+		t"#pragma once", nl()
+	}),
+	s({trig = "main", descr = "(main)", priority = -49, trigEngine = te("")}, {
+		t"int main(int argc, char *argv[])", nl(),
+		t"{", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"\treturn 0;", nl(),
+		t"}"
+	}),
+	s({trig = "forc", descr = "(forc) \"general for loop (for)\"", priority = -49, trigEngine = te("")}, {
+		t"for (", i(6, "auto", {key = "i6"}), t" ", i(1, "i", {key = "i1"}), t" = ", i(2, "v.begin()", {key = "i2"}), t"; ", f(function(args, snip) return c_py({"cpp", 64}, "import re; snip.rv = re.split(\"[^\\w]\",t[1])[-1]", python_globals, args, snip, "", am[64]) end, ae(am[64])), t" ", i(4, "!=", {key = "i4"}), t" ", d(3, function(args, snip) return sn(nil, { i(1, jt({c_py({"cpp", 64}, "m = re.search(r\'^(?:(.*)(\\.|->)begin\\(\\)|((?:std|boost)::)?begin\\((.*)\\))$\', t[2]); snip.rv = (((m.group(3) if m.group(3) else \"\") + \"end(\" + m.group(4) + \")\") if m.group(4) else (m.group(1) + m.group(2) + \"end()\")) if m else \"\"", python_globals, args, snip, "", am[64])}, ""), {key = "i3"}) }) end), t"; ", d(5, function(args, snip) return sn(nil, { i(1, jt({"++", c_py({"cpp", 64}, "snip.rv = t[1].split(\" \")[-1]", python_globals, args, snip, "", am[64])}, ""), {key = "i5"}) }) end), t") {", nl(),
+		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "beginend", descr = "(beginend) \"$1.begin(), $1.end() (beginend)\"", priority = -49, trigEngine = te("")}, {
+		i(1, "v", {key = "i1"}), tr(1, "^.*?(-)?(>)?$", "(?2::(?1:>:.))"), t"begin(), ", cp(1), tr(1, "^.*?(-)?(>)?$", "(?2::(?1:>:.))"), t"end()"
+	}),
+	s({trig = "nsa", descr = "(nsa) \"namespace alias\"", priority = -49, trigEngine = te("")}, {
+		t"namespace ", i(1, "alias", {key = "i1"}), t" = ", i(2, "namespace", {key = "i2"}), t";"
+	}),
+	s({trig = "using", descr = "(using) \"using directive/using declaration/type alias\"", priority = -49, trigEngine = te("")}, {
+		t"using ", i(1, "namespace", {key = "i1"}), f(function(args, snip) return c_py({"cpp", 67}, "snip.rv = \' \' if t[1] == \'namespace\' else \' = \' if t[1] != \'\' else \'\'", python_globals, args, snip, "", am[67]) end, ae(am[67])), i(2, "name", {key = "i2"}), t";"
+	}),
+	s({trig = "readfile", descr = "(readfile) \"read file (readF)\"", priority = -49, trigEngine = te("")}, {
+		t"std::vector<char> v;", nl(),
+		t"if (FILE *fp = fopen(", i(1, "\"filename\"", {key = "i1"}), t", \"r\"))", nl(),
+		t"{", nl(),
+		t"\tchar buf[1024];", nl(),
+		t"\twhile(size_t len = fread(buf, 1, sizeof(buf), fp))", nl(),
+		t"\t\tv.insert(v.end(), buf, buf + len);", nl(),
+		t"\tfclose(fp);", nl(),
+		t"}"
+	}),
+	s({trig = "tp", descr = "(tp) \"template <typename ..> (template)\"", priority = -49, trigEngine = te("")}, {
+		t"template <typename ", i(1, "_InputIter", {key = "i1"}), t">"
+	}),
+	s({trig = "cla", descr = "(cla) \"An entire .h generator\"", priority = -49, trigEngine = te("b")}, {
+		t"#ifndef ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("substitute(vim_snippets#Filename(\'$1_H\',\'ClassName\'),\'.*\',\'\\U&\\E\',\'\')")}, ""), {key = "i2"}) }) end), nl(),
+		t"#define ", cp(2), nl(),
+		nl(),
+		t"class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("substitute(substitute(vim_snippets#Filename(\'$1\',\'ClassName\'),\'^.\',\'\\u&\',\'\'), \'_\\(\\w\\)\', \'\\u\\1\', \'g\')")}, ""), {key = "i1"}) }) end), nl(),
+		t"{", nl(),
+		t"private:", nl(),
+		t"\t", i(3, "", {key = "i3"}), nl(),
+		nl(),
+		t"public:", nl(),
+		t"\t", cp(1), t"();", nl(),
+		t"\tvirtual ~", cp(1), t"();", nl(),
+		t"};", nl(),
+		nl(),
+		t"#endif /* ", cp(2), t" */"
+	}),
+	s({trig = "fnc", descr = "(fnc) \"Basic c++ doxygen function template\"", priority = -49, trigEngine = te("b")}, {
+		t"/**", nl(),
+		t"* @brief: ", i(4, "brief", {key = "i4"}), nl(),
+		t"*", nl(),
+		t"* @param: ", f(function(args, snip) return c_py({"cpp", 71}, "write_docstring_args(t[3],snip)", python_globals, args, snip, "", am[71]) end, ae(am[71])), nl(),
+		t"*", nl(),
+		t"* @return: ", f(function(args, snip) return c_py({"cpp", 71}, "snip.rv = t[1]", python_globals, args, snip, "", am[71]) end, ae(am[71])), nl(),
+		t"*/", nl(),
+		i(1, "ReturnType", {key = "i1"}), t" ", i(2, "FunctionName", {key = "i2"}), t"(", i(3, "param", {key = "i3"}), t")", nl(),
+		t"{", nl(),
+		t"\t", i(0, "FunctionBody", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "boost_test", descr = "(boost_test) \"Boost test module\"", priority = -49, trigEngine = te("b")}, {
+		t"#define BOOST_TEST_MODULE ", i(1, "TestModuleName", {key = "i1"}), nl(),
+		t"#include <boost/test/included/unit_test.hpp>", nl(),
+		nl(),
+		t"BOOST_AUTO_TEST_CASE(", i(2, "TestCaseName", {key = "i2"}), t")", nl(),
+		t"{", nl(),
+		t"\t", i(0, "TestDefinition", {key = "i0"}), nl(),
+		t"}", nl()
+	}),
+	s({trig = "boost_suite", descr = "(boost_suite) \"Boost test suite module\"", priority = -49, trigEngine = te("b")}, {
+		t"#define BOOST_TEST_MODULE ", i(1, "TestModuleName", {key = "i1"}), nl(),
+		t"#include <boost/test/included/unit_test.hpp>", nl(),
+		nl(),
+		t"BOOST_AUTO_TEST_SUITE(", i(2, "SuiteName", {key = "i2"}), t")", nl(),
+		nl(),
+		t"BOOST_AUTO_TEST_CASE(", i(3, "TestCaseName", {key = "i3"}), t")", nl(),
+		t"{", nl(),
+		t"\t", i(0, "TestDefinition", {key = "i0"}), nl(),
+		t"}", nl(),
+		nl(),
+		t"BOOST_AUTO_TEST_SUITE_END()", nl()
+	}),
+	s({trig = "boost_test_fixture", descr = "(boost_test_fixture) \"Boost test module with fixture\"", priority = -49, trigEngine = te("b")}, {
+		t"#define BOOST_TEST_MODULE ", i(1, "TestModuleName", {key = "i1"}), nl(),
+		t"#include <boost/test/included/unit_test.hpp>", nl(),
+		nl(),
+		t"struct ", i(2, "FixtureName", {key = "i2"}), t" {", nl(),
+		t"\t", cp(2), t"() {}", nl(),
+		t"\tvirtual ~", cp(2), t"() {}", nl(),
+		t"\t/* define members here */", nl(),
+		t"};", nl(),
+		nl(),
+		t"BOOST_FIXTURE_TEST_CASE(", i(3, "SuiteName", {key = "i3"}), t", ", cp(2), t")", nl(),
+		t"{", nl(),
+		t"\t", i(0, "TestDefinition", {key = "i0"}), nl(),
+		t"}", nl()
+	}),
+	s({trig = "boost_suite_fixture", descr = "(boost_suite_fixture) \"Boost test suite with fixture\"", priority = -49, trigEngine = te("b")}, {
+		t"#define BOOST_TEST_MODULE ", i(1, "TestModuleName", {key = "i1"}), nl(),
+		t"#include <boost/test/included/unit_test.hpp>", nl(),
+		nl(),
+		t"struct ", i(2, "FixtureName", {key = "i2"}), t" {", nl(),
+		t"\t", cp(2), t"() {}", nl(),
+		t"\tvirtual ~", cp(2), t"() {}", nl(),
+		t"\t/* define members here */", nl(),
+		t"};", nl(),
+		nl(),
+		t"BOOST_FIXTURE_TEST_SUITE(", i(3, "SuiteName", {key = "i3"}), t", ", cp(2), t")", nl(),
+		nl(),
+		t"BOOST_AUTO_TEST_CASE(", i(4, "TestCaseName", {key = "i4"}), t")", nl(),
+		t"{", nl(),
+		t"\t", i(0, "TestDefinition", {key = "i0"}), nl(),
+		t"}", nl(),
+		nl(),
+		t"BOOST_AUTO_TEST_SUITE_END()", nl()
+	}),
 	s({trig = "class", descr = "(class) \"class\"", priority = 0, trigEngine = te("")}, {
 		t"class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1\', \'class\')")}, ""), {key = "i1"}) }) end), i(2, "", {key = "i2"}), nl(),
 		t"{", nl(),
@@ -506,127 +628,5 @@ ls.add_snippets("cpp", {
 		t"\tm_", cp(3), t" = ", cp(3), t";", nl(),
 		t"}", nl(),
 		i(0, "", {key = "i0"})
-	}),
-	s({trig = "ponce", descr = "(ponce) \"#pragma once include guard\"", priority = -49, trigEngine = te("")}, {
-		t"#pragma once", nl()
-	}),
-	s({trig = "main", descr = "(main)", priority = -49, trigEngine = te("")}, {
-		t"int main(int argc, char *argv[])", nl(),
-		t"{", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"\treturn 0;", nl(),
-		t"}"
-	}),
-	s({trig = "forc", descr = "(forc) \"general for loop (for)\"", priority = -49, trigEngine = te("")}, {
-		t"for (", i(6, "auto", {key = "i6"}), t" ", i(1, "i", {key = "i1"}), t" = ", i(2, "v.begin()", {key = "i2"}), t"; ", f(function(args, snip) return c_py({"cpp", 72}, "import re; snip.rv = re.split(\"[^\\w]\",t[1])[-1]", python_globals, args, snip, "", am[72]) end, ae(am[72])), t" ", i(4, "!=", {key = "i4"}), t" ", d(3, function(args, snip) return sn(nil, { i(1, jt({c_py({"cpp", 72}, "m = re.search(r\'^(?:(.*)(\\.|->)begin\\(\\)|((?:std|boost)::)?begin\\((.*)\\))$\', t[2]); snip.rv = (((m.group(3) if m.group(3) else \"\") + \"end(\" + m.group(4) + \")\") if m.group(4) else (m.group(1) + m.group(2) + \"end()\")) if m else \"\"", python_globals, args, snip, "", am[72])}, ""), {key = "i3"}) }) end), t"; ", d(5, function(args, snip) return sn(nil, { i(1, jt({"++", c_py({"cpp", 72}, "snip.rv = t[1].split(\" \")[-1]", python_globals, args, snip, "", am[72])}, ""), {key = "i5"}) }) end), t") {", nl(),
-		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "beginend", descr = "(beginend) \"$1.begin(), $1.end() (beginend)\"", priority = -49, trigEngine = te("")}, {
-		i(1, "v", {key = "i1"}), tr(1, "^.*?(-)?(>)?$", "(?2::(?1:>:.))"), t"begin(), ", cp(1), tr(1, "^.*?(-)?(>)?$", "(?2::(?1:>:.))"), t"end()"
-	}),
-	s({trig = "nsa", descr = "(nsa) \"namespace alias\"", priority = -49, trigEngine = te("")}, {
-		t"namespace ", i(1, "alias", {key = "i1"}), t" = ", i(2, "namespace", {key = "i2"}), t";"
-	}),
-	s({trig = "using", descr = "(using) \"using directive/using declaration/type alias\"", priority = -49, trigEngine = te("")}, {
-		t"using ", i(1, "namespace", {key = "i1"}), f(function(args, snip) return c_py({"cpp", 75}, "snip.rv = \' \' if t[1] == \'namespace\' else \' = \' if t[1] != \'\' else \'\'", python_globals, args, snip, "", am[75]) end, ae(am[75])), i(2, "name", {key = "i2"}), t";"
-	}),
-	s({trig = "readfile", descr = "(readfile) \"read file (readF)\"", priority = -49, trigEngine = te("")}, {
-		t"std::vector<char> v;", nl(),
-		t"if (FILE *fp = fopen(", i(1, "\"filename\"", {key = "i1"}), t", \"r\"))", nl(),
-		t"{", nl(),
-		t"\tchar buf[1024];", nl(),
-		t"\twhile(size_t len = fread(buf, 1, sizeof(buf), fp))", nl(),
-		t"\t\tv.insert(v.end(), buf, buf + len);", nl(),
-		t"\tfclose(fp);", nl(),
-		t"}"
-	}),
-	s({trig = "tp", descr = "(tp) \"template <typename ..> (template)\"", priority = -49, trigEngine = te("")}, {
-		t"template <typename ", i(1, "_InputIter", {key = "i1"}), t">"
-	}),
-	s({trig = "cla", descr = "(cla) \"An entire .h generator\"", priority = -49, trigEngine = te("b")}, {
-		t"#ifndef ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("substitute(vim_snippets#Filename(\'$1_H\',\'ClassName\'),\'.*\',\'\\U&\\E\',\'\')")}, ""), {key = "i2"}) }) end), nl(),
-		t"#define ", cp(2), nl(),
-		nl(),
-		t"class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("substitute(substitute(vim_snippets#Filename(\'$1\',\'ClassName\'),\'^.\',\'\\u&\',\'\'), \'_\\(\\w\\)\', \'\\u\\1\', \'g\')")}, ""), {key = "i1"}) }) end), nl(),
-		t"{", nl(),
-		t"private:", nl(),
-		t"\t", i(3, "", {key = "i3"}), nl(),
-		nl(),
-		t"public:", nl(),
-		t"\t", cp(1), t"();", nl(),
-		t"\tvirtual ~", cp(1), t"();", nl(),
-		t"};", nl(),
-		nl(),
-		t"#endif /* ", cp(2), t" */"
-	}),
-	s({trig = "fnc", descr = "(fnc) \"Basic c++ doxygen function template\"", priority = -49, trigEngine = te("b")}, {
-		t"/**", nl(),
-		t"* @brief: ", i(4, "brief", {key = "i4"}), nl(),
-		t"*", nl(),
-		t"* @param: ", f(function(args, snip) return c_py({"cpp", 79}, "write_docstring_args(t[3],snip)", python_globals, args, snip, "", am[79]) end, ae(am[79])), nl(),
-		t"*", nl(),
-		t"* @return: ", f(function(args, snip) return c_py({"cpp", 79}, "snip.rv = t[1]", python_globals, args, snip, "", am[79]) end, ae(am[79])), nl(),
-		t"*/", nl(),
-		i(1, "ReturnType", {key = "i1"}), t" ", i(2, "FunctionName", {key = "i2"}), t"(", i(3, "param", {key = "i3"}), t")", nl(),
-		t"{", nl(),
-		t"\t", i(0, "FunctionBody", {key = "i0"}), nl(),
-		t"}"
-	}),
-	s({trig = "boost_test", descr = "(boost_test) \"Boost test module\"", priority = -49, trigEngine = te("b")}, {
-		t"#define BOOST_TEST_MODULE ", i(1, "TestModuleName", {key = "i1"}), nl(),
-		t"#include <boost/test/included/unit_test.hpp>", nl(),
-		nl(),
-		t"BOOST_AUTO_TEST_CASE(", i(2, "TestCaseName", {key = "i2"}), t")", nl(),
-		t"{", nl(),
-		t"\t", i(0, "TestDefinition", {key = "i0"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "boost_suite", descr = "(boost_suite) \"Boost test suite module\"", priority = -49, trigEngine = te("b")}, {
-		t"#define BOOST_TEST_MODULE ", i(1, "TestModuleName", {key = "i1"}), nl(),
-		t"#include <boost/test/included/unit_test.hpp>", nl(),
-		nl(),
-		t"BOOST_AUTO_TEST_SUITE(", i(2, "SuiteName", {key = "i2"}), t")", nl(),
-		nl(),
-		t"BOOST_AUTO_TEST_CASE(", i(3, "TestCaseName", {key = "i3"}), t")", nl(),
-		t"{", nl(),
-		t"\t", i(0, "TestDefinition", {key = "i0"}), nl(),
-		t"}", nl(),
-		nl(),
-		t"BOOST_AUTO_TEST_SUITE_END()", nl()
-	}),
-	s({trig = "boost_test_fixture", descr = "(boost_test_fixture) \"Boost test module with fixture\"", priority = -49, trigEngine = te("b")}, {
-		t"#define BOOST_TEST_MODULE ", i(1, "TestModuleName", {key = "i1"}), nl(),
-		t"#include <boost/test/included/unit_test.hpp>", nl(),
-		nl(),
-		t"struct ", i(2, "FixtureName", {key = "i2"}), t" {", nl(),
-		t"\t", cp(2), t"() {}", nl(),
-		t"\tvirtual ~", cp(2), t"() {}", nl(),
-		t"\t/* define members here */", nl(),
-		t"};", nl(),
-		nl(),
-		t"BOOST_FIXTURE_TEST_CASE(", i(3, "SuiteName", {key = "i3"}), t", ", cp(2), t")", nl(),
-		t"{", nl(),
-		t"\t", i(0, "TestDefinition", {key = "i0"}), nl(),
-		t"}", nl()
-	}),
-	s({trig = "boost_suite_fixture", descr = "(boost_suite_fixture) \"Boost test suite with fixture\"", priority = -49, trigEngine = te("b")}, {
-		t"#define BOOST_TEST_MODULE ", i(1, "TestModuleName", {key = "i1"}), nl(),
-		t"#include <boost/test/included/unit_test.hpp>", nl(),
-		nl(),
-		t"struct ", i(2, "FixtureName", {key = "i2"}), t" {", nl(),
-		t"\t", cp(2), t"() {}", nl(),
-		t"\tvirtual ~", cp(2), t"() {}", nl(),
-		t"\t/* define members here */", nl(),
-		t"};", nl(),
-		nl(),
-		t"BOOST_FIXTURE_TEST_SUITE(", i(3, "SuiteName", {key = "i3"}), t", ", cp(2), t")", nl(),
-		nl(),
-		t"BOOST_AUTO_TEST_CASE(", i(4, "TestCaseName", {key = "i4"}), t")", nl(),
-		t"{", nl(),
-		t"\t", i(0, "TestDefinition", {key = "i0"}), nl(),
-		t"}", nl(),
-		nl(),
-		t"BOOST_AUTO_TEST_SUITE_END()", nl()
 	}),
 })

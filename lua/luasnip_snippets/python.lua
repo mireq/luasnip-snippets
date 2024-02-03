@@ -41,7 +41,7 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- argument mapping: token index to placeholder number
+local am = { -- list of argument numbers
 	{0},
 	{0},
 	{0},
@@ -1083,7 +1083,7 @@ ls.add_snippets("python", {
 		nl(),
 		t"\t", i(1, "DESCRIPTION", {key = "i1"}), nl(),
 		nl(),
-		t"\t:copyright: (c) ", f(function(args, snip) return c_shell("date +%Y") end, {}), t" by ", i(2, "YOUR_NAME", {key = "i2"}), t".", nl(),
+		t"\t:copyright: (c) ", f(function(args, snip) return c_shell("date +%Y") end), t" by ", i(2, "YOUR_NAME", {key = "i2"}), t".", nl(),
 		t"\t:license: ", i(3, "LICENSE_NAME", {key = "i3"}), t", see LICENSE for more details.", nl(),
 		t"\"\"\"", nl(),
 		i(0, "", {key = "i0"})

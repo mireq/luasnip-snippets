@@ -41,7 +41,7 @@ local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- argument mapping: token index to placeholder number
+local am = { -- list of argument numbers
 	{1, 2, 3, 4, 5, 6, 7},
 	{1, 2, 3, 4, 5, 6, 7, 8},
 	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
