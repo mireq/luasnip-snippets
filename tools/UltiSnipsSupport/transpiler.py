@@ -246,24 +246,24 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 			if actions_code:
 				sys.stdout.write(f"Unsupported actions: {actions_code}\n")
 				continue
-			if len(snippet_list) == 1:
-				actions_code = parsed_snippet.get_actions_code()
-				if actions_code:
-					actions_code = f', make_actions({{{actions_code}}}, {parsed_snippet.max_placeholder})'
+		if len(snippet_list) == 1:
+			actions_code = parsed_snippet.get_actions_code()
+			if actions_code:
+				actions_code = f', make_actions({{{actions_code}}}, {parsed_snippet.max_placeholder})'
+			try:
+				fp.write(f'\ts({{{parsed_snippet.attributes}}}, {{{parsed_snippet.get_code(indent=2)}\n\t}}{actions_code}),\n')
+			except Exception:
+				logger.exception("Error in snippet '%s':\n%s", parsed_snippet.snippet.trigger, parsed_snippet.snippet.value)
+				continue
+		else:
+			snippet_choices = []
+			for parsed_snippet in snippet_list:
 				try:
-					fp.write(f'\ts({{{parsed_snippet.attributes}}}, {{{parsed_snippet.get_code(indent=2)}\n\t}}{actions_code}),\n')
+					snippet_choices.append(f'\t\t{{{parsed_snippet.get_code(indent=3)}\n\t\t}},\n')
 				except Exception:
-					logger.exception("Error in snippet '%s':\n%s", parsed_snippet.snippet.trigger, parsed_snippet.snippet.value)
-					continue
-			else:
-				snippet_choices = []
-				for parsed_snippet in snippet_list:
-					try:
-						snippet_choices.append(f'\t\t{{{parsed_snippet.get_code(indent=3)}\n\t\t}},\n')
-					except Exception:
-						logger.exception("Error in snippet '%s':\n%s", parsed_snippet.snippet.trigger, parsed_snippet.snippet._value)
-					continue
-				fp.write(f'\ts({{{parsed_snippet.attributes}}}, c(1, {{\n{"".join(snippet_choices)}\t}})),\n')
+					logger.exception("Error in snippet '%s':\n%s", parsed_snippet.snippet.trigger, parsed_snippet.snippet._value)
+				continue
+			fp.write(f'\ts({{{parsed_snippet.attributes}}}, c(1, {{\n{"".join(snippet_choices)}\t}})),\n')
 	fp.write('})\n')
 
 
