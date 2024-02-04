@@ -565,3 +565,47 @@ ls.add_snippets("c", {
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
+	s({trig = "printf", descr = "(printf) \"printf with auto-expand args\"", priority = -50, trigEngine = te("wr")}, {
+		t"printf(\"", i(1, "", {key = "i1"}), t"\\n\"", i(2, "", {key = "i2"}), t");"
+	}),
+	s({trig = "head", descr = "(head) \"File Header\"", priority = -50, trigEngine = te("b")}, {
+		t"/******************************************************************************", nl(),
+		t"* File:             ", f(function(args, snip) return c_py({"c", 70}, "snip.rv = fn", python_globals, args, snip, "", am[70]) end, ae(am[70])), nl(),
+		t"*", nl(),
+		t"* Author:           ", i(1, "", {key = "i2"}), t"  ", nl(),
+		t"* Created:          ", f(function(args, snip) return c_shell("date +%m/%d/%y") end), t" ", nl(),
+		t"* Description:      ", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i4"}) }) end), nl(),
+		t"*****************************************************************************/", nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "func", descr = "(func) \"Function Header\"", priority = -50, trigEngine = te("")}, {
+		t"/******************************************************************************", nl(),
+		t"* Function:         ", cp(1), nl(),
+		t"* Description:      ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i4"}) }) end), nl(),
+		t"* Where:", f(function(args, snip) return c_py({"c", 71}, "\nsnip.rv = \"\"\nsnip >> 2\n\nargs = get_args(t[2])\nif args:\n\tfor arg in args:\n\t\tsnip.rv += \'\\n\' + \'*\' + \' \'*19 + arg + \' - TODO\'\nsnip << 2\n", python_globals, args, snip, "", am[71]) end, ae(am[71])), nl(),
+		t"* Return:           ", i(4, "", {key = "i5"}), nl(),
+		t"* Error:            ", i(5, "", {key = "i6"}), nl(),
+		t"*****************************************************************************/", nl(),
+		i(1, "", {key = "i1"}), t"(", i(2, "", {key = "i2"}), t"){", nl(),
+		t"\t", i(0, "", {key = "i0"}), nl(),
+		t"}"
+	}),
+	s({trig = "hdr", descr = "(hdr) \"header\"", priority = 0, trigEngine = te("")}, {
+		t"/*", nl(),
+		t" * =====================================================================", nl(),
+		t" *        Version:  1.0", nl(),
+		t" *        Created:  ", f(function(args, snip) return c_viml("strftime(\"%x\")") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%X\")") end, {}), nl(),
+		t" *         Author:  ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
+		t" *        Company:  ", f(function(args, snip) return c_viml("g:snips_company") end, {}), nl(),
+		t" * =====================================================================", nl(),
+		t" */"
+	}),
+	s({trig = "Once", descr = "(Once) \"Simple include header guard\"", priority = 0, trigEngine = te("")}, {
+		t"#ifndef  ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("toupper(Filename(\'\', \'UNTITLED\').\'_H\')")}, ""), {key = "i1"}) }) end), nl(),
+		t"#define  ", cp(1), nl(),
+		nl(),
+		i(0, "/* code */", {key = "i0"}), nl(),
+		nl(),
+		t"#endif   /* ----- #ifndef ", cp(1), t"  ----- */"
+	}),
+})

@@ -16,14 +16,14 @@ octave matlab
 pandoc markdown
 python python_extra
 rmd markdown
-rnoweb tex r
+rnoweb r tex
 scss css
-smarty javascript html css
+smarty javascript css html
 soy html
-svelte javascript html css
+svelte javascript css html
 systemverilog verilog
 typescript javascript
 typescript_react typescript javascript_react
 typescriptreact typescript
-vue javascript html css
+vue javascript css html
 xhtml html

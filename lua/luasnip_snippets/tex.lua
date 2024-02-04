@@ -923,3 +923,29 @@ ls.add_snippets("tex", {
 	s({trig = "!>", descr = "(!>) \"mapsto\"", snippetType = "autosnippet", priority = 0, trigEngine = te("Aw")}, {
 		t"\\mapsto "
 	}),
+	s({trig = "gentbl(\\d+)x(\\d+)", descr = "(gentbl(\\d+)x(\\d+)) \"Generate table of *width* by *height*\"", priority = 0, trigEngine = te("r")}, {
+	}),
+	s({trig = "tr(\\d+)", descr = "(tr(\\d+)) \"Add table row of dimension ...\"", priority = 0, trigEngine = te("r")}, {
+	}),
+	s({trig = "\\<(.*?)\\|", descr = "(\\<(.*?)\\|) \"bra\"", priority = 0, trigEngine = te("wri")}, {
+		t"\\bra{", f(function(args, snip) return c_py({"tex", 170}, "snip.rv = match.group(1).replace(\'q\', f\'\\psi\').replace(\'f\', f\'\\phi\')", python_globals, args, snip, "", am[170]) end, ae(am[170])), t"}"
+	}),
+	s({trig = "\\|(.*?)\\>", descr = "(\\|(.*?)\\>) \"ket\"", priority = 0, trigEngine = te("wri")}, {
+		t"\\ket{", f(function(args, snip) return c_py({"tex", 171}, "snip.rv = match.group(1).replace(\'q\', f\'\\psi\').replace(\'f\', f\'\\phi\')", python_globals, args, snip, "", am[171]) end, ae(am[171])), t"}"
+	}),
+	s({trig = "(.*)\\\\bra{(.*?)}([^\\|]*?)\\>", descr = "((.*)\\\\bra{(.*?)}([^\\|]*?)\\>) \"braket\"", snippetType = "autosnippet", priority = 0, trigEngine = te("Awri")}, {
+		f(function(args, snip) return c_py({"tex", 172}, "snip.rv = match.group(1)", python_globals, args, snip, "", am[172]) end, ae(am[172])), t"\\braket{", f(function(args, snip) return c_py({"tex", 172}, "snip.rv = match.group(2)", python_globals, args, snip, "", am[172]) end, ae(am[172])), t"}{", f(function(args, snip) return c_py({"tex", 172}, "snip.rv = match.group(3).replace(\'q\', f\'\\psi\').replace(\'f\', f\'\\phi\')", python_globals, args, snip, "", am[172]) end, ae(am[172])), t"}"
+	}),
+	s({trig = "pac", descr = "(pac) \"usepackage - removes square braces if options removed\"", priority = 0, trigEngine = te("b")}, {
+		t"\\usepackage", f(function(args, snip) return c_py({"tex", 173}, "snip.rv=\'[\' if t[1] else \"\"", python_globals, args, snip, "", am[173]) end, ae(am[173])), i(1, "options", {key = "i1"}), f(function(args, snip) return c_py({"tex", 173}, "snip.rv = \']\' if t[1] else \"\"", python_globals, args, snip, "", am[173]) end, ae(am[173])), t"{", i(2, "package", {key = "i2"}), t"}", i(0, "", {key = "i0"})
+	}),
+	s({trig = "docls", descr = "(docls) \"Document Class\"", snippetType = "autosnippet", priority = 0, trigEngine = te("bA")}, {
+		t"\\documentclass{", i(1, "", {key = "i1"}), t"}", i(0, "", {key = "i0"})
+	}),
+	s({trig = "acl", descr = "(acl) \"Acroynm expanded\"", priority = 0, trigEngine = te("bi")}, {
+		t"\\acl{", i(1, "acronym", {key = "i1"}), t"}"
+	}),
+	s({trig = "ac", descr = "(ac) \"Acroynm normal\"", priority = 0, trigEngine = te("bi")}, {
+		t"\\ac{", i(1, "acronym", {key = "i1"}), t"}"
+	}),
+})
