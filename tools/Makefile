@@ -8,7 +8,7 @@ all: $(TARGETS)
 
 # Pattern rule for converting UltiSnips to LuaSnip
 output/%.lua:
-	./ultisnips_to_luasnip_headless.py --ultisnips-dirs vim-snippets/UltiSnips --snipmate-dirs vim-snippets/snippets --output-dir output `basename $@ .lua`
+	./ultisnips_to_luasnip_headless.py --ultisnips-dirs vim-snippets/UltiSnips:../UltiSnips --snipmate-dirs vim-snippets/snippets --output-dir output `basename $@ .lua`
 
 # Clean target to remove generated files
 clean:
