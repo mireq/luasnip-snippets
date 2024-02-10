@@ -258,6 +258,6 @@ ls.add_snippets("lpc", {
 		nl()
 	}),
 	s({trig = "head", descr = "(head)", priority = -1000, trigEngine = te("w")}, {
-		t"// code for ", i(1, "", {key = "i1"}), t" by ", f(function(args, snip) return c_viml("$USER") end, {}), t" create at ", f(function(args, snip) return c_viml("strftime(\"%Y-%m-%d %H:%M:%S\")") end, {})
+		t"// code for ", i(1, "", {key = "i1"}), t" by ", f(function(args, snip) return c_viml("$USER") end), t" create at ", f(function(args, snip) return c_viml("strftime(\"%Y-%m-%d %H:%M:%S\")") end)
 	}),
 })

@@ -441,9 +441,9 @@ ls.add_snippets("python", {
 	s({trig = "docs", descr = "(docs)", priority = -1000, trigEngine = te("w")}, {
 		t"\"\"\"", nl(),
 		t"File: ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1.py\', \'foo.py\')")}, ""), {key = "i1"}) }) end), nl(),
-		t"Author: ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
-		t"Email: ", f(function(args, snip) return c_viml("g:snips_email") end, {}), nl(),
-		t"Github: ", f(function(args, snip) return c_viml("g:snips_github") end, {}), nl(),
+		t"Author: ", f(function(args, snip) return c_viml("g:snips_author") end), nl(),
+		t"Email: ", f(function(args, snip) return c_viml("g:snips_email") end), nl(),
+		t"Github: ", f(function(args, snip) return c_viml("g:snips_github") end), nl(),
 		t"Description: ", i(0, "", {key = "i0"}), nl(),
 		t"\"\"\"", nl()
 	}),

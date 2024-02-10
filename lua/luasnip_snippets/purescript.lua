@@ -63,7 +63,7 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("purescript", {
 	s({trig = "mod", descr = "(mod)", priority = -1000, trigEngine = te("w")}, {
-		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end, {}), nl(),
+		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end), nl(),
 		t"\t(", nl(),
 		t"\t) where", nl(),
 		nl(),

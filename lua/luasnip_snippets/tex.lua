@@ -693,10 +693,10 @@ ls.add_snippets("tex", {
 		t"\\href{", i(1, "", {key = "i1"}), t"}{", i(2, "", {key = "i2"}), t"} ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "urlc", descr = "(urlc)", priority = -1000, trigEngine = te("w")}, {
-		t"\\url{", f(function(args, snip) return c_viml("@+") end, {}), t"} ", i(0, "", {key = "i0"})
+		t"\\url{", f(function(args, snip) return c_viml("@+") end), t"} ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "hrefc", descr = "(hrefc)", priority = -1000, trigEngine = te("w")}, {
-		t"\\href{", f(function(args, snip) return c_viml("@+") end, {}), t"}{", i(1, "", {key = "i1"}), t"} ", i(0, "", {key = "i0"})
+		t"\\href{", f(function(args, snip) return c_viml("@+") end), t"}{", i(1, "", {key = "i1"}), t"} ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "enq", descr = "(enq) enquote", priority = -1000, trigEngine = te("w")}, {
 		t"\\enquote{", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"} ", i(0, "", {key = "i0"})

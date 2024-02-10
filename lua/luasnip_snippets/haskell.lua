@@ -155,16 +155,16 @@ ls.add_snippets("haskell", {
 		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "module", descr = "(module)", priority = -1000, trigEngine = te("w")}, {
-		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end, {}), t" (", nl(),
+		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end), t" (", nl(),
 		t") where", nl(),
-		f(function(args, snip) return c_viml("expand(\'%\') =~ \'Main\' ? \"\\nmain :: IO ()\\nmain = undefined\" : \"\"") end, {}), nl()
+		f(function(args, snip) return c_viml("expand(\'%\') =~ \'Main\' ? \"\\nmain :: IO ()\\nmain = undefined\" : \"\"") end), nl()
 	}),
 	s({trig = "mod", descr = "(mod)", priority = -1000, trigEngine = te("w")}, {
-		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end, {}), nl(),
+		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end), nl(),
 		t"\t( ", i(1, "", {key = "i1"}), nl(),
 		t"\t) where", nl(),
 		nl(),
-		f(function(args, snip) return c_viml("expand(\'%\') =~ \'Main\' ? \"\\nmain :: IO ()\\nmain = undefined\" : \"\"") end, {})
+		f(function(args, snip) return c_viml("expand(\'%\') =~ \'Main\' ? \"\\nmain :: IO ()\\nmain = undefined\" : \"\"") end)
 	}),
 	s({trig = "main", descr = "(main)", priority = -1000, trigEngine = te("w")}, {
 		t"main :: IO ()", nl(),
@@ -239,7 +239,7 @@ ls.add_snippets("haskell", {
 		t"\t", i(1, "fn", {key = "i1"}), t" = ", i(0, "undefined", {key = "i0"})
 	}),
 	s({trig = "spec", descr = "(spec)", priority = -1000, trigEngine = te("w")}, {
-		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end, {}), t" (main, spec) where", nl(),
+		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end), t" (main, spec) where", nl(),
 		nl(),
 		t"import Test.Hspec", nl(),
 		t"import Test.QuickCheck", nl(),
@@ -254,7 +254,7 @@ ls.add_snippets("haskell", {
 		t"\t\t\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "specf", descr = "(specf)", priority = -1000, trigEngine = te("w")}, {
-		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end, {}), t" (main, spec) where", nl(),
+		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end), t" (main, spec) where", nl(),
 		nl(),
 		t"import Test.Hspec", nl(),
 		t"import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)", nl(),

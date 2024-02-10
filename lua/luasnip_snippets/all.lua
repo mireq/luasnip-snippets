@@ -89,29 +89,29 @@ no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 ls.add_snippets("all", {
 	s({trig = "c)", descr = "(c))", priority = -1000, trigEngine = te("w")}, {
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i1"}) }) end), t". All Rights Reserved."
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i1"}) }) end), t". All Rights Reserved."
 	}),
 	s({trig = "date", descr = "(date) \"YYYY-MM-DD\"", priority = -60, trigEngine = te("w")}, {
-		f(function(args, snip) return c_viml("strftime(\"%Y-%m-%d\")") end, {})
+		f(function(args, snip) return c_viml("strftime(\"%Y-%m-%d\")") end)
 	}),
 	s({trig = "ddate", descr = "(ddate) \"Month DD, YYYY\"", priority = -60, trigEngine = te("w")}, {
-		f(function(args, snip) return c_viml("strftime(\"%b %d, %Y\")") end, {})
+		f(function(args, snip) return c_viml("strftime(\"%b %d, %Y\")") end)
 	}),
 	s({trig = "diso", descr = "(diso) \"ISO format datetime\"", priority = -60, trigEngine = te("w")}, {
-		f(function(args, snip) return c_viml("strftime(\"%Y-%m-%d %H:%M:%S%z\")") end, {})
+		f(function(args, snip) return c_viml("strftime(\"%Y-%m-%d %H:%M:%S%z\")") end)
 	}),
 	s({trig = "time", descr = "(time) \"hh:mm\"", priority = -60, trigEngine = te("w")}, {
-		f(function(args, snip) return c_viml("strftime(\"%H:%M\")") end, {})
+		f(function(args, snip) return c_viml("strftime(\"%H:%M\")") end)
 	}),
 	s({trig = "datetime", descr = "(datetime) \"YYYY-MM-DD hh:mm\"", priority = -60, trigEngine = te("w")}, {
-		f(function(args, snip) return c_viml("strftime(\"%Y-%m-%d %H:%M\")") end, {})
+		f(function(args, snip) return c_viml("strftime(\"%Y-%m-%d %H:%M\")") end)
 	}),
 	s({trig = "lorem", descr = "(lorem)", priority = -1000, trigEngine = te("w")}, {
 		t"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 	}),
 	s({trig = "GPL2", descr = "(GPL2)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "One line to give the program\'s name and a brief description.", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		nl(),
 		t"This program is free software; you can redistribute it and/or modify", nl(),
 		t"it under the terms of the GNU General Public License as published by", nl(),
@@ -129,7 +129,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "LGPL2", descr = "(LGPL2)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "One line to give the program\'s name and a brief description.", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		nl(),
 		t"This library is free software; you can redistribute it and/or modify", nl(),
 		t"it under the terms of the GNU Lesser General Public License as published", nl(),
@@ -147,7 +147,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "GPL3", descr = "(GPL3)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "one line to give the program\'s name and a brief description.", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		nl(),
 		t"This program is free software: you can redistribute it and/or modify", nl(),
 		t"it under the terms of the GNU General Public License as published by", nl(),
@@ -165,7 +165,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "LGPL3", descr = "(LGPL3)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "One line to give the program\'s name and a brief description.", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		nl(),
 		t"This library is free software; you can redistribute it and/or modify", nl(),
 		t"it under the terms of the GNU Lesser General Public License as published", nl(),
@@ -183,7 +183,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "AGPL3", descr = "(AGPL3)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "one line to give the program\'s name and a brief description.", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		nl(),
 		t"This program is free software: you can redistribute it and/or modify", nl(),
 		t"it under the terms of the GNU Affero General Public License as", nl(),
@@ -211,7 +211,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "BSD2", descr = "(BSD2)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "one line to give the program\'s name and a brief description", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		t"All rights reserved.", nl(),
 		nl(),
 		t"Redistribution and use in source and binary forms, with or without", nl(),
@@ -240,7 +240,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "BSD3", descr = "(BSD3)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "one line to give the program\'s name and a brief description", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		t"All rights reserved.", nl(),
 		nl(),
 		t"Redistribution and use in source and binary forms, with or without", nl(),
@@ -268,7 +268,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "BSD4", descr = "(BSD4)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "one line to give the program\'s name and a brief description", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		t"All rights reserved.", nl(),
 		nl(),
 		t"Redistribution and use in source and binary forms, with or without", nl(),
@@ -299,7 +299,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "MIT", descr = "(MIT)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "one line to give the program\'s name and a brief description", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		nl(),
 		t"Permission is hereby granted, free of charge, to any person obtaining", nl(),
 		t"a copy of this software and associated documentation files (the \"Software\"),", nl(),
@@ -322,7 +322,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "APACHE", descr = "(APACHE)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "one line to give the program\'s name and a brief description", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		nl(),
 		t"Licensed under the Apache License, Version 2.0 (the \"License\");", nl(),
 		t"you may not use this file except in compliance with the License.", nl(),
@@ -339,7 +339,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "BEERWARE", descr = "(BEERWARE)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "one line to give the program\'s name and a brief description", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		nl(),
 		t"Licensed under the \"THE BEER-WARE LICENSE\" (Revision 42):", nl(),
 		cp(2), t" wrote this file. As long as you retain this notice you", nl(),
@@ -351,7 +351,7 @@ ls.add_snippets("all", {
 		t"\t\tDO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE", nl(),
 		t"\t\t\t\tVersion 2, December 2004", nl(),
 		nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i0"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i0"}) }) end), nl(),
 		nl(),
 		t"Everyone is permitted to copy and distribute verbatim or modified", nl(),
 		t"copies of this license document, and changing it is allowed as long", nl(),
@@ -372,7 +372,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "AGPL", descr = "(AGPL)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "One line to give the program\'s name and a brief description.", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		nl(),
 		t"This program  is free software: you can redistribute it and/or modify", nl(),
 		t"it under the terms of the GNU Affero General Public License as", nl(),
@@ -389,7 +389,7 @@ ls.add_snippets("all", {
 	}),
 	s({trig = "ISC", descr = "(ISC)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "one line to give the program\'s name and a brief description", {key = "i1"}), nl(),
-		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end, {}), t", ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
+		t"Copyright ", f(function(args, snip) return c_viml("&enc[:2] == \"utf\" ? \"©\" : \"(c)\"") end), t" ", f(function(args, snip) return c_viml("strftime(\"%Y\")") end), t", ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		nl(),
 		t"Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.", nl(),
 		nl(),
@@ -419,7 +419,7 @@ ls.add_snippets("all", {
 		f(function(args, snip) return c_py({"all", 29}, "snip.rv = \" \".join(LOREM.split()[:int(match.group(1))]) if match.group(1) else LOREM", python_globals, args, snip, "", am[29]) end, ae(am[29]))
 	}),
 	s({trig = "modeline", descr = "(modeline) \"Vim modeline\"", priority = -60, trigEngine = te("")}, {
-		t"vim", f(function(args, snip) return c_viml("\':set \'. (&expandtab ? printf(\'et sw=%i ts=%i\', &sw, &ts) : printf(\'noet sts=%i sw=%i ts=%i\', &sts, &sw, &ts)) . (&tw ? \' tw=\'. &tw : \'\') . \':\'") end, {})
+		t"vim", f(function(args, snip) return c_viml("\':set \'. (&expandtab ? printf(\'et sw=%i ts=%i\', &sw, &ts) : printf(\'noet sts=%i sw=%i ts=%i\', &sts, &sw, &ts)) . (&tw ? \' tw=\'. &tw : \'\') . \':\'") end)
 	}),
 	s({trig = "todo", descr = "(todo) \"TODO comment\"", priority = -60, trigEngine = te("bw")}, {
 		f(function(args, snip) return c_py({"all", 31}, "snip.rv=get_comment_format()[0]", python_globals, args, snip, "", am[31]) end, ae(am[31])), t" ", i(1, "TODO", {key = "i2"}), t": ", i(0, "", {key = "i0"}), d(2, function(args) return sn(nil, {t" <", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("strftime(\'%d-%m-%y\')")}, " "), {key = "i4"}) }) end), d(2, function(args, snip) return sn(nil, { i(1, jt({", ", c_viml("g:snips_author")}, " "), {key = "i5"}) }) end), t">"}) end, {}, {key = "i3"}), t" ", f(function(args, snip) return c_py({"all", 31}, "snip.rv=get_comment_format()[2]", python_globals, args, snip, "", am[31]) end, ae(am[31]))

@@ -766,7 +766,7 @@ t"en"}) end, {}, {key = "i10"})
 	}),
 	s({trig = "migration", descr = "(migration) class .. < ActiveRecord::Migration .. def change .. end", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"class ", f(function(args, snip) return c_viml("substitute( substitute(vim_snippets#Filename(), \'^\\d\\+_\', \'\',\'\'), \'\\(_\\|^\\)\\(.\\)\', \'\\u\\2\', \'g\')") end, {}), t" < ActiveRecord::Migration", nl(),
+			t"class ", f(function(args, snip) return c_viml("substitute( substitute(vim_snippets#Filename(), \'^\\d\\+_\', \'\',\'\'), \'\\(_\\|^\\)\\(.\\)\', \'\\u\\2\', \'g\')") end), t" < ActiveRecord::Migration", nl(),
 			t"\tdef up", nl(),
 			t"\t\t", i(0, "", {key = "i0"}), nl(),
 			t"\tend", nl(),
@@ -776,7 +776,7 @@ t"en"}) end, {}, {key = "i10"})
 			t"end"
 		},
 		{
-			t"class ", f(function(args, snip) return c_viml("substitute( substitute(vim_snippets#Filename(), \'^\\d\\+_\', \'\',\'\'), \'\\(_\\|^\\)\\(.\\)\', \'\\u\\2\', \'g\')") end, {}), t" < ActiveRecord::Migration", nl(),
+			t"class ", f(function(args, snip) return c_viml("substitute( substitute(vim_snippets#Filename(), \'^\\d\\+_\', \'\',\'\'), \'\\(_\\|^\\)\\(.\\)\', \'\\u\\2\', \'g\')") end), t" < ActiveRecord::Migration", nl(),
 			t"\tdef change", nl(),
 			t"\t\t", i(0, "", {key = "i0"}), nl(),
 			t"\tend", nl(),
@@ -1371,11 +1371,11 @@ t"en"}) end, {}, {key = "i2"})
 		t"end"
 	}),
 	s({trig = "trans", descr = "(trans) \"Translation snippet\"", priority = -50, trigEngine = te("")}, {
-		t"I18n.t(\'", f(function(args, snip) return c_viml("substitute(substitute(substitute(@%, substitute(getcwd() . \"/\", \"\\/\", \"\\\\\\\\/\", \"g\"), \"\", \"\"), \"\\\\(\\\\.\\\\(html\\\\|js\\\\)\\\\.\\\\(haml\\\\|erb\\\\)\\\\|\\\\(_controller\\\\)\\\\?\\\\.rb\\\\)$\", \"\", \"\"), \"/\", \".\", \"g\")") end, {}), t".", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[^\\w]", "_")}, ""), {key = "i2"}) }) end, {k"i1"}), i(3, "", {key = "i3"}), t"\', default: \"", i(1, "some_text", {key = "i1"}), t"\"", i(4, "", {key = "i4"}), t")", d(5, function(args) return sn(nil, {i(1, "", {key = "i0"})}) end, {}, {key = "i5"})
+		t"I18n.t(\'", f(function(args, snip) return c_viml("substitute(substitute(substitute(@%, substitute(getcwd() . \"/\", \"\\/\", \"\\\\\\\\/\", \"g\"), \"\", \"\"), \"\\\\(\\\\.\\\\(html\\\\|js\\\\)\\\\.\\\\(haml\\\\|erb\\\\)\\\\|\\\\(_controller\\\\)\\\\?\\\\.rb\\\\)$\", \"\", \"\"), \"/\", \".\", \"g\")") end), t".", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[^\\w]", "_")}, ""), {key = "i2"}) }) end, {k"i1"}), i(3, "", {key = "i3"}), t"\', default: \"", i(1, "some_text", {key = "i1"}), t"\"", i(4, "", {key = "i4"}), t")", d(5, function(args) return sn(nil, {i(1, "", {key = "i0"})}) end, {}, {key = "i5"})
 	}),
 	s({trig = "route_spec", descr = "(route_spec)", priority = -50, trigEngine = te("")}, {
 		t"it \'routes to #", i(1, "action", {key = "i1"}), t"\' do", nl(),
-		t"\t", i(2, "get", {key = "i2"}), t"(\'/", i(3, "url", {key = "i3"}), t"\').should route_to(\'", f(function(args, snip) return c_viml("substitute(expand(\'%:t:r\'), \'_routing_spec$\', \'\', \'\')") end, {}), t"#", cp(1), t"\'", d(4, function(args) return sn(nil, {t", ", i(1, "params", {key = "i5"})}) end, {}, {key = "i4"}), t")", i(5, "", {key = "i6"}), nl(),
+		t"\t", i(2, "get", {key = "i2"}), t"(\'/", i(3, "url", {key = "i3"}), t"\').should route_to(\'", f(function(args, snip) return c_viml("substitute(expand(\'%:t:r\'), \'_routing_spec$\', \'\', \'\')") end), t"#", cp(1), t"\'", d(4, function(args) return sn(nil, {t", ", i(1, "params", {key = "i5"})}) end, {}, {key = "i4"}), t")", i(5, "", {key = "i6"}), nl(),
 		t"end"
 	}),
 })

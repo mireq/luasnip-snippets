@@ -74,6 +74,6 @@ ls.add_snippets("help", {
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "modeline", descr = "(modeline) \"Vim help modeline\"", priority = -50, trigEngine = te("")}, {
-		t" ", f(function(args, snip) return c_viml("\'vim\'") end, {}), t":tw=78:ts=8:ft=help:norl:"
+		t" ", f(function(args, snip) return c_viml("\'vim\'") end), t":tw=78:ts=8:ft=help:norl:"
 	}),
 })

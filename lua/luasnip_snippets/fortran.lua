@@ -101,9 +101,9 @@ ls.add_snippets("fortran", {
 	s({trig = "doc", descr = "(doc)", priority = -1000, trigEngine = te("w")}, {
 		t"! \"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"", nl(),
 		t"! File: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1\')")}, ""), {key = "i2"}) }) end), nl(),
-		t"! Author: ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
-		t"! Email: ", f(function(args, snip) return c_viml("g:snips_email") end, {}), nl(),
-		t"! Github: ", f(function(args, snip) return c_viml("g:snips_github") end, {}), nl(),
+		t"! Author: ", f(function(args, snip) return c_viml("g:snips_author") end), nl(),
+		t"! Email: ", f(function(args, snip) return c_viml("g:snips_email") end), nl(),
+		t"! Github: ", f(function(args, snip) return c_viml("g:snips_github") end), nl(),
 		t"! Description: ", i(1, "", {key = "i1"}), nl(),
 		t"! \"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"", nl(),
 		i(0, "", {key = "i0"})
@@ -112,7 +112,7 @@ ls.add_snippets("fortran", {
 		t"!> @brief ", i(1, "", {key = "i1"}), nl(),
 		t"!!", nl(),
 		t"!> ", i(2, "", {key = "i2"}), nl(),
-		t"!> @author ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
+		t"!> @author ", f(function(args, snip) return c_viml("g:snips_author") end), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "doxp", descr = "(doxp)", priority = -1000, trigEngine = te("w")}, {

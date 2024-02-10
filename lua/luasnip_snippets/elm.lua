@@ -67,7 +67,7 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("elm", {
 	s({trig = "mod", descr = "(mod)", priority = -1000, trigEngine = te("w")}, {
-		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end, {}), t" exposing (", i(1, "", {key = "i1"}), t")", nl(),
+		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end), t" exposing (", i(1, "", {key = "i1"}), t")", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "imp", descr = "(imp)", priority = -1000, trigEngine = te("w")}, {

@@ -518,7 +518,7 @@ ls.add_snippets("html", {
 		t"<a href=\"mailto:", i(1, "joe@example.com", {key = "i1"}), t"?subject=", i(2, "feedback", {key = "i2"}), t"\">", i(0, "email me", {key = "i0"}), t"</a>"
 	}),
 	s({trig = "ac", descr = "(ac)", priority = -1000, trigEngine = te("w")}, {
-		t"<a href=\"", f(function(args, snip) return c_viml("@+") end, {}), t"\">", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i0"}) }) end), t"</a>"
+		t"<a href=\"", f(function(args, snip) return c_viml("@+") end), t"\">", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i0"}) }) end), t"</a>"
 	}),
 	s({trig = "abbr", descr = "(abbr) \"<abbr>\"", priority = -50, trigEngine = te("w")}, {
 		t"<abbr title=\"", i(2, "", {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</abbr>"

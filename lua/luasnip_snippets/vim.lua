@@ -182,7 +182,7 @@ ls.add_snippets("vim", {
 		t"execute ", i(1, "", {key = "i1"})
 	}),
 	s({trig = "filename", descr = "(filename)", priority = -1000, trigEngine = te("w")}, {
-		f(function(args, snip) return c_viml("Filename()") end, {})
+		f(function(args, snip) return c_viml("Filename()") end)
 	}),
 	s({trig = "gvar", descr = "(gvar) \"Global / configuration variable\"", priority = -50, trigEngine = te("b")}, {
 		t"if !exists(\"g:", i(1, "MyUltraImportantVar", {key = "i1"}), t"\")", nl(),

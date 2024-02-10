@@ -430,7 +430,7 @@ ls.add_snippets("java", {
 		t" */"
 	}),
 	s({trig = "@au", descr = "(@au)", priority = -1000, trigEngine = te("w")}, {
-		t"@author ", f(function(args, snip) return c_viml("system(\"grep `id -un` /etc/passwd | cut -d \\\":\\\" -f5 | cut -d \\\",\\\" -f1\")") end, {})
+		t"@author ", f(function(args, snip) return c_viml("system(\"grep `id -un` /etc/passwd | cut -d \\\":\\\" -f5 | cut -d \\\",\\\" -f1\")") end)
 	}),
 	s({trig = "@br", descr = "(@br)", priority = -1000, trigEngine = te("w")}, {
 		t"@brief ", i(0, "Description", {key = "i0"})

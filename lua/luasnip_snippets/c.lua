@@ -594,9 +594,9 @@ ls.add_snippets("c", {
 		t"/*", nl(),
 		t" * =====================================================================", nl(),
 		t" *        Version:  1.0", nl(),
-		t" *        Created:  ", f(function(args, snip) return c_viml("strftime(\"%x\")") end, {}), t" ", f(function(args, snip) return c_viml("strftime(\"%X\")") end, {}), nl(),
-		t" *         Author:  ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
-		t" *        Company:  ", f(function(args, snip) return c_viml("g:snips_company") end, {}), nl(),
+		t" *        Created:  ", f(function(args, snip) return c_viml("strftime(\"%x\")") end), t" ", f(function(args, snip) return c_viml("strftime(\"%X\")") end), nl(),
+		t" *         Author:  ", f(function(args, snip) return c_viml("g:snips_author") end), nl(),
+		t" *        Company:  ", f(function(args, snip) return c_viml("g:snips_company") end), nl(),
 		t" * =====================================================================", nl(),
 		t" */"
 	}),

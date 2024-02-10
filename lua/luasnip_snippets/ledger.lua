@@ -47,7 +47,7 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("ledger", {
 	s({trig = "ent", descr = "(ent)", priority = -1000, trigEngine = te("w")}, {
-		f(function(args, snip) return c_viml("strftime(\"%Y/%m/%d\")") end, {}), t" ", i(1, "transaction", {key = "i1"}), nl(),
+		f(function(args, snip) return c_viml("strftime(\"%Y/%m/%d\")") end), t" ", i(1, "transaction", {key = "i1"}), nl(),
 		t"    ", i(2, "account", {key = "i2"}), t"    ", i(3, "value", {key = "i3"}), nl(),
 		t"    ", i(0, "account", {key = "i0"})
 	}),

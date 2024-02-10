@@ -97,7 +97,7 @@ ls.add_snippets("php-phpspec", {
 		t"use Prophecy\\Argument;", nl(),
 		nl(),
 		t"/**", nl(),
-		t" * @author ", f(function(args, snip) return c_viml("g:snips_author") end, {}), nl(),
+		t" * @author ", f(function(args, snip) return c_viml("g:snips_author") end), nl(),
 		t" */", nl(),
 		t"class ", f(function(args, snip) return c_py({"php-phpspec", 1}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[1]) end, ae(am[1])), t" extends ObjectBehavior", nl(),
 		t"{", nl(),

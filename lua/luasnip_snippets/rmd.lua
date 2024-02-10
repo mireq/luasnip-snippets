@@ -172,11 +172,11 @@ ls.add_snippets("rmd", {
 		nl()
 	}),
 	s({trig = "#===", descr = "(#===)", priority = -1000, trigEngine = te("w")}, {
-		t"#", f(function(args, snip) return c_viml("repeat(\'=\', strlen(getline(line(\".\") - 1)))") end, {}), nl(),
+		t"#", f(function(args, snip) return c_viml("repeat(\'=\', strlen(getline(line(\".\") - 1)))") end), nl(),
 		i(1, "", {key = "i1"})
 	}),
 	s({trig = "#---", descr = "(#---)", priority = -1000, trigEngine = te("w")}, {
-		t"#", f(function(args, snip) return c_viml("repeat(\'-\', strlen(getline(line(\".\") - 1)))") end, {}), nl(),
+		t"#", f(function(args, snip) return c_viml("repeat(\'-\', strlen(getline(line(\".\") - 1)))") end), nl(),
 		i(1, "", {key = "i1"}), nl()
 	}),
 	s({trig = "r", descr = "(r)", priority = -1000, trigEngine = te("w")}, {

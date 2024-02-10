@@ -233,10 +233,10 @@ ls.add_snippets("markdown", {
 		t"<http://", i(1, "url", {key = "i1"}), t">"
 	}),
 	s({trig = "<*", descr = "(<*)", priority = -1000, trigEngine = te("w")}, {
-		t"<", f(function(args, snip) return c_viml("@*") end, {}), t">"
+		t"<", f(function(args, snip) return c_viml("@*") end), t">"
 	}),
 	s({trig = "<c", descr = "(<c)", priority = -1000, trigEngine = te("w")}, {
-		t"<", f(function(args, snip) return c_viml("@+") end, {}), t">"
+		t"<", f(function(args, snip) return c_viml("@+") end), t">"
 	}),
 	s({trig = "**", descr = "(**) \"bold\"", priority = -50, trigEngine = te("")}, {
 		t"**", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"**", i(0, "", {key = "i0"})
@@ -250,7 +250,7 @@ ls.add_snippets("markdown", {
 		t"---"
 	}),
 	s({trig = "====", descr = "(====)", priority = -1000, trigEngine = te("w")}, {
-		f(function(args, snip) return c_viml("repeat(\'=\', strlen(getline(line(\'.\') - 3)))") end, {}), nl(),
+		f(function(args, snip) return c_viml("repeat(\'=\', strlen(getline(line(\'.\') - 3)))") end), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
@@ -258,7 +258,7 @@ ls.add_snippets("markdown", {
 		t"-   ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "----", descr = "(----)", priority = -1000, trigEngine = te("w")}, {
-		f(function(args, snip) return c_viml("repeat(\'-\', strlen(getline(line(\'.\') - 3)))") end, {}), nl(),
+		f(function(args, snip) return c_viml("repeat(\'-\', strlen(getline(line(\'.\') - 3)))") end), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
