@@ -63,6 +63,10 @@ local am = { -- list of argument numbers
 	{0, 1, 2, 4, 6, 8, 10},
 	{0, 1},
 	{0},
+	{1, 2, 3, 5},
+	{1, 2, 3},
+	{1, 2, 3, 4},
+	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12},
 }
 ls.add_snippets("smarty", {
 	s({trig = "if", descr = "(if) \"{if cond} ... {/if}\"", priority = -1000, trigEngine = te("w")}, {
@@ -173,5 +177,17 @@ ls.add_snippets("smarty", {
 		t"{strip}", nl(),
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"{/strip}"
+	}),
+	s({trig = "append", descr = "(append) \"{append} is used for creating or appending template variable arrays during the execution of a template.\"", priority = 0, trigEngine = te("")}, {
+		t"{append var=\'", i(1, "", {key = "i1"}), t"\' value=\'", i(2, "", {key = "i2"}), t"\'", i(3, " index=\'first|last\'", {key = "i3"}), i(4, " scope=\'parent|root|global\'", {key = "i5"}), t"}"
+	}),
+	s({trig = "assign", descr = "(assign) \"{assign} is used for assigning template variables during the execution of a template.\"", priority = 0, trigEngine = te("")}, {
+		t"{assign var=\'", i(1, "", {key = "i1"}), t"\' value=\'", i(2, "", {key = "i2"}), t"\'", i(3, " scope=\'parent|root|global\'", {key = "i3"}), t"}"
+	}),
+	s({trig = "config_load", descr = "(config_load) \"config_load\"", priority = 0, trigEngine = te("")}, {
+		t"{config_load file=\'", i(1, "", {key = "i1"}), t"\'", d(2, function(args) return sn(nil, {t" section=\'", i(1, "", {key = "i3"}), t"\'"}) end, {}, {key = "i2"}), i(3, " scope=\'local|parent|global\'", {key = "i4"}), t"}"
+	}),
+	s({trig = "include", descr = "(include) \"{include} tags are used for including other templates in the current template. Any variables available in the current template are also available within the included template.\"", priority = 0, trigEngine = te("")}, {
+		t"{include file=\'", i(1, "", {key = "i1"}), t"\'", d(2, function(args) return sn(nil, {t" assign=\'", i(1, "", {key = "i3"}), t"\'"}) end, {}, {key = "i2"}), d(3, function(args) return sn(nil, {t" cache_lifetime=", i(1, "", {key = "i5"})}) end, {}, {key = "i4"}), d(4, function(args) return sn(nil, {t" compile_id=\'", i(1, "", {key = "i7"}), t"\'"}) end, {}, {key = "i6"}), d(5, function(args) return sn(nil, {t" cache_id=\'", i(1, "", {key = "i9"}), t"\'"}) end, {}, {key = "i8"}), i(6, " scope=\'parent|root|global\'", {key = "i10"}), i(7, " variables", {key = "i12"}), t"}"
 	}),
 })
