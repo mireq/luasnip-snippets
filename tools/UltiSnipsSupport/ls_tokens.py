@@ -80,7 +80,11 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 
 	@property
 	def is_simple(self) -> bool:
-		return all(isinstance(child, (LSTextToken | LSChoiceListToken)) for child in self.children)
+		return all(isinstance(child, LSTextToken) for child in self.children)
+
+	@property
+	def is_choices(self) -> bool:
+		return all(isinstance(child, LSChoiceListToken) for child in self.children)
 
 	def render(self, context: RenderContext) -> str:
 		snip = context["parsed_snippet"]
@@ -100,6 +104,8 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 					return f'i({self.number}, {{{text_content}}}, {{key = "i{self.original_number}"}})'
 				else:
 					return f'i({self.number}, {escape_lua_string(text_content)}, {{key = "i{self.original_number}"}})'
+			elif self.is_choices:
+				return f'c({self.number}, {snip.render_tokens(self.children, at_line_start=False)}, {{key = "i{self.original_number}"}})'
 			else:
 				related_nodes = {}
 				for child in self.children:
@@ -258,6 +264,5 @@ class LSChoiceListToken(LSPlaceholderToken, LSToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.number}, {self.choice_list!r}, {self.original_number})'
 
-	@property
-	def text(self) -> str:
-		return '|'.join(self.choice_list)
+	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str:
+		return escape_lua_string('|'.join(self.choice_list))
