@@ -29,7 +29,7 @@ class LSToken():
 	def render(self, context: RenderContext) -> str:
 		raise NotImplementedError()
 
-	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str:
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
 		raise NotImplementedError()
 
 	@staticmethod
@@ -59,7 +59,7 @@ class LSTextToken(LSToken):
 		else:
 			return f't{escape_lua_string(self.text)}'
 
-	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str: # pylint: disable=unused-argument
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str: # pylint: disable=unused-argument
 		return escape_lua_string(self.text)
 
 
@@ -91,7 +91,7 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 		accumulated_text = context["accumulated_text"]
 
 		if self.children:
-			if self.is_nested: # nested nodes are not supported, unwrapping
+			if self.is_nested: # nested tokens are not supported, unwrapping
 				dynamic_node_content = snip.render_tokens(self.children, at_line_start=False)
 				return f'd({self.number}, function(args) return sn(nil, {{{dynamic_node_content}}}) end, {{}}, {{key = "i{self.original_number}"}})'
 
@@ -107,31 +107,31 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 			elif self.is_choices:
 				return f'c({self.number}, {snip.render_tokens(self.children, at_line_start=False)}, {{key = "i{self.original_number}"}})'
 			else:
-				related_nodes = {}
+				related_tokens = {}
 				for child in self.children:
 					if isinstance(child, LSPlaceholderToken):
 						number = getattr(child, 'original_number', child.number)
-						if number not in related_nodes:
-							related_nodes[number] = len(related_nodes) + 1
+						if number not in related_tokens:
+							related_tokens[number] = len(related_tokens) + 1
 				rendered_tokens = []
 				for child in self.children:
 					try:
-						rendered_tokens.append(child.render_text(context, related_nodes))
+						rendered_tokens.append(child.render_text(context, related_tokens))
 					except NotImplementedError:
 						raise RuntimeError("Token not allowed: %s" % child)
 				dynamic_node_content = ', '.join(rendered_tokens)
-				related_nodes_code = ''
-				if related_nodes:
-					related_nodes_code = f', {{{", ".join("k" + escape_lua_string("i" + str(v)) for v in related_nodes.keys())}}}'
-				return f'd({self.number}, function(args, snip) return sn(nil, {{ i(1, jt({{{dynamic_node_content}}}, {escape_lua_string(node_indent)}), {{key = "i{self.original_number}"}}) }}) end{related_nodes_code})'
+				related_tokens_code = ''
+				if related_tokens:
+					related_tokens_code = f', {{{", ".join("k" + escape_lua_string("i" + str(v)) for v in related_tokens.keys())}}}'
+				return f'd({self.number}, function(args, snip) return sn(nil, {{ i(1, jt({{{dynamic_node_content}}}, {escape_lua_string(node_indent)}), {{key = "i{self.original_number}"}}) }}) end{related_tokens_code})'
 		else:
 			return f'i({self.number}, "", {{key = "i{self.original_number}"}})'
 
-	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str: # pylint: disable=unused-argument
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str: # pylint: disable=unused-argument
 		if self.children:
 			raise NotImplementedError()
 		else:
-			return f'args[{related_nodes[self.original_number]}]'
+			return f'args[{related_tokens[self.original_number]}]'
 
 
 class LSCopyToken(LSPlaceholderToken, LSToken):
@@ -147,8 +147,8 @@ class LSCopyToken(LSPlaceholderToken, LSToken):
 	def render(self, context: RenderContext) -> str:
 		return f'cp({self.original_number})'
 
-	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str: # pylint: disable=unused-argument
-		return f'args[{related_nodes[self.original_number]}]'
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str: # pylint: disable=unused-argument
+		return f'args[{related_tokens[self.original_number]}]'
 
 
 class LSInsertOrCopyToken_(LSPlaceholderToken, LSToken):
@@ -172,7 +172,7 @@ class LSVisualToken(LSToken):
 	def render(self, context: RenderContext) -> str:
 		return f'f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {{}} end)'
 
-	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str: # pylint: disable=unused-argument
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str: # pylint: disable=unused-argument
 		return 'snip.env.LS_SELECT_DEDENT or {}'
 
 
@@ -190,7 +190,7 @@ class LSPythonCodeToken(LSCodeToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r}, {self.indent!r})'
 
-	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str:
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
 		snippet = context['parsed_snippet']
 		code = self.code.replace("\\`", "`")
 		return f'c_py({{{escape_lua_string(snippet.filetype)}, {snippet.index}}}, {escape_lua_string(code)}, python_globals, args, snip, {escape_lua_string(self.indent)}, am[{snippet.index}])'
@@ -209,7 +209,7 @@ class LSVimLCodeToken(LSCodeToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r})'
 
-	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str:
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
 		code = self.code.replace("\\`", "`")
 		return f'c_viml({escape_lua_string(code)})'
 
@@ -226,7 +226,7 @@ class LSShellCodeToken(LSCodeToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r})'
 
-	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str:
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
 		code = self.code.replace("\\`", "`")
 		return f'c_shell({escape_lua_string(code)})'
 
@@ -249,8 +249,8 @@ class LSTransformationToken(LSPlaceholderToken, LSToken):
 	def render(self, context: RenderContext) -> str:
 		return f'tr({self.original_number}, {escape_lua_string(self.search)}, {escape_lua_string(self.replace)})'
 
-	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str: # pylint: disable=unused-argument
-		return f'rx_tr(args[{related_nodes[self.original_number]}], {escape_lua_string(self.search)}, {escape_lua_string(self.replace)})'
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str: # pylint: disable=unused-argument
+		return f'rx_tr(args[{related_tokens[self.original_number]}], {escape_lua_string(self.search)}, {escape_lua_string(self.replace)})'
 
 
 class LSChoiceListToken(LSPlaceholderToken, LSToken):
@@ -264,5 +264,5 @@ class LSChoiceListToken(LSPlaceholderToken, LSToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.number}, {self.choice_list!r}, {self.original_number})'
 
-	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str:
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
 		return escape_lua_string('|'.join(self.choice_list))
