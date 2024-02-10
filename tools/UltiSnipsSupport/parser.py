@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from .definition import SnippetDefinition
-from .ls_tokens import LSToken, LSTextToken, LSInsertToken, LSCopyToken, LSInsertOrCopyToken_, LSVisualToken, LSPythonCodeToken, LSVimLCodeToken, LSShellCodeToken, LSTransformationToken, LSPlaceholderToken
-from .lexer import tokenize, Token, Position, MirrorToken, EndOfTextToken, TabStopToken, VisualToken, PythonCodeToken, VimLCodeToken, ShellCodeToken, EscapeCharToken, TransformationToken, get_allowed_tokens
+from .ls_tokens import LSToken, LSTextToken, LSInsertToken, LSCopyToken, LSInsertOrCopyToken_, LSVisualToken, LSPythonCodeToken, LSVimLCodeToken, LSShellCodeToken, LSTransformationToken, LSPlaceholderToken, LSChoiceListToken
+from .lexer import tokenize, Token, Position, MirrorToken, EndOfTextToken, TabStopToken, VisualToken, PythonCodeToken, VimLCodeToken, ShellCodeToken, EscapeCharToken, TransformationToken, ChoicesToken, get_allowed_tokens
 import typing
 
 
@@ -108,6 +108,8 @@ def transform_tokens(tokens, lines, insert_tokens=None):
 				token_list.append(LSTextToken(token.initial_text))
 			case TransformationToken():
 				token_list.append(LSTransformationToken(token.number, token.search, token.replace))
+			case ChoicesToken():
+				token_list.append(LSChoiceListToken(token.number, token.choice_list))
 			case _:
 				snippet_text = '\n'.join(lines)
 				raise RuntimeError(f"Unknown token {token} in snippet: \n{snippet_text}")

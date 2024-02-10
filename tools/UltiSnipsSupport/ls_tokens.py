@@ -80,7 +80,7 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 
 	@property
 	def is_simple(self) -> bool:
-		return all(isinstance(child, LSTextToken) for child in self.children)
+		return all(isinstance(child, (LSTextToken | LSChoiceListToken)) for child in self.children)
 
 	def render(self, context: RenderContext) -> str:
 		snip = context["parsed_snippet"]
@@ -246,3 +246,19 @@ class LSTransformationToken(LSPlaceholderToken, LSToken):
 
 	def render_text(self, context: RenderContext, related_nodes: dict[int, int]) -> str: # pylint: disable=unused-argument
 		return f'rx_tr(args[{related_nodes[self.original_number]}], {escape_lua_string(self.search)}, {escape_lua_string(self.replace)})'
+
+
+class LSChoiceListToken(LSPlaceholderToken, LSToken):
+	__slots__ = ['choice_list', 'original_number']
+
+	def __init__(self, number: int, choice_list: list[str], original_number: int | None = None):
+		self.number: int = number
+		self.choice_list: list[str] = choice_list
+		self.original_number: int = self.number if original_number is None else original_number
+
+	def __repr__(self):
+		return f'{self.__class__.__name__}({self.number}, {self.choice_list!r}, {self.original_number})'
+
+	@property
+	def text(self) -> str:
+		return '|'.join(self.choice_list)
