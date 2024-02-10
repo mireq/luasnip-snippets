@@ -109,7 +109,7 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 			else:
 				related_tokens = {}
 				for child in self.children:
-					if isinstance(child, LSPlaceholderToken):
+					if isinstance(child, (LSCopyToken, LSTransformationToken)):
 						number = getattr(child, 'original_number', child.number)
 						if number not in related_tokens:
 							related_tokens[number] = len(related_tokens) + 1
