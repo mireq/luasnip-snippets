@@ -1,0 +1,23 @@
+extends css
+
+###########################################################################
+#                            SCSS snippets                               #
+###########################################################################
+
+snippet ain "ainline"
+&:after {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	$1
+}
+endsnippet
+
+snippet bin "binline"
+&:before {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	$1
+}
+endsnippet

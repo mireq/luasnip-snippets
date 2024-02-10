@@ -1,0 +1,93 @@
+snippet /s(uper)?/ "Super method" br
+def ${1:__init__}(self, ${2:*args, **kwargs}):
+	return super().$1($2)
+${0}
+endsnippet
+
+snippet /(cs|callsuper)/ "Call super method" ir
+super().${1:`!v Ultisnips_get_current_python_method()`}($0)
+endsnippet
+
+snippet pr "Print" i
+print($0)
+endsnippet
+
+snippet pp "Pretty print" i
+pprint($0)
+endsnippet
+
+snippet ip "Import pretty print" b
+from pprint import pprint
+${0}
+endsnippet
+
+snippet def "function with docstrings" b
+def ${1:function}(`!p
+if snip.indent:
+	snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
+	${0:pass}
+endsnippet
+
+snippet django_label "Django label"
+def get_${1:field}(self, obj):
+	cls = "none"
+	text =  ""
+	return render_to_string("admin/inc/label.html", {"class": cls, "label": unicode(text)})
+get_$1.short_description = _("${2:desc}")
+get_$1.allow_tags = True
+get_$1.admin_order_field = "${3:order}"
+${0}
+endsnippet
+
+snippet django_widget_override "Django widget override"
+formfield_overrides = {
+	models.${1:TextField}: {'widget': ${2:RedactorWidget}},
+}
+${0}
+endsnippet
+
+snippet django_serve_media "Django serve media"
+from django.conf import settings
+
+if settings.DEBUG:
+	urlpatterns += patterns('', (r'^media/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': settings.MEDIA_ROOT}))
+${0}
+endsnippet
+
+snippet django_tcp "Django TEMPLATE_CONTEXT_PROCESSORS"
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+	'django.core.context_processors.request',
+)
+${0}
+endsnippet
+
+snippet django_template_dirs "Django TEMPLATE_DIRS"
+TEMPLATE_DIRS = (
+	os.path.join(BASE_DIR, 'templates'),
+)
+${0}
+endsnippet
+
+snippet django_staticfiles_dirs "Django STATICFILES_DIRS"
+STATICFILES_DIRS = (
+	os.path.join(BASE_DIR, 'static'),
+)
+${0}
+endsnippet
+
+snippet django_cache "Django cache"
+CACHES = {
+	'default': {
+		'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+		'LOCATION': '127.0.0.1:11211',
+	}
+}
+endsnippet
+
+snippet " "triple quoted string (double quotes)" b
+"""
+${1:${VISUAL:doc}}
+"""
+endsnippet
