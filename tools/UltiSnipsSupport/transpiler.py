@@ -170,6 +170,7 @@ def save_filetype_mapping(source: SnippetSource, output_dir: Path):
 		for filetype, included_filetypes in filetype_mapping.items():
 			if not included_filetypes:
 				continue
+			included_filetypes = sorted(included_filetypes)
 			fp.write(f'{filetype} {" ".join(included_filetypes)}\n')
 
 
