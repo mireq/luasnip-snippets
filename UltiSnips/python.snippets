@@ -4,10 +4,6 @@ def ${1:__init__}(self, ${2:*args, **kwargs}):
 ${0}
 endsnippet
 
-snippet /(cs|callsuper)/ "Call super method" ir
-super().${1:`!v Ultisnips_get_current_python_method()`}($0)
-endsnippet
-
 snippet pr "Print" i
 print($0)
 endsnippet
