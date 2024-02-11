@@ -94,12 +94,9 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 			node_indent = INDENT_RE.match(''.join(accumulated_text[-operator.indexOf(reversed(accumulated_text), '\n'):])).group(1)
 
 			if self.is_simple:
-				text_content = ''.join(child.text for child in self.children)
-				if '\n' in text_content:
-					text_content = ', '.join(escape_lua_string(line) for line in text_content.split('\n'))
-					return f'i({self.number}, {{{text_content}}}, {{key = "i{self.original_number}"}})'
-				else:
-					return f'i({self.number}, {escape_lua_string(text_content)}, {{key = "i{self.original_number}"}})'
+				text_content = ''.join(child.text for child in self.children).split('\n')
+				text_value = escape_lua_string(text_content[0]) if len(text_content) == 1 else f'{{{", ".join(escape_lua_string(line) for line in text_content)}}}'
+				return f'i({self.number}, {text_value}, {{key = "i{self.original_number}"}})'
 			else:
 				related_tokens = {}
 				for child in self.children:
