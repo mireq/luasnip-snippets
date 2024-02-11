@@ -76,7 +76,8 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 
 	@property
 	def is_nested(self) -> bool:
-		return any(isinstance(child, (LSInsertToken, LSCopyToken, LSInsertOrCopyToken_, LSChoiceListToken)) for child in LSToken.iter_all_tokens(self.children))
+		# all editable tokens are wrapped to LSInsertToken, choices too
+		return any(isinstance(child, LSInsertToken) for child in LSToken.iter_all_tokens(self.children))
 
 	@property
 	def is_simple(self) -> bool:
