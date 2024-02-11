@@ -162,7 +162,7 @@ def remove_gaps_in_token_numbers(
 	tokens: list[LSToken],
 ) -> list[LSToken]:
 	result_tokens = []
-	token_numbers = set(token.number for token in tokens if isinstance(token, (LSInsertToken, LSTransformationToken)))
+	token_numbers = set(token.number for token in tokens if isinstance(token, (LSInsertToken, LSTransformationToken, LSChoiceListToken)))
 	offset = 0 if 0 in token_numbers else 1
 	remap = dict((num, remap) for remap, num in enumerate(sorted(list(token_numbers)), offset))
 
@@ -172,6 +172,8 @@ def remove_gaps_in_token_numbers(
 			token = LSInsertToken(remap[token.number], children, token.original_number)
 		elif isinstance(token, LSTransformationToken):
 			token = LSTransformationToken(remap[token.number], token.search, token.replace, token.original_number)
+		elif isinstance(token, LSChoiceListToken):
+			token = LSChoiceListToken(remap[token.number], token.choice_list, token.original_number)
 		result_tokens.append(token)
 	return result_tokens
 
