@@ -27,10 +27,10 @@ class LSToken():
 		return repr(self)
 
 	def render(self, context: RenderContext) -> str:
-		raise NotImplementedError()
+		raise NotImplementedError(f"Method render not implemented on class {self.__class__.__name__}")
 
 	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
-		raise NotImplementedError()
+		raise NotImplementedError(f"Method render_text not implemented on class {self.__class__.__name__}")
 
 	@staticmethod
 	def iter_all_tokens(tokens: list['LSToken']) -> typing.Iterable['LSToken']:
@@ -83,28 +83,37 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 	def is_simple(self) -> bool:
 		return all(isinstance(child, LSTextToken) for child in self.children)
 
+	@property
+	def simple_text(self) -> str:
+		text_content = ''.join(child.text for child in self.children).split('\n')
+		return escape_lua_string(text_content[0]) if len(text_content) == 1 else f'{{{", ".join(escape_lua_string(line) for line in text_content)}}}'
+
 	def render(self, context: RenderContext) -> str:
 		snip = context["parsed_snippet"]
 		accumulated_text = context["accumulated_text"]
 
 		if self.children:
+			related_tokens = {}
+			for child in self.children:
+				if isinstance(child, (LSCopyToken, LSTransformationToken)):
+					number = getattr(child, 'original_number', child.number)
+					if number not in related_tokens:
+						related_tokens[number] = len(related_tokens) + 1
+
 			if self.is_nested: # nested tokens are not supported, unwrapping
 				dynamic_node_content = snip.render_tokens(self.children, at_line_start=False)
-				return f'd({self.number}, function(args) return sn(nil, {{{dynamic_node_content}}}) end, {{}}, {{key = "i{self.original_number}"}})'
+				try:
+					text_content = ', '.join([child.render_text(context, related_tokens) for child in self.children])
+					text_content = f'i(1, jt({{{text_content}}}))'
+				except NotImplementedError:
+					text_content = ''
+				return f'c({self.number}, {{{{{dynamic_node_content}}}, {{{text_content}}}}}, {{key = "i{self.original_number}"}})'
 
 			node_indent = INDENT_RE.match(''.join(accumulated_text[-operator.indexOf(reversed(accumulated_text), '\n'):])).group(1)
 
 			if self.is_simple:
-				text_content = ''.join(child.text for child in self.children).split('\n')
-				text_value = escape_lua_string(text_content[0]) if len(text_content) == 1 else f'{{{", ".join(escape_lua_string(line) for line in text_content)}}}'
-				return f'i({self.number}, {text_value}, {{key = "i{self.original_number}"}})'
+				return f'i({self.number}, {self.simple_text}, {{key = "i{self.original_number}"}})'
 			else:
-				related_tokens = {}
-				for child in self.children:
-					if isinstance(child, (LSCopyToken, LSTransformationToken)):
-						number = getattr(child, 'original_number', child.number)
-						if number not in related_tokens:
-							related_tokens[number] = len(related_tokens) + 1
 				rendered_tokens = []
 				for child in self.children:
 					try:
@@ -121,6 +130,8 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 
 	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str: # pylint: disable=unused-argument
 		if self.children:
+			if self.is_simple:
+				return self.simple_text
 			raise NotImplementedError()
 		else:
 			return f'args[{related_tokens[self.original_number]}]'
