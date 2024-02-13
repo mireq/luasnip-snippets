@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
+import logging
+import operator
 import re
 import typing
-import operator
 
 from .utils import escape_lua_string
+
 
 if typing.TYPE_CHECKING:
 	from .transpiler import ParsedSnippet
 
 
 INDENT_RE = re.compile(r'^([\t ]*)')
+logger = logging.getLogger()
 
 
 class RenderContext(typing.TypedDict):
@@ -107,6 +110,7 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 					text_content = f'i(1, jt({{{text_content}}}))'
 				except NotImplementedError:
 					text_content = ''
+					logger.exception("Cannot convert node to pure text representation: %s", dynamic_node_content)
 				return f'c({self.number}, {{{{{dynamic_node_content}}}, {{{text_content}}}}}, {{key = "i{self.original_number}"}})'
 
 			node_indent = INDENT_RE.match(''.join(accumulated_text[-operator.indexOf(reversed(accumulated_text), '\n'):])).group(1)
