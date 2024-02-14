@@ -324,6 +324,7 @@ def execute_code(node_id, node_code, global_code, tabstops, env, indent, match_c
 		cached_compile(node_code, '<exec-interpolation-code>', 'exec'),
 	)
 
+	env = env or {}
 	text = '\n'.join(env.get('LS_SELECT_RAW', []))
 	context = None
 	start = (int(env['TM_LINE_NUMBER']), int(env['LS_CAPTURE_1']))
