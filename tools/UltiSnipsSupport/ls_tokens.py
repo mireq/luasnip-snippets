@@ -104,6 +104,10 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 					if number not in related_tokens:
 						related_tokens[number] = len(related_tokens) + 1
 
+			related_tokens_code = ''
+			if related_tokens:
+				related_tokens_code = f', {{{", ".join("k" + escape_lua_string("i" + str(v)) for v in related_tokens.keys())}}}'
+
 			if self.is_nested: # nested tokens are not supported, unwrapping
 				dynamic_node_content = snip.render_tokens(self.children, at_line_start=False, indent=context['indent'])
 				try:
@@ -112,7 +116,11 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 				except NotImplementedError:
 					text_content = ''
 					logger.exception("Cannot convert node in snippet `%s` to pure text representation: %s", context['parsed_snippet'].snippet.trigger, dynamic_node_content)
-				return f'c({self.number}, {{{{{dynamic_node_content}}}, {{{text_content}}}}}, {{key = "i{self.original_number}"}})'
+				node_content = f'c({1 if related_tokens_code else self.number}, {{{{{dynamic_node_content}}}, {{{text_content}}}}}, {{key = "i{self.original_number}"}})'
+				if related_tokens_code:
+					return f'd({self.number}, function(args, snip) return sn(nil, {{{node_content}}}) end{related_tokens_code})'
+				else:
+					return node_content
 
 			node_indent = INDENT_RE.match(''.join(accumulated_text[-operator.indexOf(reversed(accumulated_text), '\n'):])).group(1)
 
@@ -126,9 +134,6 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 					except NotImplementedError:
 						raise RuntimeError("Token not allowed: %s" % child)
 				dynamic_node_content = ', '.join(rendered_tokens)
-				related_tokens_code = ''
-				if related_tokens:
-					related_tokens_code = f', {{{", ".join("k" + escape_lua_string("i" + str(v)) for v in related_tokens.keys())}}}'
 				return f'd({self.number}, function(args, snip) return sn(nil, {{ i(1, jt({{{dynamic_node_content}}}, {escape_lua_string(node_indent)}), {{key = "i{self.original_number}"}}) }}) end{related_tokens_code})'
 		else:
 			return f'i({self.number}, "", {{key = "i{self.original_number}"}})'
