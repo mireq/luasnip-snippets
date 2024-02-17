@@ -136,7 +136,8 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 		if self.children:
 			if self.is_simple:
 				return self.simple_text
-			raise NotImplementedError()
+			text_content = ', '.join([child.render_text(context, related_tokens) for child in self.children])
+			return f'jt({{{text_content}}})'
 		else:
 			return f'args[{related_tokens[self.original_number]}]'
 
