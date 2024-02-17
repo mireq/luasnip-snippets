@@ -322,6 +322,11 @@ end
 
 
 local function setup()
+	if vim.g.snips_author == nil then vim.g.snips_author = 'yourname' end
+	if vim.g.snips_email == nil then vim.g.snips_email = 'yourname@email.com' end
+	if vim.g.snips_github == nil then vim.g.snips_github = 'https://github.com/yourname' end
+	if vim.g.snips_company == nil then vim.g.snips_company = 'company' end
+
 	local ls = require('luasnip')
 	local module_path = script_path()
 	require("luasnip.loaders.from_lua").lazy_load({
@@ -331,11 +336,6 @@ local function setup()
 	for filetype, extends in pairs(filetype_includes) do
 		ls.filetype_extend(filetype, extends)
 	end
-
-	if vim.g.snips_author == nil then vim.g.snips_author = 'yourname' end
-	if vim.g.snips_email == nil then vim.g.snips_email = 'yourname@email.com' end
-	if vim.g.snips_github == nil then vim.g.snips_github = 'https://github.com/yourname' end
-	if vim.g.snips_company == nil then vim.g.snips_company = 'company' end
 end
 
 
