@@ -179,12 +179,12 @@ ls.add_snippets("crystal", {
 		t"end"
 	}),
 	s({trig = "\\b(de)?f", descr = "(\\b(de)?f) \"def <name>...\"", priority = -50, trigEngine = te("r")}, {
-		t"def ", i(1, "method_name", {key = "i1"}), d(2, function(args) return sn(nil, {t"(", i(1, "*args", {key = "i3"}), t")"}) end, {}, {key = "i2"}), nl(),
+		t"def ", i(1, "method_name", {key = "i1"}), c(2, {{t"(", i(1, "*args", {key = "i3"}), t")"}, {i(1, jt({"(", "*args", ")"}))}}, {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "\\b(pde)?f", descr = "(\\b(pde)?f) \"private def <name>...\"", priority = -50, trigEngine = te("r")}, {
-		t"private def ", i(1, "method_name", {key = "i1"}), d(2, function(args) return sn(nil, {t"(", i(1, "*args", {key = "i3"}), t")"}) end, {}, {key = "i2"}), nl(),
+		t"private def ", i(1, "method_name", {key = "i1"}), c(2, {{t"(", i(1, "*args", {key = "i3"}), t")"}, {i(1, jt({"(", "*args", ")"}))}}, {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),

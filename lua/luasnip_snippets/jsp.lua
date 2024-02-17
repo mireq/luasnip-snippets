@@ -132,13 +132,13 @@ ls.add_snippets("jsp", {
 	}),
 	s({trig = "cfore", descr = "(cfore)", priority = -1000, trigEngine = te("w")}, {
 		t"<c:forEach items=\"${", i(1, "", {key = "i1"}), t"}\" var=\"", i(2, "", {key = "i2"}), t"\" varStatus=\"", i(3, "", {key = "i3"}), t"\">", nl(),
-		t"\t", d(4, function(args) return sn(nil, {t"<c:out value=\"", cp(2), t"\" />"}) end, {}, {key = "i0"}), nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({"<c:out value=\"", args[1], "\" />"}, "\t"), {key = "i0"}) }) end, {k"i2"}), nl(),
 		t"</c:forEach>"
 	}),
 	s({trig = "cfort", descr = "(cfort)", priority = -1000, trigEngine = te("w")}, {
 		t"<c:set var=\"", i(1, "", {key = "i1"}), t"\">", i(2, "item1,item2,item3", {key = "i2"}), t"</c:set>", nl(),
 		t"<c:forTokens var=\"", i(3, "", {key = "i3"}), t"\" items=\"${", cp(1), t"}\" delims=\"", i(4, ",", {key = "i4"}), t"\">", nl(),
-		t"\t", d(5, function(args) return sn(nil, {t"<c:out value=\"", cp(3), t"\" />"}) end, {}, {key = "i0"}), nl(),
+		t"\t", d(5, function(args, snip) return sn(nil, { i(1, jt({"<c:out value=\"", args[1], "\" />"}, "\t"), {key = "i0"}) }) end, {k"i3"}), nl(),
 		t"</c:forTokens>"
 	}),
 	s({trig = "cparam", descr = "(cparam)", priority = -1000, trigEngine = te("w")}, {

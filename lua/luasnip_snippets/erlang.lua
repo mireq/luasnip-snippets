@@ -827,7 +827,7 @@ ls.add_snippets("erlang", {
 		t"%%--------------------------------------------------------------------", nl()
 	}),
 	s({trig = "pat", descr = "(pat) \"Case:Receive:Try Clause\"", priority = -50, trigEngine = te("")}, {
-		i(1, "pattern", {key = "i1"}), d(2, function(args) return sn(nil, {t" when ", i(1, "guard", {key = "i3"})}) end, {}, {key = "i2"}), t" ->", nl(),
+		i(1, "pattern", {key = "i1"}), c(2, {{t" when ", i(1, "guard", {key = "i3"})}, {i(1, jt({" when ", "guard"}))}}, {key = "i2"}), t" ->", nl(),
 		t"\t", i(3, "body", {key = "i4"})
 	}),
 	s({trig = "||", descr = "(||) \"List Comprehension\"", priority = -50, trigEngine = te("")}, {

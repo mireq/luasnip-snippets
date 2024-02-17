@@ -334,7 +334,7 @@ ls.add_snippets("cpp", {
 	}),
 	s({trig = "itera", descr = "(itera) \"Auto iterator\"", priority = 0, trigEngine = te("")}, {
 		t"for (auto ", i(1, "i", {key = "i1"}), t" = ", cp(1), t".begin(); ", cp(1), t" != ", cp(1), t".end(); ++", cp(1), t") {", nl(),
-		t"\t", d(2, function(args) return sn(nil, {t"std::cout << *", cp(1), t" << std::endl;"}) end, {}, {key = "i0"}), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({"std::cout << *", args[1], " << std::endl;"}, "\t"), {key = "i0"}) }) end, {k"i1"}), nl(),
 		t"}"
 	}),
 	s({trig = "ld", descr = "(ld)", priority = -1000, trigEngine = te("w")}, {

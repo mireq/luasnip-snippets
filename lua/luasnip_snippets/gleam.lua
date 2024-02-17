@@ -111,21 +111,21 @@ ls.add_snippets("gleam", {
 	}),
 	s({trig = "ty", descr = "(ty) \"type\"", priority = -1000, trigEngine = te("w")}, {
 		t"type ", i(1, "Name", {key = "i1"}), t" {", nl(),
-		t"\t", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i0"}) }) end, {k"i1"}), nl(),
 		t"}", nl()
 	}),
 	s({trig = "pty", descr = "(pty) \"pub type\"", priority = -1000, trigEngine = te("w")}, {
 		t"pub type ", i(1, "Name", {key = "i1"}), t" {", nl(),
-		t"\t", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i0"}) }) end, {k"i1"}), nl(),
 		t"}", nl()
 	}),
 	s({trig = "tya", descr = "(tya) \"type alias\"", priority = -1000, trigEngine = te("w")}, {
 		t"type ", i(1, "Name", {key = "i1"}), t" =", nl(),
-		t"\t", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), nl()
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i0"}) }) end, {k"i1"}), nl()
 	}),
 	s({trig = "ptya", descr = "(ptya) \"pub type alias\"", priority = -1000, trigEngine = te("w")}, {
 		t"pub type ", i(1, "Name", {key = "i1"}), t" =", nl(),
-		t"\t", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), nl()
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i0"}) }) end, {k"i1"}), nl()
 	}),
 	s({trig = "ext", descr = "(ext) \"external type\"", priority = -1000, trigEngine = te("w")}, {
 		t"external type ", i(0, "", {key = "i0"}), nl()

@@ -924,7 +924,7 @@ ls.add_snippets("ruby", {
 		nl(),
 		t"require \'", i(1, "library_file_name", {key = "i1"}), t"\'", nl(),
 		nl(),
-		t"class Test", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t" < Test::Unit::TestCase", nl(),
+		t"class Test", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t" < Test::Unit::TestCase", nl(),
 		t"\tdef test_", i(3, "case_name", {key = "i3"}), nl(),
 		t"\t\t", i(0, "", {key = "i0"}), nl(),
 		t"\tend", nl(),
@@ -1309,7 +1309,7 @@ ls.add_snippets("ruby", {
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "\\b(de)?f", descr = "(\\b(de)?f) \"def <name>...\"", priority = -50, trigEngine = te("r")}, {
-		t"def ", i(1, "function_name", {key = "i1"}), d(2, function(args) return sn(nil, {t"(", i(1, "*args", {key = "i3"}), t")"}) end, {}, {key = "i2"}), nl(),
+		t"def ", i(1, "function_name", {key = "i1"}), c(2, {{t"(", i(1, "*args", {key = "i3"}), t")"}, {i(1, jt({"(", "*args", ")"}))}}, {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
@@ -1318,7 +1318,7 @@ ls.add_snippets("ruby", {
 		t"end"
 	}),
 	s({trig = "defr", descr = "(defr) \"def <name> ... rescue ...\"", priority = -50, trigEngine = te("")}, {
-		t"def ", i(1, "function_name", {key = "i1"}), d(2, function(args) return sn(nil, {t"(", i(1, "*args", {key = "i3"}), t")"}) end, {}, {key = "i2"}), nl(),
+		t"def ", i(1, "function_name", {key = "i1"}), c(2, {{t"(", i(1, "*args", {key = "i3"}), t")"}, {i(1, jt({"(", "*args", ")"}))}}, {key = "i2"}), nl(),
 		t"\t", i(3, "", {key = "i4"}), nl(),
 		t"rescue", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),

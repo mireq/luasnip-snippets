@@ -71,6 +71,6 @@ ls.add_snippets("snippets", {
 		f(function(args, snip) return c_py({"snippets", 5}, "snip.rv = \"endglobal\"", python_globals, args, snip, "", am[5]) end, ae(am[5]))
 	}),
 	s({trig = "vis", descr = "(vis) \"${VISUAL}\"", priority = -50, trigEngine = te("i")}, {
-		t"${VISUAL", d(1, function(args) return sn(nil, {i(1, "default", {key = "i2"}), i(2, "/transform/", {key = "i3"})}) end, {}, {key = "i1"}), t"}"
+		t"${VISUAL", c(1, {{i(1, "default", {key = "i2"}), i(2, "/transform/", {key = "i3"})}, {i(1, jt({"default", "/transform/"}))}}, {key = "i1"}), t"}"
 	}),
 })

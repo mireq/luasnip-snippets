@@ -444,8 +444,8 @@ ls.add_snippets("coffee", {
 	s({trig = "cla", descr = "(cla) \"Class\"", priority = -50, trigEngine = te("b")}, {
 		t"class ", i(1, "ClassName", {key = "i1"}), f(function(args, snip) return c_py({"coffee", 32}, "snip.rv = \" extends \" if t[2] else \"\"", python_globals, args, snip, "", am[32]) end, ae(am[32])), i(2, "Ancestor", {key = "i2"}), nl(),
 		nl(),
-		t"\t", d(3, function(args) return sn(nil, {t"constructor:", f(function(args, snip) return c_py({"coffee", 32}, "snip.rv = \" (\" if t[4] else \"\"", python_globals, args, snip, "", am[32]) end, ae(am[32])), i(1, "args", {key = "i4"}), f(function(args, snip) return c_py({"coffee", 32}, "snip.rv = \")\" if t[4] else \"\"", python_globals, args, snip, "", am[32]) end, ae(am[32])), t" ->", nl(),
-t"\t", i(2, "# body...", {key = "i5"})}) end, {}, {key = "i3"}), nl(),
+		t"\t", c(3, {{t"constructor:", f(function(args, snip) return c_py({"coffee", 32}, "snip.rv = \" (\" if t[4] else \"\"", python_globals, args, snip, "", am[32]) end, ae(am[32])), i(1, "args", {key = "i4"}), f(function(args, snip) return c_py({"coffee", 32}, "snip.rv = \")\" if t[4] else \"\"", python_globals, args, snip, "", am[32]) end, ae(am[32])), t" ->", nl(),
+		t"\t", i(2, "# body...", {key = "i5"})}, {i(1, jt({"constructor:", c_py({"coffee", 32}, "snip.rv = \" (\" if t[4] else \"\"", python_globals, args, snip, "", am[32]), "args", c_py({"coffee", 32}, "snip.rv = \")\" if t[4] else \"\"", python_globals, args, snip, "", am[32]), " ->", "\n", "\t", "# body..."}))}}, {key = "i3"}), nl(),
 		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "if", descr = "(if) \"If\"", priority = -50, trigEngine = te("b")}, {
@@ -476,7 +476,7 @@ t"\t", i(2, "# body...", {key = "i5"})}) end, {}, {key = "i3"}), nl(),
 		t"\t\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "log", descr = "(log) \"Log\"", priority = -50, trigEngine = te("b")}, {
-		t"console.log ", d(1, function(args) return sn(nil, {t"\"", i(1, "msg", {key = "i2"}), t"\""}) end, {}, {key = "i1"})
+		t"console.log ", c(1, {{t"\"", i(1, "msg", {key = "i2"}), t"\""}, {i(1, jt({"\"", "msg", "\""}))}}, {key = "i1"})
 	}),
 	s({trig = "try", descr = "(try) \"Try .. Catch\"", priority = -50, trigEngine = te("b")}, {
 		t"try", nl(),
@@ -485,7 +485,7 @@ t"\t", i(2, "# body...", {key = "i5"})}) end, {}, {key = "i3"}), nl(),
 		t"\t", i(3, "", {key = "i3"})
 	}),
 	s({trig = "req", descr = "(req) \"Require\"", priority = -50, trigEngine = te("b")}, {
-		tr(1, "^\'?(\\w+)\'?$", "\\L$1\\E"), t" = require(", d(1, function(args) return sn(nil, {t"\'", i(1, "sys", {key = "i2"}), t"\'"}) end, {}, {key = "i1"}), t")"
+		tr(1, "^\'?(\\w+)\'?$", "\\L$1\\E"), t" = require(", c(1, {{t"\'", i(1, "sys", {key = "i2"}), t"\'"}, {i(1, jt({"\'", "sys", "\'"}))}}, {key = "i1"}), t")"
 	}),
 	s({trig = "exp", descr = "(exp)", priority = -1000, trigEngine = te("w")}, {
 		i(0, "root", {key = "i0"}), t" = exports ? this", nl()

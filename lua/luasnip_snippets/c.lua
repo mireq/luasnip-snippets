@@ -266,12 +266,12 @@ ls.add_snippets("c", {
 		t"exit(", i(0, "", {key = "i0"}), t");"
 	}),
 	s({trig = "for", descr = "(for) \"for int loop (fori)\"", priority = 0, trigEngine = te("!")}, {
-		t"for (", i(4, "size_t", {key = "i4"}), t" ", i(2, "i", {key = "i2"}), t" = 0; ", cp(2), t" < ", i(1, "count", {key = "i1"}), t"; ", d(3, function(args) return sn(nil, {t"++", cp(2)}) end, {}, {key = "i3"}), t") {", nl(),
+		t"for (", i(4, "size_t", {key = "i4"}), t" ", i(2, "i", {key = "i2"}), t" = 0; ", cp(2), t" < ", i(1, "count", {key = "i1"}), t"; ", d(3, function(args, snip) return sn(nil, { i(1, jt({"++", args[1]}, ""), {key = "i3"}) }) end, {k"i2"}), t") {", nl(),
 		t"\t", i(0, "/* code */", {key = "i0"}), nl(),
 		t"}"
 	}),
 	s({trig = "forr", descr = "(forr)", priority = -1000, trigEngine = te("w")}, {
-		t"for (int ", i(1, "i", {key = "i1"}), t" = ", i(2, "0", {key = "i2"}), t"; ", d(3, function(args) return sn(nil, {cp(1), t" < 10"}) end, {}, {key = "i3"}), t"; ", cp(1), i(4, "++", {key = "i4"}), t") {", nl(),
+		t"for (int ", i(1, "i", {key = "i1"}), t" = ", i(2, "0", {key = "i2"}), t"; ", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1], " < 10"}, ""), {key = "i3"}) }) end, {k"i1"}), t"; ", cp(1), i(4, "++", {key = "i4"}), t") {", nl(),
 		t"\t", i(5, "", {key = "i5"}), nl(),
 		t"}"
 	}),
@@ -391,7 +391,7 @@ ls.add_snippets("c", {
 		t" *", nl(),
 		t" *  ", i(6, "Detailed description", {key = "i6"}), nl(),
 		t" */", nl(),
-		t"typedef struct ", d(2, function(args) return sn(nil, {t"_", cp(1), t" "}) end, {}, {key = "i2"}), t"{", nl(),
+		t"typedef struct ", d(2, function(args, snip) return sn(nil, { i(1, jt({"_", args[1], " "}, ""), {key = "i2"}) }) end, {k"i1"}), t"{", nl(),
 		t"\tm_", i(3, "Data", {key = "i3"}), t" /*!< ", i(4, "Description", {key = "i4"}), t" */", nl(),
 		t"} ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1_t\', \'name\')")}, ""), {key = "i1"}) }) end), t";", nl()
 	}),
@@ -547,7 +547,7 @@ ls.add_snippets("c", {
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "fori", descr = "(fori) \"for int loop (fori)\"", priority = -50, trigEngine = te("")}, {
-		t"for (", i(4, "int", {key = "i4"}), t" ", i(2, "i", {key = "i2"}), t" = 0; ", cp(2), t" < ", i(1, "count", {key = "i1"}), t"; ", d(3, function(args) return sn(nil, {t"++", cp(2)}) end, {}, {key = "i3"}), t") {", nl(),
+		t"for (", i(4, "int", {key = "i4"}), t" ", i(2, "i", {key = "i2"}), t" = 0; ", cp(2), t" < ", i(1, "count", {key = "i1"}), t"; ", d(3, function(args, snip) return sn(nil, { i(1, jt({"++", args[1]}, ""), {key = "i3"}) }) end, {k"i2"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),

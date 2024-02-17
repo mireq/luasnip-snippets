@@ -243,7 +243,7 @@ ls.add_snippets("laravel", {
 		nl(),
 		t"namespace ", i(1, "Repositories\\${2}", {key = "i1"}), t";", nl(),
 		nl(),
-		t"class ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("!v expand(\'%:t:r\')")}, ""), {key = "i3"}) }) end), t" extends \\", i(5, "", {key = "i6"}), t" implements ", d(3, function(args) return sn(nil, {cp(3), t"RepositoryInterface"}) end, {}, {key = "i4"}), t" {", nl(),
+		t"class ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("!v expand(\'%:t:r\')")}, ""), {key = "i3"}) }) end), t" extends \\", i(5, "", {key = "i6"}), t" implements ", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1], "RepositoryInterface"}, ""), {key = "i4"}) }) end, {k"i3"}), t" {", nl(),
 		t"\t", i(6, "", {key = "i7"}), nl(),
 		t"}"
 	}),

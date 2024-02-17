@@ -403,13 +403,13 @@ ls.add_snippets("scala", {
 	}),
 	s({trig = "abstract", descr = "(abstract)", priority = -1000, trigEngine = te("w")}, {
 		t"abstract class ", i(1, "name", {key = "i1"}), i(2, "(arg)", {key = "i2"}), i(3, " extends ", {key = "i3"}), i(4, " with", {key = "i4"}), t" {", nl(),
-		t"\t", d(5, function(args) return sn(nil, {t"override def toString = \"", cp(1), t"\""}) end, {}, {key = "i5"}), nl(),
+		t"\t", d(5, function(args, snip) return sn(nil, { i(1, jt({"override def toString = \"", args[1], "\""}, "\t"), {key = "i5"}) }) end, {k"i1"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
 	s({trig = "class", descr = "(class)", priority = -1000, trigEngine = te("w")}, {
 		t"class ", i(1, "name", {key = "i1"}), i(2, "(arg)", {key = "i2"}), i(3, " extends ", {key = "i3"}), i(4, " with", {key = "i4"}), t" {", nl(),
-		t"\t", d(5, function(args) return sn(nil, {t"override def toString = \"", cp(1), t"\""}) end, {}, {key = "i5"}), nl(),
+		t"\t", d(5, function(args, snip) return sn(nil, { i(1, jt({"override def toString = \"", args[1], "\""}, "\t"), {key = "i5"}) }) end, {k"i1"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -423,7 +423,7 @@ ls.add_snippets("scala", {
 	}),
 	s({trig = "ordered", descr = "(ordered)", priority = -1000, trigEngine = te("w")}, {
 		t"class ", i(1, "name", {key = "i1"}), i(2, "(arg)", {key = "i2"}), t" extends Ordered[", cp(1), t"] ", i(3, " with", {key = "i3"}), t" {", nl(),
-		t"\t", d(4, function(args) return sn(nil, {t"override def toString = \"", cp(1), t"\""}) end, {}, {key = "i4"}), nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({"override def toString = \"", args[1], "\""}, "\t"), {key = "i4"}) }) end, {k"i1"}), nl(),
 		t"\tdef compare(that: ", cp(1), t") = ", i(5, "this - that", {key = "i5"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"

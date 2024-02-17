@@ -132,7 +132,7 @@ ls.add_snippets("objc", {
 		t"@\"", i(1, "", {key = "i1"}), t"\""
 	}),
 	s({trig = "o", descr = "(o)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "NSObject", {key = "i1"}), t" *", i(2, "foo", {key = "i2"}), t" = [", d(3, function(args) return sn(nil, {cp(1), t" alloc"}) end, {}, {key = "i3"}), t"]", i(4, "", {key = "i4"}), t";"
+		i(1, "NSObject", {key = "i1"}), t" *", i(2, "foo", {key = "i2"}), t" = [", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1], " alloc"}, " "), {key = "i3"}) }) end, {k"i1"}), t"]", i(4, "", {key = "i4"}), t";"
 	}),
 	s({trig = "log", descr = "(log) \"NSLog (log) 2\"", priority = -50, trigEngine = te("")}, {
 		t"NSLog(@\"", i(1, "", {key = "i1"}), t"\"", tr(1, "[^%]*(%)?.*", "(?1:, :\\);)"), i(2, "", {key = "i2"}), tr(1, "[^%]*(%)?.*", "(?1:\\);)")
@@ -273,7 +273,7 @@ ls.add_snippets("objc", {
 		},
 	})),
 	s({trig = "forin", descr = "(forin)", priority = -1000, trigEngine = te("w")}, {
-		t"for (", i(1, "Class", {key = "i1"}), t" *", d(2, function(args) return sn(nil, {t"some", cp(1)}) end, {}, {key = "i2"}), t" in ", i(3, "array", {key = "i3"}), t") {", nl(),
+		t"for (", i(1, "Class", {key = "i1"}), t" *", d(2, function(args, snip) return sn(nil, { i(1, jt({"some", args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t" in ", i(3, "array", {key = "i3"}), t") {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -348,7 +348,7 @@ ls.add_snippets("objc", {
 	}),
 	s({trig = "except", descr = "(except)", priority = -1000, trigEngine = te("w")}, {
 		t"NSException *", i(1, "badness", {key = "i1"}), t";", nl(),
-		cp(1), t" = [NSException exceptionWithName:@\"", d(2, function(args) return sn(nil, {cp(1), t"Name"}) end, {}, {key = "i2"}), t"\"", nl(),
+		cp(1), t" = [NSException exceptionWithName:@\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1], "Name"}, " "), {key = "i2"}) }) end, {k"i1"}), t"\"", nl(),
 		t"                             reason:@\"", i(0, "", {key = "i0"}), t"\"", nl(),
 		t"                           userInfo:nil];", nl(),
 		t"[", cp(1), t" raise];"
@@ -532,7 +532,7 @@ ls.add_snippets("objc", {
 		{
 			t"- (", i(1, "unsigned int", {key = "i1"}), t")", i(2, "thing", {key = "i2"}), nl(),
 			t"{", nl(),
-			t"\treturn ", d(3, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i3"}), t";", nl(),
+			t"\treturn ", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i3"}) }) end, {k"i2"}), t";", nl(),
 			t"}", nl(),
 			nl(),
 			t"- (void)set", tr(2, ".", "\\u$0"), t":(", i(1, "unsigned int", {key = "i1"}), t")new", tr(2, ".", "\\u$0"), nl(),
@@ -548,7 +548,7 @@ ls.add_snippets("objc", {
 	s({trig = "stracc", descr = "(stracc) \"String Accessors (stracc)\"", priority = -50, trigEngine = te("")}, {
 		t"- (NSString *)", i(1, "thing", {key = "i1"}), nl(),
 		t"{", nl(),
-		t"\treturn ", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t";", nl(),
+		t"\treturn ", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i2"}) }) end, {k"i1"}), t";", nl(),
 		t"}", nl(),
 		nl(),
 		t"- (void)set", tr(1, ".*", "\\u$0"), t":(NSString *)/})", d(3, function(args, snip) return sn(nil, { i(1, jt({"a", rx_tr(args[1], ".*", "\\u$0")}, ""), {key = "i3"}) }) end, {k"i1"}), nl(),

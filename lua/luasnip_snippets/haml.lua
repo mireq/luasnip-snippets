@@ -75,13 +75,13 @@ ls.add_snippets("haml", {
 		t"= render :partial => \"", i(0, "item", {key = "i0"}), t"\""
 	}),
 	s({trig = "rpc", descr = "(rpc)", priority = -1000, trigEngine = te("w")}, {
-		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :collection => ", d(2, function(args) return sn(nil, {t"@", cp(1), t"s"}) end, {}, {key = "i0"})
+		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :collection => ", d(2, function(args, snip) return sn(nil, { i(1, jt({"@", args[1], "s"}, ""), {key = "i0"}) }) end, {k"i1"})
 	}),
 	s({trig = "rpl", descr = "(rpl)", priority = -1000, trigEngine = te("w")}, {
-		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :locals => { :", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t" => ", d(3, function(args) return sn(nil, {t"@", cp(1)}) end, {}, {key = "i0"}), t" }"
+		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :locals => { :", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t" => ", d(3, function(args, snip) return sn(nil, { i(1, jt({"@", args[1]}, ""), {key = "i0"}) }) end, {k"i1"}), t" }"
 	}),
 	s({trig = "rpo", descr = "(rpo)", priority = -1000, trigEngine = te("w")}, {
-		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :object => ", d(2, function(args) return sn(nil, {t"@", cp(1)}) end, {}, {key = "i0"})
+		t"= render :partial => \"", i(1, "item", {key = "i1"}), t"\", :object => ", d(2, function(args, snip) return sn(nil, { i(1, jt({"@", args[1]}, ""), {key = "i0"}) }) end, {k"i1"})
 	}),
 	s({trig = "lt", descr = "(lt)", priority = -1000, trigEngine = te("w")}, {
 		t"= link_to ", i(1, "name", {key = "i1"}), t", ", i(2, "dest", {key = "i2"})

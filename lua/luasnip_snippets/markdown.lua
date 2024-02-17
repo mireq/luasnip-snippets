@@ -358,7 +358,7 @@ ls.add_snippets("markdown", {
 		t"<!-- ", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t" -->", i(0, "", {key = "i0"})
 	}),
 	s({trig = "link", descr = "(link) \"Link to something\"", priority = -50, trigEngine = te("")}, {
-		t"[", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"](", d(2, function(args) return sn(nil, {t"https://", i(1, "www.url.com", {key = "i2"})}) end, {}, {key = "i3"}), t")", i(0, "", {key = "i0"})
+		t"[", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"](", c(2, {{t"https://", i(1, "www.url.com", {key = "i2"})}, {i(1, jt({"https://", "www.url.com"}))}}, {key = "i3"}), t")", i(0, "", {key = "i0"})
 	}),
 	s({trig = "ilc", descr = "(ilc) \"Inline Code\"", priority = -50, trigEngine = te("i")}, {
 		t"`", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"`", i(0, "", {key = "i0"})
@@ -372,7 +372,7 @@ ls.add_snippets("markdown", {
 	s({trig = "refl", descr = "(refl) \"Reference Link\"", priority = -50, trigEngine = te("")}, {
 		t"[", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"][", i(2, "id", {key = "i2"}), t"]", i(0, "", {key = "i0"}), nl(),
 		nl(),
-		t"[", cp(2), t"]:", d(3, function(args) return sn(nil, {t"https://", i(1, "www.url.com", {key = "i3"})}) end, {}, {key = "i4"}), t" \"", d(4, function(args) return sn(nil, {cp(4)}) end, {}, {key = "i5"}), t"\""
+		t"[", cp(2), t"]:", c(3, {{t"https://", i(1, "www.url.com", {key = "i3"})}, {i(1, jt({"https://", "www.url.com"}))}}, {key = "i4"}), t" \"", d(4, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i5"}) }) end, {k"i4"}), t"\""
 	}),
 	s({trig = "fnt", descr = "(fnt) \"Footnote\"", priority = -50, trigEngine = te("")}, {
 		t"[^", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"]", i(0, "", {key = "i0"}), nl(),
@@ -381,7 +381,7 @@ ls.add_snippets("markdown", {
 	}),
 	s({trig = "detail", descr = "(detail) \"Disclosure\"", priority = -50, trigEngine = te("")}, {
 		t"<details", i(2, " open=\"\"", {key = "i3"}), t">", nl(),
-		t"  ", d(1, function(args) return sn(nil, {t"<summary>", i(1, "", {key = "i2"}), t"</summary>"}) end, {}, {key = "i1"}), i(0, "", {key = "i0"}), nl(),
+		t"  ", c(1, {{t"<summary>", i(1, "", {key = "i2"}), t"</summary>"}, {i(1, jt({"<summary>", "", "</summary>"}))}}, {key = "i1"}), i(0, "", {key = "i0"}), nl(),
 		t"</details>"
 	}),
 	s({trig = "tb([1-9][1-9])", descr = "(tb([1-9][1-9])) \"Fancy table\"", priority = -50, trigEngine = te("br")}, {

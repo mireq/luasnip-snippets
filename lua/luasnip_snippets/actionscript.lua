@@ -189,7 +189,7 @@ ls.add_snippets("actionscript", {
 		t"}"
 	}),
 	s({trig = "forr", descr = "(forr)", priority = -1000, trigEngine = te("w")}, {
-		t"for (", i(1, "i", {key = "i1"}), t" = ", i(2, "0", {key = "i2"}), t"; ", d(3, function(args) return sn(nil, {cp(1), t" < 10"}) end, {}, {key = "i3"}), t"; ", cp(1), i(4, "++", {key = "i4"}), t") {", nl(),
+		t"for (", i(1, "i", {key = "i1"}), t" = ", i(2, "0", {key = "i2"}), t"; ", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1], " < 10"}, ""), {key = "i3"}) }) end, {k"i1"}), t"; ", cp(1), i(4, "++", {key = "i4"}), t") {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),

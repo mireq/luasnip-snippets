@@ -167,7 +167,7 @@ ls.add_snippets("org", {
 		t"src_", i(1, "language", {key = "i1"}), t"[", i(2, "header", {key = "i2"}), t"]{", i(0, "body", {key = "i0"}), t"}"
 	}),
 	s({trig = "jupyter", descr = "(jupyter)", priority = -1000, trigEngine = te("w")}, {
-		t"#+begin_src jupyter-", i(1, "$$(yas-choose-value \'(\"python\" \"julia\" \"R\"))", {key = "i1"}), d(2, function(args) return sn(nil, {t" :session ", i(1, "", {key = "i3"})}) end, {}, {key = "i2"}), i(3, " :async yes", {key = "i4"}), nl(),
+		t"#+begin_src jupyter-", i(1, "$$(yas-choose-value \'(\"python\" \"julia\" \"R\"))", {key = "i1"}), c(2, {{t" :session ", i(1, "", {key = "i3"})}, {i(1, jt({" :session ", ""}))}}, {key = "i2"}), i(3, " :async yes", {key = "i4"}), nl(),
 		i(0, "", {key = "i0"}), nl(),
 		t"#+end_src"
 	}),

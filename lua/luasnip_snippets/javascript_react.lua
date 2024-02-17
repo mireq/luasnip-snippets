@@ -78,11 +78,11 @@ ls.add_snippets("javascript_react", {
 		t"export default ", i(4, "", {key = "i4"}), f(function(args, snip) return c_py({"javascript_react", 1}, "snip.rv = snip.basename", python_globals, args, snip, "", am[1]) end, ae(am[1]))
 	}),
 	s({trig = "useS", descr = "(useS) \"useState Hook\"", priority = 0, trigEngine = te("b")}, {
-		t"const [", i(1, "", {key = "i1"}), t", set", f(function(args, snip) return c_py({"javascript_react", 2}, "snip.rv=capitalize_first(t[1])", python_globals, args, snip, "", am[2]) end, ae(am[2])), t"] = useState(", d(2, function(args) return sn(nil, {t"\"", i(1, "", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), t")"
+		t"const [", i(1, "", {key = "i1"}), t", set", f(function(args, snip) return c_py({"javascript_react", 2}, "snip.rv=capitalize_first(t[1])", python_globals, args, snip, "", am[2]) end, ae(am[2])), t"] = useState(", c(2, {{t"\"", i(1, "", {key = "i4"}), t"\""}, {i(1, jt({"\"", "", "\""}))}}, {key = "i3"}), t")"
 	}),
 	s({trig = "useE", descr = "(useE) \"useEffect Hook\"", priority = 0, trigEngine = te("b")}, {
 		t"useEffect(() => {", nl(),
-		t"\t", d(1, function(args) return sn(nil, {i(1, "", {key = "i0"})}) end, {}, {key = "i1"}), nl(),
+		t"\t", c(1, {{i(1, "", {key = "i0"})}, {i(1, jt({""}))}}, {key = "i1"}), nl(),
 		t"\t\t}", i(2, "", {key = "i2"}), t")"
 	}),
 	s({trig = "useC", descr = "(useC) \"useContext Hook\"", priority = 0, trigEngine = te("b")}, {
@@ -92,12 +92,12 @@ ls.add_snippets("javascript_react", {
 		t"const [", i(2, "state", {key = "i3"}), t", ", i(3, "dispatch", {key = "i4"}), t"] = useReducer(", i(4, "reducer", {key = "i5"}), t", ", i(1, "initial_value", {key = "i2"}), t")"
 	}),
 	s({trig = "useCB", descr = "(useCB) \"useCallback(fn, inputs)\"", priority = 0, trigEngine = te("b")}, {
-		t"const ", i(1, "callback", {key = "i1"}), t" = useCallback((", i(2, "", {key = "i2"}), t")) => ", d(3, function(args) return sn(nil, {t"{", nl(),
-i(1, "", {key = "i4"}), t"\t${4}", nl()}) end, {}, {key = "i3"}), t", [", i(4, "", {key = "i5"}), t"])"
+		t"const ", i(1, "callback", {key = "i1"}), t" = useCallback((", i(2, "", {key = "i2"}), t")) => ", c(3, {{t"{", nl(),
+		i(1, "", {key = "i4"}), t"\t${4}", nl()}, {i(1, jt({"{", "\n", "", "\t${4}", "\n"}))}}, {key = "i3"}), t", [", i(4, "", {key = "i5"}), t"])"
 	}),
 	s({trig = "useM", descr = "(useM) \"useMemo(fn, inputs)\"", priority = 0, trigEngine = te("b")}, {
-		t"const ", i(1, "memorized", {key = "i1"}), t" = useMemo(() => ", d(2, function(args) return sn(nil, {t"{", nl(),
-i(1, "", {key = "i3"}), t"\t${3}", nl()}) end, {}, {key = "i2"}), t", [", i(3, "", {key = "i4"}), t"])"
+		t"const ", i(1, "memorized", {key = "i1"}), t" = useMemo(() => ", c(2, {{t"{", nl(),
+		i(1, "", {key = "i3"}), t"\t${3}", nl()}, {i(1, jt({"{", "\n", "", "\t${3}", "\n"}))}}, {key = "i2"}), t", [", i(3, "", {key = "i4"}), t"])"
 	}),
 	s({trig = "useR", descr = "(useR) \"useRef(defaultValue)\"", priority = 0, trigEngine = te("b")}, {
 		t"const ", i(1, "ref", {key = "i1"}), t" = useRef(", i(2, "null", {key = "i2"}), t")"

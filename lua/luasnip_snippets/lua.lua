@@ -204,8 +204,8 @@ ls.add_snippets("lua", {
 		t"local ok, err = pcall(", i(1, "your_function", {key = "i1"}), t")", nl(),
 		t"if not ok then", nl(),
 		t"\thandler(", i(2, "ok, err", {key = "i2"}), t")", nl(),
-		d(3, function(args) return sn(nil, {t"else", nl(),
-t"\tsuccess(", i(1, "ok, err", {key = "i4"}), t")", nl()}) end, {}, {key = "i3"}), t"end"
+		c(3, {{t"else", nl(),
+		t"\tsuccess(", i(1, "ok, err", {key = "i4"}), t")", nl()}, {i(1, jt({"else", "\n", "\tsuccess(", "ok, err", ")", "\n"}))}}, {key = "i3"}), t"end"
 	}),
 	s({trig = "use", descr = "(use) \"Use\"", priority = -50, trigEngine = te("b")}, {
 		t"use { \'", i(1, "", {key = "i1"}), t"\' }"

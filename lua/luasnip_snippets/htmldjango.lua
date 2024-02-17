@@ -147,7 +147,7 @@ ls.add_snippets("htmldjango", {
 		t"{% endcomment %}"
 	}),
 	s({trig = "cycle", descr = "(cycle) \"\"", priority = -50, trigEngine = te("bi")}, {
-		t"{% cycle ", i(1, "val1", {key = "i1"}), t" ", i(2, "val2", {key = "i2"}), t" ", d(3, function(args) return sn(nil, {t"as ", i(1, "", {key = "i4"})}) end, {}, {key = "i3"}), t" %}"
+		t"{% cycle ", i(1, "val1", {key = "i1"}), t" ", i(2, "val2", {key = "i2"}), t" ", c(3, {{t"as ", i(1, "", {key = "i4"})}, {i(1, jt({"as ", ""}))}}, {key = "i3"}), t" %}"
 	}),
 	s({trig = "debug", descr = "(debug) \"\"", priority = -50, trigEngine = te("bi")}, {
 		t"{% debug %}"

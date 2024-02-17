@@ -128,7 +128,7 @@ ls.add_snippets("ps1", {
 		t".DESCRIPTION", nl(),
 		t"\t", i(2, "Full Description", {key = "i2"}), nl(),
 		t".PARAMETER ", i(3, "Param1", {key = "i3"}), nl(),
-		t"\t", d(4, function(args) return sn(nil, {t" ", cp(3), t" usage"}) end, {}, {key = "i4"}), nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({" ", args[1], " usage"}, "\t"), {key = "i4"}) }) end, {k"i3"}), nl(),
 		t".EXAMPLE", nl(),
 		t"\t", i(5, "Example", {key = "i5"}), nl(),
 		t".NOTES", nl(),

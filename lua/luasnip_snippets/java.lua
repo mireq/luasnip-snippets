@@ -259,7 +259,7 @@ ls.add_snippets("java", {
 		t"public class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\"$1\", \"untitled\")")}, ""), {key = "i1"}) }) end), t" ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "in", descr = "(in) \"interface\"", priority = -50, trigEngine = te("b")}, {
-		t"interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 17}, "snip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[17])}, ""), {key = "i1"}) }) end), t" ", d(2, function(args) return sn(nil, {t"extends ", i(1, "Parent", {key = "i3"}), t" "}) end, {}, {key = "i2"}), t"{", nl(),
+		t"interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 17}, "snip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[17])}, ""), {key = "i1"}) }) end), t" ", c(2, {{t"extends ", i(1, "Parent", {key = "i3"}), t" "}, {i(1, jt({"extends ", "Parent", " "}))}}, {key = "i2"}), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -584,7 +584,7 @@ ls.add_snippets("java", {
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "cle", descr = "(cle) \"class extends\"", priority = -50, trigEngine = te("b")}, {
-		t"public class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 106}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[106]), "r \"untitled\""}, ""), {key = "i1"}) }) end), t" ", d(2, function(args) return sn(nil, {t"extends ", i(1, "Parent", {key = "i3"}), t" "}) end, {}, {key = "i2"}), d(3, function(args) return sn(nil, {t"implements ", i(1, "Interface", {key = "i5"}), t" "}) end, {}, {key = "i4"}), t"{", nl(),
+		t"public class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 106}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[106]), "r \"untitled\""}, ""), {key = "i1"}) }) end), t" ", c(2, {{t"extends ", i(1, "Parent", {key = "i3"}), t" "}, {i(1, jt({"extends ", "Parent", " "}))}}, {key = "i2"}), c(3, {{t"implements ", i(1, "Interface", {key = "i5"}), t" "}, {i(1, jt({"implements ", "Interface", " "}))}}, {key = "i4"}), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -661,7 +661,7 @@ ls.add_snippets("java", {
 		},
 	})),
 	s({trig = "mt", descr = "(mt) \"method throws\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "private", {key = "i1"}), t" ", i(2, "void", {key = "i2"}), t" ", i(3, "method", {key = "i3"}), t"(", i(4, "", {key = "i4"}), t") ", d(5, function(args) return sn(nil, {t"throws ", i(1, "", {key = "i6"}), t" "}) end, {}, {key = "i5"}), t"{", nl(),
+		i(1, "private", {key = "i1"}), t" ", i(2, "void", {key = "i2"}), t" ", i(3, "method", {key = "i3"}), t"(", i(4, "", {key = "i4"}), t") ", c(5, {{t"throws ", i(1, "", {key = "i6"}), t" "}, {i(1, jt({"throws ", "", " "}))}}, {key = "i5"}), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -670,7 +670,7 @@ ls.add_snippets("java", {
 		t" * ", i(6, "Short Description", {key = "i7"}), f(function(args, snip) return c_py({"java", 122}, "\nfor i in getArgs(t[4]):\n\tsnip.rv += \"\\n\\t * @param \" + i[1] + \" usage...\"", python_globals, args, snip, "", am[122]) end, ae(am[122])), nl(),
 		t" *", f(function(args, snip) return c_py({"java", 122}, "\nif \"throws\" in t[5]:\n\tsnip.rv = \"\\n\\t * @throws \" + t[6]\nelse:\n\tsnip.rv = \"\"", python_globals, args, snip, "", am[122]) end, ae(am[122])), f(function(args, snip) return c_py({"java", 122}, "\nif not \"void\" in t[2]:\n\tsnip.rv = \"\\n\\t * @return object\"\nelse:\n\tsnip.rv = \"\"", python_globals, args, snip, "", am[122]) end, ae(am[122])), nl(),
 		t" **/", nl(),
-		i(1, "public", {key = "i1"}), t" ", i(2, "void", {key = "i2"}), t" ", i(3, "method", {key = "i3"}), t"(", i(4, "", {key = "i4"}), t") ", d(5, function(args) return sn(nil, {t"throws ", i(1, "", {key = "i6"}), t" "}) end, {}, {key = "i5"}), t"{", nl(),
+		i(1, "public", {key = "i1"}), t" ", i(2, "void", {key = "i2"}), t" ", i(3, "method", {key = "i3"}), t"(", i(4, "", {key = "i4"}), t") ", c(5, {{t"throws ", i(1, "", {key = "i6"}), t" "}, {i(1, jt({"throws ", "", " "}))}}, {key = "i5"}), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),

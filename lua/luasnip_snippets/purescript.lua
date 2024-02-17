@@ -142,11 +142,11 @@ ls.add_snippets("purescript", {
 	}),
 	s({trig = "da", descr = "(da)", priority = -1000, trigEngine = te("w")}, {
 		t"data ", i(1, "Type", {key = "i1"}), t" =", nl(),
-		t"\t", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"})
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i0"}) }) end, {k"i1"})
 	}),
 	s({trig = "nty", descr = "(nty)", priority = -1000, trigEngine = te("w")}, {
 		t"newtype ", i(1, "Type", {key = "i1"}), t" =", nl(),
-		t"\t", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t" ", i(0, "Int", {key = "i0"})
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i2"}) }) end, {k"i1"}), t" ", i(0, "Int", {key = "i0"})
 	}),
 	s({trig = "fi", descr = "(fi)", priority = -1000, trigEngine = te("w")}, {
 		t"foreign import ", i(1, "", {key = "i1"}), t" :: ", i(2, "", {key = "i2"})

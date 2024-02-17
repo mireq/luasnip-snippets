@@ -119,7 +119,7 @@ ls.add_snippets("sh", {
 		t"fi"
 	}),
 	s({trig = "elif", descr = "(elif) \"elif .. (elif)\"", priority = -50, trigEngine = te("b")}, {
-		t"elif ", d(1, function(args) return sn(nil, {t"[[ ", i(1, "condition", {key = "i1"}), t" ]]"}) end, {}, {key = "i2"}), t"; then", nl(),
+		t"elif ", c(1, {{t"[[ ", i(1, "condition", {key = "i1"}), t" ]]"}, {i(1, jt({"[[ ", "condition", " ]]"}))}}, {key = "i2"}), t"; then", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end)
 	}),
 	s({trig = "for", descr = "(for) \"for ... done (for)\"", priority = -50, trigEngine = te("b")}, {
@@ -143,7 +143,7 @@ ls.add_snippets("sh", {
 		t"done"
 	}),
 	s({trig = "until", descr = "(until) \"until ... (done)\"", priority = -50, trigEngine = te("b")}, {
-		t"until ", d(1, function(args) return sn(nil, {t"[[ ", i(1, "condition", {key = "i1"}), t" ]]"}) end, {}, {key = "i2"}), t"; do", nl(),
+		t"until ", c(1, {{t"[[ ", i(1, "condition", {key = "i1"}), t" ]]"}, {i(1, jt({"[[ ", "condition", " ]]"}))}}, {key = "i2"}), t"; do", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"done"
 	}),
@@ -215,8 +215,8 @@ ls.add_snippets("sh", {
 		t"}"
 	}),
 	s({trig = "temp", descr = "(temp) \"Tempfile\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "TMPFILE", {key = "i1"}), t"=\"$(mktemp -t ", d(3, function(args) return sn(nil, {t"--suffix=", i(1, ".SUFFIX", {key = "i4"})}) end, {}, {key = "i3"}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"sh", 20}, "\nsnip.rv = re.sub(r\'[^a-zA-Z]\', \'_\', snip.fn) or \"untitled\"\n", python_globals, args, snip, "", am[20])}, ""), {key = "i2"}) }) end), t".XXXXXX)\"", nl(),
-		d(4, function(args) return sn(nil, {tr(6, "(.+)", "trap \""), d(1, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'"}, ""), {key = "i6"}) }) end, {k"i1"}), tr(6, "(.+)", "\" 0               # EXIT\\n"), tr(7, "(.+)", "trap \""), d(2, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i7"}) }) end, {k"i1"}), tr(7, "(.+)", "\" 2       # INT\\n"), tr(8, "(.+)", "trap \""), d(3, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i8"}) }) end, {k"i1"}), tr(8, "(.+)", "\" 1 15    # HUP TERM\\n")}) end, {}, {key = "i5"}), nl()
+		i(1, "TMPFILE", {key = "i1"}), t"=\"$(mktemp -t ", c(3, {{t"--suffix=", i(1, ".SUFFIX", {key = "i4"})}, {i(1, jt({"--suffix=", ".SUFFIX"}))}}, {key = "i3"}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"sh", 20}, "\nsnip.rv = re.sub(r\'[^a-zA-Z]\', \'_\', snip.fn) or \"untitled\"\n", python_globals, args, snip, "", am[20])}, ""), {key = "i2"}) }) end), t".XXXXXX)\"", nl(),
+		d(4, function(args, snip) return sn(nil, {c(1, {{tr(6, "(.+)", "trap \""), d(1, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'"}, ""), {key = "i6"}) }) end, {k"i1"}), tr(6, "(.+)", "\" 0               # EXIT\\n"), tr(7, "(.+)", "trap \""), d(2, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i7"}) }) end, {k"i1"}), tr(7, "(.+)", "\" 2       # INT\\n"), tr(8, "(.+)", "trap \""), d(3, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i8"}) }) end, {k"i1"}), tr(8, "(.+)", "\" 1 15    # HUP TERM\\n")}, {i(1, jt({rx_tr(args[1], "(.+)", "trap \""), jt({"rm -f \'$", rx_tr(args[2], ".*\\s", ""), "\'"}), rx_tr(args[1], "(.+)", "\" 0               # EXIT\\n"), rx_tr(args[3], "(.+)", "trap \""), jt({"rm -f \'$", rx_tr(args[2], ".*\\s", ""), "\'; exit 1"}), rx_tr(args[3], "(.+)", "\" 2       # INT\\n"), rx_tr(args[4], "(.+)", "trap \""), jt({"rm -f \'$", rx_tr(args[2], ".*\\s", ""), "\'; exit 1"}), rx_tr(args[4], "(.+)", "\" 1 15    # HUP TERM\\n")}))}}, {key = "i5"})}) end, {k"i6", k"i1", k"i7", k"i8"}), nl()
 	}),
 	s({trig = "case|sw(itch)?", descr = "(case|sw(itch)?) \"case .. esac (case)\"", priority = -50, trigEngine = te("rb")}, {
 		t"case ", i(1, "word", {key = "i1"}), t" in", nl(),
@@ -230,16 +230,16 @@ ls.add_snippets("sh", {
 		t"done"
 	}),
 	s({trig = "here", descr = "(here) \"here document (here)\"", priority = -50, trigEngine = te("")}, {
-		t"<<-", d(2, function(args) return sn(nil, {t"\'", i(1, "TOKEN", {key = "i1"}), t"\'"}) end, {}, {key = "i2"}), nl(),
+		t"<<-", c(2, {{t"\'", i(1, "TOKEN", {key = "i1"}), t"\'"}, {i(1, jt({"\'", "TOKEN", "\'"}))}}, {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), f(function(args, snip) return c_shell("echo \\\\n") end), tr(1, "[\'\"`](.+)[\'\"`]", "$1")
 	}),
 	s({trig = "ift(est)?", descr = "(ift(est)?) \"if ... then (if)\"", priority = -50, trigEngine = te("rb")}, {
-		t"if ", d(1, function(args) return sn(nil, {t"[ ", i(1, "condition", {key = "i1"}), t" ]"}) end, {}, {key = "i2"}), t"; then", nl(),
+		t"if ", c(1, {{t"[ ", i(1, "condition", {key = "i1"}), t" ]"}, {i(1, jt({"[ ", "condition", " ]"}))}}, {key = "i2"}), t"; then", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"fi"
 	}),
 	s({trig = "wh(ile)?", descr = "(wh(ile)?) \"while ... (done)\"", priority = -50, trigEngine = te("rb")}, {
-		t"while ", d(1, function(args) return sn(nil, {t"[[ ", i(1, "condition", {key = "i1"}), t" ]]"}) end, {}, {key = "i2"}), t"; do", nl(),
+		t"while ", c(1, {{t"[[ ", i(1, "condition", {key = "i1"}), t" ]]"}, {i(1, jt({"[[ ", "condition", " ]]"}))}}, {key = "i2"}), t"; do", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"done"
 	}),

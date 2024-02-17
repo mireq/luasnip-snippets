@@ -276,7 +276,7 @@ ls.add_snippets("plsql", {
 		t"end loop;"
 	}),
 	s({trig = "forc", descr = "(forc) \"For Cursor Loop\"", priority = 0, trigEngine = te("")}, {
-		t"\tFOR ", cp(1), t"_rec IN ", i(1, "cur", {key = "i1"}), t" ", d(2, function(args) return sn(nil, {t"(", i(1, "param", {key = "i3"}), t")"}) end, {}, {key = "i2"}), nl(),
+		t"\tFOR ", cp(1), t"_rec IN ", i(1, "cur", {key = "i1"}), t" ", c(2, {{t"(", i(1, "param", {key = "i3"}), t")"}, {i(1, jt({"(", "param", ")"}))}}, {key = "i2"}), nl(),
 		t"\tLOOP", nl(),
 		t"\t\t", i(0, "", {key = "i0"}), nl(),
 		t"\tEND LOOP; -- End ", cp(1)
@@ -351,7 +351,7 @@ ls.add_snippets("plsql", {
 		t"\tDBMS_OUTPUT.put_line(", f(function(args, snip) return c_py({"plsql", 34}, "snip.rv = param(t[1].upper())", python_globals, args, snip, "", am[34]) end, ae(am[34])), i(1, "", {key = "i1"}), t" ", i(0, "", {key = "i0"}), t");"
 	}),
 	s({trig = "dbl", descr = "(dbl) \"Log message in Log Table, Change procedure as defined by you\"", priority = 0, trigEngine = te("")}, {
-		t"\tDEBUG_LOG_PKG.WRITE_LOG(", i(1, "\'Test\'", {key = "i1"}), t",", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t" ,", i(0, "", {key = "i0"}), t" );"
+		t"\tDEBUG_LOG_PKG.WRITE_LOG(", i(1, "\'Test\'", {key = "i1"}), t",", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i2"}) }) end, {k"i1"}), t" ,", i(0, "", {key = "i0"}), t" );"
 	}),
 	s({trig = "plog", descr = "(plog) \"Print Log output \"", priority = 0, trigEngine = te("")}, {
 		t"\tprintlog(", f(function(args, snip) return c_py({"plsql", 36}, "snip.rv = param(t[1].upper())", python_globals, args, snip, "", am[36]) end, ae(am[36])), i(1, "", {key = "i1"}), t" ", i(0, "", {key = "i0"}), t");"
@@ -389,8 +389,8 @@ ls.add_snippets("plsql", {
 	s({trig = "crind", descr = "(crind) \"Create Index\"", priority = 0, trigEngine = te("")}, {
 		t"DROP INDEX ", cp(1), t".", cp(4), t";", nl(),
 		nl(),
-		t"CREATE INDEX ", cp(1), t".", d(4, function(args) return sn(nil, {cp(2), t"_", i(1, "", {key = "i5"})}) end, {}, {key = "i4"}), nl(),
-		t"ON ", i(1, "schema", {key = "i1"}), t".", i(2, "table", {key = "i2"}), t"(", i(3, "", {key = "i3"}), t") ", d(5, function(args) return sn(nil, {t"TABLESPACE ", i(1, "", {key = "i0"}), t" "}) end, {}, {key = "i6"}), t";"
+		t"CREATE INDEX ", cp(1), t".", d(4, function(args, snip) return sn(nil, {c(1, {{cp(2), t"_", i(1, "", {key = "i5"})}, {i(1, jt({args[1], "_", ""}))}}, {key = "i4"})}) end, {k"i2"}), nl(),
+		t"ON ", i(1, "schema", {key = "i1"}), t".", i(2, "table", {key = "i2"}), t"(", i(3, "", {key = "i3"}), t") ", c(5, {{t"TABLESPACE ", i(1, "", {key = "i0"}), t" "}, {i(1, jt({"TABLESPACE ", "", " "}))}}, {key = "i6"}), t";"
 	}),
 	s({trig = "drtab", descr = "(drtab) \"Drop Table\"", priority = 0, trigEngine = te("")}, {
 		t"DROP TABLE ", i(1, "schema", {key = "i1"}), t".", i(2, "name", {key = "i2"}), t" CASCADE CONSTRAINTS ", i(3, "PURGE", {key = "i3"}), t";", nl()
@@ -403,7 +403,7 @@ ls.add_snippets("plsql", {
 		t"(", nl(),
 		t"   ", i(0, "", {key = "i0"}), nl(),
 		t")", nl(),
-		d(3, function(args) return sn(nil, {t"TABLESPACE ", i(1, "", {key = "i4"})}) end, {}, {key = "i3"}), nl(),
+		c(3, {{t"TABLESPACE ", i(1, "", {key = "i4"})}, {i(1, jt({"TABLESPACE ", ""}))}}, {key = "i3"}), nl(),
 		t";"
 	}),
 	s({trig = "ccol", descr = "(ccol) \"Add VARCHAR2 column to table\"", priority = 0, trigEngine = te("")}, {
@@ -422,31 +422,31 @@ ls.add_snippets("plsql", {
 		t"\tTYPE t_", i(1, "tbl", {key = "i1"}), t" IS TABLE OF ", i(0, "cur", {key = "i0"}), t"%ROWTYPE INDEX BY BINARY_INTEGER;"
 	}),
 	s({trig = "pn", descr = "(pn)", priority = 0, trigEngine = te("")}, {
-		t"\tp_", i(1, "", {key = "i1"}), t"\t\t", i(2, "IN", {key = "i2"}), t"\t\tNUMBER ", d(3, function(args) return sn(nil, {t"DEFAULT ", i(1, "NULL", {key = "i0"})}) end, {}, {key = "i3"})
+		t"\tp_", i(1, "", {key = "i1"}), t"\t\t", i(2, "IN", {key = "i2"}), t"\t\tNUMBER ", c(3, {{t"DEFAULT ", i(1, "NULL", {key = "i0"})}, {i(1, jt({"DEFAULT ", "NULL"}))}}, {key = "i3"})
 	}),
 	s({trig = "pd", descr = "(pd)", priority = 0, trigEngine = te("")}, {
-		t"\tp_", i(1, "", {key = "i1"}), t"\t\t", i(2, "IN", {key = "i2"}), t"\t\tDATE ", d(3, function(args) return sn(nil, {t"DEFAULT ", i(1, "SYSDATE", {key = "i0"})}) end, {}, {key = "i3"})
+		t"\tp_", i(1, "", {key = "i1"}), t"\t\t", i(2, "IN", {key = "i2"}), t"\t\tDATE ", c(3, {{t"DEFAULT ", i(1, "SYSDATE", {key = "i0"})}, {i(1, jt({"DEFAULT ", "SYSDATE"}))}}, {key = "i3"})
 	}),
 	s({trig = "pc", descr = "(pc)", priority = 0, trigEngine = te("")}, {
-		t"\tP_", i(1, "", {key = "i1"}), t"\t\t", i(2, "IN", {key = "i2"}), t"\t\tVARCHAR2 ", d(3, function(args) return sn(nil, {t"DEFAULT ", i(1, "NULL", {key = "i0"})}) end, {}, {key = "i3"})
+		t"\tP_", i(1, "", {key = "i1"}), t"\t\t", i(2, "IN", {key = "i2"}), t"\t\tVARCHAR2 ", c(3, {{t"DEFAULT ", i(1, "NULL", {key = "i0"})}, {i(1, jt({"DEFAULT ", "NULL"}))}}, {key = "i3"})
 	}),
 	s({trig = "ln", descr = "(ln)", priority = 0, trigEngine = te("")}, {
-		t"\tl_", i(1, "", {key = "i1"}), t"\t\tNUMBER ", d(2, function(args) return sn(nil, {t" := ", i(1, "", {key = "i3"}), t" "}) end, {}, {key = "i2"}), t";"
+		t"\tl_", i(1, "", {key = "i1"}), t"\t\tNUMBER ", c(2, {{t" := ", i(1, "", {key = "i3"}), t" "}, {i(1, jt({" := ", "", " "}))}}, {key = "i2"}), t";"
 	}),
 	s({trig = "ld", descr = "(ld)", priority = 0, trigEngine = te("")}, {
-		t"\tl_", i(1, "", {key = "i1"}), t"\t\tDATE ", d(2, function(args) return sn(nil, {t" := ", i(1, "", {key = "i3"}), t" "}) end, {}, {key = "i2"}), t";"
+		t"\tl_", i(1, "", {key = "i1"}), t"\t\tDATE ", c(2, {{t" := ", i(1, "", {key = "i3"}), t" "}, {i(1, jt({" := ", "", " "}))}}, {key = "i2"}), t";"
 	}),
 	s({trig = "lc", descr = "(lc)", priority = 0, trigEngine = te("")}, {
-		t"\tl_", i(1, "", {key = "i1"}), t"\t\tVARCHAR2(", i(2, "100", {key = "i2"}), t") ", d(3, function(args) return sn(nil, {t" := ", i(1, "", {key = "i4"}), t" "}) end, {}, {key = "i3"}), t";"
+		t"\tl_", i(1, "", {key = "i1"}), t"\t\tVARCHAR2(", i(2, "100", {key = "i2"}), t") ", c(3, {{t" := ", i(1, "", {key = "i4"}), t" "}, {i(1, jt({" := ", "", " "}))}}, {key = "i3"}), t";"
 	}),
 	s({trig = "gn", descr = "(gn)", priority = 0, trigEngine = te("")}, {
-		t"\tg_", i(1, "", {key = "i1"}), t"\t\tNUMBER ", d(2, function(args) return sn(nil, {t" := ", i(1, "10", {key = "i3"}), t" "}) end, {}, {key = "i2"}), t";"
+		t"\tg_", i(1, "", {key = "i1"}), t"\t\tNUMBER ", c(2, {{t" := ", i(1, "10", {key = "i3"}), t" "}, {i(1, jt({" := ", "10", " "}))}}, {key = "i2"}), t";"
 	}),
 	s({trig = "gd", descr = "(gd)", priority = 0, trigEngine = te("")}, {
-		t"\tg_", i(1, "", {key = "i1"}), t"\t\tDATE ", d(2, function(args) return sn(nil, {t" := ", i(1, "SYSDATE", {key = "i3"}), t" "}) end, {}, {key = "i2"}), t";"
+		t"\tg_", i(1, "", {key = "i1"}), t"\t\tDATE ", c(2, {{t" := ", i(1, "SYSDATE", {key = "i3"}), t" "}, {i(1, jt({" := ", "SYSDATE", " "}))}}, {key = "i2"}), t";"
 	}),
 	s({trig = "gc", descr = "(gc)", priority = 0, trigEngine = te("")}, {
-		t"\tg_", i(1, "", {key = "i1"}), t"\t\tVARCHAR2(", i(2, "100", {key = "i2"}), t") ", d(3, function(args) return sn(nil, {t" := ", i(1, "", {key = "i4"}), t" "}) end, {}, {key = "i3"}), t";"
+		t"\tg_", i(1, "", {key = "i1"}), t"\t\tVARCHAR2(", i(2, "100", {key = "i2"}), t") ", c(3, {{t" := ", i(1, "", {key = "i4"}), t" "}, {i(1, jt({" := ", "", " "}))}}, {key = "i3"}), t";"
 	}),
 	s({trig = "ltbl", descr = "(ltbl)", priority = 0, trigEngine = te("")}, {
 		t"\tl_tbl_", i(1, "", {key = "i1"}), t"\t\t", i(0, "", {key = "i0"}), t";"
@@ -506,7 +506,7 @@ ls.add_snippets("plsql", {
 		t"\t\tWHERE 1 = 1;"
 	}),
 	s({trig = "copen", descr = "(copen) \"Open Cursor\"", priority = 0, trigEngine = te("")}, {
-		t"\tOPEN ", i(1, "cursor", {key = "i1"}), t" ", d(2, function(args) return sn(nil, {t"( ", i(1, "param", {key = "i3"}), t" )"}) end, {}, {key = "i2"}), t";", nl(),
+		t"\tOPEN ", i(1, "cursor", {key = "i1"}), t" ", c(2, {{t"( ", i(1, "param", {key = "i3"}), t" )"}, {i(1, jt({"( ", "param", " )"}))}}, {key = "i2"}), t";", nl(),
 		t"\tFETCH ", cp(1), nl(),
 		t"\tINTO ", i(3, "record", {key = "i4"}), t";", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
@@ -518,7 +518,7 @@ ls.add_snippets("plsql", {
 		t"\tCLOSE ", cp(1), t";"
 	}),
 	s({trig = "copenbc", descr = "(copenbc) \"Open Cursor Bulk collect\"", priority = 0, trigEngine = te("")}, {
-		t"\tOPEN ", i(1, "cursor", {key = "i1"}), t" ", d(2, function(args) return sn(nil, {t"( ", i(1, "param", {key = "i3"}), t" )"}) end, {}, {key = "i2"}), t";", nl(),
+		t"\tOPEN ", i(1, "cursor", {key = "i1"}), t" ", c(2, {{t"( ", i(1, "param", {key = "i3"}), t" )"}, {i(1, jt({"( ", "param", " )"}))}}, {key = "i2"}), t";", nl(),
 		t"\tFETCH ", cp(1), nl(),
 		t"\tBULK COLLECT INTO ", i(3, "ttbl", {key = "i4"}), t";", nl(),
 		t"\tCLOSE ", cp(1), t";", nl(),
@@ -634,7 +634,7 @@ ls.add_snippets("plsql", {
 		t"-- Description\t: This Function will ", i(3, "description", {key = "i4"}), t".", nl(),
 		f(function(args, snip) return c_py({"plsql", 81}, "snip.rv=hdr_params(t[3]) ", python_globals, args, snip, "", am[81]) end, ae(am[81])), nl(),
 		t"------------------------------------------------------------------------------------------------", nl(),
-		t"FUNCTION ", i(1, "func", {key = "i1"}), t" ", d(2, function(args) return sn(nil, {t"(", i(1, "params", {key = "i3"}), t")"}) end, {}, {key = "i2"}), t" ", nl(),
+		t"FUNCTION ", i(1, "func", {key = "i1"}), t" ", c(2, {{t"(", i(1, "params", {key = "i3"}), t")"}, {i(1, jt({"(", "params", ")"}))}}, {key = "i2"}), t" ", nl(),
 		t"\t  RETURN ", i(0, "", {key = "i0"}), t";"
 	}),
 	s({trig = "crpksproc", descr = "(crpksproc) \"Create package specification procedure\"", priority = 0, trigEngine = te("")}, {
@@ -643,7 +643,7 @@ ls.add_snippets("plsql", {
 		t"-- Description\t: This Procedure will ", i(3, "description", {key = "i4"}), t".", nl(),
 		f(function(args, snip) return c_py({"plsql", 82}, "snip.rv=hdr_params(t[3],0) ", python_globals, args, snip, "", am[82]) end, ae(am[82])), nl(),
 		t"------------------------------------------------------------------------------------------------", nl(),
-		t"PROCEDURE ", i(1, "proc", {key = "i1"}), t" ", d(2, function(args) return sn(nil, {t"(", i(1, "params", {key = "i3"}), t")"}) end, {}, {key = "i2"}), t" ;"
+		t"PROCEDURE ", i(1, "proc", {key = "i1"}), t" ", c(2, {{t"(", i(1, "params", {key = "i3"}), t")"}, {i(1, jt({"(", "params", ")"}))}}, {key = "i2"}), t" ;"
 	}),
 	s({trig = "crpkbfunc", descr = "(crpkbfunc) \"Create package body function\"", priority = 0, trigEngine = te("")}, {
 		t"\t------------------------------------------------------------------------------------------------", nl(),
@@ -651,12 +651,12 @@ ls.add_snippets("plsql", {
 		t"\t-- Description\t: This Function will ", i(6, "description", {key = "i8"}), t".", nl(),
 		t"\t", f(function(args, snip) return c_py({"plsql", 83}, "snip.rv=hdr_params(t[3],2) ", python_globals, args, snip, "", am[83]) end, ae(am[83])), nl(),
 		t"\t------------------------------------------------------------------------------------------------", nl(),
-		t"   FUNCTION ", i(1, "func", {key = "i1"}), t" ", d(2, function(args) return sn(nil, {t"(", i(1, "params", {key = "i3"}), t")"}) end, {}, {key = "i2"}), t" ", nl(),
+		t"   FUNCTION ", i(1, "func", {key = "i1"}), t" ", c(2, {{t"(", i(1, "params", {key = "i3"}), t")"}, {i(1, jt({"(", "params", ")"}))}}, {key = "i2"}), t" ", nl(),
 		t"\t  RETURN ", i(3, "", {key = "i4"}), nl(),
 		t"   IS", nl(),
 		t"\t  -- Declare Cursors", nl(),
 		t"\t  -- Declare Variables", nl(),
-		t"\t  ", i(4, "l_", {key = "i5"}), t"\t\t\t\t\t\t\t ", cp(4), t" ", d(5, function(args) return sn(nil, {t"( ", i(1, "length", {key = "i7"}), t" )"}) end, {}, {key = "i6"}), t";", nl(),
+		t"\t  ", i(4, "l_", {key = "i5"}), t"\t\t\t\t\t\t\t ", cp(4), t" ", c(5, {{t"( ", i(1, "length", {key = "i7"}), t" )"}, {i(1, jt({"( ", "length", " )"}))}}, {key = "i6"}), t";", nl(),
 		t"   BEGIN", nl(),
 		t"\t  -- Initialize ", nl(),
 		t"\t  g_proc_name\t\t\t\t\t\t\t\t:= \'", f(function(args, snip) return c_py({"plsql", 83}, "snip.rv = t[1].upper()", python_globals, args, snip, "", am[83]) end, ae(am[83])), t"\';", nl(),
@@ -676,7 +676,7 @@ ls.add_snippets("plsql", {
 		t"-- Description\t: This Procedure will ", i(3, "description", {key = "i4"}), t".", nl(),
 		f(function(args, snip) return c_py({"plsql", 84}, "snip.rv=hdr_params(t[3]) ", python_globals, args, snip, "", am[84]) end, ae(am[84])), nl(),
 		t"------------------------------------------------------------------------------------------------", nl(),
-		t"PROCEDURE ", i(1, "proc", {key = "i1"}), t" ", d(2, function(args) return sn(nil, {t"(", i(1, "params", {key = "i3"}), t")"}) end, {}, {key = "i2"}), t" ", nl(),
+		t"PROCEDURE ", i(1, "proc", {key = "i1"}), t" ", c(2, {{t"(", i(1, "params", {key = "i3"}), t")"}, {i(1, jt({"(", "params", ")"}))}}, {key = "i2"}), t" ", nl(),
 		t"IS", nl(),
 		t"   -- Declare cursors", nl(),
 		t"   -- Declare Out and exception variables", nl(),
@@ -791,7 +791,7 @@ ls.add_snippets("plsql", {
 	}),
 	s({trig = "crproc", descr = "(crproc) \"Create procedure\"", priority = 0, trigEngine = te("")}, {
 		nl(),
-		t"CREATE OR REPLACE PROCEDURE ", i(1, "schema", {key = "i1"}), t".", i(2, "name", {key = "i2"}), t" ", d(3, function(args) return sn(nil, {t"( ", i(1, "prams", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), nl(),
+		t"CREATE OR REPLACE PROCEDURE ", i(1, "schema", {key = "i1"}), t".", i(2, "name", {key = "i2"}), t" ", c(3, {{t"( ", i(1, "prams", {key = "i4"}), t" )"}, {i(1, jt({"( ", "prams", " )"}))}}, {key = "i3"}), nl(),
 		t"-- #############################################################################", nl(),
 		t"-- #\t  Copyright (c) ", f(function(args, snip) return c_py({"plsql", 87}, "snip.rv = dyear()", python_globals, args, snip, "", am[87]) end, ae(am[87])), t" ", i(4, "", {key = "i5"}), nl(),
 		t"-- #\t\t\t\tAll rights reserved", nl(),

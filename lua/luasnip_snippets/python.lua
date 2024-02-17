@@ -471,9 +471,9 @@ ls.add_snippets("python", {
 	}),
 	s({trig = "cl", descr = "(cl)", priority = -1000, trigEngine = te("w")}, {
 		t"class ", i(1, "ClassName", {key = "i1"}), t"(", i(2, "object", {key = "i2"}), t"):", nl(),
-		t"\t\"\"\"", d(3, function(args) return sn(nil, {t"docstring for ", cp(1)}) end, {}, {key = "i3"}), t"\"\"\"", nl(),
+		t"\t\"\"\"", d(3, function(args, snip) return sn(nil, { i(1, jt({"docstring for ", args[1]}, "\t"), {key = "i3"}) }) end, {k"i1"}), t"\"\"\"", nl(),
 		t"\tdef __init__(self, ", i(4, "arg", {key = "i4"}), t"):", nl(),
-		t"\t\t", d(5, function(args) return sn(nil, {t"super(", cp(1), t", self).__init__()"}) end, {}, {key = "i5"}), nl(),
+		t"\t\t", d(5, function(args, snip) return sn(nil, { i(1, jt({"super(", args[1], ", self).__init__()"}, "\t\t"), {key = "i5"}) }) end, {k"i1"}), nl(),
 		t"\t\tself.", cp(4), t" = ", cp(4), nl(),
 		t"\t\t", i(0, "", {key = "i0"})
 	}),
@@ -490,12 +490,12 @@ ls.add_snippets("python", {
 	s({trig = "dcl", descr = "(dcl) \"dataclass\"", priority = -50, trigEngine = te("b")}, {
 		t"@dataclass", nl(),
 		t"class ", i(1, "MyClass", {key = "i1"}), t":", nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 16}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[16]) end, ae(am[16])), d(2, function(args) return sn(nil, {t"Docstring for ", cp(1), t". "}) end, {}, {key = "i2"}), f(function(args, snip) return c_py({"python", 16}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[16]) end, ae(am[16])), nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 16}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[16]) end, ae(am[16])), d(2, function(args, snip) return sn(nil, { i(1, jt({"Docstring for ", args[1], ". "}, "\t"), {key = "i2"}) }) end, {k"i1"}), f(function(args, snip) return c_py({"python", 16}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[16]) end, ae(am[16])), nl(),
 		t"\t", i(3, "var_1", {key = "i3"}), t": ", i(4, "int", {key = "i4"}), nl(),
 		t"\t", i(5, "var_2", {key = "i5"}), t": ", i(6, "float", {key = "i6"}), t" = ", i(7, "0", {key = "i7"}), nl(),
 		nl(),
 		t"\tdef ", i(8, "total", {key = "i8"}), t"(self): -> ", cp(6), t":", nl(),
-		t"\t\treturn ", d(9, function(args) return sn(nil, {t"self.", cp(3), t" * self.", cp(5)}) end, {}, {key = "i0"})
+		t"\t\treturn ", d(9, function(args, snip) return sn(nil, { i(1, jt({"self.", args[1], " * self.", args[2]}, "\t\t"), {key = "i0"}) }) end, {k"i3", k"i5"})
 	}),
 	s({trig = "def", descr = "(def) \"function with docstrings\"", priority = 0, trigEngine = te("b")}, {
 		t"def ", i(1, "function", {key = "i1"}), t"(", f(function(args, snip) return c_py({"python", 17}, "\nif snip.indent:\n\tsnip.rv = \'self\' + (\", \" if len(t[2]) else \"\")", python_globals, args, snip, "", am[17]) end, ae(am[17])), i(2, "arg1", {key = "i2"}), t"):", nl(),
@@ -507,7 +507,7 @@ ls.add_snippets("python", {
 	}),
 	s({trig = "adef", descr = "(adef)", priority = -1000, trigEngine = te("w")}, {
 		t"async def ", i(1, "fname", {key = "i1"}), t"(", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("indent(\'.\') ? \'self\' : \'\'")}, ""), {key = "i2"}) }) end), t"):", nl(),
-		t"\t\"\"\"", d(3, function(args) return sn(nil, {t"docstring for ", cp(1)}) end, {}, {key = "i3"}), t"\"\"\"", nl(),
+		t"\t\"\"\"", d(3, function(args, snip) return sn(nil, { i(1, jt({"docstring for ", args[1]}, "\t"), {key = "i3"}) }) end, {k"i1"}), t"\"\"\"", nl(),
 		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "adeff", descr = "(adeff)", priority = -1000, trigEngine = te("w")}, {
@@ -591,13 +591,13 @@ ls.add_snippets("python", {
 		t"try:", nl(),
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
 		t"except ", i(2, "Exception", {key = "i2"}), t" as ", i(3, "e", {key = "i3"}), t":", nl(),
-		t"\t", d(4, function(args) return sn(nil, {t"raise ", cp(3)}) end, {}, {key = "i4"})
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({"raise ", args[1]}, "\t"), {key = "i4"}) }) end, {k"i3"})
 	}),
 	s({trig = "trye", descr = "(trye) \"Try / Except / Else\"", priority = -50, trigEngine = te("b")}, {
 		t"try:", nl(),
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
 		t"except ", i(2, "Exception", {key = "i2"}), t" as ", i(3, "e", {key = "i3"}), t":", nl(),
-		t"\t", d(4, function(args) return sn(nil, {t"raise ", cp(3)}) end, {}, {key = "i4"}), nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({"raise ", args[1]}, "\t"), {key = "i4"}) }) end, {k"i3"}), nl(),
 		t"else:", nl(),
 		t"\t", i(5, "pass", {key = "i5"})
 	}),
@@ -605,14 +605,14 @@ ls.add_snippets("python", {
 		t"try:", nl(),
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
 		t"except ", i(2, "Exception", {key = "i2"}), t" as ", i(3, "e", {key = "i3"}), t":", nl(),
-		t"\t", d(4, function(args) return sn(nil, {t"raise ", cp(3)}) end, {}, {key = "i4"}), nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({"raise ", args[1]}, "\t"), {key = "i4"}) }) end, {k"i3"}), nl(),
 		t"finally:", nl(),
 		t"\t", i(5, "pass", {key = "i5"})
 	}),
 	s({trig = "tryef", descr = "(tryef) \"Try / Except / Else / Finally\"", priority = -50, trigEngine = te("b")}, {
 		t"try:", nl(),
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
-		t"except", d(2, function(args) return sn(nil, {t" ", i(1, "Exception", {key = "i3"}), t" as ", i(2, "e", {key = "i4"})}) end, {}, {key = "i2"}), t":", nl(),
+		t"except", c(2, {{t" ", i(1, "Exception", {key = "i3"}), t" as ", i(2, "e", {key = "i4"})}, {i(1, jt({" ", "Exception", " as ", "e"}))}}, {key = "i2"}), t":", nl(),
 		t"\t", i(3, "raise", {key = "i5"}), nl(),
 		t"else:", nl(),
 		t"\t", i(4, "pass", {key = "i6"}), nl(),
@@ -982,7 +982,7 @@ ls.add_snippets("python", {
 	s({trig = "class", descr = "(class) \"class with docstrings\"", priority = -50, trigEngine = te("b")}, {
 		t"class ", i(1, "MyClass", {key = "i1"}), t"(", i(2, "object", {key = "i2"}), t"):", nl(),
 		nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 99}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[99]) end, ae(am[99])), d(3, function(args) return sn(nil, {t"Docstring for ", cp(1), t". "}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"python", 99}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[99]) end, ae(am[99])), nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 99}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[99]) end, ae(am[99])), d(3, function(args, snip) return sn(nil, { i(1, jt({"Docstring for ", args[1], ". "}, "\t"), {key = "i3"}) }) end, {k"i1"}), f(function(args, snip) return c_py({"python", 99}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[99]) end, ae(am[99])), nl(),
 		nl(),
 		t"\tdef __init__(self", i(4, "", {key = "i4"}), t"):", nl(),
 		t"\t\t", f(function(args, snip) return c_py({"python", 99}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[99]) end, ae(am[99])), i(5, "TODO: to be defined.", {key = "i5"}), f(function(args, snip) return c_py({"python", 99}, "\nsnip.rv = \"\"\nsnip >> 2\n\nargs = get_args(t[4])\n\nwrite_docstring_args(args, snip)\nif args:\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += \'{0}\'.format(triple_quotes(snip))\n\nwrite_init_body(args, t[2], snip)\n", python_globals, args, snip, "", am[99]) end, ae(am[99])), nl(),
@@ -991,7 +991,7 @@ ls.add_snippets("python", {
 	s({trig = "slotclass", descr = "(slotclass) \"class with slots and docstrings\"", priority = -50, trigEngine = te("b")}, {
 		t"class ", i(1, "MyClass", {key = "i1"}), t"(", i(2, "object", {key = "i2"}), t"):", nl(),
 		nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 100}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[100]) end, ae(am[100])), d(3, function(args) return sn(nil, {t"Docstring for ", cp(1), t". "}) end, {}, {key = "i3"}), f(function(args, snip) return c_py({"python", 100}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[100]) end, ae(am[100])), nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 100}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[100]) end, ae(am[100])), d(3, function(args, snip) return sn(nil, { i(1, jt({"Docstring for ", args[1], ". "}, "\t"), {key = "i3"}) }) end, {k"i1"}), f(function(args, snip) return c_py({"python", 100}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[100]) end, ae(am[100])), nl(),
 		f(function(args, snip) return c_py({"python", 100}, "\nsnip >> 1\nargs = get_args(t[4])\nwrite_slots_args(args, snip)\n", python_globals, args, snip, "", am[100]) end, ae(am[100])), nl(),
 		nl(),
 		t"\tdef __init__(self", i(4, "", {key = "i4"}), t"):", nl(),
@@ -1001,13 +1001,13 @@ ls.add_snippets("python", {
 	s({trig = "defc", descr = "(defc) \"class method with docstrings\"", priority = -50, trigEngine = te("b")}, {
 		t"@classmethod", nl(),
 		t"def ", i(1, "function", {key = "i1"}), t"(", f(function(args, snip) return c_py({"python", 101}, "\nif snip.indent:\n\tsnip.rv = \'cls\' + (\", \" if len(t[2]) else \"\")", python_globals, args, snip, "", am[101]) end, ae(am[101])), i(2, "arg1", {key = "i2"}), t"):", nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 101}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[101]) end, ae(am[101])), d(3, function(args) return sn(nil, {t"TODO: Docstring for ", cp(1), t"."}) end, {}, {key = "i4"}), f(function(args, snip) return c_py({"python", 101}, "\nwrite_function_docstring(t, snip) ", python_globals, args, snip, "", am[101]) end, ae(am[101])), nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 101}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[101]) end, ae(am[101])), d(3, function(args, snip) return sn(nil, { i(1, jt({"TODO: Docstring for ", args[1], "."}, "\t"), {key = "i4"}) }) end, {k"i1"}), f(function(args, snip) return c_py({"python", 101}, "\nwrite_function_docstring(t, snip) ", python_globals, args, snip, "", am[101]) end, ae(am[101])), nl(),
 		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i5"}) }) end)
 	}),
 	s({trig = "defs", descr = "(defs) \"static method with docstrings\"", priority = -50, trigEngine = te("b")}, {
 		t"@staticmethod", nl(),
 		t"def ", i(1, "function", {key = "i1"}), t"(", i(2, "arg1", {key = "i2"}), t"):", nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 102}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[102]) end, ae(am[102])), d(3, function(args) return sn(nil, {t"TODO: Docstring for ", cp(1), t"."}) end, {}, {key = "i4"}), f(function(args, snip) return c_py({"python", 102}, "\nwrite_function_docstring(t, snip) ", python_globals, args, snip, "", am[102]) end, ae(am[102])), nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 102}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", am[102]) end, ae(am[102])), d(3, function(args, snip) return sn(nil, { i(1, jt({"TODO: Docstring for ", args[1], "."}, "\t"), {key = "i4"}) }) end, {k"i1"}), f(function(args, snip) return c_py({"python", 102}, "\nwrite_function_docstring(t, snip) ", python_globals, args, snip, "", am[102]) end, ae(am[102])), nl(),
 		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i5"}) }) end)
 	}),
 	s({trig = "(^|(?<=\\W))\\.", descr = "((^|(?<=\\W))\\.) \"self.\"", priority = -50, trigEngine = te("r")}, {
@@ -1016,11 +1016,11 @@ ls.add_snippets("python", {
 	s({trig = "roprop", descr = "(roprop) \"Read Only Property\"", priority = -50, trigEngine = te("b")}, {
 		t"@property", nl(),
 		t"def ", i(1, "name", {key = "i1"}), t"(self):", nl(),
-		t"\t", d(2, function(args) return sn(nil, {t"return self._", cp(1)}) end, {}, {key = "i2"}), i(0, "", {key = "i0"})
+		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({"return self._", args[1]}, "\t"), {key = "i2"}) }) end, {k"i1"}), i(0, "", {key = "i0"})
 	}),
 	s({trig = "rwprop", descr = "(rwprop) \"Read write property\"", priority = -50, trigEngine = te("b")}, {
 		t"def ", i(1, "name", {key = "i1"}), t"():", nl(),
-		t"\t", f(function(args, snip) return c_py({"python", 105}, "snip.rv = triple_quotes(snip) if t[2] else \'\'\n", python_globals, args, snip, "", am[105]) end, ae(am[105])), d(2, function(args) return sn(nil, {t"TODO: Docstring for ", cp(1), t"."}) end, {}, {key = "i2"}), f(function(args, snip) return c_py({"python", 105}, "\nif t[2]:\n\tsnip >> 1\n\n\tstyle = get_style(snip)\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += format_return(style)\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += triple_quotes(snip)\nelse:\n\tsnip.rv = \"\"", python_globals, args, snip, "", am[105]) end, ae(am[105])), nl(),
+		t"\t", f(function(args, snip) return c_py({"python", 105}, "snip.rv = triple_quotes(snip) if t[2] else \'\'\n", python_globals, args, snip, "", am[105]) end, ae(am[105])), d(2, function(args, snip) return sn(nil, { i(1, jt({"TODO: Docstring for ", args[1], "."}, "\t"), {key = "i2"}) }) end, {k"i1"}), f(function(args, snip) return c_py({"python", 105}, "\nif t[2]:\n\tsnip >> 1\n\n\tstyle = get_style(snip)\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += format_return(style)\n\tsnip.rv += \'\\n\' + snip.mkline(\'\', indent=\'\')\n\tsnip += triple_quotes(snip)\nelse:\n\tsnip.rv = \"\"", python_globals, args, snip, "", am[105]) end, ae(am[105])), nl(),
 		t"\tdef fget(self):", nl(),
 		t"\t\treturn self._", cp(1), i(0, "", {key = "i0"}), nl(),
 		nl(),

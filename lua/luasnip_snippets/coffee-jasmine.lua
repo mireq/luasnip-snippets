@@ -118,7 +118,7 @@ ls.add_snippets("coffee-jasmine", {
 		t"expect(", i(1, "target", {key = "i1"}), t").toMatch(", i(2, "pattern", {key = "i2"}), t")"
 	}),
 	s({trig = "eha", descr = "(eha) \"expect to have attribute (coffee)\"", priority = -49, trigEngine = te("b")}, {
-		t"expect(", i(1, "target", {key = "i1"}), t").toHaveAttr(\'", i(2, "attr", {key = "i2"}), t"\'", d(3, function(args) return sn(nil, {t", \'", i(1, "value", {key = "i4"}), t"\'"}) end, {}, {key = "i3"}), t")"
+		t"expect(", i(1, "target", {key = "i1"}), t").toHaveAttr(\'", i(2, "attr", {key = "i2"}), t"\'", c(3, {{t", \'", i(1, "value", {key = "i4"}), t"\'"}, {i(1, jt({", \'", "value", "\'"}))}}, {key = "i3"}), t")"
 	}),
 	s({trig = "et", descr = "(et) \"expect to be truthy (coffee)\"", priority = -49, trigEngine = te("b")}, {
 		t"expect(", i(1, "target", {key = "i1"}), t").toBeTruthy()"
@@ -151,7 +151,7 @@ ls.add_snippets("coffee-jasmine", {
 		t"expect(", i(1, "target", {key = "i1"}), t").not.toMatch(", i(2, "pattern", {key = "i2"}), t")"
 	}),
 	s({trig = "notha", descr = "(notha) \"expect to not have attribute (coffee)\"", priority = -49, trigEngine = te("b")}, {
-		t"expect(", i(1, "target", {key = "i1"}), t").not.toHaveAttr(\'", i(2, "attr", {key = "i2"}), t"\'", d(3, function(args) return sn(nil, {t", \'", i(1, "value", {key = "i4"}), t"\'"}) end, {}, {key = "i3"}), t")"
+		t"expect(", i(1, "target", {key = "i1"}), t").not.toHaveAttr(\'", i(2, "attr", {key = "i2"}), t"\'", c(3, {{t", \'", i(1, "value", {key = "i4"}), t"\'"}, {i(1, jt({", \'", "value", "\'"}))}}, {key = "i3"}), t")"
 	}),
 	s({trig = "nott", descr = "(nott) \"expect not to be truthy (coffee)\"", priority = -49, trigEngine = te("b")}, {
 		t"expect(", i(1, "target", {key = "i1"}), t").not.toBeTruthy()"

@@ -815,7 +815,7 @@ ls.add_snippets("cs", {
 		t"var ", i(1, "seq", {key = "i1"}), t" =", nl(),
 		t"\tfrom ", i(2, "item1", {key = "i2"}), t" in ", i(3, "items1", {key = "i3"}), nl(),
 		t"\tjoin ", i(4, "item2", {key = "i4"}), t" in ", i(5, "items2", {key = "i5"}), t" on ", cp(2), t".", i(6, "prop1", {key = "i6"}), t" equals ", cp(4), t".", i(7, "prop2", {key = "i7"}), nl(),
-		t"\tselect ", d(8, function(args) return sn(nil, {cp(2), t".prop3"}) end, {}, {key = "i8"}), nl(),
+		t"\tselect ", d(8, function(args, snip) return sn(nil, { i(1, jt({args[1], ".prop3"}, "\t"), {key = "i8"}) }) end, {k"i2"}), nl(),
 		t"\twhere ", i(9, "clause", {key = "i9"})
 	}),
 	s({trig = "da", descr = "(da) \"Debug.Assert\"", priority = -50, trigEngine = te("b")}, {

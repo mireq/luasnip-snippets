@@ -123,7 +123,7 @@ ls.add_snippets("php-laravel", {
 		t" * \\date        ", f(function(args, snip) return c_viml("strftime(\'%d-%m-%y\')") end), nl(),
 		t" */", nl(),
 		nl(),
-		t"namespace ", d(1, function(args) return sn(nil, {t"Repositories\\", i(1, "", {key = "i1"})}) end, {}, {key = "i2"}), t";", nl(),
+		t"namespace ", c(1, {{t"Repositories\\", i(1, "", {key = "i1"})}, {i(1, jt({"Repositories\\", ""}))}}, {key = "i2"}), t";", nl(),
 		nl(),
 		t"use Entities\\", cp(1), t";", nl(),
 		t"use ", cp(2), t"\\", cp(1), t"Repository;", nl(),
@@ -251,9 +251,9 @@ ls.add_snippets("php-laravel", {
 		t" * \\date        ", f(function(args, snip) return c_viml("strftime(\'%d-%m-%y\')") end), nl(),
 		t" */", nl(),
 		nl(),
-		t"namespace ", d(1, function(args) return sn(nil, {t"Repositories\\", i(1, "", {key = "i2"})}) end, {}, {key = "i1"}), t";", nl(),
+		t"namespace ", c(1, {{t"Repositories\\", i(1, "", {key = "i2"})}, {i(1, jt({"Repositories\\", ""}))}}, {key = "i1"}), t";", nl(),
 		nl(),
-		t"class ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("expand(\'%:t:r\')")}, ""), {key = "i3"}) }) end), t" extends \\", i(5, "", {key = "i6"}), t" implements ", d(3, function(args) return sn(nil, {cp(3), t"RepositoryInterface"}) end, {}, {key = "i4"}), t" {", nl(),
+		t"class ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("expand(\'%:t:r\')")}, ""), {key = "i3"}) }) end), t" extends \\", i(5, "", {key = "i6"}), t" implements ", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1], "RepositoryInterface"}, ""), {key = "i4"}) }) end, {k"i3"}), t" {", nl(),
 		t"    ", i(6, "", {key = "i7"}), nl(),
 		t"}"
 	}),
@@ -270,7 +270,7 @@ ls.add_snippets("php-laravel", {
 		nl(),
 		t"namespace Services\\", cp(1), t";", nl(),
 		nl(),
-		t"use ", d(3, function(args) return sn(nil, {t"Repositories\\", i(1, "Interface", {key = "i4"})}) end, {}, {key = "i3"}), t";", nl(),
+		t"use ", c(3, {{t"Repositories\\", i(1, "Interface", {key = "i4"})}, {i(1, jt({"Repositories\\", "Interface"}))}}, {key = "i3"}), t";", nl(),
 		nl(),
 		t"class ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("expand(\'%:t:r\')")}, ""), {key = "i2"}) }) end), t" {", nl(),
 		t"    protected $", i(4, "repo", {key = "i5"}), t";", nl(),
@@ -304,7 +304,7 @@ ls.add_snippets("php-laravel", {
 		t"     *", nl(),
 		t"     * \\return      string", nl(),
 		t"     */", nl(),
-		t"    protected static function getFacadeAccessor() { return \'", d(3, function(args) return sn(nil, {i(1, "", {key = "i3"}), t"Service"}) end, {}, {key = "i4"}), t"\'; }", nl(),
+		t"    protected static function getFacadeAccessor() { return \'", c(3, {{i(1, "", {key = "i3"}), t"Service"}, {i(1, jt({"", "Service"}))}}, {key = "i4"}), t"\'; }", nl(),
 		t"}"
 	}),
 })

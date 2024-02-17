@@ -230,7 +230,7 @@ ls.add_snippets("d", {
 		t"import std.math, std.regex;"
 	}),
 	s({trig = "for", descr = "(for) \"for (for)\"", priority = -50, trigEngine = te("b")}, {
-		t"for (", i(4, "size_t", {key = "i4"}), t" ", i(2, "i", {key = "i2"}), t" = 0; ", cp(2), t" < ", i(1, "count", {key = "i1"}), t"; ", d(3, function(args) return sn(nil, {t"++", cp(2)}) end, {}, {key = "i3"}), t")", nl(),
+		t"for (", i(4, "size_t", {key = "i4"}), t" ", i(2, "i", {key = "i2"}), t" = 0; ", cp(2), t" < ", i(1, "count", {key = "i1"}), t"; ", d(3, function(args, snip) return sn(nil, { i(1, jt({"++", args[1]}, ""), {key = "i3"}) }) end, {k"i2"}), t")", nl(),
 		t"{", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}"
@@ -795,10 +795,10 @@ ls.add_snippets("d", {
 		t"}"
 	}),
 	s({trig = "get", descr = "(get) \"getter property (get)\"", priority = -50, trigEngine = te("")}, {
-		t"@property ", i(1, "/*type*/", {key = "i1"}), t" ", i(2, "/*member_name*/", {key = "i2"}), t"() const pure nothrow {return ", d(3, function(args) return sn(nil, {cp(2), t"_"}) end, {}, {key = "i3"}), t";}"
+		t"@property ", i(1, "/*type*/", {key = "i1"}), t" ", i(2, "/*member_name*/", {key = "i2"}), t"() const pure nothrow {return ", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1], "_"}, ""), {key = "i3"}) }) end, {k"i2"}), t";}"
 	}),
 	s({trig = "set", descr = "(set) \"setter property (set)\"", priority = -50, trigEngine = te("")}, {
-		t"@property void ", i(1, "/*member_name*/", {key = "i1"}), t"(", i(2, "/*type*/", {key = "i2"}), t" rhs) pure nothrow {", d(3, function(args) return sn(nil, {cp(1), t"_"}) end, {}, {key = "i3"}), t" = rhs;}"
+		t"@property void ", i(1, "/*member_name*/", {key = "i1"}), t"(", i(2, "/*type*/", {key = "i2"}), t" rhs) pure nothrow {", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1], "_"}, ""), {key = "i3"}) }) end, {k"i1"}), t" = rhs;}"
 	}),
 	s({trig = "signal", descr = "(signal) \"signal (signal)\"", priority = -50, trigEngine = te("b")}, {
 		t"mixin Signal!(", i(1, "/*args*/", {key = "i1"}), t") ", i(2, "/*name*/", {key = "i2"}), t";"
@@ -916,12 +916,12 @@ ls.add_snippets("d", {
 	s({trig = "fdoc", descr = "(fdoc) \"function ddoc block (fdoc)\"", priority = -50, trigEngine = te("b")}, {
 		t"/// ", i(1, "description", {key = "i1"}), nl(),
 		t"///", nl(),
-		t"/// ", d(2, function(args) return sn(nil, {t"Params:  ", i(1, "param", {key = "i3"}), t" = ", i(2, "param description", {key = "i4"}), nl(),
-t"///", i(3, "", {key = "i5"}), t"\t $"}) end, {}, {key = "i2"}), nl(),
+		t"/// ", c(2, {{t"Params:  ", i(1, "param", {key = "i3"}), t" = ", i(2, "param description", {key = "i4"}), nl(),
+		t"///", i(3, "", {key = "i5"}), t"\t $"}, {i(1, jt({"Params:  ", "param", " = ", "param description", "\n", "///", "", "\t $"}))}}, {key = "i2"}), nl(),
 		t"///", nl(),
-		t"/// ", d(3, function(args) return sn(nil, {t"Returns: ", i(1, "return value", {key = "i7"})}) end, {}, {key = "i6"}), nl(),
+		t"/// ", c(3, {{t"Returns: ", i(1, "return value", {key = "i7"})}, {i(1, jt({"Returns: ", "return value"}))}}, {key = "i6"}), nl(),
 		t"///", nl(),
-		t"/// ", d(4, function(args) return sn(nil, {t"Throws:  ", i(1, "", {key = "i9"}), t"Exception ", i(2, "", {key = "i10"})}) end, {}, {key = "i8"})
+		t"/// ", c(4, {{t"Throws:  ", i(1, "", {key = "i9"}), t"Exception ", i(2, "", {key = "i10"})}, {i(1, jt({"Throws:  ", "", "Exception ", ""}))}}, {key = "i8"})
 	}),
 	s({trig = "Par", descr = "(Par) \"Params (Par)\"", priority = -50, trigEngine = te("")}, {
 		t"Params:  ", i(1, "param", {key = "i1"}), t" = ", i(2, "param description", {key = "i2"}), nl(),

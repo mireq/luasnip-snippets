@@ -160,7 +160,7 @@ ls.add_snippets("dart", {
 	}),
 	s({trig = "for", descr = "(for)", priority = -1000, trigEngine = te("w")}, {
 		t"for (var ", i(2, "i", {key = "i2"}), t" = 0, len = ", i(1, "things", {key = "i1"}), t".length; ", cp(2), t" < len; ", i(3, "++", {key = "i3"}), cp(2), t") {", nl(),
-		t"  ", d(4, function(args) return sn(nil, {cp(1), t"[", cp(2), t"]"}) end, {}, {key = "i0"}), nl(),
+		t"  ", d(4, function(args, snip) return sn(nil, { i(1, jt({args[1], "[", args[2], "]"}, "  "), {key = "i0"}) }) end, {k"i1", k"i2"}), nl(),
 		t"}"
 	}),
 	s({trig = "fore", descr = "(fore)", priority = -1000, trigEngine = te("w")}, {

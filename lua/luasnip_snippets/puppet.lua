@@ -315,7 +315,7 @@ ls.add_snippets("puppet", {
 	}),
 	s({trig = "exec", descr = "(exec) \"Exec resource type\"", priority = -50, trigEngine = te("b")}, {
 		t"exec { \'", i(1, "command", {key = "i1"}), t"\':", nl(),
-		t"\tcommand => \"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\",", nl(),
+		t"\tcommand => \"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i2"}) }) end, {k"i1"}), t"\",", nl(),
 		t"\tuser    => \"", i(3, "root", {key = "i3"}), t"\",", nl(),
 		t"}"
 	}),
@@ -364,7 +364,7 @@ ls.add_snippets("puppet", {
 	}),
 	s({trig = "yumrepo", descr = "(yumrepo)", priority = -1000, trigEngine = te("w")}, {
 		t"yumrepo { \"", i(1, "repo name", {key = "i1"}), t"\":", nl(),
-		t"\tdescr   => \"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\",", nl(),
+		t"\tdescr   => \"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i2"}) }) end, {k"i1"}), t"\",", nl(),
 		t"\tenabled => ", i(0, "1", {key = "i0"}), t",", nl(),
 		t"}", nl()
 	}),

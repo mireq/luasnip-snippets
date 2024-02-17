@@ -401,7 +401,7 @@ ls.add_snippets("html", {
 		t"&#x2318;"
 	}),
 	s({trig = "option", descr = "(option) \"Option\"", priority = -50, trigEngine = te("w")}, {
-		t"<option", d(1, function(args) return sn(nil, {t" value=\"", i(1, "option", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t">", d(2, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i3"}), t"</option>"
+		t"<option", c(1, {{t" value=\"", i(1, "option", {key = "i2"}), t"\""}, {i(1, jt({" value=\"", "option", "\""}))}}, {key = "i1"}), t">", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i3"}) }) end, {k"i2"}), t"</option>"
 	}),
 	s({trig = "delete", descr = "(delete)", priority = -1000, trigEngine = te("w")}, {
 		t"&#x2326;"
@@ -503,16 +503,16 @@ ls.add_snippets("html", {
 		t"width=\"", i(1, "", {key = "i1"}), t"\""
 	}),
 	s({trig = "a", descr = "(a) \"Link\"", priority = -50, trigEngine = te("w")}, {
-		t"<a href=\"", d(1, function(args) return sn(nil, {t"http://www.", i(1, "url.com", {key = "i2"})}) end, {}, {key = "i1"}), t"\"", i(2, " target=\"_blank\"", {key = "i3"}), t">", i(3, "Anchor Text", {key = "i4"}), t"</a>"
+		t"<a href=\"", c(1, {{t"http://www.", i(1, "url.com", {key = "i2"})}, {i(1, jt({"http://www.", "url.com"}))}}, {key = "i1"}), t"\"", i(2, " target=\"_blank\"", {key = "i3"}), t">", i(3, "Anchor Text", {key = "i4"}), t"</a>"
 	}),
 	s({trig = "a.", descr = "(a.)", priority = -1000, trigEngine = te("w")}, {
-		t"<a class=\"", i(1, "", {key = "i1"}), t"\" href=\"", i(2, "#", {key = "i2"}), t"\">", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), t"</a>"
+		t"<a class=\"", i(1, "", {key = "i1"}), t"\" href=\"", i(2, "#", {key = "i2"}), t"\">", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i0"}) }) end, {k"i1"}), t"</a>"
 	}),
 	s({trig = "a#", descr = "(a#)", priority = -1000, trigEngine = te("w")}, {
-		t"<a id=\"", i(1, "", {key = "i1"}), t"\" href=\"", i(2, "#", {key = "i2"}), t"\">", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), t"</a>"
+		t"<a id=\"", i(1, "", {key = "i1"}), t"\" href=\"", i(2, "#", {key = "i2"}), t"\">", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i0"}) }) end, {k"i1"}), t"</a>"
 	}),
 	s({trig = "a:ext", descr = "(a:ext)", priority = -1000, trigEngine = te("w")}, {
-		t"<a href=\"http://", i(1, "example.com", {key = "i1"}), t"\">", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), t"</a>"
+		t"<a href=\"http://", i(1, "example.com", {key = "i1"}), t"\">", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i0"}) }) end, {k"i1"}), t"</a>"
 	}),
 	s({trig = "a:mail", descr = "(a:mail)", priority = -1000, trigEngine = te("w")}, {
 		t"<a href=\"mailto:", i(1, "joe@example.com", {key = "i1"}), t"?subject=", i(2, "feedback", {key = "i2"}), t"\">", i(0, "email me", {key = "i0"}), t"</a>"
@@ -582,7 +582,7 @@ ls.add_snippets("html", {
 		t"<b>", i(1, "", {key = "i1"}), t"</b>"
 	}),
 	s({trig = "base", descr = "(base) \"HTML <base>\"", priority = -50, trigEngine = te("w")}, {
-		t"<base href=\"", i(1, "", {key = "i1"}), t"\"", d(2, function(args) return sn(nil, {t" target=\"", i(1, "", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), f(function(args, snip) return c_py({"html", 67}, "x(snip)", python_globals, args, snip, "", am[67]) end, ae(am[67])), t">"
+		t"<base href=\"", i(1, "", {key = "i1"}), t"\"", c(2, {{t" target=\"", i(1, "", {key = "i3"}), t"\""}, {i(1, jt({" target=\"", "", "\""}))}}, {key = "i2"}), f(function(args, snip) return c_py({"html", 67}, "x(snip)", python_globals, args, snip, "", am[67]) end, ae(am[67])), t">"
 	}),
 	s({trig = "bdi", descr = "(bdi)", priority = -1000, trigEngine = te("w")}, {
 		t"<bdi>", i(0, "", {key = "i0"}), t"</bdo>"
@@ -755,7 +755,7 @@ ls.add_snippets("html", {
 		t"<embed src=\"", i(1, "", {key = "i1"}), t"\" type=\"", i(0, "", {key = "i0"}), t"\">"
 	}),
 	s({trig = "fieldset", descr = "(fieldset) \"Fieldset\"", priority = -50, trigEngine = te("w")}, {
-		t"<fieldset id=\"", tr(1, "[\\w\\d]+|( )", "(?1:_:\\L$0\\E)"), t"\" ", d(2, function(args) return sn(nil, {t"class=\"", i(1, "", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), t">", nl(),
+		t"<fieldset id=\"", tr(1, "[\\w\\d]+|( )", "(?1:_:\\L$0\\E)"), t"\" ", c(2, {{t"class=\"", i(1, "", {key = "i3"}), t"\""}, {i(1, jt({"class=\"", "", "\""}))}}, {key = "i2"}), t">", nl(),
 		t"\t<legend>", i(1, "", {key = "i1"}), t"</legend>", nl(),
 		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"</fieldset>"
@@ -980,80 +980,80 @@ ls.add_snippets("html", {
 	}),
 	s({trig = "input", descr = "(input) \"HTML <input>\"", priority = -50, trigEngine = te("w")}, c(1, {
 		{
-			t"<label for=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|( )", "(?1:_:\\L$0)")}, ""), {key = "i2"}) }) end, {k"i1"}), t"\">", i(1, "", {key = "i1"}), t"</label><input type=\"", i(3, "text/submit/hidden/button", {key = "i3"}), t"\" name=\"", d(4, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i4"}), t"\" value=\"", i(5, "", {key = "i5"}), t"\"", d(6, function(args) return sn(nil, {t" id=\"", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i7"}), t"\""}) end, {}, {key = "i6"}), f(function(args, snip) return c_py({"html", 163}, "x(snip)", python_globals, args, snip, "", am[163]) end, ae(am[163])), t">"
+			t"<label for=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|( )", "(?1:_:\\L$0)")}, ""), {key = "i2"}) }) end, {k"i1"}), t"\">", i(1, "", {key = "i1"}), t"</label><input type=\"", i(3, "text/submit/hidden/button", {key = "i3"}), t"\" name=\"", d(4, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i4"}) }) end, {k"i2"}), t"\" value=\"", i(5, "", {key = "i5"}), t"\"", d(6, function(args, snip) return sn(nil, {c(1, {{t" id=\"", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i7"}) }) end, {k"i2"}), t"\""}, {i(1, jt({" id=\"", jt({args[1]}), "\""}))}}, {key = "i6"})}) end, {k"i2"}), f(function(args, snip) return c_py({"html", 163}, "x(snip)", python_globals, args, snip, "", am[163]) end, ae(am[163])), t">"
 		},
 		{
-			t"<input type=\"", i(1, "text/submit/hidden/button", {key = "i1"}), t"\" name=\"", i(2, "some_name", {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\"", d(4, function(args) return sn(nil, {t" id=\"", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i5"}), t"\""}) end, {}, {key = "i4"}), f(function(args, snip) return c_py({"html", 164}, "x(snip)", python_globals, args, snip, "", am[164]) end, ae(am[164])), t">"
+			t"<input type=\"", i(1, "text/submit/hidden/button", {key = "i1"}), t"\" name=\"", i(2, "some_name", {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\"", d(4, function(args, snip) return sn(nil, {c(1, {{t" id=\"", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i5"}) }) end, {k"i2"}), t"\""}, {i(1, jt({" id=\"", jt({args[1]}), "\""}))}}, {key = "i4"})}) end, {k"i2"}), f(function(args, snip) return c_py({"html", 164}, "x(snip)", python_globals, args, snip, "", am[164]) end, ae(am[164])), t">"
 		},
 	})),
 	s({trig = "input.", descr = "(input.)", priority = -1000, trigEngine = te("w")}, {
-		t"<input class=\"", i(1, "", {key = "i1"}), t"\" type=\"", i(2, "text/submit/hidden/button/image", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\" id=\"", d(4, function(args) return sn(nil, {cp(3)}) end, {}, {key = "i4"}), t"\" value=\"", i(5, "", {key = "i5"}), t"\">"
+		t"<input class=\"", i(1, "", {key = "i1"}), t"\" type=\"", i(2, "text/submit/hidden/button/image", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\" id=\"", d(4, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i4"}) }) end, {k"i3"}), t"\" value=\"", i(5, "", {key = "i5"}), t"\">"
 	}),
 	s({trig = "input:text", descr = "(input:text)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"text\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"text\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:submit", descr = "(input:submit)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"submit\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"submit\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:hidden", descr = "(input:hidden)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"hidden\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"hidden\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:button", descr = "(input:button)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"button\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"button\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:image", descr = "(input:image)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"image\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" src=\"", i(3, "", {key = "i3"}), t"\" alt=\"", i(4, "", {key = "i4"}), t"\">"
+		t"<input type=\"image\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" src=\"", i(3, "", {key = "i3"}), t"\" alt=\"", i(4, "", {key = "i4"}), t"\">"
 	}),
 	s({trig = "input:checkbox", descr = "(input:checkbox)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"checkbox\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\">"
+		t"<input type=\"checkbox\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\">"
 	}),
 	s({trig = "input:radio", descr = "(input:radio)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"radio\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\">"
+		t"<input type=\"radio\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\">"
 	}),
 	s({trig = "input:color", descr = "(input:color)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"color\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"color\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:date", descr = "(input:date)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"date\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"date\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:datetime", descr = "(input:datetime)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"datetime\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"datetime\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:datetime-local", descr = "(input:datetime-local)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"datetime-local\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"datetime-local\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:email", descr = "(input:email)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"email\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"email\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:file", descr = "(input:file)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"file\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"file\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:month", descr = "(input:month)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"month\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"month\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:number", descr = "(input:number)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"number\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"number\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:password", descr = "(input:password)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"password\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"password\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:range", descr = "(input:range)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"range\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"range\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:reset", descr = "(input:reset)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"reset\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"reset\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:search", descr = "(input:search)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"search\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"search\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:time", descr = "(input:time)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"time\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"time\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:url", descr = "(input:url)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"url\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"url\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "input:week", descr = "(input:week)", priority = -1000, trigEngine = te("w")}, {
-		t"<input type=\"week\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
+		t"<input type=\"week\" name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" value=\"", i(3, "", {key = "i3"}), t"\">"
 	}),
 	s({trig = "ins", descr = "(ins) \"<ins>\"", priority = -50, trigEngine = te("w")}, {
 		t"<ins cite=\"", i(2, "", {key = "i2"}), t"\" datetime=\"", d(3, function(args, snip) return sn(nil, { i(1, jt({c_shell("date \'+%Y-%m-%dT%H:%M:%S%:z\'")}, ""), {key = "i3"}) }) end), t"\">", i(1, "", {key = "i1"}), t"</ins>"
@@ -1065,13 +1065,13 @@ ls.add_snippets("html", {
 		t"<label>", i(1, "", {key = "i1"}), t"</label>"
 	}),
 	s({trig = "label:i", descr = "(label:i)", priority = -1000, trigEngine = te("w")}, {
-		t"<label for=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</label>", nl(),
-		t"<input type=\"", i(3, "text/submit/hidden/button", {key = "i3"}), t"\" name=\"", d(4, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i4"}), t"\" id=\"", d(5, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i5"}), t"\" value=\"", i(6, "", {key = "i6"}), t"\" />"
+		t"<label for=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\">", i(1, "", {key = "i1"}), t"</label>", nl(),
+		t"<input type=\"", i(3, "text/submit/hidden/button", {key = "i3"}), t"\" name=\"", d(4, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i4"}) }) end, {k"i2"}), t"\" id=\"", d(5, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i5"}) }) end, {k"i2"}), t"\" value=\"", i(6, "", {key = "i6"}), t"\" />"
 	}),
 	s({trig = "label:s", descr = "(label:s)", priority = -1000, trigEngine = te("w")}, {
-		t"<label for=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\">", i(1, "", {key = "i1"}), t"</label>", nl(),
-		t"<select name=\"", d(3, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i3"}), t"\" id=\"", d(4, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i4"}), t"\">", nl(),
-		t"\t<option value=\"", i(5, "", {key = "i5"}), t"\">", d(6, function(args) return sn(nil, {cp(5)}) end, {}, {key = "i0"}), t"</option>", nl(),
+		t"<label for=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\">", i(1, "", {key = "i1"}), t"</label>", nl(),
+		t"<select name=\"", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i3"}) }) end, {k"i2"}), t"\" id=\"", d(4, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i4"}) }) end, {k"i2"}), t"\">", nl(),
+		t"\t<option value=\"", i(5, "", {key = "i5"}), t"\">", d(6, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i0"}) }) end, {k"i5"}), t"</option>", nl(),
 		t"</select>"
 	}),
 	s({trig = "legend", descr = "(legend) \"<legend>\"", priority = -50, trigEngine = te("")}, {
@@ -1134,7 +1134,7 @@ ls.add_snippets("html", {
 		t"</map>"
 	}),
 	s({trig = "map#", descr = "(map#)", priority = -1000, trigEngine = te("w")}, {
-		t"<map name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t">", nl(),
+		t"<map name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</map>"
 	}),
@@ -1243,10 +1243,10 @@ ls.add_snippets("html", {
 		t"</ol>"
 	}),
 	s({trig = "opt", descr = "(opt)", priority = -1000, trigEngine = te("w")}, {
-		t"<option value=\"", i(1, "", {key = "i1"}), t"\">", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i0"}), t"</option>"
+		t"<option value=\"", i(1, "", {key = "i1"}), t"\">", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i0"}) }) end, {k"i1"}), t"</option>"
 	}),
 	s({trig = "opt+", descr = "(opt+)", priority = -1000, trigEngine = te("w")}, {
-		t"<option value=\"", i(1, "", {key = "i1"}), t"\">", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"</option>", nl(),
+		t"<option value=\"", i(1, "", {key = "i1"}), t"\">", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"</option>", nl(),
 		t"opt+", i(0, "", {key = "i0"})
 	}),
 	s({trig = "optt", descr = "(optt)", priority = -1000, trigEngine = te("w")}, {
@@ -1330,18 +1330,18 @@ ls.add_snippets("html", {
 		t"</section>"
 	}),
 	s({trig = "select", descr = "(select) \"Select Box\"", priority = -50, trigEngine = te("w")}, {
-		t"<select name=\"", i(1, "some_name", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\"", d(3, function(args) return sn(nil, {i(1, " multiple", {key = "i4"}), d(2, function(args) return sn(nil, {t" size=\"", i(1, "1", {key = "i6"}), t"\""}) end, {}, {key = "i5"})}) end, {}, {key = "i3"}), t">", nl(),
+		t"<select name=\"", i(1, "some_name", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\"", c(3, {{i(1, " multiple", {key = "i4"}), c(2, {{t" size=\"", i(1, "1", {key = "i6"}), t"\""}, {i(1, jt({" size=\"", "1", "\""}))}}, {key = "i5"})}, {i(1, jt({" multiple", jt({" size=\"", "1", "\""})}))}}, {key = "i3"}), t">", nl(),
 		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"</select>"
 	}),
 	s({trig = "select.", descr = "(select.)", priority = -1000, trigEngine = te("w")}, {
-		t"<select name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\" class=\"", i(3, "", {key = "i3"}), t">", nl(),
+		t"<select name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\" class=\"", i(3, "", {key = "i3"}), t">", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</select>"
 	}),
 	s({trig = "select+", descr = "(select+)", priority = -1000, trigEngine = te("w")}, {
-		t"<select name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"\">", nl(),
-		t"\t<option value=\"", i(3, "", {key = "i3"}), t"\">", d(4, function(args) return sn(nil, {cp(3)}) end, {}, {key = "i4"}), t"</option>", nl(),
+		t"<select name=\"", i(1, "", {key = "i1"}), t"\" id=\"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"\">", nl(),
+		t"\t<option value=\"", i(3, "", {key = "i3"}), t"\">", d(4, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i4"}) }) end, {k"i3"}), t"</option>", nl(),
 		t"\topt+", i(0, "", {key = "i0"}), nl(),
 		t"</select>"
 	}),

@@ -187,7 +187,7 @@ ls.add_snippets("perl", {
 		t"}", nl()
 	}),
 	s({trig = "fore", descr = "(fore) \"foreach\"", priority = -50, trigEngine = te("")}, {
-		t"foreach ", d(1, function(args) return sn(nil, {t"my $", i(1, "x", {key = "i2"})}) end, {}, {key = "i1"}), t" (@", i(2, "array", {key = "i3"}), t") {", nl(),
+		t"foreach ", c(1, {{t"my $", i(1, "x", {key = "i2"})}, {i(1, jt({"my $", "x"}))}}, {key = "i1"}), t" (@", i(2, "array", {key = "i3"}), t") {", nl(),
 		t"\t", i(3, "# body...", {key = "i4"}), nl(),
 		t"}", nl()
 	}),
@@ -466,7 +466,7 @@ ls.add_snippets("perl", {
 	s({trig = "class", descr = "(class) \"class\"", priority = -50, trigEngine = te("")}, {
 		t"package ", i(1, "ClassName", {key = "i1"}), t";", nl(),
 		nl(),
-		d(2, function(args) return sn(nil, {t"use parent qw(", i(1, "ParentClass", {key = "i3"}), t");"}) end, {}, {key = "i2"}), tr(2, ".+", "\\n\\n"), t"sub new {", nl(),
+		c(2, {{t"use parent qw(", i(1, "ParentClass", {key = "i3"}), t");"}, {i(1, jt({"use parent qw(", "ParentClass", ");"}))}}, {key = "i2"}), tr(2, ".+", "\\n\\n"), t"sub new {", nl(),
 		t"\tmy $class = shift;", nl(),
 		t"\t$class = ref $class if ref $class;", nl(),
 		t"\tmy $self = bless {}, $class;", nl(),

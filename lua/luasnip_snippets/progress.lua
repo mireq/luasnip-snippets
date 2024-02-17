@@ -90,7 +90,7 @@ ls.add_snippets("progress", {
 	}),
 	s({trig = "ff", descr = "(ff)", priority = -1000, trigEngine = te("w")}, {
 		t"FIND FIRST ", i(1, "BufferName", {key = "i1"}), nl(),
-		d(2, function(args) return sn(nil, {t"WHERE ", cp(1), t".${3}"}) end, {}, {key = "i2"}), t" ", i(0, "", {key = "i0"})
+		d(2, function(args, snip) return sn(nil, { i(1, jt({"WHERE ", args[1], ".${3}"}, ""), {key = "i2"}) }) end, {k"i1"}), t" ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "input", descr = "(input)", priority = -1000, trigEngine = te("w")}, {
 		t"DEFINE INPUT PARAMETER ", i(1, "ParamName", {key = "i1"}), t" AS ", i(0, "", {key = "i0"}), t"."

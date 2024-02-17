@@ -79,7 +79,7 @@ ls.add_snippets("eelixir", {
 		t"<% end %>"
 	}),
 	s({trig = "for", descr = "(for)", priority = -50, trigEngine = te("")}, {
-		t"<%= for ", i(1, "item", {key = "i1"}), t" <- ", d(2, function(args) return sn(nil, {cp(1), t"s"}) end, {}, {key = "i2"}), t" ", i(3, "@conn", {key = "i3"}), t" do %>", nl(),
+		t"<%= for ", i(1, "item", {key = "i1"}), t" <- ", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1], "s"}, ""), {key = "i2"}) }) end, {k"i1"}), t" ", i(3, "@conn", {key = "i3"}), t" do %>", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"<% end %>"
 	}),
@@ -110,7 +110,7 @@ ls.add_snippets("eelixir", {
 		t"<% end %>"
 	}),
 	s({trig = "ft", descr = "(ft) \"form_tag\"", priority = -50, trigEngine = te("w")}, {
-		t"<%= form_tag(", d(1, function(args) return sn(nil, {t"\"", i(1, "/users", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", method: ", i(2, ":post", {key = "i3"}), t") %>", nl(),
+		t"<%= form_tag(", c(1, {{t"\"", i(1, "/users", {key = "i2"}), t"\""}, {i(1, jt({"\"", "/users", "\""}))}}, {key = "i1"}), t", method: ", i(2, ":post", {key = "i3"}), t") %>", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"</form>"
 	}),
@@ -140,10 +140,10 @@ ls.add_snippets("eelixir", {
 		t"<%= render \"", i(1, "index", {key = "i1"}), t".html\", ", i(2, "var: @var", {key = "i2"}), t" %>"
 	}),
 	s({trig = "lin", descr = "(lin) \"link\"", priority = -50, trigEngine = te("w")}, {
-		t"<%= link ", d(1, function(args) return sn(nil, {t"\"", i(1, "Submit", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", to: ", d(2, function(args) return sn(nil, {t"\"", i(1, "/users", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), t", method: ", i(3, ":delete", {key = "i5"}), t" %>"
+		t"<%= link ", c(1, {{t"\"", i(1, "Submit", {key = "i2"}), t"\""}, {i(1, jt({"\"", "Submit", "\""}))}}, {key = "i1"}), t", to: ", c(2, {{t"\"", i(1, "/users", {key = "i4"}), t"\""}, {i(1, jt({"\"", "/users", "\""}))}}, {key = "i3"}), t", method: ", i(3, ":delete", {key = "i5"}), t" %>"
 	}),
 	s({trig = "ff", descr = "(ff) \"form_for\"", priority = -50, trigEngine = te("w")}, {
-		t"<%= form_for @changeset, ", d(1, function(args) return sn(nil, {t"\"", i(1, "/users", {key = "i2"}), t"\""}) end, {}, {key = "i1"}), t", fn f -> %>", nl(),
+		t"<%= form_for @changeset, ", c(1, {{t"\"", i(1, "/users", {key = "i2"}), t"\""}, {i(1, jt({"\"", "/users", "\""}))}}, {key = "i1"}), t", fn f -> %>", nl(),
 		t"\t\t", i(0, "", {key = "i0"}), nl(),
 		nl(),
 		t"\t<%= submit \"Submit\" %>", nl(),

@@ -308,19 +308,19 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("rails", {
 	s({trig = "art", descr = "(art) \"Test Assert Redirected To (art)\"", priority = -50, trigEngine = te("")}, {
-		t"assert_redirected_to ", d(1, function(args) return sn(nil, {t"action: \"", i(1, "index", {key = "i1"}), t"\""}) end, {}, {key = "i2"})
+		t"assert_redirected_to ", c(1, {{t"action: \"", i(1, "index", {key = "i1"}), t"\""}, {i(1, jt({"action: \"", "index", "\""}))}}, {key = "i2"})
 	}),
 	s({trig = "artnp", descr = "(artnp) \"assert_redirected_to (nested path)\"", priority = -50, trigEngine = te("")}, {
-		t"assert_redirected_to ", d(1, function(args) return sn(nil, {i(1, "parent", {key = "i12"}), t"_", i(2, "child", {key = "i13"}), t"_path(", i(3, "@", {key = "i14"}), d(4, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i15"}), t", ", i(5, "@", {key = "i16"}), d(6, function(args) return sn(nil, {cp(13)}) end, {}, {key = "i17"}), t")"}) end, {}, {key = "i2"})
+		t"assert_redirected_to ", d(1, function(args, snip) return sn(nil, {c(1, {{i(1, "parent", {key = "i12"}), t"_", i(2, "child", {key = "i13"}), t"_path(", i(3, "@", {key = "i14"}), d(4, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i15"}) }) end, {k"i12"}), t", ", i(5, "@", {key = "i16"}), d(6, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i17"}) }) end, {k"i13"}), t")"}, {i(1, jt({"parent", "_", "child", "_path(", "@", jt({args[1]}), ", ", "@", jt({args[2]}), ")"}))}}, {key = "i2"})}) end, {k"i12", k"i13"})
 	}),
 	s({trig = "artnpp", descr = "(artnpp) \"assert_redirected_to (nested path plural)\"", priority = -50, trigEngine = te("")}, {
-		t"assert_redirected_to ", d(1, function(args) return sn(nil, {i(1, "parent", {key = "i2"}), t"_", i(2, "child", {key = "i3"}), t"_path(", i(3, "@", {key = "i4"}), d(4, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i5"}), t")"}) end, {}, {key = "i10"})
+		t"assert_redirected_to ", d(1, function(args, snip) return sn(nil, {c(1, {{i(1, "parent", {key = "i2"}), t"_", i(2, "child", {key = "i3"}), t"_path(", i(3, "@", {key = "i4"}), d(4, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i5"}) }) end, {k"i2"}), t")"}, {i(1, jt({"parent", "_", "child", "_path(", "@", jt({args[1]}), ")"}))}}, {key = "i10"})}) end, {k"i2"})
 	}),
 	s({trig = "artp", descr = "(artp) \"assert_redirected_to (path)\"", priority = -50, trigEngine = te("")}, {
-		t"assert_redirected_to ", d(1, function(args) return sn(nil, {i(1, "model", {key = "i12"}), t"_path(", i(2, "@", {key = "i13"}), d(3, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i14"}), t")"}) end, {}, {key = "i2"})
+		t"assert_redirected_to ", d(1, function(args, snip) return sn(nil, {c(1, {{i(1, "model", {key = "i12"}), t"_path(", i(2, "@", {key = "i13"}), d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i14"}) }) end, {k"i12"}), t")"}, {i(1, jt({"model", "_path(", "@", jt({args[1]}), ")"}))}}, {key = "i2"})}) end, {k"i12"})
 	}),
 	s({trig = "artpp", descr = "(artpp) \"assert_redirected_to (path plural)\"", priority = -50, trigEngine = te("")}, {
-		t"assert_redirected_to ", d(1, function(args) return sn(nil, {i(1, "model", {key = "i2"}), t"s_path"}) end, {}, {key = "i10"})
+		t"assert_redirected_to ", c(1, {{i(1, "model", {key = "i2"}), t"s_path"}, {i(1, jt({"model", "s_path"}))}}, {key = "i10"})
 	}),
 	s({trig = "asd", descr = "(asd) \"assert_difference\"", priority = -50, trigEngine = te("")}, {
 		t"assert_difference \"", i(1, "Model", {key = "i1"}), t".", i(2, "count", {key = "i2"}), t"\", ", i(3, "1", {key = "i3"}), t" do", nl(),
@@ -336,12 +336,12 @@ ls.add_snippets("rails", {
 		t"assert_response :", i(1, "success", {key = "i1"}), t", @response.body", i(0, "", {key = "i0"})
 	}),
 	s({trig = "asrj", descr = "(asrj) \"assert_rjs\"", priority = -50, trigEngine = te("")}, {
-		t"assert_rjs :", i(1, "replace", {key = "i1"}), t", ", d(2, function(args) return sn(nil, {t"\"", i(1, "dom id", {key = "i3"}), t"\""}) end, {}, {key = "i2"})
+		t"assert_rjs :", i(1, "replace", {key = "i1"}), t", ", c(2, {{t"\"", i(1, "dom id", {key = "i3"}), t"\""}, {i(1, jt({"\"", "dom id", "\""}))}}, {key = "i2"})
 	}),
 	s({trig = "ass", descr = "(ass) \"assert_select\"", priority = -50, trigEngine = te("")}, {
-		t"assert_select \'", i(1, "path", {key = "i1"}), t"\'", d(2, function(args) return sn(nil, {t", ", i(1, "text", {key = "i3"}), t": ", d(2, function(args) return sn(nil, {t"\'", i(1, "inner_html", {key = "i5"}), t"\'"}) end, {}, {key = "i4"})}) end, {}, {key = "i2"}), d(3, function(args) return sn(nil, {t" do", nl(),
-i(1, "", {key = "i0"}), t"\t$0", nl(),
-t"en"}) end, {}, {key = "i6"})
+		t"assert_select \'", i(1, "path", {key = "i1"}), t"\'", c(2, {{t", ", i(1, "text", {key = "i3"}), t": ", c(2, {{t"\'", i(1, "inner_html", {key = "i5"}), t"\'"}, {i(1, jt({"\'", "inner_html", "\'"}))}}, {key = "i4"})}, {i(1, jt({", ", "text", ": ", jt({"\'", "inner_html", "\'"})}))}}, {key = "i2"}), c(3, {{t" do", nl(),
+		i(1, "", {key = "i0"}), t"\t$0", nl(),
+		t"en"}, {i(1, jt({" do", "\n", "", "\t$0", "\n", "en"}))}}, {key = "i6"})
 	}),
 	s({trig = "ba", descr = "(ba)", priority = -1000, trigEngine = te("w")}, {
 		t"before_action :", i(0, "method", {key = "i0"})
@@ -350,7 +350,7 @@ t"en"}) end, {}, {key = "i6"})
 		t"before_filter :", i(0, "method", {key = "i0"})
 	}),
 	s({trig = "bt", descr = "(bt) \"belongs_to (bt)\"", priority = -50, trigEngine = te("")}, {
-		t"belongs_to :", i(1, "object", {key = "i1"}), d(2, function(args) return sn(nil, {t", class_name: \"", d(1, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}, ""), {key = "i3"}) }) end, {k"i1"}), t"\", foreign_key: \"", d(2, function(args) return sn(nil, {cp(1), t"_id"}) end, {}, {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"belongs_to :", i(1, "object", {key = "i1"}), d(2, function(args, snip) return sn(nil, {c(1, {{t", class_name: \"", d(1, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}, ""), {key = "i3"}) }) end, {k"i1"}), t"\", foreign_key: \"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1], "_id"}, ""), {key = "i4"}) }) end, {k"i1"}), t"\""}, {i(1, jt({", class_name: \"", jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}), "\", foreign_key: \"", jt({args[1], "_id"}), "\""}))}}, {key = "i2"})}) end, {k"i1"})
 	}),
 	s({trig = "btp", descr = "(btp)", priority = -1000, trigEngine = te("w")}, {
 		t"belongs_to :", i(1, "association", {key = "i1"}), t", polymorphic: true"
@@ -456,19 +456,19 @@ t"en"}) end, {}, {key = "i6"})
 		t"flash[:", i(1, "notice", {key = "i1"}), t"] = \"", i(2, "Successfully created...", {key = "i2"}), t"\"", i(0, "", {key = "i0"})
 	}),
 	s({trig = "habtm", descr = "(habtm) \"has_and_belongs_to_many (habtm)\"", priority = -50, trigEngine = te("")}, {
-		t"has_and_belongs_to_many :", i(1, "object", {key = "i1"}), d(2, function(args) return sn(nil, {t", join_table: \"", i(1, "table_name", {key = "i3"}), t"\", foreign_key: \"", d(2, function(args) return sn(nil, {cp(1), t"_id"}) end, {}, {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"has_and_belongs_to_many :", i(1, "object", {key = "i1"}), d(2, function(args, snip) return sn(nil, {c(1, {{t", join_table: \"", i(1, "table_name", {key = "i3"}), t"\", foreign_key: \"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1], "_id"}, ""), {key = "i4"}) }) end, {k"i1"}), t"\""}, {i(1, jt({", join_table: \"", "table_name", "\", foreign_key: \"", jt({args[1], "_id"}), "\""}))}}, {key = "i2"})}) end, {k"i1"})
 	}),
 	s({trig = "hm", descr = "(hm) \"has_many (hm)\"", priority = -50, trigEngine = te("")}, {
-		t"has_many :", i(1, "object", {key = "i1"}), t"s", d(2, function(args) return sn(nil, {t", class_name: \"", cp(1), t"\", foreign_key: \"", i(1, "reference", {key = "i4"}), t"_id\""}) end, {}, {key = "i2"})
+		t"has_many :", i(1, "object", {key = "i1"}), t"s", d(2, function(args, snip) return sn(nil, {c(1, {{t", class_name: \"", cp(1), t"\", foreign_key: \"", i(1, "reference", {key = "i4"}), t"_id\""}, {i(1, jt({", class_name: \"", args[1], "\", foreign_key: \"", "reference", "_id\""}))}}, {key = "i2"})}) end, {k"i1"})
 	}),
 	s({trig = "hmd", descr = "(hmd) \"has_many dependent: :destroy\"", priority = -50, trigEngine = te("")}, {
-		t"has_many :", i(1, "object", {key = "i1"}), t"s", d(2, function(args) return sn(nil, {t", class_name: \"", cp(1), t"\", foreign_key: \"", i(1, "reference", {key = "i4"}), t"_id\""}) end, {}, {key = "i2"}), t", dependent: :destroy", i(0, "", {key = "i0"})
+		t"has_many :", i(1, "object", {key = "i1"}), t"s", d(2, function(args, snip) return sn(nil, {c(1, {{t", class_name: \"", cp(1), t"\", foreign_key: \"", i(1, "reference", {key = "i4"}), t"_id\""}, {i(1, jt({", class_name: \"", args[1], "\", foreign_key: \"", "reference", "_id\""}))}}, {key = "i2"})}) end, {k"i1"}), t", dependent: :destroy", i(0, "", {key = "i0"})
 	}),
 	s({trig = "hmt", descr = "(hmt) \"has_many (through)\"", priority = -50, trigEngine = te("")}, {
-		t"has_many :", i(1, "objects", {key = "i1"}), t", through: :", i(2, "join_association", {key = "i2"}), d(3, function(args) return sn(nil, {t", source: :", d(1, function(args) return sn(nil, {cp(2), t"_table_foreign_key_to_", cp(1), t"_table"}) end, {}, {key = "i4"})}) end, {}, {key = "i3"})
+		t"has_many :", i(1, "objects", {key = "i1"}), t", through: :", i(2, "join_association", {key = "i2"}), d(3, function(args, snip) return sn(nil, {c(1, {{t", source: :", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1], "_table_foreign_key_to_", args[2], "_table"}, ""), {key = "i4"}) }) end, {k"i2", k"i1"})}, {i(1, jt({", source: :", jt({args[1], "_table_foreign_key_to_", args[2], "_table"})}))}}, {key = "i3"})}) end, {k"i2", k"i1"})
 	}),
 	s({trig = "ho", descr = "(ho) \"has_one (ho)\"", priority = -50, trigEngine = te("")}, {
-		t"has_one :", i(1, "object", {key = "i1"}), d(2, function(args) return sn(nil, {t", class_name: \"", d(1, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}, ""), {key = "i3"}) }) end, {k"i1"}), t"\", foreign_key: \"", d(2, function(args) return sn(nil, {cp(1), t"_id"}) end, {}, {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"has_one :", i(1, "object", {key = "i1"}), d(2, function(args, snip) return sn(nil, {c(1, {{t", class_name: \"", d(1, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}, ""), {key = "i3"}) }) end, {k"i1"}), t"\", foreign_key: \"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1], "_id"}, ""), {key = "i4"}) }) end, {k"i1"}), t"\""}, {i(1, jt({", class_name: \"", jt({rx_tr(args[1], "[[:alpha:]]+|(_)", "(?1::\\u$0)")}), "\", foreign_key: \"", jt({args[1], "_id"}), "\""}))}}, {key = "i2"})}) end, {k"i1"})
 	}),
 	s({trig = "hod", descr = "(hod)", priority = -1000, trigEngine = te("w")}, {
 		t"has_one :", i(1, "object", {key = "i1"}), t", dependent: :", i(0, "destroy", {key = "i0"})
@@ -507,17 +507,17 @@ t"en"}) end, {}, {key = "i6"})
 		i(1, "map", {key = "i1"}), t".catch_all \"*", i(2, "anything", {key = "i2"}), t"\", controller: \"", i(3, "default", {key = "i3"}), t"\", action: \"", i(4, "error", {key = "i4"}), t"\"", nl()
 	}),
 	s({trig = "mapr", descr = "(mapr) \"map.resource\"", priority = -50, trigEngine = te("")}, {
-		i(1, "map", {key = "i1"}), t".resource :", i(2, "resource", {key = "i2"}), d(3, function(args) return sn(nil, {t" do |", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i11"}), t"|", nl(),
-i(2, "", {key = "i0"}), t"\t$0", nl(),
-t"en"}) end, {}, {key = "i10"})
+		i(1, "map", {key = "i1"}), t".resource :", i(2, "resource", {key = "i2"}), d(3, function(args, snip) return sn(nil, {c(1, {{t" do |", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i11"}) }) end, {k"i2"}), t"|", nl(),
+		i(2, "", {key = "i0"}), t"\t$0", nl(),
+		t"en"}, {i(1, jt({" do |", jt({args[1]}), "|", "\n", "", "\t$0", "\n", "en"}))}}, {key = "i10"})}) end, {k"i2"})
 	}),
 	s({trig = "maprs", descr = "(maprs) \"map.resources\"", priority = -50, trigEngine = te("")}, {
-		i(1, "map", {key = "i1"}), t".resources :", i(2, "resource", {key = "i2"}), d(3, function(args) return sn(nil, {t" do |", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i11"}), t"|", nl(),
-i(2, "", {key = "i0"}), t"\t$0", nl(),
-t"en"}) end, {}, {key = "i10"})
+		i(1, "map", {key = "i1"}), t".resources :", i(2, "resource", {key = "i2"}), d(3, function(args, snip) return sn(nil, {c(1, {{t" do |", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i11"}) }) end, {k"i2"}), t"|", nl(),
+		i(2, "", {key = "i0"}), t"\t$0", nl(),
+		t"en"}, {i(1, jt({" do |", jt({args[1]}), "|", "\n", "", "\t$0", "\n", "en"}))}}, {key = "i10"})}) end, {k"i2"})
 	}),
 	s({trig = "mapwo", descr = "(mapwo) \"map.with_options\"", priority = -50, trigEngine = te("")}, {
-		t"${1map}.with_options :", i(1, "controller", {key = "i2"}), t": \'", i(2, "thing", {key = "i3"}), t"\' do |", d(3, function(args) return sn(nil, {cp(3)}) end, {}, {key = "i4"}), t"|", nl(),
+		t"${1map}.with_options :", i(1, "controller", {key = "i2"}), t": \'", i(2, "thing", {key = "i3"}), t"\' do |", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i4"}) }) end, {k"i3"}), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end", nl()
 	}),
@@ -597,7 +597,7 @@ t"en"}) end, {}, {key = "i10"})
 	}),
 	s({trig = "rest", descr = "(rest) \"respond_to\"", priority = -50, trigEngine = te("")}, {
 		t"respond_to do |wants|", nl(),
-		t"\twants.", i(1, "html", {key = "i1"}), d(2, function(args) return sn(nil, {t" { ", i(1, "", {key = "i0"}), t" }"}) end, {}, {key = "i2"}), nl(),
+		t"\twants.", i(1, "html", {key = "i1"}), c(2, {{t" { ", i(1, "", {key = "i0"}), t" }"}, {i(1, jt({" { ", "", " }"}))}}, {key = "i2"}), nl(),
 		t"end"
 	}),
 	s({trig = "rf", descr = "(rf) \"render (file) (rf)\"", priority = -50, trigEngine = te("")}, {
@@ -631,13 +631,13 @@ t"en"}) end, {}, {key = "i10"})
 		t"render partial: \'", i(0, "item", {key = "i0"}), t"\'"
 	}),
 	s({trig = "rpc", descr = "(rpc)", priority = -1000, trigEngine = te("w")}, {
-		t"render partial: \'", i(1, "item", {key = "i1"}), t"\', collection: ", d(2, function(args) return sn(nil, {t"@", cp(1), t"s"}) end, {}, {key = "i0"})
+		t"render partial: \'", i(1, "item", {key = "i1"}), t"\', collection: ", d(2, function(args, snip) return sn(nil, { i(1, jt({"@", args[1], "s"}, ""), {key = "i0"}) }) end, {k"i1"})
 	}),
 	s({trig = "rpl", descr = "(rpl)", priority = -1000, trigEngine = te("w")}, {
-		t"render partial: \'", i(1, "item", {key = "i1"}), t"\', locals: { ", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t": ", d(3, function(args) return sn(nil, {t"@", cp(1)}) end, {}, {key = "i0"}), t" }"
+		t"render partial: \'", i(1, "item", {key = "i1"}), t"\', locals: { ", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t": ", d(3, function(args, snip) return sn(nil, { i(1, jt({"@", args[1]}, ""), {key = "i0"}) }) end, {k"i1"}), t" }"
 	}),
 	s({trig = "rpo", descr = "(rpo)", priority = -1000, trigEngine = te("w")}, {
-		t"render partial: \'", i(1, "item", {key = "i1"}), t"\', object: ", d(2, function(args) return sn(nil, {t"@", cp(1)}) end, {}, {key = "i0"})
+		t"render partial: \'", i(1, "item", {key = "i1"}), t"\', object: ", d(2, function(args, snip) return sn(nil, { i(1, jt({"@", args[1]}, ""), {key = "i0"}) }) end, {k"i1"})
 	}),
 	s({trig = "rps", descr = "(rps)", priority = -1000, trigEngine = te("w")}, {
 		t"render partial: \'", i(1, "item", {key = "i1"}), t"\', status: ", i(0, "500", {key = "i0"})
@@ -674,31 +674,31 @@ t"en"}) end, {}, {key = "i10"})
 		t"Digest::SHA1.hexdigest(", i(0, "string", {key = "i0"}), t")"
 	}),
 	s({trig = "va", descr = "(va) \"validates_associated (va)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_associated :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"})}) end, {}, {key = "i2"})
+		t"validates_associated :", i(1, "attribute", {key = "i1"}), c(2, {{t", on: :", i(1, "create", {key = "i3"})}, {i(1, jt({", on: :", "create"}))}}, {key = "i2"})
 	}),
 	s({trig = "vc", descr = "(vc) \"validates_confirmation_of (vc)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_confirmation_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "should match confirmation", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_confirmation_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "should match confirmation", {key = "i4"}), t"\""}, {i(1, jt({", on: :", "create", ", message: \"", "should match confirmation", "\""}))}}, {key = "i2"})
 	}),
 	s({trig = "ve", descr = "(ve) \"validates_exclusion_of (ve)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_exclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not allowed", {key = "i6"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_exclusion_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", in: ", c(1, {{t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}, {i(1, jt({"%w( ", "mov avi", " )"}))}}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not allowed", {key = "i6"}), t"\""}, {i(1, jt({", in: ", jt({"%w( ", "mov avi", " )"}), ", on: :", "create", ", message: \"", "extension %s is not allowed", "\""}))}}, {key = "i2"})
 	}),
 	s({trig = "vf", descr = "(vf) \"validates_format_of\"", priority = -50, trigEngine = te("")}, {
-		t"validates_format_of :", i(1, "attribute", {key = "i1"}), t", with: /", d(2, function(args) return sn(nil, {t"^[", i(1, "\\w\\d", {key = "i3"}), t"]+$"}) end, {}, {key = "i2"}), t"/", d(3, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i5"}), t", message: \"", i(2, "is invalid", {key = "i6"}), t"\""}) end, {}, {key = "i4"})
+		t"validates_format_of :", i(1, "attribute", {key = "i1"}), t", with: /", c(2, {{t"^[", i(1, "\\w\\d", {key = "i3"}), t"]+$"}, {i(1, jt({"^[", "\\w\\d", "]+$"}))}}, {key = "i2"}), t"/", c(3, {{t", on: :", i(1, "create", {key = "i5"}), t", message: \"", i(2, "is invalid", {key = "i6"}), t"\""}, {i(1, jt({", on: :", "create", ", message: \"", "is invalid", "\""}))}}, {key = "i4"})
 	}),
 	s({trig = "vi", descr = "(vi) \"validates_inclusion_of\"", priority = -50, trigEngine = te("")}, {
-		t"validates_inclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not included in the list", {key = "i6"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_inclusion_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", in: ", c(1, {{t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}, {i(1, jt({"%w( ", "mov avi", " )"}))}}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not included in the list", {key = "i6"}), t"\""}, {i(1, jt({", in: ", jt({"%w( ", "mov avi", " )"}), ", on: :", "create", ", message: \"", "extension %s is not included in the list", "\""}))}}, {key = "i2"})
 	}),
 	s({trig = "vl", descr = "(vl) \"validates_length_of (vl)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_length_of :", i(1, "attribute", {key = "i1"}), t", within: ", i(2, "3..20", {key = "i2"}), d(3, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i4"}), t", message: \"", i(2, "must be present", {key = "i5"}), t"\""}) end, {}, {key = "i3"})
+		t"validates_length_of :", i(1, "attribute", {key = "i1"}), t", within: ", i(2, "3..20", {key = "i2"}), c(3, {{t", on: :", i(1, "create", {key = "i4"}), t", message: \"", i(2, "must be present", {key = "i5"}), t"\""}, {i(1, jt({", on: :", "create", ", message: \"", "must be present", "\""}))}}, {key = "i3"})
 	}),
 	s({trig = "vn", descr = "(vn) \"validates_numericality_of\"", priority = -50, trigEngine = te("")}, {
-		t"validates_numericality_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "is not a number", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_numericality_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "is not a number", {key = "i4"}), t"\""}, {i(1, jt({", on: :", "create", ", message: \"", "is not a number", "\""}))}}, {key = "i2"})
 	}),
 	s({trig = "vp", descr = "(vp) \"validates_presence_of (vp)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_presence_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "can\'t be blank", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_presence_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "can\'t be blank", {key = "i4"}), t"\""}, {i(1, jt({", on: :", "create", ", message: \"", "can\'t be blank", "\""}))}}, {key = "i2"})
 	}),
 	s({trig = "vu", descr = "(vu) \"validates_uniqueness_of (vu)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_uniqueness_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "must be unique", {key = "i4"}), t"\""}) end, {}, {key = "i2"})
+		t"validates_uniqueness_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "must be unique", {key = "i4"}), t"\""}, {i(1, jt({", on: :", "create", ", message: \"", "must be unique", "\""}))}}, {key = "i2"})
 	}),
 	s({trig = "format", descr = "(format) \"format (respond_with)\"", priority = -50, trigEngine = te("")}, {
 		t"format.", i(1, "html|xml|json|js|any", {key = "i1"}), t" { ", i(0, "", {key = "i0"}), t" }"
@@ -713,7 +713,7 @@ t"en"}) end, {}, {key = "i10"})
 		t"xhr :delete, :", i(1, "destroy", {key = "i1"}), t", id: ", i(2, "1", {key = "i2"}), i(0, "", {key = "i0"})
 	}),
 	s({trig = "xget", descr = "(xget) \"xhr get\"", priority = -50, trigEngine = te("")}, {
-		t"xhr :get, :", i(1, "show", {key = "i1"}), d(2, function(args) return sn(nil, {t", id: ", i(1, "1", {key = "i3"})}) end, {}, {key = "i2"}), i(0, "", {key = "i0"})
+		t"xhr :get, :", i(1, "show", {key = "i1"}), c(2, {{t", id: ", i(1, "1", {key = "i3"})}, {i(1, jt({", id: ", "1"}))}}, {key = "i2"}), i(0, "", {key = "i0"})
 	}),
 	s({trig = "xpost", descr = "(xpost) \"xhr post\"", priority = -50, trigEngine = te("")}, {
 		t"xhr :post, :", i(1, "create", {key = "i1"}), t", ", i(2, "object", {key = "i2"}), t": { ", i(3, "", {key = "i3"}), t" }"
@@ -798,11 +798,11 @@ t"en"}) end, {}, {key = "i10"})
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "tcbi", descr = "(tcbi) \"Create binary column\"", priority = -50, trigEngine = te("")}, {
-		t"t.binary :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {t", limit: ", i(1, "2", {key = "i3"}), t".megabytes"}) end, {}, {key = "i2"}), nl(),
+		t"t.binary :", i(1, "title", {key = "i1"}), c(2, {{t", limit: ", i(1, "2", {key = "i3"}), t".megabytes"}, {i(1, jt({", limit: ", "2", ".megabytes"}))}}, {key = "i2"}), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "tcd", descr = "(tcd) \"Create decimal column\"", priority = -50, trigEngine = te("")}, {
-		t"t.decimal :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", precision: ", i(1, "10", {key = "i4"})}) end, {}, {key = "i3"}), d(2, function(args) return sn(nil, {t", scale: ", i(1, "2", {key = "i6"})}) end, {}, {key = "i5"})}) end, {}, {key = "i2"}), nl(),
+		t"t.decimal :", i(1, "title", {key = "i1"}), c(2, {{c(1, {{t", precision: ", i(1, "10", {key = "i4"})}, {i(1, jt({", precision: ", "10"}))}}, {key = "i3"}), c(2, {{t", scale: ", i(1, "2", {key = "i6"})}, {i(1, jt({", scale: ", "2"}))}}, {key = "i5"})}, {i(1, jt({jt({", precision: ", "10"}), jt({", scale: ", "2"})}))}}, {key = "i2"}), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "tcda", descr = "(tcda) \"Create date column\"", priority = -50, trigEngine = te("")}, {
@@ -830,7 +830,7 @@ t"en"}) end, {}, {key = "i10"})
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "tcr", descr = "(tcr) \"Create references column\"", priority = -50, trigEngine = te("")}, {
-		t"t.references :", i(1, "taggable", {key = "i1"}), d(2, function(args) return sn(nil, {t", polymorphic: ", d(1, function(args) return sn(nil, {t"{ default: \'", i(1, "Photo", {key = "i4"}), t"\' }"}) end, {}, {key = "i3"})}) end, {}, {key = "i2"}), nl(),
+		t"t.references :", i(1, "taggable", {key = "i1"}), c(2, {{t", polymorphic: ", c(1, {{t"{ default: \'", i(1, "Photo", {key = "i4"}), t"\' }"}, {i(1, jt({"{ default: \'", "Photo", "\' }"}))}}, {key = "i3"})}, {i(1, jt({", polymorphic: ", jt({"{ default: \'", "Photo", "\' }"})}))}}, {key = "i2"}), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "tcs", descr = "(tcs) \"Create string column\"", priority = -50, trigEngine = te("")}, {
@@ -956,7 +956,7 @@ t"en"}) end, {}, {key = "i10"})
 		i(1, "super_class", {key = "i1"}), t".instance_method(:", i(0, "method", {key = "i0"}), t").bind(self).call"
 	}),
 	s({trig = "anaf", descr = "(anaf) \"accepts_nested_attributes_for\"", priority = -50, trigEngine = te("")}, {
-		t"accepts_nested_attributes_for :", i(1, "association_name", {key = "i1"}), d(2, function(args) return sn(nil, {i(1, ", allow_destroy: true", {key = "i3"}), d(2, function(args) return sn(nil, {t", reject_if: proc { |obj| ", i(1, "obj.blank?", {key = "i5"}), t" }"}) end, {}, {key = "i4"})}) end, {}, {key = "i2"}), nl()
+		t"accepts_nested_attributes_for :", i(1, "association_name", {key = "i1"}), c(2, {{i(1, ", allow_destroy: true", {key = "i3"}), c(2, {{t", reject_if: proc { |obj| ", i(1, "obj.blank?", {key = "i5"}), t" }"}, {i(1, jt({", reject_if: proc { |obj| ", "obj.blank?", " }"}))}}, {key = "i4"})}, {i(1, jt({", allow_destroy: true", jt({", reject_if: proc { |obj| ", "obj.blank?", " }"})}))}}, {key = "i2"}), nl()
 	}),
 	s({trig = "clac", descr = "(clac) \"Create controller class\"", priority = -50, trigEngine = te("")}, {
 		t"class ", i(1, "Model", {key = "i1"}), t"Controller < ApplicationController", nl(),
@@ -966,7 +966,7 @@ t"en"}) end, {}, {key = "i10"})
 		nl(),
 		t"\tprivate", nl(),
 		t"\tdef find_", cp(2), nl(),
-		t"\t\t@", cp(2), t" = ", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i3"}), t".find(params[:id]) if params[:id]", nl(),
+		t"\t\t@", cp(2), t" = ", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t\t"), {key = "i3"}) }) end, {k"i1"}), t".find(params[:id]) if params[:id]", nl(),
 		t"\tend", nl(),
 		t"end"
 	}),
@@ -1133,34 +1133,34 @@ t"en"}) end, {}, {key = "i10"})
 	}),
 	s({trig = "deftg", descr = "(deftg) \"def get request\"", priority = -50, trigEngine = te("")}, {
 		t"def test_should_get_", i(1, "action", {key = "i1"}), nl(),
-		t"\t", d(2, function(args) return sn(nil, {t"@", i(1, "model", {key = "i3"}), t" = ", d(2, function(args) return sn(nil, {cp(3), t"s"}) end, {}, {key = "i4"}), t"(:", i(3, "fixture_name", {key = "i5"}), t")", nl()}) end, {}, {key = "i2"}), t"get :", cp(1), d(3, function(args) return sn(nil, {t", id: @", cp(3), t".to_param"}) end, {}, {key = "i6"}), nl(),
+		t"\t", d(2, function(args, snip) return sn(nil, {c(1, {{t"@", i(1, "model", {key = "i3"}), t" = ", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1], "s"}, ""), {key = "i4"}) }) end, {k"i3"}), t"(:", i(3, "fixture_name", {key = "i5"}), t")", nl()}, {i(1, jt({"@", "model", " = ", jt({args[1], "s"}), "(:", "fixture_name", ")", "\n"}))}}, {key = "i2"})}) end, {k"i3"}), t"get :", cp(1), d(3, function(args, snip) return sn(nil, { i(1, jt({", id: @", args[1], ".to_param"}, "\t"), {key = "i6"}) }) end, {k"i3"}), nl(),
 		t"\tassert_response :success", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "deftp", descr = "(deftp) \"def post request\"", priority = -50, trigEngine = te("")}, {
 		t"def test_should_post_", i(1, "action", {key = "i1"}), nl(),
-		t"\t", d(3, function(args) return sn(nil, {t"@", cp(2), t" = ", d(1, function(args) return sn(nil, {cp(2), t"s"}) end, {}, {key = "i4"}), t"(:", i(2, "fixture_name", {key = "i5"}), t")", nl()}) end, {}, {key = "i3"}), t"post :", cp(1), d(4, function(args) return sn(nil, {t", id: @", cp(2), t".to_param"}) end, {}, {key = "i6"}), t", ", i(2, "model", {key = "i2"}), t": { ", i(0, "", {key = "i0"}), t" }", nl(),
+		t"\t", d(3, function(args, snip) return sn(nil, {c(1, {{t"@", cp(2), t" = ", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1], "s"}, ""), {key = "i4"}) }) end, {k"i2"}), t"(:", i(2, "fixture_name", {key = "i5"}), t")", nl()}, {i(1, jt({"@", args[1], " = ", jt({args[1], "s"}), "(:", "fixture_name", ")", "\n"}))}}, {key = "i3"})}) end, {k"i2"}), t"post :", cp(1), d(4, function(args, snip) return sn(nil, { i(1, jt({", id: @", args[1], ".to_param"}, "\t"), {key = "i6"}) }) end, {k"i2"}), t", ", i(2, "model", {key = "i2"}), t": { ", i(0, "", {key = "i0"}), t" }", nl(),
 		t"\tassert_response :redirect", nl(),
 		nl(),
 		t"end"
 	}),
 	s({trig = "fina", descr = "(fina) \"find(:all)\"", priority = -50, trigEngine = te("")}, {
-		t"find(:all", d(1, function(args) return sn(nil, {t", conditions: [\'", d(1, function(args) return sn(nil, {i(1, "field", {key = "i3"}), t" = ?"}) end, {}, {key = "i2"}), t"\', ", i(2, "true", {key = "i5"}), t"]"}) end, {}, {key = "i1"}), t")"
+		t"find(:all", c(1, {{t", conditions: [\'", c(1, {{i(1, "field", {key = "i3"}), t" = ?"}, {i(1, jt({"field", " = ?"}))}}, {key = "i2"}), t"\', ", i(2, "true", {key = "i5"}), t"]"}, {i(1, jt({", conditions: [\'", jt({"field", " = ?"}), "\', ", "true", "]"}))}}, {key = "i1"}), t")"
 	}),
 	s({trig = "finf", descr = "(finf) \"find(:first)\"", priority = -50, trigEngine = te("")}, {
-		t"find(:first", d(1, function(args) return sn(nil, {t", conditions: [\'", d(1, function(args) return sn(nil, {i(1, "field", {key = "i3"}), t" = ?"}) end, {}, {key = "i2"}), t"\', ", i(2, "true", {key = "i5"}), t"]"}) end, {}, {key = "i1"}), t")"
+		t"find(:first", c(1, {{t", conditions: [\'", c(1, {{i(1, "field", {key = "i3"}), t" = ?"}, {i(1, jt({"field", " = ?"}))}}, {key = "i2"}), t"\', ", i(2, "true", {key = "i5"}), t"]"}, {i(1, jt({", conditions: [\'", jt({"field", " = ?"}), "\', ", "true", "]"}))}}, {key = "i1"}), t")"
 	}),
 	s({trig = "fini", descr = "(fini) \"find(id)\"", priority = -50, trigEngine = te("")}, {
 		t"find(", i(1, "id", {key = "i1"}), t")"
 	}),
 	s({trig = "fine", descr = "(fine) \"find_each\"", priority = -50, trigEngine = te("")}, {
-		t"find_each(${1conditions: {:", i(1, "field", {key = "i2"}), t": ", i(2, "true", {key = "i3"}), t"}}) do |", d(3, function(args) return sn(nil, {t"${TM_CURRENT_WORD/(\\w+)\\./\\L", i(1, "", {key = "i1"}), t"/g}"}) end, {}, {key = "i4"}), t"|", nl(),
+		t"find_each(${1conditions: {:", i(1, "field", {key = "i2"}), t": ", i(2, "true", {key = "i3"}), t"}}) do |", c(3, {{t"${TM_CURRENT_WORD/(\\w+)\\./\\L", i(1, "", {key = "i1"}), t"/g}"}, {i(1, jt({"${TM_CURRENT_WORD/(\\w+)\\./\\L", "", "/g}"}))}}, {key = "i4"}), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "finb", descr = "(finb) \"find_in_batches\"", priority = -50, trigEngine = te("")}, {
-		t"find_in_batches(${1conditions: {:", i(1, "field", {key = "i2"}), t": ", i(2, "true", {key = "i3"}), t"}}) do |", d(3, function(args) return sn(nil, {t"${TM_CURRENT_WORD/(\\w+)\\./\\L", i(1, "", {key = "i1"}), t"/g}"}) end, {}, {key = "i4"}), t"s|", nl(),
+		t"find_in_batches(${1conditions: {:", i(1, "field", {key = "i2"}), t": ", i(2, "true", {key = "i3"}), t"}}) do |", c(3, {{t"${TM_CURRENT_WORD/(\\w+)\\./\\L", i(1, "", {key = "i1"}), t"/g}"}, {i(1, jt({"${TM_CURRENT_WORD/(\\w+)\\./\\L", "", "/g}"}))}}, {key = "i4"}), t"s|", nl(),
 		t"\t", cp(4), t"s.each do |", cp(4), t"|", nl(),
 		t"\t\t", i(0, "", {key = "i0"}), nl(),
 		t"\tend", nl(),
@@ -1170,13 +1170,13 @@ t"en"}) end, {}, {key = "i10"})
 		i(1, "map", {key = "i1"}), t".", i(2, "connect", {key = "i2"}), t" \'", i(3, ":controller/:action/:id", {key = "i3"}), t"\'"
 	}),
 	s({trig = "ncl", descr = "(ncl) \"named_scope lambda\"", priority = -50, trigEngine = te("")}, {
-		t"named_scope :name, lambda { |${1param}| { :conditions: ", d(1, function(args) return sn(nil, {t"[\'", d(1, function(args) return sn(nil, {i(1, "field", {key = "i5"}), t" = ?"}) end, {}, {key = "i4"}), t"\', ", d(2, function(args) return sn(nil, {i(1, "", {key = "i1"})}) end, {}, {key = "i6"}), t"]"}) end, {}, {key = "i3"}), t" } }", nl()
+		t"named_scope :name, lambda { |${1param}| { :conditions: ", c(1, {{t"[\'", c(1, {{i(1, "field", {key = "i5"}), t" = ?"}, {i(1, jt({"field", " = ?"}))}}, {key = "i4"}), t"\', ", c(2, {{i(1, "", {key = "i1"})}, {i(1, jt({""}))}}, {key = "i6"}), t"]"}, {i(1, jt({"[\'", jt({"field", " = ?"}), "\', ", jt({""}), "]"}))}}, {key = "i3"}), t" } }", nl()
 	}),
 	s({trig = "nc", descr = "(nc) \"named_scope\"", priority = -50, trigEngine = te("")}, {
-		t"named_scope :name", d(1, function(args) return sn(nil, {t", joins: :", i(1, "table", {key = "i2"})}) end, {}, {key = "i1"}), t", conditions: ", d(2, function(args) return sn(nil, {t"[\'", d(1, function(args) return sn(nil, {i(1, "field", {key = "i5"}), t" = ?"}) end, {}, {key = "i4"}), t"\', ", i(2, "true", {key = "i6"}), t"]"}) end, {}, {key = "i3"}), nl()
+		t"named_scope :name", c(1, {{t", joins: :", i(1, "table", {key = "i2"})}, {i(1, jt({", joins: :", "table"}))}}, {key = "i1"}), t", conditions: ", c(2, {{t"[\'", c(1, {{i(1, "field", {key = "i5"}), t" = ?"}, {i(1, jt({"field", " = ?"}))}}, {key = "i4"}), t"\', ", i(2, "true", {key = "i6"}), t"]"}, {i(1, jt({"[\'", jt({"field", " = ?"}), "\', ", "true", "]"}))}}, {key = "i3"}), nl()
 	}),
 	s({trig = "dscope", descr = "(dscope) \"default_scope\"", priority = -50, trigEngine = te("")}, {
-		t"default_scope ", d(1, function(args) return sn(nil, {t"order(", d(1, function(args) return sn(nil, {t"\'", i(1, "created_at DESC", {key = "i3"}), t"\'"}) end, {}, {key = "i2"}), t")"}) end, {}, {key = "i1"})
+		t"default_scope ", c(1, {{t"order(", c(1, {{t"\'", i(1, "created_at DESC", {key = "i3"}), t"\'"}, {i(1, jt({"\'", "created_at DESC", "\'"}))}}, {key = "i2"}), t")"}, {i(1, jt({"order(", jt({"\'", "created_at DESC", "\'"}), ")"}))}}, {key = "i1"})
 	}),
 	s({trig = "rea", descr = "(rea) \"redirect_to (action)\"", priority = -50, trigEngine = te("")}, {
 		t"redirect_to action: \"", i(1, "index", {key = "i1"}), t"\""
@@ -1194,16 +1194,16 @@ t"en"}) end, {}, {key = "i10"})
 		t"redirect_to controller: \"", i(1, "items", {key = "i1"}), t"\", action: \"", i(2, "show", {key = "i2"}), t"\", id: ", i(0, "@item", {key = "i0"})
 	}),
 	s({trig = "renpp", descr = "(renpp) \"redirect_to (nested path plural)\"", priority = -50, trigEngine = te("")}, {
-		t"redirect_to(", d(1, function(args) return sn(nil, {i(1, "parent", {key = "i10"}), t"_", i(2, "child", {key = "i11"}), t"_path(", i(3, "@", {key = "i12"}), d(4, function(args) return sn(nil, {cp(10)}) end, {}, {key = "i13"}), t")"}) end, {}, {key = "i2"}), t")"
+		t"redirect_to(", d(1, function(args, snip) return sn(nil, {c(1, {{i(1, "parent", {key = "i10"}), t"_", i(2, "child", {key = "i11"}), t"_path(", i(3, "@", {key = "i12"}), d(4, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i13"}) }) end, {k"i10"}), t")"}, {i(1, jt({"parent", "_", "child", "_path(", "@", jt({args[1]}), ")"}))}}, {key = "i2"})}) end, {k"i10"}), t")"
 	}),
 	s({trig = "renp", descr = "(renp) \"redirect_to (nested path)\"", priority = -50, trigEngine = te("")}, {
-		t"redirect_to(", d(1, function(args) return sn(nil, {i(1, "parent", {key = "i12"}), t"_", i(2, "child", {key = "i13"}), t"_path(", i(3, "@", {key = "i14"}), d(4, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i15"}), t", ", i(5, "@", {key = "i16"}), d(6, function(args) return sn(nil, {cp(13)}) end, {}, {key = "i17"}), t")"}) end, {}, {key = "i2"}), t")"
+		t"redirect_to(", d(1, function(args, snip) return sn(nil, {c(1, {{i(1, "parent", {key = "i12"}), t"_", i(2, "child", {key = "i13"}), t"_path(", i(3, "@", {key = "i14"}), d(4, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i15"}) }) end, {k"i12"}), t", ", i(5, "@", {key = "i16"}), d(6, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i17"}) }) end, {k"i13"}), t")"}, {i(1, jt({"parent", "_", "child", "_path(", "@", jt({args[1]}), ", ", "@", jt({args[2]}), ")"}))}}, {key = "i2"})}) end, {k"i12", k"i13"}), t")"
 	}),
 	s({trig = "repp", descr = "(repp) \"redirect_to (path plural)\"", priority = -50, trigEngine = te("")}, {
-		t"redirect_to(", d(1, function(args) return sn(nil, {i(1, "model", {key = "i10"}), t"s_path"}) end, {}, {key = "i2"}), t")"
+		t"redirect_to(", c(1, {{i(1, "model", {key = "i10"}), t"s_path"}, {i(1, jt({"model", "s_path"}))}}, {key = "i2"}), t")"
 	}),
 	s({trig = "rep", descr = "(rep) \"redirect_to (path)\"", priority = -50, trigEngine = te("")}, {
-		t"redirect_to(", d(1, function(args) return sn(nil, {i(1, "model", {key = "i12"}), t"_path(", i(2, "@", {key = "i13"}), d(3, function(args) return sn(nil, {cp(12)}) end, {}, {key = "i14"}), t")"}) end, {}, {key = "i2"}), t")"
+		t"redirect_to(", d(1, function(args, snip) return sn(nil, {c(1, {{i(1, "model", {key = "i12"}), t"_path(", i(2, "@", {key = "i13"}), d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i14"}) }) end, {k"i12"}), t")"}, {i(1, jt({"model", "_path(", "@", jt({args[1]}), ")"}))}}, {key = "i2"})}) end, {k"i12"}), t")"
 	}),
 	s({trig = "reb", descr = "(reb) \"redirect_to :back\"", priority = -50, trigEngine = te("")}, {
 		t"redirect_to :back"
@@ -1215,7 +1215,7 @@ t"en"}) end, {}, {key = "i10"})
 	}),
 	s({trig = "t.", descr = "(t.) \"t.timestamps (tctss)\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
-			t"t.binary :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {t", limit: ", i(1, "2", {key = "i3"}), t".megabytes"}) end, {}, {key = "i2"}), nl(),
+			t"t.binary :", i(1, "title", {key = "i1"}), c(2, {{t", limit: ", i(1, "2", {key = "i3"}), t".megabytes"}, {i(1, jt({", limit: ", "2", ".megabytes"}))}}, {key = "i2"}), nl(),
 			t"t.", i(0, "", {key = "i0"})
 		},
 		{
@@ -1231,7 +1231,7 @@ t"en"}) end, {}, {key = "i10"})
 			t"t.", i(0, "", {key = "i0"})
 		},
 		{
-			t"t.decimal :", i(1, "title", {key = "i1"}), d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", precision: ", i(1, "10", {key = "i4"})}) end, {}, {key = "i3"}), d(2, function(args) return sn(nil, {t", scale: ", i(1, "2", {key = "i6"})}) end, {}, {key = "i5"})}) end, {}, {key = "i2"}), nl(),
+			t"t.decimal :", i(1, "title", {key = "i1"}), c(2, {{c(1, {{t", precision: ", i(1, "10", {key = "i4"})}, {i(1, jt({", precision: ", "10"}))}}, {key = "i3"}), c(2, {{t", scale: ", i(1, "2", {key = "i6"})}, {i(1, jt({", scale: ", "2"}))}}, {key = "i5"})}, {i(1, jt({jt({", precision: ", "10"}), jt({", scale: ", "2"})}))}}, {key = "i2"}), nl(),
 			t"t.", i(0, "", {key = "i0"})
 		},
 		{
@@ -1247,7 +1247,7 @@ t"en"}) end, {}, {key = "i10"})
 			t"t.", i(0, "", {key = "i0"})
 		},
 		{
-			t"t.references :", i(1, "taggable", {key = "i1"}), d(2, function(args) return sn(nil, {t", polymorphic: ", d(1, function(args) return sn(nil, {t"{ default: \'", i(1, "Photo", {key = "i4"}), t"\' }"}) end, {}, {key = "i3"})}) end, {}, {key = "i2"}), nl(),
+			t"t.references :", i(1, "taggable", {key = "i1"}), c(2, {{t", polymorphic: ", c(1, {{t"{ default: \'", i(1, "Photo", {key = "i4"}), t"\' }"}, {i(1, jt({"{ default: \'", "Photo", "\' }"}))}}, {key = "i3"})}, {i(1, jt({", polymorphic: ", jt({"{ default: \'", "Photo", "\' }"})}))}}, {key = "i2"}), nl(),
 			t"t.", i(0, "", {key = "i0"})
 		},
 		{
@@ -1276,37 +1276,37 @@ t"en"}) end, {}, {key = "i10"})
 		},
 	})),
 	s({trig = "vaoif", descr = "(vaoif) \"validates_acceptance_of if\"", priority = -50, trigEngine = te("")}, {
-		t"validates_acceptance_of :", i(1, "terms", {key = "i1"}), d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", accept: \"", i(1, "1", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), d(2, function(args) return sn(nil, {t", message: \"", i(1, "You must accept the terms of service", {key = "i6"}), t"\""}) end, {}, {key = "i5"})}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i7"}), t" }}"
+		t"validates_acceptance_of :", i(1, "terms", {key = "i1"}), c(2, {{c(1, {{t", accept: \"", i(1, "1", {key = "i4"}), t"\""}, {i(1, jt({", accept: \"", "1", "\""}))}}, {key = "i3"}), c(2, {{t", message: \"", i(1, "You must accept the terms of service", {key = "i6"}), t"\""}, {i(1, jt({", message: \"", "You must accept the terms of service", "\""}))}}, {key = "i5"})}, {i(1, jt({jt({", accept: \"", "1", "\""}), jt({", message: \"", "You must accept the terms of service", "\""})}))}}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i7"}), t" }}"
 	}),
 	s({trig = "vao", descr = "(vao) \"validates_acceptance_of\"", priority = -50, trigEngine = te("")}, {
-		t"validates :", i(1, "terms", {key = "i1"}), d(2, function(args) return sn(nil, {t", acceptance: ", d(1, function(args) return sn(nil, {t"{ accept: \"", i(1, "1", {key = "i4"}), t"\"", d(2, function(args) return sn(nil, {t", message: \"", i(1, "You must accept the terms of service", {key = "i6"}), t"\""}) end, {}, {key = "i5"}), t"}"}) end, {}, {key = "i3"}), t" "}) end, {}, {key = "i2"})
+		t"validates :", i(1, "terms", {key = "i1"}), c(2, {{t", acceptance: ", c(1, {{t"{ accept: \"", i(1, "1", {key = "i4"}), t"\"", c(2, {{t", message: \"", i(1, "You must accept the terms of service", {key = "i6"}), t"\""}, {i(1, jt({", message: \"", "You must accept the terms of service", "\""}))}}, {key = "i5"}), t"}"}, {i(1, jt({"{ accept: \"", "1", "\"", jt({", message: \"", "You must accept the terms of service", "\""}), "}"}))}}, {key = "i3"}), t" "}, {i(1, jt({", acceptance: ", jt({"{ accept: \"", "1", "\"", jt({", message: \"", "You must accept the terms of service", "\""}), "}"}), " "}))}}, {key = "i2"})
 	}),
 	s({trig = "vaif", descr = "(vaif) \"validates_associated if (vaif)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_associated :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", if: proc { |obj| ", i(2, "obj.condition?", {key = "i5"}), t" }"}) end, {}, {key = "i2"})
+		t"validates_associated :", i(1, "attribute", {key = "i1"}), c(2, {{t", on: :", i(1, "create", {key = "i3"}), t", if: proc { |obj| ", i(2, "obj.condition?", {key = "i5"}), t" }"}, {i(1, jt({", on: :", "create", ", if: proc { |obj| ", "obj.condition?", " }"}))}}, {key = "i2"})
 	}),
 	s({trig = "vcif", descr = "(vcif) \"validates_confirmation_of if (vcif)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_confirmation_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "should match confirmation", {key = "i4"}), t"\", if: proc { |obj| ", i(3, "obj.condition?", {key = "i5"}), t" }"}) end, {}, {key = "i2"})
+		t"validates_confirmation_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "should match confirmation", {key = "i4"}), t"\", if: proc { |obj| ", i(3, "obj.condition?", {key = "i5"}), t" }"}, {i(1, jt({", on: :", "create", ", message: \"", "should match confirmation", "\", if: proc { |obj| ", "obj.condition?", " }"}))}}, {key = "i2"})
 	}),
 	s({trig = "veif", descr = "(veif) \"validates_exclusion_of if (veif)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_exclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not allowed", {key = "i6"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i7"}), t" }}"
+		t"validates_exclusion_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", in: ", c(1, {{t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}, {i(1, jt({"%w( ", "mov avi", " )"}))}}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not allowed", {key = "i6"}), t"\""}, {i(1, jt({", in: ", jt({"%w( ", "mov avi", " )"}), ", on: :", "create", ", message: \"", "extension %s is not allowed", "\""}))}}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i7"}), t" }}"
 	}),
 	s({trig = "vfif", descr = "(vfif) \"validates_format_of if\"", priority = -50, trigEngine = te("")}, {
-		t"validates_format_of :", i(1, "attribute", {key = "i1"}), t", with: /", d(2, function(args) return sn(nil, {t"^[", i(1, "\\w\\d", {key = "i3"}), t"]+$"}) end, {}, {key = "i2"}), t"/", d(3, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i5"}), t", message: \"", i(2, "is invalid", {key = "i6"}), t"\""}) end, {}, {key = "i4"}), t", if: proc { |obj| ", i(4, "obj.condition?", {key = "i7"}), t" }}"
+		t"validates_format_of :", i(1, "attribute", {key = "i1"}), t", with: /", c(2, {{t"^[", i(1, "\\w\\d", {key = "i3"}), t"]+$"}, {i(1, jt({"^[", "\\w\\d", "]+$"}))}}, {key = "i2"}), t"/", c(3, {{t", on: :", i(1, "create", {key = "i5"}), t", message: \"", i(2, "is invalid", {key = "i6"}), t"\""}, {i(1, jt({", on: :", "create", ", message: \"", "is invalid", "\""}))}}, {key = "i4"}), t", if: proc { |obj| ", i(4, "obj.condition?", {key = "i7"}), t" }}"
 	}),
 	s({trig = "viif", descr = "(viif) \"validates_inclusion_of if\"", priority = -50, trigEngine = te("")}, {
-		t"validates_inclusion_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", in: ", d(1, function(args) return sn(nil, {t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}) end, {}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not included in the list", {key = "i6"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i7"}), t" }}"
+		t"validates_inclusion_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", in: ", c(1, {{t"%w( ", i(1, "mov avi", {key = "i4"}), t" )"}, {i(1, jt({"%w( ", "mov avi", " )"}))}}, {key = "i3"}), t", on: :", i(2, "create", {key = "i5"}), t", message: \"", i(3, "extension %s is not included in the list", {key = "i6"}), t"\""}, {i(1, jt({", in: ", jt({"%w( ", "mov avi", " )"}), ", on: :", "create", ", message: \"", "extension %s is not included in the list", "\""}))}}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i7"}), t" }}"
 	}),
 	s({trig = "vlif", descr = "(vlif) \"validates_length_of if\"", priority = -50, trigEngine = te("")}, {
-		t"validates_length_of :", i(1, "attribute", {key = "i1"}), t", within: ", i(2, "3..20", {key = "i2"}), d(3, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i4"}), t", message: \"", i(2, "must be present", {key = "i5"}), t"\""}) end, {}, {key = "i3"}), t", if: proc { |obj| ", i(4, "obj.condition?", {key = "i6"}), t" }}"
+		t"validates_length_of :", i(1, "attribute", {key = "i1"}), t", within: ", i(2, "3..20", {key = "i2"}), c(3, {{t", on: :", i(1, "create", {key = "i4"}), t", message: \"", i(2, "must be present", {key = "i5"}), t"\""}, {i(1, jt({", on: :", "create", ", message: \"", "must be present", "\""}))}}, {key = "i3"}), t", if: proc { |obj| ", i(4, "obj.condition?", {key = "i6"}), t" }}"
 	}),
 	s({trig = "vnif", descr = "(vnif) \"validates_numericality_of if\"", priority = -50, trigEngine = te("")}, {
-		t"validates_numericality_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "is not a number", {key = "i4"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i5"}), t" }}"
+		t"validates_numericality_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "is not a number", {key = "i4"}), t"\""}, {i(1, jt({", on: :", "create", ", message: \"", "is not a number", "\""}))}}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i5"}), t" }}"
 	}),
 	s({trig = "vpif", descr = "(vpif) \"validates_presence_of if (vpif) 2\"", priority = -50, trigEngine = te("")}, {
-		t"validates_presence_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "can\'t be blank", {key = "i4"}), t"\""}) end, {}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i5"}), t" }}"
+		t"validates_presence_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "can\'t be blank", {key = "i4"}), t"\""}, {i(1, jt({", on: :", "create", ", message: \"", "can\'t be blank", "\""}))}}, {key = "i2"}), t", if: proc { |obj| ", i(3, "obj.condition?", {key = "i5"}), t" }}"
 	}),
 	s({trig = "vuif", descr = "(vuif) \"validates_uniqueness_of if (vuif)\"", priority = -50, trigEngine = te("")}, {
-		t"validates_uniqueness_of :", i(1, "attribute", {key = "i1"}), d(2, function(args) return sn(nil, {t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "must be unique", {key = "i4"}), t"\", if: proc { |obj| ", i(3, "obj.condition?", {key = "i6"}), t" }"}) end, {}, {key = "i2"})
+		t"validates_uniqueness_of :", i(1, "attribute", {key = "i1"}), c(2, {{t", on: :", i(1, "create", {key = "i3"}), t", message: \"", i(2, "must be unique", {key = "i4"}), t"\", if: proc { |obj| ", i(3, "obj.condition?", {key = "i6"}), t" }"}, {i(1, jt({", on: :", "create", ", message: \"", "must be unique", "\", if: proc { |obj| ", "obj.condition?", " }"}))}}, {key = "i2"})
 	}),
 	s({trig = "verify", descr = "(verify) \"verify -- redirect\"", priority = -50, trigEngine = te("")}, c(1, {
 		{
@@ -1317,46 +1317,46 @@ t"en"}) end, {}, {key = "i10"})
 		},
 	})),
 	s({trig = "wants", descr = "(wants) \"wants_format\"", priority = -50, trigEngine = te("")}, {
-		t"wants.", i(1, "js|json|html", {key = "i1"}), d(2, function(args) return sn(nil, {t" { ", i(1, "", {key = "i0"}), t" }"}) end, {}, {key = "i2"})
+		t"wants.", i(1, "js|json|html", {key = "i1"}), c(2, {{t" { ", i(1, "", {key = "i0"}), t" }"}, {i(1, jt({" { ", "", " }"}))}}, {key = "i2"})
 	}),
 	s({trig = "col", descr = "(col) \"collection routes\"", priority = -50, trigEngine = te("")}, {
 		t"collection do", nl(),
-		t"\t", d(1, function(args) return sn(nil, {t"get :", i(1, "action", {key = "i2"})}) end, {}, {key = "i1"}), nl(),
-		t"\t", d(2, function(args) return sn(nil, {t"put :", i(1, "action", {key = "i4"})}) end, {}, {key = "i3"}), nl(),
-		t"\t", d(3, function(args) return sn(nil, {t"post :", i(1, "action", {key = "i6"})}) end, {}, {key = "i5"}), nl(),
-		t"\t", d(4, function(args) return sn(nil, {t"delete :", i(1, "action", {key = "i8"})}) end, {}, {key = "i7"}), nl(),
+		t"\t", c(1, {{t"get :", i(1, "action", {key = "i2"})}, {i(1, jt({"get :", "action"}))}}, {key = "i1"}), nl(),
+		t"\t", c(2, {{t"put :", i(1, "action", {key = "i4"})}, {i(1, jt({"put :", "action"}))}}, {key = "i3"}), nl(),
+		t"\t", c(3, {{t"post :", i(1, "action", {key = "i6"})}, {i(1, jt({"post :", "action"}))}}, {key = "i5"}), nl(),
+		t"\t", c(4, {{t"delete :", i(1, "action", {key = "i8"})}, {i(1, jt({"delete :", "action"}))}}, {key = "i7"}), nl(),
 		t"end"
 	}),
 	s({trig = "gem", descr = "(gem) \"gem\"", priority = -50, trigEngine = te("")}, {
-		t"gem \'", i(1, "name", {key = "i1"}), t"\'", d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", \"", i(1, "1.0", {key = "i4"}), t"\""}) end, {}, {key = "i3"}), d(2, function(args) return sn(nil, {d(1, function(args) return sn(nil, {t", require: ", d(1, function(args) return sn(nil, {t"\"", d(1, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i8"}), t"\""}) end, {}, {key = "i7"})}) end, {}, {key = "i6"}), d(2, function(args) return sn(nil, {t", group: :", i(1, "test", {key = "i10"})}) end, {}, {key = "i9"})}) end, {}, {key = "i5"})}) end, {}, {key = "i2"})
+		t"gem \'", i(1, "name", {key = "i1"}), t"\'", d(2, function(args, snip) return sn(nil, {c(1, {{c(1, {{t", \"", i(1, "1.0", {key = "i4"}), t"\""}, {i(1, jt({", \"", "1.0", "\""}))}}, {key = "i3"}), d(2, function(args, snip) return sn(nil, {c(1, {{d(1, function(args, snip) return sn(nil, {c(1, {{t", require: ", d(1, function(args, snip) return sn(nil, {c(1, {{t"\"", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i8"}) }) end, {k"i1"}), t"\""}, {i(1, jt({"\"", jt({args[1]}), "\""}))}}, {key = "i7"})}) end, {k"i1"})}, {i(1, jt({", require: ", jt({"\"", jt({args[1]}), "\""})}))}}, {key = "i6"})}) end, {k"i1"}), c(2, {{t", group: :", i(1, "test", {key = "i10"})}, {i(1, jt({", group: :", "test"}))}}, {key = "i9"})}, {i(1, jt({jt({", require: ", jt({"\"", jt({args[1]}), "\""})}), jt({", group: :", "test"})}))}}, {key = "i5"})}) end, {k"i1"})}, {i(1, jt({jt({", \"", "1.0", "\""}), jt({jt({", require: ", jt({"\"", jt({args[1]}), "\""})}), jt({", group: :", "test"})})}))}}, {key = "i2"})}) end, {k"i1"})
 	}),
 	s({trig = "gemg", descr = "(gemg) \"gem :git\"", priority = -50, trigEngine = te("")}, {
-		t"gem \'", i(1, "paperclip", {key = "i1"}), t"\', git: \"", i(2, "git://github.com/thoughtbot/paperclip.git", {key = "i2"}), t"\"", d(3, function(args) return sn(nil, {t", branch: \"", i(1, "rails3", {key = "i4"}), t"\""}) end, {}, {key = "i3"})
+		t"gem \'", i(1, "paperclip", {key = "i1"}), t"\', git: \"", i(2, "git://github.com/thoughtbot/paperclip.git", {key = "i2"}), t"\"", c(3, {{t", branch: \"", i(1, "rails3", {key = "i4"}), t"\""}, {i(1, jt({", branch: \"", "rails3", "\""}))}}, {key = "i3"})
 	}),
 	s({trig = "match", descr = "(match) \"match\"", priority = -50, trigEngine = te("")}, {
-		t"match \'", d(1, function(args) return sn(nil, {i(1, ":controller", {key = "i2"}), d(2, function(args) return sn(nil, {t"/", i(1, ":action", {key = "i4"}), d(2, function(args) return sn(nil, {t"/", i(1, ":id", {key = "i6"}), i(2, "(.:format)", {key = "i7"})}) end, {}, {key = "i5"})}) end, {}, {key = "i3"})}) end, {}, {key = "i1"}), t"\'", d(2, function(args) return sn(nil, {t" \'", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i9"}), t"#", d(2, function(args) return sn(nil, {cp(4)}) end, {}, {key = "i10"}), t"\'", d(3, function(args) return sn(nil, {t", as: :", d(1, function(args) return sn(nil, {cp(10)}) end, {}, {key = "i12"})}) end, {}, {key = "i11"})}) end, {}, {key = "i8"})
+		t"match \'", c(1, {{i(1, ":controller", {key = "i2"}), c(2, {{t"/", i(1, ":action", {key = "i4"}), c(2, {{t"/", i(1, ":id", {key = "i6"}), i(2, "(.:format)", {key = "i7"})}, {i(1, jt({"/", ":id", "(.:format)"}))}}, {key = "i5"})}, {i(1, jt({"/", ":action", jt({"/", ":id", "(.:format)"})}))}}, {key = "i3"})}, {i(1, jt({":controller", jt({"/", ":action", jt({"/", ":id", "(.:format)"})})}))}}, {key = "i1"}), t"\'", d(2, function(args, snip) return sn(nil, {c(1, {{t" \'", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i9"}) }) end, {k"i2"}), t"#", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i10"}) }) end, {k"i4"}), t"\'", d(3, function(args, snip) return sn(nil, {c(1, {{t", as: :", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i12"}) }) end, {k"i10"})}, {i(1, jt({", as: :", jt({args[1]})}))}}, {key = "i11"})}) end, {k"i10"})}, {i(1, jt({" \'", jt({args[1]}), "#", jt({args[2]}), "\'", jt({", as: :", jt({args[3]})})}))}}, {key = "i8"})}) end, {k"i2", k"i4", k"i10"})
 	}),
 	s({trig = "member", descr = "(member) \"member routes\"", priority = -50, trigEngine = te("")}, {
 		t"member do", nl(),
-		t"\t", d(1, function(args) return sn(nil, {t"get :", i(1, "action", {key = "i2"})}) end, {}, {key = "i1"}), nl(),
-		t"\t", d(2, function(args) return sn(nil, {t"put :", i(1, "action", {key = "i4"})}) end, {}, {key = "i3"}), nl(),
-		t"\t", d(3, function(args) return sn(nil, {t"post :", i(1, "action", {key = "i6"})}) end, {}, {key = "i5"}), nl(),
-		t"\t", d(4, function(args) return sn(nil, {t"delete :", i(1, "action", {key = "i8"})}) end, {}, {key = "i7"}), nl(),
+		t"\t", c(1, {{t"get :", i(1, "action", {key = "i2"})}, {i(1, jt({"get :", "action"}))}}, {key = "i1"}), nl(),
+		t"\t", c(2, {{t"put :", i(1, "action", {key = "i4"})}, {i(1, jt({"put :", "action"}))}}, {key = "i3"}), nl(),
+		t"\t", c(3, {{t"post :", i(1, "action", {key = "i6"})}, {i(1, jt({"post :", "action"}))}}, {key = "i5"}), nl(),
+		t"\t", c(4, {{t"delete :", i(1, "action", {key = "i8"})}, {i(1, jt({"delete :", "action"}))}}, {key = "i7"}), nl(),
 		t"end"
 	}),
 	s({trig = "res", descr = "(res) \"resources\"", priority = -50, trigEngine = te("")}, {
-		t"resources :", i(1, "posts", {key = "i1"}), d(2, function(args) return sn(nil, {t" do", nl(),
-i(1, "", {key = "i3"}), t"\t$3", nl(),
-t"en"}) end, {}, {key = "i2"})
+		t"resources :", i(1, "posts", {key = "i1"}), c(2, {{t" do", nl(),
+		i(1, "", {key = "i3"}), t"\t$3", nl(),
+		t"en"}, {i(1, jt({" do", "\n", "", "\t$3", "\n", "en"}))}}, {key = "i2"})
 	}),
 	s({trig = "scope", descr = "(scope) \"scope\"", priority = -50, trigEngine = te("")}, {
-		t"scope :", i(1, "name", {key = "i1"}), t", { ", d(2, function(args) return sn(nil, {t"joins(:", i(1, "table", {key = "i3"}), t")."}) end, {}, {key = "i2"}), t"where(", d(3, function(args) return sn(nil, {t"\'", d(1, function(args) return sn(nil, {cp(3), t".", i(1, "field", {key = "i6"})}) end, {}, {key = "i5"}), t" = ?\', ", d(2, function(args) return sn(nil, {t"\'", i(1, "value", {key = "i8"}), t"\'"}) end, {}, {key = "i7"})}) end, {}, {key = "i4"}), t") }"
+		t"scope :", i(1, "name", {key = "i1"}), t", { ", c(2, {{t"joins(:", i(1, "table", {key = "i3"}), t")."}, {i(1, jt({"joins(:", "table", ")."}))}}, {key = "i2"}), t"where(", d(3, function(args, snip) return sn(nil, {c(1, {{t"\'", d(1, function(args, snip) return sn(nil, {c(1, {{cp(3), t".", i(1, "field", {key = "i6"})}, {i(1, jt({args[1], ".", "field"}))}}, {key = "i5"})}) end, {k"i3"}), t" = ?\', ", c(2, {{t"\'", i(1, "value", {key = "i8"}), t"\'"}, {i(1, jt({"\'", "value", "\'"}))}}, {key = "i7"})}, {i(1, jt({"\'", jt({args[1], ".", "field"}), " = ?\', ", jt({"\'", "value", "\'"})}))}}, {key = "i4"})}) end, {k"i3"}), t") }"
 	}),
 	s({trig = "scopel", descr = "(scopel) \"scope lambda\"", priority = -50, trigEngine = te("")}, {
-		t"scope :", i(1, "name", {key = "i1"}), t", lambda { |", i(2, "param", {key = "i2"}), t"| ", d(3, function(args) return sn(nil, {t"where(", d(1, function(args) return sn(nil, {t":", i(1, "field", {key = "i5"}), t": ", d(2, function(args) return sn(nil, {t"\"", i(1, "value", {key = "i7"}), t"\""}) end, {}, {key = "i6"})}) end, {}, {key = "i4"}), t")"}) end, {}, {key = "i3"}), t" }"
+		t"scope :", i(1, "name", {key = "i1"}), t", lambda { |", i(2, "param", {key = "i2"}), t"| ", c(3, {{t"where(", c(1, {{t":", i(1, "field", {key = "i5"}), t": ", c(2, {{t"\"", i(1, "value", {key = "i7"}), t"\""}, {i(1, jt({"\"", "value", "\""}))}}, {key = "i6"})}, {i(1, jt({":", "field", ": ", jt({"\"", "value", "\""})}))}}, {key = "i4"}), t")"}, {i(1, jt({"where(", jt({":", "field", ": ", jt({"\"", "value", "\""})}), ")"}))}}, {key = "i3"}), t" }"
 	}),
 	s({trig = "scopee", descr = "(scopee) \"scope with extension\"", priority = -50, trigEngine = te("")}, {
-		t"scope :", i(1, "name", {key = "i1"}), t", { ", d(2, function(args) return sn(nil, {t"where(", d(1, function(args) return sn(nil, {t":", i(1, "field", {key = "i4"}), t": ", d(2, function(args) return sn(nil, {t"\'", i(1, "value", {key = "i6"}), t"\'"}) end, {}, {key = "i5"})}) end, {}, {key = "i3"}), t")"}) end, {}, {key = "i2"}), t" } do", nl(),
+		t"scope :", i(1, "name", {key = "i1"}), t", { ", c(2, {{t"where(", c(1, {{t":", i(1, "field", {key = "i4"}), t": ", c(2, {{t"\'", i(1, "value", {key = "i6"}), t"\'"}, {i(1, jt({"\'", "value", "\'"}))}}, {key = "i5"})}, {i(1, jt({":", "field", ": ", jt({"\'", "value", "\'"})}))}}, {key = "i3"}), t")"}, {i(1, jt({"where(", jt({":", "field", ": ", jt({"\'", "value", "\'"})}), ")"}))}}, {key = "i2"}), t" } do", nl(),
 		t"\tdef ", i(3, "method_name", {key = "i7"}), nl(),
 		t"\t\t", i(0, "", {key = "i0"}), nl(),
 		t"\tend", nl(),
@@ -1371,11 +1371,11 @@ t"en"}) end, {}, {key = "i2"})
 		t"end"
 	}),
 	s({trig = "trans", descr = "(trans) \"Translation snippet\"", priority = -50, trigEngine = te("")}, {
-		t"I18n.t(\'", f(function(args, snip) return c_viml("substitute(substitute(substitute(@%, substitute(getcwd() . \"/\", \"\\/\", \"\\\\\\\\/\", \"g\"), \"\", \"\"), \"\\\\(\\\\.\\\\(html\\\\|js\\\\)\\\\.\\\\(haml\\\\|erb\\\\)\\\\|\\\\(_controller\\\\)\\\\?\\\\.rb\\\\)$\", \"\", \"\"), \"/\", \".\", \"g\")") end), t".", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[^\\w]", "_")}, ""), {key = "i2"}) }) end, {k"i1"}), i(3, "", {key = "i3"}), t"\', default: \"", i(1, "some_text", {key = "i1"}), t"\"", i(4, "", {key = "i4"}), t")", d(5, function(args) return sn(nil, {i(1, "", {key = "i0"})}) end, {}, {key = "i5"})
+		t"I18n.t(\'", f(function(args, snip) return c_viml("substitute(substitute(substitute(@%, substitute(getcwd() . \"/\", \"\\/\", \"\\\\\\\\/\", \"g\"), \"\", \"\"), \"\\\\(\\\\.\\\\(html\\\\|js\\\\)\\\\.\\\\(haml\\\\|erb\\\\)\\\\|\\\\(_controller\\\\)\\\\?\\\\.rb\\\\)$\", \"\", \"\"), \"/\", \".\", \"g\")") end), t".", d(2, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "[^\\w]", "_")}, ""), {key = "i2"}) }) end, {k"i1"}), i(3, "", {key = "i3"}), t"\', default: \"", i(1, "some_text", {key = "i1"}), t"\"", i(4, "", {key = "i4"}), t")", c(5, {{i(1, "", {key = "i0"})}, {i(1, jt({""}))}}, {key = "i5"})
 	}),
 	s({trig = "route_spec", descr = "(route_spec)", priority = -50, trigEngine = te("")}, {
 		t"it \'routes to #", i(1, "action", {key = "i1"}), t"\' do", nl(),
-		t"\t", i(2, "get", {key = "i2"}), t"(\'/", i(3, "url", {key = "i3"}), t"\').should route_to(\'", f(function(args, snip) return c_viml("substitute(expand(\'%:t:r\'), \'_routing_spec$\', \'\', \'\')") end), t"#", cp(1), t"\'", d(4, function(args) return sn(nil, {t", ", i(1, "params", {key = "i5"})}) end, {}, {key = "i4"}), t")", i(5, "", {key = "i6"}), nl(),
+		t"\t", i(2, "get", {key = "i2"}), t"(\'/", i(3, "url", {key = "i3"}), t"\').should route_to(\'", f(function(args, snip) return c_viml("substitute(expand(\'%:t:r\'), \'_routing_spec$\', \'\', \'\')") end), t"#", cp(1), t"\'", c(4, {{t", ", i(1, "params", {key = "i5"})}, {i(1, jt({", ", "params"}))}}, {key = "i4"}), t")", i(5, "", {key = "i6"}), nl(),
 		t"end"
 	}),
 })

@@ -175,7 +175,7 @@ ls.add_snippets("ls", {
 		t"\t", i(3, "", {key = "i3"})
 	}),
 	s({trig = "req", descr = "(req)", priority = -1000, trigEngine = te("w")}, {
-		d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t" = require \'", i(1, "", {key = "i1"}), t"\'", i(3, "", {key = "i3"})
+		d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t" = require \'", i(1, "", {key = "i1"}), t"\'", i(3, "", {key = "i3"})
 	}),
 	s({trig = "req!", descr = "(req!)", priority = -1000, trigEngine = te("w")}, {
 		t"require! ", i(1, "", {key = "i1"}), nl()

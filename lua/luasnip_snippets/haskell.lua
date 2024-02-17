@@ -117,7 +117,7 @@ ls.add_snippets("haskell", {
 		t"--"
 	}),
 	s({trig = "imp", descr = "(imp) \"Simple import\"", priority = -50, trigEngine = te("")}, {
-		t"import ", d(1, function(args) return sn(nil, {i(1, "Data", {key = "i2"}), t".", i(2, "Text", {key = "i0"})}) end, {}, {key = "i1"})
+		t"import ", c(1, {{i(1, "Data", {key = "i2"}), t".", i(2, "Text", {key = "i0"})}, {i(1, jt({"Data", ".", "Text"}))}}, {key = "i1"})
 	}),
 	s({trig = "import", descr = "(import)", priority = -1000, trigEngine = te("w")}, {
 		t"import ", i(0, "Data.Text", {key = "i0"})
@@ -126,7 +126,7 @@ ls.add_snippets("haskell", {
 		t"import ", i(1, "Data.Text", {key = "i1"}), t" (", i(0, "head", {key = "i0"}), t")"
 	}),
 	s({trig = "impq", descr = "(impq) \"Qualified import\"", priority = -50, trigEngine = te("")}, {
-		t"import qualified ", d(1, function(args) return sn(nil, {i(1, "Data", {key = "i2"}), t".", i(2, "Text", {key = "i3"})}) end, {}, {key = "i1"}), t" as ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"haskell", 9}, "snip.rv = t[1].split(\".\")[-1]", python_globals, args, snip, "", am[9])}, ""), {key = "i0"}) }) end)
+		t"import qualified ", c(1, {{i(1, "Data", {key = "i2"}), t".", i(2, "Text", {key = "i3"})}, {i(1, jt({"Data", ".", "Text"}))}}, {key = "i1"}), t" as ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"haskell", 9}, "snip.rv = t[1].split(\".\")[-1]", python_globals, args, snip, "", am[9])}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "importq", descr = "(importq)", priority = -1000, trigEngine = te("w")}, {
 		t"import qualified ", i(1, "Data.Text", {key = "i1"}), t" as ", i(0, "T", {key = "i0"})
@@ -142,13 +142,13 @@ ls.add_snippets("haskell", {
 		t"type ", i(1, "Type", {key = "i1"}), t" = ", i(0, "Type", {key = "i0"})
 	}),
 	s({trig = "da", descr = "(da)", priority = -1000, trigEngine = te("w")}, {
-		t"data ", i(1, "Type", {key = "i1"}), t" = ", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t" ", i(0, "Int", {key = "i0"})
+		t"data ", i(1, "Type", {key = "i1"}), t" = ", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t" ", i(0, "Int", {key = "i0"})
 	}),
 	s({trig = "data", descr = "(data)", priority = -1000, trigEngine = te("w")}, {
-		t"data ", i(1, "Type", {key = "i1"}), t" = ", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t" ", i(0, "Int", {key = "i0"})
+		t"data ", i(1, "Type", {key = "i1"}), t" = ", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t" ", i(0, "Int", {key = "i0"})
 	}),
 	s({trig = "newtype", descr = "(newtype)", priority = -1000, trigEngine = te("w")}, {
-		t"newtype ", i(1, "Type", {key = "i1"}), t" = ", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t" ", i(0, "Int", {key = "i0"})
+		t"newtype ", i(1, "Type", {key = "i1"}), t" = ", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t" ", i(0, "Int", {key = "i0"})
 	}),
 	s({trig = "class", descr = "(class)", priority = -1000, trigEngine = te("w")}, {
 		t"class ", i(1, "Class", {key = "i1"}), t" a where", nl(),
@@ -288,6 +288,6 @@ ls.add_snippets("haskell", {
 		t"-}"
 	}),
 	s({trig = "imp2", descr = "(imp2) \"Selective import\"", priority = -50, trigEngine = te("b")}, {
-		t"import ", d(1, function(args) return sn(nil, {i(1, "Data", {key = "i2"}), t".", i(2, "Text", {key = "i3"})}) end, {}, {key = "i1"}), t" (", i(2, "", {key = "i4"}), t")", i(0, "", {key = "i0"})
+		t"import ", c(1, {{i(1, "Data", {key = "i2"}), t".", i(2, "Text", {key = "i3"})}, {i(1, jt({"Data", ".", "Text"}))}}, {key = "i1"}), t" (", i(2, "", {key = "i4"}), t")", i(0, "", {key = "i0"})
 	}),
 })

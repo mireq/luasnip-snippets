@@ -1308,7 +1308,7 @@ ls.add_snippets("css", {
 		t"box-shadow: ", i(1, "0", {key = "i1"}), t" ", i(2, "0", {key = "i2"}), t" ", i(3, "0", {key = "i3"}), t" #", i(4, "000", {key = "i4"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "bxsh", descr = "(bxsh) \"box-shadow: color-hex x y blur (text)\"", priority = -50, trigEngine = te("")}, {
-		t"box-shadow: ", d(1, function(args) return sn(nil, {i(1, "offset-x", {key = "i2"}), t" ", i(2, "offset-y", {key = "i3"}), t" ", i(3, "blur", {key = "i4"}), t" ", i(4, "spread", {key = "i5"}), t" ", i(5, "color", {key = "i6"}), t" ", i(6, "inset", {key = "i7"})}) end, {}, {key = "i1"}), t";", i(0, "", {key = "i0"})
+		t"box-shadow: ", c(1, {{i(1, "offset-x", {key = "i2"}), t" ", i(2, "offset-y", {key = "i3"}), t" ", i(3, "blur", {key = "i4"}), t" ", i(4, "spread", {key = "i5"}), t" ", i(5, "color", {key = "i6"}), t" ", i(6, "inset", {key = "i7"})}, {i(1, jt({"offset-x", " ", "offset-y", " ", "blur", " ", "spread", " ", "color", " ", "inset"}))}}, {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "bxsh:n", descr = "(bxsh:n)", priority = -1000, trigEngine = te("w")}, {
 		t"box-shadow: none;"
@@ -2450,7 +2450,7 @@ ls.add_snippets("css", {
 		t"text-shadow: ", i(1, "0", {key = "i1"}), t" ", i(2, "0", {key = "i2"}), t" ", i(3, "0", {key = "i3"}), t" #", i(4, "000", {key = "i4"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "tsh", descr = "(tsh) \"text-shadow: color-hex x y blur (text)\"", priority = -50, trigEngine = te("")}, {
-		t"text-shadow: ", d(1, function(args) return sn(nil, {i(1, "offset-x", {key = "i2"}), t" ", i(2, "offset-y", {key = "i3"}), t" ", i(3, "blur", {key = "i4"}), t" ", i(4, "color", {key = "i5"})}) end, {}, {key = "i1"}), t";", i(0, "", {key = "i0"})
+		t"text-shadow: ", c(1, {{i(1, "offset-x", {key = "i2"}), t" ", i(2, "offset-y", {key = "i3"}), t" ", i(3, "blur", {key = "i4"}), t" ", i(4, "color", {key = "i5"})}, {i(1, jt({"offset-x", " ", "offset-y", " ", "blur", " ", "color"}))}}, {key = "i1"}), t";", i(0, "", {key = "i0"})
 	}),
 	s({trig = "tsh:n", descr = "(tsh:n)", priority = -1000, trigEngine = te("w")}, {
 		t"text-shadow: none;"
@@ -2712,7 +2712,7 @@ ls.add_snippets("css", {
 			t"background-repeat: ", i(1, "repeat/repeat-x/repeat-y/no-repeat", {key = "i1"}), t";", i(0, "", {key = "i0"})
 		},
 		{
-			t"background:", d(5, function(args) return sn(nil, {t" #", i(1, "DDD", {key = "i1"})}) end, {}, {key = "i6"}), t" url(", i(1, "", {key = "i2"}), t") ", i(2, "repeat/repeat-x/repeat-y/no-repeat", {key = "i3"}), t" ", i(3, "scroll/fixed", {key = "i4"}), t" ", i(4, "top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos", {key = "i5"}), t";", i(0, "", {key = "i0"})
+			t"background:", c(5, {{t" #", i(1, "DDD", {key = "i1"})}, {i(1, jt({" #", "DDD"}))}}, {key = "i6"}), t" url(", i(1, "", {key = "i2"}), t") ", i(2, "repeat/repeat-x/repeat-y/no-repeat", {key = "i3"}), t" ", i(3, "scroll/fixed", {key = "i4"}), t" ", i(4, "top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos", {key = "i5"}), t";", i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "border", descr = "(border) \"border:   size style color (border)\"", priority = -50, trigEngine = te("")}, c(1, {
@@ -2916,14 +2916,14 @@ ls.add_snippets("css", {
 		t"\t", i(0, "", {key = "i0"}), nl()
 	}),
 	s({trig = "scrollbar", descr = "(scrollbar) \"scrollbar\"", priority = -50, trigEngine = te("")}, {
-		t"scrollbar-base-color:       ", i(1, "#CCCCCC", {key = "i1"}), t";", d(2, function(args) return sn(nil, {nl(),
-t"scrollbar-arrow-color:      $", i(1, "#000000", {key = "i3"}), nl(),
-t"scrollbar-track-color:      $", i(2, "#999999", {key = "i4"}), nl(),
-t"scrollbar-3dlight-color:    $", i(3, "#EEEEEE", {key = "i5"}), nl(),
-t"scrollbar-highlight-color:  $", i(4, "#FFFFFF", {key = "i6"}), nl(),
-t"scrollbar-face-color:       $", i(5, "#CCCCCC", {key = "i7"}), nl(),
-t"scrollbar-shadow-color:     $", i(7, "#999999", {key = "i9"}), nl(),
-t"scrollbar-darkshadow-color: ", i(6, "#666666", {key = "i8"}), t"scrollbar-darkshadow-color: ${8:#666666}"}) end, {}, {key = "i2"})
+		t"scrollbar-base-color:       ", i(1, "#CCCCCC", {key = "i1"}), t";", c(2, {{nl(),
+		t"scrollbar-arrow-color:      $", i(1, "#000000", {key = "i3"}), nl(),
+		t"scrollbar-track-color:      $", i(2, "#999999", {key = "i4"}), nl(),
+		t"scrollbar-3dlight-color:    $", i(3, "#EEEEEE", {key = "i5"}), nl(),
+		t"scrollbar-highlight-color:  $", i(4, "#FFFFFF", {key = "i6"}), nl(),
+		t"scrollbar-face-color:       $", i(5, "#CCCCCC", {key = "i7"}), nl(),
+		t"scrollbar-shadow-color:     $", i(7, "#999999", {key = "i9"}), nl(),
+		t"scrollbar-darkshadow-color: ", i(6, "#666666", {key = "i8"}), t"scrollbar-darkshadow-color: ${8:#666666}"}, {i(1, jt({"\n", "scrollbar-arrow-color:      $", "#000000", "\n", "scrollbar-track-color:      $", "#999999", "\n", "scrollbar-3dlight-color:    $", "#EEEEEE", "\n", "scrollbar-highlight-color:  $", "#FFFFFF", "\n", "scrollbar-face-color:       $", "#CCCCCC", "\n", "scrollbar-shadow-color:     $", "#999999", "\n", "scrollbar-darkshadow-color: ", "#666666", "scrollbar-darkshadow-color: ${8:#666666}"}))}}, {key = "i2"})
 	}),
 	s({trig = "selection", descr = "(selection) \"selection\"", priority = -50, trigEngine = te("")}, {
 		i(1, "", {key = "i1"}), t"::-moz-selection,", nl(),

@@ -266,7 +266,7 @@ ls.add_snippets("rust", {
 		t"}"
 	}),
 	s({trig = "ifl", descr = "(ifl) \"if let (...)\"", priority = -1000, trigEngine = te("w")}, {
-		t"if let ", d(1, function(args) return sn(nil, {t"Some(", i(1, "", {key = "i2"}), t")"}) end, {}, {key = "i1"}), t" = ", i(2, "", {key = "i3"}), t" {", nl(),
+		t"if let ", c(1, {{t"Some(", i(1, "", {key = "i2"}), t")"}, {i(1, jt({"Some(", "", ")"}))}}, {key = "i1"}), t" = ", i(2, "", {key = "i3"}), t" {", nl(),
 		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
@@ -302,7 +302,7 @@ ls.add_snippets("rust", {
 		t"}"
 	}),
 	s({trig = "whl", descr = "(whl) \"while let (...)\"", priority = -1000, trigEngine = te("w")}, {
-		t"while let ", d(1, function(args) return sn(nil, {t"Some(", i(1, "", {key = "i2"}), t")"}) end, {}, {key = "i1"}), t" = ", i(2, "", {key = "i3"}), t" {", nl(),
+		t"while let ", c(1, {{t"Some(", i(1, "", {key = "i2"}), t")"}, {i(1, jt({"Some(", "", ")"}))}}, {key = "i1"}), t" = ", i(2, "", {key = "i3"}), t" {", nl(),
 		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
@@ -323,7 +323,7 @@ ls.add_snippets("rust", {
 		t"}"
 	}),
 	s({trig = "impl", descr = "(impl) \"Struct/Trait implementation\"", priority = -50, trigEngine = te("b")}, {
-		t"impl", cp(4), t" ", i(1, "Type/Trait", {key = "i1"}), d(2, function(args) return sn(nil, {t" for ", i(1, "Type", {key = "i3"})}) end, {}, {key = "i2"}), d(3, function(args) return sn(nil, {t"<", i(1, "T", {key = "i5"}), t">"}) end, {}, {key = "i4"}), t" {", nl(),
+		t"impl", cp(4), t" ", i(1, "Type/Trait", {key = "i1"}), c(2, {{t" for ", i(1, "Type", {key = "i3"})}, {i(1, jt({" for ", "Type"}))}}, {key = "i2"}), c(3, {{t"<", i(1, "T", {key = "i5"}), t">"}, {i(1, jt({"<", "T", ">"}))}}, {key = "i4"}), t" {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -379,14 +379,14 @@ ls.add_snippets("rust", {
 	}),
 	s({trig = "asref", descr = "(asref) \"AsRef trait implementation\"", priority = -1000, trigEngine = te("w")}, {
 		t"impl AsRef<", i(1, "Ref", {key = "i1"}), t"> for ", i(2, "Type", {key = "i2"}), t" {", nl(),
-		t"\tfn as_ref(&self) -> &", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i3"}), t" {", nl(),
+		t"\tfn as_ref(&self) -> &", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i3"}) }) end, {k"i1"}), t" {", nl(),
 		t"\t\t&self.", i(0, "field", {key = "i0"}), nl(),
 		t"\t}", nl(),
 		t"}"
 	}),
 	s({trig = "asmut", descr = "(asmut) \"AsMut trait implementation\"", priority = -1000, trigEngine = te("w")}, {
 		t"impl AsMut<", i(1, "Ref", {key = "i1"}), t"> for ", i(2, "Type", {key = "i2"}), t" {", nl(),
-		t"\tfn as_mut(&mut self) -> &mut ", d(3, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i3"}), t" {", nl(),
+		t"\tfn as_mut(&mut self) -> &mut ", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i3"}) }) end, {k"i1"}), t" {", nl(),
 		t"\t\t&mut self.", i(0, "field", {key = "i0"}), nl(),
 		t"\t}", nl(),
 		t"}"
@@ -419,7 +419,7 @@ ls.add_snippets("rust", {
 		t"unimplemented!()"
 	}),
 	s({trig = "use", descr = "(use) \"use ...;\" b", priority = -1000, trigEngine = te("w")}, {
-		t"use ", d(1, function(args) return sn(nil, {t"std::", i(1, "", {key = "i2"})}) end, {}, {key = "i1"}), t";"
+		t"use ", c(1, {{t"std::", i(1, "", {key = "i2"})}, {i(1, jt({"std::", ""}))}}, {key = "i1"}), t";"
 	}),
 	s({trig = ".it", descr = "(.it) \".iter()\"", priority = -50, trigEngine = te("i")}, {
 		t".iter()", i(0, "", {key = "i0"})

@@ -318,7 +318,7 @@ ls.add_snippets("processing", {
 	}),
 	s({trig = "for", descr = "(for)", priority = -1000, trigEngine = te("w")}, {
 		t"for (int ", i(2, "i", {key = "i2"}), t" = 0; ", cp(2), t" < ", i(1, "Things", {key = "i1"}), t".length; ", cp(2), i(3, "++", {key = "i3"}), t") {", nl(),
-		t"\t", d(4, function(args) return sn(nil, {cp(1), t"[", cp(2), t"]"}) end, {}, {key = "i0"}), nl(),
+		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({args[1], "[", args[2], "]"}, "\t"), {key = "i0"}) }) end, {k"i1", k"i2"}), nl(),
 		t"};"
 	}),
 	s({trig = "wh", descr = "(wh)", priority = -1000, trigEngine = te("w")}, {
@@ -608,10 +608,10 @@ ls.add_snippets("processing", {
 		t"String ", i(1, "str", {key = "i1"}), i(2, " = \"", {key = "i2"}), i(0, "CCCP\"", {key = "i0"}), t";"
 	}),
 	s({trig = "array", descr = "(array)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "int", {key = "i1"}), t"[] ", i(2, "numbers", {key = "i2"}), d(3, function(args) return sn(nil, {t" = new ", cp(1)}) end, {}, {key = "i3"}), t"[", i(0, "length", {key = "i0"}), t"];"
+		i(1, "int", {key = "i1"}), t"[] ", i(2, "numbers", {key = "i2"}), d(3, function(args, snip) return sn(nil, { i(1, jt({" = new ", args[1]}, ""), {key = "i3"}) }) end, {k"i1"}), t"[", i(0, "length", {key = "i0"}), t"];"
 	}),
 	s({trig = "object", descr = "(object)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "Object", {key = "i1"}), t" ", i(2, "o", {key = "i2"}), d(3, function(args) return sn(nil, {t" = new ", cp(1)}) end, {}, {key = "i3"}), t"(", i(0, "", {key = "i0"}), t");", nl()
+		i(1, "Object", {key = "i1"}), t" ", i(2, "o", {key = "i2"}), d(3, function(args, snip) return sn(nil, { i(1, jt({" = new ", args[1]}, " "), {key = "i3"}) }) end, {k"i1"}), t"(", i(0, "", {key = "i0"}), t");", nl()
 	}),
 	s({trig = "curve", descr = "(curve) 3D", priority = -1000, trigEngine = te("w")}, c(1, {
 		{

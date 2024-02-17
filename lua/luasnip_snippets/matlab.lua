@@ -106,9 +106,9 @@ ls.add_snippets("matlab", {
 	s({trig = "switch", descr = "(switch) \"switch ... otherwise\"", priority = -50, trigEngine = te("")}, {
 		t"switch ", i(1, "n", {key = "i1"}), nl(),
 		t"\tcase ", i(2, "0", {key = "i2"}), nl(),
-		t"\t\t", i(3, "", {key = "i3"}), d(4, function(args) return sn(nil, {nl(),
-t"\totherwise", nl(),
-t"\t\t", i(1, "", {key = "i5"}), t"\t\t${5"}) end, {}, {key = "i4"}), nl(),
+		t"\t\t", i(3, "", {key = "i3"}), c(4, {{nl(),
+		t"\totherwise", nl(),
+		t"\t\t", i(1, "", {key = "i5"}), t"\t\t${5"}, {i(1, jt({"\n", "\totherwise", "\n", "\t\t", "", "\t\t${5"}))}}, {key = "i4"}), nl(),
 		t"end"
 	}),
 	s({trig = "@", descr = "(@) anonymous function", priority = -1000, trigEngine = te("w")}, {

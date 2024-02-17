@@ -103,7 +103,7 @@ ls.add_snippets("jinja2", {
 		t"{% import \"", i(1, "template", {key = "i1"}), t"\" %}"
 	}),
 	s({trig = "from", descr = "(from) \"from/import/as\"", priority = -50, trigEngine = te("b")}, {
-		t"{% from \"", i(1, "template", {key = "i1"}), t"\" import ", i(2, "name", {key = "i2"}), d(3, function(args) return sn(nil, {t" as ", d(1, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i4"})}) end, {}, {key = "i3"}), t" %}"
+		t"{% from \"", i(1, "template", {key = "i1"}), t"\" import ", i(2, "name", {key = "i2"}), d(3, function(args, snip) return sn(nil, {c(1, {{t" as ", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i4"}) }) end, {k"i2"})}, {i(1, jt({" as ", jt({args[1]})}))}}, {key = "i3"})}) end, {k"i2"}), t" %}"
 	}),
 	s({trig = "filter", descr = "(filter) \"filter\"", priority = -50, trigEngine = te("b")}, {
 		t"{% filter ", i(1, "filter", {key = "i1"}), t" %}", nl(),

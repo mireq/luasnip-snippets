@@ -186,7 +186,7 @@ ls.add_snippets("vim", {
 	}),
 	s({trig = "gvar", descr = "(gvar) \"Global / configuration variable\"", priority = -50, trigEngine = te("b")}, {
 		t"if !exists(\"g:", i(1, "MyUltraImportantVar", {key = "i1"}), t"\")", nl(),
-		t"\tlet g:", cp(1), t" = ", d(2, function(args) return sn(nil, {t"\"", i(1, "<tab>", {key = "i3"}), t"\""}) end, {}, {key = "i2"}), nl(),
+		t"\tlet g:", cp(1), t" = ", c(2, {{t"\"", i(1, "<tab>", {key = "i3"}), t"\""}, {i(1, jt({"\"", "<tab>", "\""}))}}, {key = "i2"}), nl(),
 		t"endif"
 	}),
 })

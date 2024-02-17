@@ -405,57 +405,57 @@ ls.add_snippets("tex", {
 	}),
 	s({trig = "cha", descr = "(cha) \\chapter", priority = -1000, trigEngine = te("w")}, {
 		t"\\chapter{", i(1, "chapter name", {key = "i1"}), t"}%", nl(),
-		t"\\label{cha:", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"}", nl(),
+		t"\\label{cha:", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"}", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "sec", descr = "(sec) \\section", priority = -1000, trigEngine = te("w")}, {
 		t"\\section{", i(1, "section name", {key = "i1"}), t"}%", nl(),
-		t"\\label{sec:", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"}", nl(),
+		t"\\label{sec:", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"}", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "sec*", descr = "(sec*) \\section*", priority = -1000, trigEngine = te("w")}, {
 		t"\\section*{", i(1, "section name", {key = "i1"}), t"}%", nl(),
-		t"\\label{sec:", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"}", nl(),
+		t"\\label{sec:", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"}", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "sub", descr = "(sub) \\subsection", priority = -1000, trigEngine = te("w")}, {
 		t"\\subsection{", i(1, "subsection name", {key = "i1"}), t"}%", nl(),
-		t"\\label{sub:", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"}", nl(),
+		t"\\label{sub:", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"}", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "sub*", descr = "(sub*) \\subsection*", priority = -1000, trigEngine = te("w")}, {
 		t"\\subsection*{", i(1, "subsection name", {key = "i1"}), t"}%", nl(),
-		t"\\label{sub:", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"}", nl(),
+		t"\\label{sub:", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"}", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "ssub", descr = "(ssub) \\subsubsection", priority = -1000, trigEngine = te("w")}, {
 		t"\\subsubsection{", i(1, "subsubsection name", {key = "i1"}), t"}%", nl(),
-		t"\\label{ssub:", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"}", nl(),
+		t"\\label{ssub:", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"}", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "ssub*", descr = "(ssub*) \\subsubsection*", priority = -1000, trigEngine = te("w")}, {
 		t"\\subsubsection*{", i(1, "subsubsection name", {key = "i1"}), t"}%", nl(),
-		t"\\label{ssub:", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"}", nl(),
+		t"\\label{ssub:", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"}", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "par", descr = "(par) \\paragraph", priority = -1000, trigEngine = te("w")}, {
 		t"\\paragraph{", i(1, "paragraph name", {key = "i1"}), t"}%", nl(),
-		t"\\label{par:", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"}", nl(),
+		t"\\label{par:", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"}", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "par*", descr = "(par*) \\paragraph*", priority = -1000, trigEngine = te("w")}, {
 		t"\\paragraph*{", i(1, "paragraph name", {key = "i1"}), t"}%", nl(),
-		t"\\label{par:", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"}", nl(),
+		t"\\label{par:", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"}", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "subp", descr = "(subp) \\subparagraph", priority = -1000, trigEngine = te("w")}, {
 		t"\\subparagraph{", i(1, "subparagraph name", {key = "i1"}), t"}%", nl(),
-		t"\\label{subp:", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"}", nl(),
+		t"\\label{subp:", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"}", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "subp*", descr = "(subp*) \\subparagraph*", priority = -1000, trigEngine = te("w")}, {
 		t"\\subparagraph*{", i(1, "subparagraph name", {key = "i1"}), t"}%", nl(),
-		t"\\label{subp:", d(2, function(args) return sn(nil, {cp(1)}) end, {}, {key = "i2"}), t"}", nl(),
+		t"\\label{subp:", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"}", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "ni", descr = "(ni) \\noindent", priority = -1000, trigEngine = te("w")}, {
@@ -560,8 +560,8 @@ ls.add_snippets("tex", {
 	s({trig = "fig", descr = "(fig) \"Figure environment\"", priority = 0, trigEngine = te("bi")}, {
 		t"\\begin{figure}[", i(1, "htpb", {key = "i1"}), t"]", nl(),
 		t"\t\\centering", nl(),
-		t"\t", d(2, function(args) return sn(nil, {t"\\includegraphics[width=0.8\\textwidth]{", i(1, "", {key = "i3"}), t"}"}) end, {}, {key = "i2"}), nl(),
-		t"\t\\caption{", d(3, function(args) return sn(nil, {cp(3)}) end, {}, {key = "i4"}), t"}", nl(),
+		t"\t", c(2, {{t"\\includegraphics[width=0.8\\textwidth]{", i(1, "", {key = "i3"}), t"}"}, {i(1, jt({"\\includegraphics[width=0.8\\textwidth]{", "", "}"}))}}, {key = "i2"}), nl(),
+		t"\t\\caption{", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i4"}) }) end, {k"i3"}), t"}", nl(),
 		t"\t\\label{fig:", d(4, function(args, snip) return sn(nil, { i(1, jt({rx_tr(args[1], "\\W+", "-")}, "\t"), {key = "i5"}) }) end, {k"i3"}), t"}", nl(),
 		t"\\end{figure}"
 	}),
@@ -813,10 +813,10 @@ ls.add_snippets("tex", {
 		t"\\cup "
 	}),
 	s({trig = "uuu", descr = "(uuu) \"bigcup\"", priority = 0, trigEngine = te("w")}, {
-		t"\\bigcup_{", d(1, function(args) return sn(nil, {t"i \\in ", i(1, " I", {key = "i2"})}) end, {}, {key = "i1"}), t"} ", i(0, "", {key = "i0"})
+		t"\\bigcup_{", c(1, {{t"i \\in ", i(1, " I", {key = "i2"})}, {i(1, jt({"i \\in ", " I"}))}}, {key = "i1"}), t"} ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "nnn", descr = "(nnn) \"bigcap\"", priority = 0, trigEngine = te("w")}, {
-		t"\\bigcap_{", d(1, function(args) return sn(nil, {t"i \\in ", i(1, " I", {key = "i2"})}) end, {}, {key = "i1"}), t"} ", i(0, "", {key = "i0"})
+		t"\\bigcap_{", c(1, {{t"i \\in ", i(1, " I", {key = "i2"})}, {i(1, jt({"i \\in ", " I"}))}}, {key = "i1"}), t"} ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "HH", descr = "(HH) \"H\"", priority = 0, trigEngine = te("w")}, {
 		t"\\mathbb{H}"
@@ -866,19 +866,19 @@ ls.add_snippets("tex", {
 		t"\\overline{", i(1, "", {key = "i1"}), t"}", i(0, "", {key = "i0"})
 	}),
 	s({trig = "taylor", descr = "(taylor) \"taylor\"", priority = 0, trigEngine = te("w")}, {
-		t"\\sum_{", i(1, "k", {key = "i1"}), t"=", i(2, "0", {key = "i2"}), t"}^{", i(3, "\\infty", {key = "i3"}), t"} ", d(4, function(args) return sn(nil, {t"c_", cp(1)}) end, {}, {key = "i4"}), t" (x-a)^", cp(1), t" ", i(0, "", {key = "i0"})
+		t"\\sum_{", i(1, "k", {key = "i1"}), t"=", i(2, "0", {key = "i2"}), t"}^{", i(3, "\\infty", {key = "i3"}), t"} ", d(4, function(args, snip) return sn(nil, { i(1, jt({"c_", args[1]}, ""), {key = "i4"}) }) end, {k"i1"}), t" (x-a)^", cp(1), t" ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "limsup", descr = "(limsup) \"limsup\"", priority = 0, trigEngine = te("w")}, {
 		t"\\limsup_{", i(1, "n", {key = "i1"}), t" \\to ", i(2, "\\infty", {key = "i2"}), t"} "
 	}),
 	s({trig = "prod", descr = "(prod) \"product\"", priority = 0, trigEngine = te("w")}, {
-		t"\\prod_{", d(1, function(args) return sn(nil, {t"n=", i(1, "1", {key = "i2"})}) end, {}, {key = "i1"}), t"}^{", i(2, "\\infty", {key = "i3"}), t"} ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i4"}) }) end), t" ", i(0, "", {key = "i0"})
+		t"\\prod_{", c(1, {{t"n=", i(1, "1", {key = "i2"})}, {i(1, jt({"n=", "1"}))}}, {key = "i1"}), t"}^{", i(2, "\\infty", {key = "i3"}), t"} ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i4"}) }) end), t" ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "ooo", descr = "(ooo) \"\\infty\"", priority = 0, trigEngine = te("w")}, {
 		t"\\infty"
 	}),
 	s({trig = "rij", descr = "(rij) \"mrij\"", priority = 0, trigEngine = te("i")}, {
-		t"(", i(1, "x", {key = "i1"}), t"_", i(2, "n", {key = "i2"}), t")_{", d(3, function(args) return sn(nil, {cp(2)}) end, {}, {key = "i3"}), t"\\in", i(4, "\\N", {key = "i4"}), t"}", i(0, "", {key = "i0"})
+		t"(", i(1, "x", {key = "i1"}), t"_", i(2, "n", {key = "i2"}), t")_{", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i3"}) }) end, {k"i2"}), t"\\in", i(4, "\\N", {key = "i4"}), t"}", i(0, "", {key = "i0"})
 	}),
 	s({trig = "=>", descr = "(=>) \"Implies\"", priority = 0, trigEngine = te("w")}, {
 		t"\\implies"
@@ -902,7 +902,7 @@ ls.add_snippets("tex", {
 		t"\\ge "
 	}),
 	s({trig = "nn", descr = "(nn) \"Tikz node\"", priority = 0, trigEngine = te("w")}, {
-		t"\\node[", i(4, "", {key = "i5"}), t"] (", tr(1, "[^0-9a-zA-Z]", ""), i(2, "", {key = "i2"}), t") ", d(3, function(args) return sn(nil, {t"at (", i(1, "0,0", {key = "i4"}), t") "}) end, {}, {key = "i3"}), t"{$", i(1, "", {key = "i1"}), t"$};", nl(),
+		t"\\node[", i(4, "", {key = "i5"}), t"] (", tr(1, "[^0-9a-zA-Z]", ""), i(2, "", {key = "i2"}), t") ", c(3, {{t"at (", i(1, "0,0", {key = "i4"}), t") "}, {i(1, jt({"at (", "0,0", ") "}))}}, {key = "i3"}), t"{$", i(1, "", {key = "i1"}), t"$};", nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "lll", descr = "(lll) \"l\"", priority = 0, trigEngine = te("w")}, {

@@ -128,11 +128,11 @@ ls.add_snippets("go", {
 		t"var ", i(1, "t", {key = "i1"}), t" ", i(0, "string", {key = "i0"}), nl()
 	}),
 	s({trig = "var", descr = "(var) \"Variable declaration\"", priority = -50, trigEngine = te("b")}, {
-		t"var ", i(1, "name", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), d(3, function(args) return sn(nil, {t" = ", i(1, "value", {key = "i0"})}) end, {}, {key = "i3"})
+		t"var ", i(1, "name", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), c(3, {{t" = ", i(1, "value", {key = "i0"})}, {i(1, jt({" = ", "value"}))}}, {key = "i3"})
 	}),
 	s({trig = "vars", descr = "(vars) \"Variables declaration\"", priority = -50, trigEngine = te("b")}, {
 		t"var (", nl(),
-		t"\t", i(1, "name", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), d(3, function(args) return sn(nil, {t" = ", i(1, "value", {key = "i0"}), t" "}) end, {}, {key = "i3"}), nl(),
+		t"\t", i(1, "name", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), c(3, {{t" = ", i(1, "value", {key = "i0"}), t" "}, {i(1, jt({" = ", "value", " "}))}}, {key = "i3"}), nl(),
 		t")"
 	}),
 	s({trig = "ap", descr = "(ap) \"append\"", priority = -1000, trigEngine = te("w")}, {
