@@ -145,7 +145,10 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 			text_content = ', '.join([child.render_text(context, related_tokens) for child in self.children])
 			return f'jt({{{text_content}}})'
 		else:
-			return f'args[{related_tokens[self.original_number]}]'
+			if self.original_number in related_tokens:
+				return f'args[{related_tokens[self.original_number]}]'
+			else:
+				return '""'
 
 
 class LSCopyToken(LSPlaceholderToken, LSToken):
