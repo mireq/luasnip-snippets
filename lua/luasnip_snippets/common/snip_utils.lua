@@ -62,6 +62,10 @@ local function join_text(args, indent)
 	local text = table.concat(parts)
 	local lines = {}
 
+	if indent == nil then
+		indent = ''
+	end
+
 	local line_num = 1
 	for line in text:gmatch("[^\r\n]+") do
 		if line_num == 1 then
