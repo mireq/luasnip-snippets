@@ -93,7 +93,7 @@ class ParsedSnippet:
 				if not at_line_start:
 					snippet_body.write(' ')
 
-		ctx: RenderContext = {'parsed_snippet': self, 'accumulated_text': accumulated_text}
+		ctx: RenderContext = {'parsed_snippet': self, 'accumulated_text': accumulated_text, 'indent': indent}
 
 		for i, token in enumerate(tokens):
 			is_last_token = i == num_tokens - 1
