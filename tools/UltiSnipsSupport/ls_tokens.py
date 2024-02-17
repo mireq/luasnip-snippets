@@ -97,7 +97,7 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 
 		if self.children:
 			related_tokens = {}
-			for child in self.children:
+			for child in LSToken.iter_all_tokens(self.children):
 				if isinstance(child, (LSCopyToken, LSTransformationToken)):
 					number = getattr(child, 'original_number', child.number)
 					if number not in related_tokens:
@@ -139,10 +139,7 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 			text_content = ', '.join([child.render_text(context, related_tokens) for child in self.children])
 			return f'jt({{{text_content}}})'
 		else:
-			if self.original_number in related_tokens:
-				return f'args[{related_tokens[self.original_number]}]'
-			else:
-				return '""'
+			return f'args[{related_tokens[self.original_number]}]'
 
 
 class LSCopyToken(LSPlaceholderToken, LSToken):
