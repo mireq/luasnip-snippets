@@ -192,6 +192,12 @@ local regex_matchers = {}
 local match_context = {}
 
 
+function remove_named_regex_groups(py_regex)
+	local named_group_pattern = "%(%?P<%w+>(.-)%)"
+	return py_regex:gsub(named_group_pattern, "(%1)")
+end
+
+
 local function trig_engine(opts)
 	local function engine(trigger)
 		local function matcher(line_to_cursor, trigger)
@@ -207,7 +213,7 @@ local function trig_engine(opts)
 				if rx == nil then
 					local jsregexp_ok, jsregexp = pcall(require, "luasnip-jsregexp")
 					if jsregexp_ok then
-						rx = jsregexp.compile(trigger)
+						rx = jsregexp.compile(remove_named_regex_groups(trigger))
 						regex_matchers[trigger] = rx
 					end
 				end
