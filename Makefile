@@ -6,8 +6,12 @@ TARGETS := $(addprefix lua/luasnip_snippets/,$(addsuffix .lua,$(LANGUAGES)))
 # Default target
 all: $(TARGETS)
 
+# Clone vim-snippets repository
+tools/vim-snippets:
+	git clone https://github.com/honza/vim-snippets.git tools/vim-snippets
+
 # Pattern rule for converting UltiSnips to LuaSnip
-lua/luasnip_snippets/%.lua:
+lua/luasnip_snippets/%.lua: tools/vim-snippets
 	./tools/ultisnips_to_luasnip_headless.py --ultisnips-dirs tools/vim-snippets/UltiSnips:UltiSnips --snipmate-dirs tools/vim-snippets/snippets --output-dir lua/luasnip_snippets `basename $@ .lua`
 
 # Clean target to remove generated files
