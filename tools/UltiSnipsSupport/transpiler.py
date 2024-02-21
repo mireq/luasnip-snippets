@@ -17,7 +17,7 @@ from .utils import OrderedSet, escape_lua_string, escape_multiline_lua_sting
 logger = logging.getLogger()
 
 
-SUPPORTED_OPTS = {'w', 'b', 'i', 'r', '!', 'A'}
+SUPPORTED_OPTS = {'w', 'b', 'i', 'r', 'm', '!', 'A'}
 KNOWN_LANGUAGES = {
 	'!p': 'python',
 }
