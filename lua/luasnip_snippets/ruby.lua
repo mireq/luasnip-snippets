@@ -47,6 +47,8 @@ local am = { -- list of argument numbers
 	{0},
 	{0},
 	{0},
+	{0},
+	{0},
 	{},
 	{0, 1, 2},
 	{1},
@@ -235,6 +237,7 @@ local am = { -- list of argument numbers
 	{},
 	{},
 	{},
+	{},
 	{0, 1},
 	{0},
 	{0},
@@ -367,6 +370,16 @@ ls.add_snippets("ruby", {
 		t"=begin rdoc", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"=end"
+	}),
+	s({trig = "prot", descr = "(prot) \"protected\"", priority = -50, trigEngine = te("m")}, {
+		t"protected", nl(),
+		nl(),
+		i(0, "", {key = "i0"})
+	}),
+	s({trig = "priv", descr = "(priv) \"private \"", priority = -50, trigEngine = te("m")}, {
+		t"private", nl(),
+		nl(),
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "y", descr = "(y)", priority = -1000, trigEngine = te("w")}, {
 		t":yields: ", i(0, "arguments", {key = "i0"})
@@ -1120,6 +1133,9 @@ ls.add_snippets("ruby", {
 	s({trig = "pry", descr = "(pry)", priority = -1000, trigEngine = te("w")}, {
 		t"require \'pry\'; binding.pry"
 	}),
+	s({trig = "irb", descr = "(irb)", priority = -1000, trigEngine = te("w")}, {
+		t"binding.irb"
+	}),
 	s({trig = "strf", descr = "(strf)", priority = -1000, trigEngine = te("w")}, {
 		t"strftime(\'", i(1, "%Y-%m-%d %H:%M:%S %z", {key = "i1"}), t"\')", i(0, "", {key = "i0"})
 	}),
@@ -1314,7 +1330,7 @@ ls.add_snippets("ruby", {
 		t"end"
 	}),
 	s({trig = "defi", descr = "(defi) \"def initialize ...\"", priority = -50, trigEngine = te("")}, {
-		t"def initialize(", i(1, "", {key = "i1"}), t")", f(function(args, snip) return c_py({"ruby", 254}, "write_instance_vars(t[1],snip)", python_globals, args, snip, "", am[254]) end, ae(am[254])), i(0, "", {key = "i0"}), nl(),
+		t"def initialize(", i(1, "", {key = "i1"}), t")", f(function(args, snip) return c_py({"ruby", 255}, "write_instance_vars(t[1],snip)", python_globals, args, snip, "", am[255]) end, ae(am[255])), i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "defr", descr = "(defr) \"def <name> ... rescue ...\"", priority = -50, trigEngine = te("")}, {
@@ -1328,74 +1344,74 @@ ls.add_snippets("ruby", {
 		t"(", i(1, "from", {key = "i1"}), t"..", i(2, "to", {key = "i2"}), t").each { |", i(3, "i", {key = "i3"}), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.Merge!", descr = "((\\S+)\\.Merge!) \".merge!(<other_hash>) { |<key>,<oldval>,<newval>| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 257}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[257]) end, ae(am[257])), t".merge!(", i(1, "other_hash", {key = "i1"}), t") { |", i(2, "key", {key = "i2"}), t",", i(3, "oldval", {key = "i3"}), t",", i(4, "newval", {key = "i4"}), t"| ", i(5, "block", {key = "i5"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 258}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[258]) end, ae(am[258])), t".merge!(", i(1, "other_hash", {key = "i1"}), t") { |", i(2, "key", {key = "i2"}), t",", i(3, "oldval", {key = "i3"}), t",", i(4, "newval", {key = "i4"}), t"| ", i(5, "block", {key = "i5"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.merge!", descr = "((\\S+)\\.merge!) \".merge!(<other_hash>) do |<key>,<oldval>,<newval>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 258}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[258]) end, ae(am[258])), t".merge!(", i(1, "other_hash", {key = "i1"}), t") do |", i(2, "key", {key = "i2"}), t",", i(3, "oldval", {key = "i3"}), t",", i(4, "newval", {key = "i4"}), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 259}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[259]) end, ae(am[259])), t".merge!(", i(1, "other_hash", {key = "i1"}), t") do |", i(2, "key", {key = "i2"}), t",", i(3, "oldval", {key = "i3"}), t",", i(4, "newval", {key = "i4"}), t"|", nl(),
 		t"\t", i(0, "block", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.Del(ete)?_?if", descr = "((\\S+)\\.Del(ete)?_?if) \".delete_if { |<key>,<value>| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 259}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[259]) end, ae(am[259])), t".delete_if { |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"| ", i(0, "", {key = "i0"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 260}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[260]) end, ae(am[260])), t".delete_if { |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.del(ete)?_?if", descr = "((\\S+)\\.del(ete)?_?if) \".delete_if do |<key>,<value>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 260}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[260]) end, ae(am[260])), t".delete_if do |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 261}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[261]) end, ae(am[261])), t".delete_if do |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.Keep_?if", descr = "((\\S+)\\.Keep_?if) \".keep_if { |<key>,<value>| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 261}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[261]) end, ae(am[261])), t".keep_if { |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"| ", i(0, "", {key = "i0"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 262}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[262]) end, ae(am[262])), t".keep_if { |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.keep_?if", descr = "((\\S+)\\.keep_?if) \".keep_if do <key>,<value>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 262}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[262]) end, ae(am[262])), t".keep_if do |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 263}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[263]) end, ae(am[263])), t".keep_if do |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.Reject", descr = "((\\S+)\\.Reject) \".reject { |<key>,<value>| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 263}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[263]) end, ae(am[263])), t".reject { |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"| ", i(0, "", {key = "i0"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 264}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[264]) end, ae(am[264])), t".reject { |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.reject", descr = "((\\S+)\\.reject) \".reject do <key>,<value>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 264}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[264]) end, ae(am[264])), t".reject do |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 265}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[265]) end, ae(am[265])), t".reject do |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.Select", descr = "((\\S+)\\.Select) \".select { |<item>| <block>}\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 265}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[265]) end, ae(am[265])), t".select { |", i(1, "item", {key = "i1"}), t"| ", i(2, "block", {key = "i2"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 266}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[266]) end, ae(am[266])), t".select { |", i(1, "item", {key = "i1"}), t"| ", i(2, "block", {key = "i2"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.select", descr = "((\\S+)\\.select) \".select do |<item>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 266}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[266]) end, ae(am[266])), t".select do |", i(1, "item", {key = "i1"}), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 267}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[267]) end, ae(am[267])), t".select do |", i(1, "item", {key = "i1"}), t"|", nl(),
 		t"\t", i(0, "block", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.Sort", descr = "((\\S+)\\.Sort) \".sort { |<a>,<b>| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 267}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[267]) end, ae(am[267])), t".sort { |", i(1, "a", {key = "i1"}), t",", i(2, "b", {key = "i2"}), t"| ", i(0, "", {key = "i0"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 268}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[268]) end, ae(am[268])), t".sort { |", i(1, "a", {key = "i1"}), t",", i(2, "b", {key = "i2"}), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.sort", descr = "((\\S+)\\.sort) \".sort do |<a>,<b>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 268}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[268]) end, ae(am[268])), t".sort do |", i(1, "a", {key = "i1"}), t",", i(2, "b", {key = "i2"}), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 269}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[269]) end, ae(am[269])), t".sort do |", i(1, "a", {key = "i1"}), t",", i(2, "b", {key = "i2"}), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.Each_?k(ey)?", descr = "((\\S+)\\.Each_?k(ey)?) \".each_key { |<key>| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 269}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[269]) end, ae(am[269])), t".each_key { |", i(1, "key", {key = "i1"}), t"| ", i(0, "", {key = "i0"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 270}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[270]) end, ae(am[270])), t".each_key { |", i(1, "key", {key = "i1"}), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.each_?k(ey)?", descr = "((\\S+)\\.each_?k(ey)?) \".each_key do |key| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 270}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[270]) end, ae(am[270])), t".each_key do |", i(1, "key", {key = "i1"}), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 271}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[271]) end, ae(am[271])), t".each_key do |", i(1, "key", {key = "i1"}), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.Each_?val(ue)?", descr = "((\\S+)\\.Each_?val(ue)?) \".each_value { |<value>| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 271}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[271]) end, ae(am[271])), t".each_value { |", i(1, "value", {key = "i1"}), t"| ", i(0, "", {key = "i0"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 272}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[272]) end, ae(am[272])), t".each_value { |", i(1, "value", {key = "i1"}), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.each_?val(ue)?", descr = "((\\S+)\\.each_?val(ue)?) \".each_value do |<value>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 272}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[272]) end, ae(am[272])), t".each_value do |", i(1, "value", {key = "i1"}), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 273}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[273]) end, ae(am[273])), t".each_value do |", i(1, "value", {key = "i1"}), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.ea", descr = "((\\S+)\\.ea) \"<elements>.each do |<element>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 273}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[273]) end, ae(am[273])), t".each { |", i(1, "e", {key = "i1"}), t"| ", i(0, "", {key = "i0"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 274}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[274]) end, ae(am[274])), t".each { |", i(1, "e", {key = "i1"}), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.ead", descr = "((\\S+)\\.ead) \"<elements>.each do |<element>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 274}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[274]) end, ae(am[274])), t".each do |", i(1, "e", {key = "i1"}), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 275}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[275]) end, ae(am[275])), t".each do |", i(1, "e", {key = "i1"}), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
@@ -1408,48 +1424,48 @@ ls.add_snippets("ruby", {
 		i(1, "elements", {key = "i1"}), t".each_slice(", i(2, "2", {key = "i2"}), t") { |", i(3, "slice", {key = "i3"}), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.Map", descr = "((\\S+)\\.Map) \".map { |<element>| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 277}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[277]) end, ae(am[277])), t".map { |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 277}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[277])}, ""), {key = "i1"}) }) end), t"| ", i(0, "", {key = "i0"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 278}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[278]) end, ae(am[278])), t".map { |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 278}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[278])}, ""), {key = "i1"}) }) end), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.map", descr = "((\\S+)\\.map) \".map do |<element>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 278}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[278]) end, ae(am[278])), t".map do |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 278}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[278])}, ""), {key = "i1"}) }) end), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 279}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[279]) end, ae(am[279])), t".map do |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 279}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[279])}, ""), {key = "i1"}) }) end), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.Rev(erse)?_?each", descr = "((\\S+)\\.Rev(erse)?_?each) \".reverse_each { |<element>| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 279}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[279]) end, ae(am[279])), t".reverse_each { |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 279}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[279])}, ""), {key = "i1"}) }) end), t"| ", i(0, "", {key = "i0"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 280}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[280]) end, ae(am[280])), t".reverse_each { |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 280}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[280])}, ""), {key = "i1"}) }) end), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.rev(erse)?_?each", descr = "((\\S+)\\.rev(erse)?_?each) \".reverse_each do |<element>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 280}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[280]) end, ae(am[280])), t".reverse_each do |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 280}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[280])}, ""), {key = "i1"}) }) end), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 281}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[281]) end, ae(am[281])), t".reverse_each do |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 281}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[281])}, ""), {key = "i1"}) }) end), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.Each", descr = "((\\S+)\\.Each) \".each { |<element>| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 281}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[281]) end, ae(am[281])), t".each { |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 281}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[281])}, ""), {key = "i1"}) }) end), t"| ", i(0, "", {key = "i0"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 282}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[282]) end, ae(am[282])), t".each { |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 282}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[282])}, ""), {key = "i1"}) }) end), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.each", descr = "((\\S+)\\.each) \".each do |<element>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 282}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[282]) end, ae(am[282])), t".each do |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 282}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[282])}, ""), {key = "i1"}) }) end), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 283}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[283]) end, ae(am[283])), t".each do |", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 283}, "\nelement_name = match.group(1).lstrip(\'$@\')\nematch = re.search(\"([A-Za-z][A-Za-z0-9_]+?)s?[^A-Za-z0-9_]*?$\", element_name)\ntry:\n\twmatch = re.search(\"([A-Za-z][A-Za-z0-9_]+)$\", ematch.group(1))\n\tsnip.rv = wmatch.group(1).lower()\nexcept:\n\tsnip.rv = \'element\'\n", python_globals, args, snip, "", am[283])}, ""), {key = "i1"}) }) end), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.Each_?p(air)?", descr = "((\\S+)\\.Each_?p(air)?) \".each_pair { |<key>,<value>| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 283}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[283]) end, ae(am[283])), t".each_pair { |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"| ", i(0, "", {key = "i0"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 284}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[284]) end, ae(am[284])), t".each_pair { |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"| ", i(0, "", {key = "i0"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.each_?p(air)?", descr = "((\\S+)\\.each_?p(air)?) \".each_pair do |<key>,<value>| <block> end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 284}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[284]) end, ae(am[284])), t".each_pair do |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 285}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[285]) end, ae(am[285])), t".each_pair do |", i(1, "key", {key = "i1"}), t",", i(2, "value", {key = "i2"}), t"|", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
 	s({trig = "(\\S+)\\.sub", descr = "((\\S+)\\.sub) \".sub(<expression>) { <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 285}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[285]) end, ae(am[285])), t".sub(", i(1, "expression", {key = "i1"}), t") { ", i(2, "\"replace_with\"", {key = "i2"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 286}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[286]) end, ae(am[286])), t".sub(", i(1, "expression", {key = "i1"}), t") { ", i(2, "\"replace_with\"", {key = "i2"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.gsub", descr = "((\\S+)\\.gsub) \".gsub(<expression>) { <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 286}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[286]) end, ae(am[286])), t".gsub(", i(1, "expression", {key = "i1"}), t") { ", i(2, "\"replace_with\"", {key = "i2"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 287}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[287]) end, ae(am[287])), t".gsub(", i(1, "expression", {key = "i1"}), t") { ", i(2, "\"replace_with\"", {key = "i2"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.index", descr = "((\\S+)\\.index) \".index { |item| <block> }\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 287}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[287]) end, ae(am[287])), t".index { |", i(1, "item", {key = "i1"}), t"| ", i(2, "block", {key = "i2"}), t" }"
+		f(function(args, snip) return c_py({"ruby", 288}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[288]) end, ae(am[288])), t".index { |", i(1, "item", {key = "i1"}), t"| ", i(2, "block", {key = "i2"}), t" }"
 	}),
 	s({trig = "(\\S+)\\.Index", descr = "((\\S+)\\.Index) \".index do |item| ... end\"", priority = -50, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"ruby", 288}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[288]) end, ae(am[288])), t".index do |", i(1, "item", {key = "i1"}), t"|", nl(),
+		f(function(args, snip) return c_py({"ruby", 289}, "snip.rv=match.group(1)", python_globals, args, snip, "", am[289]) end, ae(am[289])), t".index do |", i(1, "item", {key = "i1"}), t"|", nl(),
 		t"\t", i(0, "block", {key = "i0"}), nl(),
 		t"end"
 	}),
@@ -1481,14 +1497,14 @@ ls.add_snippets("ruby", {
 		t"end"
 	}),
 	s({trig = "class", descr = "(class) \"class <class_name> def initialize ... end end\"", priority = -50, trigEngine = te("")}, {
-		t"class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 294}, "snip.rv = snip.basename.title().replace(\'_\', \'\')", python_globals, args, snip, "", am[294])}, ""), {key = "i1"}) }) end), nl(),
+		t"class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 295}, "snip.rv = snip.basename.title().replace(\'_\', \'\')", python_globals, args, snip, "", am[295])}, ""), {key = "i1"}) }) end), nl(),
 		t"\tdef initialize(", i(2, "*args", {key = "i2"}), t")", nl(),
 		t"\t\t", i(0, "", {key = "i0"}), nl(),
 		t"\tend", nl(),
 		t"end"
 	}),
 	s({trig = "module", descr = "(module) \"module\"", priority = -50, trigEngine = te("")}, {
-		t"module ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 295}, "snip.rv = snip.basename.title().replace(\'_\', \'\')", python_globals, args, snip, "", am[295])}, ""), {key = "i1"}) }) end), nl(),
+		t"module ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"ruby", 296}, "snip.rv = snip.basename.title().replace(\'_\', \'\')", python_globals, args, snip, "", am[296])}, ""), {key = "i1"}) }) end), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"
 	}),
