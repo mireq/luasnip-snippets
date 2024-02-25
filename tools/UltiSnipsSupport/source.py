@@ -187,7 +187,7 @@ class SnipMateFileSource(SnippetFileSource):
 			if line[0] == "\t":
 				line = line[1:]
 			content += line
-		content = content[:-1]  # Chomp the last newline
+		content = content.rstrip('\n')
 
 		return SnippetDefinitionEvent(
 			SnipMateSnippetDefinition(
