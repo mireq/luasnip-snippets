@@ -108,7 +108,7 @@ ls.add_snippets("progress", {
 		nl(),
 		t"END PROCEDURE. /* ", cp(1), t" */", nl(),
 		nl(),
-		t"/******************************************************************************/", nl()
+		t"/******************************************************************************/"
 	}),
 	s({trig = "alert", descr = "(alert)", priority = -1000, trigEngine = te("w")}, {
 		t"MESSAGE \"", i(1, "MessageContent", {key = "i1"}), t"\" ", i(2, "Data", {key = "i2"}), t" VIEW-AS ALERT-BOX."

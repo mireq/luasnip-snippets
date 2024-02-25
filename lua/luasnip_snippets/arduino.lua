@@ -77,19 +77,19 @@ ls.add_snippets("arduino", {
 		t"{", nl(),
 		t"\tSerial.begin(", i(1, "9600", {key = "i1"}), t");", nl(),
 		t"\t", i(2, "", {key = "i2"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "loop", descr = "(loop)", priority = -1000, trigEngine = te("w")}, {
 		t"void loop()", nl(),
 		t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "inc", descr = "(inc)", priority = -1000, trigEngine = te("w")}, {
-		t"#include <", i(1, "", {key = "i1"}), t".h>", nl()
+		t"#include <", i(1, "", {key = "i1"}), t".h>"
 	}),
 	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
-		t"#define ", i(1, "", {key = "i1"}), nl()
+		t"#define ", i(1, "", {key = "i1"})
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"if (", i(1, "", {key = "i1"}), t") {", nl(),
@@ -107,7 +107,7 @@ ls.add_snippets("arduino", {
 		t"}"
 	}),
 	s({trig = "ifi", descr = "(ifi)", priority = -1000, trigEngine = te("w")}, {
-		t"if (", i(1, "", {key = "i1"}), t") ", i(2, "", {key = "i2"}), t";", nl()
+		t"if (", i(1, "", {key = "i1"}), t") ", i(2, "", {key = "i2"}), t";"
 	}),
 	s({trig = "switch", descr = "(switch)", priority = -1000, trigEngine = te("w")}, {
 		t"switch (", i(1, "/* variable */", {key = "i1"}), t") {", nl(),
@@ -116,12 +116,12 @@ ls.add_snippets("arduino", {
 		t"\t\t", i(4, "break;", {key = "i4"}), i(5, "", {key = "i5"}), nl(),
 		t"\tdefault:", nl(),
 		t"\t\t", i(6, "", {key = "i6"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "case", descr = "(case)", priority = -1000, trigEngine = te("w")}, {
 		t"case ", i(1, "/* variable case */", {key = "i1"}), t":", nl(),
 		t"\t", i(2, "", {key = "i2"}), nl(),
-		t"\t", i(3, "break;", {key = "i3"}), nl()
+		t"\t", i(3, "break;", {key = "i3"})
 	}),
 	s({trig = "for", descr = "(for)", priority = -1000, trigEngine = te("w")}, {
 		t"for (int ", i(2, "i", {key = "i2"}), t" = 0; ", cp(2), t" < ", i(1, "count", {key = "i1"}), t"; ", cp(2), i(3, "++", {key = "i3"}), t") {", nl(),
@@ -147,7 +147,7 @@ ls.add_snippets("arduino", {
 		i(1, "void", {key = "i1"}), t" ", i(2, "function_name", {key = "i2"}), t"(", i(3, "", {key = "i3"}), t")", nl(),
 		t"{", nl(),
 		t"\t", i(4, "", {key = "i4"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "pinout", descr = "(pinout)", priority = -1000, trigEngine = te("w")}, {
 		t"pinMode(", i(1, "", {key = "i1"}), t", OUTPUT);"
@@ -180,8 +180,7 @@ ls.add_snippets("arduino", {
 		t"Serial.print(", i(1, "", {key = "i1"}), t");"
 	}),
 	s({trig = "sl", descr = "(sl)", priority = -1000, trigEngine = te("w")}, {
-		t"Serial.println(", i(1, "", {key = "i1"}), t");", nl(),
-		nl()
+		t"Serial.println(", i(1, "", {key = "i1"}), t");"
 	}),
 	s({trig = "dl", descr = "(dl)", priority = -1000, trigEngine = te("w")}, {
 		t"delay(", i(1, "", {key = "i1"}), t");"

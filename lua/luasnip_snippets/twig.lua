@@ -326,12 +326,12 @@ ls.add_snippets("twig", {
 		t"{% endwith %}"
 	}),
 	s({trig = "endwith", descr = "(endwith) \"twig endwith\"", priority = -1000, trigEngine = te("w")}, {
-		t"{% endwith %}", i(0, "", {key = "i0"}), nl()
+		t"{% endwith %}", i(0, "", {key = "i0"})
 	}),
 	s({trig = "dump", descr = "(dump) \"twig dump\"", priority = -1000, trigEngine = te("w")}, {
 		t"<pre>", nl(),
 		t"\t{{ dump(", i(1, "", {key = "i1"}), t") }}", nl(),
-		t"</pre>", nl()
+		t"</pre>"
 	}),
 	s({trig = "translate", descr = "(translate) \"twig translate\"", priority = -1000, trigEngine = te("w")}, {
 		t"{{ \"", i(1, "", {key = "i1"}), t"\"|t }}", i(0, "", {key = "i0"})

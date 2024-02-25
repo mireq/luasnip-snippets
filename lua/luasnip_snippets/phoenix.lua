@@ -52,12 +52,12 @@ ls.add_snippets("phoenix", {
 		t"\tuse ", cp(1), t"Web, :controller", nl(),
 		t"\t", nl(),
 		t"\t", i(3, "", {key = "i3"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "view", descr = "(view)", priority = -1000, trigEngine = te("w")}, {
 		t"defmodule ", i(1, "AppName", {key = "i1"}), t"Web.", i(2, "ViewName", {key = "i2"}), t"View do", nl(),
 		t"\tuse ", cp(1), t"Web, :view", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "chan", descr = "(chan)", priority = -1000, trigEngine = te("w")}, {
 		t"defmodule ", i(1, "AppName", {key = "i1"}), t"Web.", i(2, "ChannelName", {key = "i2"}), t"Channel do", nl(),

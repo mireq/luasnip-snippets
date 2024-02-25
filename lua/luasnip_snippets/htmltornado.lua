@@ -62,7 +62,7 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("htmltornado", {
 	s({trig = "{", descr = "({)", priority = -1000, trigEngine = te("w")}, {
-		t"{{ ", i(0, "", {key = "i0"}), t" }}", nl()
+		t"{{ ", i(0, "", {key = "i0"}), t" }}"
 	}),
 	s({trig = "extends", descr = "(extends)", priority = -1000, trigEngine = te("w")}, {
 		t"{% extends \"", i(0, "base.html", {key = "i0"}), t"\" %}"

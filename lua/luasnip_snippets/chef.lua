@@ -68,7 +68,7 @@ ls.add_snippets("chef", {
 		t"\t", i(14, "#", {key = "i14"}), i(15, " action :create", {key = "i15"}), t" # Create this file (Default)", nl(),
 		t"\t", i(16, "#", {key = "i16"}), i(17, " action :create_if_missing", {key = "i17"}), t" # Create only if it doesn\'t exist yet", nl(),
 		t"\t", i(18, "#", {key = "i18"}), i(0, " action :delete", {key = "i0"}), t" # Delete this file", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "execute", descr = "(execute)", priority = -1000, trigEngine = te("w")}, {
 		t"# Execute resource", nl(),
@@ -85,7 +85,7 @@ ls.add_snippets("chef", {
 		nl(),
 		t"\t", i(20, "#", {key = "i20"}), i(21, "action :run", {key = "i21"}), t" # Run this command (Default)", nl(),
 		t"\t", i(22, "#", {key = "i22"}), i(0, "action :nothing", {key = "i0"}), t" # Do not run this command", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "link", descr = "(link)", priority = -1000, trigEngine = te("w")}, {
 		t"# Link resource", nl(),
@@ -97,7 +97,7 @@ ls.add_snippets("chef", {
 		nl(),
 		t"\t", i(10, "#", {key = "i10"}), i(11, "action :create", {key = "i11"}), t" # Create a link (Default)", nl(),
 		t"\t", i(12, "#", {key = "i12"}), i(0, "action :delete", {key = "i0"}), t" # Delete a link", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "package", descr = "(package)", priority = -1000, trigEngine = te("w")}, {
 		t"# Package resource", nl(),
@@ -112,7 +112,7 @@ ls.add_snippets("chef", {
 		t"\t", i(14, "#", {key = "i14"}), i(15, "action :upgrade", {key = "i15"}), t" # Upgrade a package - if version is provided, upgrade to that specific version", nl(),
 		t"\t", i(16, "#", {key = "i16"}), i(17, "action :remove", {key = "i17"}), t" # Remove a package", nl(),
 		t"\t", i(18, "#", {key = "i18"}), i(0, "action :purge", {key = "i0"}), t" # Purge a package (this usually entails removing configuration files as well as the package itself)", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "service", descr = "(service)", priority = -1000, trigEngine = te("w")}, {
 		t"# Service resource", nl(),
@@ -134,7 +134,7 @@ ls.add_snippets("chef", {
 		t"\t", i(28, "#", {key = "i28"}), i(29, "action :stop", {key = "i29"}), t" # Stop this service", nl(),
 		t"\t", i(30, "#", {key = "i30"}), i(31, "action :restart", {key = "i31"}), t" # Restart this service", nl(),
 		t"\t", i(32, "#", {key = "i32"}), i(0, "action :reload", {key = "i0"}), t" # Reload the configuration for this service", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "file", descr = "(file)", priority = -1000, trigEngine = te("w")}, {
 		t"# File resource", nl(),
@@ -148,7 +148,7 @@ ls.add_snippets("chef", {
 		t"\t", i(12, "#", {key = "i12"}), i(13, "action :create", {key = "i13"}), t" # Create this file (Default)", nl(),
 		t"\t", i(14, "#", {key = "i14"}), i(15, "action :delete", {key = "i15"}), t" # Delete this file", nl(),
 		t"\t", i(16, "#", {key = "i16"}), i(0, "action :touch", {key = "i0"}), t" # Touch this file (update the mtime/atime)", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "directory", descr = "(directory)", priority = -1000, trigEngine = te("w")}, {
 		t"# Directory resource", nl(),
@@ -160,7 +160,7 @@ ls.add_snippets("chef", {
 		nl(),
 		t"\t", i(10, "#", {key = "i12"}), i(11, "action :create", {key = "i13"}), t" # Create this directory (Default)", nl(),
 		t"\t", i(12, "#", {key = "i14"}), i(0, "action :delete", {key = "i0"}), t" # Delete this directory", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "template", descr = "(template)", priority = -1000, trigEngine = te("w")}, {
 		t"# Template resource", nl(),
@@ -178,7 +178,7 @@ ls.add_snippets("chef", {
 		t"\t", i(20, "#", {key = "i20"}), i(21, "action :create", {key = "i21"}), t" # Create the file (Default)", nl(),
 		t"\t", i(22, "#", {key = "i22"}), i(23, "action :delete", {key = "i23"}), t" # Delete this file", nl(),
 		t"\t", i(24, "#", {key = "i24"}), i(0, "action :touch", {key = "i0"}), t" # Touch this file (update the mtime/atime)", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "svn", descr = "(svn)", priority = -1000, trigEngine = te("w")}, {
 		t"# SCM Resource, Chef::Provider::Subversion", nl(),
@@ -195,7 +195,7 @@ ls.add_snippets("chef", {
 		t"\t", i(18, "#", {key = "i18"}), i(19, "action :sync", {key = "i19"}), t" # Update the source to the specified revision, or get a new checkout (Default)", nl(),
 		t"\t", i(20, "#", {key = "i20"}), i(21, "action :checkout", {key = "i21"}), t" # Checkout the source. Does nothing if a checkout is available", nl(),
 		t"\t", i(22, "#", {key = "i22"}), i(0, "action :export", {key = "i0"}), t" # Export the source, excluding or removing any version control artifacts", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "git", descr = "(git)", priority = -1000, trigEngine = te("w")}, {
 		t"# SCM Resource, Chef::Provider::Git", nl(),
@@ -213,7 +213,7 @@ ls.add_snippets("chef", {
 		t"\t", i(20, "#", {key = "i20"}), i(21, "action :sync", {key = "i21"}), t" # Update the source to the specified revision, or get a new clone (Default)", nl(),
 		t"\t", i(22, "#", {key = "i22"}), i(23, "action :checkout", {key = "i23"}), t" # Clone the source. Does nothing if a checkout is available", nl(),
 		t"\t", i(24, "#", {key = "i24"}), i(0, "action :export", {key = "i0"}), t" # Export the source, excluding or removing any version control artifacts", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "deploy", descr = "(deploy)", priority = -1000, trigEngine = te("w")}, {
 		t"# Deploy resource", nl(),

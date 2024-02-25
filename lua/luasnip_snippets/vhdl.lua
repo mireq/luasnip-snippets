@@ -71,16 +71,16 @@ local am = { -- list of argument numbers
 ls.add_snippets("vhdl", {
 	s({trig = "lib", descr = "(lib)", priority = -1000, trigEngine = te("w")}, {
 		t"library ", i(1, "", {key = "i1"}), nl(),
-		t"use ", cp(1), t".", i(2, "", {key = "i2"}), nl()
+		t"use ", cp(1), t".", i(2, "", {key = "i2"})
 	}),
 	s({trig = "libs", descr = "(libs)", priority = -1000, trigEngine = te("w")}, {
 		t"library IEEE;", nl(),
 		t"use IEEE.std_logic_1164.ALL;", nl(),
-		t"use IEEE.numeric_std.ALL;", nl()
+		t"use IEEE.numeric_std.ALL;"
 	}),
 	s({trig = "libx", descr = "(libx)", priority = -1000, trigEngine = te("w")}, {
 		t"library UNISIM;", nl(),
-		t"use UNISIM.VCOMPONENTS.ALL;", nl()
+		t"use UNISIM.VCOMPONENTS.ALL;"
 	}),
 	s({trig = "ent", descr = "(ent)", priority = -1000, trigEngine = te("w")}, {
 		t"entity ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename()")}, ""), {key = "i1"}) }) end), t" is", nl(),
@@ -90,7 +90,7 @@ ls.add_snippets("vhdl", {
 		t"\tport (", nl(),
 		t"\t\t", i(3, "", {key = "i3"}), nl(),
 		t"\t);", nl(),
-		t"end entity ", cp(1), t";", nl()
+		t"end entity ", cp(1), t";"
 	}),
 	s({trig = "arc", descr = "(arc)", priority = -1000, trigEngine = te("w")}, {
 		t"architecture ", i(1, "behav", {key = "i1"}), t" of ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename()")}, ""), {key = "i2"}) }) end), t" is", nl(),
@@ -100,7 +100,7 @@ ls.add_snippets("vhdl", {
 		t"begin", nl(),
 		nl(),
 		nl(),
-		t"end ", cp(1), t";", nl()
+		t"end ", cp(1), t";"
 	}),
 	s({trig = "st", descr = "(st)", priority = -1000, trigEngine = te("w")}, {
 		t"signal ", i(1, "", {key = "i1"}), t" : std_logic;"

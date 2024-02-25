@@ -106,7 +106,7 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("perl", {
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
-		t"#!/usr/bin/env perl", nl()
+		t"#!/usr/bin/env perl"
 	}),
 	s({trig = ".", descr = "(.)", priority = -1000, trigEngine = te("w")}, {
 		t" =>"
@@ -237,59 +237,54 @@ ls.add_snippets("perl", {
 		t"## use critic"
 	}),
 	s({trig = "switch", descr = "(switch)", priority = -1000, trigEngine = te("w")}, {
-		t"use feature \'switch\';", nl()
+		t"use feature \'switch\';"
 	}),
 	s({trig = "asub", descr = "(asub)", priority = -1000, trigEngine = te("w")}, {
 		t"sub {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl(),
-		nl(),
-		nl()
+		t"}"
 	}),
 	s({trig = "begin", descr = "(begin)", priority = -1000, trigEngine = te("w")}, {
 		t"BEGIN {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "pkgmv", descr = "(pkgmv)", priority = -1000, trigEngine = te("w")}, {
-		t"__PACKAGE__->", i(1, "package_method", {key = "i1"}), t"(", i(0, "var", {key = "i0"}), t")", nl()
+		t"__PACKAGE__->", i(1, "package_method", {key = "i1"}), t"(", i(0, "var", {key = "i0"}), t")"
 	}),
 	s({trig = "pkgm", descr = "(pkgm)", priority = -1000, trigEngine = te("w")}, {
-		t"__PACKAGE__->", i(0, "package_method", {key = "i0"}), t"()", nl()
+		t"__PACKAGE__->", i(0, "package_method", {key = "i0"}), t"()"
 	}),
 	s({trig = "pkget", descr = "(pkget)", priority = -1000, trigEngine = te("w")}, {
-		t"__PACKAGE__->get_", i(0, "package_method", {key = "i0"}), t"()", nl()
+		t"__PACKAGE__->get_", i(0, "package_method", {key = "i0"}), t"()"
 	}),
 	s({trig = "pkgetv", descr = "(pkgetv)", priority = -1000, trigEngine = te("w")}, {
-		t"__PACKAGE__->get_", i(1, "package_method", {key = "i1"}), t"(", i(0, "var", {key = "i0"}), t")", nl()
+		t"__PACKAGE__->get_", i(1, "package_method", {key = "i1"}), t"(", i(0, "var", {key = "i0"}), t")"
 	}),
 	s({trig = "qrx", descr = "(qrx)", priority = -1000, trigEngine = te("w")}, {
 		t"qr/", nl(),
 		t"     ", i(0, "regex", {key = "i0"}), nl(),
-		t"/xms", nl()
+		t"/xms"
 	}),
 	s({trig = "qr/", descr = "(qr/)", priority = -1000, trigEngine = te("w")}, {
-		t"qr/", i(0, "regex", {key = "i0"}), t"/x", nl()
+		t"qr/", i(0, "regex", {key = "i0"}), t"/x"
 	}),
 	s({trig = "given", descr = "(given)", priority = -1000, trigEngine = te("w")}, {
 		t"given ($", i(1, "var", {key = "i1"}), t") {", nl(),
 		t"\t", i(2, "# cases", {key = "i2"}), nl(),
 		t"\t", i(0, "# default", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "when", descr = "(when)", priority = -1000, trigEngine = te("w")}, {
 		t"when (", i(1, "case", {key = "i1"}), t") {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "hslice", descr = "(hslice)", priority = -1000, trigEngine = te("w")}, {
-		t"@{ ", i(1, "hash", {key = "i1"}), t"  }{ ", i(0, "array", {key = "i0"}), t" }", nl(),
-		nl()
+		t"@{ ", i(1, "hash", {key = "i1"}), t"  }{ ", i(0, "array", {key = "i0"}), t" }"
 	}),
 	s({trig = "map", descr = "(map)", priority = -1000, trigEngine = te("w")}, {
-		t"map {  ", i(0, " body ", {key = "i0"}), t"    }  ", i(1, " @array ", {key = "i1"}), t" ;", nl(),
-		nl(),
-		nl()
+		t"map {  ", i(0, " body ", {key = "i0"}), t"    }  ", i(1, " @array ", {key = "i1"}), t" ;"
 	}),
 	s({trig = "ppod", descr = "(ppod)", priority = -1000, trigEngine = te("w")}, {
 		t"=head1 NAME", nl(),
@@ -313,13 +308,12 @@ ls.add_snippets("perl", {
 		t"=head1 DEPENDENCIES", nl(),
 		nl(),
 		nl(),
-		t"=head1 SEE ALSO", nl(),
-		nl()
+		t"=head1 SEE ALSO"
 	}),
 	s({trig = "psub", descr = "(psub)", priority = -1000, trigEngine = te("w")}, {
 		t"=head2 ", i(1, "MethodName", {key = "i1"}), nl(),
 		nl(),
-		i(0, "Summary....", {key = "i0"}), nl()
+		i(0, "Summary....", {key = "i0"})
 	}),
 	s({trig = "psubi", descr = "(psubi)", priority = -1000, trigEngine = te("w")}, {
 		t"=head2 ", i(1, "MethodName", {key = "i1"}), nl(),
@@ -371,9 +365,7 @@ ls.add_snippets("perl", {
 		t"=back", nl(),
 		nl(),
 		nl(),
-		t"=back", nl(),
-		nl(),
-		nl()
+		t"=back"
 	}),
 	s({trig = "has", descr = "(has)", priority = -1000, trigEngine = te("w")}, {
 		t"has ", i(1, "attribute", {key = "i1"}), t" => (", nl(),
@@ -383,49 +375,47 @@ ls.add_snippets("perl", {
 		t"\t\t", i(4, "defaultvalue", {key = "i4"}), nl(),
 		t"\t},", nl(),
 		t"\t", i(0, "# other attributes", {key = "i0"}), nl(),
-		t");", nl(),
-		nl()
+		t");"
 	}),
 	s({trig = "override", descr = "(override)", priority = -1000, trigEngine = te("w")}, {
 		t"override ", i(1, "attribute", {key = "i1"}), t" => sub {", nl(),
 		t"\t", i(2, "# my $self = shift;", {key = "i2"}), t";", nl(),
 		t"\t", i(0, "# my ($self, $args) = @_;", {key = "i0"}), t";", nl(),
-		t"};", nl(),
-		nl()
+		t"};"
 	}),
 	s({trig = "tuse", descr = "(tuse)", priority = -1000, trigEngine = te("w")}, {
 		t"use Test::More;", nl(),
 		t"use Test::Deep; # (); # uncomment to stop prototype errors", nl(),
-		t"use Test::Exception;", nl()
+		t"use Test::Exception;"
 	}),
 	s({trig = "tlib", descr = "(tlib)", priority = -1000, trigEngine = te("w")}, {
-		t"use lib qw{ ./t/lib };", nl()
+		t"use lib qw{ ./t/lib };"
 	}),
 	s({trig = "tmeths", descr = "(tmeths)", priority = -1000, trigEngine = te("w")}, {
-		t"$ENV{TEST_METHOD} = \'", i(0, "regex", {key = "i0"}), t"\';", nl()
+		t"$ENV{TEST_METHOD} = \'", i(0, "regex", {key = "i0"}), t"\';"
 	}),
 	s({trig = "trunner", descr = "(trunner)", priority = -1000, trigEngine = te("w")}, {
 		t"use ", i(0, "test_class", {key = "i0"}), t";", nl(),
-		i(1, "", {key = "i1"}), t"->runtests();", nl()
+		i(1, "", {key = "i1"}), t"->runtests();"
 	}),
 	s({trig = "tsub", descr = "(tsub)", priority = -1000, trigEngine = te("w")}, {
 		t"sub t", i(1, "number", {key = "i1"}), t"_", i(2, "test_case", {key = "i2"}), t" :Test(", i(3, "num_of_tests", {key = "i3"}), t") {", nl(),
 		t"\tmy $self = shift;", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "trsub", descr = "(trsub)", priority = -1000, trigEngine = te("w")}, {
 		t"test ", i(1, "test_name", {key = "i1"}), t" => { description => \'", i(2, "Description of test.", {key = "i2"}), t"\'} => sub {", nl(),
 		t"\tmy ($self) = @_;", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "tprep", descr = "(tprep)", priority = -1000, trigEngine = te("w")}, {
 		t"sub prep", i(1, "number", {key = "i1"}), t"_", i(2, "test_case", {key = "i2"}), t" :Test(startup) {", nl(),
 		t"\tmy $self = shift;", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "debug_trace", descr = "(debug_trace)", priority = -1000, trigEngine = te("w")}, {
 		t"use Carp; # \'verbose\';", nl(),
@@ -433,15 +423,15 @@ ls.add_snippets("perl", {
 		t"# warn \"warning\"", nl(),
 		t"$SIG{\'__DIE__\'} = sub {", nl(),
 		t"\trequire Carp; Carp::confess", nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "dump", descr = "(dump)", priority = -1000, trigEngine = te("w")}, {
 		t"use Data::Dump qw(dump);", nl(),
-		t"warn dump ", i(1, "variable", {key = "i1"}), nl()
+		t"warn dump ", i(1, "variable", {key = "i1"})
 	}),
 	s({trig = "ddp", descr = "(ddp)", priority = -1000, trigEngine = te("w")}, {
 		t"use DDP;", nl(),
-		t"p ", i(1, "variable", {key = "i1"}), nl()
+		t"p ", i(1, "variable", {key = "i1"})
 	}),
 	s({trig = "subtest", descr = "(subtest)", priority = -1000, trigEngine = te("w")}, {
 		t"subtest \'", i(1, " test_name", {key = "i1"}), t"\' => sub {", nl(),

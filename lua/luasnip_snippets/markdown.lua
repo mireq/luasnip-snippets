@@ -179,22 +179,22 @@ ls.add_snippets("markdown", {
 		t"[", i(1, "link", {key = "i1"}), t"](", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i2"}) }) end), t" \"", i(3, "title", {key = "i3"}), t"\")"
 	}),
 	s({trig = "[:", descr = "([:)", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(1, "id", {key = "i1"}), t"]: https://", i(2, "url", {key = "i2"}), nl()
+		t"[", i(1, "id", {key = "i1"}), t"]: https://", i(2, "url", {key = "i2"})
 	}),
 	s({trig = "[:*", descr = "([:*)", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@*")}, ""), {key = "i2"}) }) end), nl()
+		t"[", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@*")}, ""), {key = "i2"}) }) end)
 	}),
 	s({trig = "[:c", descr = "([:c)", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i2"}) }) end), nl()
+		t"[", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i2"}) }) end)
 	}),
 	s({trig = "[:\"", descr = "([:\")", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(1, "id", {key = "i1"}), t"]: https://", i(2, "url", {key = "i2"}), t" \"", i(3, "title", {key = "i3"}), t"\"", nl()
+		t"[", i(1, "id", {key = "i1"}), t"]: https://", i(2, "url", {key = "i2"}), t" \"", i(3, "title", {key = "i3"}), t"\""
 	}),
 	s({trig = "[:\"*", descr = "([:\"*)", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@*")}, ""), {key = "i2"}) }) end), t" \"", i(3, "title", {key = "i3"}), t"\"", nl()
+		t"[", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@*")}, ""), {key = "i2"}) }) end), t" \"", i(3, "title", {key = "i3"}), t"\""
 	}),
 	s({trig = "[:\"c", descr = "([:\"c)", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i2"}) }) end), t" \"", i(3, "title", {key = "i3"}), t"\"", nl()
+		t"[", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i2"}) }) end), t" \"", i(3, "title", {key = "i3"}), t"\""
 	}),
 	s({trig = "![", descr = "(![)", priority = -1000, trigEngine = te("w")}, {
 		t"![", i(1, "alttext", {key = "i1"}), t"](", i(2, "/images/image.jpg", {key = "i2"}), t")"
@@ -215,19 +215,19 @@ ls.add_snippets("markdown", {
 		t"![", i(1, "alt", {key = "i1"}), t"](", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i2"}) }) end), t" \"", i(3, "title", {key = "i3"}), t"\")"
 	}),
 	s({trig = "![:", descr = "(![:)", priority = -1000, trigEngine = te("w")}, {
-		t"![", i(1, "id", {key = "i1"}), t"]: ", i(2, "url", {key = "i2"}), nl()
+		t"![", i(1, "id", {key = "i1"}), t"]: ", i(2, "url", {key = "i2"})
 	}),
 	s({trig = "![:*", descr = "(![:*)", priority = -1000, trigEngine = te("w")}, {
-		t"![", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@*")}, ""), {key = "i2"}) }) end), nl()
+		t"![", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@*")}, ""), {key = "i2"}) }) end)
 	}),
 	s({trig = "![:\"", descr = "(![:\")", priority = -1000, trigEngine = te("w")}, {
-		t"![", i(1, "id", {key = "i1"}), t"]: ", i(2, "url", {key = "i2"}), t" \"", i(3, "title", {key = "i3"}), t"\"", nl()
+		t"![", i(1, "id", {key = "i1"}), t"]: ", i(2, "url", {key = "i2"}), t" \"", i(3, "title", {key = "i3"}), t"\""
 	}),
 	s({trig = "![:\"*", descr = "(![:\"*)", priority = -1000, trigEngine = te("w")}, {
-		t"![", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@*")}, ""), {key = "i2"}) }) end), t" \"", i(3, "title", {key = "i3"}), t"\"", nl()
+		t"![", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@*")}, ""), {key = "i2"}) }) end), t" \"", i(3, "title", {key = "i3"}), t"\""
 	}),
 	s({trig = "![:\"c", descr = "(![:\"c)", priority = -1000, trigEngine = te("w")}, {
-		t"![", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i2"}) }) end), t" \"", i(3, "title", {key = "i3"}), t"\"", nl()
+		t"![", i(1, "id", {key = "i1"}), t"]: ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@+")}, ""), {key = "i2"}) }) end), t" \"", i(3, "title", {key = "i3"}), t"\""
 	}),
 	s({trig = "<", descr = "(<)", priority = -1000, trigEngine = te("w")}, {
 		t"<http://", i(1, "url", {key = "i1"}), t">"
@@ -265,60 +265,60 @@ ls.add_snippets("markdown", {
 	s({trig = "blockquote", descr = "(blockquote)", priority = -1000, trigEngine = te("w")}, {
 		t"{% blockquote %}", nl(),
 		i(0, "quote", {key = "i0"}), nl(),
-		t"{% endblockquote %}", nl()
+		t"{% endblockquote %}"
 	}),
 	s({trig = "blockquote-author", descr = "(blockquote-author)", priority = -1000, trigEngine = te("w")}, {
 		t"{% blockquote ", i(1, "author", {key = "i1"}), t", ", i(2, "title", {key = "i2"}), t" %}", nl(),
 		i(0, "quote", {key = "i0"}), nl(),
-		t"{% endblockquote %}", nl()
+		t"{% endblockquote %}"
 	}),
 	s({trig = "blockquote-link", descr = "(blockquote-link)", priority = -1000, trigEngine = te("w")}, {
 		t"{% blockquote ", i(1, "author", {key = "i1"}), t" ", i(2, "URL", {key = "i2"}), t" ", i(3, "link_text", {key = "i3"}), t" %}", nl(),
 		i(0, "quote", {key = "i0"}), nl(),
-		t"{% endblockquote %}", nl()
+		t"{% endblockquote %}"
 	}),
 	s({trig = "```", descr = "(```)", priority = -1000, trigEngine = te("w")}, {
 		t"```", i(1, "", {key = "i1"}), nl(),
 		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
-		t"```", nl()
+		t"```"
 	}),
 	s({trig = "```l", descr = "(```l)", priority = -1000, trigEngine = te("w")}, {
 		t"```", i(1, "language", {key = "i1"}), nl(),
 		i(2, "code", {key = "i2"}), nl(),
-		t"```", nl()
+		t"```"
 	}),
 	s({trig = "codeblock-short", descr = "(codeblock-short)", priority = -1000, trigEngine = te("w")}, {
 		t"{% codeblock %}", nl(),
 		i(0, "code_snippet", {key = "i0"}), nl(),
-		t"{% endcodeblock %}", nl()
+		t"{% endcodeblock %}"
 	}),
 	s({trig = "codeblock-full", descr = "(codeblock-full)", priority = -1000, trigEngine = te("w")}, {
 		t"{% codeblock ", i(1, "title", {key = "i1"}), t" lang:", i(2, "language", {key = "i2"}), t" ", i(3, "URL", {key = "i3"}), t" ", i(4, "link_text", {key = "i4"}), t" %}", nl(),
 		i(0, "code_snippet", {key = "i0"}), nl(),
-		t"{% endcodeblock %}", nl()
+		t"{% endcodeblock %}"
 	}),
 	s({trig = "gist-full", descr = "(gist-full)", priority = -1000, trigEngine = te("w")}, {
-		t"{% gist ", i(1, "gist_id", {key = "i1"}), t" ", i(0, "filename", {key = "i0"}), t" %}", nl()
+		t"{% gist ", i(1, "gist_id", {key = "i1"}), t" ", i(0, "filename", {key = "i0"}), t" %}"
 	}),
 	s({trig = "gist-short", descr = "(gist-short)", priority = -1000, trigEngine = te("w")}, {
-		t"{% gist ", i(0, "gist_id", {key = "i0"}), t" %}", nl()
+		t"{% gist ", i(0, "gist_id", {key = "i0"}), t" %}"
 	}),
 	s({trig = "img", descr = "(img) \"Image\"", priority = -50, trigEngine = te("")}, {
 		t"![", i(1, "pic alt", {key = "i1"}), t"](", i(2, "path", {key = "i2"}), tr(3, ".+", " \""), i(3, "opt title", {key = "i3"}), tr(3, ".+", "\""), t")", i(0, "", {key = "i0"})
 	}),
 	s({trig = "youtube", descr = "(youtube)", priority = -1000, trigEngine = te("w")}, {
-		t"{% youtube ", i(0, "video_id", {key = "i0"}), t" %}", nl()
+		t"{% youtube ", i(0, "video_id", {key = "i0"}), t" %}"
 	}),
 	s({trig = "tb", descr = "(tb)", priority = -1000, trigEngine = te("w")}, {
 		t"|  ", i(0, "factors", {key = "i0"}), t"      |    ", i(1, "a", {key = "i1"}), t"       |  ", i(2, "b", {key = "i2"}), t"   \t|", nl(),
 		t"| ------------- |-------------  | ------- |", nl(),
 		t"|    ", i(3, "f1", {key = "i3"}), t"    |    Y          | N       |", nl(),
-		t"|    ", i(4, "f2", {key = "i4"}), t"    |    Y          | N       |", nl()
+		t"|    ", i(4, "f2", {key = "i4"}), t"    |    Y          | N       |"
 	}),
 	s({trig = "pullquote", descr = "(pullquote)", priority = -1000, trigEngine = te("w")}, {
 		t"{% pullquote %}", nl(),
 		i(1, "text", {key = "i1"}), t" {\" ", i(2, "quote", {key = "i2"}), t" \"} ", i(0, "text", {key = "i0"}), nl(),
-		t"{% endpullquote %}", nl()
+		t"{% endpullquote %}"
 	}),
 	s({trig = ":", descr = "(:) Definition list", priority = -1000, trigEngine = te("w")}, {
 		i(1, "", {key = "i1"}), nl(),

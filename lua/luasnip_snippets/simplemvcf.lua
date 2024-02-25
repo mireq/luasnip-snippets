@@ -141,49 +141,49 @@ ls.add_snippets("simplemvcf", {
 		t"View::render(\'", i(1, "view", {key = "i1"}), t"\', $", i(2, "array", {key = "i2"}), t");"
 	}),
 	s({trig = "sm_render_template", descr = "(sm_render_template)", priority = -1000, trigEngine = te("w")}, {
-		t"View::renderTemplate(\'", i(1, "part", {key = "i1"}), t"\', $", i(2, "array", {key = "i2"}), t");", nl()
+		t"View::renderTemplate(\'", i(1, "part", {key = "i1"}), t"\', $", i(2, "array", {key = "i2"}), t");"
 	}),
 	s({trig = "sm_db_select", descr = "(sm_db_select)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->db->select(", i(1, "sql", {key = "i1"}), t", ", i(2, "where", {key = "i2"}), t");", nl()
+		t"$this->db->select(", i(1, "sql", {key = "i1"}), t", ", i(2, "where", {key = "i2"}), t");"
 	}),
 	s({trig = "sm_db_insert", descr = "(sm_db_insert)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->db->insert(", i(1, "table", {key = "i1"}), t", ", i(2, "data", {key = "i2"}), t");", nl()
+		t"$this->db->insert(", i(1, "table", {key = "i1"}), t", ", i(2, "data", {key = "i2"}), t");"
 	}),
 	s({trig = "sm_db_update", descr = "(sm_db_update)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->db->update(", i(1, "table", {key = "i1"}), t", ", i(2, "data", {key = "i2"}), t", ", i(3, "where", {key = "i3"}), t");", nl()
+		t"$this->db->update(", i(1, "table", {key = "i1"}), t", ", i(2, "data", {key = "i2"}), t", ", i(3, "where", {key = "i3"}), t");"
 	}),
 	s({trig = "sm_db_delete", descr = "(sm_db_delete)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->db->delete(", i(1, "table", {key = "i1"}), t", ", i(2, "where", {key = "i2"}), t");", nl()
+		t"$this->db->delete(", i(1, "table", {key = "i1"}), t", ", i(2, "where", {key = "i2"}), t");"
 	}),
 	s({trig = "sm_db_truncate", descr = "(sm_db_truncate)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->db->delete(", i(1, "table", {key = "i1"}), t");", nl()
+		t"$this->db->delete(", i(1, "table", {key = "i1"}), t");"
 	}),
 	s({trig = "sm_session_set", descr = "(sm_session_set)", priority = -1000, trigEngine = te("w")}, {
-		t"Session::set(", i(1, "key", {key = "i1"}), t", ", i(2, "value", {key = "i2"}), t");", nl()
+		t"Session::set(", i(1, "key", {key = "i1"}), t", ", i(2, "value", {key = "i2"}), t");"
 	}),
 	s({trig = "sm_session_get", descr = "(sm_session_get)", priority = -1000, trigEngine = te("w")}, {
-		t"Session::get(", i(1, "key", {key = "i1"}), t");", nl()
+		t"Session::get(", i(1, "key", {key = "i1"}), t");"
 	}),
 	s({trig = "sm_session_pull", descr = "(sm_session_pull)", priority = -1000, trigEngine = te("w")}, {
-		t"Session::pull(", i(1, "key", {key = "i1"}), t");", nl()
+		t"Session::pull(", i(1, "key", {key = "i1"}), t");"
 	}),
 	s({trig = "sm_session_id", descr = "(sm_session_id)", priority = -1000, trigEngine = te("w")}, {
-		t"Session::id();", nl()
+		t"Session::id();"
 	}),
 	s({trig = "sm_session_destroy", descr = "(sm_session_destroy)", priority = -1000, trigEngine = te("w")}, {
-		t"Session::set(", i(1, "key", {key = "i1"}), t");", nl()
+		t"Session::set(", i(1, "key", {key = "i1"}), t");"
 	}),
 	s({trig = "sm_session_display", descr = "(sm_session_display)", priority = -1000, trigEngine = te("w")}, {
-		t"Session::display();", nl()
+		t"Session::display();"
 	}),
 	s({trig = "sm_url_redirect", descr = "(sm_url_redirect)", priority = -1000, trigEngine = te("w")}, {
-		t"Url:redirect(\'", i(1, "path", {key = "i1"}), t"\');", nl()
+		t"Url:redirect(\'", i(1, "path", {key = "i1"}), t"\');"
 	}),
 	s({trig = "sm_url_previous", descr = "(sm_url_previous)", priority = -1000, trigEngine = te("w")}, {
-		t"Url:previous();", nl()
+		t"Url:previous();"
 	}),
 	s({trig = "sm_url_templatepath", descr = "(sm_url_templatepath)", priority = -1000, trigEngine = te("w")}, {
-		t"Url:templatePath();", nl()
+		t"Url:templatePath();"
 	}),
 	s({trig = "sm_url_autolink", descr = "(sm_url_autolink)", priority = -1000, trigEngine = te("w")}, {
 		t"Url:autolink(\'", i(1, "string", {key = "i1"}), t"\');"

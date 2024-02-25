@@ -343,7 +343,7 @@ ls.add_snippets("scala", {
 		i(1, "name", {key = "i1"}), t".asInstanceOf[", i(2, "T", {key = "i2"}), t"]"
 	}),
 	s({trig = "is", descr = "(is)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "name", {key = "i1"}), t".isInstanceOf[", i(2, "T", {key = "i2"}), t"]", nl()
+		i(1, "name", {key = "i1"}), t".isInstanceOf[", i(2, "T", {key = "i2"}), t"]"
 	}),
 	s({trig = "(a", descr = "((a)", priority = -1000, trigEngine = te("w")}, {
 		t"(", i(1, "a", {key = "i1"}), t" => ", i(0, "", {key = "i0"}), t")"

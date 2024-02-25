@@ -229,7 +229,7 @@ ls.add_snippets("laravel", {
 		t"\tpublic function find($id, $columns = array(\'*\')) {", nl(),
 		t"\t\treturn $this->model->find($id, $columns);", nl(),
 		t"\t}", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "l_r", descr = "(l_r)", priority = -1000, trigEngine = te("w")}, {
 		t"/*!", nl(),

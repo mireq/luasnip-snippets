@@ -57,13 +57,13 @@ ls.add_snippets("javascript-bemjson", {
 		t"\tcontent : [", nl(),
 		t"\t\t\'", i(2, "content", {key = "i2"}), t"\'", nl(),
 		t"\t]", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "btc", descr = "(btc)", priority = -1000, trigEngine = te("w")}, {
 		t"{", nl(),
 		t"\t block : \'", i(1, "name", {key = "i1"}), t"\',", nl(),
 		t"\t content: \'", i(2, "content", {key = "i2"}), t"\'", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "bwm", descr = "(bwm)", priority = -1000, trigEngine = te("w")}, {
 		t"{", nl(),
@@ -72,7 +72,7 @@ ls.add_snippets("javascript-bemjson", {
 		t"\tcontent : [", nl(),
 		t"\t\t\'", i(4, "content", {key = "i4"}), t"\'", nl(),
 		t"\t]", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "e", descr = "(e)", priority = -1000, trigEngine = te("w")}, {
 		t"{", nl(),
@@ -80,16 +80,15 @@ ls.add_snippets("javascript-bemjson", {
 		t"\tcontent : [", nl(),
 		t"\t\t\'", i(2, "content", {key = "i2"}), t"\'", nl(),
 		t"\t]", nl(),
-		t"}", nl(),
-		nl()
+		t"}"
 	}),
 	s({trig = "mo", descr = "(mo)", priority = -1000, trigEngine = te("w")}, {
-		t"mods : { ", i(1, "modName", {key = "i1"}), t" : \'", i(2, "modVal", {key = "i2"}), t"\' },", nl()
+		t"mods : { ", i(1, "modName", {key = "i1"}), t" : \'", i(2, "modVal", {key = "i2"}), t"\' },"
 	}),
 	s({trig = "mi", descr = "(mi)", priority = -1000, trigEngine = te("w")}, {
-		t"mix : [ { ", i(1, "block", {key = "i1"}), t" : \'", i(2, "block", {key = "i2"}), t"\' } ],", nl()
+		t"mix : [ { ", i(1, "block", {key = "i1"}), t" : \'", i(2, "block", {key = "i2"}), t"\' } ],"
 	}),
 	s({trig = "a", descr = "(a)", priority = -1000, trigEngine = te("w")}, {
-		t"attrs : { ", i(1, "attr", {key = "i1"}), t" : \'", i(2, "val", {key = "i2"}), t"\' },", nl()
+		t"attrs : { ", i(1, "attr", {key = "i1"}), t" : \'", i(2, "val", {key = "i2"}), t"\' },"
 	}),
 })

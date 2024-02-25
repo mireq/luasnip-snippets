@@ -384,11 +384,11 @@ ls.add_snippets("php", {
 		t" *", nl(),
 		t" * @var ", i(4, "string", {key = "i4"}), nl(),
 		t" */", nl(),
-		i(1, "var", {key = "i1"}), t" $", i(2, "", {key = "i2"}), t";", nl()
+		i(1, "var", {key = "i1"}), t" $", i(2, "", {key = "i2"}), t";"
 	}),
 	s({trig = "att", descr = "(att)", priority = -1000, trigEngine = te("w")}, {
 		t"/** @var ", i(3, "string", {key = "i3"}), t" */", nl(),
-		i(1, "public", {key = "i1"}), t" $", i(2, "", {key = "i2"}), t";", nl()
+		i(1, "public", {key = "i1"}), t" $", i(2, "", {key = "i2"}), t";"
 	}),
 	s({trig = "doc_c", descr = "(doc_c)", priority = -1000, trigEngine = te("w")}, {
 		t"/**", nl(),

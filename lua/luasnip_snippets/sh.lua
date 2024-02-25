@@ -99,13 +99,13 @@ ls.add_snippets("sh", {
 	}),
 	s({trig = "s#!", descr = "(s#!)", priority = -1000, trigEngine = te("w")}, {
 		t"#!/bin/sh", nl(),
-		t"set -eu", nl()
+		t"set -eu"
 	}),
 	s({trig = "safe", descr = "(safe)", priority = -1000, trigEngine = te("w")}, {
-		t"set -eu", nl()
+		t"set -eu"
 	}),
 	s({trig = "bash", descr = "(bash)", priority = -1000, trigEngine = te("w")}, {
-		t"#!/usr/bin/env bash", nl()
+		t"#!/usr/bin/env bash"
 	}),
 	s({trig = "sbash", descr = "(sbash) \"safe bash options\"", priority = -50, trigEngine = te("b")}, {
 		t"#!/usr/bin/env bash", nl(),
@@ -202,12 +202,12 @@ ls.add_snippets("sh", {
 		t"shift $(($OPTIND-1))"
 	}),
 	s({trig = "root", descr = "(root)", priority = -1000, trigEngine = te("w")}, {
-		t"if [ $(id -u) -ne 0 ]; then exec sudo $0; fi", nl()
+		t"if [ $(id -u) -ne 0 ]; then exec sudo $0; fi"
 	}),
 	s({trig = "fun-sh", descr = "(fun-sh)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "function_name", {key = "i1"}), t"() {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "fun", descr = "(fun)", priority = -1000, trigEngine = te("w")}, {
 		t"function ", i(1, "function_name", {key = "i1"}), t"() {", nl(),

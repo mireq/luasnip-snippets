@@ -316,7 +316,7 @@ ls.add_snippets("rst", {
 		t"\\ *", i(1, "Emphasis", {key = "i1"}), t"*\\ ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "**c", descr = "(**c)", priority = -1000, trigEngine = te("w")}, {
-		t"\\ **", i(1, "Strong emphasis", {key = "i1"}), t"**\\ ", i(0, "", {key = "i0"}), nl()
+		t"\\ **", i(1, "Strong emphasis", {key = "i1"}), t"**\\ ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "part", descr = "(part) \"Part\"", priority = -50, trigEngine = te("b")}, {
 		f(function(args, snip) return c_py({"rst", 29}, "snip.rv = display_width(t[1])*\'#\'", python_globals, args, snip, "", am[29]) end, ae(am[29])), nl(),

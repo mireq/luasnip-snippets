@@ -75,7 +75,7 @@ ls.add_snippets("rmd", {
 		t"% ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i2"}) }) end), nl(),
 		t"% ", d(3, function(args, snip) return sn(nil, { i(1, jt({c_viml("strftime(\"%d %b %Y\")")}, ""), {key = "i3"}) }) end), nl(),
 		nl(),
-		i(4, "", {key = "i4"}), nl()
+		i(4, "", {key = "i4"})
 	}),
 	s({trig = "req", descr = "(req)", priority = -1000, trigEngine = te("w")}, {
 		t"require(", i(1, "", {key = "i1"}), t", quietly = TRUE)"
@@ -90,7 +90,7 @@ ls.add_snippets("rmd", {
 		t"else", nl(),
 		t"{", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "fun", descr = "(fun)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "funname", {key = "i1"}), t" <- \t\t\t# ", i(2, "", {key = "i2"}), nl(),
@@ -106,20 +106,20 @@ ls.add_snippets("rmd", {
 		t"repeat{", nl(),
 		t"  ", i(2, "", {key = "i2"}), nl(),
 		t"  if(", i(1, "", {key = "i1"}), t") break", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "ma", descr = "(ma)", priority = -1000, trigEngine = te("w")}, {
-		t"matrix(NA, nrow = ", i(1, "", {key = "i1"}), t", ncol = ", i(2, "", {key = "i2"}), t")", nl()
+		t"matrix(NA, nrow = ", i(1, "", {key = "i1"}), t", ncol = ", i(2, "", {key = "i2"}), t")"
 	}),
 	s({trig = "df", descr = "(df)", priority = -1000, trigEngine = te("w")}, {
-		t"data.frame(", i(1, "", {key = "i1"}), t", header = TRUE)", nl()
+		t"data.frame(", i(1, "", {key = "i1"}), t", header = TRUE)"
 	}),
 	s({trig = "cmdarg", descr = "(cmdarg)", priority = -1000, trigEngine = te("w")}, {
 		t"args <- commandArgs(TRUE)", nl(),
 		t"if (length(args) == 0)", nl(),
 		t"    stop(\"Please give ", i(1, "", {key = "i1"}), t"!\")", nl(),
 		t"if (!all(file.exists(args)))", nl(),
-		t"     stop(\"Couln\'t find input files!\")", nl()
+		t"     stop(\"Couln\'t find input files!\")"
 	}),
 	s({trig = "getopt", descr = "(getopt)", priority = -1000, trigEngine = te("w")}, {
 		t"require(\'getopt\', quietly = TRUE)", nl(),
@@ -133,7 +133,7 @@ ls.add_snippets("rmd", {
 		t"    q(status=0)", nl(),
 		t"}", nl(),
 		t"# some inital value", nl(),
-		t"if ( is.null(opt$???) )    { opt$??? <- ??? }", nl()
+		t"if ( is.null(opt$???) )    { opt$??? <- ??? }"
 	}),
 	s({trig = "optparse", descr = "(optparse)", priority = -1000, trigEngine = te("w")}, {
 		t"require(\"optparse\", quietly = TRUE)", nl(),
@@ -157,10 +157,10 @@ ls.add_snippets("rmd", {
 		t"    stop(sprintf(\"Specified file ( %s ) does not exist\", file))", nl(),
 		t"} else {", nl(),
 		t"    file_text <- readLines(file)", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
-		t"#!/usr/bin/env Rscript", nl()
+		t"#!/usr/bin/env Rscript"
 	}),
 	s({trig = "debug", descr = "(debug)", priority = -1000, trigEngine = te("w")}, {
 		t"# Development & Debugging, don\'t forget to uncomment afterwards!", nl(),
@@ -168,8 +168,7 @@ ls.add_snippets("rmd", {
 		t"#setwd(\"~/Projekte/", i(1, "", {key = "i1"}), t"\")", nl(),
 		t"#opt <- list(", i(2, "", {key = "i2"}), nl(),
 		t"#            )", nl(),
-		t"#--------------------------------------------------------------------------------", nl(),
-		nl()
+		t"#--------------------------------------------------------------------------------"
 	}),
 	s({trig = "#===", descr = "(#===)", priority = -1000, trigEngine = te("w")}, {
 		t"#", f(function(args, snip) return c_viml("repeat(\'=\', strlen(getline(line(\".\") - 1)))") end), nl(),
@@ -177,7 +176,7 @@ ls.add_snippets("rmd", {
 	}),
 	s({trig = "#---", descr = "(#---)", priority = -1000, trigEngine = te("w")}, {
 		t"#", f(function(args, snip) return c_viml("repeat(\'-\', strlen(getline(line(\".\") - 1)))") end), nl(),
-		i(1, "", {key = "i1"}), nl()
+		i(1, "", {key = "i1"})
 	}),
 	s({trig = "r", descr = "(r)", priority = -1000, trigEngine = te("w")}, {
 		t"```{r ", i(1, "chung_tag", {key = "i1"}), t", echo = FALSE ", i(2, "options", {key = "i2"}), t"}", nl(),
@@ -185,14 +184,13 @@ ls.add_snippets("rmd", {
 		t"```"
 	}),
 	s({trig = "ri", descr = "(ri)", priority = -1000, trigEngine = te("w")}, {
-		t"`{r ", i(1, "", {key = "i1"}), t"}`", nl()
+		t"`{r ", i(1, "", {key = "i1"}), t"}`"
 	}),
 	s({trig = "copt", descr = "(copt)", priority = -1000, trigEngine = te("w")}, {
 		t"``` {r setup, echo = FALSE}", nl(),
 		t"\topts_chunk$set(fig.path=\'../figures/", i(1, "", {key = "i1"}), t"\', cache.path=\'../cache/-\'", nl(),
 		t"\t, fig.align=\'center\', fig.show=\'hold\', par=TRUE)\t", nl(),
 		t"\t#opts_knit$set(upload.fun = imgur_upload) # upload images", nl(),
-		t"```", nl(),
-		nl()
+		t"```"
 	}),
 })

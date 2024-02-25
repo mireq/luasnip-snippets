@@ -51,19 +51,19 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("jade", {
 	s({trig = "rep", descr = "(rep)", priority = -1000, trigEngine = te("w")}, {
-		t"div(ng-repeat=\'", i(1, "", {key = "i1"}), t" in ", i(2, "", {key = "i2"}), t"\')", nl()
+		t"div(ng-repeat=\'", i(1, "", {key = "i1"}), t" in ", i(2, "", {key = "i2"}), t"\')"
 	}),
 	s({trig = "repf", descr = "(repf)", priority = -1000, trigEngine = te("w")}, {
-		t"div(ng-repeat=\'", i(1, "", {key = "i1"}), t" in ", i(2, "", {key = "i2"}), t"\' | ", i(3, "", {key = "i3"}), t")", nl()
+		t"div(ng-repeat=\'", i(1, "", {key = "i1"}), t" in ", i(2, "", {key = "i2"}), t"\' | ", i(3, "", {key = "i3"}), t")"
 	}),
 	s({trig = "repi", descr = "(repi)", priority = -1000, trigEngine = te("w")}, {
-		t"div(ng-repeat=\'", i(1, "", {key = "i1"}), t" in ", i(2, "", {key = "i2"}), t"\' track by $index)", nl()
+		t"div(ng-repeat=\'", i(1, "", {key = "i1"}), t" in ", i(2, "", {key = "i2"}), t"\' track by $index)"
 	}),
 	s({trig = "hide", descr = "(hide)", priority = -1000, trigEngine = te("w")}, {
-		t"div(ng-hide=\'", i(1, "", {key = "i1"}), t"\')", nl()
+		t"div(ng-hide=\'", i(1, "", {key = "i1"}), t"\')"
 	}),
 	s({trig = "show", descr = "(show)", priority = -1000, trigEngine = te("w")}, {
-		t"div(ng-show=\'", i(1, "", {key = "i1"}), t"\')", nl()
+		t"div(ng-show=\'", i(1, "", {key = "i1"}), t"\')"
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"div(ng-if=\'", i(1, "", {key = "i1"}), t"\')"

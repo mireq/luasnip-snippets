@@ -167,7 +167,7 @@ ls.add_snippets("puppet", {
 		t"\t", i(5, "String", {key = "i5"}), t" $", cp(4), t" = undef,", nl(),
 		t") {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "defheader", descr = "(defheader)", priority = -1000, trigEngine = te("w")}, {
 		t"# ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(expand(\'%:p:s?.*modules/??:h:h\'), \'define-name\')")}, ""), {key = "i1"}) }) end), nl(),
@@ -191,7 +191,7 @@ ls.add_snippets("puppet", {
 		t"\t$", cp(4), t" = undef,", nl(),
 		t") {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "class", descr = "(class) \"Class declaration\"", priority = -50, trigEngine = te("b")}, {
 		t"class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"puppet", 3}, "snip.rv = get_module_namespace_and_basename()", python_globals, args, snip, "", am[3])}, ""), {key = "i1"}) }) end), t" {", nl(),
@@ -339,12 +339,12 @@ ls.add_snippets("puppet", {
 	s({trig = "host", descr = "(host)", priority = -1000, trigEngine = te("w")}, {
 		t"host { \"", i(1, "hostname", {key = "i1"}), t"\":", nl(),
 		t"\tip => ", i(0, "127.0.0.1", {key = "i0"}), t",", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "mailalias", descr = "(mailalias)", priority = -1000, trigEngine = te("w")}, {
 		t"mailalias { \"", i(1, "localpart", {key = "i1"}), t"\":", nl(),
 		t"\trecipient => \"", i(0, "recipient", {key = "i0"}), t"\",", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "mount", descr = "(mount) \"Mount resource type\"", priority = -50, trigEngine = te("b")}, {
 		t"mount { \'", i(1, "path", {key = "i1"}), t"\':", nl(),
@@ -355,7 +355,7 @@ ls.add_snippets("puppet", {
 		t"}"
 	}),
 	s({trig = "notify", descr = "(notify)", priority = -1000, trigEngine = te("w")}, {
-		t"notify { \"", i(1, "message", {key = "i1"}), t"\": }", nl()
+		t"notify { \"", i(1, "message", {key = "i1"}), t"\": }"
 	}),
 	s({trig = "package", descr = "(package) \"Package resource type\"", priority = -50, trigEngine = te("b")}, {
 		t"package { \'", i(1, "name", {key = "i1"}), t"\':", nl(),
@@ -366,7 +366,7 @@ ls.add_snippets("puppet", {
 		t"yumrepo { \"", i(1, "repo name", {key = "i1"}), t"\":", nl(),
 		t"\tdescr   => \"", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, "\t"), {key = "i2"}) }) end, {k"i1"}), t"\",", nl(),
 		t"\tenabled => ", i(0, "1", {key = "i0"}), t",", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "define", descr = "(define) \"Definition\"", priority = -50, trigEngine = te("b")}, {
 		t"define ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"puppet", 43}, "snip.rv = get_module_namespace_and_basename()", python_globals, args, snip, "", am[43])}, ""), {key = "i1"}) }) end), t" {", nl(),
@@ -394,14 +394,14 @@ ls.add_snippets("puppet", {
 		t"\ttarget     => \"", i(5, "target", {key = "i5"}), t"\",", nl(),
 		t"\tchecksum   => ", i(6, "false", {key = "i6"}), t",", nl(),
 		t"\tsrc_target => \"", i(7, "/tmp", {key = "i7"}), t"\",", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "firewall", descr = "(firewall)", priority = -1000, trigEngine = te("w")}, {
 		t"firewall { \"", i(1, "comment", {key = "i1"}), t"\":", nl(),
 		t"\tproto\t=> ", i(2, "tcp", {key = "i2"}), t",", nl(),
 		t"\taction\t=> ", i(3, "accept", {key = "i3"}), t",", nl(),
 		t"\tport\t=> ", i(4, "", {key = "i4"}), t",", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "type", descr = "(type) \"Data type alias\"", priority = -50, trigEngine = te("b")}, {
 		t"type ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"puppet", 48}, "snip.rv = get_module_namespace_and_basename()", python_globals, args, snip, "", am[48])}, ""), {key = "i1"}) }) end), t" = ", i(2, "Type", {key = "i2"})

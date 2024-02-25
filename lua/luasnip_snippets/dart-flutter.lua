@@ -58,7 +58,7 @@ ls.add_snippets("dart-flutter", {
 		t"\t\t\t", i(2, "", {key = "i2"}), nl(),
 		t"\t\t);", nl(),
 		t"\t}", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "stful", descr = "(stful)", priority = -1000, trigEngine = te("w")}, {
 		t"class ", i(1, "", {key = "i1"}), t" extends StatefulWidget {", nl(),
@@ -75,7 +75,7 @@ ls.add_snippets("dart-flutter", {
 		t"\t\t\t", i(2, "", {key = "i2"}), nl(),
 		t"\t\t);", nl(),
 		t"\t}", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "stanim", descr = "(stanim)", priority = -1000, trigEngine = te("w")}, {
 		t"class ", i(1, "", {key = "i1"}), t" extends StatefulWidget {", nl(),
@@ -107,7 +107,7 @@ ls.add_snippets("dart-flutter", {
 		t"\t\t\t", i(2, "", {key = "i2"}), nl(),
 		t"\t\t);", nl(),
 		t"\t}", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "fsa", descr = "(fsa)", priority = -1000, trigEngine = te("w")}, {
 		t"void main() {", nl(),

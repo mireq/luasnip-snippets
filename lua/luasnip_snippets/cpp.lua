@@ -330,7 +330,7 @@ ls.add_snippets("cpp", {
 	s({trig = "iter", descr = "(iter)", priority = -1000, trigEngine = te("w")}, {
 		t"for (", i(1, "std::vector", {key = "i1"}), t"<", i(2, "type", {key = "i2"}), t">::", i(3, "const_iterator", {key = "i3"}), t" ", i(4, "i", {key = "i4"}), t" = ", i(5, "container", {key = "i5"}), t".begin(); ", cp(4), t" != ", cp(5), t".end(); ++", cp(4), t") {", nl(),
 		t"\t", i(6, "", {key = "i6"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "itera", descr = "(itera) \"Auto iterator\"", priority = 0, trigEngine = te("")}, {
 		t"for (auto ", i(1, "i", {key = "i1"}), t" = ", cp(1), t".begin(); ", cp(1), t" != ", cp(1), t".end(); ++", cp(1), t") {", nl(),

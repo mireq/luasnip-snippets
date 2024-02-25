@@ -534,7 +534,7 @@ ls.add_snippets("rails", {
 		t"before_save :", i(0, "method", {key = "i0"})
 	}),
 	s({trig = "mbd", descr = "(mbd)", priority = -1000, trigEngine = te("w")}, {
-		t"before_destroy :", i(0, "method", {key = "i0"}), nl()
+		t"before_destroy :", i(0, "method", {key = "i0"})
 	}),
 	s({trig = "mav", descr = "(mav)", priority = -1000, trigEngine = te("w")}, {
 		t"after_validation :", i(0, "method", {key = "i0"})
@@ -555,7 +555,7 @@ ls.add_snippets("rails", {
 		t"after_save :", i(0, "method", {key = "i0"})
 	}),
 	s({trig = "mad", descr = "(mad)", priority = -1000, trigEngine = te("w")}, {
-		t"after_destroy :", i(0, "method", {key = "i0"}), nl()
+		t"after_destroy :", i(0, "method", {key = "i0"})
 	}),
 	s({trig = "marc", descr = "(marc)", priority = -1000, trigEngine = te("w")}, {
 		t"around_create :", i(0, "method", {key = "i0"})
@@ -567,7 +567,7 @@ ls.add_snippets("rails", {
 		t"around_save :", i(0, "method", {key = "i0"})
 	}),
 	s({trig = "mard", descr = "(mard)", priority = -1000, trigEngine = te("w")}, {
-		t"around_destroy :", i(0, "method", {key = "i0"}), nl()
+		t"around_destroy :", i(0, "method", {key = "i0"})
 	}),
 	s({trig = "mcht", descr = "(mcht)", priority = -1000, trigEngine = te("w")}, {
 		t"change_table :", i(1, "table_name", {key = "i1"}), t" do |t|", nl(),

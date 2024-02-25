@@ -1240,93 +1240,93 @@ ls.add_snippets("javascript", {
 		i(1, "obj", {key = "i1"}), t".wrap(\'", i(2, "&lt;div class=\"extra-wrapper\"&gt;&lt;/div&gt;", {key = "i2"}), t"\')"
 	}),
 	s({trig = "ir", descr = "(ir) import React", priority = -1000, trigEngine = te("w")}, {
-		t"import React from \'react\';", nl()
+		t"import React from \'react\';"
 	}),
 	s({trig = "irc", descr = "(irc) import React and Component", priority = -1000, trigEngine = te("w")}, {
-		t"import React, { Component } from \'react\';", nl()
+		t"import React, { Component } from \'react\';"
 	}),
 	s({trig = "irh", descr = "(irh) import React hooks", priority = -1000, trigEngine = te("w")}, {
-		t"import { use", i(1, "", {key = "i1"}), t" } from \'react\';", nl()
+		t"import { use", i(1, "", {key = "i1"}), t" } from \'react\';"
 	}),
 	s({trig = "ird", descr = "(ird) import ReactDOM", priority = -1000, trigEngine = te("w")}, {
-		t"import ReactDOM from \'react-dom\';", nl()
+		t"import ReactDOM from \'react-dom\';"
 	}),
 	s({trig = "irp", descr = "(irp) import PropTypes", priority = -1000, trigEngine = te("w")}, {
-		t"import PropTypes from \'prop-types\';", nl()
+		t"import PropTypes from \'prop-types\';"
 	}),
 	s({trig = "cdm", descr = "(cdm) componentDidMount", priority = -1000, trigEngine = te("w")}, {
 		t"componentDidMount() {", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "cdup", descr = "(cdup) componentDidUpdate", priority = -1000, trigEngine = te("w")}, {
 		t"componentDidUpdate(prevProps, prevState) {", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "cwm", descr = "(cwm) componentWillMount", priority = -1000, trigEngine = te("w")}, {
 		t"componentWillMount() {", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "cwr", descr = "(cwr) componentWillReceiveProps", priority = -1000, trigEngine = te("w")}, {
 		t"componentWillReceiveProps(nextProps) {", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "cwun", descr = "(cwun) componentWillUnmount", priority = -1000, trigEngine = te("w")}, {
 		t"componentWillUnmount() {", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "cwu", descr = "(cwu) componentWillUpdate", priority = -1000, trigEngine = te("w")}, {
 		t"componentWillUpdate(nextProps, nextState) {", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "scu", descr = "(scu) shouldComponentUpdate", priority = -1000, trigEngine = te("w")}, {
 		t"shouldComponentUpdate(nextProps, nextState) {", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "spt", descr = "(spt) static propTypes", priority = -1000, trigEngine = te("w")}, {
 		t"static propTypes = {", nl(),
 		t"\t", i(1, "", {key = "i1"}), t": PropTypes.", i(2, "", {key = "i2"}), nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "pt", descr = "(pt) propTypes", priority = -1000, trigEngine = te("w")}, {
 		i(1, "", {key = "i1"}), t".propTypes = {", nl(),
 		t"\t", i(2, "", {key = "i2"}), t": PropTypes.", cp(2), nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "sdp", descr = "(sdp) static defaultProps", priority = -1000, trigEngine = te("w")}, {
 		t"static defaultProps = {", nl(),
 		t"\t", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), t"\t", nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "dp", descr = "(dp) defaultProps", priority = -1000, trigEngine = te("w")}, {
 		i(1, "", {key = "i1"}), t".defaultProps = {", nl(),
 		t"\t", i(2, "", {key = "i2"}), t": ", i(3, "", {key = "i3"}), nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "pp", descr = "(pp) props", priority = -1000, trigEngine = te("w")}, {
-		t"props.", i(1, "", {key = "i1"}), t";", nl()
+		t"props.", i(1, "", {key = "i1"}), t";"
 	}),
 	s({trig = "tp", descr = "(tp) this props", priority = -1000, trigEngine = te("w")}, {
-		t"this.props.", i(1, "", {key = "i1"}), t";", nl()
+		t"this.props.", i(1, "", {key = "i1"}), t";"
 	}),
 	s({trig = "st", descr = "(st)", priority = -1000, trigEngine = te("w")}, {
 		t"state = {", nl(),
 		t"\t", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), t",", nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "sst", descr = "(sst)", priority = -1000, trigEngine = te("w")}, {
 		t"this.setState({", nl(),
 		t"\t", i(1, "", {key = "i1"}), t": ", i(2, "", {key = "i2"}), nl(),
-		t"});", nl()
+		t"});"
 	}),
 	s({trig = "tst", descr = "(tst)", priority = -1000, trigEngine = te("w")}, {
-		t"this.state.", i(1, "", {key = "i1"}), t";", nl()
+		t"this.state.", i(1, "", {key = "i1"}), t";"
 	}),
 	s({trig = "raf", descr = "(raf)", priority = -1000, trigEngine = te("w")}, {
 		t"const ", i(1, "ComponentName", {key = "i1"}), t" = (", i(2, "props", {key = "i2"}), t") => {", nl(),
@@ -1337,7 +1337,7 @@ ls.add_snippets("javascript", {
 		t"\t\t\t", i(4, "", {key = "i4"}), nl(),
 		t"\t\t</>", nl(),
 		t"\t);", nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "rcla", descr = "(rcla)", priority = -1000, trigEngine = te("w")}, {
 		t"class ", i(1, "ClassName", {key = "i1"}), t" extends Component {", nl(),
@@ -1348,7 +1348,7 @@ ls.add_snippets("javascript", {
 		t"\t\t\t</>", nl(),
 		t"\t\t);", nl(),
 		t"\t}", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "ercla", descr = "(ercla)", priority = -1000, trigEngine = te("w")}, {
 		t"export default class ", i(1, "ClassName", {key = "i1"}), t" extends Component {", nl(),
@@ -1359,14 +1359,14 @@ ls.add_snippets("javascript", {
 		t"\t\t\t</>", nl(),
 		t"\t\t);", nl(),
 		t"\t};", nl(),
-		t"};", nl()
+		t"};"
 	}),
 	s({trig = "ctor", descr = "(ctor)", priority = -1000, trigEngine = te("w")}, {
 		t"constructor() {", nl(),
 		t"\tsuper();", nl(),
 		nl(),
 		t"\t", i(1, "state", {key = "i1"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "ren", descr = "(ren)", priority = -1000, trigEngine = te("w")}, {
 		t"render() {", nl(),
@@ -1375,27 +1375,27 @@ ls.add_snippets("javascript", {
 		t"\t\t\t", i(1, "", {key = "i2"}), nl(),
 		t"\t\t</>", nl(),
 		t"\t);", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "fup", descr = "(fup)", priority = -1000, trigEngine = te("w")}, {
-		t"forceUpdate(", i(1, "callback", {key = "i1"}), t");", nl()
+		t"forceUpdate(", i(1, "callback", {key = "i1"}), t");"
 	}),
 	s({trig = "uses", descr = "(uses) useState", priority = -1000, trigEngine = te("w")}, {
-		t"const [", i(1, "state", {key = "i1"}), t", set", i(2, "", {key = "i2"}), t"] = useState(", i(3, "initialState", {key = "i3"}), t");", nl()
+		t"const [", i(1, "state", {key = "i1"}), t", set", i(2, "", {key = "i2"}), t"] = useState(", i(3, "initialState", {key = "i3"}), t");"
 	}),
 	s({trig = "usee", descr = "(usee) useEffect", priority = -1000, trigEngine = te("w")}, {
 		t"useEffect(() => {", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"});", nl()
+		t"});"
 	}),
 	s({trig = "userd", descr = "(userd) useReducer", priority = -1000, trigEngine = te("w")}, {
-		t"const [", i(1, "state", {key = "i1"}), t", ", i(2, "dispatch", {key = "i2"}), t"] = useReducer(", i(3, "reducer", {key = "i3"}), t");", nl()
+		t"const [", i(1, "state", {key = "i1"}), t", ", i(2, "dispatch", {key = "i2"}), t"] = useReducer(", i(3, "reducer", {key = "i3"}), t");"
 	}),
 	s({trig = "userf", descr = "(userf) useRef", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "refContainer", {key = "i1"}), t" = useRef(", i(2, "initialValue", {key = "i2"}), t");", nl()
+		t"const ", i(1, "refContainer", {key = "i1"}), t" = useRef(", i(2, "initialValue", {key = "i2"}), t");"
 	}),
 	s({trig = "usect", descr = "(usect) useContext", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "value", {key = "i1"}), t" = useContext(", i(2, "MyContext", {key = "i2"}), t");", nl()
+		t"const ", i(1, "value", {key = "i1"}), t" = useContext(", i(2, "MyContext", {key = "i2"}), t");"
 	}),
 	s({trig = "usecb", descr = "(usecb) useCallback", priority = -1000, trigEngine = te("w")}, {
 		t"const ", i(1, "memoizedCallback", {key = "i1"}), t" = useCallback(", nl(),
@@ -1403,22 +1403,22 @@ ls.add_snippets("javascript", {
 		t"\t", i(2, "", {key = "i2"}), t"(", i(3, "", {key = "i3"}), t")", nl(),
 		t"},", nl(),
 		t"[", cp(3), t"]", nl(),
-		t");", nl()
+		t");"
 	}),
 	s({trig = "usem", descr = "(usem) useMemo", priority = -1000, trigEngine = te("w")}, {
-		t"const ", i(1, "memoizedCallback", {key = "i1"}), t" = useMemo(() => ", i(2, "", {key = "i2"}), t"(", i(3, "", {key = "i3"}), t"), [", cp(3), t"]);", nl()
+		t"const ", i(1, "memoizedCallback", {key = "i1"}), t" = useMemo(() => ", i(2, "", {key = "i2"}), t"(", i(3, "", {key = "i3"}), t"), [", cp(3), t"]);"
 	}),
 	s({trig = "usei", descr = "(usei) useImperativeHandle", priority = -1000, trigEngine = te("w")}, {
-		t"useImperativeHandle(", i(1, "ref", {key = "i1"}), t", ", i(2, "createHandle", {key = "i2"}), t");", nl()
+		t"useImperativeHandle(", i(1, "ref", {key = "i1"}), t", ", i(2, "createHandle", {key = "i2"}), t");"
 	}),
 	s({trig = "used", descr = "(used) useDebugValue", priority = -1000, trigEngine = te("w")}, {
-		t"useDebugValue(", i(1, "value", {key = "i1"}), t");", nl()
+		t"useDebugValue(", i(1, "value", {key = "i1"}), t");"
 	}),
 	s({trig = "rdr", descr = "(rdr) ReactDOM.render", priority = -1000, trigEngine = te("w")}, {
-		t"ReactDOM.render(", i(1, "", {key = "i1"}), t", ", i(2, "", {key = "i2"}), t");", nl()
+		t"ReactDOM.render(", i(1, "", {key = "i1"}), t", ", i(2, "", {key = "i2"}), t");"
 	}),
 	s({trig = "rdh", descr = "(rdh) ReactDOM.hydrate", priority = -1000, trigEngine = te("w")}, {
-		t"ReactDOM.hydrate(", i(1, "element", {key = "i1"}), t", ", i(2, "container", {key = "i2"}), t"[, ", i(3, "callback", {key = "i3"}), t"]);", nl()
+		t"ReactDOM.hydrate(", i(1, "element", {key = "i1"}), t", ", i(2, "container", {key = "i2"}), t"[, ", i(3, "callback", {key = "i3"}), t"]);"
 	}),
 	s({trig = "rdcp", descr = "(rdcp) ReactDOM.createPortal", priority = -1000, trigEngine = te("w")}, {
 		t"ReactDOM.createPortal(", i(1, "child", {key = "i1"}), t", ", i(2, "container", {key = "i2"}), t");"
@@ -1469,12 +1469,12 @@ ls.add_snippets("javascript", {
 	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
 		t"define([\"", i(1, "#dependencies1", {key = "i1"}), t"\"], function (", i(2, "#dependencies2", {key = "i2"}), t") {", nl(),
 		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
-		t"});", nl()
+		t"});"
 	}),
 	s({trig = "defn", descr = "(defn)", priority = -1000, trigEngine = te("w")}, {
 		t"define(\"", i(1, "#name", {key = "i1"}), t"\", [\"", i(2, "#dependencies1", {key = "i2"}), t"\"], function (", i(3, "#dependencies2", {key = "i3"}), t") {", nl(),
 		t"\treturn ", i(0, "TARGET", {key = "i0"}), t";", nl(),
-		t"});", nl()
+		t"});"
 	}),
 	s({trig = "reqjs", descr = "(reqjs)", priority = -1000, trigEngine = te("w")}, {
 		t"require([\"", i(1, "#dependencies1", {key = "i1"}), t"\"], function (", i(2, "#dependencies2", {key = "i2"}), t") {", nl(),

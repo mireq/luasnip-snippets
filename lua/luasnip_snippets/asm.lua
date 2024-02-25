@@ -96,8 +96,7 @@ ls.add_snippets("asm", {
 		t".global main", nl(),
 		nl(),
 		nl(),
-		t"main:", nl(),
-		nl()
+		t"main:"
 	}),
 	s({trig = "scodes", descr = "(scodes) Start basic code for assembly with _start label", priority = -1000, trigEngine = te("w")}, {
 		t".data", nl(),
@@ -109,8 +108,7 @@ ls.add_snippets("asm", {
 		t".globl _start", nl(),
 		nl(),
 		nl(),
-		t"_start:", nl(),
-		nl()
+		t"_start:"
 	}),
 	s({trig = "lo", descr = "(lo) Long", priority = -1000, trigEngine = te("w")}, {
 		i(1, "", {key = "i1"}), t": .long ", i(2, "", {key = "i2"})
@@ -154,65 +152,65 @@ ls.add_snippets("asm", {
 	s({trig = "exit0", descr = "(exit0) Exit without error", priority = -1000, trigEngine = te("w")}, {
 		t"movl $1, %eax", nl(),
 		t"xorl %ebx, %ebx", nl(),
-		t"int $0x80", nl()
+		t"int $0x80"
 	}),
 	s({trig = "exit", descr = "(exit) Exit with error", priority = -1000, trigEngine = te("w")}, {
 		t"mov $1, %eax", nl(),
 		t"mov ", i(1, "", {key = "i1"}), t", %ebx", nl(),
-		t"int $0x80", nl()
+		t"int $0x80"
 	}),
 	s({trig = "readfstdin", descr = "(readfstdin) Read fixed length text from stdin", priority = -1000, trigEngine = te("w")}, {
 		t"mov $3, %eax", nl(),
 		t"mov $2, %ebx", nl(),
 		t"mov ", i(1, "", {key = "i1"}), t", %ecx", nl(),
 		t"mov ", i(2, "", {key = "i2"}), t", %edx", nl(),
-		t"int $0x80", nl()
+		t"int $0x80"
 	}),
 	s({trig = "writestdout", descr = "(writestdout) Write text to stdout", priority = -1000, trigEngine = te("w")}, {
 		t"mov $4, %eax", nl(),
 		t"mov $1, %ebx", nl(),
 		t"mov ", i(1, "", {key = "i1"}), t", %ecx", nl(),
 		t"mov ", i(2, "", {key = "i2"}), t", %edx", nl(),
-		t"int $0x80", nl()
+		t"int $0x80"
 	}),
 	s({trig = "writestderr", descr = "(writestderr) Write text to stderr", priority = -1000, trigEngine = te("w")}, {
 		t"mov $4, %eax", nl(),
 		t"mov $2, %ebx", nl(),
 		t"mov ", i(1, "", {key = "i1"}), t", %ecx", nl(),
 		t"mov ", i(2, "", {key = "i2"}), t", %edx", nl(),
-		t"int $0x80", nl()
+		t"int $0x80"
 	}),
 	s({trig = "*", descr = "(*) Multiplication", priority = -1000, trigEngine = te("w")}, {
 		t"mov ", i(1, "", {key = "i1"}), t", %eax", nl(),
-		t"mul ", i(2, "", {key = "i2"}), nl()
+		t"mul ", i(2, "", {key = "i2"})
 	}),
 	s({trig = "/", descr = "(/) Division", priority = -1000, trigEngine = te("w")}, {
 		t"mov ", i(1, "", {key = "i1"}), t", %eax", nl(),
-		t"div ", i(2, "", {key = "i2"}), nl()
+		t"div ", i(2, "", {key = "i2"})
 	}),
 	s({trig = "jmpl", descr = "(jmpl) Conditional lower jump", priority = -1000, trigEngine = te("w")}, {
 		t"cmp ", i(1, "", {key = "i1"}), t", ", i(2, "", {key = "i2"}), nl(),
-		t"jl ", i(3, "", {key = "i3"}), t" ", nl()
+		t"jl ", i(3, "", {key = "i3"}), t" "
 	}),
 	s({trig = "jmple", descr = "(jmple) Conditional lower or equal jump", priority = -1000, trigEngine = te("w")}, {
 		t"cmp ", i(1, "", {key = "i1"}), t", ", i(2, "", {key = "i2"}), nl(),
-		t"jle ", i(3, "", {key = "i3"}), t" ", nl()
+		t"jle ", i(3, "", {key = "i3"}), t" "
 	}),
 	s({trig = "jmpe", descr = "(jmpe) Conditional equal jump", priority = -1000, trigEngine = te("w")}, {
 		t"cmp ", i(1, "", {key = "i1"}), t", ", i(2, "", {key = "i2"}), nl(),
-		t"je ", i(3, "", {key = "i3"}), t" ", nl()
+		t"je ", i(3, "", {key = "i3"}), t" "
 	}),
 	s({trig = "jmpn", descr = "(jmpn) Conditional not equal jump", priority = -1000, trigEngine = te("w")}, {
 		t"cmp ", i(1, "", {key = "i1"}), t", ", i(2, "", {key = "i2"}), nl(),
-		t"jn ", i(3, "", {key = "i3"}), nl()
+		t"jn ", i(3, "", {key = "i3"})
 	}),
 	s({trig = "jmpg", descr = "(jmpg) Conditional greater jump", priority = -1000, trigEngine = te("w")}, {
 		t"cmp ", i(1, "", {key = "i1"}), t", ", i(2, "", {key = "i2"}), nl(),
-		t"jg ", i(3, "", {key = "i3"}), nl()
+		t"jg ", i(3, "", {key = "i3"})
 	}),
 	s({trig = "jmpge", descr = "(jmpge) Conditional greater or equal jump", priority = -1000, trigEngine = te("w")}, {
 		t"cmp ", i(1, "", {key = "i1"}), t", ", i(2, "", {key = "i2"}), nl(),
-		t"je ", i(3, "", {key = "i3"}), nl()
+		t"je ", i(3, "", {key = "i3"})
 	}),
 	s({trig = "loopn", descr = "(loopn) Loop n times", priority = -1000, trigEngine = te("w")}, {
 		t"mov ", i(1, "", {key = "i1"}), t", %ecx", nl(),
@@ -220,7 +218,7 @@ ls.add_snippets("asm", {
 		t"et_for:", nl(),
 		t"\t", i(2, "", {key = "i2"}), nl(),
 		nl(),
-		t"\tloop et_for", nl()
+		t"\tloop et_for"
 	}),
 	s({trig = "loopnn", descr = "(loopnn) Loop n-1 times", priority = -1000, trigEngine = te("w")}, {
 		t"mov ", i(1, "", {key = "i1"}), t", %ecx", nl(),
@@ -229,7 +227,7 @@ ls.add_snippets("asm", {
 		t"et_for:", nl(),
 		t"\t", i(2, "", {key = "i2"}), nl(),
 		nl(),
-		t"\tloop et_for", nl()
+		t"\tloop et_for"
 	}),
 	s({trig = "loopv", descr = "(loopv) Loop through a vector", priority = -1000, trigEngine = te("w")}, {
 		t"lea ", i(1, "", {key = "i1"}), t", %edi", nl(),
@@ -242,7 +240,7 @@ ls.add_snippets("asm", {
 		t"\t", i(4, "", {key = "i4"}), nl(),
 		nl(),
 		t"\tinc %ecx", nl(),
-		t"\tjmp et_for", nl()
+		t"\tjmp et_for"
 	}),
 	s({trig = "mul", descr = "(mul) Multiply", priority = -1000, trigEngine = te("w")}, {
 		t"xor %edx, %edx", nl(),

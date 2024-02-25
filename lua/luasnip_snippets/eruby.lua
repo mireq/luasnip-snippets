@@ -201,7 +201,7 @@ ls.add_snippets("eruby", {
 	s({trig = "conf", descr = "(conf)", priority = -1000, trigEngine = te("w")}, {
 		t"<% content_for :", i(1, "head", {key = "i1"}), t" do %>", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"<% end %>", nl()
+		t"<% end %>"
 	}),
 	s({trig = "cs", descr = "(cs)", priority = -1000, trigEngine = te("w")}, {
 		t"<%= collection_select(:", i(1, "object", {key = "i1"}), t", :", i(2, "method", {key = "i2"}), t", ", i(3, "collection", {key = "i3"}), t", :", i(4, "value_method", {key = "i4"}), t", :", i(5, "text_method", {key = "i5"}), t", options = {", i(0, "prompt: true", {key = "i0"}), t"}) %>        "

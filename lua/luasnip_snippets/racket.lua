@@ -102,7 +102,7 @@ ls.add_snippets("racket", {
 		t"#lang datalog"
 	}),
 	s({trig = "#wi", descr = "(#wi)", priority = -1000, trigEngine = te("w")}, {
-		t"#lang web-server/insta", nl()
+		t"#lang web-server/insta"
 	}),
 	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
 		t"(define ", i(1, "", {key = "i1"}), t" ", i(0, "", {key = "i0"}), t")"
@@ -121,7 +121,7 @@ ls.add_snippets("racket", {
 	}),
 	s({trig = "defs", descr = "(defs) \"define-syntax\"", priority = -1000, trigEngine = te("w")}, {
 		t"(define-syntax (", i(1, "", {key = "i1"}), t")", nl(),
-		t"\t", i(0, "", {key = "i0"}), t")", nl()
+		t"\t", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"(if ", i(1, "", {key = "i1"}), t" ", i(2, "", {key = "i2"}), t" ", i(0, "", {key = "i0"}), t")"
@@ -175,7 +175,7 @@ ls.add_snippets("racket", {
 	}),
 	s({trig = "match", descr = "(match)", priority = -1000, trigEngine = te("w")}, {
 		t"(match ", i(1, "", {key = "i1"}), nl(),
-		t"\t[(", i(2, "", {key = "i2"}), t") ", i(0, "", {key = "i0"}), t"])", nl()
+		t"\t[(", i(2, "", {key = "i2"}), t") ", i(0, "", {key = "i0"}), t"])"
 	}),
 	s({trig = "for", descr = "(for)", priority = -1000, trigEngine = te("w")}, {
 		t"(for ([", i(1, "", {key = "i1"}), t"])", nl(),
@@ -219,7 +219,7 @@ ls.add_snippets("racket", {
 	}),
 	s({trig = "forla", descr = "(forla) \"for/last\"", priority = -1000, trigEngine = te("w")}, {
 		t"(for/last ([", i(1, "", {key = "i1"}), t"])", nl(),
-		t"\t", i(0, "", {key = "i0"}), t")", nl()
+		t"\t", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "lambda", descr = "(lambda)", priority = -1000, trigEngine = te("w")}, {
 		t"(lambda (", i(1, "", {key = "i1"}), t") ", i(0, "", {key = "i0"}), t")"
@@ -231,13 +231,13 @@ ls.add_snippets("racket", {
 		t"(map ", i(1, "", {key = "i1"}), t" ", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "filter", descr = "(filter)", priority = -1000, trigEngine = te("w")}, {
-		t"(filter ", i(1, "", {key = "i1"}), t" ", i(0, "", {key = "i0"}), t")", nl()
+		t"(filter ", i(1, "", {key = "i1"}), t" ", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "req", descr = "(req)", priority = -1000, trigEngine = te("w")}, {
 		t"(require ", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "prov", descr = "(prov)", priority = -1000, trigEngine = te("w")}, {
-		t"(provide ", i(0, "", {key = "i0"}), t")", nl()
+		t"(provide ", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "let", descr = "(let)", priority = -1000, trigEngine = te("w")}, {
 		t"(let ([", i(1, "", {key = "i1"}), t"]) ", i(0, "", {key = "i0"}), t")"

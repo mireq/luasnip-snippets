@@ -143,7 +143,7 @@ ls.add_snippets("r", {
 	s({trig = "ei", descr = "(ei)", priority = -1000, trigEngine = te("w")}, {
 		t"else if (", i(1, "", {key = "i1"}), t") {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "wh", descr = "(wh) \"while loop\"", priority = -20, trigEngine = te("")}, {
 		t"while(", i(1, "", {key = "i1"}), t") {", nl(),
@@ -163,7 +163,7 @@ ls.add_snippets("r", {
 	s({trig = "foreach", descr = "(foreach)", priority = -1000, trigEngine = te("w")}, {
 		t"foreach (", i(1, "item", {key = "i1"}), t" = ", i(2, "list", {key = "i2"}), t") {", nl(),
 		t"\t", i(3, "", {key = "i3"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "fun", descr = "(fun) \"Function definition\"", priority = -20, trigEngine = te("")}, {
 		i(1, "name", {key = "i1"}), t" <- function (", i(2, "", {key = "i2"}), t") {", nl(),
@@ -218,7 +218,7 @@ ls.add_snippets("r", {
 		t"daply(", i(1, "frame", {key = "i1"}), t", ", i(2, "variables", {key = "i2"}), t", ", i(0, "function", {key = "i0"}), t")"
 	}),
 	s({trig = "d_", descr = "(d_)", priority = -1000, trigEngine = te("w")}, {
-		t"d_ply(", i(1, "frame", {key = "i1"}), t", ", i(2, "variables", {key = "i2"}), t", ", i(0, "function", {key = "i0"}), t")", nl()
+		t"d_ply(", i(1, "frame", {key = "i1"}), t", ", i(2, "variables", {key = "i2"}), t", ", i(0, "function", {key = "i0"}), t")"
 	}),
 	s({trig = "ad", descr = "(ad)", priority = -1000, trigEngine = te("w")}, {
 		t"adply(", i(1, "array", {key = "i1"}), t", ", i(2, "margin", {key = "i2"}), t", ", i(0, "function", {key = "i0"}), t")"
@@ -230,7 +230,7 @@ ls.add_snippets("r", {
 		t"aaply(", i(1, "array", {key = "i1"}), t", ", i(2, "margin", {key = "i2"}), t", ", i(0, "function", {key = "i0"}), t")"
 	}),
 	s({trig = "a_", descr = "(a_)", priority = -1000, trigEngine = te("w")}, {
-		t"a_ply(", i(1, "array", {key = "i1"}), t", ", i(2, "margin", {key = "i2"}), t", ", i(0, "function", {key = "i0"}), t")", nl()
+		t"a_ply(", i(1, "array", {key = "i1"}), t", ", i(2, "margin", {key = "i2"}), t", ", i(0, "function", {key = "i0"}), t")"
 	}),
 	s({trig = "ld", descr = "(ld)", priority = -1000, trigEngine = te("w")}, {
 		t"ldply(", i(1, "list", {key = "i1"}), t", ", i(0, "function", {key = "i0"}), t")"
@@ -242,7 +242,7 @@ ls.add_snippets("r", {
 		t"laply(", i(1, "list", {key = "i1"}), t", ", i(0, "function", {key = "i0"}), t")"
 	}),
 	s({trig = "l_", descr = "(l_)", priority = -1000, trigEngine = te("w")}, {
-		t"l_ply(", i(1, "list", {key = "i1"}), t", ", i(0, "function", {key = "i0"}), t")", nl()
+		t"l_ply(", i(1, "list", {key = "i1"}), t", ", i(0, "function", {key = "i0"}), t")"
 	}),
 	s({trig = "md", descr = "(md)", priority = -1000, trigEngine = te("w")}, {
 		t"mdply(", i(1, "matrix", {key = "i1"}), t", ", i(0, "function", {key = "i0"}), t")"
@@ -254,7 +254,7 @@ ls.add_snippets("r", {
 		t"maply(", i(1, "matrix", {key = "i1"}), t", ", i(0, "function", {key = "i0"}), t")"
 	}),
 	s({trig = "m_", descr = "(m_)", priority = -1000, trigEngine = te("w")}, {
-		t"m_ply(", i(1, "matrix", {key = "i1"}), t", ", i(0, "function", {key = "i0"}), t")", nl()
+		t"m_ply(", i(1, "matrix", {key = "i1"}), t", ", i(0, "function", {key = "i0"}), t")"
 	}),
 	s({trig = "pl", descr = "(pl) \"Plot function\"", priority = -20, trigEngine = te("")}, {
 		t"plot(", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t", ", i(0, "y", {key = "i0"}), t")"
@@ -265,7 +265,7 @@ ls.add_snippets("r", {
 	s({trig = "img", descr = "(img)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "(jpeg,bmp,png,tiff)", {key = "i1"}), t"(filename = \'", i(2, "filename", {key = "i2"}), t"\', width = ", i(3, "", {key = "i3"}), t", height = ", i(4, "", {key = "i4"}), t", unit = \'", i(5, "", {key = "i5"}), t"\')", nl(),
 		i(0, "plot", {key = "i0"}), nl(),
-		t"dev.off()", nl()
+		t"dev.off()"
 	}),
 	s({trig = "fis", descr = "(fis) \"Fisher test\"", priority = -20, trigEngine = te("")}, {
 		t"fisher.test(", i(1, "x", {key = "i1"}), t", ", i(0, "y", {key = "i0"}), t")"

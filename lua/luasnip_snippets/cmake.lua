@@ -72,42 +72,42 @@ ls.add_snippets("cmake", {
 		nl(),
 		t"add_executable(", cp(2), t")", nl(),
 		nl(),
-		t"target_link_libraries(", cp(2), t" ${", cp(3), t"_LIBRARIES})", nl()
+		t"target_link_libraries(", cp(2), t" ${", cp(3), t"_LIBRARIES})"
 	}),
 	s({trig = "proj", descr = "(proj)", priority = -1000, trigEngine = te("w")}, {
-		t"project(", i(0, "Name", {key = "i0"}), t")", nl()
+		t"project(", i(0, "Name", {key = "i0"}), t")"
 	}),
 	s({trig = "min", descr = "(min)", priority = -1000, trigEngine = te("w")}, {
-		t"cmake_minimum_required(VERSION ", i(0, "2.8.2", {key = "i0"}), t")", nl()
+		t"cmake_minimum_required(VERSION ", i(0, "2.8.2", {key = "i0"}), t")"
 	}),
 	s({trig = "include", descr = "(include)", priority = -1000, trigEngine = te("w")}, {
-		t"include_directories(${", i(0, "include_dir", {key = "i0"}), t"})", nl()
+		t"include_directories(${", i(0, "include_dir", {key = "i0"}), t"})"
 	}),
 	s({trig = "find", descr = "(find)", priority = -1000, trigEngine = te("w")}, {
-		t"find_package(", i(1, "library", {key = "i1"}), t" ", i(0, "REQUIRED", {key = "i0"}), t")", nl()
+		t"find_package(", i(1, "library", {key = "i1"}), t" ", i(0, "REQUIRED", {key = "i0"}), t")"
 	}),
 	s({trig = "glob", descr = "(glob)", priority = -1000, trigEngine = te("w")}, {
-		t"file(glob ", i(1, "srcs", {key = "i1"}), t" *.", i(0, "cpp", {key = "i0"}), t")", nl()
+		t"file(glob ", i(1, "srcs", {key = "i1"}), t" *.", i(0, "cpp", {key = "i0"}), t")"
 	}),
 	s({trig = "subdir", descr = "(subdir)", priority = -1000, trigEngine = te("w")}, {
-		t"add_subdirectory(", i(0, "src", {key = "i0"}), t")", nl()
+		t"add_subdirectory(", i(0, "src", {key = "i0"}), t")"
 	}),
 	s({trig = "lib", descr = "(lib)", priority = -1000, trigEngine = te("w")}, {
-		t"add_library(", i(1, "lib", {key = "i1"}), t" ${", i(0, "srcs", {key = "i0"}), t"})", nl()
+		t"add_library(", i(1, "lib", {key = "i1"}), t" ${", i(0, "srcs", {key = "i0"}), t"})"
 	}),
 	s({trig = "link", descr = "(link)", priority = -1000, trigEngine = te("w")}, {
-		t"target_link_libraries(", i(1, "bin", {key = "i1"}), t" ", i(0, "somelib", {key = "i0"}), t")", nl()
+		t"target_link_libraries(", i(1, "bin", {key = "i1"}), t" ", i(0, "somelib", {key = "i0"}), t")"
 	}),
 	s({trig = "bin", descr = "(bin)", priority = -1000, trigEngine = te("w")}, {
-		t"add_executable(", i(1, "bin", {key = "i1"}), t")", nl()
+		t"add_executable(", i(1, "bin", {key = "i1"}), t")"
 	}),
 	s({trig = "set", descr = "(set)", priority = -1000, trigEngine = te("w")}, {
-		t"set(", i(1, "var", {key = "i1"}), t" ", i(0, "val", {key = "i0"}), t")", nl()
+		t"set(", i(1, "var", {key = "i1"}), t" ", i(0, "val", {key = "i0"}), t")"
 	}),
 	s({trig = "dep", descr = "(dep)", priority = -1000, trigEngine = te("w")}, {
 		t"add_dependencies(", i(1, "target", {key = "i1"}), nl(),
 		t"\t", i(0, "dep", {key = "i0"}), nl(),
-		t")", nl()
+		t")"
 	}),
 	s({trig = "Ext_url", descr = "(Ext_url)", priority = -1000, trigEngine = te("w")}, {
 		t"include(ExternalProject)", nl(),
@@ -120,7 +120,7 @@ ls.add_snippets("cmake", {
 		t"  BUILD_COMMAND     \"\"", nl(),
 		t"  INSTALL_COMMAND   \"\"", nl(),
 		t"  TEST_COMMAND      \"\"", nl(),
-		t")", nl()
+		t")"
 	}),
 	s({trig = "Ext_git", descr = "(Ext_git)", priority = -1000, trigEngine = te("w")}, {
 		t"include(ExternalProject)", nl(),
@@ -133,13 +133,13 @@ ls.add_snippets("cmake", {
 		t"  BUILD_COMMAND     \"\"", nl(),
 		t"  INSTALL_COMMAND   \"\"", nl(),
 		t"  TEST_COMMAND      \"\"", nl(),
-		t")", nl()
+		t")"
 	}),
 	s({trig = "props", descr = "(props)", priority = -1000, trigEngine = te("w")}, {
 		t"set_target_properties(", i(1, "target", {key = "i1"}), nl(),
 		t"\t", i(2, "properties", {key = "i2"}), t" ", i(3, "compile_flags", {key = "i3"}), nl(),
 		t"\t", i(0, "\"-O3 -Wall -pedantic\"", {key = "i0"}), nl(),
-		t")", nl()
+		t")"
 	}),
 	s({trig = "test", descr = "(test)", priority = -1000, trigEngine = te("w")}, {
 		t"add_test(", i(1, "ATestName", {key = "i1"}), t" ", i(0, "testCommand --options", {key = "i0"}), t")"

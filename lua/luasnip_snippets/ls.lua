@@ -160,13 +160,13 @@ ls.add_snippets("ls", {
 	s({trig = "mat", descr = "(mat)", priority = -1000, trigEngine = te("w")}, {
 		t"match ", i(1, "object", {key = "i1"}), nl(),
 		t"| ", i(2, "value", {key = "i2"}), t" => ", i(3, "", {key = "i3"}), nl(),
-		t"| otherwise => void", nl()
+		t"| otherwise => void"
 	}),
 	s({trig = "log", descr = "(log)", priority = -1000, trigEngine = te("w")}, {
 		t"console.log ", i(1, "", {key = "i1"})
 	}),
 	s({trig = "str", descr = "(str)", priority = -1000, trigEngine = te("w")}, {
-		t"JSON.stringify ", i(1, "", {key = "i1"}), t", void, 2", nl()
+		t"JSON.stringify ", i(1, "", {key = "i1"}), t", void, 2"
 	}),
 	s({trig = "try", descr = "(try)", priority = -1000, trigEngine = te("w")}, {
 		t"try", nl(),
@@ -178,7 +178,7 @@ ls.add_snippets("ls", {
 		d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t" = require \'", i(1, "", {key = "i1"}), t"\'", i(3, "", {key = "i3"})
 	}),
 	s({trig = "req!", descr = "(req!)", priority = -1000, trigEngine = te("w")}, {
-		t"require! ", i(1, "", {key = "i1"}), nl()
+		t"require! ", i(1, "", {key = "i1"})
 	}),
 	s({trig = "exp", descr = "(exp)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "root", {key = "i1"}), t" = exports ? this"

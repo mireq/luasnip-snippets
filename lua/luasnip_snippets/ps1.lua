@@ -59,7 +59,7 @@ ls.add_snippets("ps1", {
 	s({trig = "class", descr = "(class)", priority = -1000, trigEngine = te("w")}, {
 		t"class {", nl(),
 		t"\t[string] ", i(1, "FirstName", {key = "i1"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "function", descr = "(function)", priority = -1000, trigEngine = te("w")}, {
 		t"function ", i(1, "name", {key = "i1"}), t" {", nl(),
@@ -77,25 +77,25 @@ ls.add_snippets("ps1", {
 		nl(),
 		t"\tend {", nl(),
 		t"\t}", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "splatting", descr = "(splatting)", priority = -1000, trigEngine = te("w")}, {
 		t"$Params = @{", nl(),
 		t"\t", i(1, "Param1", {key = "i1"}), t" = \'", i(2, "Value1", {key = "i2"}), t"\'", nl(),
 		t"\t", i(3, "Param2", {key = "i3"}), t" = \'", i(4, "Value2", {key = "i4"}), t"\'", nl(),
 		t"}", nl(),
-		i(5, "CommandName", {key = "i5"}), t" @Params", nl()
+		i(5, "CommandName", {key = "i5"}), t" @Params"
 	}),
 	s({trig = "enum", descr = "(enum)", priority = -1000, trigEngine = te("w")}, {
 		t"enum ", i(1, "name", {key = "i1"}), t" {", nl(),
 		t"\t", i(2, "item1", {key = "i2"}), nl(),
 		t"\t", i(3, "item2", {key = "i3"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"if (", i(1, "", {key = "i1"}), t") {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "ife", descr = "(ife)", priority = -1000, trigEngine = te("w")}, {
 		t"if ( ", i(1, "", {key = "i1"}), t" ) {", nl(),
@@ -103,23 +103,23 @@ ls.add_snippets("ps1", {
 		t"}", nl(),
 		t"else {", nl(),
 		t"\t", i(3, "", {key = "i3"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "while", descr = "(while)", priority = -1000, trigEngine = te("w")}, {
 		t"while (", i(1, "", {key = "i1"}), t") {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "filtersort", descr = "(filtersort)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "command", {key = "i1"}), t" | Where-Object -FilterScript { $PSItem.", i(2, "property", {key = "i2"}), t" -", i(3, "operator", {key = "i3"}), t" \'", i(4, "expression", {key = "i4"}), t"\' } | Sort-Object -Property ", i(5, "sortproperty", {key = "i5"}), nl()
+		i(1, "command", {key = "i1"}), t" | Where-Object -FilterScript { $PSItem.", i(2, "property", {key = "i2"}), t" -", i(3, "operator", {key = "i3"}), t" \'", i(4, "expression", {key = "i4"}), t"\' } | Sort-Object -Property ", i(5, "sortproperty", {key = "i5"})
 	}),
 	s({trig = "foreach", descr = "(foreach)", priority = -1000, trigEngine = te("w")}, {
 		t"foreach ( $", i(1, "iterator", {key = "i1"}), t" in $", i(2, "collection", {key = "i2"}), t" ) {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "epcsv", descr = "(epcsv)", priority = -1000, trigEngine = te("w")}, {
-		t"Export-CSV -NoTypeInformation -Path ", i(1, "path", {key = "i1"}), nl()
+		t"Export-CSV -NoTypeInformation -Path ", i(1, "path", {key = "i1"})
 	}),
 	s({trig = "help", descr = "(help)", priority = -1000, trigEngine = te("w")}, {
 		t"<#", nl(),
@@ -135,7 +135,7 @@ ls.add_snippets("ps1", {
 		t"\t", i(6, "notes", {key = "i6"}), nl(),
 		t".LINK", nl(),
 		t"\t", i(7, "online help", {key = "i7"}), nl(),
-		t"#>", nl()
+		t"#>"
 	}),
 	s({trig = "switch", descr = "(switch)", priority = -1000, trigEngine = te("w")}, {
 		t"switch ( ", i(1, "test", {key = "i1"}), t" ){", nl(),

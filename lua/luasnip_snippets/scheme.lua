@@ -54,31 +54,31 @@ local am = { -- list of argument numbers
 ls.add_snippets("scheme", {
 	s({trig = "+", descr = "(+)", priority = -1000, trigEngine = te("w")}, {
 		t"(+ ", i(1, "", {key = "i1"}), nl(),
-		t"\t", i(0, "", {key = "i0"}), t")", nl()
+		t"\t", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "-", descr = "(-)", priority = -1000, trigEngine = te("w")}, {
 		t"(- ", i(1, "", {key = "i1"}), nl(),
-		t"\t", i(0, "", {key = "i0"}), t")", nl()
+		t"\t", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "/", descr = "(/)", priority = -1000, trigEngine = te("w")}, {
 		t"(/ ", i(1, "", {key = "i1"}), nl(),
-		t"\t", i(0, "", {key = "i0"}), t")", nl()
+		t"\t", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "*", descr = "(*)", priority = -1000, trigEngine = te("w")}, {
 		t"(* ", i(1, "", {key = "i1"}), nl(),
-		t"\t", i(0, "", {key = "i0"}), t")", nl()
+		t"\t", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
 		t"(define (", i(1, "name", {key = "i1"}), t")", nl(),
-		t"\t", i(0, "definition", {key = "i0"}), t")", nl()
+		t"\t", i(0, "definition", {key = "i0"}), t")"
 	}),
 	s({trig = "defl", descr = "(defl)", priority = -1000, trigEngine = te("w")}, {
 		t"(define ", i(1, "name", {key = "i1"}), nl(),
-		t"\t(lambda (x)(", i(0, "definition", {key = "i0"}), t")))", nl()
+		t"\t(lambda (x)(", i(0, "definition", {key = "i0"}), t")))"
 	}),
 	s({trig = "cond", descr = "(cond)", priority = -1000, trigEngine = te("w")}, {
 		t"(cond ((", i(1, "predicate", {key = "i1"}), t") (", i(2, "action", {key = "i2"}), t"))", nl(),
-		t"\t((", i(3, "predicate", {key = "i3"}), t") (", i(0, "action", {key = "i0"}), t")))", nl()
+		t"\t((", i(3, "predicate", {key = "i3"}), t") (", i(0, "action", {key = "i0"}), t")))"
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"(if (", i(1, "predicate", {key = "i1"}), t")", nl(),

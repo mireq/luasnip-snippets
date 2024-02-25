@@ -157,7 +157,7 @@ ls.add_snippets("haskell", {
 	s({trig = "module", descr = "(module)", priority = -1000, trigEngine = te("w")}, {
 		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end), t" (", nl(),
 		t") where", nl(),
-		f(function(args, snip) return c_viml("expand(\'%\') =~ \'Main\' ? \"\\nmain :: IO ()\\nmain = undefined\" : \"\"") end), nl()
+		f(function(args, snip) return c_viml("expand(\'%\') =~ \'Main\' ? \"\\nmain :: IO ()\\nmain = undefined\" : \"\"") end)
 	}),
 	s({trig = "mod", descr = "(mod)", priority = -1000, trigEngine = te("w")}, {
 		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end), nl(),

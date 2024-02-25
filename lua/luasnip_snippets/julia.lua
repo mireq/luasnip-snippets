@@ -76,106 +76,106 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("julia", {
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
-		t"#!/usr/bin/env julia", nl()
+		t"#!/usr/bin/env julia"
 	}),
 	s({trig = "fun", descr = "(fun) function definition", priority = -1000, trigEngine = te("w")}, {
 		t"function ", i(1, "", {key = "i1"}), t"(", i(2, "", {key = "i2"}), t")", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "ret", descr = "(ret) return", priority = -1000, trigEngine = te("w")}, {
-		t"return(", i(0, "", {key = "i0"}), t")", nl()
+		t"return(", i(0, "", {key = "i0"}), t")"
 	}),
 	s({trig = "pr", descr = "(pr) print", priority = -1000, trigEngine = te("w")}, {
 		t"print(\"", i(1, "", {key = "i1"}), t"\")", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "prl", descr = "(prl) print line", priority = -1000, trigEngine = te("w")}, {
 		t"println(\"", i(1, "", {key = "i1"}), t"\")", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "use", descr = "(use) load a package", priority = -1000, trigEngine = te("w")}, {
-		t"using ", i(0, "", {key = "i0"}), nl()
+		t"using ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "incl", descr = "(incl) include source code", priority = -1000, trigEngine = te("w")}, {
 		t"include(\"", i(1, "", {key = "i1"}), t"\")", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "forc", descr = "(forc) for loop iterating over iterable container", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(1, "", {key = "i1"}), t" in ", i(2, "", {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "for", descr = "(for) standard for loop", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(1, "", {key = "i1"}), t" = ", i(2, "", {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "fornest", descr = "(fornest) nested for loop", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(1, "", {key = "i1"}), t" = ", i(2, "", {key = "i2"}), t", ", i(3, "", {key = "i3"}), t" = ", i(4, "", {key = "i4"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "wh", descr = "(wh) while loop", priority = -1000, trigEngine = te("w")}, {
 		t"while ", i(1, "", {key = "i1"}), t" ", i(2, "<=", {key = "i2"}), t" ", i(3, "", {key = "i3"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "if", descr = "(if) if statement", priority = -1000, trigEngine = te("w")}, {
 		t"if ", i(1, "", {key = "i1"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "el", descr = "(el) else part of statement", priority = -1000, trigEngine = te("w")}, {
 		t"else", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
+		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "eif", descr = "(eif) else if part of if statement", priority = -1000, trigEngine = te("w")}, {
 		t"else if ", i(1, "", {key = "i1"}), nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
+		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "ife", descr = "(ife) full if-else statement", priority = -1000, trigEngine = te("w")}, {
 		t"if ", i(1, "", {key = "i1"}), nl(),
 		t"\t", i(2, "", {key = "i2"}), nl(),
 		t"else", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "tern", descr = "(tern) ternary operator", priority = -1000, trigEngine = te("w")}, {
-		i(1, "", {key = "i1"}), t" ? ", i(2, "", {key = "i2"}), t" : ", i(3, "nothing", {key = "i3"}), nl()
+		i(1, "", {key = "i1"}), t" ? ", i(2, "", {key = "i2"}), t" : ", i(3, "nothing", {key = "i3"})
 	}),
 	s({trig = "try", descr = "(try) try catch", priority = -1000, trigEngine = te("w")}, {
 		t"try", nl(),
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i1"}) }) end), nl(),
 		t"catch ", i(2, "", {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "fin", descr = "(fin) finally statement", priority = -1000, trigEngine = te("w")}, {
 		t"finally", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
+		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "thr", descr = "(thr) throw", priority = -1000, trigEngine = te("w")}, {
 		t"throw(", i(1, "", {key = "i1"}), t")", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "@i", descr = "(@i)", priority = -1000, trigEngine = te("w")}, {
-		t"@info \"", i(1, "", {key = "i1"}), t"\" ", i(0, "", {key = "i0"}), nl()
+		t"@info \"", i(1, "", {key = "i1"}), t"\" ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "@w", descr = "(@w)", priority = -1000, trigEngine = te("w")}, {
-		t"@warn \"", i(1, "", {key = "i1"}), t"\" ", i(0, "", {key = "i0"}), nl()
+		t"@warn \"", i(1, "", {key = "i1"}), t"\" ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "@e", descr = "(@e)", priority = -1000, trigEngine = te("w")}, {
-		t"@error \"", i(1, "", {key = "i1"}), t"\" ", i(0, "", {key = "i0"}), nl()
+		t"@error \"", i(1, "", {key = "i1"}), t"\" ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "@d", descr = "(@d)", priority = -1000, trigEngine = te("w")}, {
-		t"@debug \"", i(1, "", {key = "i1"}), t"\" ", i(0, "", {key = "i0"}), nl()
+		t"@debug \"", i(1, "", {key = "i1"}), t"\" ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "@t", descr = "(@t) @testset with @test", priority = -1000, trigEngine = te("w")}, {
 		t"@testset \"", i(1, "", {key = "i1"}), t"\" begin", nl(),
 		t"\t", i(2, "", {key = "i2"}), nl(),
 		t"\t@test ", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "@tt", descr = "(@tt) @testset with @test_throws", priority = -1000, trigEngine = te("w")}, {
 		t"@testset \"", i(1, "", {key = "i1"}), t"\" begin", nl(),

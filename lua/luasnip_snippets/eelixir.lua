@@ -115,14 +115,13 @@ ls.add_snippets("eelixir", {
 		t"</form>"
 	}),
 	s({trig = "sl", descr = "(sl) select", priority = -1000, trigEngine = te("w")}, {
-		t"<%= select ", i(1, "f", {key = "i1"}), t", :", i(2, "field", {key = "i2"}), t", ", i(3, "[{\"key\", \"value\"}]", {key = "i3"}), t", prompt: ", i(4, "\"Prompt\"", {key = "i4"}), t" %>", nl()
+		t"<%= select ", i(1, "f", {key = "i1"}), t", :", i(2, "field", {key = "i2"}), t", ", i(3, "[{\"key\", \"value\"}]", {key = "i3"}), t", prompt: ", i(4, "\"Prompt\"", {key = "i4"}), t" %>"
 	}),
 	s({trig = "sb", descr = "(sb) submit", priority = -1000, trigEngine = te("w")}, {
-		t"<%= submit ", i(1, "\"Submit\"", {key = "i1"}), t" %>", nl()
+		t"<%= submit ", i(1, "\"Submit\"", {key = "i1"}), t" %>"
 	}),
 	s({trig = "rb", descr = "(rb) radio_button", priority = -1000, trigEngine = te("w")}, {
-		t"<%= radio_button ", i(1, "f", {key = "i1"}), t", :", i(2, "field", {key = "i2"}), t",  ", i(3, "\"value\"", {key = "i3"}), t" %>", nl(),
-		nl()
+		t"<%= radio_button ", i(1, "f", {key = "i1"}), t", :", i(2, "field", {key = "i2"}), t",  ", i(3, "\"value\"", {key = "i3"}), t" %>"
 	}),
 	s({trig = "et", descr = "(et) error_tag", priority = -1000, trigEngine = te("w")}, {
 		t"<%= error_tag ", i(1, "f", {key = "i1"}), t", :", i(2, "field", {key = "i2"}), t" %>"

@@ -70,7 +70,7 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("tcl", {
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
-		t"#!/usr/bin/env tclsh", nl()
+		t"#!/usr/bin/env tclsh"
 	}),
 	s({trig = "pro", descr = "(pro)", priority = -1000, trigEngine = te("w")}, {
 		t"proc ", i(1, "function_name", {key = "i1"}), t" {", i(2, "args", {key = "i2"}), t"} {", nl(),

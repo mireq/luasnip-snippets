@@ -255,7 +255,7 @@ ls.add_snippets("tex", {
 		t"\\documentclass{", i(1, "class", {key = "i1"}), t"} ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "dclo", descr = "(dclo) \\documentclass[]{}", priority = -1000, trigEngine = te("w")}, {
-		t"\\documentclass[", i(1, "options", {key = "i1"}), t"]{", i(2, "class", {key = "i2"}), t"} ", i(0, "", {key = "i0"}), nl()
+		t"\\documentclass[", i(1, "options", {key = "i1"}), t"]{", i(2, "class", {key = "i2"}), t"} ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "tmplt", descr = "(tmplt) \"Template\"", priority = -1000, trigEngine = te("w")}, {
 		t"\\documentclass{", i(1, "article", {key = "i1"}), t"}", nl(),
@@ -275,7 +275,7 @@ ls.add_snippets("tex", {
 		nl(),
 		t"\\begin{document}", nl(),
 		t"\t    ", i(0, "", {key = "i0"}), nl(),
-		t"\\end{document}", nl()
+		t"\\end{document}"
 	}),
 	s({trig = "nc", descr = "(nc) \\newcommand", priority = -1000, trigEngine = te("w")}, {
 		t"\\newcommand{\\", i(1, "cmd", {key = "i1"}), t"}[", i(2, "opt", {key = "i2"}), t"]{", i(3, "realcmd", {key = "i3"}), t"} ", i(0, "", {key = "i0"})
@@ -287,15 +287,15 @@ ls.add_snippets("tex", {
 		t"\\newunicodechar{", i(1, "", {key = "i1"}), t"}{", i(2, "\\ensuremath", {key = "i2"}), i(3, "tex-substitute", {key = "i3"}), t"}} ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "dmo", descr = "(dmo) \\DeclareMathOperator", priority = -1000, trigEngine = te("w")}, {
-		t"\\DeclareMathOperator{", i(1, "", {key = "i1"}), t"}{", i(2, "", {key = "i2"}), t"} ", i(0, "", {key = "i0"}), nl()
+		t"\\DeclareMathOperator{", i(1, "", {key = "i1"}), t"}{", i(2, "", {key = "i2"}), t"} ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "begin", descr = "(begin) \\begin{} ... \\end{} block", priority = -1000, trigEngine = te("w")}, {
 		t"\\begin{", i(1, "env", {key = "i1"}), t"}", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"\\end{", cp(1), t"}", nl()
+		t"\\end{", cp(1), t"}"
 	}),
 	s({trig = "mkt", descr = "(mkt) maketitle", priority = -1000, trigEngine = te("w")}, {
-		t"\\maketitle", nl()
+		t"\\maketitle"
 	}),
 	s({trig = "tab", descr = "(tab) \"tabular / array environment\"", priority = 0, trigEngine = te("b")}, {
 		t"\\begin{", i(1, "t", {key = "i1"}), tr(1, "(t)$|(a)$|(.*)", "(?1:abular)(?2:rray)"), t"}{", i(2, "c", {key = "i2"}), t"}", nl(),

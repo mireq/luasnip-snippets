@@ -251,11 +251,10 @@ ls.add_snippets("lpc", {
 		t"printf(\"", i(1, "", {key = "i1"}), t" = %", i(2, "", {key = "i2"}), t"\\n\", ", cp(1), t");"
 	}),
 	s({trig = "todo", descr = "(todo)", priority = -1000, trigEngine = te("w")}, {
-		t"/*! TODO: ", i(1, "Todo description here", {key = "i1"}), t" */", nl()
+		t"/*! TODO: ", i(1, "Todo description here", {key = "i1"}), t" */"
 	}),
 	s({trig = ".", descr = "(.)", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(1, "", {key = "i1"}), t"]", nl(),
-		nl()
+		t"[", i(1, "", {key = "i1"}), t"]"
 	}),
 	s({trig = "head", descr = "(head)", priority = -1000, trigEngine = te("w")}, {
 		t"// code for ", i(1, "", {key = "i1"}), t" by ", f(function(args, snip) return c_viml("$USER") end), t" create at ", f(function(args, snip) return c_viml("strftime(\"%Y-%m-%d %H:%M:%S\")") end)

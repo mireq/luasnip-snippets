@@ -73,35 +73,35 @@ ls.add_snippets("xslt", {
 		{
 			t"<xsl:apply-templates select=\"", i(1, "*", {key = "i1"}), t"\">", nl(),
 			t"\t<xsl:with-param name=\"", i(2, "param", {key = "i2"}), t"\">", i(3, "", {key = "i3"}), t"</xsl:with-param>", i(4, "", {key = "i4"}), nl(),
-			t"</xsl:apply-templates>", nl()
+			t"</xsl:apply-templates>"
 		},
 		{
 			t"<xsl:apply-templates select=\"", i(1, "*", {key = "i1"}), t"\">", nl(),
 			t"\t<xsl:sort select=\"", i(2, "node", {key = "i2"}), t"\" order=\"", i(3, "ascending", {key = "i3"}), t"\" data-type=\"", i(4, "text", {key = "i4"}), t"\">", i(5, "", {key = "i5"}), nl(),
-			t"</xsl:apply-templates>", nl()
+			t"</xsl:apply-templates>"
 		},
 		{
-			t"<xsl:apply-templates select=\"", i(1, "*", {key = "i1"}), t"\" />", nl()
+			t"<xsl:apply-templates select=\"", i(1, "*", {key = "i1"}), t"\" />"
 		},
 	})),
 	s({trig = "attribute", descr = "(attribute) value-of", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"<xsl:attribute name=\"", i(1, "name", {key = "i1"}), t"\">", i(2, "", {key = "i2"}), t"</xsl:attribute>", nl()
+			t"<xsl:attribute name=\"", i(1, "name", {key = "i1"}), t"\">", i(2, "", {key = "i2"}), t"</xsl:attribute>"
 		},
 		{
 			t"<xsl:attribute name=\"", i(1, "name", {key = "i1"}), t"\">", nl(),
 			t"\t<xsl:value-of select=\"", i(2, "*", {key = "i2"}), t"\" />", nl(),
-			t"</xsl:attribute>", nl()
+			t"</xsl:attribute>"
 		},
 	})),
 	s({trig = "call-template", descr = "(call-template) with-param", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"<xsl:call-template name=\"", i(1, "template", {key = "i1"}), t"\" />", nl()
+			t"<xsl:call-template name=\"", i(1, "template", {key = "i1"}), t"\" />"
 		},
 		{
 			t"<xsl:call-template name=\"", i(1, "template", {key = "i1"}), t"\">", nl(),
 			t"\t<xsl:with-param name=\"", i(2, "param", {key = "i2"}), t"\">", i(3, "", {key = "i3"}), t"</xsl:with-param>", i(4, "", {key = "i4"}), nl(),
-			t"</xsl:call-template>", nl()
+			t"</xsl:call-template>"
 		},
 	})),
 	s({trig = "choose", descr = "(choose)", priority = -1000, trigEngine = te("w")}, {
@@ -109,73 +109,73 @@ ls.add_snippets("xslt", {
 		t"\t<xsl:when test=\"", i(1, "value", {key = "i1"}), t"\">", nl(),
 		t"\t\t", i(2, "", {key = "i2"}), nl(),
 		t"\t</xsl:when>", nl(),
-		t"</xsl:choose>", nl()
+		t"</xsl:choose>"
 	}),
 	s({trig = "copy-of", descr = "(copy-of)", priority = -1000, trigEngine = te("w")}, {
-		t"<xsl:copy-of select=\"", i(1, "*", {key = "i1"}), t"\" />", nl()
+		t"<xsl:copy-of select=\"", i(1, "*", {key = "i1"}), t"\" />"
 	}),
 	s({trig = "for-each", descr = "(for-each)", priority = -1000, trigEngine = te("w")}, {
 		t"<xsl:for-each select=\"", i(1, "*", {key = "i1"}), t"\">", i(2, "", {key = "i2"}), nl(),
-		t"</xsl:for-each>", nl()
+		t"</xsl:for-each>"
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"<xsl:if test=\"", i(1, "test", {key = "i1"}), t"\">", i(2, "", {key = "i2"}), nl(),
-		t"</xsl:if>", nl()
+		t"</xsl:if>"
 	}),
 	s({trig = "import", descr = "(import)", priority = -1000, trigEngine = te("w")}, {
-		t"<xsl:import href=\"", i(1, "stylesheet", {key = "i1"}), t"\" />", nl()
+		t"<xsl:import href=\"", i(1, "stylesheet", {key = "i1"}), t"\" />"
 	}),
 	s({trig = "include", descr = "(include)", priority = -1000, trigEngine = te("w")}, {
-		t"<xsl:include href=\"", i(1, "stylesheet", {key = "i1"}), t"\" />", nl()
+		t"<xsl:include href=\"", i(1, "stylesheet", {key = "i1"}), t"\" />"
 	}),
 	s({trig = "otherwise", descr = "(otherwise)", priority = -1000, trigEngine = te("w")}, {
 		t"<xsl:otherwise>", i(0, "", {key = "i0"}), nl(),
-		t"</xsl:otherwise>", nl()
+		t"</xsl:otherwise>"
 	}),
 	s({trig = "param", descr = "(param)", priority = -1000, trigEngine = te("w")}, {
 		t"<xsl:param name=\"", i(1, "name", {key = "i1"}), t"\">", i(2, "", {key = "i2"}), nl(),
-		t"</xsl:param>", nl()
+		t"</xsl:param>"
 	}),
 	s({trig = "stylesheet", descr = "(stylesheet)", priority = -1000, trigEngine = te("w")}, {
 		t"<xsl:stylesheet version=\"1.0\"", nl(),
 		t"xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">", i(0, "", {key = "i0"}), nl(),
-		t"</xsl:stylesheet>", nl()
+		t"</xsl:stylesheet>"
 	}),
 	s({trig = "template", descr = "(template) named", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
 			t"<xsl:template match=\"", i(1, "*", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), nl(),
-			t"</xsl:template>", nl()
+			t"</xsl:template>"
 		},
 		{
 			t"<xsl:template name=\"", i(1, "name", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), nl(),
-			t"</xsl:template>", nl()
+			t"</xsl:template>"
 		},
 	})),
 	s({trig = "text", descr = "(text)", priority = -1000, trigEngine = te("w")}, {
-		t"<xsl:text>", i(0, "", {key = "i0"}), t"</xsl:text>", nl()
+		t"<xsl:text>", i(0, "", {key = "i0"}), t"</xsl:text>"
 	}),
 	s({trig = "value-of", descr = "(value-of)", priority = -1000, trigEngine = te("w")}, {
-		t"<xsl:value-of select=\"", i(1, "*", {key = "i1"}), t"\" />", nl()
+		t"<xsl:value-of select=\"", i(1, "*", {key = "i1"}), t"\" />"
 	}),
 	s({trig = "variable", descr = "(variable) select", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
 			t"<xsl:variable name=\"", i(1, "name", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), nl(),
-			t"</xsl:variable>", nl()
+			t"</xsl:variable>"
 		},
 		{
-			t"<xsl:variable select=\"", i(1, "*", {key = "i1"}), t"\" />", nl()
+			t"<xsl:variable select=\"", i(1, "*", {key = "i1"}), t"\" />"
 		},
 	})),
 	s({trig = "when", descr = "(when)", priority = -1000, trigEngine = te("w")}, {
 		t"<xsl:when test=\"", i(1, "test", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), nl(),
-		t"</xsl:when>", nl()
+		t"</xsl:when>"
 	}),
 	s({trig = "with-param", descr = "(with-param) select", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
-			t"<xsl:with-param name=\"", i(1, "name", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</xsl:with-param>", nl()
+			t"<xsl:with-param name=\"", i(1, "name", {key = "i1"}), t"\">", i(0, "", {key = "i0"}), t"</xsl:with-param>"
 		},
 		{
-			t"<xsl:with-param name=\"", i(1, "name", {key = "i1"}), t"\" select=\"", i(0, "*", {key = "i0"}), t"\" />", nl()
+			t"<xsl:with-param name=\"", i(1, "name", {key = "i1"}), t"\" select=\"", i(0, "*", {key = "i0"}), t"\" />"
 		},
 	})),
 })

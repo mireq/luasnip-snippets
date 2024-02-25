@@ -72,106 +72,104 @@ ls.add_snippets("smarty", {
 	s({trig = "if", descr = "(if) \"{if cond} ... {/if}\"", priority = -1000, trigEngine = te("w")}, {
 		t"{if ", i(1, "", {key = "i1"}), t"}", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/if}", nl()
+		t"{/if}"
 	}),
 	s({trig = "ifn", descr = "(ifn) \"{if !cond} ... {/if}\"", priority = -1000, trigEngine = te("w")}, {
 		t"{if ", i(1, "", {key = "i1"}), t"}", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/if}", nl()
+		t"{/if}"
 	}),
 	s({trig = "ife", descr = "(ife) \"{if cond} ... {else} ... {/if}\"", priority = -1000, trigEngine = te("w")}, {
 		t"{if ", i(1, "", {key = "i1"}), t"}", nl(),
 		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"{else}", nl(),
 		t"\t", i(2, "", {key = "i2"}), nl(),
-		t"{/if}", nl()
+		t"{/if}"
 	}),
 	s({trig = "eif", descr = "(eif) \"{elseif cond} ... {/if}\"", priority = -1000, trigEngine = te("w")}, {
 		t"{elseif ", i(1, "", {key = "i1"}), t"}", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/if}", nl()
+		t"{/if}"
 	}),
 	s({trig = "el", descr = "(el) \"{else} ... {/if}\"", priority = -1000, trigEngine = te("w")}, {
 		t"{else}", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
-		t"{/if}", nl()
+		t"{/if}"
 	}),
 	s({trig = "for", descr = "(for) \"The {for} tag is used to create simple loops.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{for $", i(1, "var", {key = "i1"}), t"=", i(2, "start", {key = "i2"}), t" to ", i(3, "end", {key = "i3"}), i(4, " step ${5}", {key = "i4"}), i(5, " max=${7}", {key = "i6"}), t"}", nl(),
 		t"\t", d(6, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/for}", nl()
+		t"{/for}"
 	}),
 	s({trig = "forelse", descr = "(forelse) \"The {for}{forelse} tag is used to create simple loops.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{for $", i(1, "var", {key = "i1"}), t"=", i(2, "start", {key = "i2"}), t" to ", i(3, "end", {key = "i3"}), i(4, " step ${5}", {key = "i4"}), i(5, " max=${7}", {key = "i6"}), t"}", nl(),
 		t"\t", d(7, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"{forelse}", nl(),
 		t"\t", i(6, "", {key = "i8"}), nl(),
-		t"{/for}", nl()
+		t"{/for}"
 	}),
 	s({trig = "foreach", descr = "(foreach) \"{foreach} is used for looping over arrays of data.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{foreach $", i(1, "array_variable", {key = "i1"}), t" as $", i(2, "var_or_key", {key = "i2"}), i(3, " => $${4:itemvar}", {key = "i3"}), t"}", nl(),
 		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/foreach}", nl()
+		t"{/foreach}"
 	}),
 	s({trig = "foreach2", descr = "(foreach2) \"[Smarty2] {foreach} is used for looping over arrays of data.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{foreach from=$", i(1, "collection", {key = "i1"}), t" item=\'", i(2, "", {key = "i2"}), t"\'", i(3, " key=\'${4}\'", {key = "i3"}), i(4, " name=\'${6}\'", {key = "i5"}), t"}", nl(),
 		t"\t", d(5, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/foreach}", nl()
+		t"{/foreach}"
 	}),
 	s({trig = "foreachelse", descr = "(foreachelse) \"{foreach} is used for looping over arrays of data.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{foreach $", i(1, "array_variable", {key = "i1"}), t" as $", i(2, "var_or_key", {key = "i2"}), i(3, " => $${4:itemvar}", {key = "i3"}), t"}", nl(),
 		t"\t", d(5, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"{foreachelse}", nl(),
 		t"\t", i(4, "", {key = "i5"}), nl(),
-		t"{/foreach}", nl()
+		t"{/foreach}"
 	}),
 	s({trig = "wh", descr = "(wh) \"{while} loops in Smarty have much the same flexibility as PHP while statements, with a few added features for the template engine. Every {while} must be paired with a matching {/while}. All PHP conditionals and functions are recognized, such as ||, or, &&, and, is_array(), etc.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{while ", i(1, "", {key = "i1"}), t"}", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/while}", nl(),
-		nl(),
-		nl()
+		t"{/while}"
 	}),
 	s({trig = "block", descr = "(block) \"{block} is used to define a named area of template source for template inheritance.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{block name=\'", i(1, "", {key = "i1"}), t"\'}", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/block}", nl()
+		t"{/block}"
 	}),
 	s({trig = "call", descr = "(call) \"{call} is used to call a template function defined by the {function} tag just like a plugin function.\"", priority = -1000, trigEngine = te("w")}, {
-		t"{call name=", i(1, "", {key = "i1"}), i(2, " assign=${3}", {key = "i2"}), i(3, " variables", {key = "i4"}), t"}", nl()
+		t"{call name=", i(1, "", {key = "i1"}), i(2, " assign=${3}", {key = "i2"}), i(3, " variables", {key = "i4"}), t"}"
 	}),
 	s({trig = "capture", descr = "(capture) \"{capture} is used to collect the output of the template between the tags into a variable instead of displaying it. Any content between {capture name=\'foo\'} and {/capture} is collected into the variable specified in the name attribute. \"", priority = -1000, trigEngine = te("w")}, {
 		t"{capture name=\'", i(1, "", {key = "i1"}), t"\'", i(2, " assign=\'${3}\' ", {key = "i2"}), i(3, " append=\'${5:array_variable}\'", {key = "i4"}), t"}", nl(),
 		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/capture}", nl()
+		t"{/capture}"
 	}),
 	s({trig = "extends", descr = "(extends) \"{extends} tags are used in child templates in template inheritance for extending parent templates.\"", priority = -1000, trigEngine = te("w")}, {
-		t"{extends file=\'", i(1, "", {key = "i1"}), t"\'}", nl()
+		t"{extends file=\'", i(1, "", {key = "i1"}), t"\'}"
 	}),
 	s({trig = "function", descr = "(function) \"{function} is used to create functions within a template and call them just like a plugin function. Instead of writing a plugin that generates presentational content, keeping it in the template is often a more manageable choice. It also simplifies data traversal, such as deeply nested menus.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{function name=\'", i(1, "", {key = "i1"}), t"\' ", i(2, "variables", {key = "i2"}), t"}", nl(),
 		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/function}", nl()
+		t"{/function}"
 	}),
 	s({trig = "literal", descr = "(literal) \"{literal} tags allow a block of data to be taken literally. This is typically used around Javascript or stylesheet blocks where {curly braces} would interfere with the template delimiter syntax\"", priority = -1000, trigEngine = te("w")}, {
 		t"{literal}", nl(),
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/literal}", nl()
+		t"{/literal}"
 	}),
 	s({trig = "nocache", descr = "(nocache) \"{nocache} is used to disable caching of a template section. Every {nocache} must be paired with a matching {/nocache}.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{nocache}", nl(),
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/nocache}", nl()
+		t"{/nocache}"
 	}),
 	s({trig = "section", descr = "(section) \"A {section} is for looping over sequentially indexed arrays of data, unlike {foreach} which is used to loop over a single associative array. Every {section} tag must be paired with a closing {/section} tag.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{section name=\'", i(1, "", {key = "i1"}), t"\'", i(2, " loop=\'${3}\'", {key = "i2"}), i(3, " start=${5}", {key = "i4"}), i(4, " step=${7}", {key = "i6"}), i(5, " max=${9}", {key = "i8"}), i(6, " show=${11}", {key = "i10"}), t"}", nl(),
 		t"\t", d(7, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/section}", nl()
+		t"{/section}"
 	}),
 	s({trig = "setfilter", descr = "(setfilter) \"The {setfilter}...{/setfilter} block tag allows the definition of template instance\'s variable filters.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{setfilter ", i(1, "filters", {key = "i1"}), t"}", nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"{/setfilter}", nl()
+		t"{/setfilter}"
 	}),
 	s({trig = "strip", descr = "(strip) \"Anything within {strip}{/strip} tags are stripped of the extra spaces or carriage returns at the beginnings and ends of the lines before they are displayed. This way you can keep your templates readable, and not worry about extra white space causing problems.\"", priority = -1000, trigEngine = te("w")}, {
 		t"{strip}", nl(),

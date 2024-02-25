@@ -55,23 +55,23 @@ ls.add_snippets("textile", {
 		t"title: ", i(1, "title", {key = "i1"}), nl(),
 		t"layout: post", nl(),
 		t"date: ", i(2, "date", {key = "i2"}), t" ", i(0, "hour:minute:second", {key = "i0"}), t" -05:00", nl(),
-		t"---", nl()
+		t"---"
 	}),
 	s({trig = "img", descr = "(img)", priority = -1000, trigEngine = te("w")}, {
-		t"!", i(1, "url", {key = "i1"}), t"(", i(2, "title", {key = "i2"}), t"):", i(0, "link", {key = "i0"}), t"!", nl()
+		t"!", i(1, "url", {key = "i1"}), t"(", i(2, "title", {key = "i2"}), t"):", i(0, "link", {key = "i0"}), t"!"
 	}),
 	s({trig = "|", descr = "(|)", priority = -1000, trigEngine = te("w")}, {
-		t"|", i(1, "", {key = "i1"}), t"|", nl()
+		t"|", i(1, "", {key = "i1"}), t"|"
 	}),
 	s({trig = "link", descr = "(link)", priority = -1000, trigEngine = te("w")}, {
-		t"\"", i(1, "link text", {key = "i1"}), t"\":", i(0, "url", {key = "i0"}), nl()
+		t"\"", i(1, "link text", {key = "i1"}), t"\":", i(0, "url", {key = "i0"})
 	}),
 	s({trig = "(", descr = "(()", priority = -1000, trigEngine = te("w")}, {
-		t"(", i(1, "Expand acronym", {key = "i1"}), t")", nl()
+		t"(", i(1, "Expand acronym", {key = "i1"}), t")"
 	}),
 	s({trig = "fn", descr = "(fn)", priority = -1000, trigEngine = te("w")}, {
 		t"[", i(1, "ref number", {key = "i1"}), t"] ", i(0, "", {key = "i0"}), nl(),
 		nl(),
-		t"fn", cp(1), t". ", i(2, "footnote", {key = "i2"}), nl()
+		t"fn", cp(1), t". ", i(2, "footnote", {key = "i2"})
 	}),
 })

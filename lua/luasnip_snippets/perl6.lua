@@ -70,7 +70,7 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("perl6", {
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
-		t"#!/usr/bin/env perl6", nl()
+		t"#!/usr/bin/env perl6"
 	}),
 	s({trig = ".", descr = "(.)", priority = -1000, trigEngine = te("w")}, {
 		t" =>"
@@ -176,7 +176,7 @@ ls.add_snippets("perl6", {
 		t"use Test;", nl(),
 		i(1, "use lib \'lib\';", {key = "i1"}), nl(),
 		nl(),
-		t"plan ", i(2, "$num-tests", {key = "i2"}), t";", nl()
+		t"plan ", i(2, "$num-tests", {key = "i2"}), t";"
 	}),
 	s({trig = "slurp", descr = "(slurp)", priority = -1000, trigEngine = te("w")}, {
 		t"my ", i(1, "$var", {key = "i1"}), t" = \"", i(2, "filename", {key = "i2"}), t"\".IO.slurp;"

@@ -142,7 +142,7 @@ ls.add_snippets("helm", {
 		t"\tapp: {{ template \"", i(2, "chartName", {key = "i2"}), t".name\" . }}", nl(),
 		t"\tcomponent: \"{{ .Values.", cp(1), t".name }}\"", nl(),
 		t"\trelease: {{ .Release.Name }}", nl(),
-		t"  type: \"{{ .Values.", i(1, "value_key", {key = "i1"}), t".service.type }}\"", nl()
+		t"  type: \"{{ .Values.", i(1, "value_key", {key = "i1"}), t".service.type }}\""
 	}),
 	s({trig = "service_spec", descr = "(service_spec)", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
@@ -164,7 +164,7 @@ ls.add_snippets("helm", {
 			t"\trelease: {{ .Release.Name }}", nl(),
 			t"  name: {{ template \"", i(2, "chartName", {key = "i2"}), t".", i(1, "value_key", {key = "i1"}), t".fullname\" . }}", nl(),
 			t"# spec", nl(),
-			i(0, "", {key = "i0"}), nl()
+			i(0, "", {key = "i0"})
 		},
 		{
 			t"spec:", nl(),
@@ -187,7 +187,7 @@ ls.add_snippets("helm", {
 			t"{{- if and (semverCompare \">=1.7-0\" .Capabilities.KubeVersion.GitVersion) (.Values.", cp(1), t".service.healthCheckNodePort) }}", nl(),
 			t"  healthCheckNodePort: {{ .Values.", i(1, "value_key", {key = "i1"}), t".service.healthCheckNodePort }}", nl(),
 			t"{{- end }}", nl(),
-			i(0, "", {key = "i0"}), nl()
+			i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "annotations_spec", descr = "(annotations_spec)", priority = -1000, trigEngine = te("w")}, {
@@ -195,7 +195,7 @@ ls.add_snippets("helm", {
 		t"  annotations:", nl(),
 		t"{{ toYaml .Values.", i(1, "value_key", {key = "i1"}), t".service.annotations | indent 4 }}", nl(),
 		t"{{- end }}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "labels_spec", descr = "(labels_spec)", priority = -1000, trigEngine = te("w")}, {
 		t" labels:", nl(),
@@ -208,11 +208,11 @@ ls.add_snippets("helm", {
 		t"\theritage: {{ .Release.Service }}", nl(),
 		t"\trelease: {{ .Release.Name }}", nl(),
 		t"  name: {{ template \"", i(2, "chartName", {key = "i2"}), t".", i(1, "value_key", {key = "i1"}), t".fullname\" . }}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "ports_spec", descr = "(ports_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"ports:", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "portHTTP_spec", descr = "(portHTTP_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"- name: http", nl(),
@@ -222,7 +222,7 @@ ls.add_snippets("helm", {
 		t"  {{- if (and (eq .Values.", cp(1), t".service.type \"NodePort\") (not (empty .Values.", cp(1), t".service.nodePorts.http))) }}", nl(),
 		t"  nodePort: {{ .Values.", i(1, "value_key", {key = "i1"}), t".service.nodePorts.http }}", nl(),
 		t"  {{- end }}", nl(),
-		t"  ", i(0, "", {key = "i0"}), nl()
+		t"  ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "portHTTPS_spec", descr = "(portHTTPS_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"- name: https", nl(),
@@ -232,7 +232,7 @@ ls.add_snippets("helm", {
 		t"  {{- if (and (eq .Values.", cp(1), t".service.type \"NodePort\") (not (empty .Values.", cp(1), t".service.nodePorts.https))) }}", nl(),
 		t"  nodePort: {{ .Values.", i(1, "value_key", {key = "i1"}), t".service.nodePorts.https }}", nl(),
 		t"  {{- end }}", nl(),
-		t"  ", i(0, "", {key = "i0"}), nl()
+		t"  ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "portTCP_spec", descr = "(portTCP_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"{{- range $key, $value := .Values.tcp }}", nl(),
@@ -241,7 +241,7 @@ ls.add_snippets("helm", {
 		t"\tprotocol: TCP", nl(),
 		t"\ttargetPort: \"{{ $key }}-tcp\"", nl(),
 		t"{{- end }}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "portUDP_spec", descr = "(portUDP_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"{{- range $key, $value := .Values.udp }}", nl(),
@@ -250,16 +250,14 @@ ls.add_snippets("helm", {
 		t"\tprotocol: UDP", nl(),
 		t"\ttargetPort: \"{{ $key }}-udp\"", nl(),
 		t"{{- end }}", nl(),
-		i(0, "", {key = "i0"}), nl(),
-		nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "selector_spec", descr = "(selector_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"selector:", nl(),
 		t"  app: {{ template \"", i(2, "chartName", {key = "i2"}), t".name\" . }}", nl(),
 		t"  component: \"{{ .Values.", i(1, "value_key", {key = "i1"}), t".name }}\"", nl(),
 		t"  release: {{ .Release.Name }}", nl(),
-		t"  ", i(0, "", {key = "i0"}), nl(),
-		nl()
+		t"  ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "deploy_sample_spec", descr = "(deploy_sample_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"{{- if .Values.", cp(1), t".enabled }}", nl(),
@@ -332,9 +330,7 @@ ls.add_snippets("helm", {
 		t"{{ toYaml .Values.", i(1, "value_key", {key = "i1"}), t".affinity | indent 8 }}", nl(),
 		t"\t{{- end }}", nl(),
 		t"\t  terminationGracePeriodSeconds: 60", nl(),
-		t"{{- end }}", nl(),
-		nl(),
-		nl()
+		t"{{- end }}"
 	}),
 	s({trig = "deploy_spec", descr = "(deploy_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"{{- if .Values.", cp(1), t".enabled }}", nl(),
@@ -357,7 +353,7 @@ ls.add_snippets("helm", {
 		t"\t# nodeselector_spec", nl(),
 		t"\t# tolerations_spec", nl(),
 		t"\t# affinity_spec", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "spec_spec", descr = "(spec_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"spec:", nl(),
@@ -381,18 +377,18 @@ ls.add_snippets("helm", {
 		t"\t  imagePullSecrets:", nl(),
 		t"{{ toYaml .Values.imagePullSecrets | indent 8 }}", nl(),
 		t"\t  {{- end }}", nl(),
-		t"\t  ", i(0, "", {key = "i0"}), nl()
+		t"\t  ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "imagePullSecrets_spec", descr = "(imagePullSecrets_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"\t  {{- if .Values.imagePullSecrets }}", nl(),
 		t"\t  imagePullSecrets:", nl(),
 		t"{{ toYaml .Values.imagePullSecrets | indent 8 }}", nl(),
 		t"\t  {{- end }}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "imagePullPolicy_spec", descr = "(imagePullPolicy_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"imagePullPolicy: ", i(1, "imagePullPolicy", {key = "i1"}), nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "containers_spec", descr = "(containers_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"containers:", nl(),
@@ -458,7 +454,7 @@ ls.add_snippets("helm", {
 		t"{{- end }}", nl(),
 		t"  terminationGracePeriodSeconds: 60", nl(),
 		t"{{- end }}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "PersistentVolumeClaim_spec", descr = "(PersistentVolumeClaim_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"kind: PersistentVolumeClaim", nl(),
@@ -485,7 +481,7 @@ ls.add_snippets("helm", {
 		t"{{- end }}", nl(),
 		t"{{- end }}", nl(),
 		t"{{- end }}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "configMap_spec", descr = "(configMap_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"{{- if .Values.artifactory.enabled -}}", nl(),
@@ -502,7 +498,7 @@ ls.add_snippets("helm", {
 		t"\t", i(3, "nameOfConfigFile", {key = "i3"}), t".conf: |", nl(),
 		t"\t  # data goes here", nl(),
 		t"{{- end -}}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "initContainers_spec", descr = "(initContainers_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"{{- if .Values.", cp(1), t".initContainers }}", nl(),
@@ -522,7 +518,7 @@ ls.add_snippets("helm", {
 		t"\t\t\techo \'PostgreSQL OK ✓\'", nl(),
 		t"\t\t# args", nl(),
 		t"{{- end }}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "pvc_spec", descr = "(pvc_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"kind: PersistentVolumeClaim", nl(),
@@ -548,7 +544,7 @@ ls.add_snippets("helm", {
 		t"{{- end }}", nl(),
 		t"{{- end }}", nl(),
 		t"{{- end }}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "pv_nfs_spec", descr = "(pv_nfs_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"apiVersion: v1", nl(),
@@ -572,7 +568,7 @@ ls.add_snippets("helm", {
 		t"\tserver: {{ .Values.", cp(1), t".persistence.nfs.ip }}", nl(),
 		t"\tpath: \"{{ .Values.", i(1, "value_key", {key = "i1"}), t".persistence.nfs.haDataMount }}\"", nl(),
 		t"\treadOnly: false", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "pvc_hostpath_spec", descr = "(pvc_hostpath_spec)", priority = -1000, trigEngine = te("w")}, {
 		t"{{- if and .Values.persistence.enabled .Values.persistence.", cp(1), t".hostPath (not", nl(),
@@ -589,7 +585,7 @@ ls.add_snippets("helm", {
 		t"  hostPath:", nl(),
 		t"\tpath: {{ .Values.persistence.", i(1, "value_key", {key = "i1"}), t".hostPath | quote }}", nl(),
 		t"{{- end -}}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "deploy_values", descr = "(deploy_values)", priority = -1000, trigEngine = te("w")}, {
 		cp(1), t":", nl(),
@@ -626,7 +622,7 @@ ls.add_snippets("helm", {
 		t"  extraInitContainers: []", nl(),
 		t"  lifecycle: {}", nl(),
 		t"revisionHistoryLimit: 10", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "rbac_values", descr = "(rbac_values)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "value_key", {key = "i1"}), t":", nl(),
@@ -636,7 +632,7 @@ ls.add_snippets("helm", {
 		t"  create: true", nl(),
 		t"  name:", nl(),
 		t"imagePullSecrets: []", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "service_values", descr = "(service_values)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "value_key", {key = "i1"}), t":", nl(),
@@ -656,7 +652,7 @@ ls.add_snippets("helm", {
 		t"\tnodePorts:", nl(),
 		t"\t  http: \"\"", nl(),
 		t"\t  https: \"\"", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "readinessProbe_values", descr = "(readinessProbe_values)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "value_key", {key = "i1"}), t":", nl(),
@@ -667,7 +663,7 @@ ls.add_snippets("helm", {
 		t"\tsuccessThreshold: 1", nl(),
 		t"\ttimeoutSeconds: 1", nl(),
 		t"\tport: 10254", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "livenessProbe_values", descr = "(livenessProbe_values)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "value_key", {key = "i1"}), t":", nl(),

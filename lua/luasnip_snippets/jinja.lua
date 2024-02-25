@@ -207,7 +207,7 @@ ls.add_snippets("jinja", {
 	s({trig = "with", descr = "(with)", priority = -1000, trigEngine = te("w")}, {
 		t"{% with ", i(1, "", {key = "i1"}), t" as ", i(2, "", {key = "i2"}), t" %}", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"{% endwith %}", nl()
+		t"{% endwith %}"
 	}),
 	s({trig = "add", descr = "(add)", priority = -1000, trigEngine = te("w")}, {
 		t"add:\"", i(0, "", {key = "i0"}), t"\""

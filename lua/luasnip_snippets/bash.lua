@@ -51,11 +51,11 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("bash", {
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
-		t"#!/usr/bin/env bash", nl()
+		t"#!/usr/bin/env bash"
 	}),
 	s({trig = "s#!", descr = "(s#!)", priority = -1000, trigEngine = te("w")}, {
 		t"#!/usr/bin/env bash", nl(),
-		t"set -eu", nl()
+		t"set -eu"
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"if [[ ", i(1, "", {key = "i1"}), t" ]]; then", nl(),

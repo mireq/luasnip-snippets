@@ -86,7 +86,7 @@ ls.add_snippets("jenkins", {
 		t"\tsh \'", i(1, "make check", {key = "i1"}), t"\'", nl(),
 		t"\tjunit \'", i(2, "reports/**/*.xml", {key = "i2"}), t"\' ", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "stage", descr = "(stage)", priority = -1000, trigEngine = te("w")}, {
 		t"stage(\'", i(1, "Test", {key = "i1"}), t"\'){", nl(),
@@ -95,7 +95,7 @@ ls.add_snippets("jenkins", {
 		t"\t\tjunit \'", i(3, "reports/**/*.xml", {key = "i3"}), t"\' ", nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "pipeline", descr = "(pipeline)", priority = -1000, trigEngine = te("w")}, {
 		t"pipeline {", nl(),
@@ -108,7 +108,7 @@ ls.add_snippets("jenkins", {
 		t"\t\t}", nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "pipeline_sample", descr = "(pipeline_sample)", priority = -1000, trigEngine = te("w")}, {
 		t"pipeline {", nl(),
@@ -132,7 +132,7 @@ ls.add_snippets("jenkins", {
 		t"\t\t}", nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "d", descr = "(d)", priority = -1000, trigEngine = te("w")}, {
 		t"docker {", nl(),
@@ -140,8 +140,7 @@ ls.add_snippets("jenkins", {
 		t"\tlabel \'", i(2, "my-defined-label\'", {key = "i2"}), t"\'", nl(),
 		t"\tregistryUrl \'", i(3, "https://myregistry.com/\'", {key = "i3"}), t"\'", nl(),
 		t"\tregistryCredentialsId \'", i(4, "myPredefinedCredentialsInJenkins\'", {key = "i4"}), t"\'", nl(),
-		t"}", nl(),
-		nl()
+		t"}"
 	}),
 	s({trig = "df", descr = "(df)", priority = -1000, trigEngine = te("w")}, {
 		t"dockerfile {", nl(),
@@ -150,7 +149,7 @@ ls.add_snippets("jenkins", {
 		t"\tlabel \'", i(3, "my-defined-label", {key = "i3"}), t"\'", nl(),
 		t"\tregistryUrl \'", i(4, "https://myregistry.com/", {key = "i4"}), t"\'", nl(),
 		t"\tregistryCredentialsId \'", i(5, "myPredefinedCredentialsInJenkins", {key = "i5"}), t"\'", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "pa", descr = "(pa)", priority = -1000, trigEngine = te("w")}, {
 		t"post { ", nl(),
@@ -158,7 +157,7 @@ ls.add_snippets("jenkins", {
 		t"\t\t", i(1, "", {key = "i1"}), nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "pc", descr = "(pc)", priority = -1000, trigEngine = te("w")}, c(1, {
 		{
@@ -167,7 +166,7 @@ ls.add_snippets("jenkins", {
 			t"\t\t", i(1, "", {key = "i1"}), nl(),
 			t"\t}", nl(),
 			t"}", nl(),
-			i(0, "", {key = "i0"}), nl()
+			i(0, "", {key = "i0"})
 		},
 		{
 			t"post { ", nl(),
@@ -175,8 +174,7 @@ ls.add_snippets("jenkins", {
 			t"\t\t", i(1, "", {key = "i1"}), nl(),
 			t"\t}", nl(),
 			t"}", nl(),
-			i(0, "", {key = "i0"}), nl(),
-			nl()
+			i(0, "", {key = "i0"})
 		},
 	})),
 	s({trig = "pf", descr = "(pf)", priority = -1000, trigEngine = te("w")}, {
@@ -185,7 +183,7 @@ ls.add_snippets("jenkins", {
 		t"\t\t", i(1, "", {key = "i1"}), nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "pr", descr = "(pr)", priority = -1000, trigEngine = te("w")}, {
 		t"post { ", nl(),
@@ -193,7 +191,7 @@ ls.add_snippets("jenkins", {
 		t"\t\t", i(1, "", {key = "i1"}), nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "pab", descr = "(pab)", priority = -1000, trigEngine = te("w")}, {
 		t"post { ", nl(),
@@ -201,7 +199,7 @@ ls.add_snippets("jenkins", {
 		t"\t\t", i(1, "", {key = "i1"}), nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "pfa", descr = "(pfa)", priority = -1000, trigEngine = te("w")}, {
 		t"post { ", nl(),
@@ -209,7 +207,7 @@ ls.add_snippets("jenkins", {
 		t"\t\t", i(1, "", {key = "i1"}), nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "ps", descr = "(ps)", priority = -1000, trigEngine = te("w")}, {
 		t"post { ", nl(),
@@ -217,7 +215,7 @@ ls.add_snippets("jenkins", {
 		t"\t\t", i(1, "", {key = "i1"}), nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "pu", descr = "(pu)", priority = -1000, trigEngine = te("w")}, {
 		t"post { ", nl(),
@@ -225,7 +223,7 @@ ls.add_snippets("jenkins", {
 		t"\t\t", i(1, "", {key = "i1"}), nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "psss", descr = "(psss)", priority = -1000, trigEngine = te("w")}, {
 		t"pipeline {", nl(),
@@ -237,7 +235,7 @@ ls.add_snippets("jenkins", {
 		t"\t\t\t}", nl(),
 		t"\t\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "sss", descr = "(sss)", priority = -1000, trigEngine = te("w")}, {
 		t"stages {", nl(),
@@ -247,41 +245,39 @@ ls.add_snippets("jenkins", {
 		t"\t\t}", nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl(),
-		nl(),
-		nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "parameters", descr = "(parameters)", priority = -1000, trigEngine = te("w")}, {
 		t"parameters{ ", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "paramtext", descr = "(paramtext)", priority = -1000, trigEngine = te("w")}, {
 		t"\ttext(name: \"", i(1, "BIOGRAPHY", {key = "i1"}), t"\" , defaultValue: \"", i(2, "default", {key = "i2"}), t"\" , description: \"", i(3, "Enter some information about the person", {key = "i3"}), t"\")", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
+		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "parambool", descr = "(parambool)", priority = -1000, trigEngine = te("w")}, {
 		t"\tbooleanParam(name: \"", i(1, "TOGGLE", {key = "i1"}), t"\" , defaultValue: ", i(2, "default", {key = "i2"}), t", description: \"", i(3, "Toggle this value", {key = "i3"}), t"\")", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
+		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "paramchoice", descr = "(paramchoice)", priority = -1000, trigEngine = te("w")}, {
 		t"\tchoice(name: \"", i(1, "CHOICE", {key = "i1"}), t"\" , choices: [\"", i(2, "Choices", {key = "i2"}), t"\",] , description: \"", i(3, "Pick something", {key = "i3"}), t"\") ", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
+		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "parampassword", descr = "(parampassword)", priority = -1000, trigEngine = te("w")}, {
 		t"\tpassword(name: \"", i(1, "PASSWORD", {key = "i1"}), t"\" , defaultValue: \"", i(2, "SECRET", {key = "i2"}), t"\" , description: \"", i(3, "Enter a password", {key = "i3"}), t"\")", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
+		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "paramfile", descr = "(paramfile)", priority = -1000, trigEngine = te("w")}, {
 		t"\tfile(name: \"", i(1, "FILE", {key = "i1"}), t"\" , description: \"", i(2, "Choose a file to upload", {key = "i2"}), t"\")", i(0, "", {key = "i0"}), nl(),
-		t"\t", cp(0), nl()
+		t"\t", cp(0)
 	}),
 	s({trig = "triggers", descr = "(triggers)", priority = -1000, trigEngine = te("w")}, {
 		t"triggers {", nl(),
 		t"\tcron(\'", i(1, "H */4 * * 1-5", {key = "i1"}), t"\')", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "input", descr = "(input)", priority = -1000, trigEngine = te("w")}, {
 		t"input {", nl(),
@@ -292,7 +288,7 @@ ls.add_snippets("jenkins", {
 		t"\t\tstring(name: \'", i(4, "PERSON", {key = "i4"}), t"\' , defaultValue: \'", i(5, "Mr Jenkins", {key = "i5"}), t"\' , description: \'", i(6, "Who should I say hello to?", {key = "i6"}), t"\')", nl(),
 		t"\t}", nl(),
 		t"}", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "whenbranch", descr = "(whenbranch)", priority = -1000, trigEngine = te("w")}, {
 		t"when {", nl(),

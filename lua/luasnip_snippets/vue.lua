@@ -70,13 +70,13 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("vue", {
 	s({trig = "slot", descr = "(slot)", priority = -1000, trigEngine = te("w")}, {
-		t"<slot></slot>", nl()
+		t"<slot></slot>"
 	}),
 	s({trig = "template", descr = "(template)", priority = -1000, trigEngine = te("w")}, {
-		t"<template></template>", nl()
+		t"<template></template>"
 	}),
 	s({trig = "transition", descr = "(transition)", priority = -1000, trigEngine = te("w")}, {
-		t"<transition></transition>", nl()
+		t"<transition></transition>"
 	}),
 	s({trig = "vbase", descr = "(vbase)", priority = -1000, trigEngine = te("w")}, {
 		t"<template>", nl(),
@@ -93,7 +93,7 @@ ls.add_snippets("vue", {
 		nl(),
 		t"<style scoped>", nl(),
 		nl(),
-		t"</style>", nl()
+		t"</style>"
 	}),
 	s({trig = "vimport:c", descr = "(vimport:c)", priority = -1000, trigEngine = te("w")}, {
 		t"import ", i(1, "Name", {key = "i1"}), t" from \'./components/", cp(1), t".vue\';", nl(),
@@ -102,14 +102,14 @@ ls.add_snippets("vue", {
 		t"\tcomponents: {", nl(),
 		t"\t\t", cp(1), nl(),
 		t"\t}", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "vactions", descr = "(vactions)", priority = -1000, trigEngine = te("w")}, {
 		t"actions: {", nl(),
 		t"\t", i(1, "updateValue", {key = "i1"}), t"({commit}, ", i(2, "payload", {key = "i2"}), t") {", nl(),
 		t"\t\tcommit(", cp(1), t", ", cp(2), t");", nl(),
 		t"\t}", nl(),
-		t"},", nl()
+		t"},"
 	}),
 	s({trig = "vanim:js:el", descr = "(vanim:js:el)", priority = -1000, trigEngine = te("w")}, {
 		t"<transition", nl(),
@@ -124,7 +124,7 @@ ls.add_snippets("vue", {
 		t"  @leave-cancelled=\"leaveCancelled\"", nl(),
 		t"  :css=\"false\">", nl(),
 		nl(),
-		t" </transition>", nl()
+		t" </transition>"
 	}),
 	s({trig = "vanim:js:method", descr = "(vanim:js:method)", priority = -1000, trigEngine = te("w")}, {
 		t"methods: {", nl(),
@@ -154,65 +154,65 @@ ls.add_snippets("vue", {
 		t"\tleaveCancelled(el, done) {", nl(),
 		t"\t\tconsole.log(\'leaveCancelled\');", nl(),
 		t"\t}", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "vcl", descr = "(vcl)", priority = -1000, trigEngine = te("w")}, {
-		t"@click=\"", i(1, "", {key = "i1"}), t"\"", nl()
+		t"@click=\"", i(1, "", {key = "i1"}), t"\""
 	}),
 	s({trig = "vdata", descr = "(vdata)", priority = -1000, trigEngine = te("w")}, {
 		t"data() {", nl(),
 		t"\treturn {", nl(),
 		t"\t\t", i(1, "key", {key = "i1"}), t": ", i(2, "value", {key = "i2"}), nl(),
 		t"\t};", nl(),
-		t"},", nl()
+		t"},"
 	}),
 	s({trig = "vmounted", descr = "(vmounted)", priority = -1000, trigEngine = te("w")}, {
 		t"mounted() {", nl(),
 		t"\tconsole.log(\'mounted\');", nl(),
-		t"},", nl()
+		t"},"
 	}),
 	s({trig = "vmethods", descr = "(vmethods)", priority = -1000, trigEngine = te("w")}, {
 		t"methods: {", nl(),
 		t"\t", i(1, "method", {key = "i1"}), t"() {", nl(),
 		t"\t\tconsole.log(\'method\');", nl(),
 		t"\t}", nl(),
-		t"},", nl()
+		t"},"
 	}),
 	s({trig = "vcomputed", descr = "(vcomputed)", priority = -1000, trigEngine = te("w")}, {
 		t"computed: {", nl(),
 		t"\t", i(1, "fnName", {key = "i1"}), t"() {", nl(),
 		t"\t\treturn;", nl(),
 		t"\t}", nl(),
-		t"},", nl()
+		t"},"
 	}),
 	s({trig = "vfilter", descr = "(vfilter)", priority = -1000, trigEngine = te("w")}, {
 		t"filters: {", nl(),
 		t"\t", i(1, "fnName", {key = "i1"}), t": function(", i(2, "value", {key = "i2"}), t") {", nl(),
 		t"\t\treturn;", nl(),
 		t"\t}", nl(),
-		t"},", nl()
+		t"},"
 	}),
 	s({trig = "vfor", descr = "(vfor)", priority = -1000, trigEngine = te("w")}, {
 		t"<div v-for=\"", i(1, "item", {key = "i1"}), t" in ", i(2, "items", {key = "i2"}), t"\" :key=\"", cp(1), t".id\">", nl(),
 		t"\t{{ ", cp(1), t" }}", nl(),
-		t"</div>", nl()
+		t"</div>"
 	}),
 	s({trig = "vgetters", descr = "(vgetters)", priority = -1000, trigEngine = te("w")}, {
 		t"getters: {", nl(),
 		t"\t", i(1, "value", {key = "i1"}), t": state => {", nl(),
 		t"\t\treturn state.", cp(1), t";", nl(),
 		t"\t}", nl(),
-		t"},", nl()
+		t"},"
 	}),
 	s({trig = "vimport", descr = "(vimport)", priority = -1000, trigEngine = te("w")}, {
-		t"import ", i(1, "New", {key = "i1"}), t" from \'./components/", cp(1), t".vue\';", nl()
+		t"import ", i(1, "New", {key = "i1"}), t" from \'./components/", cp(1), t".vue\';"
 	}),
 	s({trig = "vkeep", descr = "(vkeep)", priority = -1000, trigEngine = te("w")}, {
 		t"<keep-alive>", nl(),
 		t"\t<component :is=\"\">", nl(),
 		t"\t\t<p>default</p>", nl(),
 		t"\t</component>", nl(),
-		t"</keep-alive>", nl()
+		t"</keep-alive>"
 	}),
 	s({trig = "vmixin", descr = "(vmixin)", priority = -1000, trigEngine = te("w")}, {
 		t"const ", i(1, "mixinName", {key = "i1"}), t" = {", nl(),
@@ -222,25 +222,25 @@ ls.add_snippets("vue", {
 		t"}", nl(),
 		t"const ", i(2, "Component", {key = "i2"}), t" = Vue.extend({", nl(),
 		t"\tmixins: [", cp(1), t"]", nl(),
-		t"})", nl()
+		t"})"
 	}),
 	s({trig = "vmutations", descr = "(vmutations)", priority = -1000, trigEngine = te("w")}, {
 		t"mutations: {", nl(),
 		t"\t", i(1, "updateValue", {key = "i1"}), t"(state, ", i(3, "payload", {key = "i3"}), t") => {", nl(),
 		t"\t\tstate.", i(2, "value", {key = "i2"}), t" = ", cp(3), t";", nl(),
 		t"\t}", nl(),
-		t"},", nl()
+		t"},"
 	}),
 	s({trig = "vprops:d", descr = "(vprops:d)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "propName", {key = "i1"}), t": {", nl(),
 		t"  type: ", i(2, "Number", {key = "i2"}), t",", nl(),
 		t"  default: ", i(0, "", {key = "i0"}), nl(),
-		t"},", nl()
+		t"},"
 	}),
 	s({trig = "vprops", descr = "(vprops)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "propName", {key = "i1"}), t": {", nl(),
 		t"\ttype: ", i(2, "Number", {key = "i2"}), nl(),
-		t"},", nl()
+		t"},"
 	}),
 	s({trig = "vstore", descr = "(vstore)", priority = -1000, trigEngine = te("w")}, {
 		t"import Vue from \'vue\';", nl(),
@@ -252,13 +252,12 @@ ls.add_snippets("vue", {
 		t"\tstate: {", nl(),
 		t"\t\t", i(1, "key", {key = "i1"}), t": ", i(2, "value", {key = "i2"}), nl(),
 		t"\t}", nl(),
-		t"});", nl(),
-		nl()
+		t"});"
 	}),
 	s({trig = "trans", descr = "(trans)", priority = -1000, trigEngine = te("w")}, {
-		t"$t(\'", i(1, "", {key = "i1"}), t"\')", nl()
+		t"$t(\'", i(1, "", {key = "i1"}), t"\')"
 	}),
 	s({trig = "transc", descr = "(transc)", priority = -1000, trigEngine = te("w")}, {
-		t"$t(\'", i(1, "", {key = "i1"}), t"\', { ", i(2, "", {key = "i2"}), t": ", i(3, "", {key = "i3"}), t" })", nl()
+		t"$t(\'", i(1, "", {key = "i1"}), t"\', { ", i(2, "", {key = "i2"}), t": ", i(3, "", {key = "i3"}), t" })"
 	}),
 })

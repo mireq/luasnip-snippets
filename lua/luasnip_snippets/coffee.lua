@@ -403,7 +403,8 @@ ls.add_snippets("coffee", {
 	s({trig = "ngdl", descr = "(ngdl)", priority = -1000, trigEngine = te("w")}, {
 		t".directive(\'", i(1, "directiveName", {key = "i1"}), t"\', (", i(2, "directiveDeps", {key = "i2"}), t") ->", nl(),
 		t"\t(scope, element, attrs", i(3, "ctrl", {key = "i3"}), t") ->", nl(),
-		t"\t\t", i(4, "", {key = "i4"}), nl()
+		t"\t\t", i(4, "", {key = "i4"}), nl(),
+		t")"
 	}),
 	s({trig = "forindo", descr = "(forindo)", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(1, "name", {key = "i1"}), t" in ", i(2, "array", {key = "i2"}), nl(),
@@ -488,7 +489,7 @@ ls.add_snippets("coffee", {
 		tr(1, "^\'?(\\w+)\'?$", "\\L$1\\E"), t" = require(", c(1, {{t"\'", i(1, "sys", {key = "i2"}), t"\'"}, {i(1, jt({"\'", "sys", "\'"}))}}, {key = "i1"}), t")"
 	}),
 	s({trig = "exp", descr = "(exp)", priority = -1000, trigEngine = te("w")}, {
-		i(0, "root", {key = "i0"}), t" = exports ? this", nl()
+		i(0, "root", {key = "i0"}), t" = exports ? this"
 	}),
 	s({trig = "jsonp", descr = "(jsonp)", priority = -1000, trigEngine = te("w")}, {
 		t"JSON.parse ", i(0, "jstr", {key = "i0"})
@@ -1230,11 +1231,11 @@ ls.add_snippets("coffee", {
 	}),
 	s({trig = "def", descr = "(def)", priority = -1000, trigEngine = te("w")}, {
 		t"define [\"", i(1, "#dependencies1", {key = "i1"}), t"\"], (", i(2, "#dependencies2", {key = "i2"}), t") ->", nl(),
-		t"\t", i(0, "TARGET", {key = "i0"}), nl()
+		t"\t", i(0, "TARGET", {key = "i0"})
 	}),
 	s({trig = "defn", descr = "(defn)", priority = -1000, trigEngine = te("w")}, {
 		t"define \"", i(1, "#name", {key = "i1"}), t"\", [\"", i(2, "#dependencies1", {key = "i2"}), t"\"], (", i(3, "#dependencies2", {key = "i3"}), t") ->", nl(),
-		t"\t", i(0, "TARGET", {key = "i0"}), nl()
+		t"\t", i(0, "TARGET", {key = "i0"})
 	}),
 	s({trig = "reqjs", descr = "(reqjs)", priority = -1000, trigEngine = te("w")}, {
 		t"require [\"", i(1, "#dependencies1", {key = "i1"}), t"\"], (", i(2, "#dependencies2", {key = "i2"}), t") ->", nl(),

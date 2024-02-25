@@ -393,7 +393,7 @@ ls.add_snippets("c", {
 		t" */", nl(),
 		t"typedef struct ", d(2, function(args, snip) return sn(nil, { i(1, jt({"_", args[1], " "}, ""), {key = "i2"}) }) end, {k"i1"}), t"{", nl(),
 		t"\tm_", i(3, "Data", {key = "i3"}), t" /*!< ", i(4, "Description", {key = "i4"}), t" */", nl(),
-		t"} ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1_t\', \'name\')")}, ""), {key = "i1"}) }) end), t";", nl()
+		t"} ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\'$1_t\', \'name\')")}, ""), {key = "i1"}) }) end), t";"
 	}),
 	s({trig = "enum", descr = "(enum)", priority = -1000, trigEngine = te("w")}, {
 		t"/*! \\enum ", cp(1), nl(),
@@ -493,31 +493,31 @@ ls.add_snippets("c", {
 		t"\t{", nl(),
 		t"\t\t", i(0, "", {key = "i0"}), nl(),
 		t"\t}", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "asr", descr = "(asr)", priority = -1000, trigEngine = te("w")}, {
-		t"assert(", i(1, "", {key = "i1"}), t");", nl()
+		t"assert(", i(1, "", {key = "i1"}), t");"
 	}),
 	s({trig = "anl", descr = "(anl)", priority = -1000, trigEngine = te("w")}, {
-		t"assert(", i(1, "ptr", {key = "i1"}), t" != NULL);", nl()
+		t"assert(", i(1, "ptr", {key = "i1"}), t" != NULL);"
 	}),
 	s({trig = "mlc", descr = "(mlc)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ptr", {key = "i1"}), t" = (", i(2, "type", {key = "i2"}), t"*) malloc(sizeof(", cp(2), t"));", nl()
+		i(1, "ptr", {key = "i1"}), t" = (", i(2, "type", {key = "i2"}), t"*) malloc(sizeof(", cp(2), t"));"
 	}),
 	s({trig = "clc", descr = "(clc)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ptr", {key = "i1"}), t" = (", i(2, "type", {key = "i2"}), t"*) calloc(", i(3, "size", {key = "i3"}), t", sizeof(", cp(2), t"));", nl()
+		i(1, "ptr", {key = "i1"}), t" = (", i(2, "type", {key = "i2"}), t"*) calloc(", i(3, "size", {key = "i3"}), t", sizeof(", cp(2), t"));"
 	}),
 	s({trig = "rlc", descr = "(rlc)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ptr", {key = "i1"}), t" = realloc(", cp(1), t", ", i(2, "size", {key = "i2"}), t" * sizeof(", i(3, "type", {key = "i3"}), t"));", nl()
+		i(1, "ptr", {key = "i1"}), t" = realloc(", cp(1), t", ", i(2, "size", {key = "i2"}), t" * sizeof(", i(3, "type", {key = "i3"}), t"));"
 	}),
 	s({trig = "mlcd", descr = "(mlcd)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "type", {key = "i1"}), t" ", i(2, "ptr", {key = "i2"}), t" = (", cp(1), t"*) malloc(sizeof(", cp(1), t"));", nl()
+		i(1, "type", {key = "i1"}), t" ", i(2, "ptr", {key = "i2"}), t" = (", cp(1), t"*) malloc(sizeof(", cp(1), t"));"
 	}),
 	s({trig = "clcd", descr = "(clcd)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "type", {key = "i1"}), t" ", i(2, "ptr", {key = "i2"}), t" = (", cp(1), t"*) calloc(", i(3, "size", {key = "i3"}), t", sizeof(", cp(1), t"));", nl()
+		i(1, "type", {key = "i1"}), t" ", i(2, "ptr", {key = "i2"}), t" = (", cp(1), t"*) calloc(", i(3, "size", {key = "i3"}), t", sizeof(", cp(1), t"));"
 	}),
 	s({trig = "fre", descr = "(fre)", priority = -1000, trigEngine = te("w")}, {
-		t"free(", i(1, "ptr", {key = "i1"}), t");", nl()
+		t"free(", i(1, "ptr", {key = "i1"}), t");"
 	}),
 	s({trig = "todo", descr = "(todo)", priority = -1000, trigEngine = te("w")}, {
 		t"/*! TODO: ", i(1, "Todo description here", {key = "i1"}), nl(),
@@ -525,7 +525,7 @@ ls.add_snippets("c", {
 		t" */"
 	}),
 	s({trig = ".", descr = "(.)", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(1, "", {key = "i1"}), t"]", nl()
+		t"[", i(1, "", {key = "i1"}), t"]"
 	}),
 	s({trig = "asm", descr = "(asm)", priority = -1000, trigEngine = te("w")}, {
 		t"__asm__ __volatile__(", nl(),

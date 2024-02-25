@@ -53,6 +53,6 @@ ls.add_snippets("diff", {
 		t"Author: ", d(6, function(args, snip) return sn(nil, { i(1, jt({c_viml("g:snips_author")}, ""), {key = "i6"}) }) end), nl(),
 		t"Reviewed-by: ", i(7, "name and email", {key = "i7"}), nl(),
 		t"Last-Update: ", d(8, function(args, snip) return sn(nil, { i(1, jt({c_viml("strftime(\"%Y-%m-%d\")")}, ""), {key = "i8"}) }) end), nl(),
-		t"Applied-Upstream: ", i(0, "upstream version|url|commit", {key = "i0"}), nl()
+		t"Applied-Upstream: ", i(0, "upstream version|url|commit", {key = "i0"})
 	}),
 })

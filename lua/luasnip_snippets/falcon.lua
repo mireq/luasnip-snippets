@@ -57,60 +57,60 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("falcon", {
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
-		t"#!/usr/bin/env falcon", nl()
+		t"#!/usr/bin/env falcon"
 	}),
 	s({trig = "imp", descr = "(imp)", priority = -1000, trigEngine = te("w")}, {
-		t"import ", i(0, "module", {key = "i0"}), nl()
+		t"import ", i(0, "module", {key = "i0"})
 	}),
 	s({trig = "fun", descr = "(fun)", priority = -1000, trigEngine = te("w")}, {
 		t"function ", i(1, "function_name", {key = "i2"}), t"(", i(2, "", {key = "i3"}), t")", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "class", descr = "(class)", priority = -1000, trigEngine = te("w")}, {
 		t"class ", i(1, "class_name", {key = "i1"}), t"(", i(2, "class_params", {key = "i2"}), t")", nl(),
 		t"\t", i(0, "/* members/methods */", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "if", descr = "(if)", priority = -1000, trigEngine = te("w")}, {
 		t"if ", i(1, "", {key = "i1"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "ife", descr = "(ife)", priority = -1000, trigEngine = te("w")}, {
 		t"if ", cp(1), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"else", nl(),
 		t"    ", i(1, "", {key = "i1"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "eif", descr = "(eif)", priority = -1000, trigEngine = te("w")}, {
 		t"elif ", i(1, "", {key = "i1"}), nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
+		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "switch", descr = "(switch)", priority = -1000, trigEngine = te("w")}, {
 		t"switch ", i(1, "expression", {key = "i1"}), nl(),
 		t"\tcase ", i(2, "item", {key = "i2"}), nl(),
 		t"\tcase ", i(0, "item", {key = "i0"}), nl(),
 		t"\tdefault", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "select", descr = "(select)", priority = -1000, trigEngine = te("w")}, {
 		t"select ", i(1, "variable", {key = "i1"}), nl(),
 		t"\tcase ", i(2, "TypeSpec", {key = "i2"}), nl(),
 		t"\tcase ", i(0, "TypeSpec", {key = "i0"}), nl(),
 		t"\tdefault", nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "forin", descr = "(forin)", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(1, "element", {key = "i1"}), t" in ", i(2, "container", {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "forto", descr = "(forto)", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(1, "lowerbound", {key = "i1"}), t" to ", i(2, "upperbound", {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "wh", descr = "(wh)", priority = -1000, trigEngine = te("w")}, {
 		t"while ", i(1, "conidition", {key = "i1"}), nl(),

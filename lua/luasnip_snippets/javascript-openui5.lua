@@ -66,7 +66,7 @@ ls.add_snippets("javascript-openui5", {
 		t"\t\t\ttextDirection : ", i(6, "", {key = "i6"}), t",", nl(),
 		t"\t\t\twidth : ", i(7, "", {key = "i7"}), t",", nl(),
 		t"\t\t\trequired : ", cp(7), nl(),
-		t"\t\t});", nl()
+		t"\t\t});"
 	}),
 	s({trig = "sapmtext", descr = "(sapmtext)", priority = -1000, trigEngine = te("w")}, {
 		t"var ", i(1, "", {key = "i1"}), t" = new sap.m.Text({", nl(),
@@ -77,7 +77,7 @@ ls.add_snippets("javascript-openui5", {
 		t"\t\t\ttextAlign : ", i(6, "", {key = "i6"}), t",", nl(),
 		t"\t\t\twidth :", i(7, "", {key = "i7"}), t",", nl(),
 		t"\t\t\tmaxLines :", i(8, "", {key = "i8"}), nl(),
-		t"\t\t});", nl()
+		t"\t\t});"
 	}),
 	s({trig = "sapmbutton", descr = "(sapmbutton)", priority = -1000, trigEngine = te("w")}, {
 		t"var ", i(1, "", {key = "i1"}), t" = new sap.m.Button({", nl(),
@@ -118,7 +118,7 @@ ls.add_snippets("javascript-openui5", {
 		t"\t\t\tjustifyContent :", i(9, "", {key = "i9"}), t",", nl(),
 		t"\t\t\talignItems : ", i(10, "", {key = "i10"}), t",", nl(),
 		t"\t\t\titems:[]", nl(),
-		t"\t\t});", nl()
+		t"\t\t});"
 	}),
 	s({trig = "sapmvbox", descr = "(sapmvbox)", priority = -1000, trigEngine = te("w")}, {
 		t"var ", i(1, "", {key = "i1"}), t" = new sap.m.VBox({", nl(),
@@ -132,7 +132,7 @@ ls.add_snippets("javascript-openui5", {
 		t"\t\t\tjustifyContent :", i(9, "", {key = "i9"}), t",", nl(),
 		t"\t\t\talignItems : ", i(10, "", {key = "i10"}), t",", nl(),
 		t"\t\t\titems:[]", nl(),
-		t"\t\t});", nl()
+		t"\t\t});"
 	}),
 	s({trig = "sapcomponent", descr = "(sapcomponent)", priority = -1000, trigEngine = te("w")}, {
 		t"sap.ui.controller(\"", i(1, "", {key = "i1"}), t"\", {", nl(),
@@ -144,7 +144,7 @@ ls.add_snippets("javascript-openui5", {
 		t"   },", nl(),
 		t"   onExit: function() {", nl(),
 		t"   },", nl(),
-		t"});", nl()
+		t"});"
 	}),
 	s({trig = "sapminput", descr = "(sapminput)", priority = -1000, trigEngine = te("w")}, {
 		t"var ", i(1, "", {key = "i1"}), t" = new sap.m.Input({", nl(),
@@ -181,7 +181,7 @@ ls.add_snippets("javascript-openui5", {
 		t"});"
 	}),
 	s({trig = "_sthis", descr = "(_sthis)", priority = -1000, trigEngine = te("w")}, {
-		t"var _self = this;", nl()
+		t"var _self = this;"
 	}),
 	s({trig = "sapmresponsivepopup", descr = "(sapmresponsivepopup)", priority = -1000, trigEngine = te("w")}, {
 		t"var ", i(1, "", {key = "i1"}), t" = new sap.m.ResponsivePopover({", nl(),
@@ -210,7 +210,7 @@ ls.add_snippets("javascript-openui5", {
 		t"\t\t\tafterOpen : ", i(21, "", {key = "i21"}), t", //fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]", nl(),
 		t"\t\t\tbeforeClose : ", i(22, "", {key = "i22"}), t", //fnListenerFunction or [fnListenerFunction, oListenerObject] or [oData, fnListenerFunction, oListenerObject]", nl(),
 		t"\t\t\tafterClose : ", i(23, "", {key = "i23"}), t" //fnList", nl(),
-		t"\t\t});", nl()
+		t"\t\t});"
 	}),
 	s({trig = "sapicon", descr = "(sapicon)", priority = -1000, trigEngine = te("w")}, {
 		t"var ", i(1, "", {key = "i1"}), t" = new sap.ui.core.Icon({", nl(),

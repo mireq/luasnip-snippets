@@ -244,7 +244,7 @@ ls.add_snippets("django", {
 		t"class ", i(1, "ModelName", {key = "i1"}), t"Admin(admin.ModelAdmin):", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		nl(),
-		t"admin.site.register(", cp(1), t", ", cp(1), t"Admin)", nl()
+		t"admin.site.register(", cp(1), t", ", cp(1), t"Admin)"
 	}),
 	s({trig = "tabularinline", descr = "(tabularinline) \"Tabular Inline\"", priority = -50, trigEngine = te("b")}, {
 		t"class ", i(1, "", {key = "i1"}), t"Inline(admin.TabularInline):", nl(),

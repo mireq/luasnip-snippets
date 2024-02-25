@@ -60,48 +60,48 @@ ls.add_snippets("matlab", {
 	s({trig = "if", descr = "(if) if", priority = -1000, trigEngine = te("w")}, {
 		t"if ", i(1, "", {key = "i1"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "ife", descr = "(ife) if ... else", priority = -1000, trigEngine = te("w")}, {
 		t"if ", i(1, "", {key = "i1"}), nl(),
 		t"\t", i(2, "", {key = "i2"}), nl(),
 		t"else", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "el", descr = "(el) else", priority = -1000, trigEngine = te("w")}, {
 		t"else", nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
+		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "eif", descr = "(eif) elsif", priority = -1000, trigEngine = te("w")}, {
 		t"elseif ", i(1, "", {key = "i1"}), nl(),
-		t"\t", i(0, "", {key = "i0"}), nl()
+		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "wh", descr = "(wh) while", priority = -1000, trigEngine = te("w")}, {
 		t"while ", i(1, "", {key = "i1"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "for", descr = "(for) for", priority = -1000, trigEngine = te("w")}, {
 		t"for ", i(1, "i", {key = "i1"}), t" = ", i(2, "1:n", {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "parfor", descr = "(parfor) parfor", priority = -1000, trigEngine = te("w")}, {
 		t"parfor ", i(1, "i", {key = "i1"}), t" = ", i(2, "1:n", {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "fun", descr = "(fun) function", priority = -1000, trigEngine = te("w")}, {
 		t"function [", i(3, "out", {key = "i3"}), t"] = ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\"$1\", \"fun_name\")")}, ""), {key = "i1"}) }) end), t"(", i(2, "", {key = "i2"}), t") ", nl(),
-		i(0, "", {key = "i0"}), nl()
+		i(0, "", {key = "i0"})
 	}),
 	s({trig = "try", descr = "(try) try ... catch", priority = -1000, trigEngine = te("w")}, {
 		t"try", nl(),
 		t"\t", i(1, "", {key = "i1"}), nl(),
 		t"catch ", i(2, "err", {key = "i2"}), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"end", nl()
+		t"end"
 	}),
 	s({trig = "switch", descr = "(switch) \"switch ... otherwise\"", priority = -50, trigEngine = te("")}, {
 		t"switch ", i(1, "n", {key = "i1"}), nl(),
@@ -112,7 +112,7 @@ ls.add_snippets("matlab", {
 		t"end"
 	}),
 	s({trig = "@", descr = "(@) anonymous function", priority = -1000, trigEngine = te("w")}, {
-		t"@(", i(1, "x", {key = "i1"}), t") ", i(0, "x*x", {key = "i0"}), nl()
+		t"@(", i(1, "x", {key = "i1"}), t") ", i(0, "x*x", {key = "i0"})
 	}),
 	s({trig = "cl", descr = "(cl) class", priority = -1000, trigEngine = te("w")}, {
 		t"classdef ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\"$1\", \"class_name\")")}, ""), {key = "i1"}) }) end), nl(),

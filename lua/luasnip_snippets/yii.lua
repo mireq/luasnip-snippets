@@ -93,46 +93,46 @@ local am = { -- list of argument numbers
 }
 ls.add_snippets("yii", {
 	s({trig = "yse", descr = "(yse)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->session[\'", i(0, "", {key = "i0"}), t"\'];", nl()
+		t"Yii::app()->session[\'", i(0, "", {key = "i0"}), t"\'];"
 	}),
 	s({trig = "yrd", descr = "(yrd)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->renderDynamic(\'", i(0, "callback", {key = "i0"}), t"\');", nl()
+		t"$this->renderDynamic(\'", i(0, "callback", {key = "i0"}), t"\');"
 	}),
 	s({trig = "ycas", descr = "(ycas)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->cache->set(\'", i(1, "key", {key = "i1"}), t"\', ", i(2, "value", {key = "i2"}), t", ", i(3, "expire", {key = "i3"}), t", new C", i(4, "", {key = "i4"}), t"CacheDependency(", i(0, "", {key = "i0"}), t"));", nl()
+		t"Yii::app()->cache->set(\'", i(1, "key", {key = "i1"}), t"\', ", i(2, "value", {key = "i2"}), t", ", i(3, "expire", {key = "i3"}), t", new C", i(4, "", {key = "i4"}), t"CacheDependency(", i(0, "", {key = "i0"}), t"));"
 	}),
 	s({trig = "ycad", descr = "(ycad)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->cache->add(\'", i(1, "key", {key = "i1"}), t"\', ", i(2, "value", {key = "i2"}), t", ", i(3, "expire", {key = "i3"}), t", new C", i(4, "", {key = "i4"}), t"CacheDependency(", i(0, "", {key = "i0"}), t"));", nl()
+		t"Yii::app()->cache->add(\'", i(1, "key", {key = "i1"}), t"\', ", i(2, "value", {key = "i2"}), t", ", i(3, "expire", {key = "i3"}), t", new C", i(4, "", {key = "i4"}), t"CacheDependency(", i(0, "", {key = "i0"}), t"));"
 	}),
 	s({trig = "yregcf", descr = "(yregcf)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->clientScript->registerCssFile(\'", i(0, "file", {key = "i0"}), t"\');", nl()
+		t"Yii::app()->clientScript->registerCssFile(\'", i(0, "file", {key = "i0"}), t"\');"
 	}),
 	s({trig = "yreqtype", descr = "(yreqtype)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->request->requestType", nl()
+		t"Yii::app()->request->requestType"
 	}),
 	s({trig = "yisajax", descr = "(yisajax)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->request->isAjaxRequest", nl()
+		t"Yii::app()->request->isAjaxRequest"
 	}),
 	s({trig = "yt", descr = "(yt)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::t(\'", i(1, "category", {key = "i1"}), t"\', \'", i(2, "message", {key = "i2"}), t"\',array(", i(0, "", {key = "i0"}), t"));", nl()
+		t"Yii::t(\'", i(1, "category", {key = "i1"}), t"\', \'", i(2, "message", {key = "i2"}), t"\',array(", i(0, "", {key = "i0"}), t"));"
 	}),
 	s({trig = "yregc", descr = "(yregc)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->clientScript->registerCss(\'", i(1, "id", {key = "i1"}), t"\', \'", i(0, "", {key = "i0"}), t"\');", nl()
+		t"Yii::app()->clientScript->registerCss(\'", i(1, "id", {key = "i1"}), t"\', \'", i(0, "", {key = "i0"}), t"\');"
 	}),
 	s({trig = "ylog", descr = "(ylog)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::log(\'", i(1, "msg", {key = "i1"}), t"\', \'", i(0, "info", {key = "i0"}), t"\');", nl()
+		t"Yii::log(\'", i(1, "msg", {key = "i1"}), t"\', \'", i(0, "info", {key = "i0"}), t"\');"
 	}),
 	s({trig = "yuserip", descr = "(yuserip)", priority = -1000, trigEngine = te("w")}, {
-		t"YYii::app()->request->userHostAddress", nl()
+		t"YYii::app()->request->userHostAddress"
 	}),
 	s({trig = "yregsf", descr = "(yregsf)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->clientScript->registerScriptFile(\'", i(1, "scriptUrl", {key = "i1"}), t"\', CClientScript::POS_", i(0, "END", {key = "i0"}), t");", nl()
+		t"Yii::app()->clientScript->registerScriptFile(\'", i(1, "scriptUrl", {key = "i1"}), t"\', CClientScript::POS_", i(0, "END", {key = "i0"}), t");"
 	}),
 	s({trig = "ylinkpager", descr = "(ylinkpager)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->widget(\'CLinkPager\', array(\'pages\'=>$pages,\'header\'=>\'", i(0, "", {key = "i0"}), t"\'}))", nl()
+		t"$this->widget(\'CLinkPager\', array(\'pages\'=>$pages,\'header\'=>\'", i(0, "", {key = "i0"}), t"\'}))"
 	}),
 	s({trig = "yjec", descr = "(yjec)", priority = -1000, trigEngine = te("w")}, {
-		t"CJSON::encode(", i(0, "text", {key = "i0"}), t");", nl()
+		t"CJSON::encode(", i(0, "text", {key = "i0"}), t");"
 	}),
 	s({trig = "yadp", descr = "(yadp)", priority = -1000, trigEngine = te("w")}, {
 		t"$dataProvider = new CActiveDataProvider(\'", i(1, "", {key = "i1"}), t"\', array(", nl(),
@@ -147,100 +147,100 @@ ls.add_snippets("yii", {
 		t"\t),", nl(),
 		t"));", nl(),
 		i(0, "", {key = "i0"}), nl(),
-		t"// $dataProvider->getData() will return a list of Post objects", nl()
+		t"// $dataProvider->getData() will return a list of Post objects"
 	}),
 	s({trig = "yrdi", descr = "(yrdi)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->renderDynamic(\'", i(1, "callback", {key = "i1"}), t"\', array(\'", i(2, "key", {key = "i2"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		t"$this->renderDynamic(\'", i(1, "callback", {key = "i1"}), t"\', array(\'", i(2, "key", {key = "i2"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "yregs", descr = "(yregs)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->clientScript->registerScript(\'", i(1, "id", {key = "i1"}), t"\', \'", i(2, "", {key = "i2"}), t"\', CClientScript::POS_", i(0, "READY", {key = "i0"}), t");", nl()
+		t"Yii::app()->clientScript->registerScript(\'", i(1, "id", {key = "i1"}), t"\', \'", i(2, "", {key = "i2"}), t"\', CClientScript::POS_", i(0, "READY", {key = "i0"}), t");"
 	}),
 	s({trig = "ycaf", descr = "(ycaf)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->cache->flush();", nl()
+		t"Yii::app()->cache->flush();"
 	}),
 	s({trig = "yco", descr = "(yco)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->request->cookies[\'", i(0, "", {key = "i0"}), t"\']", nl()
+		t"Yii::app()->request->cookies[\'", i(0, "", {key = "i0"}), t"\']"
 	}),
 	s({trig = "yuser", descr = "(yuser)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->user->", nl()
+		t"Yii::app()->user->"
 	}),
 	s({trig = "yrf", descr = "(yrf)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->refresh();", nl()
+		t"$this->refresh();"
 	}),
 	s({trig = "yimp", descr = "(yimp)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::import(\'", i(0, "", {key = "i0"}), t"\');", nl()
+		t"Yii::import(\'", i(0, "", {key = "i0"}), t"\');"
 	}),
 	s({trig = "ytrace", descr = "(ytrace)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::trace(\'", i(0, "msg", {key = "i0"}), t"\');", nl()
+		t"Yii::trace(\'", i(0, "msg", {key = "i0"}), t"\');"
 	}),
 	s({trig = "ypar", descr = "(ypar)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->params[\'", i(0, "", {key = "i0"}), t"\']", nl()
+		t"Yii::app()->params[\'", i(0, "", {key = "i0"}), t"\']"
 	}),
 	s({trig = "yispost", descr = "(yispost)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->request->isPostRequest", nl()
+		t"Yii::app()->request->isPostRequest"
 	}),
 	s({trig = "yifisajax", descr = "(yifisajax)", priority = -1000, trigEngine = te("w")}, {
 		t"if(Yii::app()->request->isAjaxRequest == TRUE)", nl(),
 		t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "ydelcache", descr = "(ydelcache)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->cache->delete(\'", i(0, "key", {key = "i0"}), t"\');", nl()
+		t"Yii::app()->cache->delete(\'", i(0, "key", {key = "i0"}), t"\');"
 	}),
 	s({trig = "yr", descr = "(yr)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->render(\'", i(1, "view", {key = "i1"}), t"\',array(\'", i(2, "key", {key = "i2"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		t"$this->render(\'", i(1, "view", {key = "i1"}), t"\',array(\'", i(2, "key", {key = "i2"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "yre", descr = "(yre)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->redirect(array(\'", i(1, "controller", {key = "i1"}), t"/", i(0, "action", {key = "i0"}), t"\'));", nl()
+		t"$this->redirect(array(\'", i(1, "controller", {key = "i1"}), t"/", i(0, "action", {key = "i0"}), t"\'));"
 	}),
 	s({trig = "ycag", descr = "(ycag)", priority = -1000, trigEngine = te("w")}, {
-		t"Yii::app()->cache->get(\'", i(0, "key", {key = "i0"}), t"\');", nl()
+		t"Yii::app()->cache->get(\'", i(0, "key", {key = "i0"}), t"\');"
 	}),
 	s({trig = "yrt", descr = "(yrt)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->renderText(\'", i(0, "", {key = "i0"}), t"\');", nl()
+		t"$this->renderText(\'", i(0, "", {key = "i0"}), t"\');"
 	}),
 	s({trig = "yrp", descr = "(yrp)", priority = -1000, trigEngine = te("w")}, {
-		t"$this->renderPartial(\'", i(1, "view", {key = "i1"}), t"\',array(\'", i(2, "key", {key = "i2"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		t"$this->renderPartial(\'", i(1, "view", {key = "i1"}), t"\',array(\'", i(2, "key", {key = "i2"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "ycountm", descr = "(ycountm)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->count(", i(2, "", {key = "i2"}), t", array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->count(", i(2, "", {key = "i2"}), t", array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "ycountbs", descr = "(ycountbs)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->countBySql(", i(2, "sql", {key = "i2"}), t",array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->countBySql(", i(2, "sql", {key = "i2"}), t",array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "yupdatea", descr = "(yupdatea)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->updateAll(", i(2, "array(\'attributes\')", {key = "i2"}), t", ", i(3, "", {key = "i3"}), t",array(\'", i(4, "key", {key = "i4"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->updateAll(", i(2, "array(\'attributes\')", {key = "i2"}), t", ", i(3, "", {key = "i3"}), t",array(\'", i(4, "key", {key = "i4"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "yupdatebp", descr = "(yupdatebp)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->updateByPk(", i(2, "pk", {key = "i2"}), t", ", i(3, "array(\'attributes\')", {key = "i3"}), t", ", i(4, "", {key = "i4"}), t",array(\'", i(5, "key", {key = "i5"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->updateByPk(", i(2, "pk", {key = "i2"}), t", ", i(3, "array(\'attributes\')", {key = "i3"}), t", ", i(4, "", {key = "i4"}), t",array(\'", i(5, "key", {key = "i5"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "ydela", descr = "(ydela)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->deleteAll(", i(2, "", {key = "i2"}), t",array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->deleteAll(", i(2, "", {key = "i2"}), t",array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "ydelbp", descr = "(ydelbp)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->deleteByPk(", i(2, "pk", {key = "i2"}), t", ", i(3, "", {key = "i3"}), t", array(\'", i(4, "key", {key = "i4"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->deleteByPk(", i(2, "pk", {key = "i2"}), t", ", i(3, "", {key = "i3"}), t", array(\'", i(4, "key", {key = "i4"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "yfind", descr = "(yfind)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->find(", i(2, "", {key = "i2"}), t",array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->find(", i(2, "", {key = "i2"}), t",array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "yfinda", descr = "(yfinda)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->findAll(", i(2, "", {key = "i2"}), t",array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->findAll(", i(2, "", {key = "i2"}), t",array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "yfindbp", descr = "(yfindbp)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->findByPk(", i(2, "pk", {key = "i2"}), t", ", i(3, "", {key = "i3"}), t", array(\'", i(4, "key", {key = "i4"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->findByPk(", i(2, "pk", {key = "i2"}), t", ", i(3, "", {key = "i3"}), t", array(\'", i(4, "key", {key = "i4"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "yfindabp", descr = "(yfindabp)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->findAllByPk(", i(2, "pk", {key = "i2"}), t", ", i(3, "", {key = "i3"}), t",array(\'", i(4, "key", {key = "i4"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->findAllByPk(", i(2, "pk", {key = "i2"}), t", ", i(3, "", {key = "i3"}), t",array(\'", i(4, "key", {key = "i4"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "yfindbs", descr = "(yfindbs)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->findBySql(", i(2, "sql", {key = "i2"}), t", array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->findBySql(", i(2, "sql", {key = "i2"}), t", array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "yfindaba", descr = "(yfindaba)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->findAllByAttributes(array(\'", i(2, "attributeName", {key = "i2"}), t"\'=>", i(3, "attributeValue", {key = "i3"}), t"), ", i(4, "", {key = "i4"}), t", array(\'", i(5, "key", {key = "i5"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->findAllByAttributes(array(\'", i(2, "attributeName", {key = "i2"}), t"\'=>", i(3, "attributeValue", {key = "i3"}), t"), ", i(4, "", {key = "i4"}), t", array(\'", i(5, "key", {key = "i5"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "yexists", descr = "(yexists)", priority = -1000, trigEngine = te("w")}, {
-		i(1, "ModelName", {key = "i1"}), t"::model()->exists(", i(2, "", {key = "i2"}), t", array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));", nl()
+		i(1, "ModelName", {key = "i1"}), t"::model()->exists(", i(2, "", {key = "i2"}), t", array(\'", i(3, "key", {key = "i3"}), t"\'=>", i(0, "value", {key = "i0"}), t"));"
 	}),
 	s({trig = "ymodel", descr = "(ymodel)", priority = -1000, trigEngine = te("w")}, {
 		t"<?php", nl(),
@@ -290,7 +290,7 @@ ls.add_snippets("yii", {
 		t"\t\treturn array(", nl(),
 		t"\t\t);", nl(),
 		t"\t}", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "ycontroller", descr = "(ycontroller)", priority = -1000, trigEngine = te("w")}, {
 		t"<?php", nl(),
@@ -332,13 +332,12 @@ ls.add_snippets("yii", {
 		t"\t\t);", nl(),
 		t"\t}", nl(),
 		t"\t*/", nl(),
-		t"}", nl()
+		t"}"
 	}),
 	s({trig = "yact", descr = "(yact)", priority = -1000, trigEngine = te("w")}, {
 		t"public function action", i(1, "Index", {key = "i1"}), t"(", i(2, "params", {key = "i2"}), t")", nl(),
 		t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"}", nl(),
-		nl()
+		t"}"
 	}),
 })

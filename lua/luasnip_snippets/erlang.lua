@@ -824,7 +824,7 @@ ls.add_snippets("erlang", {
 		t"%% Description: Test case function. (The name of it must be specified in", nl(),
 		t"%%              the all/0 list or in a test case group for the test case", nl(),
 		t"%%              to be executed).", nl(),
-		t"%%--------------------------------------------------------------------", nl()
+		t"%%--------------------------------------------------------------------"
 	}),
 	s({trig = "pat", descr = "(pat) \"Case:Receive:Try Clause\"", priority = -50, trigEngine = te("")}, {
 		i(1, "pattern", {key = "i1"}), c(2, {{t" when ", i(1, "guard", {key = "i3"})}, {i(1, jt({" when ", "guard"}))}}, {key = "i2"}), t" ->", nl(),
