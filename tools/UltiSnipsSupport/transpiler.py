@@ -72,6 +72,7 @@ class ParsedSnippet:
 	tokens: list[LSToken]
 	snippet: SnippetDefinition
 	actions: dict[str, str]
+	code_globals: dict[str, list[str]]
 	filetype: str
 
 	def get_actions_code(self) -> str:
@@ -174,7 +175,7 @@ def save_filetype_mapping(source: SnippetSource, output_dir: Path):
 			fp.write(f'{filetype} {" ".join(included_filetypes)}\n')
 
 
-def parse_snippet(snippet: SnippetDefinition, index: int, filetype: str) -> ParsedSnippet:
+def parse_snippet(snippet: SnippetDefinition, index: int, filetype: str, code_globals: dict[str, list[str]]) -> ParsedSnippet:
 	opts = set(snippet.options)
 	tokens = parse(snippet)
 	snippet_attrs = [f'trig = {escape_lua_string(snippet.trigger)}']
@@ -190,6 +191,7 @@ def parse_snippet(snippet: SnippetDefinition, index: int, filetype: str) -> Pars
 		tokens=tokens,
 		snippet=snippet,
 		actions=snippet.actions,
+		code_globals=code_globals,
 		filetype=filetype
 	)
 
@@ -199,6 +201,10 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 	snippet_code: dict[str, list[ParsedSnippet]] = defaultdict(list)
 	snippet_code_list: list[ParsedSnippet] = []
 
+	code_globals = {}
+	for language, global_list in extract_global_code_definitions(source).items():
+		code_globals[language] = global_list
+
 	for index, snippet in enumerate(source.snippets, 1):
 		unsupported_opts = set(snippet.options) - SUPPORTED_OPTS
 		if unsupported_opts:
@@ -207,7 +213,7 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 			continue
 
 		try:
-			parsed_snippet = parse_snippet(snippet, index, source.filetype)
+			parsed_snippet = parse_snippet(snippet, index, source.filetype, code_globals)
 			if '!' in snippet.options:
 				snippet_code[snippet.trigger] = [parsed_snippet]
 			else:
@@ -216,10 +222,6 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 		except Exception:
 			logger.exception("Parsing error of snippet: %s", snippet.trigger)
 			continue
-
-	code_globals = {}
-	for language, global_list in extract_global_code_definitions(source).items():
-		code_globals[language] = ', '.join(f'\t{escape_multiline_lua_sting(code_block)}\n' for code_block in global_list)
 
 	# generic header
 	fp.write(f'-- Generated using ultisnips_to_luasnip.py\n\n')
@@ -237,6 +239,7 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 	# generate global python code
 	if code_globals:
 		fp.write('\n')
+		code_globals = {lang: ', '.join(f'\t{escape_multiline_lua_sting(code_block)}\n' for code_block in global_list) for lang, global_list in code_globals.items()}
 		fp.write(''.join(f'local {language}_globals = {{\n{global_list}}}\n' for language, global_list in code_globals.items()))
 		fp.write('\n\n')
 

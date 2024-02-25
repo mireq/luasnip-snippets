@@ -36,6 +36,9 @@ class LSToken():
 	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
 		raise NotImplementedError(f"Method render_text not implemented on class {self.__class__.__name__}")
 
+	def get_related_tokens(self) -> set[int]:
+		return set()
+
 	@staticmethod
 	def iter_all_tokens(tokens: list['LSToken']) -> typing.Iterable['LSToken']:
 		for token in tokens:
