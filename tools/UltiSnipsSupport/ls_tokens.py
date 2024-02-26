@@ -12,6 +12,7 @@ if typing.TYPE_CHECKING:
 
 
 INDENT_RE = re.compile(r'^([\t ]*)')
+CODE_TABSTOP_RE = re.compile(r'(?<!\w)t\[(\d+)\]')
 logger = logging.getLogger()
 
 
@@ -36,7 +37,7 @@ class LSToken():
 	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
 		raise NotImplementedError(f"Method render_text not implemented on class {self.__class__.__name__}")
 
-	def get_related_tokens(self) -> set[int]:
+	def get_related_tokens(self, context: RenderContext) -> set[int]:
 		return set()
 
 	@staticmethod
@@ -209,6 +210,11 @@ class LSPythonCodeToken(LSCodeToken):
 
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r}, {self.indent!r})'
+
+	def get_related_tokens(self, context: RenderContext) -> set[int]:
+		global_code = ''.join(context['parsed_snippet'].code_globals.get('python', []))
+		full_code = f'{global_code}{self.code}'
+		return set([int(val) for val in CODE_TABSTOP_RE.findall(full_code)])
 
 	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
 		snippet = context['parsed_snippet']
