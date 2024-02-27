@@ -116,6 +116,21 @@ class ParsedSnippet:
 
 		return snippet_body.getvalue()
 
+	@property
+	def original_token_numbers(self) -> list[int]:
+		"""
+		Return all used token numbers
+		"""
+		return sorted(
+			list(
+				set(
+					token.original_number
+					for token in LSToken.iter_all_tokens(self.tokens)
+					if isinstance(token, (LSInsertToken, LSTransformationToken))
+				)
+			)
+		)
+
 
 def extract_global_code_definitions(source: SnippetSource) -> dict[str, OrderedSet]:
 	"""
@@ -135,21 +150,6 @@ def extract_global_code_definitions(source: SnippetSource) -> dict[str, OrderedS
 					logging.error("Unknown code block %s", global_type)
 
 	return dict(global_definitions)
-
-
-def extract_original_token_numbers(snippet: ParsedSnippet) -> list[int]:
-	"""
-	Return all used token numbers
-	"""
-	return sorted(
-		list(
-			set(
-				token.original_number
-				for token in LSToken.iter_all_tokens(snippet.tokens)
-				if isinstance(token, (LSInsertToken, LSTransformationToken))
-			)
-		)
-	)
 
 
 def save_filetype_mapping(source: SnippetSource, output_dir: Path):
@@ -231,7 +231,7 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 	# argument numbers (required for python code execution)
 	fp.write('local am = { -- list of argument numbers\n')
 	for snippet in snippet_code_list:
-		token_numbers = extract_original_token_numbers(snippet)
+		token_numbers = snippet.original_token_numbers
 		token_mapping = ', '.join(str(number) for number in token_numbers)
 		fp.write(f'\t{{{token_mapping}}},\n')
 	fp.write('}\n')
