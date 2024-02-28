@@ -212,9 +212,11 @@ class LSPythonCodeToken(LSCodeToken):
 		return f'{self.__class__.__name__}({self.code!r}, {self.indent!r})'
 
 	def get_related_tokens(self, context: RenderContext) -> set[int]:
+		parsed_snippet = context['parsed_snippet']
 		global_code = ''.join(context['parsed_snippet'].code_globals.get('python', []))
 		full_code = f'{global_code}{self.code}'
-		return set([int(val) for val in CODE_TABSTOP_RE.findall(full_code)])
+		tokens = set([int(val) for val in CODE_TABSTOP_RE.findall(full_code)])
+		return tokens.intersection(set(parsed_snippet.original_token_numbers))
 
 	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
 		snippet = context['parsed_snippet']
