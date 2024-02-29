@@ -218,14 +218,22 @@ class LSPythonCodeToken(LSCodeToken):
 		tokens = set([int(val) for val in CODE_TABSTOP_RE.findall(full_code)])
 		return tokens.intersection(set(parsed_snippet.original_token_numbers))
 
-	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int], concrete_tokens: list[int] | None = None) -> str:
 		snippet = context['parsed_snippet']
 		code = self.code.replace("\\`", "`")
-		return f'c_py({{{escape_lua_string(snippet.filetype)}, {snippet.index}}}, {escape_lua_string(code)}, python_globals, args, snip, {escape_lua_string(self.indent)}, am[{snippet.index}])'
+		if concrete_tokens is None:
+			concrete_tokens_code = f'am[{snippet.index}]'
+		else:
+			concrete_tokens_code = f'{{{", ".join(str(i) for i in concrete_tokens)}}}'
+		return f'c_py({{{escape_lua_string(snippet.filetype)}, {snippet.index}}}, {escape_lua_string(code)}, python_globals, args, snip, {escape_lua_string(self.indent)}, {concrete_tokens_code})'
 
 	def render(self, context: RenderContext) -> str:
-		snip = context["parsed_snippet"]
-		return f'f(function(args, snip) return {self.render_text(context, {})} end, ae(am[{snip.index}]))'
+		related_tokens = self.get_related_tokens(context)
+		related_tokens_code = ''
+		if related_tokens:
+			related_tokens_code = ', '.join(str(num) for num in sorted(list(related_tokens)))
+			related_tokens_code = f', ae({{{related_tokens_code}}})'
+		return f'f(function(args, snip) return {self.render_text(context, {}, concrete_tokens=list(sorted(list(related_tokens))))} end{related_tokens_code})'
 
 
 class LSVimLCodeToken(LSCodeToken):
