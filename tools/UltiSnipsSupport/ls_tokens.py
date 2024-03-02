@@ -34,10 +34,10 @@ class LSToken():
 	def render(self, context: RenderContext) -> str:
 		raise NotImplementedError(f"Method render not implemented on class {self.__class__.__name__}")
 
-	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int], dependent_tokens: list[int] | None = None) -> str:
 		raise NotImplementedError(f"Method render_text not implemented on class {self.__class__.__name__}")
 
-	def get_related_tokens(self, context: RenderContext) -> set[int]:
+	def get_dependent_tokens(self, context: RenderContext) -> set[int]: # pylint: disable=unused-argument
 		return set()
 
 	@staticmethod
@@ -67,7 +67,7 @@ class LSTextToken(LSToken):
 		else:
 			return f't{escape_lua_string(self.text)}'
 
-	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str: # pylint: disable=unused-argument
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int], dependent_tokens: list[int] | None = None) -> str: # pylint: disable=unused-argument
 		return escape_lua_string(self.text)
 
 
@@ -142,11 +142,11 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 		else:
 			return f'i({self.number}, "", {{key = "i{self.original_number}"}})'
 
-	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str: # pylint: disable=unused-argument
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int], dependent_tokens: list[int] | None = None) -> str: # pylint: disable=unused-argument
 		if self.children:
 			if self.is_simple:
 				return self.simple_text
-			text_content = ', '.join([child.render_text(context, related_tokens) for child in self.children])
+			text_content = ', '.join([child.render_text(context, related_tokens, dependent_tokens) for child in self.children])
 			return f'jt({{{text_content}}})'
 		else:
 			if self.original_number in related_tokens:
@@ -168,7 +168,7 @@ class LSCopyToken(LSPlaceholderToken, LSToken):
 	def render(self, context: RenderContext) -> str:
 		return f'cp({self.original_number})'
 
-	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str: # pylint: disable=unused-argument
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int], dependent_tokens: list[int] | None = None) -> str: # pylint: disable=unused-argument
 		return f'args[{related_tokens[self.original_number]}]'
 
 
@@ -193,7 +193,7 @@ class LSVisualToken(LSToken):
 	def render(self, context: RenderContext) -> str:
 		return f'f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {{}} end)'
 
-	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str: # pylint: disable=unused-argument
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int], dependent_tokens: list[int] | None = None) -> str: # pylint: disable=unused-argument
 		return 'snip.env.LS_SELECT_DEDENT or {}'
 
 
@@ -211,29 +211,30 @@ class LSPythonCodeToken(LSCodeToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r}, {self.indent!r})'
 
-	def get_related_tokens(self, context: RenderContext) -> set[int]:
+	def get_dependent_tokens(self, context: RenderContext) -> set[int]:
 		parsed_snippet = context['parsed_snippet']
 		global_code = ''.join(context['parsed_snippet'].code_globals.get('python', []))
 		full_code = f'{global_code}{self.code}'
 		tokens = set([int(val) for val in CODE_TABSTOP_RE.findall(full_code)])
 		return tokens.intersection(set(parsed_snippet.original_token_numbers))
 
-	def render_text(self, context: RenderContext, related_tokens: dict[int, int], concrete_tokens: list[int] | None = None) -> str:
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int], dependent_tokens: list[int] | None = None) -> str:
 		snippet = context['parsed_snippet']
 		code = self.code.replace("\\`", "`")
-		if concrete_tokens is None:
-			concrete_tokens_code = f'am[{snippet.index}]'
+		if dependent_tokens is None:
+			dependent_tokens_code = f'am[{snippet.index}]'
+			raise NotImplementedError(f"{self.__class__.__name__}.render_txt called from wrong context")
 		else:
-			concrete_tokens_code = f'{{{", ".join(str(i) for i in concrete_tokens)}}}'
-		return f'c_py({{{escape_lua_string(snippet.filetype)}, {snippet.index}}}, {escape_lua_string(code)}, python_globals, args, snip, {escape_lua_string(self.indent)}, {concrete_tokens_code})'
+			dependent_tokens_code = f'{{{", ".join(str(i) for i in dependent_tokens)}}}'
+		return f'c_py({{{escape_lua_string(snippet.filetype)}, {snippet.index}}}, {escape_lua_string(code)}, python_globals, args, snip, {escape_lua_string(self.indent)}, {dependent_tokens_code})'
 
 	def render(self, context: RenderContext) -> str:
-		related_tokens = self.get_related_tokens(context)
-		related_tokens_code = ''
-		if related_tokens:
-			related_tokens_code = ', '.join(str(num) for num in sorted(list(related_tokens)))
-			related_tokens_code = f', ae({{{related_tokens_code}}})'
-		return f'f(function(args, snip) return {self.render_text(context, {}, concrete_tokens=list(sorted(list(related_tokens))))} end{related_tokens_code})'
+		dependent_tokens = self.get_dependent_tokens(context)
+		dependent_tokens_code = ''
+		if dependent_tokens:
+			dependent_tokens_code = ', '.join(str(num) for num in sorted(list(dependent_tokens)))
+			dependent_tokens_code = f', ae({{{dependent_tokens_code}}})'
+		return f'f(function(args, snip) return {self.render_text(context, {}, dependent_tokens=list(sorted(list(dependent_tokens))))} end{dependent_tokens_code})'
 
 
 class LSVimLCodeToken(LSCodeToken):
@@ -245,7 +246,7 @@ class LSVimLCodeToken(LSCodeToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r})'
 
-	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int], dependent_tokens: list[int] | None = None) -> str:
 		code = self.code.replace("\\`", "`")
 		return f'c_viml({escape_lua_string(code)})'
 
@@ -262,7 +263,7 @@ class LSShellCodeToken(LSCodeToken):
 	def __repr__(self):
 		return f'{self.__class__.__name__}({self.code!r})'
 
-	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int], dependent_tokens: list[int] | None = None) -> str:
 		code = self.code.replace("\\`", "`")
 		return f'c_shell({escape_lua_string(code)})'
 
@@ -285,7 +286,7 @@ class LSTransformationToken(LSPlaceholderToken, LSToken):
 	def render(self, context: RenderContext) -> str:
 		return f'tr({self.original_number}, {escape_lua_string(self.search)}, {escape_lua_string(self.replace)})'
 
-	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str: # pylint: disable=unused-argument
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int], dependent_tokens: list[int] | None = None) -> str: # pylint: disable=unused-argument
 		return f'rx_tr(args[{related_tokens[self.original_number]}], {escape_lua_string(self.search)}, {escape_lua_string(self.replace)})'
 
 
@@ -304,5 +305,5 @@ class LSChoiceListToken(LSPlaceholderToken, LSToken):
 		choices = ', '.join(f'i(1, {escape_lua_string(choice)})' for choice in self.choice_list)
 		return f'c({self.number}, {{{choices}}}, {{key = "i{self.original_number}"}})'
 
-	def render_text(self, context: RenderContext, related_tokens: dict[int, int]) -> str:
+	def render_text(self, context: RenderContext, related_tokens: dict[int, int], dependent_tokens: list[int] | None = None) -> str:
 		return escape_lua_string('|'.join(self.choice_list))
