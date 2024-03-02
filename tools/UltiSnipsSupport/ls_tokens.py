@@ -124,11 +124,9 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 				except NotImplementedError:
 					text_content = ''
 					logger.exception("Cannot convert node in snippet `%s` to pure text representation: %s", context['parsed_snippet'].snippet.trigger, dynamic_node_content)
-				node_content = f'c({1 if related_tokens_code else self.number}, {{{{{dynamic_node_content}}}, {{{text_content}}}}}, {{key = "i{self.original_number}"}})'
-				if related_tokens_code:
-					return f'd({self.number}, function(args, snip) return sn(nil, {{{node_content}}}) end{related_tokens_code})'
-				else:
-					return node_content
+				if related_tokens_code and text_content:
+					text_content = f'd(1, function(args, snip) return sn(nil, {{{text_content}}}) end{related_tokens_code})'
+				return f'c({self.number}, {{{{{dynamic_node_content}}}, {{{text_content}}}}}, {{key = "i{self.original_number}"}})'
 
 			node_indent = INDENT_RE.match(''.join(accumulated_text[-operator.indexOf(reversed(accumulated_text), '\n'):])).group(1)
 
