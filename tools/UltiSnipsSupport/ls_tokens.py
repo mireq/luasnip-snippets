@@ -119,7 +119,7 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 			if self.is_nested: # nested tokens are not supported, unwrapping
 				dynamic_node_content = snip.render_tokens(self.children, at_line_start=False, indent=context['indent'])
 				try:
-					text_content = ', '.join([child.render_text(context, related_tokens) for child in self.children])
+					text_content = ', '.join([child.render_text(context, related_tokens, list(related_tokens.keys())) for child in self.children])
 					text_content = f'i(1, jt({{{text_content}}}))'
 				except NotImplementedError:
 					text_content = ''
