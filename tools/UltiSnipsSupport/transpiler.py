@@ -227,14 +227,6 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 	fp.write(FILE_HEADER)
 	fp.write('\n')
 
-	# argument numbers (required for python code execution)
-	fp.write('local am = { -- list of argument numbers\n')
-	for snippet in snippet_code_list:
-		token_numbers = snippet.original_token_numbers
-		token_mapping = ', '.join(str(number) for number in token_numbers)
-		fp.write(f'\t{{{token_mapping}}},\n')
-	fp.write('}\n')
-
 	# generate global python code
 	if code_globals:
 		fp.write('\n')
