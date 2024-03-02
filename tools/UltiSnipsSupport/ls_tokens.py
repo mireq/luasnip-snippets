@@ -234,8 +234,8 @@ class LSPythonCodeToken(LSCodeToken):
 		dependent_tokens = self.get_dependent_tokens(context)
 		dependent_tokens_code = ''
 		if dependent_tokens:
-			dependent_tokens_code = ', '.join(str(num) for num in sorted(list(dependent_tokens)))
-			dependent_tokens_code = f', ae({{{dependent_tokens_code}}})'
+			dependent_tokens_code = ', '.join(f'k"i{num}"' for num in sorted(list(dependent_tokens)))
+			dependent_tokens_code = f', {{{dependent_tokens_code}}}'
 		return f'f(function(args, snip) return {self.render_text(context, {}, dependent_tokens=list(sorted(list(dependent_tokens))))} end{dependent_tokens_code})'
 
 
