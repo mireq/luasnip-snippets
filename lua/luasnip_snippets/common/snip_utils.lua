@@ -299,7 +299,10 @@ local function call_python(python_function_name, opts)
 end
 
 local function code_python(id, node_code, global_code, args, snip, indent, tabstops_idx)
-	return call_python("execute_code", {node_id=id, node_code=node_code, global_code=global_code or {}, tabstops=args, env=snip.env, indent=indent, match_context=match_context, tabstops_idx=tabstops_idx})
+	while snip.parent do
+		snip = snip.parent
+	end
+	return call_python("execute_code", {node_id=id, node_code=node_code, global_code=global_code or {}, tabstops=args, env=snip.env or {}, indent=indent, match_context=match_context, tabstops_idx=tabstops_idx})
 end
 
 local function code_viml(code)
