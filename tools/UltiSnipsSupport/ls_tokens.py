@@ -107,6 +107,10 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 					number = getattr(child, 'original_number', child.number)
 					if number not in related_tokens:
 						related_tokens[number] = len(related_tokens) + 1
+				# add code related tokens
+				for number in child.get_dependent_tokens(context):
+					if number not in related_tokens:
+						related_tokens[number] = len(related_tokens) + 1
 
 			related_tokens_code = ''
 			if related_tokens:
@@ -134,7 +138,7 @@ class LSInsertToken(LSPlaceholderToken, LSToken):
 				rendered_tokens = []
 				for child in self.children:
 					try:
-						rendered_tokens.append(child.render_text(context, related_tokens))
+						rendered_tokens.append(child.render_text(context, related_tokens, list(related_tokens.keys())))
 					except NotImplementedError:
 						raise RuntimeError("Token not allowed: %s" % child)
 				dynamic_node_content = ', '.join(rendered_tokens)
