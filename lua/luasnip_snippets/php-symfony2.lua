@@ -34,49 +34,22 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{0, 1, 2, 3, 4},
-	{1},
-	{0, 1, 2, 3, 4},
-	{1, 2, 3, 4, 5, 6},
-	{1, 2, 3, 4, 5, 6},
-	{1, 2, 3},
-	{1},
-	{1, 2, 3},
-	{3},
-	{1, 2},
-	{2},
-	{1, 2},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-}
 ls.add_snippets("php-symfony2", {
 	s({trig = "classn", descr = "(classn) \"Basic class with namespace snippet\"", priority = -50, trigEngine = te("b")}, {
 		t"<?php", nl(),
 		nl(),
-		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 1}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[1]) end, ae(am[1])), t";", nl(),
+		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 1}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", {}) end), t";", nl(),
 		nl(),
 		t"/**", nl(),
 		t" * ", d(1, function(args, snip) return sn(nil, { i(1, jt({"@author ", c_viml("g:snips_author")}, " "), {key = "i1"}) }) end), nl(),
 		t" */", nl(),
-		t"class ", f(function(args, snip) return c_py({"php-symfony2", 1}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[1]) end, ae(am[1])), i(2, "", {key = "i2"}), nl(),
+		t"class ", f(function(args, snip) return c_py({"php-symfony2", 1}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", {}) end), i(2, "", {key = "i2"}), nl(),
 		t"{", nl(),
 		t"    public function __construct(", i(3, "$options", {key = "i3"}), t")", nl(),
 		t"    {", nl(),
@@ -87,7 +60,7 @@ ls.add_snippets("php-symfony2", {
 	s({trig = "contr", descr = "(contr) \"Symfony2 controller\"", priority = -50, trigEngine = te("b")}, {
 		t"<?php", nl(),
 		nl(),
-		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 2}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[2]) end, ae(am[2])), t";", nl(),
+		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 2}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", {}) end), t";", nl(),
 		nl(),
 		t"use Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Method;", nl(),
 		t"use Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Route;", nl(),
@@ -98,7 +71,7 @@ ls.add_snippets("php-symfony2", {
 		t"/**", nl(),
 		t" * ", d(1, function(args, snip) return sn(nil, { i(1, jt({"@author ", c_viml("g:snips_author")}, " "), {key = "i1"}) }) end), nl(),
 		t" */", nl(),
-		t"class ", f(function(args, snip) return c_py({"php-symfony2", 2}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[2]) end, ae(am[2])), t" extends Controller", nl(),
+		t"class ", f(function(args, snip) return c_py({"php-symfony2", 2}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", {}) end), t" extends Controller", nl(),
 		t"{", nl(),
 		t"}"
 	}),
@@ -134,12 +107,12 @@ ls.add_snippets("php-symfony2", {
 		t"{", nl(),
 		t"\t", i(6, "", {key = "i6"}), nl(),
 		t"\treturn [];", nl(),
-		t"}", f(function(args, snip) return c_py({"php-symfony2", 5}, "\nrelpath = os.path.relpath(path)", python_globals, args, snip, "", am[5]) end, ae(am[5]))
+		t"}", f(function(args, snip) return c_py({"php-symfony2", 5}, "\nrelpath = os.path.relpath(path)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "comm", descr = "(comm) \"Symfony2 command\"", priority = -50, trigEngine = te("b")}, {
 		t"<?php", nl(),
 		nl(),
-		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 6}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[6]) end, ae(am[6])), t";", nl(),
+		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 6}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", {}) end), t";", nl(),
 		nl(),
 		t"use Symfony\\Bundle\\FrameworkBundle\\Command\\ContainerAwareCommand;", nl(),
 		t"use Symfony\\Component\\Console\\Input\\InputArgument;", nl(),
@@ -150,7 +123,7 @@ ls.add_snippets("php-symfony2", {
 		t"/**", nl(),
 		t" * ", d(3, function(args, snip) return sn(nil, { i(1, jt({"@author ", c_viml("g:snips_author")}, " "), {key = "i3"}) }) end), nl(),
 		t" */", nl(),
-		t"class ", f(function(args, snip) return c_py({"php-symfony2", 6}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[6]) end, ae(am[6])), t" extends ContainerAwareCommand", nl(),
+		t"class ", f(function(args, snip) return c_py({"php-symfony2", 6}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", {}) end), t" extends ContainerAwareCommand", nl(),
 		t"{", nl(),
 		t"\tprotected function configure()", nl(),
 		t"\t{", nl(),
@@ -170,14 +143,14 @@ ls.add_snippets("php-symfony2", {
 	s({trig = "subs", descr = "(subs) \"Symfony2 subscriber\"", priority = -50, trigEngine = te("b")}, {
 		t"<?php", nl(),
 		nl(),
-		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 7}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[7]) end, ae(am[7])), t";", nl(),
+		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 7}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", {}) end), t";", nl(),
 		nl(),
 		t"use Symfony\\Component\\EventDispatcher\\EventSubscriberInterface;", nl(),
 		nl(),
 		t"/**", nl(),
 		t" * ", d(1, function(args, snip) return sn(nil, { i(1, jt({"@author ", c_viml("g:snips_author")}, " "), {key = "i1"}) }) end), nl(),
 		t" */", nl(),
-		t"class ", f(function(args, snip) return c_py({"php-symfony2", 7}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[7]) end, ae(am[7])), t" implements EventSubscriberInterface", nl(),
+		t"class ", f(function(args, snip) return c_py({"php-symfony2", 7}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", {}) end), t" implements EventSubscriberInterface", nl(),
 		t"{", nl(),
 		t"\tpublic function __construct()", nl(),
 		t"\t{", nl(),
@@ -195,7 +168,7 @@ ls.add_snippets("php-symfony2", {
 	s({trig = "transf", descr = "(transf) \"Symfony2 form data transformer\"", priority = -50, trigEngine = te("b")}, {
 		t"<?php", nl(),
 		nl(),
-		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 8}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[8]) end, ae(am[8])), t";", nl(),
+		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 8}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", {}) end), t";", nl(),
 		nl(),
 		t"use Symfony\\Component\\Form\\DataTransformerInterface;", nl(),
 		t"use Symfony\\Component\\Form\\Exception\\TransformationFailedException;", nl(),
@@ -203,7 +176,7 @@ ls.add_snippets("php-symfony2", {
 		t"/**", nl(),
 		t" * ", d(3, function(args, snip) return sn(nil, { i(1, jt({"@author ", c_viml("g:snips_author")}, " "), {key = "i3"}) }) end), nl(),
 		t" */", nl(),
-		t"class ", f(function(args, snip) return c_py({"php-symfony2", 8}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[8]) end, ae(am[8])), t" implements DataTransformerInterface", nl(),
+		t"class ", f(function(args, snip) return c_py({"php-symfony2", 8}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", {}) end), t" implements DataTransformerInterface", nl(),
 		t"{", nl(),
 		t"\t/**", nl(),
 		t"\t * {@inheritDoc}", nl(),
@@ -223,7 +196,7 @@ ls.add_snippets("php-symfony2", {
 	s({trig = "ent", descr = "(ent) \"Symfony2 doctrine entity\"", priority = -50, trigEngine = te("b")}, {
 		t"<?php", nl(),
 		nl(),
-		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 9}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[9]) end, ae(am[9])), t";", nl(),
+		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 9}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", {}) end), t";", nl(),
 		nl(),
 		t"use Doctrine\\ORM\\Mapping as ORM;", nl(),
 		nl(),
@@ -231,9 +204,9 @@ ls.add_snippets("php-symfony2", {
 		t" * ", d(1, function(args, snip) return sn(nil, { i(1, jt({"@author ", c_viml("g:snips_author")}, " "), {key = "i3"}) }) end), nl(),
 		t" *", nl(),
 		t" * @ORM\\Entity()", nl(),
-		t" * @ORM\\Table(name=\"", f(function(args, snip) return c_py({"php-symfony2", 9}, "\ntmp = re.match(r\'.*(?=\\.)\', fn).group()\ntmp = re.sub(r\'\\B([A-Z])\', r\'_\\1\', tmp)\nsnip.rv = tmp.lower()\n", python_globals, args, snip, "", am[9]) end, ae(am[9])), t"\")", nl(),
+		t" * @ORM\\Table(name=\"", f(function(args, snip) return c_py({"php-symfony2", 9}, "\ntmp = re.match(r\'.*(?=\\.)\', fn).group()\ntmp = re.sub(r\'\\B([A-Z])\', r\'_\\1\', tmp)\nsnip.rv = tmp.lower()\n", python_globals, args, snip, "", {}) end), t"\")", nl(),
 		t" */", nl(),
-		f(function(args, snip) return c_py({"php-symfony2", 9}, "\nm = re.search(r\'Abstract\', path)\nif m:\n\tsnip.rv = \'abstract \'\n", python_globals, args, snip, "", am[9]) end, ae(am[9])), t"class ", f(function(args, snip) return c_py({"php-symfony2", 9}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[9]) end, ae(am[9])), nl(),
+		f(function(args, snip) return c_py({"php-symfony2", 9}, "\nm = re.search(r\'Abstract\', path)\nif m:\n\tsnip.rv = \'abstract \'\n", python_globals, args, snip, "", {}) end), t"class ", f(function(args, snip) return c_py({"php-symfony2", 9}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", {}) end), nl(),
 		t"{", nl(),
 		t"\t/**", nl(),
 		t"\t * @ORM\\Column(type=\"integer\")", nl(),
@@ -246,7 +219,7 @@ ls.add_snippets("php-symfony2", {
 	s({trig = "form", descr = "(form) \"Symfony2 form type\"", priority = -50, trigEngine = te("b")}, {
 		t"<?php", nl(),
 		nl(),
-		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 10}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[10]) end, ae(am[10])), t";", nl(),
+		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 10}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", {}) end), t";", nl(),
 		nl(),
 		t"use Symfony\\Component\\Form\\AbstractType;", nl(),
 		t"use Symfony\\Component\\Form\\FormBuilderInterface;", nl(),
@@ -255,7 +228,7 @@ ls.add_snippets("php-symfony2", {
 		t"/**", nl(),
 		t" * ", d(2, function(args, snip) return sn(nil, { i(1, jt({"@author ", c_viml("g:snips_author")}, " "), {key = "i2"}) }) end), nl(),
 		t" */", nl(),
-		t"class ", f(function(args, snip) return c_py({"php-symfony2", 10}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[10]) end, ae(am[10])), t" extends AbstractType", nl(),
+		t"class ", f(function(args, snip) return c_py({"php-symfony2", 10}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", {}) end), t" extends AbstractType", nl(),
 		t"{", nl(),
 		t"\t/**", nl(),
 		t"\t * {@inheritDoc}", nl(),
@@ -284,14 +257,14 @@ ls.add_snippets("php-symfony2", {
 	s({trig = "ev", descr = "(ev) \"Symfony2 event\"", priority = -50, trigEngine = te("b")}, {
 		t"<?php", nl(),
 		nl(),
-		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 11}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[11]) end, ae(am[11])), t";", nl(),
+		t"namespace ", f(function(args, snip) return c_py({"php-symfony2", 11}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", {}) end), t";", nl(),
 		nl(),
 		t"use Symfony\\Component\\EventDispatcher\\Event;", nl(),
 		nl(),
 		t"/**", nl(),
 		t" * ", d(1, function(args, snip) return sn(nil, { i(1, jt({"@author ", c_viml("g:snips_author")}, " "), {key = "i2"}) }) end), nl(),
 		t" */", nl(),
-		t"class ", f(function(args, snip) return c_py({"php-symfony2", 11}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[11]) end, ae(am[11])), t" extends Event", nl(),
+		t"class ", f(function(args, snip) return c_py({"php-symfony2", 11}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", {}) end), t" extends Event", nl(),
 		t"{", nl(),
 		t"}"
 	}),

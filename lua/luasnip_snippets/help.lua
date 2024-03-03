@@ -34,19 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{},
-}
 
 local python_globals = {
 	[[def sec_title(snip, t):
@@ -59,17 +51,17 @@ local python_globals = {
 ls.add_snippets("help", {
 	s({trig = "sec", descr = "(sec) \"Section marker\"", priority = -50, trigEngine = te("b")}, {
 		t"==============================================================================", nl(),
-		i(1, "SECTION", {key = "i1"}), f(function(args, snip) return c_py({"help", 1}, "snip.rv = sec_title(snip, t)", python_globals, args, snip, "", am[1]) end, ae(am[1])), nl(),
+		i(1, "SECTION", {key = "i1"}), f(function(args, snip) return c_py({"help", 1}, "snip.rv = sec_title(snip, t)", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "ssec", descr = "(ssec) \"Sub section marker\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "Subsection", {key = "i1"}), f(function(args, snip) return c_py({"help", 2}, "snip.rv = sec_title(snip, t)\nsnip += \"-\"*len(t[1])", python_globals, args, snip, "", am[2]) end, ae(am[2])), nl(),
+		i(1, "Subsection", {key = "i1"}), f(function(args, snip) return c_py({"help", 2}, "snip.rv = sec_title(snip, t)\nsnip += \"-\"*len(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "sssec", descr = "(sssec) \"Subsub Section marker\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "SubSubsection", {key = "i1"}), t":", f(function(args, snip) return c_py({"help", 3}, "snip.rv = sec_title(snip, t)", python_globals, args, snip, "", am[3]) end, ae(am[3])), nl(),
+		i(1, "SubSubsection", {key = "i1"}), t":", f(function(args, snip) return c_py({"help", 3}, "snip.rv = sec_title(snip, t)", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),

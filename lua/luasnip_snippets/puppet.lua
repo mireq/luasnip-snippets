@@ -34,75 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
-	{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0},
-	{0, 1},
-	{1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3, 4},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{1, 2, 3, 4},
-	{1, 2, 3},
-	{1, 2, 3, 4, 5, 6, 7},
-	{1, 2, 3},
-	{0, 1},
-	{0, 1},
-	{1, 2, 3},
-	{1},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{1},
-	{1, 2, 3},
-	{1, 2, 3, 4, 5, 6, 7},
-	{1, 2, 3, 4},
-	{1, 2},
-	{0, 1, 2, 3, 4},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3, 4},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1},
-}
 
 local python_globals = {
 	[[import vim
@@ -194,7 +130,7 @@ ls.add_snippets("puppet", {
 		t"}"
 	}),
 	s({trig = "class", descr = "(class) \"Class declaration\"", priority = -50, trigEngine = te("b")}, {
-		t"class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"puppet", 3}, "snip.rv = get_module_namespace_and_basename()", python_globals, args, snip, "", am[3])}, ""), {key = "i1"}) }) end), t" {", nl(),
+		t"class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"puppet", 3}, "snip.rv = get_module_namespace_and_basename()", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t" {", nl(),
 		t"\t", i(0, "# body", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -369,7 +305,7 @@ ls.add_snippets("puppet", {
 		t"}"
 	}),
 	s({trig = "define", descr = "(define) \"Definition\"", priority = -50, trigEngine = te("b")}, {
-		t"define ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"puppet", 43}, "snip.rv = get_module_namespace_and_basename()", python_globals, args, snip, "", am[43])}, ""), {key = "i1"}) }) end), t" {", nl(),
+		t"define ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"puppet", 43}, "snip.rv = get_module_namespace_and_basename()", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t" {", nl(),
 		t"\t", i(0, "# body", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -404,7 +340,7 @@ ls.add_snippets("puppet", {
 		t"}"
 	}),
 	s({trig = "type", descr = "(type) \"Data type alias\"", priority = -50, trigEngine = te("b")}, {
-		t"type ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"puppet", 48}, "snip.rv = get_module_namespace_and_basename()", python_globals, args, snip, "", am[48])}, ""), {key = "i1"}) }) end), t" = ", i(2, "Type", {key = "i2"})
+		t"type ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"puppet", 48}, "snip.rv = get_module_namespace_and_basename()", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t" = ", i(2, "Type", {key = "i2"})
 	}),
 	s({trig = "lambda", descr = "(lambda) \"Lambda function chain-called on a variable\"", priority = -50, trigEngine = te("")}, {
 		t"$", i(1, "varname", {key = "i1"}), t".", i(2, "each", {key = "i2"}), t" |", i(3, "Type", {key = "i3"}), t" $", i(4, "param", {key = "i4"}), t"| {", nl(),

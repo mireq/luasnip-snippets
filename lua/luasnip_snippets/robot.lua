@@ -34,96 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{1, 2, 3, 4},
-	{1, 2},
-	{0, 1, 2},
-	{},
-	{1},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3, 4},
-	{1, 2},
-	{1, 2, 3, 4},
-	{1, 2, 3},
-	{1, 2, 3, 4, 5, 6, 7},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3, 4},
-	{1, 2},
-	{1, 2, 3, 4},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3, 4, 5},
-	{1, 2, 3},
-	{},
-	{},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1, 2, 3, 4, 5, 6},
-	{1},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1},
-	{1, 2, 3, 4},
-	{1, 2, 3, 4},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-}
 ls.add_snippets("robot", {
 	s({trig = "cat", descr = "(cat) \"Catenate\"", priority = -50, trigEngine = te("")}, {
 		t"${", i(1, "name", {key = "i1"}), t"}=    Catenate    SEPARATOR=", i(2, "---", {key = "i2"}), t"    ", i(3, "Hello", {key = "i3"}), t"    ", i(4, "world", {key = "i4"})
@@ -223,8 +139,8 @@ ls.add_snippets("robot", {
 	}),
 	s({trig = "svi", descr = "(svi) \"Set Variable If\"", priority = -50, trigEngine = te("")}, {
 		t"${", i(1, "var", {key = "i1"}), t"}=    Set Variable If    \'${", i(2, "rc", {key = "i2"}), t"}\' != \'", i(3, "abc", {key = "i3"}), t"\'", nl(),
-		f(function(args, snip) return c_py({"robot", 30}, "snip.rv = \'...\' + \' \' * (len(t[1]) + 23)", python_globals, args, snip, "", am[30]) end, ae(am[30])), t" ", i(4, "${value true}", {key = "i4"}), nl(),
-		f(function(args, snip) return c_py({"robot", 30}, "snip.rv = \'...\' + \' \' * (len(t[1]) + 23)", python_globals, args, snip, "", am[30]) end, ae(am[30])), t" ", i(5, "${value false}", {key = "i5"})
+		f(function(args, snip) return c_py({"robot", 30}, "snip.rv = \'...\' + \' \' * (len(t[1]) + 23)", python_globals, args, snip, "", {1}) end, {k"i1"}), t" ", i(4, "${value true}", {key = "i4"}), nl(),
+		f(function(args, snip) return c_py({"robot", 30}, "snip.rv = \'...\' + \' \' * (len(t[1]) + 23)", python_globals, args, snip, "", {1}) end, {k"i1"}), t" ", i(5, "${value false}", {key = "i5"})
 	}),
 	s({trig = "wuks", descr = "(wuks) \"Wait Until Keyword Succeeds\"", priority = -50, trigEngine = te("")}, {
 		t"Wait Until Keyword Succeeds    ", i(1, "10x", {key = "i1"}), t"    ", i(2, "2s", {key = "i2"}), t"    ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i3"}) }) end)

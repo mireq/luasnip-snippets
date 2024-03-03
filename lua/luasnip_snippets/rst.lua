@@ -34,64 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0, 1},
-	{0},
-	{0, 1},
-	{0, 1},
-	{0},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0},
-	{0},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{1, 2},
-}
 
 local python_globals = {
 	[[from collections import Counter
@@ -319,97 +266,97 @@ ls.add_snippets("rst", {
 		t"\\ **", i(1, "Strong emphasis", {key = "i1"}), t"**\\ ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "part", descr = "(part) \"Part\"", priority = -50, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"rst", 29}, "snip.rv = display_width(t[1])*\'#\'", python_globals, args, snip, "", am[29]) end, ae(am[29])), nl(),
+		f(function(args, snip) return c_py({"rst", 29}, "snip.rv = display_width(t[1])*\'#\'", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
-		f(function(args, snip) return c_py({"rst", 29}, "snip.rv = display_width(t[1])*\'#\'", python_globals, args, snip, "", am[29]) end, ae(am[29])), nl(),
+		f(function(args, snip) return c_py({"rst", 29}, "snip.rv = display_width(t[1])*\'#\'", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "chap", descr = "(chap) \"Chapter\"", priority = -50, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"rst", 30}, "snip.rv = display_width(t[1])*\'*\'", python_globals, args, snip, "", am[30]) end, ae(am[30])), nl(),
+		f(function(args, snip) return c_py({"rst", 30}, "snip.rv = display_width(t[1])*\'*\'", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
-		f(function(args, snip) return c_py({"rst", 30}, "snip.rv = display_width(t[1])*\'*\'", python_globals, args, snip, "", am[30]) end, ae(am[30])), nl(),
+		f(function(args, snip) return c_py({"rst", 30}, "snip.rv = display_width(t[1])*\'*\'", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "sec", descr = "(sec) \"Section\"", priority = -50, trigEngine = te("b")}, {
 		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
-		f(function(args, snip) return c_py({"rst", 31}, "snip.rv = display_width(t[1])*\'=\'", python_globals, args, snip, "", am[31]) end, ae(am[31])), nl(),
+		f(function(args, snip) return c_py({"rst", 31}, "snip.rv = display_width(t[1])*\'=\'", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "ssec", descr = "(ssec) \"Subsection\"", priority = -50, trigEngine = te("b")}, {
 		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
-		f(function(args, snip) return c_py({"rst", 32}, "snip.rv = display_width(t[1])*\'-\'", python_globals, args, snip, "", am[32]) end, ae(am[32])), nl(),
+		f(function(args, snip) return c_py({"rst", 32}, "snip.rv = display_width(t[1])*\'-\'", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "sssec", descr = "(sssec) \"Subsubsection\"", priority = -50, trigEngine = te("b")}, {
 		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
-		f(function(args, snip) return c_py({"rst", 33}, "snip.rv = display_width(t[1])*\'^\'", python_globals, args, snip, "", am[33]) end, ae(am[33])), nl(),
+		f(function(args, snip) return c_py({"rst", 33}, "snip.rv = display_width(t[1])*\'^\'", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "para", descr = "(para) \"Paragraph\"", priority = -50, trigEngine = te("b")}, {
 		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), nl(),
-		f(function(args, snip) return c_py({"rst", 34}, "snip.rv = display_width(t[1])*\'\"\'", python_globals, args, snip, "", am[34]) end, ae(am[34])), nl(),
+		f(function(args, snip) return c_py({"rst", 34}, "snip.rv = display_width(t[1])*\'\"\'", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "em", descr = "(em) \"Emphasize string\"", priority = -50, trigEngine = te("i")}, {
-		f(function(args, snip) return c_py({"rst", 35}, "\n# dirty but works with CJK character detection\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"", python_globals, args, snip, "", am[35]) end, ae(am[35])), t"*", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"*", f(function(args, snip) return c_py({"rst", 35}, "\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"\nelse:\n\tsnip.rv = \" \"\n", python_globals, args, snip, "", am[35]) end, ae(am[35])), i(0, "", {key = "i0"})
+		f(function(args, snip) return c_py({"rst", 35}, "\n# dirty but works with CJK character detection\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"", python_globals, args, snip, "", {}) end), t"*", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"*", f(function(args, snip) return c_py({"rst", 35}, "\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"\nelse:\n\tsnip.rv = \" \"\n", python_globals, args, snip, "", {}) end), i(0, "", {key = "i0"})
 	}),
 	s({trig = "st", descr = "(st) \"Strong string\"", priority = -50, trigEngine = te("i")}, {
-		f(function(args, snip) return c_py({"rst", 36}, "\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"", python_globals, args, snip, "", am[36]) end, ae(am[36])), t"**", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"**", f(function(args, snip) return c_py({"rst", 36}, "\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"\nelse:\n\tsnip.rv = \" \"\n", python_globals, args, snip, "", am[36]) end, ae(am[36])), i(0, "", {key = "i0"})
+		f(function(args, snip) return c_py({"rst", 36}, "\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"", python_globals, args, snip, "", {}) end), t"**", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"**", f(function(args, snip) return c_py({"rst", 36}, "\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"\nelse:\n\tsnip.rv = \" \"\n", python_globals, args, snip, "", {}) end), i(0, "", {key = "i0"})
 	}),
 	s({trig = "li(st)? (?P<num>\\d+)", descr = "(li(st)? (?P<num>\\d+)) \"List\"", priority = -50, trigEngine = te("br")}, {
 		i(0, "", {key = "i0"}), nl(),
-		f(function(args, snip) return c_py({"rst", 37}, "\n# usage: li 4<tab>\n# which will extand into a unordered list contains 4 items\nsnip.rv = make_items(match.groupdict()[\'num\'])\n", python_globals, args, snip, "", am[37]) end, ae(am[37]))
+		f(function(args, snip) return c_py({"rst", 37}, "\n# usage: li 4<tab>\n# which will extand into a unordered list contains 4 items\nsnip.rv = make_items(match.groupdict()[\'num\'])\n", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "ol(st)? (?P<num>\\d+)", descr = "(ol(st)? (?P<num>\\d+)) \"Order List\"", priority = -50, trigEngine = te("br")}, {
 		i(0, "", {key = "i0"}), nl(),
-		f(function(args, snip) return c_py({"rst", 38}, "\n# usage: ol 4<tab>\n# which will extand into a ordered list contains 4 items\nsnip.rv = make_items(match.groupdict()[\'num\'], 1)\n", python_globals, args, snip, "", am[38]) end, ae(am[38]))
+		f(function(args, snip) return c_py({"rst", 38}, "\n# usage: ol 4<tab>\n# which will extand into a ordered list contains 4 items\nsnip.rv = make_items(match.groupdict()[\'num\'], 1)\n", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "cb", descr = "(cb) \"Code Block\"", priority = -50, trigEngine = te("b")}, {
-		t".. code-block:: ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"rst", 39}, "snip.rv = get_popular_code_type()", python_globals, args, snip, "", am[39])}, ""), {key = "i1"}) }) end), nl(),
+		t".. code-block:: ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"rst", 39}, "snip.rv = get_popular_code_type()", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), nl(),
 		nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "id", descr = "(id) \"Includable Directives\"", priority = -50, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"rst", 40}, "\nreal_name=real_filename(os.path.basename(t[2]))\ndi=t[1][:2]\n\nlink=\"\"\ncontent=\"\"\n\nif di == \'im\':\n\tlink = \"|{0}|\".format(real_name)\n\nif di == \'fi\':\n\tcontent=\"\"\"\n\t:alt: {0}\n\n\t{0}\"\"\".format(real_name)\n", python_globals, args, snip, "", am[40]) end, ae(am[40])), nl(),
-		t"..", f(function(args, snip) return c_py({"rst", 40}, "snip.rv = \" %s\" % link if link else \"\"", python_globals, args, snip, "", am[40]) end, ae(am[40])), t" ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 40}, "\nsnip.rv=complete(t[1], INCLUDABLE_DIRECTIVES)\n", python_globals, args, snip, "", am[40]) end, ae(am[40])), t":: ", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), f(function(args, snip) return c_py({"rst", 40}, "\nif content:\n\tsnip.rv +=\"    \"+content", python_globals, args, snip, "", am[40]) end, ae(am[40])), nl(),
-		f(function(args, snip) return c_py({"rst", 40}, "\n# Tip of whether file is exist in comment type\nif not check_file_exist(path, t[2]):\n\tsnip.rv=\'.. FILE {0} does not exist\'.format(t[2])\nelse:\n\tsnip.rv=\"\"\n", python_globals, args, snip, "", am[40]) end, ae(am[40])), i(0, "", {key = "i0"})
+		f(function(args, snip) return c_py({"rst", 40}, "\nreal_name=real_filename(os.path.basename(t[2]))\ndi=t[1][:2]\n\nlink=\"\"\ncontent=\"\"\n\nif di == \'im\':\n\tlink = \"|{0}|\".format(real_name)\n\nif di == \'fi\':\n\tcontent=\"\"\"\n\t:alt: {0}\n\n\t{0}\"\"\".format(real_name)\n", python_globals, args, snip, "", {1, 2}) end, {k"i1", k"i2"}), nl(),
+		t"..", f(function(args, snip) return c_py({"rst", 40}, "snip.rv = \" %s\" % link if link else \"\"", python_globals, args, snip, "", {}) end), t" ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 40}, "\nsnip.rv=complete(t[1], INCLUDABLE_DIRECTIVES)\n", python_globals, args, snip, "", {1}) end, {k"i1"}), t":: ", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), f(function(args, snip) return c_py({"rst", 40}, "\nif content:\n\tsnip.rv +=\"    \"+content", python_globals, args, snip, "", {}) end), nl(),
+		f(function(args, snip) return c_py({"rst", 40}, "\n# Tip of whether file is exist in comment type\nif not check_file_exist(path, t[2]):\n\tsnip.rv=\'.. FILE {0} does not exist\'.format(t[2])\nelse:\n\tsnip.rv=\"\"\n", python_globals, args, snip, "", {2}) end, {k"i2"}), i(0, "", {key = "i0"})
 	}),
 	s({trig = "di", descr = "(di) \"Directives\"", priority = -50, trigEngine = te("b")}, {
-		t".. ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 41}, "snip.rv=complete(t[1], DIRECTIVES)", python_globals, args, snip, "", am[41]) end, ae(am[41])), t":: ", i(2, "", {key = "i2"}), nl(),
+		t".. ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 41}, "snip.rv=complete(t[1], DIRECTIVES)", python_globals, args, snip, "", {1}) end, {k"i1"}), t":: ", i(2, "", {key = "i2"}), nl(),
 		nl(),
 		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "dt", descr = "(dt) \"Directives without title\"", priority = -50, trigEngine = te("b")}, {
-		t".. ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 42}, "snip.rv=complete(t[1], DIRECTIVES_WITHOUT_TITLE)", python_globals, args, snip, "", am[42]) end, ae(am[42])), t"::", nl(),
+		t".. ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 42}, "snip.rv=complete(t[1], DIRECTIVES_WITHOUT_TITLE)", python_globals, args, snip, "", {1}) end, {k"i1"}), t"::", nl(),
 		nl(),
 		t"\t", d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i2"}) }) end), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "ds", descr = "(ds) \"Directives for subscription\"", priority = -50, trigEngine = te("b")}, {
-		t".. |", i(1, "", {key = "i1"}), t"| ", i(2, "", {key = "i2"}), f(function(args, snip) return c_py({"rst", 43}, "snip.rv=complete(t[2], DIRECTIVES_FOR_SUBSTITUTION)", python_globals, args, snip, "", am[43]) end, ae(am[43])), t":: ", i(3, "Content", {key = "i3"}), nl(),
+		t".. |", i(1, "", {key = "i1"}), t"| ", i(2, "", {key = "i2"}), f(function(args, snip) return c_py({"rst", 43}, "snip.rv=complete(t[2], DIRECTIVES_FOR_SUBSTITUTION)", python_globals, args, snip, "", {2}) end, {k"i2"}), t":: ", i(3, "Content", {key = "i3"}), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "sa", descr = "(sa) \"Specific Admonitions\"", priority = -50, trigEngine = te("b")}, {
-		t".. ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 44}, "snip.rv =complete(t[1], SPECIFIC_ADMONITIONS)", python_globals, args, snip, "", am[44]) end, ae(am[44])), t":: ", i(2, "", {key = "i2"}), nl(),
+		t".. ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 44}, "snip.rv =complete(t[1], SPECIFIC_ADMONITIONS)", python_globals, args, snip, "", {1}) end, {k"i1"}), t":: ", i(2, "", {key = "i2"}), nl(),
 		nl(),
 		t"\t", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i3"}) }) end), nl(),
 		nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "ro", descr = "(ro) \"Text Roles\"", priority = -50, trigEngine = te("w")}, {
-		t"\\ :", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 45}, "snip.rv=complete(t[1],\n\t\t\t\t\t\t\t   TEXT_ROLES+look_up_directives(TEXT_ROLES_REGEX,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tpath))", python_globals, args, snip, "", am[45]) end, ae(am[45])), t":`", i(2, "", {key = "i2"}), t"`\\"
+		t"\\ :", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 45}, "snip.rv=complete(t[1],\n\t\t\t\t\t\t\t   TEXT_ROLES+look_up_directives(TEXT_ROLES_REGEX,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tpath))", python_globals, args, snip, "", {1}) end, {k"i1"}), t":`", i(2, "", {key = "i2"}), t"`\\"
 	}),
 	s({trig = "eu", descr = "(eu) \"Embedded URI\"", priority = -50, trigEngine = te("i")}, {
-		f(function(args, snip) return c_py({"rst", 46}, "\nif has_cjk(vim.current.line):\n\tsnip.rv = \"\\ \"", python_globals, args, snip, "", am[46]) end, ae(am[46])), t"`", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t" <", i(2, "URI", {key = "i2"}), t">`_", f(function(args, snip) return c_py({"rst", 46}, "\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"\nelse:\n\tsnip.rv = \"\"\n", python_globals, args, snip, "", am[46]) end, ae(am[46])), i(0, "", {key = "i0"})
+		f(function(args, snip) return c_py({"rst", 46}, "\nif has_cjk(vim.current.line):\n\tsnip.rv = \"\\ \"", python_globals, args, snip, "", {}) end), t"`", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t" <", i(2, "URI", {key = "i2"}), t">`_", f(function(args, snip) return c_py({"rst", 46}, "\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"\nelse:\n\tsnip.rv = \"\"\n", python_globals, args, snip, "", {}) end), i(0, "", {key = "i0"})
 	}),
 	s({trig = "fnt", descr = "(fnt) \"Footnote or Citation\"", priority = -50, trigEngine = te("i")}, {
 		t"[", i(1, "Label", {key = "i1"}), t"]_ ", i(0, "", {key = "i0"}), nl(),
@@ -417,7 +364,7 @@ ls.add_snippets("rst", {
 		t".. [", cp(1), t"] ", i(2, "Reference", {key = "i2"})
 	}),
 	s({trig = "chart", descr = "(chart) \"Pygal chart for Nikola\"", priority = -50, trigEngine = te("b")}, {
-		t".. chart:: ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 48}, "snip.rv=complete(t[1], CHART_TYPES)", python_globals, args, snip, "", am[48]) end, ae(am[48])), nl(),
+		t".. chart:: ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"rst", 48}, "snip.rv=complete(t[1], CHART_TYPES)", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		t"\t:title: \'", i(2, "Browser usage evolution (in %)", {key = "i2"}), t"\'", nl(),
 		t"\t:x_labels: [", i(3, "\"2002\", \"2003\", \"2004\", \"2005\", \"2006\", \"2007\"", {key = "i3"}), t"]", nl(),
 		nl(),

@@ -34,18 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-}
 ls.add_snippets("phoenix", {
 	s({trig = "cont", descr = "(cont)", priority = -1000, trigEngine = te("w")}, {
 		t"defmodule ", i(1, "AppName", {key = "i1"}), t"Web.", i(2, "ControllerName", {key = "i2"}), t"Controller do", nl(),

@@ -34,45 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{1, 2},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1, 2, 3, 4},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3, 4},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3, 4},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-}
 ls.add_snippets("jinja2", {
 	s({trig = "block", descr = "(block) \"block\"", priority = -50, trigEngine = te("b")}, {
 		t"{% block ", i(1, "name", {key = "i1"}), t" %}", nl(),
@@ -103,7 +70,7 @@ ls.add_snippets("jinja2", {
 		t"{% import \"", i(1, "template", {key = "i1"}), t"\" %}"
 	}),
 	s({trig = "from", descr = "(from) \"from/import/as\"", priority = -50, trigEngine = te("b")}, {
-		t"{% from \"", i(1, "template", {key = "i1"}), t"\" import ", i(2, "name", {key = "i2"}), d(3, function(args, snip) return sn(nil, {c(1, {{t" as ", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i4"}) }) end, {k"i2"})}, {i(1, jt({" as ", jt({args[1]})}))}}, {key = "i3"})}) end, {k"i2"}), t" %}"
+		t"{% from \"", i(1, "template", {key = "i1"}), t"\" import ", i(2, "name", {key = "i2"}), c(3, {{t" as ", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i4"}) }) end, {k"i2"})}, {d(1, function(args, snip) return sn(nil, {i(1, jt({" as ", jt({args[1]})}))}) end, {k"i2"})}}, {key = "i3"}), t" %}"
 	}),
 	s({trig = "filter", descr = "(filter) \"filter\"", priority = -50, trigEngine = te("b")}, {
 		t"{% filter ", i(1, "filter", {key = "i1"}), t" %}", nl(),

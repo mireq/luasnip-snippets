@@ -34,71 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{0},
-	{0},
-	{0},
-	{0},
-	{0, 1},
-	{0},
-	{0, 1},
-	{0, 1},
-	{0},
-	{0, 1, 2},
-	{1, 2, 3},
-	{0, 1, 2},
-	{0},
-	{0, 1, 2},
-	{0},
-	{0},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2, 3, 4, 5},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{1},
-	{1, 2},
-	{1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1},
-}
 
 local python_globals = {
 	[[import os
@@ -289,13 +229,13 @@ ls.add_snippets("r", {
 		t"kv.test(", i(1, "x", {key = "i1"}), t", ", i(0, "y", {key = "i0"}), t")"
 	}),
 	s({trig = "setwd", descr = "(setwd) \"Set workingdir\"", priority = -20, trigEngine = te("b")}, {
-		t"setwd(\"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"r", 51}, "snip.rv = os.getcwd()", python_globals, args, snip, "", am[51])}, ""), {key = "i1"}) }) end), t"\")"
+		t"setwd(\"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"r", 51}, "snip.rv = os.getcwd()", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t"\")"
 	}),
 	s({trig = "as", descr = "(as) \"Apply type on variable\"", priority = -20, trigEngine = te("w")}, {
-		t"as.", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"r", 52}, "snip.rv = complete(t[1], FIELD_TYPES)", python_globals, args, snip, "", am[52]) end, ae(am[52])), t"(", i(2, "", {key = "i2"}), f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t")"
+		t"as.", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"r", 52}, "snip.rv = complete(t[1], FIELD_TYPES)", python_globals, args, snip, "", {1}) end, {k"i1"}), t"(", i(2, "", {key = "i2"}), f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t")"
 	}),
 	s({trig = "is", descr = "(is) \"Test type on variable\"", priority = -20, trigEngine = te("w")}, {
-		t"is.", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"r", 53}, "snip.rv = complete(t[1], FIELD_TYPES)", python_globals, args, snip, "", am[53]) end, ae(am[53])), t"(", i(2, "", {key = "i2"}), f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t")"
+		t"is.", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"r", 53}, "snip.rv = complete(t[1], FIELD_TYPES)", python_globals, args, snip, "", {1}) end, {k"i1"}), t"(", i(2, "", {key = "i2"}), f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), t")"
 	}),
 	s({trig = "eif", descr = "(eif) \"Else-If statement\"", priority = -20, trigEngine = te("")}, {
 		t"else if (", i(1, "", {key = "i1"}), t") {", nl(),

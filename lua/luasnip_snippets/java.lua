@@ -34,145 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{0},
-	{0},
-	{0},
-	{0, 1, 2},
-	{0},
-	{0},
-	{0, 1},
-	{1},
-	{0, 1, 2},
-	{},
-	{},
-	{},
-	{},
-	{},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0},
-	{0},
-	{0},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1},
-	{0},
-	{0},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4},
-	{1, 2, 3, 4},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0, 1},
-	{0},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1},
-	{0, 1, 2},
-	{0},
-	{0},
-	{1, 2, 3, 4},
-	{0, 1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{0},
-	{},
-	{0},
-	{0},
-	{0},
-	{0},
-	{1},
-	{1},
-	{1},
-	{1},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0, 1},
-	{0},
-	{0},
-	{1},
-	{1, 2},
-	{1},
-	{1},
-	{1},
-	{1, 2, 3},
-	{0, 1, 2, 3},
-	{0},
-	{},
-	{0, 1},
-	{0, 1},
-	{},
-	{0, 1, 2},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{0, 1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4, 5},
-	{0, 1},
-	{1},
-	{0, 2},
-	{0},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0},
-	{1},
-	{1, 2, 3},
-	{1, 2, 3, 4},
-	{0},
-	{0, 1},
-	{1},
-	{0, 1, 2, 3, 4, 5, 6},
-	{0, 1, 2, 3, 4, 5, 6, 7},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{0},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0},
-}
 
 local python_globals = {
 	[[def junit(snip):
@@ -251,7 +117,7 @@ ls.add_snippets("java", {
 		t"java.util."
 	}),
 	s({trig = "cl", descr = "(cl) \"class\"", priority = -50, trigEngine = te("b")}, {
-		t"public class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 15}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[15]), "r \"untitled\""}, ""), {key = "i1"}) }) end), t" {", nl(),
+		t"public class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 15}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", {}), "r \"untitled\""}, ""), {key = "i1"}) }) end), t" {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -259,12 +125,12 @@ ls.add_snippets("java", {
 		t"public class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("vim_snippets#Filename(\"$1\", \"untitled\")")}, ""), {key = "i1"}) }) end), t" ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "in", descr = "(in) \"interface\"", priority = -50, trigEngine = te("b")}, {
-		t"interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 17}, "snip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[17])}, ""), {key = "i1"}) }) end), t" ", c(2, {{t"extends ", i(1, "Parent", {key = "i3"}), t" "}, {i(1, jt({"extends ", "Parent", " "}))}}, {key = "i2"}), t"{", nl(),
+		t"interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 17}, "snip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t" ", c(2, {{t"extends ", i(1, "Parent", {key = "i3"}), t" "}, {i(1, jt({"extends ", "Parent", " "}))}}, {key = "i2"}), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
 	s({trig = "tc", descr = "(tc) \"test case\"", priority = -50, trigEngine = te("")}, {
-		t"public class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 18}, "snip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[18])}, ""), {key = "i1"}) }) end), t" extends ", i(2, "TestCase", {key = "i2"}), f(function(args, snip) return c_py({"java", 18}, "nl(snip)", python_globals, args, snip, "", am[18]) end, ae(am[18])), t"{", nl(),
+		t"public class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 18}, "snip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t" extends ", i(2, "TestCase", {key = "i2"}), f(function(args, snip) return c_py({"java", 18}, "nl(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -294,7 +160,7 @@ ls.add_snippets("java", {
 		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "el", descr = "(el) \"else\"", priority = -50, trigEngine = te("w")}, {
-		t"else", f(function(args, snip) return c_py({"java", 26}, "nl(snip)", python_globals, args, snip, "", am[26]) end, ae(am[26])), t"{", nl(),
+		t"else", f(function(args, snip) return c_py({"java", 26}, "nl(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
 		t"}"
 	}),
@@ -302,12 +168,12 @@ ls.add_snippets("java", {
 		t"else if (", i(1, "", {key = "i1"}), t") ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "if", descr = "(if) \"if\"", priority = -50, trigEngine = te("b")}, {
-		t"if (", i(1, "", {key = "i1"}), t")", f(function(args, snip) return c_py({"java", 28}, "nl(snip)", python_globals, args, snip, "", am[28]) end, ae(am[28])), t"{", nl(),
+		t"if (", i(1, "", {key = "i1"}), t")", f(function(args, snip) return c_py({"java", 28}, "nl(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
 		t"}"
 	}),
 	s({trig = "sw", descr = "(sw) \"switch\"", priority = -50, trigEngine = te("b")}, {
-		t"switch (", i(1, "", {key = "i1"}), t")", f(function(args, snip) return c_py({"java", 29}, "nl(snip)", python_globals, args, snip, "", am[29]) end, ae(am[29])), t"{", nl(),
+		t"switch (", i(1, "", {key = "i1"}), t")", f(function(args, snip) return c_py({"java", 29}, "nl(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\tcase ", i(2, "", {key = "i2"}), t": ", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -394,7 +260,7 @@ ls.add_snippets("java", {
 		t"fail(\"", i(1, "Failure message", {key = "i1"}), t"\");"
 	}),
 	s({trig = "ca", descr = "(ca) \"catch\"", priority = -50, trigEngine = te("b")}, {
-		t"catch (", i(1, "Exception", {key = "i1"}), t" ", i(2, "e", {key = "i2"}), t")", f(function(args, snip) return c_py({"java", 54}, "nl(snip)", python_globals, args, snip, "", am[54]) end, ae(am[54])), t"{", nl(),
+		t"catch (", i(1, "Exception", {key = "i1"}), t" ", i(2, "e", {key = "i2"}), t")", f(function(args, snip) return c_py({"java", 54}, "nl(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -460,12 +326,12 @@ ls.add_snippets("java", {
 		t"for (", i(1, "", {key = "i1"}), t" : ", i(2, "", {key = "i2"}), t") ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "for", descr = "(for) \"for\"", priority = -50, trigEngine = te("b")}, {
-		t"for (", i(1, "", {key = "i1"}), t"; ", i(2, "", {key = "i2"}), t"; ", i(3, "", {key = "i3"}), t")", f(function(args, snip) return c_py({"java", 72}, "nl(snip)", python_globals, args, snip, "", am[72]) end, ae(am[72])), t"{", nl(),
+		t"for (", i(1, "", {key = "i1"}), t"; ", i(2, "", {key = "i2"}), t"; ", i(3, "", {key = "i3"}), t")", f(function(args, snip) return c_py({"java", 72}, "nl(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
 	s({trig = "wh", descr = "(wh) \"while\"", priority = -50, trigEngine = te("b")}, {
-		t"while (", i(1, "", {key = "i1"}), t")", f(function(args, snip) return c_py({"java", 73}, "nl(snip)", python_globals, args, snip, "", am[73]) end, ae(am[73])), t"{", nl(),
+		t"while (", i(1, "", {key = "i1"}), t")", f(function(args, snip) return c_py({"java", 73}, "nl(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -478,7 +344,7 @@ ls.add_snippets("java", {
 		t"}"
 	}),
 	s({trig = "main", descr = "(main) \"method (main)\"", priority = -50, trigEngine = te("b")}, {
-		t"public static void main(String[] args)", f(function(args, snip) return c_py({"java", 76}, "nl(snip)", python_globals, args, snip, "", am[76]) end, ae(am[76])), t"{", nl(),
+		t"public static void main(String[] args)", f(function(args, snip) return c_py({"java", 76}, "nl(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -530,7 +396,7 @@ ls.add_snippets("java", {
 		t"break;", nl()
 	}),
 	s({trig = "t", descr = "(t) \"test\"", priority = -50, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"java", 92}, "junit(snip)", python_globals, args, snip, "", am[92]) end, ae(am[92])), t"public void test", i(1, "Name", {key = "i1"}), t"() {", nl(),
+		f(function(args, snip) return c_py({"java", 92}, "junit(snip)", python_globals, args, snip, "", {}) end), t"public void test", i(1, "Name", {key = "i1"}), t"() {", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -576,7 +442,7 @@ ls.add_snippets("java", {
 		i(1, "Object", {key = "i1"}), t" ", i(2, "var", {key = "i2"}), t" = new ", cp(1), t"(", i(3, "", {key = "i3"}), t");"
 	}),
 	s({trig = "f", descr = "(f) \"field\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "private", {key = "i1"}), t" ", i(2, "String", {key = "i2"}), t" ", d(3, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 104}, "snip.rv = t[2].lower()", python_globals, args, snip, "", am[104])}, "  "), {key = "i3"}) }) end), t";"
+		i(1, "private", {key = "i1"}), t" ", i(2, "String", {key = "i2"}), t" ", d(3, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 104}, "snip.rv = t[2].lower()", python_globals, args, snip, "", {2})}, "  "), {key = "i3"}) }) end, {k"i2"}), t";"
 	}),
 	s({trig = "cs", descr = "(cs) \"case\"", priority = -50, trigEngine = te("b")}, {
 		t"case ", i(1, "", {key = "i1"}), t":", nl(),
@@ -584,30 +450,30 @@ ls.add_snippets("java", {
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "cle", descr = "(cle) \"class extends\"", priority = -50, trigEngine = te("b")}, {
-		t"public class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 106}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[106]), "r \"untitled\""}, ""), {key = "i1"}) }) end), t" ", c(2, {{t"extends ", i(1, "Parent", {key = "i3"}), t" "}, {i(1, jt({"extends ", "Parent", " "}))}}, {key = "i2"}), c(3, {{t"implements ", i(1, "Interface", {key = "i5"}), t" "}, {i(1, jt({"implements ", "Interface", " "}))}}, {key = "i4"}), t"{", nl(),
+		t"public class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"java", 106}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", {}), "r \"untitled\""}, ""), {key = "i1"}) }) end), t" ", c(2, {{t"extends ", i(1, "Parent", {key = "i3"}), t" "}, {i(1, jt({"extends ", "Parent", " "}))}}, {key = "i2"}), c(3, {{t"implements ", i(1, "Interface", {key = "i5"}), t" "}, {i(1, jt({"implements ", "Interface", " "}))}}, {key = "i4"}), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
 	s({trig = "clc", descr = "(clc) \"class and constructor\"", priority = -50, trigEngine = te("b")}, c(1, {
 		{
-			t"public class ", f(function(args, snip) return c_py({"java", 107}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[107]) end, ae(am[107])), t" {", nl(),
-			f(function(args, snip) return c_py({"java", 107}, "\nargs = getArgs(t[1])\nif len(args) == 0: snip.rv = \"\"\nfor i in args:\n\tsnip.rv += \"\\n\\tprivate \" + i[0] + \" \" + i[1]+ \";\"\nif len(args) > 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", am[107]) end, ae(am[107])), nl(),
-			t"\tpublic ", f(function(args, snip) return c_py({"java", 107}, "snip.rv = snip.basename or \"unknown\"", python_globals, args, snip, "", am[107]) end, ae(am[107])), t"(", i(1, "", {key = "i1"}), t") {", f(function(args, snip) return c_py({"java", 107}, "\nargs = getArgs(t[1])\nfor i in args:\n\tsnip.rv += \"\\n\\t\\tthis.\" + i[1] + \" = \" + i[1] + \";\"\nif len(args) == 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", am[107]) end, ae(am[107])), nl(),
+			t"public class ", f(function(args, snip) return c_py({"java", 107}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", {}) end), t" {", nl(),
+			f(function(args, snip) return c_py({"java", 107}, "\nargs = getArgs(t[1])\nif len(args) == 0: snip.rv = \"\"\nfor i in args:\n\tsnip.rv += \"\\n\\tprivate \" + i[0] + \" \" + i[1]+ \";\"\nif len(args) > 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
+			t"\tpublic ", f(function(args, snip) return c_py({"java", 107}, "snip.rv = snip.basename or \"unknown\"", python_globals, args, snip, "", {}) end), t"(", i(1, "", {key = "i1"}), t") {", f(function(args, snip) return c_py({"java", 107}, "\nargs = getArgs(t[1])\nfor i in args:\n\tsnip.rv += \"\\n\\t\\tthis.\" + i[1] + \" = \" + i[1] + \";\"\nif len(args) == 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 			t"\t}", i(0, "", {key = "i0"}), nl(),
-			f(function(args, snip) return c_py({"java", 107}, "\nargs = getArgs(t[1])\nif len(args) == 0: snip.rv = \"\"\nfor i in args:\n\tsnip.rv += \"\\n\\tpublic void set\" + camel(i[1]) + \"(\" + i[0] + \" \" + i[1] + \") {\\n\" + \"\\\n\t\\tthis.\" + i[1] + \" = \" + i[1] + \";\\n\\t}\\n\"\n\n\tsnip.rv += \"\\n\\tpublic \" + i[0] + \" get\" + camel(i[1]) + \"() {\\n\\\n\t\\treturn \" + i[1] + \";\\n\\t}\\n\"\n", python_globals, args, snip, "", am[107]) end, ae(am[107])), nl(),
+			f(function(args, snip) return c_py({"java", 107}, "\nargs = getArgs(t[1])\nif len(args) == 0: snip.rv = \"\"\nfor i in args:\n\tsnip.rv += \"\\n\\tpublic void set\" + camel(i[1]) + \"(\" + i[0] + \" \" + i[1] + \") {\\n\" + \"\\\n\t\\tthis.\" + i[1] + \" = \" + i[1] + \";\\n\\t}\\n\"\n\n\tsnip.rv += \"\\n\\tpublic \" + i[0] + \" get\" + camel(i[1]) + \"() {\\n\\\n\t\\treturn \" + i[1] + \";\\n\\t}\\n\"\n", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 			t"}"
 		},
 		{
-			t"public class ", f(function(args, snip) return c_py({"java", 108}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[108]) end, ae(am[108])), t" {", nl(),
-			f(function(args, snip) return c_py({"java", 108}, "\nargs = getArgs(t[1])\nfor i in args:\n\tsnip.rv += \"\\n\\tprivate \" + i[0] + \" \" + i[1]+ \";\"\nif len(args) > 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", am[108]) end, ae(am[108])), nl(),
-			t"\tpublic ", f(function(args, snip) return c_py({"java", 108}, "snip.rv = snip.basename or \"unknown\"", python_globals, args, snip, "", am[108]) end, ae(am[108])), t"(", i(1, "", {key = "i1"}), t") {", f(function(args, snip) return c_py({"java", 108}, "\nargs = getArgs(t[1])\nfor i in args:\n\tsnip.rv += \"\\n\\t\\tthis.%s = %s;\" % (i[1], i[1])\nif len(args) == 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", am[108]) end, ae(am[108])), nl(),
+			t"public class ", f(function(args, snip) return c_py({"java", 108}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", {}) end), t" {", nl(),
+			f(function(args, snip) return c_py({"java", 108}, "\nargs = getArgs(t[1])\nfor i in args:\n\tsnip.rv += \"\\n\\tprivate \" + i[0] + \" \" + i[1]+ \";\"\nif len(args) > 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
+			t"\tpublic ", f(function(args, snip) return c_py({"java", 108}, "snip.rv = snip.basename or \"unknown\"", python_globals, args, snip, "", {}) end), t"(", i(1, "", {key = "i1"}), t") {", f(function(args, snip) return c_py({"java", 108}, "\nargs = getArgs(t[1])\nfor i in args:\n\tsnip.rv += \"\\n\\t\\tthis.%s = %s;\" % (i[1], i[1])\nif len(args) == 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 			t"\t}", nl(),
 			t"}"
 		},
 		{
-			t"public class ", f(function(args, snip) return c_py({"java", 109}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[109]) end, ae(am[109])), t" {", nl(),
+			t"public class ", f(function(args, snip) return c_py({"java", 109}, "\nsnip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", {}) end), t" {", nl(),
 			nl(),
-			t"\tpublic ", f(function(args, snip) return c_py({"java", 109}, "snip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[109]) end, ae(am[109])), t"(", i(1, "", {key = "i2"}), t") {", nl(),
+			t"\tpublic ", f(function(args, snip) return c_py({"java", 109}, "snip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", {}) end), t"(", i(1, "", {key = "i2"}), t") {", nl(),
 			t"\t\t", i(0, "", {key = "i0"}), nl(),
 			t"\t}", nl(),
 			t"}"
@@ -618,17 +484,17 @@ ls.add_snippets("java", {
 		t"\t", i(0, "", {key = "i0"})
 	}),
 	s({trig = "elif", descr = "(elif) \"else if\"", priority = -50, trigEngine = te("")}, {
-		t"else if (", i(1, "", {key = "i1"}), t")", f(function(args, snip) return c_py({"java", 111}, "nl(snip)", python_globals, args, snip, "", am[111]) end, ae(am[111])), t"{", nl(),
+		t"else if (", i(1, "", {key = "i1"}), t")", f(function(args, snip) return c_py({"java", 111}, "nl(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), nl(),
 		t"}"
 	}),
 	s({trig = "fore", descr = "(fore) \"for (each)\"", priority = -50, trigEngine = te("b")}, {
-		t"for (", i(1, "", {key = "i1"}), t" : ", i(2, "", {key = "i2"}), t")", f(function(args, snip) return c_py({"java", 112}, "nl(snip)", python_globals, args, snip, "", am[112]) end, ae(am[112])), t"{", nl(),
+		t"for (", i(1, "", {key = "i1"}), t" : ", i(2, "", {key = "i2"}), t")", f(function(args, snip) return c_py({"java", 112}, "nl(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
 	s({trig = "fori", descr = "(fori) \"for\"", priority = -50, trigEngine = te("b")}, {
-		t"for (int ", i(1, "i", {key = "i1"}), t" = 0; ", cp(1), t" < ", i(2, "10", {key = "i2"}), t"; ", cp(1), t"++)", f(function(args, snip) return c_py({"java", 113}, "nl(snip)", python_globals, args, snip, "", am[113]) end, ae(am[113])), t"{", nl(),
+		t"for (int ", i(1, "i", {key = "i1"}), t" = 0; ", cp(1), t" < ", i(2, "10", {key = "i2"}), t"; ", cp(1), t"++)", f(function(args, snip) return c_py({"java", 113}, "nl(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -650,13 +516,13 @@ ls.add_snippets("java", {
 	}),
 	s({trig = "cn", descr = "(cn) \"constructor, \\w fields + assigments\"", priority = -50, trigEngine = te("b")}, c(1, {
 		{
-			t"public ", f(function(args, snip) return c_py({"java", 119}, "snip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", am[119]) end, ae(am[119])), t"(", i(1, "", {key = "i1"}), t") {", nl(),
+			t"public ", f(function(args, snip) return c_py({"java", 119}, "snip.rv = snip.basename or \"untitled\"", python_globals, args, snip, "", {}) end), t"(", i(1, "", {key = "i1"}), t") {", nl(),
 			t"\t", i(0, "", {key = "i0"}), nl(),
 			t"}"
 		},
 		{
-			t"\t", f(function(args, snip) return c_py({"java", 120}, "\nargs = getArgs(t[1])\nfor i in args:\n\tsnip.rv += \"\\n\\tprivate \" + i[0] + \" \" + i[1]+ \";\"\nif len(args) > 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", am[120]) end, ae(am[120])), nl(),
-			t"public ", f(function(args, snip) return c_py({"java", 120}, "snip.rv = snip.basename or \"unknown\"", python_globals, args, snip, "", am[120]) end, ae(am[120])), t"(", i(1, "", {key = "i1"}), t") {", f(function(args, snip) return c_py({"java", 120}, "\nargs = getArgs(t[1])\nfor i in args:\n\tsnip.rv += \"\\n\\t\\tthis.%s = %s;\" % (i[1], i[1])\nif len(args) == 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", am[120]) end, ae(am[120])), nl(),
+			t"\t", f(function(args, snip) return c_py({"java", 120}, "\nargs = getArgs(t[1])\nfor i in args:\n\tsnip.rv += \"\\n\\tprivate \" + i[0] + \" \" + i[1]+ \";\"\nif len(args) > 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
+			t"public ", f(function(args, snip) return c_py({"java", 120}, "snip.rv = snip.basename or \"unknown\"", python_globals, args, snip, "", {}) end), t"(", i(1, "", {key = "i1"}), t") {", f(function(args, snip) return c_py({"java", 120}, "\nargs = getArgs(t[1])\nfor i in args:\n\tsnip.rv += \"\\n\\t\\tthis.%s = %s;\" % (i[1], i[1])\nif len(args) == 0:\n\tsnip.rv += \"\\n\"", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 			t"}"
 		},
 	})),
@@ -667,8 +533,8 @@ ls.add_snippets("java", {
 	}),
 	s({trig = "md", descr = "(md) \"Method With javadoc\"", priority = -50, trigEngine = te("b")}, {
 		t"/**", nl(),
-		t" * ", i(6, "Short Description", {key = "i7"}), f(function(args, snip) return c_py({"java", 122}, "\nfor i in getArgs(t[4]):\n\tsnip.rv += \"\\n\\t * @param \" + i[1] + \" usage...\"", python_globals, args, snip, "", am[122]) end, ae(am[122])), nl(),
-		t" *", f(function(args, snip) return c_py({"java", 122}, "\nif \"throws\" in t[5]:\n\tsnip.rv = \"\\n\\t * @throws \" + t[6]\nelse:\n\tsnip.rv = \"\"", python_globals, args, snip, "", am[122]) end, ae(am[122])), f(function(args, snip) return c_py({"java", 122}, "\nif not \"void\" in t[2]:\n\tsnip.rv = \"\\n\\t * @return object\"\nelse:\n\tsnip.rv = \"\"", python_globals, args, snip, "", am[122]) end, ae(am[122])), nl(),
+		t" * ", i(6, "Short Description", {key = "i7"}), f(function(args, snip) return c_py({"java", 122}, "\nfor i in getArgs(t[4]):\n\tsnip.rv += \"\\n\\t * @param \" + i[1] + \" usage...\"", python_globals, args, snip, "", {4}) end, {k"i4"}), nl(),
+		t" *", f(function(args, snip) return c_py({"java", 122}, "\nif \"throws\" in t[5]:\n\tsnip.rv = \"\\n\\t * @throws \" + t[6]\nelse:\n\tsnip.rv = \"\"", python_globals, args, snip, "", {5, 6}) end, {k"i5", k"i6"}), f(function(args, snip) return c_py({"java", 122}, "\nif not \"void\" in t[2]:\n\tsnip.rv = \"\\n\\t * @return object\"\nelse:\n\tsnip.rv = \"\"", python_globals, args, snip, "", {2}) end, {k"i2"}), nl(),
 		t" **/", nl(),
 		i(1, "public", {key = "i1"}), t" ", i(2, "void", {key = "i2"}), t" ", i(3, "method", {key = "i3"}), t"(", i(4, "", {key = "i4"}), t") ", c(5, {{t"throws ", i(1, "", {key = "i6"}), t" "}, {i(1, jt({"throws ", "", " "}))}}, {key = "i5"}), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
@@ -676,20 +542,20 @@ ls.add_snippets("java", {
 	}),
 	s({trig = "get(ter)?", descr = "(get(ter)?) \"getter\"", priority = -50, trigEngine = te("br")}, {
 		t"public ", i(1, "String", {key = "i1"}), t" get", i(2, "Name", {key = "i2"}), t"() {", nl(),
-		t"\treturn ", f(function(args, snip) return c_py({"java", 123}, "snip.rv = mixedCase(t[2])", python_globals, args, snip, "", am[123]) end, ae(am[123])), t";", nl(),
+		t"\treturn ", f(function(args, snip) return c_py({"java", 123}, "snip.rv = mixedCase(t[2])", python_globals, args, snip, "", {2}) end, {k"i2"}), t";", nl(),
 		t"}"
 	}),
 	s({trig = "set(ter)?", descr = "(set(ter)?) \"setter\"", priority = -50, trigEngine = te("br")}, {
-		t"public void set", i(1, "Name", {key = "i1"}), t"(", i(2, "String", {key = "i2"}), t" ", f(function(args, snip) return c_py({"java", 124}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", am[124]) end, ae(am[124])), t") {", nl(),
-		t"\tthis.", f(function(args, snip) return c_py({"java", 124}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", am[124]) end, ae(am[124])), t" = ", f(function(args, snip) return c_py({"java", 124}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", am[124]) end, ae(am[124])), t";", nl(),
+		t"public void set", i(1, "Name", {key = "i1"}), t"(", i(2, "String", {key = "i2"}), t" ", f(function(args, snip) return c_py({"java", 124}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t") {", nl(),
+		t"\tthis.", f(function(args, snip) return c_py({"java", 124}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t" = ", f(function(args, snip) return c_py({"java", 124}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t";", nl(),
 		t"}"
 	}),
 	s({trig = "se?tge?t|ge?tse?t|gs", descr = "(se?tge?t|ge?tse?t|gs) \"setter and getter\"", priority = -50, trigEngine = te("br")}, {
-		t"public void set", i(1, "Name", {key = "i1"}), t"(", i(2, "String", {key = "i2"}), t" ", f(function(args, snip) return c_py({"java", 125}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", am[125]) end, ae(am[125])), t") {", nl(),
-		t"\tthis.", f(function(args, snip) return c_py({"java", 125}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", am[125]) end, ae(am[125])), t" = ", f(function(args, snip) return c_py({"java", 125}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", am[125]) end, ae(am[125])), t";", nl(),
-		t"}", f(function(args, snip) return c_py({"java", 125}, "snip.rv += \"\\n\"", python_globals, args, snip, "", am[125]) end, ae(am[125])), nl(),
+		t"public void set", i(1, "Name", {key = "i1"}), t"(", i(2, "String", {key = "i2"}), t" ", f(function(args, snip) return c_py({"java", 125}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t") {", nl(),
+		t"\tthis.", f(function(args, snip) return c_py({"java", 125}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t" = ", f(function(args, snip) return c_py({"java", 125}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t";", nl(),
+		t"}", f(function(args, snip) return c_py({"java", 125}, "snip.rv += \"\\n\"", python_globals, args, snip, "", {}) end), nl(),
 		t"public ", cp(2), t" get", cp(1), t"() {", nl(),
-		t"\treturn ", f(function(args, snip) return c_py({"java", 125}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", am[125]) end, ae(am[125])), t";", nl(),
+		t"\treturn ", f(function(args, snip) return c_py({"java", 125}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t";", nl(),
 		t"}"
 	}),
 	s({trig = "pa", descr = "(pa) \"package\"", priority = -50, trigEngine = te("b")}, {
@@ -702,7 +568,7 @@ ls.add_snippets("java", {
 		t"System.out.println(", i(1, "", {key = "i1"}), t");", i(0, "", {key = "i0"})
 	}),
 	s({trig = "tt", descr = "(tt) \"test throws\"", priority = -50, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"java", 129}, "junit(snip)", python_globals, args, snip, "", am[129]) end, ae(am[129])), t"public void test", i(1, "Name", {key = "i1"}), t"() ", i(2, "throws Exception ", {key = "i2"}), t"{", nl(),
+		f(function(args, snip) return c_py({"java", 129}, "junit(snip)", python_globals, args, snip, "", {}) end), t"public void test", i(1, "Name", {key = "i1"}), t"() ", i(2, "throws Exception ", {key = "i2"}), t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),

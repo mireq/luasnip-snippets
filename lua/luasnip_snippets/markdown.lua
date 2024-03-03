@@ -34,77 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1},
-	{},
-	{},
-	{0, 1},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1},
-	{1, 2},
-	{0},
-	{0, 1, 2, 3, 4},
-	{0, 1},
-	{0},
-	{0, 1, 2, 3},
-	{0},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2, 3},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4, 5},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{},
-}
 
 local python_globals = {
 	[[# A overkill(dirty) table with automatic alignment feature
@@ -385,6 +319,6 @@ ls.add_snippets("markdown", {
 		t"</details>"
 	}),
 	s({trig = "tb([1-9][1-9])", descr = "(tb([1-9][1-9])) \"Fancy table\"", priority = -50, trigEngine = te("br")}, {
-		f(function(args, snip) return c_py({"markdown", 62}, "snip.rv = match.group(1)", python_globals, args, snip, "", am[62]) end, ae(am[62]))
+		f(function(args, snip) return c_py({"markdown", 62}, "snip.rv = match.group(1)", python_globals, args, snip, "", {}) end)
 	}),
 })

@@ -34,41 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{},
-	{},
-	{},
-	{},
-	{},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1},
-	{0},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{},
-	{0, 1},
-	{},
-	{0, 1},
-	{0, 1},
-	{1, 2, 3, 4, 5, 6, 7, 8},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-}
 
 local python_globals = {
 	[[import vim
@@ -95,7 +65,7 @@ def getShell():
 
 ls.add_snippets("sh", {
 	s({trig = "#!", descr = "(#!) \"#!/usr/bin/env (!env)\"", priority = -50, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"sh", 1}, "snip.rv = \'#!/usr/bin/env \' + getShell() + \"\\n\" ", python_globals, args, snip, "", am[1]) end, ae(am[1]))
+		f(function(args, snip) return c_py({"sh", 1}, "snip.rv = \'#!/usr/bin/env \' + getShell() + \"\\n\" ", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "s#!", descr = "(s#!)", priority = -1000, trigEngine = te("w")}, {
 		t"#!/bin/sh", nl(),
@@ -111,7 +81,7 @@ ls.add_snippets("sh", {
 		t"#!/usr/bin/env bash", nl(),
 		t"set -euo pipefail", nl(),
 		t"IFS=$\'\\n\\t\'", nl(),
-		f(function(args, snip) return c_py({"sh", 5}, "snip.rv =\'\\n\\n\' ", python_globals, args, snip, "", am[5]) end, ae(am[5]))
+		f(function(args, snip) return c_py({"sh", 5}, "snip.rv =\'\\n\\n\' ", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "if", descr = "(if) \"if ... then (if)\"", priority = -50, trigEngine = te("b")}, {
 		t"if [[ ", i(1, "condition", {key = "i1"}), t" ]]; then", nl(),
@@ -215,8 +185,8 @@ ls.add_snippets("sh", {
 		t"}"
 	}),
 	s({trig = "temp", descr = "(temp) \"Tempfile\"", priority = -50, trigEngine = te("b")}, {
-		i(1, "TMPFILE", {key = "i1"}), t"=\"$(mktemp -t ", c(3, {{t"--suffix=", i(1, ".SUFFIX", {key = "i4"})}, {i(1, jt({"--suffix=", ".SUFFIX"}))}}, {key = "i3"}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"sh", 20}, "\nsnip.rv = re.sub(r\'[^a-zA-Z]\', \'_\', snip.fn) or \"untitled\"\n", python_globals, args, snip, "", am[20])}, ""), {key = "i2"}) }) end), t".XXXXXX)\"", nl(),
-		d(4, function(args, snip) return sn(nil, {c(1, {{tr(6, "(.+)", "trap \""), d(1, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'"}, ""), {key = "i6"}) }) end, {k"i1"}), tr(6, "(.+)", "\" 0               # EXIT\\n"), tr(7, "(.+)", "trap \""), d(2, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i7"}) }) end, {k"i1"}), tr(7, "(.+)", "\" 2       # INT\\n"), tr(8, "(.+)", "trap \""), d(3, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i8"}) }) end, {k"i1"}), tr(8, "(.+)", "\" 1 15    # HUP TERM\\n")}, {i(1, jt({rx_tr(args[1], "(.+)", "trap \""), jt({"rm -f \'$", rx_tr(args[2], ".*\\s", ""), "\'"}), rx_tr(args[1], "(.+)", "\" 0               # EXIT\\n"), rx_tr(args[3], "(.+)", "trap \""), jt({"rm -f \'$", rx_tr(args[2], ".*\\s", ""), "\'; exit 1"}), rx_tr(args[3], "(.+)", "\" 2       # INT\\n"), rx_tr(args[4], "(.+)", "trap \""), jt({"rm -f \'$", rx_tr(args[2], ".*\\s", ""), "\'; exit 1"}), rx_tr(args[4], "(.+)", "\" 1 15    # HUP TERM\\n")}))}}, {key = "i5"})}) end, {k"i6", k"i1", k"i7", k"i8"}), nl()
+		i(1, "TMPFILE", {key = "i1"}), t"=\"$(mktemp -t ", c(3, {{t"--suffix=", i(1, ".SUFFIX", {key = "i4"})}, {i(1, jt({"--suffix=", ".SUFFIX"}))}}, {key = "i3"}), t" ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"sh", 20}, "\nsnip.rv = re.sub(r\'[^a-zA-Z]\', \'_\', snip.fn) or \"untitled\"\n", python_globals, args, snip, "", {})}, ""), {key = "i2"}) }) end), t".XXXXXX)\"", nl(),
+		c(4, {{tr(6, "(.+)", "trap \""), d(1, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'"}, ""), {key = "i6"}) }) end, {k"i1"}), tr(6, "(.+)", "\" 0               # EXIT\\n"), tr(7, "(.+)", "trap \""), d(2, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i7"}) }) end, {k"i1"}), tr(7, "(.+)", "\" 2       # INT\\n"), tr(8, "(.+)", "trap \""), d(3, function(args, snip) return sn(nil, { i(1, jt({"rm -f \'$", rx_tr(args[1], ".*\\s", ""), "\'; exit 1"}, ""), {key = "i8"}) }) end, {k"i1"}), tr(8, "(.+)", "\" 1 15    # HUP TERM\\n")}, {d(1, function(args, snip) return sn(nil, {i(1, jt({rx_tr(args[1], "(.+)", "trap \""), jt({"rm -f \'$", rx_tr(args[2], ".*\\s", ""), "\'"}), rx_tr(args[1], "(.+)", "\" 0               # EXIT\\n"), rx_tr(args[3], "(.+)", "trap \""), jt({"rm -f \'$", rx_tr(args[2], ".*\\s", ""), "\'; exit 1"}), rx_tr(args[3], "(.+)", "\" 2       # INT\\n"), rx_tr(args[4], "(.+)", "trap \""), jt({"rm -f \'$", rx_tr(args[2], ".*\\s", ""), "\'; exit 1"}), rx_tr(args[4], "(.+)", "\" 1 15    # HUP TERM\\n")}))}) end, {k"i6", k"i1", k"i7", k"i8"})}}, {key = "i5"}), nl()
 	}),
 	s({trig = "case|sw(itch)?", descr = "(case|sw(itch)?) \"case .. esac (case)\"", priority = -50, trigEngine = te("rb")}, {
 		t"case ", i(1, "word", {key = "i1"}), t" in", nl(),

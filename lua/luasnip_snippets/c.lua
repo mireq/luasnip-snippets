@@ -34,88 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{0},
-	{0},
-	{1},
-	{1},
-	{1, 2},
-	{1},
-	{1, 2},
-	{0, 1},
-	{0, 1},
-	{0},
-	{0, 1},
-	{0, 1},
-	{0},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{1, 2, 3, 4, 5, 6},
-	{1, 2, 3, 4, 5},
-	{1, 2, 3},
-	{0},
-	{0},
-	{0, 1, 2, 3, 4},
-	{1, 2, 3, 4, 5},
-	{0, 1},
-	{0},
-	{0, 1},
-	{0, 1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3, 4, 5, 6},
-	{1, 2, 3, 4, 5},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9},
-	{1, 2, 3, 4, 5, 6, 7},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
-	{1, 2, 3},
-	{1, 2},
-	{0, 1},
-	{1, 2, 3, 4, 5, 6},
-	{0, 1, 2},
-	{1, 2, 3, 4},
-	{1, 2},
-	{1, 2, 3},
-	{1},
-	{1},
-	{1, 2},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3},
-	{1},
-	{1},
-	{1},
-	{0},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2},
-	{1, 2, 3},
-	{0, 1},
-	{1, 2},
-	{0, 2, 4},
-	{0, 1, 2, 4, 5, 6},
-	{},
-	{0, 1},
-}
 
 local python_globals = {
 	[[def printf_expand_args(snip):
@@ -170,7 +93,7 @@ ls.add_snippets("c", {
 		t"#include <", i(1, ".h", {key = "i1"}), t">"
 	}),
 	s({trig = "Inc", descr = "(Inc) \"#include local header (Inc)\"", priority = 0, trigEngine = te("!")}, {
-		t"#include \"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"c", 4}, "snip.rv = snip.basename + \'.h\'", python_globals, args, snip, "", am[4])}, ""), {key = "i1"}) }) end), t"\""
+		t"#include \"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"c", 4}, "snip.rv = snip.basename + \'.h\'", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t"\""
 	}),
 	s({trig = "ndef", descr = "(ndef)", priority = -1000, trigEngine = te("w")}, {
 		t"#ifndef ", cp(1), nl(),
@@ -191,7 +114,7 @@ ls.add_snippets("c", {
 		t"#endif"
 	}),
 	s({trig = "once", descr = "(once) \"Include header once only guard\"", priority = -50, trigEngine = te("")}, {
-		t"#ifndef ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"c", 9}, "\nif not snip.c:\n\timport random, string\n\tname = re.sub(r\'[^A-Za-z0-9]+\',\'_\', snip.fn).upper()\n\trand = \'\'.join(random.sample(string.ascii_letters+string.digits, 8))\n\tsnip.rv = (\'%s_%s\' % (name,rand)).upper()\nelse:\n\tsnip.rv = snip.c", python_globals, args, snip, "", am[9]), " snip.c"}, ""), {key = "i1"}) }) end), nl(),
+		t"#ifndef ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"c", 9}, "\nif not snip.c:\n\timport random, string\n\tname = re.sub(r\'[^A-Za-z0-9]+\',\'_\', snip.fn).upper()\n\trand = \'\'.join(random.sample(string.ascii_letters+string.digits, 8))\n\tsnip.rv = (\'%s_%s\' % (name,rand)).upper()\nelse:\n\tsnip.rv = snip.c", python_globals, args, snip, "", {}), " snip.c"}, ""), {key = "i1"}) }) end), nl(),
 		t"#define ", cp(1), nl(),
 		nl(),
 		f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
@@ -381,7 +304,7 @@ ls.add_snippets("c", {
 		t"typedef ", i(1, "int", {key = "i1"}), t" ", i(2, "MyCustomType", {key = "i2"}), t";"
 	}),
 	s({trig = "st", descr = "(st) \"struct\"", priority = -50, trigEngine = te("")}, {
-		t"struct ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"c", 38}, "snip.rv = (snip.basename or \"name\") + \"_t\"", python_globals, args, snip, "", am[38])}, ""), {key = "i1"}) }) end), t" {", nl(),
+		t"struct ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"c", 38}, "snip.rv = (snip.basename or \"name\") + \"_t\"", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t" {", nl(),
 		t"\t", i(0, "/* data */", {key = "i0"}), nl(),
 		t"};"
 	}),
@@ -552,10 +475,10 @@ ls.add_snippets("c", {
 		t"}"
 	}),
 	s({trig = "fora", descr = "(fora) \"for-loop\"", priority = -50, trigEngine = te("b")}, {
-		t"for (", i(1, "var", {key = "i1"}), t"; ", i(2, "condition", {key = "i2"}), t"; ", f(function(args, snip) return c_py({"c", 66}, "\nif len(t[1]) > 0:\n\tsnip.rv = t[1].split(\'=\')[0].split()[-1]\n", python_globals, args, snip, "", am[66]) end, ae(am[66])), t"++) {", nl(),
+		t"for (", i(1, "var", {key = "i1"}), t"; ", i(2, "condition", {key = "i2"}), t"; ", f(function(args, snip) return c_py({"c", 66}, "\nif len(t[1]) > 0:\n\tsnip.rv = t[1].split(\'=\')[0].split()[-1]\n", python_globals, args, snip, "", {1}) end, {k"i1"}), t"++) {", nl(),
 		t"\t", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
-		t"} /* for (", cp(1), t"; ", cp(2), t"; ", f(function(args, snip) return c_py({"c", 66}, "if len(t[1]) > 0: snip.rv = t[1].split(\'=\')[0].split()[-1]", python_globals, args, snip, "", am[66]) end, ae(am[66])), t"++) */"
+		t"} /* for (", cp(1), t"; ", cp(2), t"; ", f(function(args, snip) return c_py({"c", 66}, "if len(t[1]) > 0: snip.rv = t[1].split(\'=\')[0].split()[-1]", python_globals, args, snip, "", {1}) end, {k"i1"}), t"++) */"
 	}),
 	s({trig = "fprintf", descr = "(fprintf) \"fprintf ...\"", priority = -50, trigEngine = te("")}, {
 		t"fprintf(", i(1, "stderr", {key = "i1"}), t", \"", i(2, "%s", {key = "i2"}), t"\\n\"", tr(2, "([^%]|%%)*(%.)?.*", "(?2:, :\\);)"), i(3, "", {key = "i3"}), tr(2, "([^%]|%%)*(%.)?.*", "(?2:\\);)")
@@ -570,7 +493,7 @@ ls.add_snippets("c", {
 	}),
 	s({trig = "head", descr = "(head) \"File Header\"", priority = -50, trigEngine = te("b")}, {
 		t"/******************************************************************************", nl(),
-		t"* File:             ", f(function(args, snip) return c_py({"c", 70}, "snip.rv = fn", python_globals, args, snip, "", am[70]) end, ae(am[70])), nl(),
+		t"* File:             ", f(function(args, snip) return c_py({"c", 70}, "snip.rv = fn", python_globals, args, snip, "", {}) end), nl(),
 		t"*", nl(),
 		t"* Author:           ", i(1, "", {key = "i2"}), t"  ", nl(),
 		t"* Created:          ", f(function(args, snip) return c_shell("date +%m/%d/%y") end), t" ", nl(),
@@ -582,7 +505,7 @@ ls.add_snippets("c", {
 		t"/******************************************************************************", nl(),
 		t"* Function:         ", cp(1), nl(),
 		t"* Description:      ", d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i4"}) }) end), nl(),
-		t"* Where:", f(function(args, snip) return c_py({"c", 71}, "\nsnip.rv = \"\"\nsnip >> 2\n\nargs = get_args(t[2])\nif args:\n\tfor arg in args:\n\t\tsnip.rv += \'\\n\' + \'*\' + \' \'*19 + arg + \' - TODO\'\nsnip << 2\n", python_globals, args, snip, "", am[71]) end, ae(am[71])), nl(),
+		t"* Where:", f(function(args, snip) return c_py({"c", 71}, "\nsnip.rv = \"\"\nsnip >> 2\n\nargs = get_args(t[2])\nif args:\n\tfor arg in args:\n\t\tsnip.rv += \'\\n\' + \'*\' + \' \'*19 + arg + \' - TODO\'\nsnip << 2\n", python_globals, args, snip, "", {2}) end, {k"i2"}), nl(),
 		t"* Return:           ", i(4, "", {key = "i5"}), nl(),
 		t"* Error:            ", i(5, "", {key = "i6"}), nl(),
 		t"*****************************************************************************/", nl(),

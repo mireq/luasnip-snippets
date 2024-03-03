@@ -34,43 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{0, 1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1},
-	{0},
-	{0},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{1},
-	{0, 1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1},
-	{},
-	{1, 2, 3},
-}
 ls.add_snippets("vim", {
 	s({trig = "header", descr = "(header) standard Vim script file header", priority = -1000, trigEngine = te("w")}, {
 		t"\" File: ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("expand(\'%:t\')")}, ""), {key = "i1"}) }) end), nl(),
@@ -79,7 +48,7 @@ ls.add_snippets("vim", {
 		d(4, function(args, snip) return sn(nil, { i(1, jt({"\" Last Modified: ", c_viml("strftime(\"%B %d, %Y\")")}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "guard", descr = "(guard) \"script reload guard\"", priority = -50, trigEngine = te("b")}, {
-		t"if exists(\'", d(1, function(args, snip) return sn(nil, { i(1, jt({"did_", c_py({"vim", 2}, "snip.rv = snip.fn.replace(\'.\',\'_\')", python_globals, args, snip, "", am[2])}, ""), {key = "i1"}) }) end), t"\') || &cp", i(2, " || version < 700", {key = "i2"}), nl(),
+		t"if exists(\'", d(1, function(args, snip) return sn(nil, { i(1, jt({"did_", c_py({"vim", 2}, "snip.rv = snip.fn.replace(\'.\',\'_\')", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t"\') || &cp", i(2, " || version < 700", {key = "i2"}), nl(),
 		t"\tfinish", nl(),
 		t"endif", nl(),
 		t"let ", cp(1), t" = 1", i(3, "", {key = "i3"})

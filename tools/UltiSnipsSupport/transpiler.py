@@ -229,7 +229,6 @@ def write_snippets(source: SnippetSource, fp: typing.TextIO):
 
 	# generate global python code
 	if code_globals:
-		fp.write('\n')
 		code_globals = {lang: ', '.join(f'\t{escape_multiline_lua_sting(code_block)}\n' for code_block in global_list) for lang, global_list in code_globals.items()}
 		fp.write(''.join(f'local {language}_globals = {{\n{global_list}}}\n' for language, global_list in code_globals.items()))
 		fp.write('\n\n')

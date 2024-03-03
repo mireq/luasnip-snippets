@@ -34,25 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{1, 2, 3, 4},
-	{1, 3, 4},
-	{0, 1, 2},
-	{1, 2},
-	{2, 3, 4, 5},
-	{1, 2, 3, 4, 5},
-	{1, 2, 3, 4},
-	{1, 2},
-	{},
-	{},
-}
 
 local python_globals = {
 	[[# Capitalize the first letter without affecting the rest of the letters
@@ -67,7 +53,7 @@ ls.add_snippets("javascript_react", {
 	s({trig = "rfc", descr = "(rfc) \"react functional component\"", priority = 0, trigEngine = te("b")}, {
 		t"import React, {useState} from \"react\"", nl(),
 		nl(),
-		t"function ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"javascript_react", 1}, "snip.rv = snip.basename", python_globals, args, snip, "", am[1])}, ""), {key = "i1"}) }) end), t"(", i(2, "", {key = "i2"}), t"){", nl(),
+		t"function ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"javascript_react", 1}, "snip.rv = snip.basename", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t"(", i(2, "", {key = "i2"}), t"){", nl(),
 		t"\treturn(", nl(),
 		t"\t\t<div>", nl(),
 		t"\t\t\t", i(3, "<p>Body</p>", {key = "i3"}), nl(),
@@ -75,10 +61,10 @@ ls.add_snippets("javascript_react", {
 		t"\t\t)", nl(),
 		t"}", nl(),
 		nl(),
-		t"export default ", i(4, "", {key = "i4"}), f(function(args, snip) return c_py({"javascript_react", 1}, "snip.rv = snip.basename", python_globals, args, snip, "", am[1]) end, ae(am[1]))
+		t"export default ", i(4, "", {key = "i4"}), f(function(args, snip) return c_py({"javascript_react", 1}, "snip.rv = snip.basename", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "useS", descr = "(useS) \"useState Hook\"", priority = 0, trigEngine = te("b")}, {
-		t"const [", i(1, "", {key = "i1"}), t", set", f(function(args, snip) return c_py({"javascript_react", 2}, "snip.rv=capitalize_first(t[1])", python_globals, args, snip, "", am[2]) end, ae(am[2])), t"] = useState(", c(2, {{t"\"", i(1, "", {key = "i4"}), t"\""}, {i(1, jt({"\"", "", "\""}))}}, {key = "i3"}), t")"
+		t"const [", i(1, "", {key = "i1"}), t", set", f(function(args, snip) return c_py({"javascript_react", 2}, "snip.rv=capitalize_first(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t"] = useState(", c(2, {{t"\"", i(1, "", {key = "i4"}), t"\""}, {i(1, jt({"\"", "", "\""}))}}, {key = "i3"}), t")"
 	}),
 	s({trig = "useE", descr = "(useE) \"useEffect Hook\"", priority = 0, trigEngine = te("b")}, {
 		t"useEffect(() => {", nl(),

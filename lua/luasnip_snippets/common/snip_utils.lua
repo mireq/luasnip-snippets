@@ -385,15 +385,6 @@ local function make_actions(actions, max_placeholder)
 end
 
 
-local function args_expand(args)
-	local result = {}
-	for __, tabstop in ipairs(args) do
-		table.insert(result, k('i' .. tostring(tabstop)))
-	end
-	return result
-end
-
-
 return {
 	copy = copy,
 	transform = transform,
@@ -409,5 +400,4 @@ return {
 	code_viml = code_viml,
 	code_shell = code_shell,
 	make_actions = make_actions,
-	args_expand = args_expand,
 }

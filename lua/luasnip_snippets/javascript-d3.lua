@@ -34,23 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1},
-	{1},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11},
-	{1, 2},
-	{1, 2},
-}
 ls.add_snippets("javascript-d3", {
 	s({trig = ".attr", descr = "(.attr)", priority = -1000, trigEngine = te("w")}, {
 		t".attr(\"", i(1, "", {key = "i1"}), t"\", ", i(2, "", {key = "i2"}), t")"

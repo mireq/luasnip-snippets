@@ -34,20 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{0, 1, 2},
-	{1, 2, 3, 4},
-	{1, 2, 3, 4},
-	{1, 2, 3, 4},
-	{1, 2},
-}
 
 local python_globals = {
 	[[from vimsnippets import complete
@@ -82,15 +73,15 @@ ls.add_snippets("proto", {
 	}),
 	s({trig = "reqf", descr = "(reqf) \"Required field\"", priority = -50, trigEngine = te("b")}, {
 		t"// ", d(4, function(args, snip) return sn(nil, { i(1, jt({"TODO(", c_shell("whoami"), "): Describe this field."}, ""), {key = "i4"}) }) end), nl(),
-		t"optional ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"proto", 2}, "snip.rv = complete(t[1], FIELD_TYPES)", python_globals, args, snip, "", am[2]) end, ae(am[2])), t" ", i(2, "name", {key = "i2"}), t" = ", i(3, "1", {key = "i3"}), t";  // Required"
+		t"optional ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"proto", 2}, "snip.rv = complete(t[1], FIELD_TYPES)", python_globals, args, snip, "", {1}) end, {k"i1"}), t" ", i(2, "name", {key = "i2"}), t" = ", i(3, "1", {key = "i3"}), t";  // Required"
 	}),
 	s({trig = "optf", descr = "(optf) \"Optional field\"", priority = -50, trigEngine = te("b")}, {
 		t"// ", d(4, function(args, snip) return sn(nil, { i(1, jt({"TODO(", c_shell("whoami"), "): Describe this field."}, ""), {key = "i4"}) }) end), nl(),
-		t"optional ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"proto", 3}, "snip.rv = complete(t[1], FIELD_TYPES)", python_globals, args, snip, "", am[3]) end, ae(am[3])), t" ", i(2, "name", {key = "i2"}), t" = ", i(3, "1", {key = "i3"}), t";"
+		t"optional ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"proto", 3}, "snip.rv = complete(t[1], FIELD_TYPES)", python_globals, args, snip, "", {1}) end, {k"i1"}), t" ", i(2, "name", {key = "i2"}), t" = ", i(3, "1", {key = "i3"}), t";"
 	}),
 	s({trig = "repf", descr = "(repf) \"Repeated field\"", priority = -50, trigEngine = te("b")}, {
 		t"// ", d(4, function(args, snip) return sn(nil, { i(1, jt({"TODO(", c_shell("whoami"), "): Describe this field."}, ""), {key = "i4"}) }) end), nl(),
-		t"repeated ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"proto", 4}, "snip.rv = complete(t[1], FIELD_TYPES)", python_globals, args, snip, "", am[4]) end, ae(am[4])), t" ", i(2, "name", {key = "i2"}), t" = ", i(3, "1", {key = "i3"}), t";"
+		t"repeated ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"proto", 4}, "snip.rv = complete(t[1], FIELD_TYPES)", python_globals, args, snip, "", {1}) end, {k"i1"}), t" ", i(2, "name", {key = "i2"}), t" = ", i(3, "1", {key = "i3"}), t";"
 	}),
 	s({trig = "enum", descr = "(enum) \"Enumeration\"", priority = -50, trigEngine = te("b")}, {
 		t"// ", d(2, function(args, snip) return sn(nil, { i(1, jt({"TODO(", c_shell("whoami"), "): Describe this enum."}, ""), {key = "i2"}) }) end), nl(),

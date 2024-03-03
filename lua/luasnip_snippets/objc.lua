@@ -34,96 +34,18 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{1},
-	{1},
-	{1},
-	{1},
-	{1, 2, 3, 4},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0},
-	{0},
-	{1},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{0},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1},
-	{0},
-	{1, 2, 3},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1},
-	{0},
-	{0},
-	{0},
-	{0, 1, 2},
-	{0},
-	{0, 1, 2},
-	{0},
-	{1},
-	{0},
-	{0},
-	{},
-	{},
-	{1},
-	{0},
-	{0},
-	{0},
-	{0},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{0},
-	{1, 2, 3, 4},
-	{1, 2, 3},
-	{1, 2},
-	{0},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2},
-	{1},
-	{1, 2, 3, 4},
-	{1, 2, 3},
-	{0},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-}
 ls.add_snippets("objc", {
 	s({trig = "Imp", descr = "(Imp) \"#import <> (Imp)\"", priority = -50, trigEngine = te("")}, {
 		t"#import <", i(1, "Cocoa/Cocoa.h", {key = "i1"}), t">"
 	}),
 	s({trig = "imp", descr = "(imp) \"#import (imp)\"", priority = -50, trigEngine = te("b")}, {
-		t"#import \"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"objc", 2}, "snip.rv = re.sub(r\'\\..*$\', \'.h\', fn)", python_globals, args, snip, "", am[2])}, ""), {key = "i1"}) }) end), t"\""
+		t"#import \"", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"objc", 2}, "snip.rv = re.sub(r\'\\..*$\', \'.h\', fn)", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t"\""
 	}),
 	s({trig = "sel", descr = "(sel) \"@selector\"", priority = -50, trigEngine = te("")}, {
 		t"@selector(", i(1, "method", {key = "i1"}), t":)"
@@ -357,7 +279,7 @@ ls.add_snippets("objc", {
 		t"#pragma mark ", i(0, "-", {key = "i0"})
 	}),
 	s({trig = "cl", descr = "(cl) \"020 Class (objc)\"", priority = -50, trigEngine = te("")}, {
-		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"objc", 46}, "\nif len(fn):\n\t\tsnip.rv = re.sub(r\'\\..*$\', \'\', fn)\nelse:\n\t\tsnip.rv = \"object\"\n", python_globals, args, snip, "", am[46])}, ""), {key = "i1"}) }) end), t" : ", i(2, "NSObject", {key = "i2"}), nl(),
+		t"@interface ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"objc", 46}, "\nif len(fn):\n\t\tsnip.rv = re.sub(r\'\\..*$\', \'\', fn)\nelse:\n\t\tsnip.rv = \"object\"\n", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), t" : ", i(2, "NSObject", {key = "i2"}), nl(),
 		t"{", nl(),
 		t"}", nl(),
 		t"@end", nl(),

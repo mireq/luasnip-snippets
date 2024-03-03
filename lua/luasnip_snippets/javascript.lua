@@ -34,378 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2, 3, 4, 5, 6},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4, 5, 6},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{1},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3, 4, 5},
-	{1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{},
-	{1, 2},
-	{1},
-	{1},
-	{1, 2},
-	{1},
-	{1, 2, 3},
-	{1, 2},
-	{1},
-	{1},
-	{1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{1},
-	{0, 1},
-	{1, 2, 3},
-	{0, 1, 2},
-	{1, 2, 3, 4, 5},
-	{},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3, 4},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3},
-	{1},
-	{1, 2, 3, 4},
-	{1},
-	{1, 2},
-	{1, 2, 3},
-	{0, 1, 2},
-	{1, 2, 3},
-	{0, 1, 2, 3, 4},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{0, 1},
-	{1, 2},
-	{1},
-	{1},
-	{1},
-	{1, 2},
-	{0, 1, 2},
-	{0},
-	{1, 2, 3},
-	{1, 2},
-	{0, 1},
-	{1, 2},
-	{0, 1},
-	{1, 2, 3},
-	{0, 1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{1, 2},
-	{0},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{1, 2, 3, 4},
-	{1, 2},
-	{0, 1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3, 4},
-	{1},
-	{1},
-	{0, 1, 2, 3, 4},
-	{1, 2, 3},
-	{0, 1, 2, 3},
-	{1},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{0, 1, 2, 3, 4, 5},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{0},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1},
-	{1},
-	{1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{1},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3, 4},
-	{0, 1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{},
-	{0},
-	{0, 1, 2, 3, 4},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2, 3, 4},
-	{1},
-	{0, 1, 2},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{},
-	{},
-	{1},
-	{},
-	{},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1},
-	{1, 2, 3, 4},
-	{1, 2},
-	{1, 2},
-	{1},
-	{2},
-	{1},
-	{1, 2, 3},
-	{1},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3, 4},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{},
-	{},
-	{},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{1},
-	{0},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1},
-	{0},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 3, 10},
-	{0},
-	{0, 1, 2},
-	{},
-	{0, 1, 2, 3, 4, 5, 6},
-	{0},
-	{0, 1, 2},
-	{0, 1},
-	{0},
-	{0},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0, 1},
-	{1},
-	{0, 1},
-	{},
-	{0},
-	{1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{1, 2},
-	{0},
-	{},
-	{0, 1, 2, 3},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0},
-	{0, 1},
-	{0},
-	{0},
-	{0, 1, 2, 3, 10},
-	{0, 1},
-	{1, 2, 3, 4},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{0},
-}
 
 local python_globals = {
 	[[from javascript_snippets import (
@@ -1536,12 +1169,12 @@ ls.add_snippets("javascript", {
 		t"process.stderr"
 	}),
 	s({trig = "proto", descr = "(proto) \"Prototype (proto)\"", priority = -50, trigEngine = te("")}, {
-		i(1, "class_name", {key = "i1"}), t".prototype.", i(2, "method_name", {key = "i2"}), t" = function", f(function(args, snip) return c_py({"javascript", 274}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[274]) end, ae(am[274])), t"(", i(3, "first_argument", {key = "i3"}), t") {", nl(),
+		i(1, "class_name", {key = "i1"}), t".prototype.", i(2, "method_name", {key = "i2"}), t" = function", f(function(args, snip) return c_py({"javascript", 274}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", {}) end), t"(", i(3, "first_argument", {key = "i3"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}", f(function(args, snip) return c_py({"javascript", 274}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[274]) end, ae(am[274])), nl()
+		t"}", f(function(args, snip) return c_py({"javascript", 274}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end), nl()
 	}),
 	s({trig = "fun", descr = "(fun) \"function (named)\"", priority = -50, trigEngine = te("b")}, {
-		t"function ", i(1, "function_name", {key = "i1"}), f(function(args, snip) return c_py({"javascript", 275}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[275]) end, ae(am[275])), t"(", i(2, "argument", {key = "i2"}), t") {", nl(),
+		t"function ", i(1, "function_name", {key = "i1"}), f(function(args, snip) return c_py({"javascript", 275}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", {}) end), t"(", i(2, "argument", {key = "i2"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -1551,7 +1184,7 @@ ls.add_snippets("javascript", {
 		t"}"
 	}),
 	s({trig = "anf", descr = "(anf) \"function (anonymous)\"", priority = -50, trigEngine = te("i")}, {
-		t"function", f(function(args, snip) return c_py({"javascript", 277}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[277]) end, ae(am[277])), t"(", i(1, "", {key = "i1"}), t") {", nl(),
+		t"function", f(function(args, snip) return c_py({"javascript", 277}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", {}) end), t"(", i(1, "", {key = "i1"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -1561,9 +1194,9 @@ ls.add_snippets("javascript", {
 		t"};"
 	}),
 	s({trig = "vf", descr = "(vf) \"function (assigned to var)\"", priority = -50, trigEngine = te("")}, {
-		i(1, "var ", {key = "i1"}), i(2, "function_name", {key = "i2"}), t" = function ", cp(2), f(function(args, snip) return c_py({"javascript", 279}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[279]) end, ae(am[279])), t"(", i(3, "", {key = "i3"}), t") {", nl(),
+		i(1, "var ", {key = "i1"}), i(2, "function_name", {key = "i2"}), t" = function ", cp(2), f(function(args, snip) return c_py({"javascript", 279}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", {}) end), t"(", i(3, "", {key = "i3"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}", f(function(args, snip) return c_py({"javascript", 279}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[279]) end, ae(am[279]))
+		t"}", f(function(args, snip) return c_py({"javascript", 279}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "(f", descr = "((f)", priority = -1000, trigEngine = te("w")}, {
 		t"(function(", i(1, "", {key = "i1"}), t") {", nl(),
@@ -1571,7 +1204,7 @@ ls.add_snippets("javascript", {
 		t"}(", i(2, "", {key = "i2"}), t"));"
 	}),
 	s({trig = ";fe", descr = "(;fe) \"Minify safe iife\"", priority = -50, trigEngine = te("")}, {
-		t";(function", f(function(args, snip) return c_py({"javascript", 281}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[281]) end, ae(am[281])), t"(", i(1, "", {key = "i1"}), t") {", nl(),
+		t";(function", f(function(args, snip) return c_py({"javascript", 281}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", {}) end), t"(", i(1, "", {key = "i1"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}(", i(2, "", {key = "i2"}), t"))"
 	}),
@@ -1585,14 +1218,14 @@ ls.add_snippets("javascript", {
 		t"};"
 	}),
 	s({trig = "if", descr = "(if) \"if (condition) { ... }\"", priority = -50, trigEngine = te("")}, {
-		t"if", f(function(args, snip) return c_py({"javascript", 283}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[283]) end, ae(am[283])), t"(", i(1, "true", {key = "i1"}), t") {", nl(),
+		t"if", f(function(args, snip) return c_py({"javascript", 283}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", {}) end), t"(", i(1, "true", {key = "i1"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
 	s({trig = "ife", descr = "(ife) \"if (condition) { ... } else { ... }\"", priority = -50, trigEngine = te("")}, {
-		t"if", f(function(args, snip) return c_py({"javascript", 284}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[284]) end, ae(am[284])), t"(", i(1, "true", {key = "i1"}), t") {", nl(),
+		t"if", f(function(args, snip) return c_py({"javascript", 284}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", {}) end), t"(", i(1, "true", {key = "i1"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}", f(function(args, snip) return c_py({"javascript", 284}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[284]) end, ae(am[284])), t"else", f(function(args, snip) return c_py({"javascript", 284}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[284]) end, ae(am[284])), t"{", nl(),
+		t"}", f(function(args, snip) return c_py({"javascript", 284}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", {}) end), t"else", f(function(args, snip) return c_py({"javascript", 284}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", i(2, "", {key = "i2"}), nl(),
 		t"}"
 	}),
@@ -1600,19 +1233,19 @@ ls.add_snippets("javascript", {
 		i(1, "", {key = "i1"}), t" ? ", i(2, "", {key = "i2"}), t": ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "switch", descr = "(switch)", priority = -50, trigEngine = te("")}, {
-		t"switch", f(function(args, snip) return c_py({"javascript", 286}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[286]) end, ae(am[286])), t"(", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(1, "expression", {key = "i1"}), t") {", nl(),
+		t"switch", f(function(args, snip) return c_py({"javascript", 286}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", {}) end), t"(", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(1, "expression", {key = "i1"}), t") {", nl(),
 		t"\tcase \'", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(3, "case", {key = "i3"}), t"\':", nl(),
 		t"\t\t", i(4, "", {key = "i4"}), nl(),
-		t"\t\tbreak", f(function(args, snip) return c_py({"javascript", 286}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[286]) end, ae(am[286])), nl(),
+		t"\t\tbreak", f(function(args, snip) return c_py({"javascript", 286}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end), nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"\tdefault:", nl(),
 		t"\t\t", i(2, "", {key = "i2"}), nl(),
 		t"}"
 	}),
 	s({trig = "case", descr = "(case) \"case \'xyz\': ... break\"", priority = -50, trigEngine = te("")}, {
-		t"case", f(function(args, snip) return c_py({"javascript", 287}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[287]) end, ae(am[287])), t"\'", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(1, "case", {key = "i1"}), t"\':", nl(),
+		t"case", f(function(args, snip) return c_py({"javascript", 287}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", {}) end), t"\'", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(1, "case", {key = "i1"}), t"\':", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"\tbreak", f(function(args, snip) return c_py({"javascript", 287}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[287]) end, ae(am[287]))
+		t"\tbreak", f(function(args, snip) return c_py({"javascript", 287}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "try", descr = "(try) \"try { ... } catch(e) { ... }\"", priority = -1000, trigEngine = te("w")}, {
 		t"try {", nl(),
@@ -1634,7 +1267,7 @@ ls.add_snippets("javascript", {
 		t"throw new Error(\'", i(1, "error message", {key = "i1"}), t"\')"
 	}),
 	s({trig = "ret", descr = "(ret) \"Return statement\"", priority = -50, trigEngine = te("")}, {
-		t"return ", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), f(function(args, snip) return c_py({"javascript", 291}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[291]) end, ae(am[291]))
+		t"return ", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), f(function(args, snip) return c_py({"javascript", 291}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "for", descr = "(for) \"for (...) {...}\"", priority = -1000, trigEngine = te("w")}, {
 		t"for (let ", i(1, "i", {key = "i1"}), t" = 0, ", i(2, "len", {key = "i2"}), t" = ", i(3, "Things.length", {key = "i3"}), t"; ", cp(1), t" < ", cp(2), t"; ", cp(1), t"++) {", nl(),
@@ -1657,9 +1290,9 @@ ls.add_snippets("javascript", {
 		t"}"
 	}),
 	s({trig = "do", descr = "(do) \"do { ... } while (condition)\"", priority = -50, trigEngine = te("")}, {
-		t"do", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[296]) end, ae(am[296])), t"{", nl(),
+		t"do", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", {}) end), t"{", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[296]) end, ae(am[296])), t"while", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[296]) end, ae(am[296])), t"(", i(1, "/* condition */", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[296]) end, ae(am[296]))
+		t"}", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", {}) end), t"while", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", {}) end), t"(", i(1, "/* condition */", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 296}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "fori", descr = "(fori)", priority = -1000, trigEngine = te("w")}, {
 		t"for (let ", i(1, "prop", {key = "i1"}), t" in ", i(2, "object", {key = "i2"}), t") {", nl(),
@@ -1667,7 +1300,7 @@ ls.add_snippets("javascript", {
 		t"}"
 	}),
 	s({trig = ":f", descr = "(:f) \"Object Method\"", priority = -50, trigEngine = te("")}, {
-		i(1, "method_name", {key = "i1"}), t": function", f(function(args, snip) return c_py({"javascript", 298}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[298]) end, ae(am[298])), t"(", i(2, "attribute", {key = "i3"}), t") {", nl(),
+		i(1, "method_name", {key = "i1"}), t": function", f(function(args, snip) return c_py({"javascript", 298}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", {}) end), t"(", i(2, "attribute", {key = "i3"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}", i(3, ",", {key = "i10"})
 	}),
@@ -1758,74 +1391,74 @@ ls.add_snippets("javascript", {
 		i(1, "document", {key = "i1"}), t".querySelectorAll(\'", i(0, "CSS selector", {key = "i0"}), t"\')"
 	}),
 	s({trig = "de", descr = "(de)", priority = -50, trigEngine = te("")}, {
-		t"debugger", f(function(args, snip) return c_py({"javascript", 313}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[313]) end, ae(am[313]))
+		t"debugger", f(function(args, snip) return c_py({"javascript", 313}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "cl", descr = "(cl) \"console.log\"", priority = -50, trigEngine = te("")}, {
-		t"console.log(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 314}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[314]) end, ae(am[314]))
+		t"console.log(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 314}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "cd", descr = "(cd) \"console.debug\"", priority = -50, trigEngine = te("")}, {
-		t"console.debug(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 315}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[315]) end, ae(am[315]))
+		t"console.debug(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 315}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "ce", descr = "(ce) \"console.error\"", priority = -50, trigEngine = te("")}, {
-		t"console.error(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 316}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[316]) end, ae(am[316]))
+		t"console.error(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 316}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "cw", descr = "(cw) \"console.warn\"", priority = -50, trigEngine = te("")}, {
-		t"console.warn(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 317}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[317]) end, ae(am[317]))
+		t"console.warn(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 317}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "ci", descr = "(ci) \"console.info\"", priority = -50, trigEngine = te("")}, {
-		t"console.info(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 318}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[318]) end, ae(am[318]))
+		t"console.info(", i(0, "", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 318}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "ct", descr = "(ct) \"console.trace\"", priority = -50, trigEngine = te("")}, {
-		t"console.trace(", i(0, "label", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 319}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[319]) end, ae(am[319]))
+		t"console.trace(", i(0, "label", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 319}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "ctime", descr = "(ctime) \"console.time ... console.timeEnd\"", priority = -50, trigEngine = te("")}, {
-		t"console.time(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 320}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[320]) end, ae(am[320])), nl(),
+		t"console.time(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 320}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end), nl(),
 		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
-		t"console.timeEnd(\"", cp(1), t"\")", f(function(args, snip) return c_py({"javascript", 320}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[320]) end, ae(am[320]))
+		t"console.timeEnd(\"", cp(1), t"\")", f(function(args, snip) return c_py({"javascript", 320}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "ctimestamp", descr = "(ctimestamp) \"console.timeStamp\"", priority = -50, trigEngine = te("")}, {
-		t"console.timeStamp(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 321}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[321]) end, ae(am[321]))
+		t"console.timeStamp(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 321}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "ca", descr = "(ca) \"console.assert\"", priority = -50, trigEngine = te("")}, {
-		t"console.assert(", i(1, "expression", {key = "i1"}), t", ", i(0, "obj", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 322}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[322]) end, ae(am[322]))
+		t"console.assert(", i(1, "expression", {key = "i1"}), t", ", i(0, "obj", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 322}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "cclear", descr = "(cclear) \"console.clear\"", priority = -50, trigEngine = te("")}, {
-		t"console.clear()", f(function(args, snip) return c_py({"javascript", 323}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[323]) end, ae(am[323]))
+		t"console.clear()", f(function(args, snip) return c_py({"javascript", 323}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "cdir", descr = "(cdir) \"console.dir\"", priority = -50, trigEngine = te("")}, {
-		t"console.dir(", i(0, "obj", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 324}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[324]) end, ae(am[324]))
+		t"console.dir(", i(0, "obj", {key = "i0"}), t")", f(function(args, snip) return c_py({"javascript", 324}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "cdirx", descr = "(cdirx) \"console.dirxml\"", priority = -50, trigEngine = te("")}, {
-		t"console.dirxml(", i(1, "object", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 325}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[325]) end, ae(am[325]))
+		t"console.dirxml(", i(1, "object", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 325}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "cgroup", descr = "(cgroup) \"console.group\"", priority = -50, trigEngine = te("")}, {
-		t"console.group(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 326}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[326]) end, ae(am[326])), nl(),
+		t"console.group(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 326}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end), nl(),
 		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
-		t"console.groupEnd()", f(function(args, snip) return c_py({"javascript", 326}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[326]) end, ae(am[326]))
+		t"console.groupEnd()", f(function(args, snip) return c_py({"javascript", 326}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "cgroupc", descr = "(cgroupc) \"console.groupCollapsed\"", priority = -50, trigEngine = te("")}, {
-		t"console.groupCollapsed(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 327}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[327]) end, ae(am[327])), nl(),
+		t"console.groupCollapsed(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 327}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end), nl(),
 		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
-		t"console.groupEnd()", f(function(args, snip) return c_py({"javascript", 327}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[327]) end, ae(am[327]))
+		t"console.groupEnd()", f(function(args, snip) return c_py({"javascript", 327}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "cprof", descr = "(cprof) \"console.profile\"", priority = -50, trigEngine = te("")}, {
-		t"console.profile(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 328}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[328]) end, ae(am[328])), nl(),
+		t"console.profile(\"", i(1, "label", {key = "i1"}), t"\")", f(function(args, snip) return c_py({"javascript", 328}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end), nl(),
 		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
-		t"console.profileEnd()", f(function(args, snip) return c_py({"javascript", 328}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[328]) end, ae(am[328]))
+		t"console.profileEnd()", f(function(args, snip) return c_py({"javascript", 328}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "ctable", descr = "(ctable) \"console.table\"", priority = -50, trigEngine = te("")}, {
-		t"console.table(", c(1, {{t"\"", i(1, "value", {key = "i2"}), t"\""}, {i(1, jt({"\"", "value", "\""}))}}, {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 329}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[329]) end, ae(am[329]))
+		t"console.table(", c(1, {{t"\"", i(1, "value", {key = "i2"}), t"\""}, {i(1, jt({"\"", "value", "\""}))}}, {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 329}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "clstr", descr = "(clstr) \"console.log stringified\"", priority = -50, trigEngine = te("")}, {
-		t"console.log(JSON.stringify(", i(0, "", {key = "i0"}), t", null, 2))", f(function(args, snip) return c_py({"javascript", 330}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[330]) end, ae(am[330]))
+		t"console.log(JSON.stringify(", i(0, "", {key = "i0"}), t", null, 2))", f(function(args, snip) return c_py({"javascript", 330}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "us", descr = "(us)", priority = -50, trigEngine = te("")}, {
-		t"\'use strict\'", f(function(args, snip) return c_py({"javascript", 331}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[331]) end, ae(am[331]))
+		t"\'use strict\'", f(function(args, snip) return c_py({"javascript", 331}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "timeout", descr = "(timeout) \"setTimeout function\"", priority = -50, trigEngine = te("")}, {
-		t"setTimeout(function", f(function(args, snip) return c_py({"javascript", 332}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[332]) end, ae(am[332])), t"() {", nl(),
+		t"setTimeout(function", f(function(args, snip) return c_py({"javascript", 332}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", {}) end), t"() {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}", c(2, {{t".bind(", i(1, "this", {key = "i3"}), t")"}, {i(1, jt({".bind(", "this", ")"}))}}, {key = "i2"}), t", ", i(1, "10", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 332}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[332]) end, ae(am[332]))
+		t"}", c(2, {{t".bind(", i(1, "this", {key = "i3"}), t")"}, {i(1, jt({".bind(", "this", ")"}))}}, {key = "i2"}), t", ", i(1, "10", {key = "i1"}), t")", f(function(args, snip) return c_py({"javascript", 332}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "const", descr = "(const)", priority = -1000, trigEngine = te("w")}, {
 		t"const ", i(1, "", {key = "i1"}), t" = ", i(0, "", {key = "i0"}), t";"
@@ -1926,7 +1559,7 @@ ls.add_snippets("javascript", {
 		t"await ", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
 	}),
 	s({trig = "\'\':f", descr = "(\'\':f) \"object method string\"", priority = -50, trigEngine = te("")}, {
-		t"\'", c(1, {{i(1, "#thing", {key = "i2"}), t":", i(2, "click", {key = "i3"})}, {i(1, jt({"#thing", ":", "click"}))}}, {key = "i1"}), t"\': function", f(function(args, snip) return c_py({"javascript", 357}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[357]) end, ae(am[357])), t"(element) {", nl(),
+		t"\'", c(1, {{i(1, "#thing", {key = "i2"}), t":", i(2, "click", {key = "i3"})}, {i(1, jt({"#thing", ":", "click"}))}}, {key = "i1"}), t"\': function", f(function(args, snip) return c_py({"javascript", 357}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", {}) end), t"(element) {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}", i(2, ",", {key = "i10"})
 	}),
@@ -1937,13 +1570,13 @@ ls.add_snippets("javascript", {
 		i(1, "key", {key = "i1"}), t": ", c(2, {{t"\"", i(1, "value", {key = "i3"}), t"\""}, {i(1, jt({"\"", "value", "\""}))}}, {key = "i2"}), i(3, ", ", {key = "i4"})
 	}),
 	s({trig = "iife", descr = "(iife) \"Immediately-Invoked Function Expression (iife)\"", priority = -50, trigEngine = te("")}, {
-		t"(function", f(function(args, snip) return c_py({"javascript", 360}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", am[360]) end, ae(am[360])), t"(", i(1, "window", {key = "i1"}), t") {", nl(),
+		t"(function", f(function(args, snip) return c_py({"javascript", 360}, "snip.rv = space_before_function_paren(snip)", python_globals, args, snip, "", {}) end), t"(", i(1, "window", {key = "i1"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
-		t"}(", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"))", f(function(args, snip) return c_py({"javascript", 360}, "snip.rv = semi(snip)", python_globals, args, snip, "", am[360]) end, ae(am[360]))
+		t"}(", d(2, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t"))", f(function(args, snip) return c_py({"javascript", 360}, "snip.rv = semi(snip)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "fi", descr = "(fi) \"for prop in obj using hasOwnProperty\"", priority = -50, trigEngine = te("b")}, {
-		t"for", f(function(args, snip) return c_py({"javascript", 361}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[361]) end, ae(am[361])), t"(", i(1, "prop", {key = "i1"}), t" in ", i(2, "obj", {key = "i2"}), t"){", nl(),
-		t"\tif", f(function(args, snip) return c_py({"javascript", 361}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", am[361]) end, ae(am[361])), t"(", cp(2), t".hasOwnProperty(", cp(1), t")) {", nl(),
+		t"for", f(function(args, snip) return c_py({"javascript", 361}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", {}) end), t"(", i(1, "prop", {key = "i1"}), t" in ", i(2, "obj", {key = "i2"}), t"){", nl(),
+		t"\tif", f(function(args, snip) return c_py({"javascript", 361}, "snip.rv = keyword_spacing(snip)", python_globals, args, snip, "", {}) end), t"(", cp(2), t".hasOwnProperty(", cp(1), t")) {", nl(),
 		t"\t\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"\t}", nl(),
 		t"}"

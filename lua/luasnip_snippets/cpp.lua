@@ -34,98 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{0},
-	{1},
-	{1},
-	{1, 2, 3},
-	{0, 1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{0, 1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{},
-	{},
-	{},
-	{},
-	{},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2, 3, 4, 5, 6},
-	{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
-	{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12},
-	{0, 1},
-	{0},
-	{1},
-	{1},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2, 3},
-	{0, 1, 2, 3},
-	{1, 2, 3, 4},
-	{1, 2, 3, 4, 5, 6},
-	{0, 1},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1},
-	{0, 1, 2, 3},
-	{1, 4},
-	{1, 4},
-	{},
-	{},
-	{},
-	{},
-	{},
-	{},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{},
-	{0},
-	{0, 1, 2, 3, 4, 5, 6},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1},
-	{1},
-	{1, 2, 3},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2},
-	{1, 2, 3},
-	{0, 1, 2, 3},
-}
 
 local python_globals = {
 	[[
@@ -237,7 +150,7 @@ ls.add_snippets("cpp", {
 		t"mutable"
 	}),
 	s({trig = "cl", descr = "(cl) \"class .. (class)\"", priority = -49, trigEngine = te("")}, {
-		t"class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"cpp", 29}, "snip.rv = snip.basename or \"name\"", python_globals, args, snip, "", am[29])}, ""), {key = "i1"}) }) end), nl(),
+		t"class ", d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"cpp", 29}, "snip.rv = snip.basename or \"name\"", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), nl(),
 		t"{", nl(),
 		t"public:", nl(),
 		t"\t", tr(1, "(\\w+).*", "$1"), t" (", i(2, "arguments", {key = "i2"}), t");", nl(),
@@ -289,7 +202,7 @@ ls.add_snippets("cpp", {
 		t"}"
 	}),
 	s({trig = "ns", descr = "(ns) \"namespace .. (namespace)\"", priority = 0, trigEngine = te("!")}, {
-		t"namespace", tr(1, ".+", " "), d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"cpp", 34}, "snip.rv = snip.basename or \"name\"", python_globals, args, snip, "", am[34])}, ""), {key = "i1"}) }) end), nl(),
+		t"namespace", tr(1, ".+", " "), d(1, function(args, snip) return sn(nil, { i(1, jt({c_py({"cpp", 34}, "snip.rv = snip.basename or \"name\"", python_globals, args, snip, "", {})}, ""), {key = "i1"}) }) end), nl(),
 		t"{", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}", tr(1, ".+", " \\/* "), cp(1), tr(1, ".+", " *\\/")
@@ -414,7 +327,7 @@ ls.add_snippets("cpp", {
 		t"}"
 	}),
 	s({trig = "forc", descr = "(forc) \"general for loop (for)\"", priority = -49, trigEngine = te("")}, {
-		t"for (", i(6, "auto", {key = "i6"}), t" ", i(1, "i", {key = "i1"}), t" = ", i(2, "v.begin()", {key = "i2"}), t"; ", f(function(args, snip) return c_py({"cpp", 64}, "import re; snip.rv = re.split(\"[^\\w]\",t[1])[-1]", python_globals, args, snip, "", am[64]) end, ae(am[64])), t" ", i(4, "!=", {key = "i4"}), t" ", d(3, function(args, snip) return sn(nil, { i(1, jt({c_py({"cpp", 64}, "m = re.search(r\'^(?:(.*)(\\.|->)begin\\(\\)|((?:std|boost)::)?begin\\((.*)\\))$\', t[2]); snip.rv = (((m.group(3) if m.group(3) else \"\") + \"end(\" + m.group(4) + \")\") if m.group(4) else (m.group(1) + m.group(2) + \"end()\")) if m else \"\"", python_globals, args, snip, "", am[64])}, ""), {key = "i3"}) }) end), t"; ", d(5, function(args, snip) return sn(nil, { i(1, jt({"++", c_py({"cpp", 64}, "snip.rv = t[1].split(\" \")[-1]", python_globals, args, snip, "", am[64])}, ""), {key = "i5"}) }) end), t") {", nl(),
+		t"for (", i(6, "auto", {key = "i6"}), t" ", i(1, "i", {key = "i1"}), t" = ", i(2, "v.begin()", {key = "i2"}), t"; ", f(function(args, snip) return c_py({"cpp", 64}, "import re; snip.rv = re.split(\"[^\\w]\",t[1])[-1]", python_globals, args, snip, "", {1}) end, {k"i1"}), t" ", i(4, "!=", {key = "i4"}), t" ", d(3, function(args, snip) return sn(nil, { i(1, jt({c_py({"cpp", 64}, "m = re.search(r\'^(?:(.*)(\\.|->)begin\\(\\)|((?:std|boost)::)?begin\\((.*)\\))$\', t[2]); snip.rv = (((m.group(3) if m.group(3) else \"\") + \"end(\" + m.group(4) + \")\") if m.group(4) else (m.group(1) + m.group(2) + \"end()\")) if m else \"\"", python_globals, args, snip, "", {2})}, ""), {key = "i3"}) }) end, {k"i2"}), t"; ", d(5, function(args, snip) return sn(nil, { i(1, jt({"++", c_py({"cpp", 64}, "snip.rv = t[1].split(\" \")[-1]", python_globals, args, snip, "", {1})}, ""), {key = "i5"}) }) end, {k"i1"}), t") {", nl(),
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
@@ -425,7 +338,7 @@ ls.add_snippets("cpp", {
 		t"namespace ", i(1, "alias", {key = "i1"}), t" = ", i(2, "namespace", {key = "i2"}), t";"
 	}),
 	s({trig = "using", descr = "(using) \"using directive/using declaration/type alias\"", priority = -49, trigEngine = te("")}, {
-		t"using ", i(1, "namespace", {key = "i1"}), f(function(args, snip) return c_py({"cpp", 67}, "snip.rv = \' \' if t[1] == \'namespace\' else \' = \' if t[1] != \'\' else \'\'", python_globals, args, snip, "", am[67]) end, ae(am[67])), i(2, "name", {key = "i2"}), t";"
+		t"using ", i(1, "namespace", {key = "i1"}), f(function(args, snip) return c_py({"cpp", 67}, "snip.rv = \' \' if t[1] == \'namespace\' else \' = \' if t[1] != \'\' else \'\'", python_globals, args, snip, "", {1}) end, {k"i1"}), i(2, "name", {key = "i2"}), t";"
 	}),
 	s({trig = "readfile", descr = "(readfile) \"read file (readF)\"", priority = -49, trigEngine = te("")}, {
 		t"std::vector<char> v;", nl(),
@@ -460,9 +373,9 @@ ls.add_snippets("cpp", {
 		t"/**", nl(),
 		t"* @brief: ", i(4, "brief", {key = "i4"}), nl(),
 		t"*", nl(),
-		t"* @param: ", f(function(args, snip) return c_py({"cpp", 71}, "write_docstring_args(t[3],snip)", python_globals, args, snip, "", am[71]) end, ae(am[71])), nl(),
+		t"* @param: ", f(function(args, snip) return c_py({"cpp", 71}, "write_docstring_args(t[3],snip)", python_globals, args, snip, "", {3}) end, {k"i3"}), nl(),
 		t"*", nl(),
-		t"* @return: ", f(function(args, snip) return c_py({"cpp", 71}, "snip.rv = t[1]", python_globals, args, snip, "", am[71]) end, ae(am[71])), nl(),
+		t"* @return: ", f(function(args, snip) return c_py({"cpp", 71}, "snip.rv = t[1]", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		t"*/", nl(),
 		i(1, "ReturnType", {key = "i1"}), t" ", i(2, "FunctionName", {key = "i2"}), t"(", i(3, "param", {key = "i3"}), t")", nl(),
 		t"{", nl(),

@@ -34,40 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{},
-	{},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3, 4, 5},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3, 4},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3, 4},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-}
 ls.add_snippets("perl6", {
 	s({trig = "#!", descr = "(#!)", priority = -1000, trigEngine = te("w")}, {
 		t"#!/usr/bin/env perl6"

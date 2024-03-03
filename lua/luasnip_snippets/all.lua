@@ -34,47 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{1},
-	{},
-	{},
-	{},
-	{},
-	{},
-	{},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0},
-	{0},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1},
-	{1, 2},
-	{2},
-	{1, 2},
-	{},
-	{},
-	{0, 2, 3, 4, 5},
-	{},
-}
 
 local python_globals = {
 	[[from vimsnippets import foldmarker, make_box, get_comment_format
@@ -397,34 +361,34 @@ ls.add_snippets("all", {
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "box", descr = "(box) \"A nice box with the current comment symbol\"", priority = -60, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"all", 24}, "\nbox = make_box(len(t[1]))\nsnip.rv = box[0]\nsnip += box[1]\n", python_globals, args, snip, "", am[24]) end, ae(am[24])), d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), f(function(args, snip) return c_py({"all", 24}, "\nbox = make_box(len(t[1]))\nsnip.rv = box[2]\nsnip += box[3]", python_globals, args, snip, "", am[24]) end, ae(am[24])), nl(),
+		f(function(args, snip) return c_py({"all", 24}, "\nbox = make_box(len(t[1]))\nsnip.rv = box[0]\nsnip += box[1]\n", python_globals, args, snip, "", {1}) end, {k"i1"}), d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), f(function(args, snip) return c_py({"all", 24}, "\nbox = make_box(len(t[1]))\nsnip.rv = box[2]\nsnip += box[3]", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "bbox", descr = "(bbox) \"A nice box over the full width\"", priority = -60, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"all", 25}, "\nif not snip.c:\n\twidth = int(vim.eval(\"&textwidth - (virtcol(\'.\') == 1 ? 0 : virtcol(\'.\'))\")) or 71\nbox = make_box(len(t[1]), width)\nsnip.rv = box[0]\nsnip += box[1]\n", python_globals, args, snip, "", am[25]) end, ae(am[25])), d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), f(function(args, snip) return c_py({"all", 25}, "\nbox = make_box(len(t[1]), width)\nsnip.rv = box[2]\nsnip += box[3]", python_globals, args, snip, "", am[25]) end, ae(am[25])), nl(),
+		f(function(args, snip) return c_py({"all", 25}, "\nif not snip.c:\n\twidth = int(vim.eval(\"&textwidth - (virtcol(\'.\') == 1 ? 0 : virtcol(\'.\'))\")) or 71\nbox = make_box(len(t[1]), width)\nsnip.rv = box[0]\nsnip += box[1]\n", python_globals, args, snip, "", {1}) end, {k"i1"}), d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), f(function(args, snip) return c_py({"all", 25}, "\nbox = make_box(len(t[1]), width)\nsnip.rv = box[2]\nsnip += box[3]", python_globals, args, snip, "", {1}) end, {k"i1"}), nl(),
 		i(0, "", {key = "i0"})
 	}),
 	s({trig = "fold", descr = "(fold) \"Insert a vim fold marker\"", priority = -60, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"all", 26}, "snip.rv = get_comment_format()[0]", python_globals, args, snip, "", am[26]) end, ae(am[26])), t" ", i(1, "Fold description", {key = "i1"}), t" ", f(function(args, snip) return c_py({"all", 26}, "snip.rv = foldmarker()[0]", python_globals, args, snip, "", am[26]) end, ae(am[26])), i(2, "1", {key = "i2"}), t" ", f(function(args, snip) return c_py({"all", 26}, "snip.rv = get_comment_format()[2]", python_globals, args, snip, "", am[26]) end, ae(am[26]))
+		f(function(args, snip) return c_py({"all", 26}, "snip.rv = get_comment_format()[0]", python_globals, args, snip, "", {}) end), t" ", i(1, "Fold description", {key = "i1"}), t" ", f(function(args, snip) return c_py({"all", 26}, "snip.rv = foldmarker()[0]", python_globals, args, snip, "", {}) end), i(2, "1", {key = "i2"}), t" ", f(function(args, snip) return c_py({"all", 26}, "snip.rv = get_comment_format()[2]", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "foldc", descr = "(foldc) \"Insert a vim fold close marker\"", priority = -60, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"all", 27}, "snip.rv = get_comment_format()[0]", python_globals, args, snip, "", am[27]) end, ae(am[27])), t" ", i(1, "1", {key = "i2"}), f(function(args, snip) return c_py({"all", 27}, "snip.rv = foldmarker()[1]", python_globals, args, snip, "", am[27]) end, ae(am[27])), t" ", f(function(args, snip) return c_py({"all", 27}, "snip.rv = get_comment_format()[2]", python_globals, args, snip, "", am[27]) end, ae(am[27]))
+		f(function(args, snip) return c_py({"all", 27}, "snip.rv = get_comment_format()[0]", python_globals, args, snip, "", {}) end), t" ", i(1, "1", {key = "i2"}), f(function(args, snip) return c_py({"all", 27}, "snip.rv = foldmarker()[1]", python_globals, args, snip, "", {}) end), t" ", f(function(args, snip) return c_py({"all", 27}, "snip.rv = get_comment_format()[2]", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "foldp", descr = "(foldp) \"Insert a vim fold marker pair\"", priority = -60, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"all", 28}, "snip.rv = get_comment_format()[0]", python_globals, args, snip, "", am[28]) end, ae(am[28])), t" ", i(1, "Fold description", {key = "i1"}), t" ", f(function(args, snip) return c_py({"all", 28}, "snip.rv = foldmarker()[0]", python_globals, args, snip, "", am[28]) end, ae(am[28])), t" ", f(function(args, snip) return c_py({"all", 28}, "snip.rv = get_comment_format()[2]", python_globals, args, snip, "", am[28]) end, ae(am[28])), nl(),
+		f(function(args, snip) return c_py({"all", 28}, "snip.rv = get_comment_format()[0]", python_globals, args, snip, "", {}) end), t" ", i(1, "Fold description", {key = "i1"}), t" ", f(function(args, snip) return c_py({"all", 28}, "snip.rv = foldmarker()[0]", python_globals, args, snip, "", {}) end), t" ", f(function(args, snip) return c_py({"all", 28}, "snip.rv = get_comment_format()[2]", python_globals, args, snip, "", {}) end), nl(),
 		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), nl(),
-		f(function(args, snip) return c_py({"all", 28}, "snip.rv = get_comment_format()[0]", python_globals, args, snip, "", am[28]) end, ae(am[28])), t" ", f(function(args, snip) return c_py({"all", 28}, "snip.rv = foldmarker()[1]", python_globals, args, snip, "", am[28]) end, ae(am[28])), t" ", cp(1), t" ", f(function(args, snip) return c_py({"all", 28}, "snip.rv = get_comment_format()[2]", python_globals, args, snip, "", am[28]) end, ae(am[28]))
+		f(function(args, snip) return c_py({"all", 28}, "snip.rv = get_comment_format()[0]", python_globals, args, snip, "", {}) end), t" ", f(function(args, snip) return c_py({"all", 28}, "snip.rv = foldmarker()[1]", python_globals, args, snip, "", {}) end), t" ", cp(1), t" ", f(function(args, snip) return c_py({"all", 28}, "snip.rv = get_comment_format()[2]", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "lorem(([1-4])?[0-9])?", descr = "(lorem(([1-4])?[0-9])?) \"Lorem Ipsum\"", priority = -60, trigEngine = te("r")}, {
-		f(function(args, snip) return c_py({"all", 29}, "snip.rv = \" \".join(LOREM.split()[:int(match.group(1))]) if match.group(1) else LOREM", python_globals, args, snip, "", am[29]) end, ae(am[29]))
+		f(function(args, snip) return c_py({"all", 29}, "snip.rv = \" \".join(LOREM.split()[:int(match.group(1))]) if match.group(1) else LOREM", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "modeline", descr = "(modeline) \"Vim modeline\"", priority = -60, trigEngine = te("")}, {
 		t"vim", f(function(args, snip) return c_viml("\':set \'. (&expandtab ? printf(\'et sw=%i ts=%i\', &sw, &ts) : printf(\'noet sts=%i sw=%i ts=%i\', &sts, &sw, &ts)) . (&tw ? \' tw=\'. &tw : \'\') . \':\'") end)
 	}),
 	s({trig = "todo", descr = "(todo) \"TODO comment\"", priority = -60, trigEngine = te("bw")}, {
-		f(function(args, snip) return c_py({"all", 31}, "snip.rv=get_comment_format()[0]", python_globals, args, snip, "", am[31]) end, ae(am[31])), t" ", i(1, "TODO", {key = "i2"}), t": ", i(0, "", {key = "i0"}), c(2, {{t" <", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("strftime(\'%d-%m-%y\')")}, " "), {key = "i4"}) }) end), d(2, function(args, snip) return sn(nil, { i(1, jt({", ", c_viml("g:snips_author")}, " "), {key = "i5"}) }) end), t">"}, {i(1, jt({" <", jt({c_viml("strftime(\'%d-%m-%y\')")}), jt({", ", c_viml("g:snips_author")}), ">"}))}}, {key = "i3"}), t" ", f(function(args, snip) return c_py({"all", 31}, "snip.rv=get_comment_format()[2]", python_globals, args, snip, "", am[31]) end, ae(am[31]))
+		f(function(args, snip) return c_py({"all", 31}, "snip.rv=get_comment_format()[0]", python_globals, args, snip, "", {}) end), t" ", i(1, "TODO", {key = "i2"}), t": ", i(0, "", {key = "i0"}), c(2, {{t" <", d(1, function(args, snip) return sn(nil, { i(1, jt({c_viml("strftime(\'%d-%m-%y\')")}, " "), {key = "i4"}) }) end), d(2, function(args, snip) return sn(nil, { i(1, jt({", ", c_viml("g:snips_author")}, " "), {key = "i5"}) }) end), t">"}, {i(1, jt({" <", jt({c_viml("strftime(\'%d-%m-%y\')")}), jt({", ", c_viml("g:snips_author")}), ">"}))}}, {key = "i3"}), t" ", f(function(args, snip) return c_py({"all", 31}, "snip.rv=get_comment_format()[2]", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "uuid", descr = "(uuid) \"Random UUID\"", priority = -60, trigEngine = te("w")}, {
-		f(function(args, snip) return c_py({"all", 32}, "if not snip.c: import uuid; snip.rv = str(uuid.uuid4())", python_globals, args, snip, "", am[32]) end, ae(am[32]))
+		f(function(args, snip) return c_py({"all", 32}, "if not snip.c: import uuid; snip.rv = str(uuid.uuid4())", python_globals, args, snip, "", {}) end)
 	}),
 })

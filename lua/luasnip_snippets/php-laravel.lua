@@ -34,23 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{1, 2, 3},
-	{1, 2, 3, 4, 5, 6},
-	{1, 2, 3, 4, 5},
-	{1, 2, 3, 4, 5, 6, 7},
-	{1, 2, 3, 4},
-	{1, 2, 3, 4, 5, 6, 7},
-	{1, 2, 3, 4, 5, 6},
-	{1, 2, 3, 4, 5},
-}
 ls.add_snippets("php-laravel", {
 	s({trig = "l_rsc", descr = "(l_rsc) \"Laravel resource controller\"", priority = 0, trigEngine = te("b")}, {
 		t"/*!", nl(),
@@ -164,7 +153,7 @@ ls.add_snippets("php-laravel", {
 		t"namespace ", i(1, "Entities", {key = "i1"}), t";", nl(),
 		nl(),
 		t"class ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("expand(\'%:t:r\')")}, ""), {key = "i2"}) }) end), t" extends \\Eloquent {", nl(),
-		t"    protected $table   = \'", d(4, function(args, snip) return sn(nil, { i(1, jt({c_py({"php-laravel", 4}, "snip.rv = t[2].lower()", python_globals, args, snip, "", am[4])}, "    "), {key = "i4"}) }) end), t"\';", nl(),
+		t"    protected $table   = \'", d(4, function(args, snip) return sn(nil, { i(1, jt({c_py({"php-laravel", 4}, "snip.rv = t[2].lower()", python_globals, args, snip, "", {2})}, "    "), {key = "i4"}) }) end, {k"i2"}), t"\';", nl(),
 		nl(),
 		t"    public $timestamps = ", i(5, "false", {key = "i5"}), t";", nl(),
 		nl(),

@@ -34,17 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{1, 2},
-	{1, 2},
-}
 
 local python_globals = {
 	[[def newsoa():
@@ -59,7 +53,7 @@ ls.add_snippets("bindzone", {
 	s({trig = "zone", descr = "(zone) \"Bootstrap a new Bind zonefile\"", priority = -50, trigEngine = te("b")}, {
 		t"$TTL 86400", nl(),
 		t"@\t  IN SOA   ", i(1, "example.net", {key = "i1"}), t".\t ", d(2, function(args, snip) return sn(nil, { i(1, jt({"hostmaster.", args[1]}, ""), {key = "i2"}) }) end, {k"i1"}), t".(", nl(),
-		t"\t\t\t\t\t\t", f(function(args, snip) return c_py({"bindzone", 1}, "snip.rv = newsoa()", python_globals, args, snip, "", am[1]) end, ae(am[1])), t";\t serial", nl(),
+		t"\t\t\t\t\t\t", f(function(args, snip) return c_py({"bindzone", 1}, "snip.rv = newsoa()", python_globals, args, snip, "", {}) end), t";\t serial", nl(),
 		t"\t\t\t\t\t\t21600;\t\t\trefresh every 6 hours", nl(),
 		t"\t\t\t\t\t\t3600;\t\t\tretry after one hour", nl(),
 		t"\t\t\t\t\t\t604800;\t\t\texpire after a week", nl(),

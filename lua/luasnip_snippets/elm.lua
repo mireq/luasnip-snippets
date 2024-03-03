@@ -34,37 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{0, 1},
-	{0},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2, 3, 4, 5},
-	{0, 1, 2, 3, 4, 5, 6},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0},
-	{0},
-	{},
-	{},
-	{0, 1},
-}
 ls.add_snippets("elm", {
 	s({trig = "mod", descr = "(mod)", priority = -1000, trigEngine = te("w")}, {
 		t"module ", f(function(args, snip) return c_viml("substitute(substitute(expand(\'%:r\'), \'[/\\\\]\',\'.\',\'g\'),\'^\\%(\\l*\\.\\)\\?\',\'\',\'\')") end), t" exposing (", i(1, "", {key = "i1"}), t")", nl(),
@@ -77,7 +52,7 @@ ls.add_snippets("elm", {
 		t"import ", i(1, "Html", {key = "i1"}), t" exposing (", i(0, "..", {key = "i0"}), t")"
 	}),
 	s({trig = "impae", descr = "(impae) \"Qualified import with exposing\"", priority = -50, trigEngine = te("")}, {
-		t"import ", i(1, "Json.Encode", {key = "i1"}), t" as ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"elm", 4}, "snip.rv = t[1].split(\".\")[-1]", python_globals, args, snip, "", am[4])}, ""), {key = "i2"}) }) end), t" exposing (", i(0, "Value", {key = "i0"}), t")"
+		t"import ", i(1, "Json.Encode", {key = "i1"}), t" as ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"elm", 4}, "snip.rv = t[1].split(\".\")[-1]", python_globals, args, snip, "", {1})}, ""), {key = "i2"}) }) end, {k"i1"}), t" exposing (", i(0, "Value", {key = "i0"}), t")"
 	}),
 	s({trig = "fn", descr = "(fn)", priority = -1000, trigEngine = te("w")}, {
 		i(1, "fn", {key = "i1"}), t" : ", i(2, "a", {key = "i2"}), t" -> ", i(3, "a", {key = "i3"}), nl(),
@@ -246,6 +221,6 @@ ls.add_snippets("elm", {
 		t"\th1 [] [ text \"Hello, world!\" ]"
 	}),
 	s({trig = "impa", descr = "(impa) \"Qualified import\"", priority = -50, trigEngine = te("")}, {
-		t"import ", i(1, "Json.Encode", {key = "i1"}), t" as ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"elm", 22}, "snip.rv = t[1].split(\".\")[-1]", python_globals, args, snip, "", am[22])}, ""), {key = "i0"}) }) end)
+		t"import ", i(1, "Json.Encode", {key = "i1"}), t" as ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"elm", 22}, "snip.rv = t[1].split(\".\")[-1]", python_globals, args, snip, "", {1})}, ""), {key = "i0"}) }) end, {k"i1"})
 	}),
 })

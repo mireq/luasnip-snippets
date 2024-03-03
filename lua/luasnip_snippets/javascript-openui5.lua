@@ -34,28 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{1, 2, 3, 4, 5, 6, 7},
-	{1, 2, 3, 4, 5, 6, 7, 8},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
-	{1},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31},
-	{},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12},
-	{1, 2, 3, 4, 5, 6},
-	{1, 2, 3, 4, 5, 6},
-}
 ls.add_snippets("javascript-openui5", {
 	s({trig = "sapmlabel", descr = "(sapmlabel)", priority = -1000, trigEngine = te("w")}, {
 		t"var ", i(1, "", {key = "i1"}), t" = new sap.m.Label({", nl(),

@@ -34,22 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{1, 2},
-	{1, 2},
-	{1, 2, 3, 4, 5, 6, 7, 8},
-	{1, 2, 3, 4, 5, 7},
-	{2, 3, 7},
-	{2, 3, 4, 5},
-	{1, 2, 3},
-}
 ls.add_snippets("html_minimal", {
 	s({trig = "id", descr = "(id)", priority = -49, trigEngine = te("")}, {
 		t"id=\"", i(1, "", {key = "i1"}), t"\"", i(2, "", {key = "i2"})
@@ -59,10 +49,10 @@ ls.add_snippets("html_minimal", {
 	}),
 	s({trig = "label_and_input", descr = "(label_and_input)", priority = -49, trigEngine = te("")}, {
 		t"<label for=\"", c(1, {{i(1, "", {key = "i1"})}, {i(1, jt({""}))}}, {key = "i2"}), t"\">", cp(1), t"</label>", nl(),
-		t"<input type=\"", i(2, "text", {key = "i3"}), t"\" name=\"", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i4"}) }) end, {k"i2"}), t"\"", d(4, function(args, snip) return sn(nil, {c(1, {{t" id=\"", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i6"}) }) end, {k"i2"}), t"\""}, {i(1, jt({" id=\"", jt({args[1]}), "\""}))}}, {key = "i5"})}) end, {k"i2"}), t" value=\"", i(5, "", {key = "i7"}), t"\" />", i(6, "", {key = "i8"})
+		t"<input type=\"", i(2, "text", {key = "i3"}), t"\" name=\"", d(3, function(args, snip) return sn(nil, { i(1, jt({args[1]}, ""), {key = "i4"}) }) end, {k"i2"}), t"\"", c(4, {{t" id=\"", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i6"}) }) end, {k"i2"}), t"\""}, {d(1, function(args, snip) return sn(nil, {i(1, jt({" id=\"", jt({args[1]}), "\""}))}) end, {k"i2"})}}, {key = "i5"}), t" value=\"", i(5, "", {key = "i7"}), t"\" />", i(6, "", {key = "i8"})
 	}),
 	s({trig = "input", descr = "(input)", priority = -49, trigEngine = te("")}, {
-		t"<input type=\"", i(1, "text", {key = "i1"}), t"\" value=\"", i(2, "", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\"", d(4, function(args, snip) return sn(nil, {c(1, {{t" id=\"", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i5"}) }) end, {k"i3"}), t"\""}, {i(1, jt({" id=\"", jt({args[1]}), "\""}))}}, {key = "i4"})}) end, {k"i3"}), t"/>", i(5, "", {key = "i7"})
+		t"<input type=\"", i(1, "text", {key = "i1"}), t"\" value=\"", i(2, "", {key = "i2"}), t"\" name=\"", i(3, "", {key = "i3"}), t"\"", c(4, {{t" id=\"", d(1, function(args, snip) return sn(nil, { i(1, jt({args[1]}, " "), {key = "i5"}) }) end, {k"i3"}), t"\""}, {d(1, function(args, snip) return sn(nil, {i(1, jt({" id=\"", jt({args[1]}), "\""}))}) end, {k"i3"})}}, {key = "i4"}), t"/>", i(5, "", {key = "i7"})
 	}),
 	s({trig = "submit", descr = "(submit)", priority = -49, trigEngine = te("")}, {
 		t"<input type=\"submit\" value=\"", i(1, "", {key = "i2"}), t"\" ", i(2, "", {key = "i3"}), t"/>", i(3, "", {key = "i7"})

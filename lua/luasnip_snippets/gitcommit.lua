@@ -34,30 +34,11 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
-
-local am = { -- list of argument numbers
-	{1, 2},
-	{1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4, 5, 6, 7, 8},
-	{0, 1},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9},
-}
 
 local python_globals = {
 	[[def complete(t, opts):
@@ -74,7 +55,7 @@ ls.add_snippets("gitcommit", {
 		t"Co-authored-by: ", i(1, "", {key = "i1"}), t" <", i(2, "", {key = "i2"}), t">"
 	}),
 	s({trig = "status", descr = "(status) \"Status\"", snippetType = "autosnippet", priority = 0, trigEngine = te("bA")}, {
-		t"status ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"gitcommit", 2}, "snip.rv = complete(t[1], [\'build\', \'ci\', \'test\', \'refactor\', \'perf\', \'improvement\', \'docs\', \'chore\', \'feat\', \'fix\'])", python_globals, args, snip, "", am[2]) end, ae(am[2]))
+		t"status ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"gitcommit", 2}, "snip.rv = complete(t[1], [\'build\', \'ci\', \'test\', \'refactor\', \'perf\', \'improvement\', \'docs\', \'chore\', \'feat\', \'fix\'])", python_globals, args, snip, "", {1}) end, {k"i1"})
 	}),
 	s({trig = "fix", descr = "(fix) \"fix conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"fix(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),

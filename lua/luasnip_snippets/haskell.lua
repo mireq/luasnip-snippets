@@ -34,62 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{0},
-	{0},
-	{0},
-	{0},
-	{0, 1, 2, 3, 4, 5, 6, 7},
-	{0, 1, 2},
-	{0},
-	{0, 1},
-	{0, 1, 2, 3},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{},
-	{1},
-	{0},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2, 3, 4, 5},
-	{0, 1, 2, 3, 4, 5, 6},
-	{1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2, 3},
-	{0, 1, 2, 3, 4},
-	{0, 1, 2},
-	{1, 2, 3},
-	{0, 1},
-	{0, 1, 2},
-	{0, 1, 2},
-	{0, 1},
-	{0, 1},
-	{0, 1},
-	{0},
-	{0},
-	{0, 1, 2, 3, 4},
-}
 ls.add_snippets("haskell", {
 	s({trig = "lang", descr = "(lang)", priority = -1000, trigEngine = te("w")}, {
 		t"{-# LANGUAGE ", i(0, "OverloadedStrings", {key = "i0"}), t" #-}"
@@ -126,7 +76,7 @@ ls.add_snippets("haskell", {
 		t"import ", i(1, "Data.Text", {key = "i1"}), t" (", i(0, "head", {key = "i0"}), t")"
 	}),
 	s({trig = "impq", descr = "(impq) \"Qualified import\"", priority = -50, trigEngine = te("")}, {
-		t"import qualified ", c(1, {{i(1, "Data", {key = "i2"}), t".", i(2, "Text", {key = "i3"})}, {i(1, jt({"Data", ".", "Text"}))}}, {key = "i1"}), t" as ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"haskell", 9}, "snip.rv = t[1].split(\".\")[-1]", python_globals, args, snip, "", am[9])}, ""), {key = "i0"}) }) end)
+		t"import qualified ", c(1, {{i(1, "Data", {key = "i2"}), t".", i(2, "Text", {key = "i3"})}, {i(1, jt({"Data", ".", "Text"}))}}, {key = "i1"}), t" as ", d(2, function(args, snip) return sn(nil, { i(1, jt({c_py({"haskell", 9}, "snip.rv = t[1].split(\".\")[-1]", python_globals, args, snip, "", {1})}, ""), {key = "i0"}) }) end, {k"i1"})
 	}),
 	s({trig = "importq", descr = "(importq)", priority = -1000, trigEngine = te("w")}, {
 		t"import qualified ", i(1, "Data.Text", {key = "i1"}), t" as ", i(0, "T", {key = "i0"})

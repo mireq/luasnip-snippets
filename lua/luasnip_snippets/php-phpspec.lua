@@ -34,64 +34,17 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{0, 1},
-	{0, 1},
-	{0},
-	{0},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2, 3},
-	{1, 2, 3},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-	{1, 2},
-}
 ls.add_snippets("php-phpspec", {
 	s({trig = "spec", descr = "(spec) \"class XYZSpec extends ObjectBehaviour\"", priority = -50, trigEngine = te("")}, {
 		t"<?php", nl(),
 		nl(),
-		t"namespace ", f(function(args, snip) return c_py({"php-phpspec", 1}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", am[1]) end, ae(am[1])), t";", nl(),
+		t"namespace ", f(function(args, snip) return c_py({"php-phpspec", 1}, "\nrelpath = os.path.relpath(path)\nm = re.search(r\'[A-Z].+(?=/)\', relpath)\nif m:\n\tsnip.rv = m.group().replace(\'/\', \'\\\\\')\n", python_globals, args, snip, "", {}) end), t";", nl(),
 		nl(),
 		t"use PhpSpec\\ObjectBehavior;", nl(),
 		t"use Prophecy\\Argument;", nl(),
@@ -99,7 +52,7 @@ ls.add_snippets("php-phpspec", {
 		t"/**", nl(),
 		t" * @author ", f(function(args, snip) return c_viml("g:snips_author") end), nl(),
 		t" */", nl(),
-		t"class ", f(function(args, snip) return c_py({"php-phpspec", 1}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", am[1]) end, ae(am[1])), t" extends ObjectBehavior", nl(),
+		t"class ", f(function(args, snip) return c_py({"php-phpspec", 1}, "\nsnip.rv = re.match(r\'.*(?=\\.)\', fn).group()\n", python_globals, args, snip, "", {}) end), t" extends ObjectBehavior", nl(),
 		t"{", nl(),
 		t"\tfunction it_", i(1, "", {key = "i1"}), t"()", nl(),
 		t"\t{", nl(),

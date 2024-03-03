@@ -34,21 +34,12 @@ local rx_tr = su.regex_transform
 local jt = su.join_text
 local nl = su.new_line
 local te = su.trig_engine
-local ae = su.args_expand
 local c_py = su.code_python
 local c_viml = su.code_viml
 local c_shell = su.code_shell
 local make_actions = su.make_actions
 
 
-local am = { -- list of argument numbers
-	{0, 1, 2},
-	{},
-	{0, 1},
-	{0, 1, 2, 3},
-	{0},
-	{1, 2, 3},
-}
 ls.add_snippets("snippets", {
 	s({trig = "snip", descr = "(snip)", priority = -1000, trigEngine = te("w")}, {
 		t"snippet ", i(1, "trigger", {key = "i1"}), t" \"", i(2, "description", {key = "i2"}), t"\"", nl(),
@@ -61,14 +52,14 @@ ls.add_snippets("snippets", {
 		t"${", i(1, "1", {key = "i1"}), t":", i(0, "text", {key = "i0"}), t"}"
 	}),
 	s({trig = "usnip", descr = "(usnip) \"Ultisnips snippet definition\"", priority = -50, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"snippets", 4}, "snip.rv = \"snippet\"", python_globals, args, snip, "", am[4]) end, ae(am[4])), t" ", i(1, "Tab_trigger", {key = "i1"}), t" \"", i(2, "Description", {key = "i2"}), t"\" ", i(3, "b", {key = "i3"}), nl(),
+		f(function(args, snip) return c_py({"snippets", 4}, "snip.rv = \"snippet\"", python_globals, args, snip, "", {}) end), t" ", i(1, "Tab_trigger", {key = "i1"}), t" \"", i(2, "Description", {key = "i2"}), t"\" ", i(3, "b", {key = "i3"}), nl(),
 		d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
-		f(function(args, snip) return c_py({"snippets", 4}, "snip.rv = \"endsnippet\"", python_globals, args, snip, "", am[4]) end, ae(am[4]))
+		f(function(args, snip) return c_py({"snippets", 4}, "snip.rv = \"endsnippet\"", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "global", descr = "(global) \"Global snippet\"", priority = -50, trigEngine = te("b")}, {
-		f(function(args, snip) return c_py({"snippets", 5}, "snip.rv = \"global\"", python_globals, args, snip, "", am[5]) end, ae(am[5])), t" !p", nl(),
+		f(function(args, snip) return c_py({"snippets", 5}, "snip.rv = \"global\"", python_globals, args, snip, "", {}) end), t" !p", nl(),
 		d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end), nl(),
-		f(function(args, snip) return c_py({"snippets", 5}, "snip.rv = \"endglobal\"", python_globals, args, snip, "", am[5]) end, ae(am[5]))
+		f(function(args, snip) return c_py({"snippets", 5}, "snip.rv = \"endglobal\"", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "vis", descr = "(vis) \"${VISUAL}\"", priority = -50, trigEngine = te("i")}, {
 		t"${VISUAL", c(1, {{i(1, "default", {key = "i2"}), i(2, "/transform/", {key = "i3"})}, {i(1, jt({"default", "/transform/"}))}}, {key = "i1"}), t"}"
