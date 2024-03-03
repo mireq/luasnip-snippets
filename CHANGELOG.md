@@ -1,3 +1,28 @@
+## 0.1.1 (2024-03-03)
+
+### Feat
+
+- Removed argument mapping
+- Remvoed args_expand support
+- Always run python code with toplevel node instance
+- Pass related tokens to render_text of children renderer
+- Mark only really used nodes as dependencies
+- Calculate related tokens from parsed code snippet
+- Find related tokens in python code
+- Added code globals to snippet context
+- Updated snippets
+- Strip new lines at end of snippet
+
+### Fix
+
+- Wrap text tokens to include related tokens
+- Added missing dependent tokens
+
+### Refactor
+
+- Remvoed args mapping
+- Always pass dependent tokens to render_text
+
 ## 0.1.0 (2024-02-25)
 
 ### Feat
