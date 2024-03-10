@@ -302,7 +302,13 @@ local function code_python(id, node_code, global_code, args, snip, indent, tabst
 	while snip.parent do
 		snip = snip.parent
 	end
-	return call_python("execute_code", {node_id=id, node_code=node_code, global_code=global_code or {}, tabstops=args, env=snip.env or {}, indent=indent, match_context=match_context, tabstops_idx=tabstops_idx})
+	local ctx = {}
+	for k, v in pairs(match_context) do
+		ctx[k] = v
+	end
+	local position = vim.api.nvim_win_get_cursor(0)
+	ctx['start'] = {position[1], position[2] + 1}
+	return call_python("execute_code", {node_id=id, node_code=node_code, global_code=global_code or {}, tabstops=args, env=snip.env or {}, indent=indent, match_context=ctx, tabstops_idx=tabstops_idx})
 end
 
 local function code_viml(code)
@@ -371,7 +377,6 @@ local function make_actions(actions, max_placeholder)
 				main = main.parent
 			end
 			local previous_index = action_node_context[main.id].index
-			print(previous_index, index)
 			action_node_context[main.id].index = index
 		end
 	end
