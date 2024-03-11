@@ -325,11 +325,14 @@ def execute_code(node_id, node_code, global_code, tabstops, env, indent, match_c
 	)
 
 	env = env or {}
+	match_context = match_context or {}
 	text = '\n'.join(env.get('LS_SELECT_RAW', []))
 	context = None
-	start = match_context['start']
-	end = [match_context['start'][0], match_context['start'][1] + len(env.get('LS_TRIGGER', ''))]
-	indent = INDENT_RE.match(env['TM_CURRENT_LINE']).group(0)
+	#start = match_context['start']
+	#end = [match_context['start'][0], match_context['start'][1] + len(env.get('LS_TRIGGER', ''))]
+	start = (int(env.get('TM_LINE_NUMBER', 1)), int(env.get('LS_CAPTURE_1', 1)))
+	end = (int(env.get('TM_LINE_NUMBER', 1)), int(env.get('LS_CAPTURE_2', 1)))
+	indent = INDENT_RE.match(env.get('TM_CURRENT_LINE', '')).group(0)
 	snip = SnippetUtil(indent, vim.eval("visualmode()"), text, context, start, end)
 	path = vim.eval('expand("%")') or ""
 
