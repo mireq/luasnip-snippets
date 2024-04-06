@@ -140,7 +140,7 @@ ls.add_snippets("lua", {
 	s({trig = "assert", descr = "(assert) \"Assertion\"", priority = -50, trigEngine = te("b")}, {
 		t"assert(", i(1, "condition", {key = "i1"}), f(function(args, snip) return c_py({"lua", 25}, "\nif t[2]:\n\tsnip.rv = \", \"\nelse:\n\tsnip.rv = \"\"\n", python_globals, args, snip, "", {2}) end, {k"i2"}), i(2, "msg", {key = "i2"}), t")"
 	}),
-	s({trig = "fun(ction)?", descr = "(fun(ction)?) \"New function\"", priority = -50, trigEngine = te("br")}, {
+	s({trig = "fun(ction)?", descr = "(fun(ction)?) \"New function\"", priority = -50, trigEngine = te("br"), regTrig = true}, {
 		t"function ", i(1, "new_function", {key = "i1"}), t"(", i(2, "args", {key = "i2"}), t")", nl(),
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"end"

@@ -434,11 +434,11 @@ ls.add_snippets("java", {
 		t"\te.printStackTrace();", nl(),
 		t"}"
 	}),
-	s({trig = "i|n", descr = "(i|n) \"new primitive or int\"", priority = -50, trigEngine = te("br")}, {
+	s({trig = "i|n", descr = "(i|n) \"new primitive or int\"", priority = -50, trigEngine = te("br"), regTrig = true}, {
 		i(1, "int", {key = "i1"}), t" ", i(2, "i", {key = "i2"}), t" = ", i(3, "1", {key = "i3"}), t";", nl(),
 		i(0, "", {key = "i0"})
 	}),
-	s({trig = "o|v", descr = "(o|v) \"new Object or variable\"", priority = -50, trigEngine = te("br")}, {
+	s({trig = "o|v", descr = "(o|v) \"new Object or variable\"", priority = -50, trigEngine = te("br"), regTrig = true}, {
 		i(1, "Object", {key = "i1"}), t" ", i(2, "var", {key = "i2"}), t" = new ", cp(1), t"(", i(3, "", {key = "i3"}), t");"
 	}),
 	s({trig = "f", descr = "(f) \"field\"", priority = -50, trigEngine = te("b")}, {
@@ -511,7 +511,7 @@ ls.add_snippets("java", {
 	s({trig = "map", descr = "(map) \"Collections Map\"", priority = -50, trigEngine = te("b")}, {
 		t"Map<", i(1, "String", {key = "i1"}), t", ", i(2, "String", {key = "i2"}), t"> ", i(3, "map", {key = "i3"}), t" = new ", i(4, "Hash", {key = "i4"}), t"Map<", cp(1), t", ", cp(2), t">();"
 	}),
-	s({trig = "Str?|str", descr = "(Str?|str) \"String\"", priority = -50, trigEngine = te("br")}, {
+	s({trig = "Str?|str", descr = "(Str?|str) \"String\"", priority = -50, trigEngine = te("br"), regTrig = true}, {
 		t"String ", i(0, "", {key = "i0"})
 	}),
 	s({trig = "cn", descr = "(cn) \"constructor, \\w fields + assigments\"", priority = -50, trigEngine = te("b")}, c(1, {
@@ -540,17 +540,17 @@ ls.add_snippets("java", {
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
-	s({trig = "get(ter)?", descr = "(get(ter)?) \"getter\"", priority = -50, trigEngine = te("br")}, {
+	s({trig = "get(ter)?", descr = "(get(ter)?) \"getter\"", priority = -50, trigEngine = te("br"), regTrig = true}, {
 		t"public ", i(1, "String", {key = "i1"}), t" get", i(2, "Name", {key = "i2"}), t"() {", nl(),
 		t"\treturn ", f(function(args, snip) return c_py({"java", 123}, "snip.rv = mixedCase(t[2])", python_globals, args, snip, "", {2}) end, {k"i2"}), t";", nl(),
 		t"}"
 	}),
-	s({trig = "set(ter)?", descr = "(set(ter)?) \"setter\"", priority = -50, trigEngine = te("br")}, {
+	s({trig = "set(ter)?", descr = "(set(ter)?) \"setter\"", priority = -50, trigEngine = te("br"), regTrig = true}, {
 		t"public void set", i(1, "Name", {key = "i1"}), t"(", i(2, "String", {key = "i2"}), t" ", f(function(args, snip) return c_py({"java", 124}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t") {", nl(),
 		t"\tthis.", f(function(args, snip) return c_py({"java", 124}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t" = ", f(function(args, snip) return c_py({"java", 124}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t";", nl(),
 		t"}"
 	}),
-	s({trig = "se?tge?t|ge?tse?t|gs", descr = "(se?tge?t|ge?tse?t|gs) \"setter and getter\"", priority = -50, trigEngine = te("br")}, {
+	s({trig = "se?tge?t|ge?tse?t|gs", descr = "(se?tge?t|ge?tse?t|gs) \"setter and getter\"", priority = -50, trigEngine = te("br"), regTrig = true}, {
 		t"public void set", i(1, "Name", {key = "i1"}), t"(", i(2, "String", {key = "i2"}), t" ", f(function(args, snip) return c_py({"java", 125}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t") {", nl(),
 		t"\tthis.", f(function(args, snip) return c_py({"java", 125}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t" = ", f(function(args, snip) return c_py({"java", 125}, "snip.rv = mixedCase(t[1])", python_globals, args, snip, "", {1}) end, {k"i1"}), t";", nl(),
 		t"}", f(function(args, snip) return c_py({"java", 125}, "snip.rv += \"\\n\"", python_globals, args, snip, "", {}) end), nl(),

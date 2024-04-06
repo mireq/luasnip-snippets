@@ -488,7 +488,7 @@ ls.add_snippets("c", {
 		t"\t", f(function(args, snip) return snip.env.LS_SELECT_DEDENT or {} end), i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
-	s({trig = "printf", descr = "(printf) \"printf with auto-expand args\"", priority = -50, trigEngine = te("wr")}, {
+	s({trig = "printf", descr = "(printf) \"printf with auto-expand args\"", priority = -50, trigEngine = te("wr"), regTrig = true}, {
 		t"printf(\"", i(1, "", {key = "i1"}), t"\\n\"", i(2, "", {key = "i2"}), t");"
 	}),
 	s({trig = "head", descr = "(head) \"File Header\"", priority = -50, trigEngine = te("b")}, {

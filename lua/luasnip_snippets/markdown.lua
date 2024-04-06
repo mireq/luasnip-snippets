@@ -318,7 +318,7 @@ ls.add_snippets("markdown", {
 		t"  ", c(1, {{t"<summary>", i(1, "", {key = "i2"}), t"</summary>"}, {i(1, jt({"<summary>", "", "</summary>"}))}}, {key = "i1"}), i(0, "", {key = "i0"}), nl(),
 		t"</details>"
 	}),
-	s({trig = "tb([1-9][1-9])", descr = "(tb([1-9][1-9])) \"Fancy table\"", priority = -50, trigEngine = te("br")}, {
+	s({trig = "tb([1-9][1-9])", descr = "(tb([1-9][1-9])) \"Fancy table\"", priority = -50, trigEngine = te("br"), regTrig = true}, {
 		f(function(args, snip) return c_py({"markdown", 62}, "snip.rv = match.group(1)", python_globals, args, snip, "", {}) end)
 	}),
 })

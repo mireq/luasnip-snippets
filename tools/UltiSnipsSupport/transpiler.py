@@ -184,6 +184,8 @@ def parse_snippet(snippet: SnippetDefinition, index: int, filetype: str, code_gl
 		snippet_attrs.append('snippetType = "autosnippet"')
 	snippet_attrs.append(f'priority = {snippet.priority}')
 	snippet_attrs.append(f'trigEngine = te({escape_lua_string(snippet.options)})')
+	if 'r' in opts:
+		snippet_attrs.append('regTrig = true')
 	return ParsedSnippet(
 		index=index,
 		attributes=", ".join(snippet_attrs),

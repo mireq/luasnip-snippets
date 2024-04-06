@@ -318,21 +318,21 @@ ls.add_snippets("go", {
 		t"\treturn fmt.Errorf(\"", i(2, "", {key = "i2"}), t" %w\", err)", nl(),
 		t"}"
 	}),
-	s({trig = "^import", descr = "(^import) \"Import declaration\"", priority = -50, trigEngine = te("r")}, {
+	s({trig = "^import", descr = "(^import) \"Import declaration\"", priority = -50, trigEngine = te("r"), regTrig = true}, {
 		t"import (", nl(),
 		t"\t\"", i(1, "package", {key = "i1"}), t"\"", nl(),
 		t")"
 	}),
-	s({trig = "^package", descr = "(^package) \"Package declaration\"", priority = -50, trigEngine = te("r")}, {
+	s({trig = "^package", descr = "(^package) \"Package declaration\"", priority = -50, trigEngine = te("r"), regTrig = true}, {
 		t"// Package ", cp(1), t" provides ...", nl(),
 		t"package ", i(1, "main", {key = "i1"})
 	}),
-	s({trig = "^cons", descr = "(^cons) \"Constants declaration\"", priority = -50, trigEngine = te("r")}, {
+	s({trig = "^cons", descr = "(^cons) \"Constants declaration\"", priority = -50, trigEngine = te("r"), regTrig = true}, {
 		t"const (", nl(),
 		t"\t", i(1, "constant", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), t" = ", i(0, "value", {key = "i0"}), nl(),
 		t")"
 	}),
-	s({trig = "^con", descr = "(^con) \"Constant declaration\"", priority = -50, trigEngine = te("r")}, {
+	s({trig = "^con", descr = "(^con) \"Constant declaration\"", priority = -50, trigEngine = te("r"), regTrig = true}, {
 		t"const ", i(1, "name", {key = "i1"}), tr(2, "(.+)", " "), i(2, "type", {key = "i2"}), t" = ", i(0, "value", {key = "i0"})
 	}),
 	s({trig = "iota", descr = "(iota) \"Iota constant generator\"", priority = -50, trigEngine = te("b")}, {
@@ -355,12 +355,12 @@ ls.add_snippets("go", {
 		t"case", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
-	s({trig = "^main", descr = "(^main) \"Main function\"", priority = -50, trigEngine = te("r")}, {
+	s({trig = "^main", descr = "(^main) \"Main function\"", priority = -50, trigEngine = te("r"), regTrig = true}, {
 		t"func main() {", nl(),
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"
 	}),
-	s({trig = "^meth", descr = "(^meth) \"Method\"", priority = -50, trigEngine = te("r")}, {
+	s({trig = "^meth", descr = "(^meth) \"Method\"", priority = -50, trigEngine = te("r"), regTrig = true}, {
 		t"func (", i(1, "receiver", {key = "i1"}), t" ", i(2, "type", {key = "i2"}), t") ", i(3, "name", {key = "i3"}), t"(", i(4, "params", {key = "i4"}), t")", tr(5, "(.+)", " "), i(5, "type", {key = "i5"}), t" {", nl(),
 		t"\t", d(6, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"}"

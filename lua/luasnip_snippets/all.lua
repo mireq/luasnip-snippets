@@ -379,7 +379,7 @@ ls.add_snippets("all", {
 		d(2, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i2"}) }) end), nl(),
 		f(function(args, snip) return c_py({"all", 28}, "snip.rv = get_comment_format()[0]", python_globals, args, snip, "", {}) end), t" ", f(function(args, snip) return c_py({"all", 28}, "snip.rv = foldmarker()[1]", python_globals, args, snip, "", {}) end), t" ", cp(1), t" ", f(function(args, snip) return c_py({"all", 28}, "snip.rv = get_comment_format()[2]", python_globals, args, snip, "", {}) end)
 	}),
-	s({trig = "lorem(([1-4])?[0-9])?", descr = "(lorem(([1-4])?[0-9])?) \"Lorem Ipsum\"", priority = -60, trigEngine = te("r")}, {
+	s({trig = "lorem(([1-4])?[0-9])?", descr = "(lorem(([1-4])?[0-9])?) \"Lorem Ipsum\"", priority = -60, trigEngine = te("r"), regTrig = true}, {
 		f(function(args, snip) return c_py({"all", 29}, "snip.rv = \" \".join(LOREM.split()[:int(match.group(1))]) if match.group(1) else LOREM", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "modeline", descr = "(modeline) \"Vim modeline\"", priority = -60, trigEngine = te("")}, {

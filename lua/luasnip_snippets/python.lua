@@ -844,7 +844,7 @@ ls.add_snippets("python", {
 	s({trig = "fprf", descr = "(fprf)", priority = -1000, trigEngine = te("w")}, {
 		t"print(f\"", i(0, "", {key = "i0"}), t"\", file=", i(1, "sys.stderr", {key = "i1"}), t")"
 	}),
-	s({trig = "^# ?[uU][tT][fF]-?8", descr = "(^# ?[uU][tT][fF]-?8) \"# encoding: UTF-8\"", priority = -50, trigEngine = te("r")}, {
+	s({trig = "^# ?[uU][tT][fF]-?8", descr = "(^# ?[uU][tT][fF]-?8) \"# encoding: UTF-8\"", priority = -50, trigEngine = te("r"), regTrig = true}, {
 		t"# -*- coding: utf-8 -*-", nl(),
 		i(0, "", {key = "i0"})
 	}),
@@ -879,7 +879,7 @@ ls.add_snippets("python", {
 		t"\t", f(function(args, snip) return c_py({"python", 102}, "snip.rv = triple_quotes(snip)", python_globals, args, snip, "", {2}) end, {k"i2"}), d(3, function(args, snip) return sn(nil, { i(1, jt({"TODO: Docstring for ", args[1], "."}, "\t"), {key = "i4"}) }) end, {k"i1"}), f(function(args, snip) return c_py({"python", 102}, "\nwrite_function_docstring(t, snip) ", python_globals, args, snip, "", {2}) end, {k"i2"}), nl(),
 		t"\t", d(4, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i5"}) }) end)
 	}),
-	s({trig = "(^|(?<=\\W))\\.", descr = "((^|(?<=\\W))\\.) \"self.\"", priority = -50, trigEngine = te("r")}, {
+	s({trig = "(^|(?<=\\W))\\.", descr = "((^|(?<=\\W))\\.) \"self.\"", priority = -50, trigEngine = te("r"), regTrig = true}, {
 		t"self."
 	}),
 	s({trig = "roprop", descr = "(roprop) \"Read Only Property\"", priority = -50, trigEngine = te("b")}, {
@@ -957,7 +957,7 @@ ls.add_snippets("python", {
 		t"\"\"\"", nl(),
 		i(0, "", {key = "i0"})
 	}),
-	s({trig = "s(uper)?", descr = "(s(uper)?) \"Super method\"", priority = 0, trigEngine = te("br")}, {
+	s({trig = "s(uper)?", descr = "(s(uper)?) \"Super method\"", priority = 0, trigEngine = te("br"), regTrig = true}, {
 		t"def ", i(1, "__init__", {key = "i1"}), t"(self, ", i(2, "*args, **kwargs", {key = "i2"}), t"):", nl(),
 		t"\treturn super().", cp(1), t"(", cp(2), t")", nl(),
 		i(0, "", {key = "i0"})

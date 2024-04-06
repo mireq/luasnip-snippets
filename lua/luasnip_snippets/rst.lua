@@ -309,11 +309,11 @@ ls.add_snippets("rst", {
 	s({trig = "st", descr = "(st) \"Strong string\"", priority = -50, trigEngine = te("i")}, {
 		f(function(args, snip) return c_py({"rst", 36}, "\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"", python_globals, args, snip, "", {}) end), t"**", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i1"}) }) end), t"**", f(function(args, snip) return c_py({"rst", 36}, "\nif has_cjk(vim.current.line):\n\tsnip.rv =\"\\ \"\nelse:\n\tsnip.rv = \" \"\n", python_globals, args, snip, "", {}) end), i(0, "", {key = "i0"})
 	}),
-	s({trig = "li(st)? (?P<num>\\d+)", descr = "(li(st)? (?P<num>\\d+)) \"List\"", priority = -50, trigEngine = te("br")}, {
+	s({trig = "li(st)? (?P<num>\\d+)", descr = "(li(st)? (?P<num>\\d+)) \"List\"", priority = -50, trigEngine = te("br"), regTrig = true}, {
 		i(0, "", {key = "i0"}), nl(),
 		f(function(args, snip) return c_py({"rst", 37}, "\n# usage: li 4<tab>\n# which will extand into a unordered list contains 4 items\nsnip.rv = make_items(match.groupdict()[\'num\'])\n", python_globals, args, snip, "", {}) end)
 	}),
-	s({trig = "ol(st)? (?P<num>\\d+)", descr = "(ol(st)? (?P<num>\\d+)) \"Order List\"", priority = -50, trigEngine = te("br")}, {
+	s({trig = "ol(st)? (?P<num>\\d+)", descr = "(ol(st)? (?P<num>\\d+)) \"Order List\"", priority = -50, trigEngine = te("br"), regTrig = true}, {
 		i(0, "", {key = "i0"}), nl(),
 		f(function(args, snip) return c_py({"rst", 38}, "\n# usage: ol 4<tab>\n# which will extand into a ordered list contains 4 items\nsnip.rv = make_items(match.groupdict()[\'num\'], 1)\n", python_globals, args, snip, "", {}) end)
 	}),
