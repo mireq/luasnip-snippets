@@ -1,3 +1,16 @@
+## 0.1.2 (2024-04-06)
+
+### Feat
+
+- Added regTrig flag for triggering with regex matching
+- Throw execution error only with enabled snips_debug
+
+### Fix
+
+- Robust executing in preview context
+- More robust to broken env
+- Don't rely on LS_CAPTURE_1/2
+
 ## 0.1.1 (2024-03-03)
 
 ### Feat
