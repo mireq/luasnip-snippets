@@ -359,7 +359,7 @@ def execute_code(node_id, node_code, global_code, tabstops, env, indent, match_c
 			exec(compiled_code, node_locals)
 		except Exception as exception:
 			exception.snippet_code = code
-			if env: # raise only when called outside preview context
+			if vim.vars.get('snips_debug'):
 				raise
 
 	rv = str(snip.rv if snip._rv_changed else node_locals["res"])
