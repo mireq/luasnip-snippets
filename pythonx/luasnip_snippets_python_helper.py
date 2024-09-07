@@ -2,6 +2,7 @@
 import functools
 import os
 import re
+import warnings
 from collections import namedtuple
 
 import vim
@@ -299,7 +300,13 @@ class _Tabs:
 
 @functools.lru_cache(maxsize=None)
 def cached_compile(*args):
-	return compile(*args)
+	# directly compile if debug enabled
+	if vim.vars.get('snips_debug'):
+		return compile(*args)
+	# suppress warnings otherwise
+	with warnings.catch_warnings():
+		warnings.simplefilter("ignore")
+		return compile(*args)
 
 
 node_locals = {}
