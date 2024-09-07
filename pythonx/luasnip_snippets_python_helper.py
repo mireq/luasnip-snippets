@@ -297,7 +297,7 @@ class _Tabs:
 		return f'{self.__class__.__name__}({self._tabs!r}, {self._mapping!r})'
 
 
-@functools.cache
+@functools.lru_cache(maxsize=None)
 def cached_compile(*args):
 	return compile(*args)
 
