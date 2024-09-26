@@ -66,3 +66,9 @@ require("lazy").setup({
 	},
 })
 ```
+
+Troubleshooting
+---------------
+
+Some snippets really needs jsregexp to be installed. If snippets are not working
+correctly, try`:checkhealth` to check if jsregexp is installed.
