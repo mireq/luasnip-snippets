@@ -349,6 +349,7 @@ def execute_code(node_id, node_code, global_code, tabstops, env, indent, match_c
 	node_locals.update({
 		't': _Tabs(['\n'.join(tab) for tab in tabstops], source_map),
 		'fn': os.path.basename(path),
+		'path': path,
 		'cur': '',
 		'res': '',
 		'snip': snip,
