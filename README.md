@@ -72,3 +72,7 @@ Troubleshooting
 
 Some snippets really needs jsregexp to be installed. If snippets are not working
 correctly, try`:checkhealth` to check if jsregexp is installed.
+
+For more informations check
+[LuaSnip](https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md#transformations)
+documentation.
