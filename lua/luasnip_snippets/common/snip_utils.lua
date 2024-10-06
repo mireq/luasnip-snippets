@@ -349,7 +349,7 @@ local function setup()
 	local ls = require('luasnip')
 	local module_path = script_path()
 	require("luasnip.loaders.from_lua").lazy_load({
-		paths = { module_path }
+		paths = { vim.fn.stdpath("config") .. "/lua/luasnip_snippets", module_path }
 	})
 
 	for filetype, extends in pairs(filetype_includes) do
