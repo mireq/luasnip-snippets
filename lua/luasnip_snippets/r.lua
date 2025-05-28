@@ -52,7 +52,7 @@ FIELD_TYPES = [
 'logical',
 'matrix',
 'numeric',
-'vector']]]
+'vector']]
 }
 
 
