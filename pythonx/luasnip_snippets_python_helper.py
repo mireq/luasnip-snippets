@@ -3,7 +3,7 @@ import functools
 import os
 import re
 import warnings
-from collections import namedtuple
+from collections import namedtuple, UserDict
 
 import vim
 
@@ -320,7 +320,34 @@ def get_node_locals(node_id):
 INDENT_RE = re.compile(r'^[ \t]*')
 
 
-def execute_code(node_id, node_code, global_code, tabstops, env, indent, match_context, tabstops_idx):
+class _PlaceholderDict(UserDict):
+	def __missing__(self, key):
+		value = f"${key}"
+		self.data[key] = value
+		return value
+
+
+class FakeMatch:
+	def group(self, *indices: int | str) -> str | tuple[str, ...]:
+		if not indices:
+			return self._placeholder(0)
+		if len(indices) == 1:
+			return self._placeholder(indices[0])
+		return tuple(self._placeholder(i) for i in indices)
+
+	def groupdict(self, default: str | None = None) -> dict[str, str]: # pylint: disable=unused-argument
+		return _PlaceholderDict({})
+
+	def groups(self) -> tuple[str, ...]:
+		return _PlaceholderDict({})
+
+	def _placeholder(self, key: int | str) -> str:
+		return f"${key}"
+
+
+fake_match = FakeMatch()
+
+
 	global_code = 'import re, os, vim, string, random\n' + '\n'.join(global_code or [])
 	codes = (
 		global_code,
@@ -353,6 +380,7 @@ def execute_code(node_id, node_code, global_code, tabstops, env, indent, match_c
 		'cur': '',
 		'res': '',
 		'snip': snip,
+		'match': fake_match,
 	})
 
 	if 'regex' in match_context:
