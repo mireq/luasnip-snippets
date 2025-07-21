@@ -308,7 +308,9 @@ local function code_python(id, node_code, global_code, args, snip, indent, tabst
 	end
 	local position = vim.api.nvim_win_get_cursor(0)
 	ctx['start'] = {position[1], position[2] + 1}
-	return call_python("execute_code", {node_id=id, node_code=node_code, global_code=global_code or {}, tabstops=args, env=snip.env or {}, indent=indent, match_context=ctx, tabstops_idx=tabstops_idx})
+	local env = snip.env
+	local is_fake_env = snip.env['fake'] == '$fake'
+	return call_python("execute_code", {node_id=id, node_code=node_code, global_code=global_code or {}, tabstops=args, env=snip.env or {}, indent=indent, match_context=ctx, tabstops_idx=tabstops_idx, ignore_errors=is_fake_env})
 end
 
 local function code_viml(code)

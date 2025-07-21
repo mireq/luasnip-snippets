@@ -348,6 +348,7 @@ class FakeMatch:
 fake_match = FakeMatch()
 
 
+def execute_code(node_id, node_code, global_code, tabstops, env, indent, match_context, tabstops_idx, ignore_errors):
 	global_code = 'import re, os, vim, string, random\n' + '\n'.join(global_code or [])
 	codes = (
 		global_code,
@@ -395,7 +396,7 @@ fake_match = FakeMatch()
 			exec(compiled_code, node_locals)
 		except Exception as exception:
 			exception.snippet_code = code
-			if vim.vars.get('snips_debug'):
+			if vim.vars.get('snips_debug') and not ignore_errors:
 				raise
 
 	rv = str(snip.rv if snip._rv_changed else node_locals["res"])
