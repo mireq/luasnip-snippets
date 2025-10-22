@@ -26,7 +26,7 @@ def escape_multiline_lua_sting(text: str) -> str:
 	while True:
 		start_delimiter = f'[{"="*equal_signs}['
 		end_delimiter = f']{"="*equal_signs}]'
-		if start_delimiter not in text and end_delimiter not in text:
+		if start_delimiter not in f'[{text}]' and end_delimiter not in f'[{text}]':
 			break
 		equal_signs += 1
 	return f'{start_delimiter}{text}{end_delimiter}'
