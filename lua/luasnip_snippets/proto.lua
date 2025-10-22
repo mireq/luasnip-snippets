@@ -41,7 +41,7 @@ local make_actions = su.make_actions
 
 
 local python_globals = {
-	[[from vimsnippets import complete
+	[=[from vimsnippets import complete
 
 FIELD_TYPES = [
 	'double',
@@ -58,7 +58,7 @@ FIELD_TYPES = [
 	'sfixed64',
 	'bool',
 	'string',
-	'bytes']]]
+	'bytes']]=]
 }
 
 

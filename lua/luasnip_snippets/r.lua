@@ -41,7 +41,7 @@ local make_actions = su.make_actions
 
 
 local python_globals = {
-	[[import os
+	[=[import os
 from vimsnippets import complete
 
 FIELD_TYPES = [
@@ -52,7 +52,7 @@ FIELD_TYPES = [
 'logical',
 'matrix',
 'numeric',
-'vector']]]
+'vector']]=]
 }
 
 
