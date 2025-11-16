@@ -95,7 +95,7 @@ def create_table(snip):
 
 ls.add_snippets("markdown", {
 	s({trig = "[", descr = "([)", priority = -1000, trigEngine = te("w")}, {
-		t"[", i(1, "text", {key = "i1"}), t"](https://", i(2, "address", {key = "i2"}), t")"
+		t"[", i(1, "text", {key = "i1"}), t"](", i(2, "address", {key = "i2"}), t")"
 	}),
 	s({trig = "[*", descr = "([*)", priority = -1000, trigEngine = te("w")}, {
 		t"[", i(1, "link", {key = "i1"}), t"](", d(2, function(args, snip) return sn(nil, { i(1, jt({c_viml("@*")}, ""), {key = "i2"}) }) end), t")"

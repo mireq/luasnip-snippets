@@ -102,7 +102,7 @@ ls.add_snippets("go", {
 		t"interface{}"
 	}),
 	s({trig = "inf", descr = "(inf) \"full interface \"", priority = -1000, trigEngine = te("w")}, {
-		t"interface ", i(1, "name", {key = "i1"}), t" {", nl(),
+		t"type ", i(1, "name", {key = "i1"}), t" interface {", nl(),
 		t"\t", i(2, "/* methods */", {key = "i2"}), nl(),
 		t"}"
 	}),
@@ -230,7 +230,7 @@ ls.add_snippets("go", {
 		t"string"
 	}),
 	s({trig = "st", descr = "(st) \"struct\"", priority = -1000, trigEngine = te("w")}, {
-		t"struct ", i(1, "name", {key = "i1"}), t" {", nl(),
+		t"type ", i(1, "name", {key = "i1"}), t" struct {", nl(),
 		t"\t", i(2, "/* data */", {key = "i2"}), nl(),
 		t"}", nl(),
 		i(0, "", {key = "i0"})

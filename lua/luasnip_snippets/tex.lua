@@ -159,11 +159,6 @@ ls.add_snippets("tex", {
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
 		t"\\end{equation*}"
 	}),
-	s({trig = "\\", descr = "(\\) unnumbered equation: \\[ ... \\]", priority = -1000, trigEngine = te("w")}, {
-		t"\\[", nl(),
-		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
-		t"\\]"
-	}),
 	s({trig = "eqnarray", descr = "(eqnarray) eqnarray environment", priority = -1000, trigEngine = te("w")}, {
 		t"\\begin{eqnarray}", nl(),
 		t"\t", d(1, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, "\t"), {key = "i0"}) }) end), nl(),
@@ -732,13 +727,13 @@ ls.add_snippets("tex", {
 		t"\\times "
 	}),
 	s({trig = "(?<!\\\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)", descr = "((?<!\\\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)) \"ln\"", priority = 0, trigEngine = te("rw"), regTrig = true}, {
-		t"\\", f(function(args, snip) return c_py({"tex", 164}, "snip.rv = match.group(1)", python_globals, args, snip, "", {}) end)
+		t"\\", f(function(args, snip) return c_py({"tex", 163}, "snip.rv = match.group(1)", python_globals, args, snip, "", {}) end)
 	}),
 	s({trig = "<!", descr = "(<!) \"normal\"", snippetType = "autosnippet", priority = 0, trigEngine = te("Aw")}, {
 		t"\\triangleleft "
 	}),
 	s({trig = "((\\d|\\w)+)invs", descr = "(((\\d|\\w)+)invs) \"inverse\"", snippetType = "autosnippet", priority = 0, trigEngine = te("Awr"), regTrig = true}, {
-		f(function(args, snip) return c_py({"tex", 166}, "snip.rv = match.group(1)", python_globals, args, snip, "", {}) end), t"^{-1}"
+		f(function(args, snip) return c_py({"tex", 165}, "snip.rv = match.group(1)", python_globals, args, snip, "", {}) end), t"^{-1}"
 	}),
 	s({trig = "!>", descr = "(!>) \"mapsto\"", snippetType = "autosnippet", priority = 0, trigEngine = te("Aw")}, {
 		t"\\mapsto "
@@ -748,16 +743,16 @@ ls.add_snippets("tex", {
 	s({trig = "tr(\\d+)", descr = "(tr(\\d+)) \"Add table row of dimension ...\"", priority = 0, trigEngine = te("r"), regTrig = true}, {
 	}),
 	s({trig = "\\<(.*?)\\|", descr = "(\\<(.*?)\\|) \"bra\"", priority = 0, trigEngine = te("wri"), regTrig = true}, {
-		t"\\bra{", f(function(args, snip) return c_py({"tex", 170}, "snip.rv = match.group(1).replace(\'q\', f\'\\psi\').replace(\'f\', f\'\\phi\')", python_globals, args, snip, "", {}) end), t"}"
+		t"\\bra{", f(function(args, snip) return c_py({"tex", 169}, "snip.rv = match.group(1).replace(\'q\', f\'\\psi\').replace(\'f\', f\'\\phi\')", python_globals, args, snip, "", {}) end), t"}"
 	}),
 	s({trig = "\\|(.*?)\\>", descr = "(\\|(.*?)\\>) \"ket\"", priority = 0, trigEngine = te("wri"), regTrig = true}, {
-		t"\\ket{", f(function(args, snip) return c_py({"tex", 171}, "snip.rv = match.group(1).replace(\'q\', f\'\\psi\').replace(\'f\', f\'\\phi\')", python_globals, args, snip, "", {}) end), t"}"
+		t"\\ket{", f(function(args, snip) return c_py({"tex", 170}, "snip.rv = match.group(1).replace(\'q\', f\'\\psi\').replace(\'f\', f\'\\phi\')", python_globals, args, snip, "", {}) end), t"}"
 	}),
 	s({trig = "(.*)\\\\bra{(.*?)}([^\\|]*?)\\>", descr = "((.*)\\\\bra{(.*?)}([^\\|]*?)\\>) \"braket\"", snippetType = "autosnippet", priority = 0, trigEngine = te("Awri"), regTrig = true}, {
-		f(function(args, snip) return c_py({"tex", 172}, "snip.rv = match.group(1)", python_globals, args, snip, "", {}) end), t"\\braket{", f(function(args, snip) return c_py({"tex", 172}, "snip.rv = match.group(2)", python_globals, args, snip, "", {}) end), t"}{", f(function(args, snip) return c_py({"tex", 172}, "snip.rv = match.group(3).replace(\'q\', f\'\\psi\').replace(\'f\', f\'\\phi\')", python_globals, args, snip, "", {}) end), t"}"
+		f(function(args, snip) return c_py({"tex", 171}, "snip.rv = match.group(1)", python_globals, args, snip, "", {}) end), t"\\braket{", f(function(args, snip) return c_py({"tex", 171}, "snip.rv = match.group(2)", python_globals, args, snip, "", {}) end), t"}{", f(function(args, snip) return c_py({"tex", 171}, "snip.rv = match.group(3).replace(\'q\', f\'\\psi\').replace(\'f\', f\'\\phi\')", python_globals, args, snip, "", {}) end), t"}"
 	}),
 	s({trig = "pac", descr = "(pac) \"usepackage - removes square braces if options removed\"", priority = 0, trigEngine = te("b")}, {
-		t"\\usepackage", f(function(args, snip) return c_py({"tex", 173}, "snip.rv=\'[\' if t[1] else \"\"", python_globals, args, snip, "", {1}) end, {k"i1"}), i(1, "options", {key = "i1"}), f(function(args, snip) return c_py({"tex", 173}, "snip.rv = \']\' if t[1] else \"\"", python_globals, args, snip, "", {1}) end, {k"i1"}), t"{", i(2, "package", {key = "i2"}), t"}", i(0, "", {key = "i0"})
+		t"\\usepackage", f(function(args, snip) return c_py({"tex", 172}, "snip.rv=\'[\' if t[1] else \"\"", python_globals, args, snip, "", {1}) end, {k"i1"}), i(1, "options", {key = "i1"}), f(function(args, snip) return c_py({"tex", 172}, "snip.rv = \']\' if t[1] else \"\"", python_globals, args, snip, "", {1}) end, {k"i1"}), t"{", i(2, "package", {key = "i2"}), t"}", i(0, "", {key = "i0"})
 	}),
 	s({trig = "docls", descr = "(docls) \"Document Class\"", snippetType = "autosnippet", priority = 0, trigEngine = te("bA")}, {
 		t"\\documentclass{", i(1, "", {key = "i1"}), t"}", i(0, "", {key = "i0"})

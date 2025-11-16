@@ -95,9 +95,6 @@ ls.add_snippets("scss", {
 		t"\t", i(0, "", {key = "i0"}), nl(),
 		t"}"
 	}),
-	s({trig = "rc", descr = "(rc)", priority = -1000, trigEngine = te("w")}, {
-		t"rem-calc(", i(1, "", {key = "i1"}), t")", i(0, "", {key = "i0"})
-	}),
 	s({trig = "ain", descr = "(ain) \"ainline\"", priority = 0, trigEngine = te("")}, {
 		t"&:after {", nl(),
 		t"\tcontent: \"\";", nl(),

@@ -55,7 +55,7 @@ ls.add_snippets("gitcommit", {
 		t"Co-authored-by: ", i(1, "", {key = "i1"}), t" <", i(2, "", {key = "i2"}), t">"
 	}),
 	s({trig = "status", descr = "(status) \"Status\"", snippetType = "autosnippet", priority = 0, trigEngine = te("bA")}, {
-		t"status ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"gitcommit", 2}, "snip.rv = complete(t[1], [\'build\', \'ci\', \'test\', \'refactor\', \'perf\', \'improvement\', \'docs\', \'chore\', \'feat\', \'fix\'])", python_globals, args, snip, "", {1}) end, {k"i1"})
+		t"status ", i(1, "", {key = "i1"}), f(function(args, snip) return c_py({"gitcommit", 2}, "snip.rv = complete(t[1], [\'build\', \'ci\', \'test\', \'refactor\', \'perf\', \'improvement\', \'docs\', \'chore\', \'feat\', \'fix\', \'style\'])", python_globals, args, snip, "", {1}) end, {k"i1"})
 	}),
 	s({trig = "fix", descr = "(fix) \"fix conventional commit\"", priority = 0, trigEngine = te("")}, {
 		t"fix(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
@@ -106,6 +106,14 @@ ls.add_snippets("gitcommit", {
 		t"build(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
 		nl(),
 		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
+	}),
+	s({trig = "style", descr = "(style) \"style conventional commit\"", priority = 0, trigEngine = te("")}, {
+		t"style(", i(1, "scope", {key = "i1"}), t"): ", i(2, "title", {key = "i2"}), nl(),
+		nl(),
+		d(3, function(args, snip) return sn(nil, { i(1, jt({snip.env.LS_SELECT_DEDENT or {}}, ""), {key = "i0"}) }) end)
+	}),
+	s({trig = "Co-authored-by", descr = "(Co-authored-by) \"Co-authored-by:\"", priority = 0, trigEngine = te("")}, {
+		t"Co-authored-by: ", i(1, "Author Name", {key = "i1"}), t" <", i(2, "Email", {key = "i2"}), t">"
 	}),
 	s({trig = "sign", descr = "(sign) \"Signature\"", priority = 0, trigEngine = te("")}, {
 		t"-------------------------------------------------------------------------------", nl(),
