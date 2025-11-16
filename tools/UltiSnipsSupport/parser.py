@@ -136,6 +136,14 @@ def resolve_insert_or_copy_tokens(
 		if isinstance(token, LSInsertToken):
 			token.children = resolve_insert_or_copy_tokens(token.children, insert_numbers)
 		result_tokens.append(token)
+
+	local_insert_numbers = set()
+	for i, token in enumerate(result_tokens):
+		if isinstance(token, LSInsertToken):
+			if token.number in local_insert_numbers and not token.is_simple:
+				result_tokens[i] = LSCopyToken(token.number)
+			local_insert_numbers.add(token.number)
+
 	return result_tokens
 
 
