@@ -198,6 +198,21 @@ function remove_named_regex_groups(py_regex)
 end
 
 
+local function rx_match(rx_obj, s)
+	local matches = {}
+	local match = rx_obj:exec(s)
+	if match ~= nil then
+		table.insert(matches, {
+			begin_ind = match.index,
+			end_ind = match.index + #match[0] - 1,
+			groups = { unpack(match) },
+			named_groups = match.groups,
+		})
+	end
+	return matches
+end
+
+
 local function trig_engine(opts)
 	local function engine(trigger)
 		local function matcher(line_to_cursor, trigger)
@@ -218,7 +233,7 @@ local function trig_engine(opts)
 					end
 				end
 				if rx ~= nil then
-					local matches = rx(line_to_cursor)
+					local matches = rx_match(rx, line_to_cursor)
 					for i, match in ipairs(matches) do
 						if match.end_ind == #line_to_cursor then
 							matched = line_to_cursor:sub(match.begin_ind, match.end_ind)
