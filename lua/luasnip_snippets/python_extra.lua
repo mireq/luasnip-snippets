@@ -21,7 +21,6 @@ local conds = require("luasnip.extras.conditions")
 local conds_expand = require("luasnip.extras.conditions.expand")
 local su = require("luasnip_snippets.common.snip_utils")
 local te = su.trig_engine
-local ts_utils = require("nvim-treesitter.ts_utils")
 local tsq = vim.treesitter.query
 
 
@@ -33,7 +32,7 @@ end
 local function get_call_super(snip)
 	local linenr = snip.env.TM_LINE_NUMBER
 	local bufnr = vim.api.nvim_get_current_buf()
-	local node = ts_utils.get_node_at_cursor()
+	local node = vim.treesitter.get_node()
 	local function_definition_node = nil
 	local class_definition_node = nil
 	local class_name = nil
